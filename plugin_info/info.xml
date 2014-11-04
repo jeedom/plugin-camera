@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info>
+    <id>camera</id>
+    <name>Camera</name>
+    <description>Plugin pour afficher les caméras IP</description>
+    <icon>fa fa-video-camera</icon>
+    <licence>AGPL</licence>
+    <author>Loïc Gevrey</author>
+    <installation>Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)</installation>
+    <require>1.55</require>
+    <version>1.0</version>
+    <category>security</category>
+</info>
+

@@ -1,0 +1,88 @@
+{
+    "ebode.ipv38wewht": {
+        "name": "Ebode IPV38WE-WHT",
+        "vendor": "Ebode",
+        "configuration": {
+            "urlStream": "videostream.cgi",
+            "boundary": "--ipcamera",
+            "dashboardSize": "160x120",
+            "mobileSize": "120x90"
+        },
+        "commands": [
+            {
+                "name": "Stop",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 0,
+                "configuration": {
+                    "stopCmd": 1,
+                    "request": "decoder_control.cgi?command=1"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-stop\"><\/i>"
+                }
+            },
+            {
+                "name": "Gauche",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "decoder_control.cgi?command=4"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>"
+                }
+            },
+            {
+                "name": "Haut",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "decoder_control.cgi?command=0"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>"
+                }
+            },
+            {
+                "name": "Bas",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "decoder_control.cgi?command=2"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>"
+                }
+            },
+            {
+                "name": "Droite",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "decoder_control.cgi?command=6"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>"
+                }
+            },
+            {
+                "name": "Enregistrer",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": 300,
+                    "recordCmd": 1
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-circle\"><\/i>"
+                }
+            }
+        ]
+    }
+}

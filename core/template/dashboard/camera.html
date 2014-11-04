@@ -1,0 +1,68 @@
+<div class="eqLogic eqLogic-widget noResize" data-eqLogic_id="#id#" data-version="mobile" style="background-color: #background_color#;width: 185px;min-height: 185px;">
+    <center>
+        <span style="font-weight:bold;"><a href="#eqLink#">#name#</a></span>
+    </center>
+    <center>
+        <span class="directDisplay"></span>
+        <br/>
+        #action#
+        <a class="camera_history btn btn-default btn-xs" data-eqLogic_id="#id#" style="margin-top : 3px;color:black;"><i class="fa fa-folder-open"></i></a>
+    </center>
+
+
+    <div class="md_cameraZoom" data-eqLogic_id="#id#" title="#humanname#">
+        <center>
+            <div class="display"></div>
+            #action#
+        </center>
+        <script>
+            $(function() {
+                $.ajax({
+                    type: "GET",
+                    url: "#url#",
+                    dataType: 'jsonp',
+                    username: '#username#',
+                    password: '#password#',
+                    timeout: 500,
+                    success: function() {
+                        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
+                    }
+                });
+
+
+                $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
+
+                $('.zoom[data-eqLogic_id=#id#]').off().unbind();
+                if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
+                    while ($(".md_cameraFullScreen[data-eqLogic_id=#id#]").length > 1) {
+                        $(".md_cameraFullScreen[data-eqLogic_id=#id#]").eq(0).remove();
+                    }
+                }
+                $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog({
+                    autoOpen: false,
+                    modal: true,
+                    resizable: false,
+                    height: ((jQuery(window).height() - 50) < 550) ? (jQuery(window).height() - 100) : 600,
+                    width: ((jQuery(window).width() - 50) < 650) ? (jQuery(window).width() - 100) : 700,
+                    open: function() {
+                        $("body").css({overflow: 'hidden'})
+                    },
+                    beforeClose: function(event, ui) {
+                        $("body").css({overflow: 'inherit'})
+                    }
+                });
+                $('.camera_history[data-eqLogic_id=#id#]').on('click', function() {
+                    $('#md_modal').dialog({title: "{{Historique #name#}}"});
+                    $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
+                });
+
+                $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function() {
+                    $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append("<center><img src='#url#'/></center>");
+                    $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
+                });
+
+
+            });
+        </script>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="eqLogic eqLogic-widget" data-eqLogic_id="#id#" data-version="mobile" style="padding : 3px;">
+    <a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none" class="directDisplay"></a>
+    <div data-role="popup" id="popupCameraZoom#id#">
+        <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        <div class="display"></div>
+        <center>
+            #action#
+        </center>
+    </div>
+
+    <script>
+        $(function() {
+            if (isset(deviceInfo) && isset(deviceInfo.bSize)) {
+                var width = deviceInfo.bSize;
+            }
+            var height = width / (4 / 3);
+            $(window).on("orientationchange", function(event) {
+                deviceInfo = getDeviceType();
+                if (isset(deviceInfo) && isset(deviceInfo.bSize)) {
+                    var width = deviceInfo.bSize;
+                }
+                var height = width / (4 / 3);
+                $('.eqLogic[data-eqLogic_id=#id#] .zoom').attr('width', width);
+                $('.eqLogic[data-eqLogic_id=#id#] .zoom').attr('height', height);
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "#url#",
+                dataType: 'jsonp',
+                username: '#username#',
+                password: '#password#',
+                timeout: 500,
+                success: function() {
+                    $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
+                }
+            });
+
+            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="' + width + '" height="' + height + '"/>');
+
+            $('.zoom[data-eqLogic_id=#id#]').off().unbind();
+            $('.zoom[data-eqLogic_id=#id#]').on('click', function() {
+                var width = $('#pagecontainer').width() - 50;
+                var height = width / (4 / 3);
+                if (height > $('#pagecontainer').height()) {
+                    height = $('#pagecontainer').height() - 100;
+                    width = height * (4 / 3);
+                }
+                $("#popupCameraZoom#id# .display").empty().append("<center><img src='#url#' width='" + width + "' height='" + height + "'/></center>");
+                $("#popupCameraZoom#id#").popup("open");
+            });
+        });
+    </script>
+
+</div>
