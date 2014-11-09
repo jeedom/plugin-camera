@@ -165,6 +165,25 @@ class camera extends eqLogic {
         if ($this->getConfiguration('recordTime') == '' || $this->getConfiguration('recordTime') > 300) {
             $this->setConfiguration('recordTime', 300);
         }
+
+        if (strpos($this->getConfiguration('urlStream'), '#username#') === false) {
+            if (strpos($this->getConfiguration('ip_ext'), '#username#') === false) {
+                $ip = explode('://', $this->getConfiguration('ip_ext'));
+                if (count($ip) == 2) {
+                    $this->setConfiguration('ip_ext', $ip[0] . '#username#:#password#@' . $ip[1]);
+                } else {
+                    $this->setConfiguration('ip_ext', '#username#:#password#@' . $ip[0]);
+                }
+            }
+            if (strpos($this->getConfiguration('ip'), '#username#') === false) {
+                $ip = explode('://', $this->getConfiguration('ip'));
+                if (count($ip) == 2) {
+                    $this->setConfiguration('ip', $ip[0] . '#username#:#password#@' . $ip[1]);
+                } else {
+                    $this->setConfiguration('ip', '#username#:#password#@' . $ip[0]);
+                }
+            }
+        }
     }
 
     public function postSave() {
@@ -379,7 +398,7 @@ class cameraCmd extends cmd {
         if ($this->getLogicalId() == 'recordCmd') {
             $eqLogic->recordCam($this->getConfiguration('recordTime', 300));
         } else {
-           if (netMatch('192.168.*.*', getClientIp())) {
+            if (netMatch('192.168.*.*', getClientIp())) {
                 $url = camera::formatIp($eqLogic->getConfiguration('ip'));
                 if ($eqLogic->getConfiguration('port') != '') {
                     $url .= ':' . $eqLogic->getConfiguration('port');
