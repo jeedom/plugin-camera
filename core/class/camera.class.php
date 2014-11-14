@@ -417,7 +417,9 @@ class cameraCmd extends cmd {
             $url = str_replace(array('#username#', '#password#'), array($eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password')), $url);
             $http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
             $http->setNoReportError(true);
-            $http->setCURLOPT_HTTPAUTH(CURLAUTH_DIGEST);
+            if ($this->getConfiguration('useCurlDigest') == 1) {
+                $http->setCURLOPT_HTTPAUTH(CURLAUTH_DIGEST);
+            }
             $http->exec($this->getConfiguration('timeout', 2));
         }
         return true;
