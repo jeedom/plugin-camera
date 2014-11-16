@@ -1,0 +1,10 @@
+== Camera
+
+=== Description
+Plugin permetant de creer et gerer ses camera (affichage et enregistrement)
+
+=== Configuration
+include::configuration.asciidoc[]
+
+=== Changelog
+include::changelog.asciidoc[]
