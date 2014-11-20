@@ -3,8 +3,14 @@
 === Description
 Plugin permetant de creer et gerer ses camera (affichage et enregistrement)
 
+'''
 === Configuration
 include::configuration.asciidoc[]
 
+'''
+=== FAQ
+include::faq.asciidoc[]
+
+'''
 === Changelog
 include::changelog.asciidoc[]
