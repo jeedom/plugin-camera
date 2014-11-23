@@ -8,7 +8,7 @@ include_file('3rdparty', 'jquery.fileupload/jquery.fileupload', 'js');
 sendVarToJS('eqType', 'camera');
 ?>
 <div class="row row-overflow">
-    <div class="col-lg-2">
+    <div class="col-lg-2 col-md-3 col-sm-4">
         <div class="bs-sidebar">
             <ul id="ul_eqLogic" class="nav nav-list bs-sidenav">
                 <a class="btn btn-default btn-sm tooltips" id="bt_getFromMarket" title="Récuperer du market" style="width : 100%;"><i class="fa fa-shopping-cart"></i> {{Market}}</a>
@@ -22,22 +22,22 @@ sendVarToJS('eqType', 'camera');
             </ul>
         </div>
     </div>
-    <div class="col-lg-10 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
+    <div class="col-lg-10 col-md-9 col-sm-8 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-6">
                 <form class="form-horizontal">
                     <fieldset>
                         <legend>{{Général}}</legend>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">{{Nom de l'équipement caméra}}</label>
-                            <div class="col-lg-6">
+                            <label class="col-sm-3 control-label">{{Nom de l'équipement caméra}}</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement caméra}}"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label" >{{Objet parent}}</label>
-                            <div class="col-lg-6">
+                            <label class="col-sm-3 control-label" >{{Objet parent}}</label>
+                            <div class="col-sm-6">
                                 <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
                                     <option value="">{{Aucun}}</option>
                                     <?php
@@ -49,59 +49,59 @@ sendVarToJS('eqType', 'camera');
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label"></label>
-                            <div class="col-lg-1">
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-1">
                                 <label class="checkbox-inline">
                                     <input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/> Activer 
                                 </label>
                             </div>
-                            <label class="col-lg-1 control-label"></label>
-                            <div class="col-lg-1">
+                            <label class="col-sm-1 control-label"></label>
+                            <div class="col-sm-1">
                                 <label class="checkbox-inline">
                                     <input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/> Visible 
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">{{IP}}</label>
-                            <div class="col-lg-4">
+                            <label class="col-sm-3 control-label">{{IP}}</label>
+                            <div class="col-sm-4">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
                             </div>
-                            <label class="col-lg-2 control-label">{{Port}}</label>
-                            <div class="col-lg-2">
+                            <label class="col-sm-2 control-label">{{Port}}</label>
+                            <div class="col-sm-2">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
                             </div>
                         </div>
                           <div class="form-group">
-                            <label class="col-lg-3 control-label">{{IP Externe}}</label>
-                            <div class="col-lg-4">
+                            <label class="col-sm-3 control-label">{{IP Externe}}</label>
+                            <div class="col-sm-4">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_ext" placeholder="{{IP}}"/>
                             </div>
-                            <label class="col-lg-2 control-label">{{Port externe}}</label>
-                            <div class="col-lg-2">
+                            <label class="col-sm-2 control-label">{{Port externe}}</label>
+                            <div class="col-sm-2">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_ext" placeholder="{{Port}}"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">{{Nom d'utilisateur}}</label>
-                            <div class="col-lg-3">
+                            <label class="col-sm-3 control-label">{{Nom d'utilisateur}}</label>
+                            <div class="col-sm-3">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
                             </div>
-                            <label class="col-lg-2 control-label">{{Mot de passe}}</label>
-                            <div class="col-lg-3">
+                            <label class="col-sm-2 control-label">{{Mot de passe}}</label>
+                            <div class="col-sm-3">
                                 <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
                             </div>
                         </div>
                     </fieldset> 
                 </form>
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6">
                 <legend>{{Configuration}}</legend>
                 <form class="form-horizontal">
                     <fieldset>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">{{Modèle de caméra}}</label>
-                            <div class="col-lg-4">
+                            <label class="col-sm-3 control-label">{{Modèle de caméra}}</label>
+                            <div class="col-sm-4">
                                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
                                     <option value="">{{Aucun}}</option>
                                     <?php
@@ -111,25 +111,25 @@ sendVarToJS('eqType', 'camera');
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-lg-5">
+                            <div class="col-sm-5">
                                 <a class="btn btn-warning" id="bt_shareOnMarket"><i class="fa fa-cloud-upload"></i> {{Partager}}</a>
                             </div>
                         </div>
                         <div class="form-group expertModeVisible">
-                            <label class="col-lg-3 control-label">{{Envoyer une configuration}}</label>
-                            <div class="col-lg-5">
+                            <label class="col-sm-3 control-label">{{Envoyer une configuration}}</label>
+                            <div class="col-sm-5">
                                 <input id="bt_uploadConfCam" type="file" name="file" data-url="plugins/camera/core/ajax/camera.ajax.php?action=uploadConfCam">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">{{URL du flux}}</label>
-                            <div class="col-lg-6">
+                            <label class="col-sm-3 control-label">{{URL du flux}}</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL du flux}}"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">{{Durée enregistrement (s)}}</label>
-                            <div class="col-lg-3">
+                            <label class="col-sm-3 control-label">{{Durée enregistrement (s)}}</label>
+                            <div class="col-sm-3">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="recordTime" />
                             </div>
                         </div>
