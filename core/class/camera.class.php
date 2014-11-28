@@ -290,6 +290,12 @@ class camera extends eqLogic {
             $replace['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace['#name#'] : $replace['#name#'];
         }
 
+        $parameters = $this->getDisplay('parameters');
+        if (is_array($parameters)) {
+            foreach ($parameters as $key => $value) {
+                $replace['#' . $key . '#'] = $value;
+            }
+        }
 
         $return = template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera', 'camera'));
         return $return;
