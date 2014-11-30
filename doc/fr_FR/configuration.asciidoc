@@ -1,1 +1,1 @@
-image::../images/camera.JPG[]
+image::../images/camera_screenshot1.JPG[]
