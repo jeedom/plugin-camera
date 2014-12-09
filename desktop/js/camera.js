@@ -17,12 +17,12 @@
 
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
-$('body').delegate('#bt_getFromMarket', 'click', function() {
+$('body').delegate('#bt_getFromMarket', 'click', function () {
     $('#md_modal').dialog({title: "{{Partager sur le market}}"});
     $('#md_modal').load('index.php?v=d&modal=market.list&type=camera').dialog('open');
 });
 
-$('body').delegate('#bt_shareOnMarket', 'click', function() {
+$('body').delegate('#bt_shareOnMarket', 'click', function () {
     var logicalId = $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').value();
     if (logicalId == '') {
         $('#div_alert').showAlert({message: '{{Vous devez d\'abord séléctioner un équipement}}', level: 'danger'});
@@ -35,7 +35,7 @@ $('body').delegate('#bt_shareOnMarket', 'click', function() {
 $('#bt_uploadConfCam').fileupload({
     replaceFileInput: false,
     dataType: 'json',
-    done: function(e, data) {
+    done: function (e, data) {
         if (data.result.state != 'ok') {
             $('#div_alert').showAlert({message: data.result.result, level: 'danger'});
             return;
@@ -82,6 +82,7 @@ function addCmdToTable(_cmd) {
     tr += '</td>';
     tr += '<td>';
     if (is_numeric(_cmd.id)) {
+        tr += '<a class="btn btn-default btn-xs cmdAction expertModeVisible" data-action="configure"><i class="fa fa-cogs"></i></a> ';
         tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
     }
     tr += '<i class="fa fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>';
