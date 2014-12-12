@@ -279,6 +279,7 @@ class camera extends eqLogic {
             '#humanname#' => $this->getHumanName(),
             '#name#' => $this->getName(),
             '#eqLink#' => $this->getLinkToConfiguration(),
+            '#useVLC#' => $this->getConfiguration('useVLC', 0),
         );
 
         if ($_version == 'dview') {

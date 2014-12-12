@@ -162,6 +162,12 @@ $eqLogics = eqLogic::byType('camera');
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="recordTime" />
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">{{Utiliser VLC}}</label>
+                            <div class="col-sm-3">
+                                <input type="checkbox" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="useVLC" />
+                            </div>
+                        </div>
                     </fieldset> 
                 </form>
             </div>
