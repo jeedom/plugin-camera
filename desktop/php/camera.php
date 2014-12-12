@@ -165,15 +165,23 @@ $eqLogics = eqLogic::byType('camera');
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{Utiliser VLC}}</label>
+                            <label class="col-sm-3 control-label">{{Protocole d'affichage}}</label>
                             <div class="col-sm-3">
-                                <input type="checkbox" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="useVLC" />
+                                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
+                                    <option value='image'>Standard</option>
+                                    <option value='html5'>HTML5</option>
+                                    <option value='vlc'>VLC</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{Utiliser RTSP}}</label>
+                            <label class="col-sm-3 control-label">{{Protocle}}</label>
                             <div class="col-sm-3">
-                                <input type="checkbox" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="useRTSP" />
+                                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
+                                    <option value='http'>HTTP</option>
+                                    <option value='https'>HTTPS</option>
+                                    <option value='rtsp'>RTSP</option>
+                                </select>
                             </div>
                         </div>
                     </fieldset> 

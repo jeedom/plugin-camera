@@ -151,12 +151,15 @@ class camera extends eqLogic {
         return $return;
     }
 
-    public static function formatIp($_ip, $_rtsp = false) {
+    public static function formatIp($_ip, $_protocole = false) {
         if (strpos($_ip, 'http') !== false) {
             return $_ip;
         }
-        if ($_rtsp) {
+        if ($_protocole == 'rtsp') {
             return 'rtsp://' . $_ip;
+        }
+        if ($_protocole == 'https') {
+            return 'https://' . $_ip;
         }
         return 'http://' . $_ip;
     }
@@ -258,12 +261,12 @@ class camera extends eqLogic {
             }
         }
         if (!netMatch('192.168.*.*', getClientIp())) {
-            $streamUrl = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration('useRTSP'));
+            $streamUrl = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration('protocole'));
             if ($this->getConfiguration('port_ext') != '') {
                 $streamUrl .= ':' . $this->getConfiguration('port_ext');
             }
         } else {
-            $streamUrl = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration('useRTSP'));
+            $streamUrl = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration('protocole'));
             if ($this->getConfiguration('port') != '') {
                 $streamUrl .= ':' . $this->getConfiguration('port');
             }
@@ -282,7 +285,7 @@ class camera extends eqLogic {
             '#humanname#' => $this->getHumanName(),
             '#name#' => $this->getName(),
             '#eqLink#' => $this->getLinkToConfiguration(),
-            '#useVLC#' => $this->getConfiguration('useVLC', 0),
+            '#displayProtocol#' => $this->getConfiguration('displayProtocol', 'image'),
         );
 
         if ($_version == 'dview') {
