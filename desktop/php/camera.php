@@ -170,6 +170,12 @@ $eqLogics = eqLogic::byType('camera');
                                 <input type="checkbox" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="useVLC" />
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">{{Utiliser RTSP}}</label>
+                            <div class="col-sm-3">
+                                <input type="checkbox" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="useRTSP" />
+                            </div>
+                        </div>
                     </fieldset> 
                 </form>
             </div>

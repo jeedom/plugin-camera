@@ -151,9 +151,12 @@ class camera extends eqLogic {
         return $return;
     }
 
-    public static function formatIp($_ip) {
+    public static function formatIp($_ip, $_rtsp = false) {
         if (strpos($_ip, 'http') !== false) {
             return $_ip;
+        }
+        if ($_rtsp) {
+            return 'rtsp://' . $_ip;
         }
         return 'http://' . $_ip;
     }
@@ -166,7 +169,7 @@ class camera extends eqLogic {
             $this->setConfiguration('recordTime', 300);
         }
 
-        if (strpos($this->getConfiguration('urlStream'), '#username#') === false) {
+        if ($this->getConfiguration('username') != '' && strpos($this->getConfiguration('urlStream'), '#username#') === false) {
             if (strpos($this->getConfiguration('ip_ext'), '#username#') === false) {
                 $ip = explode('://', $this->getConfiguration('ip_ext'));
                 if (count($ip) == 2) {
@@ -255,12 +258,12 @@ class camera extends eqLogic {
             }
         }
         if (!netMatch('192.168.*.*', getClientIp())) {
-            $streamUrl = self::formatIp($this->getConfiguration('ip_ext'));
+            $streamUrl = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration('useRTSP'));
             if ($this->getConfiguration('port_ext') != '') {
                 $streamUrl .= ':' . $this->getConfiguration('port_ext');
             }
         } else {
-            $streamUrl = self::formatIp($this->getConfiguration('ip'));
+            $streamUrl = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration('useRTSP'));
             if ($this->getConfiguration('port') != '') {
                 $streamUrl .= ':' . $this->getConfiguration('port');
             }
