@@ -17,6 +17,11 @@
         </center>
         <script>
             $(function () {
+                $('.camera_history[data-eqLogic_id=#id#]').on('click', function () {
+                    $('#md_modal').dialog({title: "{{Historique #name#}}"});
+                    $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
+                });
+
                 if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
                     while ($(".md_cameraFullScreen[data-eqLogic_id=#id#]").length > 1) {
                         $(".md_cameraFullScreen[data-eqLogic_id=#id#]").eq(0).remove();
@@ -85,10 +90,7 @@
                     $('.zoom[data-eqLogic_id=#id#]').off().unbind();
 
 
-                    $('.camera_history[data-eqLogic_id=#id#]').on('click', function () {
-                        $('#md_modal').dialog({title: "{{Historique #name#}}"});
-                        $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
-                    });
+
                     $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
                         $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append("<center><img src='#url#'/></center>");
                         $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
