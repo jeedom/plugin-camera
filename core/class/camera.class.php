@@ -411,16 +411,9 @@ class cameraCmd extends cmd {
         if ($this->getLogicalId() == 'recordCmd') {
             $eqLogic->recordCam($this->getConfiguration('recordTime', 300));
         } else {
-            if (netMatch('192.168.*.*', getClientIp())) {
-                $url = camera::formatIp($eqLogic->getConfiguration('ip'));
-                if ($eqLogic->getConfiguration('port') != '') {
-                    $url .= ':' . $eqLogic->getConfiguration('port');
-                }
-            } else {
-                $url = camera::formatIp($eqLogic->getConfiguration('ip_ext'));
-                if ($eqLogic->getConfiguration('port_ext') != '') {
-                    $url .= ':' . $eqLogic->getConfiguration('port_ext');
-                }
+            $url = camera::formatIp($eqLogic->getConfiguration('ip'));
+            if ($eqLogic->getConfiguration('port') != '') {
+                $url .= ':' . $eqLogic->getConfiguration('port');
             }
             if (strpos($this->getConfiguration('request'), '/') === 0) {
                 $url .= $this->getConfiguration('request');
