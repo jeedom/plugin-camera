@@ -48,12 +48,12 @@ class camera extends eqLogic {
                     }
                 }
                 if ($older['file'] == null) {
-                    throw new Exception(__('Erreur aucun fichier trouver a supprimer alors que le répertoire fait : ' . getDirectorySize($record_dir), __FILE__));
+                    throw new Exception(__('Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ' . getDirectorySize($record_dir), __FILE__));
                 }
                 unlink($older['file']);
                 $i++;
                 if ($i > 50) {
-                    throw new Exception(__('Plus de 50 enregistrement video supprimer. Je m\'arrete', __FILE__));
+                    throw new Exception(__('Plus de 50 enregistrements videos supprimés. Je m\'arrête', __FILE__));
                 }
             }
         }
