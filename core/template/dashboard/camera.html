@@ -55,7 +55,10 @@
                     $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append(object);
                     $('.zoom[data-eqLogic_id=#id#]').off().unbind();
                 } else if ('#displayProtocol#' == 'html5') {
-                    var object = '<video src="#url#"  width="147" height="110">';
+                    var object = '<video width="147" height="110">';
+                    object += '<source src="#url#" type="video/mp4">';
+                    object += '<source src="#url#" type="video/ogg">';
+                    object += '<source src="#url#" type="video/webm">';
                     object += 'Your browser does not support the VIDEO tag and/or RTP streams.';
                     object += '</video>';
                     $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append(object);

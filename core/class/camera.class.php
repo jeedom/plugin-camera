@@ -271,7 +271,7 @@ class camera extends eqLogic {
                 $streamUrl .= ':' . $this->getConfiguration('port');
             }
         }
-        $streamUrl .= '/' . $this->getConfiguration('urlStream');
+        $streamUrl .= $this->getConfiguration('urlStream');
         $streamUrl = str_replace(array('#username#', '#password#'), array($this->getConfiguration('username'), $this->getConfiguration('password')), $streamUrl);
         $replace = array(
             '#id#' => $this->getId(),
@@ -411,7 +411,7 @@ class cameraCmd extends cmd {
         if ($this->getLogicalId() == 'recordCmd') {
             $eqLogic->recordCam($this->getConfiguration('recordTime', 300));
         } else {
-            $url = camera::formatIp($eqLogic->getConfiguration('ip'),$eqLogic->getConfiguration('protocole','https'));
+            $url = camera::formatIp($eqLogic->getConfiguration('ip'),$eqLogic->getConfiguration('protocoleCommande','https'));
             if ($eqLogic->getConfiguration('port') != '') {
                 $url .= ':' . $eqLogic->getConfiguration('port');
             }

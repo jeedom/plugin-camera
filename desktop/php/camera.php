@@ -175,9 +175,17 @@ $eqLogics = eqLogic::byType('camera');
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{Protocle}}</label>
+                            <label class="col-sm-3 control-label">{{Protocole}}</label>
                             <div class="col-sm-3">
                                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
+                                    <option value='http'>HTTP</option>
+                                    <option value='https'>HTTPS</option>
+                                    <option value='rtsp'>RTSP</option>
+                                </select>
+                            </div>
+                             <label class="col-sm-3 control-label">{{Protocole commande}}</label>
+                            <div class="col-sm-3">
+                                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleCommande">
                                     <option value='http'>HTTP</option>
                                     <option value='https'>HTTPS</option>
                                     <option value='rtsp'>RTSP</option>
