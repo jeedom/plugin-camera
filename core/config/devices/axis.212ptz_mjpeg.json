@@ -1,0 +1,95 @@
+{
+    "axis.212ptz_mjpeg": {
+        "name": "AXIS 212-PTZ MJPEG",
+        "vendor": "axis",
+        "configuration": {
+            "urlStream": "/mjpg/video.mjpg"
+        },
+        "commands": [
+            {
+                "name": "Zoom +",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "/axis-cgi/com/ptz.cgi?camera=1&rzoom=1000"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-search-plus\"><\/i>"
+                }
+            },
+            {
+                "name": "Zoom -",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "/axis-cgi/com/ptz.cgi?camera=1&rzoom=-1000"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-search-minus\"><\/i>"
+                }
+            },
+            {
+                "name": "Haut",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "/axis-cgi/com/ptz.cgi?camera=1&move=up"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>"
+                }
+            },
+            {
+                "name": "Bas",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "/axis-cgi/com/ptz.cgi?camera=1&move=down"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>"
+                }
+            },
+            {
+                "name": "Droite",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "/axis-cgi/com/ptz.cgi?camera=1&move=right"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>"
+                }
+            },
+            {
+                "name": "Gauche",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "/axis-cgi/com/ptz.cgi?camera=1&move=left"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>"
+                }
+            },
+            {
+                "name": "Reset",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "/axis-cgi/com/ptz.cgi?camera=1&zoom=0"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-time\"><\/i>"
+                }
+            }
+        ]
+    }
+}

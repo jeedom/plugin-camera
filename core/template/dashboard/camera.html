@@ -18,7 +18,7 @@
         </center>
         <script>
             $(function () {
-                $('.camera_history[data-eqLogic_id=#id#]').on('click', function () {
+                $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
                     $('#md_modal').dialog({title: "{{Historique #name#}}"});
                     $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
                 });
