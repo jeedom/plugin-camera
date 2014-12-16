@@ -1,0 +1,35 @@
+{
+    "axis.m1031w_mjpeg": {
+        "name": "AXIS M1031-W Network Camera MJPEG",
+        "vendor": "axis",
+        "configuration": {
+            "urlStream": "/mjpg/video.mjpg"
+        },
+        "commands": [
+            {
+                "name": "On",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 0,
+                "configuration": {
+                    "request": "/axis-cgi/io/lightcontrol.cgi?action=L1:-100"
+                },
+                "display": {
+                    "icon": "<i class=\"icon jeedom-lumiere-on\"><\/i>"
+                }
+            },
+            {
+                "name": "On",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 0,
+                "configuration": {
+                    "request": "/axis-cgi/io/lightcontrol.cgi?action=L1:-0"
+                },
+                "display": {
+                    "icon": "<i class=\"icon jeedom-lumiere-off\"><\/i>"
+                }
+            }
+        ]
+    }
+}

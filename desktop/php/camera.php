@@ -132,7 +132,7 @@ $eqLogics = eqLogic::byType('camera');
                     <fieldset>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">{{Modèle de caméra}}</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
                                     <option value="">{{Aucun}}</option>
                                     <?php
@@ -142,7 +142,7 @@ $eqLogics = eqLogic::byType('camera');
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-sm-5">
+                            <div class="col-sm-3">
                                 <a class="btn btn-warning" id="bt_shareOnMarket"><i class="fa fa-cloud-upload"></i> {{Partager}}</a>
                             </div>
                         </div>

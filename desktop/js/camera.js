@@ -74,9 +74,9 @@ function addCmdToTable(_cmd) {
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="subType" value="other" style="display : none;">';
     tr += '</td>';
     tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" />';
-    tr += '<td><input type="checkbox" class="cmdAttr" data-l1key="configuration" data-l2key="stopCmd" /> {{Stop commande}} ';
-    tr += '<input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/> {{Afficher}}';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="useCurlDigest" />{{Curl digest}}';
+    tr += '<td><input type="checkbox" class="cmdAttr" data-l1key="configuration" data-l2key="stopCmd" /> {{Stop commande}}<br/>';
+    tr += '<input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/> {{Afficher}}<br/>';
+    tr += '<input type="checkbox" class="cmdAttr" data-l1key="configuration" data-l2key="useCurlDigest" />{{Curl digest}}<br/>';
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="timeout" style="display : inline-block;width : 100px;margin-left : 5px;" placeholder="timeout"/>';
     tr += '</div>';
     tr += '</td>';

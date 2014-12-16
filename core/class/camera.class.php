@@ -411,7 +411,7 @@ class cameraCmd extends cmd {
         if ($this->getLogicalId() == 'recordCmd') {
             $eqLogic->recordCam($this->getConfiguration('recordTime', 300));
         } else {
-            $url = camera::formatIp($eqLogic->getConfiguration('ip'));
+            $url = camera::formatIp($eqLogic->getConfiguration('ip'),$eqLogic->getConfiguration('protocole','https'));
             if ($eqLogic->getConfiguration('port') != '') {
                 $url .= ':' . $eqLogic->getConfiguration('port');
             }
