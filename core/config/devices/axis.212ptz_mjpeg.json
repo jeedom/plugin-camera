@@ -55,18 +55,6 @@
                 }
             },
             {
-                "name": "Droite",
-                "type": "action",
-                "subtype": "other",
-                "isVisible": 1,
-                "configuration": {
-                    "request": "/axis-cgi/com/ptz.cgi?camera=1&move=right"
-                },
-                "display": {
-                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>"
-                }
-            },
-            {
                 "name": "Gauche",
                 "type": "action",
                 "subtype": "other",
@@ -76,6 +64,18 @@
                 },
                 "display": {
                     "icon": "<i class=\"fa fa-arrow-left\"><\/i>"
+                }
+            },
+            {
+                "name": "Droite",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "/axis-cgi/com/ptz.cgi?camera=1&move=right"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>"
                 }
             },
             {
