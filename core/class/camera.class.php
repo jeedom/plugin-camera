@@ -261,12 +261,12 @@ class camera extends eqLogic {
             }
         }
         if (!netMatch('192.168.*.*', getClientIp())) {
-            $streamUrl = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration('protocole'));
+            $streamUrl = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration('protocole', 'http'));
             if ($this->getConfiguration('port_ext') != '') {
                 $streamUrl .= ':' . $this->getConfiguration('port_ext');
             }
         } else {
-            $streamUrl = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration('protocole'));
+            $streamUrl = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration('protocole', 'http'));
             if ($this->getConfiguration('port') != '') {
                 $streamUrl .= ':' . $this->getConfiguration('port');
             }
@@ -411,7 +411,7 @@ class cameraCmd extends cmd {
         if ($this->getLogicalId() == 'recordCmd') {
             $eqLogic->recordCam($this->getConfiguration('recordTime', 300));
         } else {
-            $url = camera::formatIp($eqLogic->getConfiguration('ip'),$eqLogic->getConfiguration('protocoleCommande','https'));
+            $url = camera::formatIp($eqLogic->getConfiguration('ip'), $eqLogic->getConfiguration('protocoleCommande', 'http'));
             if ($eqLogic->getConfiguration('port') != '') {
                 $url .= ':' . $eqLogic->getConfiguration('port');
             }
