@@ -45,18 +45,12 @@ if (!is_object($camera)) {
 if ($camera->getEqType_name() != 'camera') {
     throw new Exception(__('Cet équipement n\'est pas de type camera : ', __FILE__) . $camera->getEqType_name());
 }
-$urlStream = $camera->getConfiguration('urlStream');
 
-if (strpos($camera->getConfiguration('ip'), 'http') !== false) {
-    $url = '';
-} else {
-    $url = 'http://';
+$url = camera::formatIp($camera->getConfiguration('ip'), $camera->getConfiguration('protocole', 'http'));
+if ($eqLogic->getConfiguration('port') != '') {
+    $url .= ':' . $eqLogic->getConfiguration('port');
 }
-if ($camera->getConfiguration('port') != '') {
-    $url.= $camera->getConfiguration('ip') . ':' . $camera->getConfiguration('port') . '/' . $urlStream;
-} else {
-    $url.= $camera->getConfiguration('ip') . '/' . $urlStream;
-}
+$url.=  $camera->getConfiguration('urlStream');
 $url = str_replace(array('#username#', '#password#'), array($camera->getConfiguration('username'), $camera->getConfiguration('password')), $url);
 
 $output_dir = calculPath(config::byKey('recordDir', 'camera'));
@@ -93,6 +87,7 @@ $recordState = $camera->getCmd(null, 'recordState');
 if (is_object($recordState)) {
     $recordState->event(1);
 }
+log::add('camera','debug','Commande d\'enregistement : '.$cmd);
 shell_exec($cmd);
 if (is_object($recordState)) {
     $recordState->event(0);
