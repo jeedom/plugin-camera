@@ -10,5 +10,6 @@
     <require>1.55</require>
     <version>1.0</version>
     <category>security</category>
+    <display>panel</display>
 </info>
 
