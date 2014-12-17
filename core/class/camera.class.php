@@ -276,8 +276,6 @@ class camera extends eqLogic {
         );
         $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
 
-
-
         $replace = array(
             '#id#' => $this->getId(),
             '#url#' => $this->getUrl($this->getConfiguration('urlStream')),
