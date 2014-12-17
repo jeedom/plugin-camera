@@ -1,4 +1,4 @@
-<div class="eqLogic eqLogic-widget noResize" data-eqLogic_id="#id#" data-version="mobile" style="background-color: #background_color#;width: 185px;min-height: 185px;#style#">
+<div class="eqLogic eqLogic-widget noResize" data-eqLogic_id="#id#" data-version="dashboard" style="background-color: #background_color#;width: 185px;min-height: 185px;#style#">
     <span class="statusCmd" style="position : absolute;left : 5px; width : 30px;z-index: 1030;"></span>
     <center class="widget-name">
         <span style="font-weight:bold;"><a href="#eqLink#">#name#</a></span>
@@ -16,93 +16,64 @@
             <div class="display"></div>
             #action#
         </center>
-        <script>
-            $(function () {
-                $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
-                    $('#md_modal').dialog({title: "{{Historique #name#}}"});
-                    $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
-                });
+    </div>
+    <script>
+        $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
+            $('#md_modal').dialog({title: "Historique #name#"});
+            $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
+        });
 
-                if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
-                    while ($(".md_cameraFullScreen[data-eqLogic_id=#id#]").length > 1) {
-                        $(".md_cameraFullScreen[data-eqLogic_id=#id#]").eq(0).remove();
-                    }
-                }
-                $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog({
-                    autoOpen: false,
-                    modal: true,
-                    resizable: false,
-                    height: ((jQuery(window).height() - 50) < 550) ? (jQuery(window).height() - 100) : 600,
-                    width: ((jQuery(window).width() - 50) < 650) ? (jQuery(window).width() - 100) : 700,
-                    open: function () {
-                        $("body").css({overflow: 'hidden'});
-                    },
-                    beforeClose: function (event, ui) {
-                        $("body").css({overflow: 'inherit'});
-                    }
-                });
+        if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
+            while ($(".md_cameraFullScreen[data-eqLogic_id=#id#]").length > 1) {
+                $(".md_cameraFullScreen[data-eqLogic_id=#id#]").eq(0).remove();
+            }
+        }
+        $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog({
+            autoOpen: false,
+            modal: true,
+            resizable: false,
+            height: ((jQuery(window).height() - 50) < 550) ? (jQuery(window).height() - 100) : 600,
+            width: ((jQuery(window).width() - 50) < 650) ? (jQuery(window).width() - 100) : 700,
+            open: function () {
+                $("body").css({overflow: 'hidden'});
+            },
+            beforeClose: function (event, ui) {
+                $("body").css({overflow: 'inherit'});
+            }
+        });
 
-                if ('#displayProtocol#' == 'vlc') {
-                    var object = '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab" width="147" height="110" id="vlc#id#" events="True" style="z-index : 980">';
-                    object += '<param name="Src" value="#url#" />';
-                    object += '<param name="ShowDisplay" value="True" />';
-                    object += '<param name="AutoLoop" value="False" />';
-                    object += '<param name="AutoPlay" value="True" />';
-                    object += '<param name="Mute" value="True" />';
-                    object += '<param name="Control" value="False" />';
-                    object += '<embed id="vlcEmb#id#"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" controls="false" mute="true" autoplay="true" loop="false" width="147" height="110" target="#url#" style="z-index : 980"></embed>';
-                    object += '</OBJECT>';
-                    $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append(object);
-                    $('.zoom[data-eqLogic_id=#id#]').off().unbind();
-                } else if ('#displayProtocol#' == 'html5') {
-                    var object = '<video width="147" height="110">';
-                    object += '<source src="#url#" type="video/mp4">';
-                    object += '<source src="#url#" type="video/ogg">';
-                    object += '<source src="#url#" type="video/webm">';
-                    object += 'Your browser does not support the VIDEO tag and/or RTP streams.';
-                    object += '</video>';
-                    $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append(object);
-                    $('.zoom[data-eqLogic_id=#id#]').off().unbind();
-                    if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
-                        while ($(".md_cameraFullScreen[data-eqLogic_id=#id#]").length > 1) {
-                            $(".md_cameraFullScreen[data-eqLogic_id=#id#]").eq(0).remove();
-                        }
-                    }
-                    $('.camera_history[data-eqLogic_id=#id#]').on('click', function () {
-                        $('#md_modal').dialog({title: "{{Historique #name#}}"});
-                        $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
-                    });
-                    $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
-                        var object = '<video src="#url#">';
-                        object += 'Your browser does not support the VIDEO tag and/or RTP streams.';
-                        object += '</video>';
-                        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append(object);
-                        $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
-                    });
-
-                } else {
-                    $.ajax({
-                        type: "GET",
-                        url: "#url#",
-                        dataType: 'jsonp',
-                        username: '#username#',
-                        password: '#password#',
-                        timeout: 500,
-                        success: function () {
-                            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
-                        }
-                    });
-                    $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
-                    $('.zoom[data-eqLogic_id=#id#]').off().unbind();
-
-
-
-                    $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
-                        $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append("<center><img src='#url#'/></center>");
-                        $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
-                    });
+        if ('#displayProtocol#' == 'vlc') {
+            var object = '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab" width="#width#" height="#height#" id="vlc#id#" events="True" style="z-index : 980">';
+            object += '<param name="Src" value="#url#" />';
+            object += '<param name="ShowDisplay" value="True" />';
+            object += '<param name="AutoLoop" value="False" />';
+            object += '<param name="AutoPlay" value="True" />';
+            object += '<param name="Mute" value="True" />';
+            object += '<param name="Control" value="False" />';
+            object += '<embed id="vlcEmb#id#"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" controls="false" mute="true" autoplay="true" loop="false" width="#width#" height="#height#" target="#url#" style="z-index : 980"></embed>';
+            object += '</OBJECT>';
+            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append(object);
+            $('.zoom[data-eqLogic_id=#id#]').off().unbind();
+        } else {
+            $.ajax({
+                type: "GET",
+                url: "#url#",
+                dataType: 'jsonp',
+                username: '#username#',
+                password: '#password#',
+                timeout: 500,
+                global : false,
+                success: function () {
+                    $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="#width#" height="#height#" />');
                 }
             });
-        </script>
-    </div>
+            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="#width#" height="#height#" />');
+            $('.zoom[data-eqLogic_id=#id#]').off().unbind();
+
+            $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
+                $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append("<center><img src='#url#'/></center>");
+                $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
+            });
+        }
+    </script>
 </div>

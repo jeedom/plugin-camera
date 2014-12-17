@@ -1,0 +1,14 @@
+<span class="cmd cmd-widget" data-type="action" data-subtype="other" data-cmd_id="#id#">
+    <a class="btn btn-xs btn-default action" style="margin-top : 3px;color:black;">#name#</a>
+    <script>
+        $('.cmd[data-cmd_id=#id#] .action').off();
+        $('.cmd[data-cmd_id=#id#] .action').on('mousedown', function () {
+            jeedom.cmd.execute({id: '#id#', notify: false});
+        });
+        if ('#stopCmd_id#' != '') {
+            $('.cmd[data-cmd_id=#id#] .action').on('mouseup', function () {
+                jeedom.cmd.execute({id: '#stopCmd_id#', notify: false});
+            });
+        }
+    </script>
+</span>

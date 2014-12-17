@@ -169,7 +169,6 @@ $eqLogics = eqLogic::byType('camera');
                             <div class="col-sm-3">
                                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
                                     <option value='image'>Standard</option>
-                                    <option value='html5'>HTML5</option>
                                     <option value='vlc'>VLC</option>
                                 </select>
                             </div>
@@ -183,7 +182,7 @@ $eqLogics = eqLogic::byType('camera');
                                     <option value='rtsp'>RTSP</option>
                                 </select>
                             </div>
-                             <label class="col-sm-3 control-label">{{Protocole commande}}</label>
+                            <label class="col-sm-3 control-label">{{Protocole commande}}</label>
                             <div class="col-sm-3">
                                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleCommande">
                                     <option value='http'>HTTP</option>
