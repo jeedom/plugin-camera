@@ -60,13 +60,22 @@ $result = fgets($fp, 255);
 $exists = !empty($result);
 pclose($fp);
 if ($exists) {
-    $cmd = 'ffmpeg -f mjpeg -r 8';
+    if ($camera->getConfiguration('protocole') == 'rtsp') {
+        $cmd = 'ffmpeg -r 8';
+    } else {
+        $cmd = 'ffmpeg -f mjpeg -r 8';
+    }
 } else {
-    $cmd = 'avconv -f mjpeg -r 8';
+    if ($camera->getConfiguration('protocole') == 'rtsp') {
+        $cmd = 'avconv -r 8';
+    } else {
+        $cmd = 'avconv -f mjpeg -r 8';
+    }
 }
 $cmd .= ' -i "' . $url . '"';
 $cmd .= ' -t ' . 1800;
 $cmd .= ' -vcodec mpeg4 -y -b:v 1000000 -r 8 ' . escapeshellarg($output_dir . '/' . $output_file);
+log::add('camera', 'debug', 'Record command : ' . $cmd);
 $recordState = $camera->getCmd(null, 'recordState');
 $recordState->event(1);
 $camera->refreshWidget();

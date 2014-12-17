@@ -18,16 +18,16 @@
         </center>
     </div>
     <script>
+        if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
+            while ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
+                $(".md_cameraZoom[data-eqLogic_id=#id#]").eq(0).remove();
+            }
+        }
+
         $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
             $('#md_modal').dialog({title: "Historique #name#"});
             $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
         });
-
-        if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
-            while ($(".md_cameraFullScreen[data-eqLogic_id=#id#]").length > 1) {
-                $(".md_cameraFullScreen[data-eqLogic_id=#id#]").eq(0).remove();
-            }
-        }
         $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog({
             autoOpen: false,
             modal: true,
@@ -62,7 +62,7 @@
                 username: '#username#',
                 password: '#password#',
                 timeout: 500,
-                global : false,
+                global: false,
                 success: function () {
                     $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="#width#" height="#height#" />');
                 }
