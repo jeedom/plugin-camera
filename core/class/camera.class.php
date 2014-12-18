@@ -403,7 +403,7 @@ class camera extends eqLogic {
             $pid = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | awk \'{print $1}\'');
             exec('kill -9 ' . $pid . ' > /dev/null 2&1');
         }
-        $process = $this->getUrl($this->getConfiguration('urlStream'));
+        $process = $this->getUrl($this->getConfiguration('urlStream'), 'internal');
         $pid = shell_exec("ps -ef | grep " . $process . " | grep -v grep | awk '{print $2}' | xargs kill -9");
         $recordState = $this->getCmd(null, 'recordState');
         $recordState->event(0);
