@@ -19,7 +19,7 @@
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 function camera_update() {
-    foreach (thermostat::byType('camera') as $camera) {
+    foreach (camera::byType('camera') as $camera) {
         $camera->save();
     }
 }

@@ -217,7 +217,7 @@ class camera extends eqLogic {
         if (!is_object($recordCmd)) {
             $recordCmd = new cameraCmd();
         }
-        $recordCmd->setName(__('Enregistrer', __FILE__));
+        $recordCmd->setName(__('Lancer enregistrement', __FILE__));
         $recordCmd->setConfiguration('request', '-');
         $recordCmd->setType('action');
         $recordCmd->setLogicalId('recordCmd');
