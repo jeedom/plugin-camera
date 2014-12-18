@@ -43,7 +43,7 @@ if ($camera->getEqType_name() != 'camera') {
     throw new Exception(__('Cet équipement n\'est pas de type camera : ', __FILE__) . $camera->getEqType_name());
 }
 
-$url = $camera->getUrl($camera->getConfiguration('urlStream'));
+$url = $camera->getUrl($camera->getConfiguration('urlStream'), 'internal');
 
 $output_dir = calculPath(config::byKey('recordDir', 'camera'));
 if (!file_exists($output_dir)) {

@@ -159,12 +159,6 @@ $eqLogics = eqLogic::byType('camera');
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{Durée enregistrement (s)}}</label>
-                            <div class="col-sm-3">
-                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="recordTime" />
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="col-sm-3 control-label">{{Protocole d'affichage}}</label>
                             <div class="col-sm-3">
                                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
