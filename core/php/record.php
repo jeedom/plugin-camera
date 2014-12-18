@@ -67,7 +67,7 @@ if ($exists) {
     }
 } else {
     if ($camera->getConfiguration('protocole') == 'rtsp') {
-        $cmd = 'avconv -r 8';
+        $cmd = 'avconv';
     } else {
         $cmd = 'avconv -f mjpeg -r 8';
     }
