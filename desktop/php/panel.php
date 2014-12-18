@@ -57,18 +57,28 @@ if ($_SESSION['user']->getOptions('displayObjetByDefault') == 1) {
 <br/>
 <?php
 echo '<div class="div_displayEquipement" style="width: 100%;">';
-foreach ($object->getEqLogic(true, true, 'camera') as $camera) {
-    $camera->setHeight(330);
-    $camera->setWidth(441);
-    echo $camera->toHtml('dview');
-}
-foreach ($child_object as $child) {
-    $cameras = $child->getEqLogic(true, true, 'camera');
-    if (count($cameras) > 0) {
-        foreach ($cameras as $camera) {
+if (init('object_id') == '') {
+    foreach ($allObject as $object) {
+        foreach ($object->getEqLogic(true, true, 'camera') as $camera) {
             $camera->setHeight(330);
             $camera->setWidth(441);
             echo $camera->toHtml('dview');
+        }
+    }
+} else {
+    foreach ($object->getEqLogic(true, true, 'camera') as $camera) {
+        $camera->setHeight(330);
+        $camera->setWidth(441);
+        echo $camera->toHtml('dview');
+    }
+    foreach ($child_object as $child) {
+        $cameras = $child->getEqLogic(true, true, 'camera');
+        if (count($cameras) > 0) {
+            foreach ($cameras as $camera) {
+                $camera->setHeight(330);
+                $camera->setWidth(441);
+                echo $camera->toHtml('dview');
+            }
         }
     }
 }
