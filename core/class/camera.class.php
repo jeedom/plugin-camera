@@ -411,7 +411,7 @@ class camera extends eqLogic {
         return true;
     }
 
-    public function export() {
+    public function export($_withCmd = true) {
         if ($this->getConfiguration('device') != '') {
             return array(
                 $this->getConfiguration('device') => self::devicesParameters($this->getConfiguration('device'))

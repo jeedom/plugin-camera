@@ -37,9 +37,9 @@ $parentNumber = array();
                 $parentNumber[$object_li->getId()] = $object_li->parentNumber();
                 $margin = 15 * $parentNumber[$object_li->getId()];
                 if ($object_li->getId() == $object->getId()) {
-                    echo '<li class="cursor li_object active" ><a href="index.php?v=d&p=dashboard&object_id=' . $object_li->getId() . '&category=' . init('category', 'all') . '" style="position:relative;left:' . $margin . 'px;">' . $object_li->getDisplay('icon') . ' ' . $object_li->getName() . '</a></li>';
+                    echo '<li class="cursor li_object active" ><a href="index.php?v=d&p=panel&m=camera&object_id=' . $object_li->getId() . '" style="position:relative;left:' . $margin . 'px;">' . $object_li->getDisplay('icon') . ' ' . $object_li->getName() . '</a></li>';
                 } else {
-                    echo '<li class="cursor li_object" ><a href="index.php?v=d&p=dashboard&object_id=' . $object_li->getId() . '&category=' . init('category', 'all') . '" style="position:relative;left:' . $margin . 'px;">' . $object_li->getDisplay('icon') . ' ' . $object_li->getName() . '</a></li>';
+                    echo '<li class="cursor li_object" ><a href="index.php?v=d&p=panel&m=camera&object_id=' . $object_li->getId() . '" style="position:relative;left:' . $margin . 'px;">' . $object_li->getDisplay('icon') . ' ' . $object_li->getName() . '</a></li>';
                 }
             }
             ?>
@@ -54,35 +54,26 @@ if ($_SESSION['user']->getOptions('displayObjetByDefault') == 1) {
 }
 ?>
 <i class='fa fa-picture-o cursor tooltips pull-left' id='bt_displayObject' data-display='<?php echo $_SESSION['user']->getOptions('displayObjetByDefault') ?>' title="Afficher/Masquer les objets"></i>
-
+<br/>
 <?php
-echo '<div object_id="' . $object->getId() . '">';
-echo '<legend>' . $object->getDisplay('icon') . ' ' . $object->getName() . '</legend>';
 echo '<div class="div_displayEquipement" style="width: 100%;">';
 foreach ($object->getEqLogic(true, true, 'camera') as $camera) {
     $camera->setHeight(330);
     $camera->setWidth(441);
-    echo $camera->toHtml('dashboard');
+    echo $camera->toHtml('dview');
 }
-echo '</div>';
 foreach ($child_object as $child) {
     $cameras = $child->getEqLogic(true, true, 'camera');
     if (count($cameras) > 0) {
-        $margin = 40 * $parentNumber[$child->getId()];
-        echo '<div object_id="' . $child->getId() . '" class="div_objectContainer" style="margin-left : ' . $margin . 'px;">';
-        echo '<legend>' . $child->getDisplay('icon') . ' ' . $child->getName() . '</legend>';
-        echo '<div class="div_displayEquipement" id="div_ob' . $child->getId() . '" >';
         foreach ($cameras as $camera) {
             $camera->setHeight(330);
             $camera->setWidth(441);
-            echo $camera->toHtml('dashboard');
+            echo $camera->toHtml('dview');
         }
-        echo '</div>';
-        echo '</div>';
     }
 }
 echo '</div>';
 ?>
 </div>
 </div>
-<?php include_file('desktop', 'panel', 'js','camera'); ?>
+<?php include_file('desktop', 'panel', 'js', 'camera'); ?>
