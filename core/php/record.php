@@ -61,7 +61,7 @@ $exists = !empty($result);
 pclose($fp);
 if ($exists) {
     if ($camera->getConfiguration('protocole') == 'rtsp') {
-        $cmd = 'ffmpeg -r 8';
+        $cmd = 'ffmpeg';
     } else {
         $cmd = 'ffmpeg -f mjpeg -r 8';
     }
