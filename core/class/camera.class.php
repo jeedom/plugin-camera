@@ -411,6 +411,28 @@ class camera extends eqLogic {
         return true;
     }
 
+    public function export() {
+        if ($this->getConfiguration('device') != '') {
+            return array(
+                $this->getConfiguration('device') => self::devicesParameters($this->getConfiguration('device'))
+            );
+        } else {
+            $export = parent::export();
+            if (isset($export['configuration']['device'])) {
+                unset($export['configuration']['device']);
+            }
+            if (isset($export['configuration']['applyDevice'])) {
+                unset($export['configuration']['applyDevice']);
+            }
+            if (isset($export['configuration']) && count($export['configuration']) == 0) {
+                unset($export['configuration']);
+            }
+            return array(
+                'todo.todo' => $export
+            );
+        }
+    }
+
     /*     * **********************Getteur Setteur*************************** */
 
     function getHeight() {
