@@ -72,7 +72,7 @@ if ($exists) {
         $cmd = 'avconv -f mjpeg -r 8';
     }
 }
-$cmd .= ' -i "' . $url . '"';
+$cmd .= ' -i "' . escapeshellarg($url) . '"';
 $cmd .= ' -t ' . 1800;
 $cmd .= ' -vcodec mpeg4 -y -b:v 1000000 -r 8 ' . escapeshellarg($output_dir . '/' . $output_file);
 log::add('camera', 'debug', 'Record command : ' . $cmd);
