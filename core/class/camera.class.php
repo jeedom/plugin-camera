@@ -356,6 +356,9 @@ class camera extends eqLogic {
         $cmd_order = 0;
         $link_cmds = array();
         foreach ($device['commands'] as $command) {
+            if (isset($device['commands']['logicalId'])) {
+                continue;
+            }
             $cmd = null;
             foreach ($this->getCmd() as $liste_cmd) {
                 if (isset($command['name']) && $liste_cmd->getName() == $command['name']) {
@@ -403,8 +406,8 @@ class camera extends eqLogic {
             $pid = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | awk \'{print $1}\'');
             exec('kill -9 ' . $pid . ' > /dev/null 2&1');
         }
-        $process = escapeshellarg($this->getUrl($this->getConfiguration('urlStream'), 'internal'));
-        $pid = shell_exec("ps -ef | grep " . $process . " | grep -v grep | awk '{print $2}' | xargs kill -9");
+        $process = $this->getUrl($this->getConfiguration('urlStream'), 'internal');
+        $pid = shell_exec("ps -ef | grep '" . $process . "' | grep -v grep | awk '{print $2}' | xargs kill -9");
         $recordState = $this->getCmd(null, 'recordState');
         $recordState->event(0);
         $this->refreshWidget();
@@ -412,6 +415,28 @@ class camera extends eqLogic {
     }
 
     public function export($_withCmd = true) {
+        $export = parent::export();
+        if (isset($export['configuration']['device'])) {
+            unset($export['configuration']['device']);
+        }
+        if (isset($export['configuration']['applyDevice'])) {
+            unset($export['configuration']['applyDevice']);
+        }
+        if (isset($export['configuration']['password'])) {
+            unset($export['configuration']['password']);
+        }
+        if (isset($export['configuration']['username'])) {
+            unset($export['configuration']['username']);
+        }
+        if (isset($export['configuration']) && count($export['configuration']) == 0) {
+            unset($export['configuration']);
+        }
+        if (isset($export['_object'])) {
+            unset($export['_object']);
+        }
+        return array(
+            'todo.todo' => $export
+        );
         if ($this->getConfiguration('device') != '') {
             return array(
                 $this->getConfiguration('device') => self::devicesParameters($this->getConfiguration('device'))
@@ -426,6 +451,9 @@ class camera extends eqLogic {
             }
             if (isset($export['configuration']) && count($export['configuration']) == 0) {
                 unset($export['configuration']);
+            }
+            if (isset($export['_object'])) {
+                unset($export['_object']);
             }
             return array(
                 'todo.todo' => $export
