@@ -516,7 +516,7 @@ class cameraCmd extends cmd {
         } elseif ($this->getLogicalId() == 'stopRecordCmd') {
             $eqLogic->stopRecord();
         } else {
-            $url = $eqLogic->getUrl($this->getConfiguration('request'), 'internal', $eqLogic->getConfiguration('protocoleCommande', 'http'));
+            $url = $eqLogic->getUrl($this->getConfiguration('request'), 'internal', 'protocoleCommande');
             $http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
             $http->setNoReportError(true);
             if ($this->getConfiguration('useCurlDigest') == 1) {
