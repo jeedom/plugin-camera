@@ -415,28 +415,6 @@ class camera extends eqLogic {
     }
 
     public function export($_withCmd = true) {
-        $export = parent::export();
-        if (isset($export['configuration']['device'])) {
-            unset($export['configuration']['device']);
-        }
-        if (isset($export['configuration']['applyDevice'])) {
-            unset($export['configuration']['applyDevice']);
-        }
-        if (isset($export['configuration']['password'])) {
-            unset($export['configuration']['password']);
-        }
-        if (isset($export['configuration']['username'])) {
-            unset($export['configuration']['username']);
-        }
-        if (isset($export['configuration']) && count($export['configuration']) == 0) {
-            unset($export['configuration']);
-        }
-        if (isset($export['_object'])) {
-            unset($export['_object']);
-        }
-        return array(
-            'todo.todo' => $export
-        );
         if ($this->getConfiguration('device') != '') {
             return array(
                 $this->getConfiguration('device') => self::devicesParameters($this->getConfiguration('device'))
@@ -454,6 +432,10 @@ class camera extends eqLogic {
             }
             if (isset($export['_object'])) {
                 unset($export['_object']);
+            }
+            if (isset($export['cmd'])) {
+                $export['commands'] = $export['cmd'];
+                unset($export['cmd']);
             }
             return array(
                 'todo.todo' => $export
