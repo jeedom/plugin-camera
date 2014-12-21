@@ -258,7 +258,7 @@ class camera extends eqLogic {
                 "proxy_set_header X-Real-IP \$remote_addr;\n" .
                 "}"
             );
-            jeedom::nginx_saveRules($rules);
+            jeedom::nginx_saveRule($rules);
         } else {
             $ip = $this->getConfiguration('ip_cam');
             if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
@@ -267,7 +267,7 @@ class camera extends eqLogic {
             $rules = array(
                 "location /cam" . $this->getId() . "/ {\n"
             );
-            jeedom::nginx_removeRules($rules);
+            jeedom::nginx_removeRule($rules);
         }
     }
 
