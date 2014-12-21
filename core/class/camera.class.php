@@ -170,25 +170,29 @@ class camera extends eqLogic {
 
     public function preSave() {
         $this->setCategory('security', 1);
-        if ($this->getConfiguration('recordTime') == '' || $this->getConfiguration('recordTime') > 300) {
-            $this->setConfiguration('recordTime', 300);
-        }
-
-        if ($this->getConfiguration('username') != '' && strpos($this->getConfiguration('urlStream'), '#username#') === false) {
-            if (strpos($this->getConfiguration('ip_ext'), '#username#') === false) {
-                $ip = explode('://', $this->getConfiguration('ip_ext'));
-                if (count($ip) == 2) {
-                    $this->setConfiguration('ip_ext', $ip[0] . '#username#:#password#@' . $ip[1]);
-                } else {
-                    $this->setConfiguration('ip_ext', '#username#:#password#@' . $ip[0]);
-                }
+        if ($this->getConfiguration('proxy_mode') == 'nginx') {
+            if ($this->getConfiguration('ip_cam') == '') {
+                throw new Exception(__('L\'adresse IP de la camera ne peut être vide', __FILE__));
             }
-            if (strpos($this->getConfiguration('ip'), '#username#') === false) {
-                $ip = explode('://', $this->getConfiguration('ip'));
-                if (count($ip) == 2) {
-                    $this->setConfiguration('ip', $ip[0] . '#username#:#password#@' . $ip[1]);
-                } else {
-                    $this->setConfiguration('ip', '#username#:#password#@' . $ip[0]);
+            $this->setConfiguration('ip_ext', '#username#:#password#@#ip#/cam' . $this->getId());
+            $this->setConfiguration('ip', '#username#:#password#@#ip#/cam' . $this->getId());
+        } else {
+            if ($this->getConfiguration('username') != '' && strpos($this->getConfiguration('urlStream'), '#username#') === false) {
+                if (strpos($this->getConfiguration('ip_ext'), '#username#') === false) {
+                    $ip = explode('://', $this->getConfiguration('ip_ext'));
+                    if (count($ip) == 2) {
+                        $this->setConfiguration('ip_ext', $ip[0] . '#username#:#password#@' . $ip[1]);
+                    } else {
+                        $this->setConfiguration('ip_ext', '#username#:#password#@' . $ip[0]);
+                    }
+                }
+                if (strpos($this->getConfiguration('ip'), '#username#') === false) {
+                    $ip = explode('://', $this->getConfiguration('ip'));
+                    if (count($ip) == 2) {
+                        $this->setConfiguration('ip', $ip[0] . '#username#:#password#@' . $ip[1]);
+                    } else {
+                        $this->setConfiguration('ip', '#username#:#password#@' . $ip[0]);
+                    }
                 }
             }
         }
@@ -240,6 +244,44 @@ class camera extends eqLogic {
         $stopRecordCmd->setOrder(0);
         $stopRecordCmd->setDisplay('icon', '<i class="fa fa-stop"></i>');
         $stopRecordCmd->save();
+
+        if ($this->getConfiguration('proxy_mode') == 'nginx') {
+            $ip = $this->getConfiguration('ip_cam');
+            if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
+                $ip .= ':' . $this->getConfiguration('port_cam');
+            }
+            $rules = array(
+                "location /cam" . $this->getId() . "/ {\n" .
+                "proxy_pass http://" . $this->getConfiguration('ip_cam') . "/;\n" .
+                "proxy_redirect off;\n" .
+                "proxy_set_header Host \$host:\$server_port;\n" .
+                "proxy_set_header X-Real-IP \$remote_addr;\n" .
+                "}"
+            );
+            jeedom::nginx_saveRules($rules);
+        } else {
+            $ip = $this->getConfiguration('ip_cam');
+            if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
+                $ip .= ':' . $this->getConfiguration('port_cam');
+            }
+            $rules = array(
+                "location /cam" . $this->getId() . "/ {\n"
+            );
+            jeedom::nginx_removeRules($rules);
+        }
+    }
+
+    public function preRemove() {
+        if ($this->getConfiguration('proxy_mode') == 'nginx') {
+            $ip = $this->getConfiguration('ip_cam');
+            if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
+                $ip .= ':' . $this->getConfiguration('port_cam');
+            }
+            $rules = array(
+                "location /cam" . $this->getId() . "/ {\n"
+            );
+            jeedom::nginx_removeRules($rules);
+        }
     }
 
     public function toHtml($_version = 'dashboard') {

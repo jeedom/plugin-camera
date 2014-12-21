@@ -48,6 +48,11 @@ $('#bt_uploadConfCam').fileupload({
     }
 });
 
+$('.eqLogicAttr[data-l1key=configuration][data-l2key=proxy_mode]').on('change', function () {
+    $('.proxy_mode').hide();
+    $('.proxy_mode.' + $(this).value()).show();
+});
+
 function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {};

@@ -93,24 +93,48 @@ $eqLogics = eqLogic::byType('camera');
                                 </label>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{IP}}</label>
+                            <label class="col-sm-3 control-label">{{Gestion du proxy d'accès à la caméra :}}</label>
                             <div class="col-sm-5">
-                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
-                            </div>
-                            <label class="col-sm-2 control-label">{{Port}}</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
+                                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="proxy_mode">
+                                    <option value="nginx">Jeedom (http et nginx seulement)</option>
+                                    <option value="manuel">Manuel</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">{{IP Externe}}</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_ext" placeholder="{{IP}}"/>
+                        <div class="proxy_mode nginx">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{IP}}</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_cam" placeholder="{{IP}}"/>
+                                </div>
+                                <label class="col-sm-2 control-label">{{Port}}</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_cam" placeholder="{{Port}}"/>
+                                </div>
                             </div>
-                            <label class="col-sm-2 control-label">{{Port externe}}</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_ext" placeholder="{{Port}}"/>
+                        </div>
+                        <div class="proxy_mode manuel">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{IP}}</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
+                                </div>
+                                <label class="col-sm-2 control-label">{{Port}}</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{IP Externe}}</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_ext" placeholder="{{IP}}"/>
+                                </div>
+                                <label class="col-sm-2 control-label">{{Port externe}}</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_ext" placeholder="{{Port}}"/>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
