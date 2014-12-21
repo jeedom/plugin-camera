@@ -1,3 +1,7 @@
+==== 21/12/2014
+
+- Support de la mise en place d'un proxy (plus besoin d'ouvrir les ports)
+
 ==== 13/12/2014
 
 - Support du protocole RTSP

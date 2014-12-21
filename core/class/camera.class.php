@@ -554,6 +554,7 @@ class cameraCmd extends cmd {
             $eqLogic->stopRecord();
         } else {
             $url = $eqLogic->getUrl($request, 'internal', 'protocoleCommande');
+            log::add('camera', 'debug', 'Command : ' . $url);
             $http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
             $http->setNoReportError(true);
             if ($this->getConfiguration('useCurlDigest') == 1) {

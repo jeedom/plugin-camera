@@ -71,7 +71,7 @@
             $('.zoom[data-eqLogic_id=#id#]').off().unbind();
 
             $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
-                $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append("<center><img src='#url#'/></center>");
+                $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append("<center><img src='#url#' class='img-responsive'/></center>");
                 $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
             });
         }
