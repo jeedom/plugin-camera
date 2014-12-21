@@ -144,13 +144,16 @@ $eqLogics = eqLogic::byType('camera');
                             </div>
                             <div class="col-sm-4">
                                 <a class="btn btn-warning" id="bt_shareOnMarket"><i class="fa fa-cloud-upload"></i> {{Partager}}</a>
-                                <a class="btn btn-success eqLogicAction" data-action="export"><i class="fa fa-cloud-download"></i> {{Exporter}}</a>
+
                             </div>
                         </div>
                         <div class="form-group expertModeVisible">
                             <label class="col-sm-3 control-label">{{Envoyer une configuration}}</label>
                             <div class="col-sm-5">
                                 <input id="bt_uploadConfCam" type="file" name="file" data-url="plugins/camera/core/ajax/camera.ajax.php?action=uploadConfCam">
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="btn btn-success eqLogicAction" data-action="export"><i class="fa fa-cloud-download"></i> {{Exporter}}</a>
                             </div>
                         </div>
                         <div class="form-group">
