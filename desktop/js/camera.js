@@ -69,9 +69,11 @@ function addCmdToTable(_cmd) {
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="name">';
     tr += '</div>';
     tr += '</div>';
-    tr += '<input class="cmdAttr" data-l1key="id"  style="display : none;">';
-    tr += '<input class="cmdAttr" data-l1key="type" value="action" style="display : none;">';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="subType" value="other" style="display : none;">';
+    tr += '</td>';
+    tr += '<td class="expertModeVisible">';
+    tr += '<input class="cmdAttr form-control input-sm" data-l1key="id" style="display : none;">';
+    tr += '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
+    tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
     tr += '</td>';
     tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" />';
     tr += '<td><input type="checkbox" class="cmdAttr" data-l1key="configuration" data-l2key="stopCmd" /> {{Stop commande}}<br/>';
@@ -89,5 +91,6 @@ function addCmdToTable(_cmd) {
     tr += '</tr>';
     $('#table_cmd tbody').append(tr);
     $('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
+    jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
     initTooltips();
 }

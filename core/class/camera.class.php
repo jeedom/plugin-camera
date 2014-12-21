@@ -256,12 +256,16 @@ class camera extends eqLogic {
         foreach ($this->getCmd('action') as $cmd) {
             if ($cmd->getIsVisible() == 1) {
                 if ($cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd') {
-                    $replace = array(
-                        '#id#' => $cmd->getId(),
-                        '#stopCmd_id#' => $stopCmd_id,
-                        '#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
-                    );
-                    $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
+                    if ($cmd->getSubType() == 'other') {
+                        $replace = array(
+                            '#id#' => $cmd->getId(),
+                            '#stopCmd_id#' => $stopCmd_id,
+                            '#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
+                        );
+                        $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
+                    } else {
+                        $action .= $cmd->toHtml($_version);
+                    }
                 }
             }
         }
@@ -317,15 +321,12 @@ class camera extends eqLogic {
         if ((netMatch('192.168.*.*', getClientIp()) && $_auto == '') || $_auto == 'internal') {
             $replace['#ip#'] = str_replace(array('http://', 'https://'), '', config::byKey('internalAddr'));
             $url = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration($_protocole, 'http'));
-        } else {
-            $replace['#ip#'] = str_replace(array('http://', 'https://'), '', config::byKey('externalAddr'));
-            $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
-        }
-        if ((netMatch('192.168.*.*', getClientIp()) && $_auto == '') || $_auto == 'internal') {
             if ($this->getConfiguration('port') != '') {
                 $url .= ':' . $this->getConfiguration('port');
             }
         } else {
+            $replace['#ip#'] = str_replace(array('http://', 'https://'), '', config::byKey('externalAddr'));
+            $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
             if ($this->getConfiguration('port_ext') != '') {
                 $url .= ':' . $this->getConfiguration('port_ext');
             }
@@ -492,13 +493,25 @@ class cameraCmd extends cmd {
     }
 
     public function execute($_options = null) {
+        $request = $this->getConfiguration('request');
+        switch ($this->getType()) {
+            case 'action' :
+                switch ($this->getSubType()) {
+                    case 'slider':
+                        $request = str_replace('#slider#', $_options['slider'], $request);
+                        break;
+                    case 'color':
+                        $request = str_replace('#color#', $_options['color'], $request);
+                }
+                break;
+        }
         $eqLogic = $this->getEqLogic();
         if ($this->getLogicalId() == 'recordCmd') {
             $eqLogic->recordCam();
         } elseif ($this->getLogicalId() == 'stopRecordCmd') {
             $eqLogic->stopRecord();
         } else {
-            $url = $eqLogic->getUrl($this->getConfiguration('request'), 'internal', 'protocoleCommande');
+            $url = $eqLogic->getUrl($request, 'internal', 'protocoleCommande');
             $http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
             $http->setNoReportError(true);
             if ($this->getConfiguration('useCurlDigest') == 1) {

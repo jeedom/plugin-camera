@@ -95,7 +95,7 @@ $eqLogics = eqLogic::byType('camera');
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">{{IP}}</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-5">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
                             </div>
                             <label class="col-sm-2 control-label">{{Port}}</label>
@@ -105,7 +105,7 @@ $eqLogics = eqLogic::byType('camera');
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">{{IP Externe}}</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-5">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_ext" placeholder="{{IP}}"/>
                             </div>
                             <label class="col-sm-2 control-label">{{Port externe}}</label>
@@ -118,7 +118,7 @@ $eqLogics = eqLogic::byType('camera');
                             <div class="col-sm-3">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
                             </div>
-                            <label class="col-sm-2 control-label">{{Mot de passe}}</label>
+                            <label class="col-sm-3 control-label">{{Mot de passe}}</label>
                             <div class="col-sm-3">
                                 <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
                             </div>
@@ -197,6 +197,7 @@ $eqLogics = eqLogic::byType('camera');
             <thead>
                 <tr>
                     <th>{{Nom}}</th>
+                    <th>{{Type}}</th>
                     <th>{{Requête/Durée enregistrement (secondes)}}</th>
                     <th>{{Options}}</th>
                     <th></th>
