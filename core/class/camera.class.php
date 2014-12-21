@@ -170,25 +170,29 @@ class camera extends eqLogic {
 
     public function preSave() {
         $this->setCategory('security', 1);
-        if ($this->getConfiguration('recordTime') == '' || $this->getConfiguration('recordTime') > 300) {
-            $this->setConfiguration('recordTime', 300);
-        }
-
-        if ($this->getConfiguration('username') != '' && strpos($this->getConfiguration('urlStream'), '#username#') === false) {
-            if (strpos($this->getConfiguration('ip_ext'), '#username#') === false) {
-                $ip = explode('://', $this->getConfiguration('ip_ext'));
-                if (count($ip) == 2) {
-                    $this->setConfiguration('ip_ext', $ip[0] . '#username#:#password#@' . $ip[1]);
-                } else {
-                    $this->setConfiguration('ip_ext', '#username#:#password#@' . $ip[0]);
-                }
+        if ($this->getConfiguration('proxy_mode') == 'nginx') {
+            if ($this->getConfiguration('ip_cam') == '') {
+                throw new Exception(__('L\'adresse IP de la camera ne peut être vide', __FILE__));
             }
-            if (strpos($this->getConfiguration('ip'), '#username#') === false) {
-                $ip = explode('://', $this->getConfiguration('ip'));
-                if (count($ip) == 2) {
-                    $this->setConfiguration('ip', $ip[0] . '#username#:#password#@' . $ip[1]);
-                } else {
-                    $this->setConfiguration('ip', '#username#:#password#@' . $ip[0]);
+            $this->setConfiguration('ip_ext', '#username#:#password#@#ip#/cam' . $this->getId());
+            $this->setConfiguration('ip', '#username#:#password#@#ip#/cam' . $this->getId());
+        } else {
+            if ($this->getConfiguration('username') != '' && strpos($this->getConfiguration('urlStream'), '#username#') === false) {
+                if (strpos($this->getConfiguration('ip_ext'), '#username#') === false) {
+                    $ip = explode('://', $this->getConfiguration('ip_ext'));
+                    if (count($ip) == 2) {
+                        $this->setConfiguration('ip_ext', $ip[0] . '#username#:#password#@' . $ip[1]);
+                    } else {
+                        $this->setConfiguration('ip_ext', '#username#:#password#@' . $ip[0]);
+                    }
+                }
+                if (strpos($this->getConfiguration('ip'), '#username#') === false) {
+                    $ip = explode('://', $this->getConfiguration('ip'));
+                    if (count($ip) == 2) {
+                        $this->setConfiguration('ip', $ip[0] . '#username#:#password#@' . $ip[1]);
+                    } else {
+                        $this->setConfiguration('ip', '#username#:#password#@' . $ip[0]);
+                    }
                 }
             }
         }
@@ -240,6 +244,44 @@ class camera extends eqLogic {
         $stopRecordCmd->setOrder(0);
         $stopRecordCmd->setDisplay('icon', '<i class="fa fa-stop"></i>');
         $stopRecordCmd->save();
+
+        if ($this->getConfiguration('proxy_mode') == 'nginx') {
+            $ip = $this->getConfiguration('ip_cam');
+            if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
+                $ip .= ':' . $this->getConfiguration('port_cam');
+            }
+            $rules = array(
+                "location /cam" . $this->getId() . "/ {\n" .
+                "proxy_pass http://" . $this->getConfiguration('ip_cam') . "/;\n" .
+                "proxy_redirect off;\n" .
+                "proxy_set_header Host \$host:\$server_port;\n" .
+                "proxy_set_header X-Real-IP \$remote_addr;\n" .
+                "}"
+            );
+            jeedom::nginx_saveRule($rules);
+        } else {
+            $ip = $this->getConfiguration('ip_cam');
+            if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
+                $ip .= ':' . $this->getConfiguration('port_cam');
+            }
+            $rules = array(
+                "location /cam" . $this->getId() . "/ {\n"
+            );
+            jeedom::nginx_removeRule($rules);
+        }
+    }
+
+    public function preRemove() {
+        if ($this->getConfiguration('proxy_mode') == 'nginx') {
+            $ip = $this->getConfiguration('ip_cam');
+            if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
+                $ip .= ':' . $this->getConfiguration('port_cam');
+            }
+            $rules = array(
+                "location /cam" . $this->getId() . "/ {\n"
+            );
+            jeedom::nginx_removeRule($rules);
+        }
     }
 
     public function toHtml($_version = 'dashboard') {
@@ -256,12 +298,16 @@ class camera extends eqLogic {
         foreach ($this->getCmd('action') as $cmd) {
             if ($cmd->getIsVisible() == 1) {
                 if ($cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd') {
-                    $replace = array(
-                        '#id#' => $cmd->getId(),
-                        '#stopCmd_id#' => $stopCmd_id,
-                        '#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
-                    );
-                    $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
+                    if ($cmd->getSubType() == 'other') {
+                        $replace = array(
+                            '#id#' => $cmd->getId(),
+                            '#stopCmd_id#' => $stopCmd_id,
+                            '#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
+                        );
+                        $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
+                    } else {
+                        $action .= $cmd->toHtml($_version);
+                    }
                 }
             }
         }
@@ -317,17 +363,14 @@ class camera extends eqLogic {
         if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
             $replace['#ip#'] = str_replace(array('http://', 'https://'), '', config::byKey('internalAddr'));
             $url = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration($_protocole, 'http'));
-        } else {
-            $replace['#ip#'] = str_replace(array('http://', 'https://'), '', config::byKey('externalAddr'));
-            $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
-        }
-        if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
             if ($this->getConfiguration('port') != '') {
                 $url .= ':' . $this->getConfiguration('port');
             }
         } else {
-            if ($this->getConfiguration('port_ext') != '') {
-                $url .= ':' . $this->getConfiguration('port_ext');
+            $replace['#ip#'] = str_replace(array('http://', 'https://'), '', config::byKey('externalAddr'));
+            $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
+            if ($this->getConfiguration('port') != '') {
+                $url .= ':' . $this->getConfiguration('port');
             }
         }
         $url = str_replace(array_keys($replace), $replace, $url);
@@ -492,13 +535,26 @@ class cameraCmd extends cmd {
     }
 
     public function execute($_options = null) {
+        $request = $this->getConfiguration('request');
+        switch ($this->getType()) {
+            case 'action' :
+                switch ($this->getSubType()) {
+                    case 'slider':
+                        $request = str_replace('#slider#', $_options['slider'], $request);
+                        break;
+                    case 'color':
+                        $request = str_replace('#color#', $_options['color'], $request);
+                }
+                break;
+        }
         $eqLogic = $this->getEqLogic();
         if ($this->getLogicalId() == 'recordCmd') {
             $eqLogic->recordCam();
         } elseif ($this->getLogicalId() == 'stopRecordCmd') {
             $eqLogic->stopRecord();
         } else {
-            $url = $eqLogic->getUrl($this->getConfiguration('request'), 'internal', 'protocoleCommande');
+            $url = $eqLogic->getUrl($request, 'internal', 'protocoleCommande');
+            log::add('camera', 'debug', 'Command : ' . $url);
             $http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
             $http->setNoReportError(true);
             if ($this->getConfiguration('useCurlDigest') == 1) {
