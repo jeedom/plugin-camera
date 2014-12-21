@@ -314,14 +314,14 @@ class camera extends eqLogic {
             '#username#' => $this->getConfiguration('username'),
             '#password#' => $this->getConfiguration('password'),
         );
-        if ((netMatch('192.168.*.*', getClientIp()) && $_auto == '') || $_auto == 'internal') {
+        if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
             $replace['#ip#'] = str_replace(array('http://', 'https://'), '', config::byKey('internalAddr'));
             $url = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration($_protocole, 'http'));
         } else {
             $replace['#ip#'] = str_replace(array('http://', 'https://'), '', config::byKey('externalAddr'));
             $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
         }
-        if ((netMatch('192.168.*.*', getClientIp()) && $_auto == '') || $_auto == 'internal') {
+        if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
             if ($this->getConfiguration('port') != '') {
                 $url .= ':' . $this->getConfiguration('port');
             }
