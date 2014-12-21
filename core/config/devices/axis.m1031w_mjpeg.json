@@ -7,27 +7,63 @@
         },
         "commands": [
             {
-                "name": "On",
+                "name": "Lumière",
                 "type": "action",
-                "subtype": "other",
-                "isVisible": 0,
+                "subtype": "slider",
+                "isVisible": 1,
                 "configuration": {
-                    "request": "/axis-cgi/io/lightcontrol.cgi?action=L1:-100"
+                    "request": "axis-cgi/io/lightcontrol.cgi?action=L1:-#slider#"
                 },
                 "display": {
                     "icon": "<i class=\"icon jeedom-lumiere-on\"><\/i>"
                 }
             },
             {
-                "name": "On",
+                "name": "Chien",
                 "type": "action",
                 "subtype": "other",
-                "isVisible": 0,
+                "isVisible": 1,
                 "configuration": {
-                    "request": "/axis-cgi/io/lightcontrol.cgi?action=L1:-0"
+                    "request": "axis-cgi/playclip.cgi?clip=9"
                 },
                 "display": {
-                    "icon": "<i class=\"icon jeedom-lumiere-off\"><\/i>"
+                    "icon": "<i class=\"icon animal-dog56\"><\/i>"
+                }
+            },
+            {
+                "name": "Intus",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "axis-cgi/playclip.cgi?clip=8"
+                },
+                "display": {
+                    "icon": "<i class=\"icon jeedom-mouvement\"><\/i>"
+                }
+            },
+            {
+                "name": "Psst",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "axis-cgi/playclip.cgi?clip=7"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-tty\"><\/i>"
+                }
+            },
+            {
+                "name": "Camera click",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "axis-cgi/playclip.cgi?clip=6"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-camera\"><\/i>"
                 }
             }
         ]

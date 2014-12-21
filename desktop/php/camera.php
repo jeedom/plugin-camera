@@ -93,24 +93,48 @@ $eqLogics = eqLogic::byType('camera');
                                 </label>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{IP}}</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
-                            </div>
-                            <label class="col-sm-2 control-label">{{Port}}</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
+                            <label class="col-sm-3 control-label">{{Gestion du proxy d'accès à la caméra :}}</label>
+                            <div class="col-sm-5">
+                                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="proxy_mode">
+                                    <option value="nginx">Jeedom (http et nginx seulement)</option>
+                                    <option value="manuel">Manuel</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">{{IP Externe}}</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_ext" placeholder="{{IP}}"/>
+                        <div class="proxy_mode nginx">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{IP}}</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_cam" placeholder="{{IP}}"/>
+                                </div>
+                                <label class="col-sm-2 control-label">{{Port}}</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_cam" placeholder="{{Port}}"/>
+                                </div>
                             </div>
-                            <label class="col-sm-2 control-label">{{Port externe}}</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_ext" placeholder="{{Port}}"/>
+                        </div>
+                        <div class="proxy_mode manuel">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{IP}}</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
+                                </div>
+                                <label class="col-sm-2 control-label">{{Port}}</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{IP Externe}}</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_ext" placeholder="{{IP}}"/>
+                                </div>
+                                <label class="col-sm-2 control-label">{{Port externe}}</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_ext" placeholder="{{Port}}"/>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -118,7 +142,7 @@ $eqLogics = eqLogic::byType('camera');
                             <div class="col-sm-3">
                                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
                             </div>
-                            <label class="col-sm-2 control-label">{{Mot de passe}}</label>
+                            <label class="col-sm-3 control-label">{{Mot de passe}}</label>
                             <div class="col-sm-3">
                                 <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
                             </div>
@@ -144,13 +168,16 @@ $eqLogics = eqLogic::byType('camera');
                             </div>
                             <div class="col-sm-4">
                                 <a class="btn btn-warning" id="bt_shareOnMarket"><i class="fa fa-cloud-upload"></i> {{Partager}}</a>
-                                <a class="btn btn-success eqLogicAction" data-action="export"><i class="fa fa-cloud-download"></i> {{Exporter}}</a>
+
                             </div>
                         </div>
                         <div class="form-group expertModeVisible">
                             <label class="col-sm-3 control-label">{{Envoyer une configuration}}</label>
                             <div class="col-sm-5">
                                 <input id="bt_uploadConfCam" type="file" name="file" data-url="plugins/camera/core/ajax/camera.ajax.php?action=uploadConfCam">
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="btn btn-success eqLogicAction" data-action="export"><i class="fa fa-cloud-download"></i> {{Exporter}}</a>
                             </div>
                         </div>
                         <div class="form-group">
@@ -197,6 +224,7 @@ $eqLogics = eqLogic::byType('camera');
             <thead>
                 <tr>
                     <th>{{Nom}}</th>
+                    <th>{{Type}}</th>
                     <th>{{Requête/Durée enregistrement (secondes)}}</th>
                     <th>{{Options}}</th>
                     <th></th>
