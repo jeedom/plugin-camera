@@ -280,7 +280,7 @@ class camera extends eqLogic {
             $rules = array(
                 "location /cam" . $this->getId() . "/ {\n"
             );
-            jeedom::nginx_removeRules($rules);
+            jeedom::nginx_removeRule($rules);
         }
     }
 
