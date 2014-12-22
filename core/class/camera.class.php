@@ -154,9 +154,9 @@ class camera extends eqLogic {
     }
 
     public static function formatIp($_ip, $_protocole = false) {
-        if (strpos($_ip, 'http') !== false) {
-            return $_ip;
-        }
+        $_ip = str_replace('http://', '', $_ip);
+        $_ip = str_replace('https://', '', $_ip);
+        $_ip = str_replace('rtsp://', '', $_ip);
         if ($_protocole == 'rtsp') {
             return 'rtsp://' . $_ip;
         }
@@ -361,13 +361,25 @@ class camera extends eqLogic {
             '#password#' => $this->getConfiguration('password'),
         );
         if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
-            $replace['#ip#'] = str_replace(array('http://', 'https://'), '', config::byKey('internalAddr'));
+            $internal_ip = str_replace('http://', '', config::byKey('internalAddr'));
+            $internal_ip = str_replace('https://', '', $internal_ip);
+            $internal_ip = str_replace('rtsp://', '', $internal_ip);
+            if (strpos($internal_ip, '/') !== false) {
+                $internal_ip = substr($internal_ip, 0, strpos($internal_ip, '/'));
+            }
+            $replace['#ip#'] = str_replace(array('http://', 'https://'), '', $internal_ip);
             $url = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration($_protocole, 'http'));
             if ($this->getConfiguration('port') != '') {
                 $url .= ':' . $this->getConfiguration('port');
             }
         } else {
-            $replace['#ip#'] = str_replace(array('http://', 'https://'), '', config::byKey('externalAddr'));
+            $external_ip = str_replace('http://', '', config::byKey('externalAddr'));
+            $external_ip = str_replace('https://', '', $external_ip);
+            $external_ip = str_replace('rtsp://', '', $external_ip);
+            if (strpos($internal_ip, '/') !== false) {
+                $external_ip = substr($internal_ip, 0, strpos($external_ip, '/'));
+            }
+            $replace['#ip#'] = str_replace(array('http://', 'https://'), '', $external_ip);
             $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
             if ($this->getConfiguration('port') != '') {
                 $url .= ':' . $this->getConfiguration('port');
