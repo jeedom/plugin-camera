@@ -246,33 +246,37 @@ class camera extends eqLogic {
         $stopRecordCmd->save();
 
         if ($this->getConfiguration('proxy_mode') == 'nginx') {
-            $ip = $this->getConfiguration('ip_cam');
-            if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
-                $ip .= ':' . $this->getConfiguration('port_cam');
+            if (method_exists('jeedom', 'nginx_saveRule')) {
+                $ip = $this->getConfiguration('ip_cam');
+                if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
+                    $ip .= ':' . $this->getConfiguration('port_cam');
+                }
+                $rules = array(
+                    "location /cam" . $this->getId() . "/ {\n" .
+                    "proxy_pass http://" . $this->getConfiguration('ip_cam') . "/;\n" .
+                    "proxy_redirect off;\n" .
+                    "proxy_set_header Host \$host:\$server_port;\n" .
+                    "proxy_set_header X-Real-IP \$remote_addr;\n" .
+                    "}"
+                );
+                jeedom::nginx_saveRule($rules);
             }
-            $rules = array(
-                "location /cam" . $this->getId() . "/ {\n" .
-                "proxy_pass http://" . $this->getConfiguration('ip_cam') . "/;\n" .
-                "proxy_redirect off;\n" .
-                "proxy_set_header Host \$host:\$server_port;\n" .
-                "proxy_set_header X-Real-IP \$remote_addr;\n" .
-                "}"
-            );
-            jeedom::nginx_saveRule($rules);
         } else {
-            $ip = $this->getConfiguration('ip_cam');
-            if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
-                $ip .= ':' . $this->getConfiguration('port_cam');
+            if (method_exists('jeedom', 'nginx_removeRule')) {
+                $ip = $this->getConfiguration('ip_cam');
+                if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
+                    $ip .= ':' . $this->getConfiguration('port_cam');
+                }
+                $rules = array(
+                    "location /cam" . $this->getId() . "/ {\n"
+                );
+                jeedom::nginx_removeRule($rules);
             }
-            $rules = array(
-                "location /cam" . $this->getId() . "/ {\n"
-            );
-            jeedom::nginx_removeRule($rules);
         }
     }
 
     public function preRemove() {
-        if ($this->getConfiguration('proxy_mode') == 'nginx') {
+        if ($this->getConfiguration('proxy_mode') == 'nginx' && method_exists('jeedom', 'nginx_removeRule')) {
             $ip = $this->getConfiguration('ip_cam');
             if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
                 $ip .= ':' . $this->getConfiguration('port_cam');
