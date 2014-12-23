@@ -248,12 +248,12 @@ class camera extends eqLogic {
         if ($this->getConfiguration('proxy_mode') == 'nginx') {
             if (method_exists('jeedom', 'nginx_saveRule')) {
                 $ip = $this->getConfiguration('ip_cam');
-                if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
+                if (trim($this->getConfiguration('port_cam')) != '') {
                     $ip .= ':' . $this->getConfiguration('port_cam');
                 }
                 $rules = array(
                     "location /cam" . $this->getId() . "/ {\n" .
-                    "proxy_pass http://" . $this->getConfiguration('ip_cam') . "/;\n" .
+                    "proxy_pass http://" . $ip . "/;\n" .
                     "proxy_redirect off;\n" .
                     "proxy_set_header Host \$host:\$server_port;\n" .
                     "proxy_set_header X-Real-IP \$remote_addr;\n" .
@@ -263,10 +263,6 @@ class camera extends eqLogic {
             }
         } else {
             if (method_exists('jeedom', 'nginx_removeRule')) {
-                $ip = $this->getConfiguration('ip_cam');
-                if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
-                    $ip .= ':' . $this->getConfiguration('port_cam');
-                }
                 $rules = array(
                     "location /cam" . $this->getId() . "/ {\n"
                 );
@@ -277,10 +273,6 @@ class camera extends eqLogic {
 
     public function preRemove() {
         if ($this->getConfiguration('proxy_mode') == 'nginx' && method_exists('jeedom', 'nginx_removeRule')) {
-            $ip = $this->getConfiguration('ip_cam');
-            if (trim($this->getConfiguration('port_cam')) != '' && is_numeric($this->getConfiguration('port_cam'))) {
-                $ip .= ':' . $this->getConfiguration('port_cam');
-            }
             $rules = array(
                 "location /cam" . $this->getId() . "/ {\n"
             );
@@ -373,7 +365,7 @@ class camera extends eqLogic {
             }
             $replace['#ip#'] = str_replace(array('http://', 'https://'), '', $internal_ip);
             $url = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration($_protocole, 'http'));
-            if ($this->getConfiguration('port') != '') {
+            if ($this->getConfiguration('port') != '' && $this->getConfiguration('proxy_mode') != 'nginx') {
                 $url .= ':' . $this->getConfiguration('port');
             }
         } else {
@@ -385,7 +377,7 @@ class camera extends eqLogic {
             }
             $replace['#ip#'] = str_replace(array('http://', 'https://'), '', $external_ip);
             $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
-            if ($this->getConfiguration('port') != '') {
+            if ($this->getConfiguration('port') != '' && $this->getConfiguration('proxy_mode') != 'nginx') {
                 $url .= ':' . $this->getConfiguration('port');
             }
         }
