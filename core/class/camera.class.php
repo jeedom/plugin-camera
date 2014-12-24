@@ -475,6 +475,30 @@ class camera extends eqLogic {
             if (isset($export['configuration']['device'])) {
                 unset($export['configuration']['device']);
             }
+            if (isset($export['configuration']['ip'])) {
+                unset($export['configuration']['ip']);
+            }
+            if (isset($export['configuration']['port'])) {
+                unset($export['configuration']['port']);
+            }
+            if (isset($export['configuration']['ip_cam'])) {
+                unset($export['configuration']['ip_cam']);
+            }
+            if (isset($export['configuration']['port_cam'])) {
+                unset($export['configuration']['port_cam']);
+            }
+            if (isset($export['configuration']['ip_ext'])) {
+                unset($export['configuration']['ip_ext']);
+            }
+            if (isset($export['configuration']['port_ext'])) {
+                unset($export['configuration']['port_ext']);
+            }
+            if (isset($export['configuration']['username'])) {
+                unset($export['configuration']['username']);
+            }
+            if (isset($export['configuration']['password'])) {
+                unset($export['configuration']['password']);
+            }
             if (isset($export['configuration']['applyDevice'])) {
                 unset($export['configuration']['applyDevice']);
             }
