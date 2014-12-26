@@ -377,8 +377,8 @@ class camera extends eqLogic {
             }
             $replace['#ip#'] = str_replace(array('http://', 'https://'), '', $external_ip);
             $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
-            if ($this->getConfiguration('port') != '' && $this->getConfiguration('proxy_mode') != 'nginx') {
-                $url .= ':' . $this->getConfiguration('port');
+            if ($this->getConfiguration('port_ext') != '' && $this->getConfiguration('proxy_mode') != 'nginx') {
+                $url .= ':' . $this->getConfiguration('port_ext');
             }
         }
         $url = str_replace(array_keys($replace), $replace, $url);
