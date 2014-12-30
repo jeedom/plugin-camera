@@ -1,3 +1,7 @@
+==== 30/12/2014
+
+- Support de flux jpeg (rafraichisement toute les secondes)
+
 ==== 21/12/2014
 
 - Support de la mise en place d'un proxy (plus besoin d'ouvrir les ports)
