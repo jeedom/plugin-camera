@@ -292,31 +292,32 @@ class camera extends eqLogic {
         }
         $action = '';
         foreach ($this->getCmd('action') as $cmd) {
-            if ($cmd->getIsVisible() == 1) {
-                if ($cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd') {
-                    if ($cmd->getSubType() == 'other') {
-                        $replace = array(
-                            '#id#' => $cmd->getId(),
-                            '#stopCmd_id#' => $stopCmd_id,
-                            '#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
-                        );
-                        $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
-                    } else {
-                        $action .= $cmd->toHtml($_version);
-                    }
+            if ($cmd->getIsVisible() == 1 && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd') {
+                if ($cmd->getSubType() == 'other') {
+                    $replace = array(
+                        '#id#' => $cmd->getId(),
+                        '#stopCmd_id#' => $stopCmd_id,
+                        '#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
+                    );
+                    $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
+                } else {
+                    $action .= $cmd->toHtml($_version);
                 }
             }
         }
-        $stopRecord = $this->getCmd(null, 'stopRecordCmd');
-        $record = $this->getCmd(null, 'recordCmd');
+
         $recordState = $this->getCmd(null, 'recordState');
-        $replace = array(
-            '#record_id#' => $record->getId(),
-            '#stopRecord_id#' => $stopRecord->getId(),
-            '#recordState#' => $recordState->execCmd(),
-            '#recordState_id#' => $recordState->getId(),
-        );
-        $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
+        if ($recordState->getIsVisible() == 1) {
+            $stopRecord = $this->getCmd(null, 'stopRecordCmd');
+            $record = $this->getCmd(null, 'recordCmd');
+            $replace = array(
+                '#record_id#' => $record->getId(),
+                '#stopRecord_id#' => $stopRecord->getId(),
+                '#recordState#' => $recordState->execCmd(),
+                '#recordState_id#' => $recordState->getId(),
+            );
+            $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
+        }
 
         $replace = array(
             '#id#' => $this->getId(),

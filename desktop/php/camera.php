@@ -202,6 +202,7 @@ $eqLogics = eqLogic::byType('camera');
                                     <option value='http'>HTTP</option>
                                     <option value='https'>HTTPS</option>
                                     <option value='rtsp'>RTSP</option>
+                                    <option value='jpeg'>JPEG</option>
                                 </select>
                             </div>
                             <label class="col-sm-3 control-label">{{Protocole commande}}</label>
