@@ -215,7 +215,7 @@ $eqLogics = eqLogic::byType('camera');
                             <div class="displayProtocol jpeg">
                                 <label class="col-sm-3 control-label">{{Fréquence (s)}}</label>
                                 <div class="col-sm-3">
-                                    <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" />
+                                    <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" value="1" />
                                 </div>
                             </div>
                         </div>

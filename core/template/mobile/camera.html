@@ -45,9 +45,11 @@
                     $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
                 }
             });
+            
+            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
             setInterval(function () {
                 $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
-            }, parseInt('#jpegRefreshTime#'));
+            }, parseFloat('#jpegRefreshTime#') * 1000);
 
             $('.zoom[data-eqLogic_id=#id#]').off().unbind();
             $('.zoom[data-eqLogic_id=#id#]').on('click', function () {
@@ -57,9 +59,10 @@
                     height = $('#pagecontainer').height() - 100;
                     width = height * (4 / 3);
                 }
+                $("#popupCameraZoom#id# .display").empty().append("<center><img src='#url#' width='" + width + "' height='" + height + "'/></center>");
                 setInterval(function () {
                     $("#popupCameraZoom#id# .display").empty().append("<center><img src='#url#' width='" + width + "' height='" + height + "'/></center>");
-                }, parseInt('#jpegRefreshTime#'));
+                }, parseFloat('#jpegRefreshTime#') * 1000);
                 $("#popupCameraZoom#id#").popup("open");
             });
         } else {
