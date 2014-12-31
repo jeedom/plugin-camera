@@ -306,10 +306,10 @@ class camera extends eqLogic {
             }
         }
 
-        $recordState = $this->getCmd(null, 'recordState');
-        if ($recordState->getIsVisible() == 1) {
-            $stopRecord = $this->getCmd(null, 'stopRecordCmd');
-            $record = $this->getCmd(null, 'recordCmd');
+        $stopRecord = $this->getCmd(null, 'stopRecordCmd');
+        $record = $this->getCmd(null, 'recordCmd');
+        if ($stopRecord->getIsVisible() == 1 && $record->getIsVisible() == 1) {
+            $recordState = $this->getCmd(null, 'recordState');
             $replace = array(
                 '#record_id#' => $record->getId(),
                 '#stopRecord_id#' => $stopRecord->getId(),
