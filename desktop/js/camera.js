@@ -53,6 +53,11 @@ $('.eqLogicAttr[data-l1key=configuration][data-l2key=proxy_mode]').on('change', 
     $('.proxy_mode.' + $(this).value()).show();
 });
 
+$('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').on('change', function () {
+    $('.displayProtocol').hide();
+    $('.displayProtocol.' + $(this).value()).show();
+});
+
 function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {};

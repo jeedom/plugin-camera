@@ -71,11 +71,11 @@
 
             setInterval(function () {
                 $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="#width#" height="#height#" />');
-            }, 1000);
+            }, parseInt('#jpegRefreshTime#'));
             $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
                 setInterval(function () {
                     $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append("<center><img src='#url#' class='img-responsive'/></center>");
-                }, 1000);
+                }, parseInt('#jpegRefreshTime#'));
                 $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
             });
         } else {

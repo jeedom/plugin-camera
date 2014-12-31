@@ -332,6 +332,7 @@ class camera extends eqLogic {
             '#name#' => $this->getName(),
             '#eqLink#' => $this->getLinkToConfiguration(),
             '#displayProtocol#' => $this->getConfiguration('displayProtocol', 'image'),
+            '#jpegRefreshTime#' => $this->getConfiguration('jpegRefreshTime', 1),
         );
 
         if ($_version == 'dview') {
