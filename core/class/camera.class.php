@@ -306,21 +306,7 @@ class camera extends eqLogic {
             }
         }
 
-
-        $stopRecord = $this->getCmd(null, 'stopRecordCmd');
-        $record = $this->getCmd(null, 'recordCmd');
-        if ($stopRecord->getIsVisible() == 1 && $record->getIsVisible() == 1) {
-            $recordState = $this->getCmd(null, 'recordState');
-            $replace = array(
-                '#record_id#' => $record->getId(),
-                '#stopRecord_id#' => $stopRecord->getId(),
-                '#recordState#' => $recordState->execCmd(),
-                '#recordState_id#' => $recordState->getId(),
-            );
-            $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
-        }
-
-        $replace = array(
+        $replace_eqLogic = array(
             '#id#' => $this->getId(),
             '#url#' => $this->getUrl($this->getConfiguration('urlStream')),
             '#width#' => $this->getWidth(),
@@ -334,24 +320,42 @@ class camera extends eqLogic {
             '#eqLink#' => $this->getLinkToConfiguration(),
             '#displayProtocol#' => $this->getConfiguration('displayProtocol', 'image'),
             '#jpegRefreshTime#' => $this->getConfiguration('jpegRefreshTime', 1),
+            '#hideFolder#' => 0,
         );
+
+
+
+        $stopRecord = $this->getCmd(null, 'stopRecordCmd');
+        $record = $this->getCmd(null, 'recordCmd');
+        if ($stopRecord->getIsVisible() == 1 && $record->getIsVisible() == 1) {
+            $recordState = $this->getCmd(null, 'recordState');
+            $replace = array(
+                '#record_id#' => $record->getId(),
+                '#stopRecord_id#' => $stopRecord->getId(),
+                '#recordState#' => $recordState->execCmd(),
+                '#recordState_id#' => $recordState->getId(),
+            );
+            $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
+            $replace_eqLogic['#hideFolder#'] = 1;
+        }
+
 
         if ($_version == 'dview') {
             $object = $this->getObject();
-            $replace['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace['#name#'] : $replace['#name#'];
+            $replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace['#name#'] : $replace['#name#'];
         }
         if ($_version == 'mview') {
             $object = $this->getObject();
-            $replace['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace['#name#'] : $replace['#name#'];
+            $replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace['#name#'] : $replace['#name#'];
         }
 
         $parameters = $this->getDisplay('parameters');
         if (is_array($parameters)) {
             foreach ($parameters as $key => $value) {
-                $replace['#' . $key . '#'] = $value;
+                $replace_eqLogic['#' . $key . '#'] = $value;
             }
         }
-        return template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera', 'camera'));
+        return template_replace($replace_eqLogic, getTemplate('core', jeedom::versionAlias($_version), 'camera', 'camera'));
     }
 
     public function getUrl($_complement = '', $_auto = '', $_protocole = 'protocole') {

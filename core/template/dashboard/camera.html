@@ -7,7 +7,7 @@
         <span class="directDisplay"></span>
         <br/>
         #action#
-        <a class="camera_history btn btn-default btn-xs" data-eqLogic_id="#id#"><i class="fa fa-folder-open"></i></a>
+        <a class="camera_history btn btn-default btn-xs folder" data-eqLogic_id="#id#"><i class="fa fa-folder-open"></i></a>
     </center>
 
 
@@ -18,6 +18,10 @@
         </center>
     </div>
     <script>
+        if('#hideFolder#' == '0'){
+            $('.folder[data-eqLogic_id=#id#]').hide();
+        }
+
         if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
             while ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
                 $(".md_cameraZoom[data-eqLogic_id=#id#]").eq(0).remove();
