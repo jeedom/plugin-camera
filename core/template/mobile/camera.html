@@ -46,9 +46,9 @@
                 }
             });
             
-            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
+            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html($('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>'));
             setInterval(function () {
-                $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
+                $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html($('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>'));
             }, parseFloat('#jpegRefreshTime#') * 1000);
 
             $('.zoom[data-eqLogic_id=#id#]').off().unbind();
@@ -59,9 +59,9 @@
                     height = $('#pagecontainer').height() - 100;
                     width = height * (4 / 3);
                 }
-                $("#popupCameraZoom#id# .display").empty().append("<center><img src='#url#' width='" + width + "' height='" + height + "'/></center>");
+                $("#popupCameraZoom#id# .display").html($("<center><img src='#url#' width='" + width + "' height='" + height + "'/></center>"));
                 setInterval(function () {
-                    $("#popupCameraZoom#id# .display").empty().append("<center><img src='#url#' width='" + width + "' height='" + height + "'/></center>");
+                    $("#popupCameraZoom#id# .display").html($("<center><img src='#url#' width='" + width + "' height='" + height + "'/></center>"));
                 }, parseFloat('#jpegRefreshTime#') * 1000);
                 $("#popupCameraZoom#id#").popup("open");
             });
