@@ -33,6 +33,38 @@
             object += '</OBJECT>';
             $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append(object);
             $('.zoom[data-eqLogic_id=#id#]').off().unbind();
+        } else if ('#displayProtocol#' == 'jpeg') {
+            $.ajax({
+                type: "GET",
+                url: "#url#",
+                dataType: 'jsonp',
+                username: '#username#',
+                password: '#password#',
+                timeout: 500,
+                success: function () {
+                    $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
+                }
+            });
+            
+            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
+            setInterval(function () {
+                $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="147" height="110"/>');
+            }, parseFloat('#jpegRefreshTime#') * 1000);
+
+            $('.zoom[data-eqLogic_id=#id#]').off().unbind();
+            $('.zoom[data-eqLogic_id=#id#]').on('click', function () {
+                var width = $('#pagecontainer').width() - 50;
+                var height = width / (4 / 3);
+                if (height > $('#pagecontainer').height()) {
+                    height = $('#pagecontainer').height() - 100;
+                    width = height * (4 / 3);
+                }
+                $("#popupCameraZoom#id# .display").empty().append("<center><img src='#url#' width='" + width + "' height='" + height + "'/></center>");
+                setInterval(function () {
+                    $("#popupCameraZoom#id# .display").empty().append("<center><img src='#url#' width='" + width + "' height='" + height + "'/></center>");
+                }, parseFloat('#jpegRefreshTime#') * 1000);
+                $("#popupCameraZoom#id#").popup("open");
+            });
         } else {
             $.ajax({
                 type: "GET",

@@ -258,23 +258,15 @@ class camera extends eqLogic {
                     "proxy_set_header Host \$host:\$server_port;\n" .
                     "proxy_set_header X-Real-IP \$remote_addr;\n" .
                     "}"
-                    );
-                try {
-                    jeedom::nginx_saveRule($rules);
-                } catch (Exception $e) {
-                    
-                }
+                );
+                jeedom::nginx_saveRule($rules);
             }
         } else {
             if (method_exists('jeedom', 'nginx_removeRule')) {
                 $rules = array(
                     "location /cam" . $this->getId() . "/ {\n"
-                    );
-                try {
-                    jeedom::nginx_removeRule($rules);
-                } catch (Exception $e) {
-                    
-                }
+                );
+                jeedom::nginx_removeRule($rules);
             }
         }
     }
@@ -283,13 +275,8 @@ class camera extends eqLogic {
         if ($this->getConfiguration('proxy_mode') == 'nginx' && method_exists('jeedom', 'nginx_removeRule')) {
             $rules = array(
                 "location /cam" . $this->getId() . "/ {\n"
-                );
-            try {
-                jeedom::nginx_removeRule($rules);
-            } catch (Exception $e) {
-                
-            }
-            
+            );
+            jeedom::nginx_removeRule($rules);
         }
     }
 
@@ -305,31 +292,33 @@ class camera extends eqLogic {
         }
         $action = '';
         foreach ($this->getCmd('action') as $cmd) {
-            if ($cmd->getIsVisible() == 1) {
-                if ($cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd') {
-                    if ($cmd->getSubType() == 'other') {
-                        $replace = array(
-                            '#id#' => $cmd->getId(),
-                            '#stopCmd_id#' => $stopCmd_id,
-                            '#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
-                            );
-                        $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
-                    } else {
-                        $action .= $cmd->toHtml($_version);
-                    }
+            if ($cmd->getIsVisible() == 1 && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd') {
+                if ($cmd->getSubType() == 'other') {
+                    $replace = array(
+                        '#id#' => $cmd->getId(),
+                        '#stopCmd_id#' => $stopCmd_id,
+                        '#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
+                    );
+                    $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
+                } else {
+                    $action .= $cmd->toHtml($_version);
                 }
             }
         }
+
+
         $stopRecord = $this->getCmd(null, 'stopRecordCmd');
         $record = $this->getCmd(null, 'recordCmd');
-        $recordState = $this->getCmd(null, 'recordState');
-        $replace = array(
-            '#record_id#' => $record->getId(),
-            '#stopRecord_id#' => $stopRecord->getId(),
-            '#recordState#' => $recordState->execCmd(),
-            '#recordState_id#' => $recordState->getId(),
+        if ($stopRecord->getIsVisible() == 1 && $record->getIsVisible() == 1) {
+            $recordState = $this->getCmd(null, 'recordState');
+            $replace = array(
+                '#record_id#' => $record->getId(),
+                '#stopRecord_id#' => $stopRecord->getId(),
+                '#recordState#' => $recordState->execCmd(),
+                '#recordState_id#' => $recordState->getId(),
             );
-        $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
+            $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
+        }
 
         $replace = array(
             '#id#' => $this->getId(),
@@ -344,7 +333,8 @@ class camera extends eqLogic {
             '#name#' => $this->getName(),
             '#eqLink#' => $this->getLinkToConfiguration(),
             '#displayProtocol#' => $this->getConfiguration('displayProtocol', 'image'),
-            );
+            '#jpegRefreshTime#' => $this->getConfiguration('jpegRefreshTime', 1),
+        );
 
         if ($_version == 'dview') {
             $object = $this->getObject();
@@ -368,7 +358,7 @@ class camera extends eqLogic {
         $replace = array(
             '#username#' => $this->getConfiguration('username'),
             '#password#' => $this->getConfiguration('password'),
-            );
+        );
         if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
             $internal_ip = str_replace('http://', '', config::byKey('internalAddr'));
             $internal_ip = str_replace('https://', '', $internal_ip);
@@ -482,7 +472,7 @@ class camera extends eqLogic {
         if ($this->getConfiguration('device') != '') {
             return array(
                 $this->getConfiguration('device') => self::devicesParameters($this->getConfiguration('device'))
-                );
+            );
         } else {
             $export = parent::export();
             if (isset($export['configuration']['device'])) {
@@ -527,7 +517,7 @@ class camera extends eqLogic {
             }
             return array(
                 'todo.todo' => $export
-                );
+            );
         }
     }
 
@@ -583,14 +573,14 @@ class cameraCmd extends cmd {
         $request = $this->getConfiguration('request');
         switch ($this->getType()) {
             case 'action' :
-            switch ($this->getSubType()) {
-                case 'slider':
-                $request = str_replace('#slider#', $_options['slider'], $request);
+                switch ($this->getSubType()) {
+                    case 'slider':
+                        $request = str_replace('#slider#', $_options['slider'], $request);
+                        break;
+                    case 'color':
+                        $request = str_replace('#color#', $_options['color'], $request);
+                }
                 break;
-                case 'color':
-                $request = str_replace('#color#', $_options['color'], $request);
-            }
-            break;
         }
         $eqLogic = $this->getEqLogic();
         if ($this->getLogicalId() == 'recordCmd') {
