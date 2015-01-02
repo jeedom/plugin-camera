@@ -187,24 +187,6 @@ $eqLogics = eqLogic::byType('camera');
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">{{Protocole d'accès}}</label>
-                                <div class="col-sm-3">
-                                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
-                                        <option value='http'>HTTP</option>
-                                        <option value='https'>HTTPS</option>
-                                        <option value='rtsp'>RTSP</option>
-                                    </select>
-                                </div>
-                                <label class="col-sm-3 control-label">{{Externe}}</label>
-                                <div class="col-sm-3">
-                                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleExt">
-                                        <option value='http'>HTTP</option>
-                                        <option value='https'>HTTPS</option>
-                                        <option value='rtsp'>RTSP</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
                              <label class="col-sm-3 control-label">{{Protocole commande}}</label>
                              <div class="col-sm-3">
                                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleCommande">
@@ -214,52 +196,74 @@ $eqLogics = eqLogic::byType('camera');
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{Méthode d'affichage}}</label>
+                        <label class="col-sm-3 control-label">{{Protocole d'accès interne}}</label>
                             <div class="col-sm-3">
-                                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
-                                    <option value='image'>Standard</option>
-                                    <option value='vlc'>VLC</option>
-                                    <option value='jpeg'>JPEG</option>
+                                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
+                                    <option value='http'>HTTP</option>
+                                    <option value='https'>HTTPS</option>
+                                    <option value='rtsp'>RTSP</option>
                                 </select>
                             </div>
-                            <div class="displayProtocol jpeg">
-                                <label class="col-sm-3 control-label">{{Fréquence (s)}}</label>
-                                <div class="col-sm-3">
-                                    <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" value="1" />
-                                </div>
+
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-3 control-label">{{Protocole d'accès externe}}</label>
+                          <div class="col-sm-3">
+                            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleExt">
+                                <option value='http'>HTTP</option>
+                                <option value='https'>HTTPS</option>
+                                <option value='rtsp'>RTSP</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">{{Méthode d'affichage}}</label>
+                        <div class="col-sm-3">
+                            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
+                                <option value='image'>Standard</option>
+                                <option value='vlc'>VLC</option>
+                                <option value='jpeg'>JPEG</option>
+                            </select>
+                        </div>
+                        <div class="displayProtocol jpeg">
+                            <label class="col-sm-3 control-label">{{Fréquence (s)}}</label>
+                            <div class="col-sm-3">
+                                <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" value="1" />
                             </div>
                         </div>
-                    </fieldset> 
-                </form>
-            </div>
+                    </div>
+                </fieldset> 
+            </form>
         </div>
-
-        <legend>{{Caméra}}</legend>
-        <a class="btn btn-success btn-sm cmdAction" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une commande}}</a><br/><br/>
-        <table id="table_cmd" class="table table-bordered table-condensed">
-            <thead>
-                <tr>
-                    <th>{{Nom}}</th>
-                    <th>{{Type}}</th>
-                    <th>{{Requête/Durée enregistrement (secondes)}}</th>
-                    <th>{{Options}}</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-
-        <form class="form-horizontal">
-            <fieldset>
-                <div class="form-actions">
-                    <a class="btn btn-danger eqLogicAction" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
-                    <a class="btn btn-success eqLogicAction" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a>
-                </div>
-            </fieldset>
-        </form>
     </div>
+
+    <legend>{{Caméra}}</legend>
+    <a class="btn btn-success btn-sm cmdAction" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une commande}}</a><br/><br/>
+    <table id="table_cmd" class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>{{Nom}}</th>
+                <th>{{Type}}</th>
+                <th>{{Requête/Durée enregistrement (secondes)}}</th>
+                <th>{{Options}}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="form-actions">
+                <a class="btn btn-danger eqLogicAction" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
+                <a class="btn btn-success eqLogicAction" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a>
+            </div>
+        </fieldset>
+    </form>
+</div>
 </div>
 
 <?php include_file('desktop', 'camera', 'js', 'camera'); ?>
