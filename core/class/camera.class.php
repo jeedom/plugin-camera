@@ -305,7 +305,7 @@ class camera extends eqLogic {
                 }
             }
         }
-        if (netMatch('192.168.*.*', getClientIp()){
+        if (netMatch('192.168.*.*', getClientIp())){
             $protocole = 'protocole';
         }else{
             $protocole = 'protocoleExt';
@@ -326,8 +326,6 @@ class camera extends eqLogic {
             '#jpegRefreshTime#' => $this->getConfiguration('jpegRefreshTime', 1),
             '#hideFolder#' => 0,
             );
-
-
 
         $stopRecord = $this->getCmd(null, 'stopRecordCmd');
         $record = $this->getCmd(null, 'recordCmd');
