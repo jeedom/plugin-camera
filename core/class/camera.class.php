@@ -141,7 +141,7 @@ class camera extends eqLogic {
                     $return = array_merge($return, json_decode($content, true));
                 }
             } catch (Exception $e) {
-                
+
             }
         }
         if (isset($_device) && $_device != '') {
@@ -258,14 +258,14 @@ class camera extends eqLogic {
                     "proxy_set_header Host \$host:\$server_port;\n" .
                     "proxy_set_header X-Real-IP \$remote_addr;\n" .
                     "}"
-                );
+                    );
                 jeedom::nginx_saveRule($rules);
             }
         } else {
             if (method_exists('jeedom', 'nginx_removeRule')) {
                 $rules = array(
                     "location /cam" . $this->getId() . "/ {\n"
-                );
+                    );
                 jeedom::nginx_removeRule($rules);
             }
         }
@@ -275,7 +275,7 @@ class camera extends eqLogic {
         if ($this->getConfiguration('proxy_mode') == 'nginx' && method_exists('jeedom', 'nginx_removeRule')) {
             $rules = array(
                 "location /cam" . $this->getId() . "/ {\n"
-            );
+                );
             jeedom::nginx_removeRule($rules);
         }
     }
@@ -298,17 +298,21 @@ class camera extends eqLogic {
                         '#id#' => $cmd->getId(),
                         '#stopCmd_id#' => $stopCmd_id,
                         '#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
-                    );
+                        );
                     $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
                 } else {
                     $action .= $cmd->toHtml($_version);
                 }
             }
         }
-
+        if (netMatch('192.168.*.*', getClientIp()){
+            $protocole = 'protocole';
+        }else{
+            $protocole = 'protocoleExt';
+        }
         $replace_eqLogic = array(
             '#id#' => $this->getId(),
-            '#url#' => $this->getUrl($this->getConfiguration('urlStream')),
+            '#url#' => $this->getUrl($this->getConfiguration('urlStream'),'',$protocole),
             '#width#' => $this->getWidth(),
             '#height#' => $this->getHeight(),
             '#action#' => $action,
@@ -321,7 +325,7 @@ class camera extends eqLogic {
             '#displayProtocol#' => $this->getConfiguration('displayProtocol', 'image'),
             '#jpegRefreshTime#' => $this->getConfiguration('jpegRefreshTime', 1),
             '#hideFolder#' => 0,
-        );
+            );
 
 
 
@@ -334,7 +338,7 @@ class camera extends eqLogic {
                 '#stopRecord_id#' => $stopRecord->getId(),
                 '#recordState#' => $recordState->execCmd(),
                 '#recordState_id#' => $recordState->getId(),
-            );
+                );
             $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
             $replace_eqLogic['#hideFolder#'] = 1;
         }
@@ -362,7 +366,7 @@ class camera extends eqLogic {
         $replace = array(
             '#username#' => $this->getConfiguration('username'),
             '#password#' => $this->getConfiguration('password'),
-        );
+            );
         if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
             $internal_ip = str_replace('http://', '', config::byKey('internalAddr'));
             $internal_ip = str_replace('https://', '', $internal_ip);
@@ -476,7 +480,7 @@ class camera extends eqLogic {
         if ($this->getConfiguration('device') != '') {
             return array(
                 $this->getConfiguration('device') => self::devicesParameters($this->getConfiguration('device'))
-            );
+                );
         } else {
             $export = parent::export();
             if (isset($export['configuration']['device'])) {
@@ -521,7 +525,7 @@ class camera extends eqLogic {
             }
             return array(
                 'todo.todo' => $export
-            );
+                );
         }
     }
 
@@ -577,14 +581,14 @@ class cameraCmd extends cmd {
         $request = $this->getConfiguration('request');
         switch ($this->getType()) {
             case 'action' :
-                switch ($this->getSubType()) {
-                    case 'slider':
-                        $request = str_replace('#slider#', $_options['slider'], $request);
-                        break;
-                    case 'color':
-                        $request = str_replace('#color#', $_options['color'], $request);
-                }
+            switch ($this->getSubType()) {
+                case 'slider':
+                $request = str_replace('#slider#', $_options['slider'], $request);
                 break;
+                case 'color':
+                $request = str_replace('#color#', $_options['color'], $request);
+            }
+            break;
         }
         $eqLogic = $this->getEqLogic();
         if ($this->getLogicalId() == 'recordCmd') {
