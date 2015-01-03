@@ -315,7 +315,7 @@ class camera extends eqLogic {
             '#url#' => $this->getUrl($this->getConfiguration('urlStream'),'',$protocole),
             '#width#' => $this->getWidth(),
             '#height#' => $this->getHeight(),
-            '#action#' => $action,
+            
             '#password#' => $this->getConfiguration('password'),
             '#username#' => $this->getConfiguration('username'),
             '#background_color#' => $this->getBackgroundColor(jeedom::versionAlias($_version)),
@@ -340,15 +340,15 @@ class camera extends eqLogic {
             $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
             $replace_eqLogic['#hideFolder#'] = 1;
         }
-
+        $replace_eqLogic['#action#'] = $action;
 
         if ($_version == 'dview') {
             $object = $this->getObject();
-            $replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace['#name#'] : $replace['#name#'];
+            $replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace_eqLogic['#name#'] : $replace['#name#'];
         }
         if ($_version == 'mview') {
             $object = $this->getObject();
-            $replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace['#name#'] : $replace['#name#'];
+            $replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace_eqLogic['#name#'] : $replace['#name#'];
         }
 
         $parameters = $this->getDisplay('parameters');
@@ -383,6 +383,9 @@ class camera extends eqLogic {
             $external_ip = str_replace('rtsp://', '', $external_ip);
             if (strpos($internal_ip, '/') !== false) {
                 $external_ip = substr($internal_ip, 0, strpos($external_ip, '/'));
+            }
+            if (config::byKey('market::returnLink') == '' || config::byKey('market::allowDNS',0) == 0) {
+                $external_ip.= ':'.config::byKey('externalPort',80);
             }
             $replace['#ip#'] = str_replace(array('http://', 'https://'), '', $external_ip);
             $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
