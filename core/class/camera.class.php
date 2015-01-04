@@ -315,7 +315,6 @@ class camera extends eqLogic {
             '#url#' => $this->getUrl($this->getConfiguration('urlStream'),'',$protocole),
             '#width#' => $this->getWidth(),
             '#height#' => $this->getHeight(),
-            
             '#password#' => $this->getConfiguration('password'),
             '#username#' => $this->getConfiguration('username'),
             '#background_color#' => $this->getBackgroundColor(jeedom::versionAlias($_version)),
@@ -366,28 +365,13 @@ class camera extends eqLogic {
             '#password#' => $this->getConfiguration('password'),
             );
         if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
-            $internal_ip = str_replace('http://', '', config::byKey('internalAddr'));
-            $internal_ip = str_replace('https://', '', $internal_ip);
-            $internal_ip = str_replace('rtsp://', '', $internal_ip);
-            if (strpos($internal_ip, '/') !== false) {
-                $internal_ip = substr($internal_ip, 0, strpos($internal_ip, '/'));
-            }
-            $replace['#ip#'] = str_replace(array('http://', 'https://'), '', $internal_ip);
+            $replace['#ip#'] =  config::byKey('internalAddr').':'.config::byKey('internalPort','core',80);
             $url = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration($_protocole, 'http'));
             if ($this->getConfiguration('port') != '' && $this->getConfiguration('proxy_mode') != 'nginx') {
                 $url .= ':' . $this->getConfiguration('port');
             }
         } else {
-            $external_ip = str_replace('http://', '', config::byKey('externalAddr'));
-            $external_ip = str_replace('https://', '', $external_ip);
-            $external_ip = str_replace('rtsp://', '', $external_ip);
-            if (strpos($internal_ip, '/') !== false) {
-                $external_ip = substr($internal_ip, 0, strpos($external_ip, '/'));
-            }
-            if (config::byKey('market::returnLink') == '' || config::byKey('market::allowDNS',0) == 0) {
-                $external_ip.= ':'.config::byKey('externalPort','core',80);
-            }
-            $replace['#ip#'] = str_replace(array('http://', 'https://'), '', $external_ip);
+            $replace['#ip#'] = config::byKey('externalAddr').':'.config::byKey('externalPort','core',80);
             $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
             if ($this->getConfiguration('port_ext') != '' && $this->getConfiguration('proxy_mode') != 'nginx') {
                 $url .= ':' . $this->getConfiguration('port_ext');
