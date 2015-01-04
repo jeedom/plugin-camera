@@ -385,7 +385,7 @@ class camera extends eqLogic {
                 $external_ip = substr($internal_ip, 0, strpos($external_ip, '/'));
             }
             if (config::byKey('market::returnLink') == '' || config::byKey('market::allowDNS',0) == 0) {
-                $external_ip.= ':'.config::byKey('externalPort',80);
+                $external_ip.= ':'.config::byKey('externalPort','core',80);
             }
             $replace['#ip#'] = str_replace(array('http://', 'https://'), '', $external_ip);
             $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
