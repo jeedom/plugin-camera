@@ -99,11 +99,12 @@ $eqLogics = eqLogic::byType('camera');
                                 <div class="col-sm-5">
                                     <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="proxy_mode">
                                         <option value="nginx">Jeedom (http et nginx seulement)</option>
+                                        <option value="apache">Jeedom (http et apache seulement)</option>
                                         <option value="manuel">Manuel</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="proxy_mode nginx">
+                            <div class="proxy_mode nginx apache">
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">{{IP}}</label>
                                     <div class="col-sm-5">

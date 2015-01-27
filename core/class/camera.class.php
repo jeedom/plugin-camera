@@ -261,13 +261,46 @@ class camera extends eqLogic {
                     );
                 jeedom::nginx_saveRule($rules);
             }
-        } else {
+        }else if ($this->getConfiguration('proxy_mode') == 'apache') {
+            if (method_exists('jeedom', 'apache_saveRule')) {
+                $ip = $this->getConfiguration('ip_cam');
+                if (trim($this->getConfiguration('port_cam')) != '') {
+                    $ip .= ':' . $this->getConfiguration('port_cam');
+                }
+                $rules = array(
+                    "ProxyPass /cam" . $this->getId() . "/ http://" . $ip . "/",
+                    "ProxyPassReverse /cam" . $this->getId() . "/ http://" . $ip . "/",
+                    "<Location /cam" . $this->getId() . "/>\n" .
+                    "\tOrder allow,deny\n".
+                    "\tAllow from all\n".
+                    "</Location>"
+                    );
+                jeedom::apache_saveRule($rules);
+            }
             if (method_exists('jeedom', 'nginx_removeRule')) {
                 $rules = array(
                     "location /cam" . $this->getId() . "/ {\n"
                     );
                 jeedom::nginx_removeRule($rules);
             }
+        } else {
+            try {
+                if (method_exists('jeedom', 'nginx_removeRule')) {
+                    $rules = array(
+                        "location /cam" . $this->getId() . "/ {\n"
+                        );
+                    jeedom::nginx_removeRule($rules);
+                }
+                if (method_exists('jeedom', 'apache_removeRule')) {
+                    $rules = array(
+                         "ProxyPass /cam" . $this->getId() . "/ http://" . $ip . "/"
+                        );
+                    jeedom::apache_removeRule($rules);
+                }
+            } catch (Exception $e) {
+
+            }
+            
         }
     }
 
@@ -277,6 +310,12 @@ class camera extends eqLogic {
                 "location /cam" . $this->getId() . "/ {\n"
                 );
             jeedom::nginx_removeRule($rules);
+        }
+        if ($this->getConfiguration('proxy_mode') == 'apache' && method_exists('jeedom', 'apache_removeRule')) {
+            $rules = array(
+                 "ProxyPass /cam" . $this->getId() . "/ http://" . $ip . "/",
+                );
+            jeedom::apache_removeRule($rules);
         }
     }
 
