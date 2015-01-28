@@ -170,7 +170,7 @@ class camera extends eqLogic {
 
     public function preSave() {
         $this->setCategory('security', 1);
-        if ($this->getConfiguration('proxy_mode') == 'nginx') {
+        if ($this->getConfiguration('proxy_mode') == 'nginx' || $this->getConfiguration('proxy_mode') == 'apache') {
             if ($this->getConfiguration('ip_cam') == '') {
                 throw new Exception(__('L\'adresse IP de la camera ne peut être vide', __FILE__));
             }
@@ -293,7 +293,9 @@ class camera extends eqLogic {
                 }
                 if (method_exists('jeedom', 'apache_removeRule')) {
                     $rules = array(
-                         "ProxyPass /cam" . $this->getId() . "/ http://" . $ip . "/"
+                        "!.*ProxyPass /cam" . $this->getId() . "/.*!",
+                        "!.*ProxyPassReverse /cam" . $this->getId() . "/.*!",
+                        "!<Location /cam" . $this->getId() . "/>[^<]*</Location>!s"
                         );
                     jeedom::apache_removeRule($rules);
                 }
@@ -313,7 +315,9 @@ class camera extends eqLogic {
         }
         if ($this->getConfiguration('proxy_mode') == 'apache' && method_exists('jeedom', 'apache_removeRule')) {
             $rules = array(
-                 "ProxyPass /cam" . $this->getId() . "/ http://" . $ip . "/",
+                "!.*ProxyPass /cam" . $this->getId() . "/.*!",
+                "!.*ProxyPassReverse /cam" . $this->getId() . "/.*!",
+                "!<Location /cam" . $this->getId() . "/>[^<]*</Location>!s"
                 );
             jeedom::apache_removeRule($rules);
         }
@@ -332,244 +336,250 @@ class camera extends eqLogic {
         $action = '';
         foreach ($this->getCmd('action') as $cmd) {
             if ($cmd->getIsVisible() == 1 && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd') {
-                if ($cmd->getSubType() == 'other') {
-                    $replace = array(
-                        '#id#' => $cmd->getId(),
-                        '#stopCmd_id#' => $stopCmd_id,
-                        '#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
-                        );
-                    $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
-                } else {
-                    $action .= $cmd->toHtml($_version);
-                }
+              if($cmd->getDisplay('forceReturnLineBefore',0) == 1){
+                $cmd_html .= '<br/>';
+            }
+            if ($cmd->getSubType() == 'other') {
+                $replace = array(
+                    '#id#' => $cmd->getId(),
+                    '#stopCmd_id#' => $stopCmd_id,
+                    '#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
+                    );
+                $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
+            } else {
+                $action .= $cmd->toHtml($_version);
+            }
+            if($cmd->getDisplay('forceReturnLineAfter',0) == 1){
+                $cmd_html .= '<br/>';
             }
         }
-        if (netMatch('192.168.*.*', getClientIp())){
-            $protocole = 'protocole';
-        }else{
-            $protocole = 'protocoleExt';
-        }
-        $replace_eqLogic = array(
-            '#id#' => $this->getId(),
-            '#url#' => $this->getUrl($this->getConfiguration('urlStream'),'',$protocole),
-            '#width#' => $this->getWidth(),
-            '#height#' => $this->getHeight(),
-            '#password#' => $this->getConfiguration('password'),
-            '#username#' => $this->getConfiguration('username'),
-            '#background_color#' => $this->getBackgroundColor(jeedom::versionAlias($_version)),
-            '#humanname#' => $this->getHumanName(),
-            '#name#' => $this->getName(),
-            '#eqLink#' => $this->getLinkToConfiguration(),
-            '#displayProtocol#' => $this->getConfiguration('displayProtocol', 'image'),
-            '#jpegRefreshTime#' => $this->getConfiguration('jpegRefreshTime', 1),
-            '#hideFolder#' => 0,
-            );
-
-        $stopRecord = $this->getCmd(null, 'stopRecordCmd');
-        $record = $this->getCmd(null, 'recordCmd');
-        if ($stopRecord->getIsVisible() == 1 && $record->getIsVisible() == 1) {
-            $recordState = $this->getCmd(null, 'recordState');
-            $replace = array(
-                '#record_id#' => $record->getId(),
-                '#stopRecord_id#' => $stopRecord->getId(),
-                '#recordState#' => $recordState->execCmd(),
-                '#recordState_id#' => $recordState->getId(),
-                );
-            $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
-            $replace_eqLogic['#hideFolder#'] = 1;
-        }
-        $replace_eqLogic['#action#'] = $action;
-
-        if ($_version == 'dview') {
-            $object = $this->getObject();
-            $replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace_eqLogic['#name#'] : $replace['#name#'];
-        }
-        if ($_version == 'mview') {
-            $object = $this->getObject();
-            $replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace_eqLogic['#name#'] : $replace['#name#'];
-        }
-
-        $parameters = $this->getDisplay('parameters');
-        if (is_array($parameters)) {
-            foreach ($parameters as $key => $value) {
-                $replace_eqLogic['#' . $key . '#'] = $value;
-            }
-        }
-        return template_replace($replace_eqLogic, getTemplate('core', jeedom::versionAlias($_version), 'camera', 'camera'));
     }
-
-    public function getUrl($_complement = '', $_auto = '', $_protocole = 'protocole') {
-        $replace = array(
-            '#username#' => $this->getConfiguration('username'),
-            '#password#' => $this->getConfiguration('password'),
-            );
-        if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
-            $replace['#ip#'] =  config::byKey('internalAddr').':'.config::byKey('internalPort','core',80);
-            $url = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration($_protocole, 'http'));
-            if ($this->getConfiguration('port') != '' && $this->getConfiguration('proxy_mode') != 'nginx') {
-                $url .= ':' . $this->getConfiguration('port');
-            }
-        } else {
-            $replace['#ip#'] = config::byKey('externalAddr').':'.config::byKey('externalPort','core',80);
-            $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
-            if ($this->getConfiguration('port_ext') != '' && $this->getConfiguration('proxy_mode') != 'nginx') {
-                $url .= ':' . $this->getConfiguration('port_ext');
-            }
-        }
-        $url = str_replace(array_keys($replace), $replace, $url);
-        $complement = str_replace(array_keys($replace), $replace, $_complement);
-        if (strpos($complement, '/') !== 0) {
-            $complement = '/' . $complement;
-        }
-        return $url . $complement;
+    if (netMatch('192.168.*.*', getClientIp())){
+        $protocole = 'protocole';
+    }else{
+        $protocole = 'protocoleExt';
     }
+    $replace_eqLogic = array(
+        '#id#' => $this->getId(),
+        '#url#' => $this->getUrl($this->getConfiguration('urlStream'),'',$protocole),
+        '#width#' => $this->getWidth(),
+        '#height#' => $this->getHeight(),
+        '#password#' => $this->getConfiguration('password'),
+        '#username#' => $this->getConfiguration('username'),
+        '#background_color#' => $this->getBackgroundColor(jeedom::versionAlias($_version)),
+        '#humanname#' => $this->getHumanName(),
+        '#name#' => $this->getName(),
+        '#eqLink#' => $this->getLinkToConfiguration(),
+        '#displayProtocol#' => $this->getConfiguration('displayProtocol', 'image'),
+        '#jpegRefreshTime#' => $this->getConfiguration('jpegRefreshTime', 1),
+        '#hideFolder#' => 0,
+        );
 
-    public function applyModuleConfiguration() {
-        $this->setConfiguration('applyDevice', $this->getConfiguration('device'));
-        if ($this->getConfiguration('device') == '') {
-            $this->save();
-            return true;
-        }
-        $device = self::devicesParameters($this->getConfiguration('device'));
-        if (!is_array($device) || !isset($device['commands'])) {
-            return true;
-        }
-        if (isset($device['configuration'])) {
-            foreach ($device['configuration'] as $key => $value) {
-                $this->setConfiguration($key, $value);
-            }
-        }
-        $cmd_order = 0;
-        $link_cmds = array();
-        foreach ($device['commands'] as $command) {
-            if (isset($device['commands']['logicalId'])) {
-                continue;
-            }
-            $cmd = null;
-            foreach ($this->getCmd() as $liste_cmd) {
-                if (isset($command['name']) && $liste_cmd->getName() == $command['name']) {
-                    $cmd = $liste_cmd;
-                    break;
-                }
-            }
-            try {
-                if ($cmd == null || !is_object($cmd)) {
-                    $cmd = new cameraCmd();
-                    $cmd->setOrder($cmd_order);
-                    $cmd->setEqLogic_id($this->getId());
-                } else {
-                    $command['name'] = $cmd->getName();
-                }
-                utils::a2o($cmd, $command);
-                if (isset($command['value'])) {
-                    $cmd->setValue(null);
-                }
-                $cmd->save();
-                $cmd_order++;
-            } catch (Exception $exc) {
-                error_log($exc->getMessage());
-            }
-        }
-        $this->save();
-    }
-
-    public function recordCam($_recordTime = 300) {
-        $cmd = ' php ' . dirname(__FILE__) . '/../../core/php/record.php';
-        $cmd.= ' id=' . $this->getId();
-        $result = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | wc -l');
-        if ($result > 0) {
-            return true;
-        }
-        $cmd.= ' recordTime=' . $_recordTime;
-        $cmd.= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
-        log::add('camera', 'debug', $cmd);
-        shell_exec('nohup ' . $cmd);
-    }
-
-    public function stopRecord() {
-        $result = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | wc -l');
-        if ($result > 0) {
-            $pid = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | awk \'{print $1}\'');
-            exec('kill -9 ' . $pid . ' > /dev/null 2>&1');
-        }
-        $process = $this->getUrl($this->getConfiguration('urlStream'), 'internal');
-        $pid = shell_exec("ps -ef | grep '" . $process . "' | grep -v grep | awk '{print $2}' | xargs kill -9");
+    $stopRecord = $this->getCmd(null, 'stopRecordCmd');
+    $record = $this->getCmd(null, 'recordCmd');
+    if ($stopRecord->getIsVisible() == 1 && $record->getIsVisible() == 1) {
         $recordState = $this->getCmd(null, 'recordState');
-        $recordState->event(0);
-        $this->refreshWidget();
+        $replace = array(
+            '#record_id#' => $record->getId(),
+            '#stopRecord_id#' => $stopRecord->getId(),
+            '#recordState#' => $recordState->execCmd(),
+            '#recordState_id#' => $recordState->getId(),
+            );
+        $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
+        $replace_eqLogic['#hideFolder#'] = 1;
+    }
+    $replace_eqLogic['#action#'] = $action;
+
+    if ($_version == 'dview') {
+        $object = $this->getObject();
+        $replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace_eqLogic['#name#'] : $replace['#name#'];
+    }
+    if ($_version == 'mview') {
+        $object = $this->getObject();
+        $replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace_eqLogic['#name#'] : $replace['#name#'];
+    }
+
+    $parameters = $this->getDisplay('parameters');
+    if (is_array($parameters)) {
+        foreach ($parameters as $key => $value) {
+            $replace_eqLogic['#' . $key . '#'] = $value;
+        }
+    }
+    return template_replace($replace_eqLogic, getTemplate('core', jeedom::versionAlias($_version), 'camera', 'camera'));
+}
+
+public function getUrl($_complement = '', $_auto = '', $_protocole = 'protocole') {
+    $replace = array(
+        '#username#' => $this->getConfiguration('username'),
+        '#password#' => $this->getConfiguration('password'),
+        );
+    if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
+        $replace['#ip#'] =  config::byKey('internalAddr').':'.config::byKey('internalPort','core',80);
+        $url = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration($_protocole, 'http'));
+        if ($this->getConfiguration('port') != '' && $this->getConfiguration('proxy_mode') != 'nginx' && $this->getConfiguration('proxy_mode') != 'apache') {
+            $url .= ':' . $this->getConfiguration('port');
+        }
+    } else {
+        $replace['#ip#'] = config::byKey('externalAddr').':'.config::byKey('externalPort','core',80);
+        $url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
+        if ($this->getConfiguration('port_ext') != '' && $this->getConfiguration('proxy_mode') != 'nginx' && $this->getConfiguration('proxy_mode') != 'apache') {
+            $url .= ':' . $this->getConfiguration('port_ext');
+        }
+    }
+    $url = str_replace(array_keys($replace), $replace, $url);
+    $complement = str_replace(array_keys($replace), $replace, $_complement);
+    if (strpos($complement, '/') !== 0) {
+        $complement = '/' . $complement;
+    }
+    return $url . $complement;
+}
+
+public function applyModuleConfiguration() {
+    $this->setConfiguration('applyDevice', $this->getConfiguration('device'));
+    if ($this->getConfiguration('device') == '') {
+        $this->save();
         return true;
     }
-
-    public function export($_withCmd = true) {
-        if ($this->getConfiguration('device') != '') {
-            return array(
-                $this->getConfiguration('device') => self::devicesParameters($this->getConfiguration('device'))
-                );
-        } else {
-            $export = parent::export();
-            if (isset($export['configuration']['device'])) {
-                unset($export['configuration']['device']);
-            }
-            if (isset($export['configuration']['ip'])) {
-                unset($export['configuration']['ip']);
-            }
-            if (isset($export['configuration']['port'])) {
-                unset($export['configuration']['port']);
-            }
-            if (isset($export['configuration']['ip_cam'])) {
-                unset($export['configuration']['ip_cam']);
-            }
-            if (isset($export['configuration']['port_cam'])) {
-                unset($export['configuration']['port_cam']);
-            }
-            if (isset($export['configuration']['ip_ext'])) {
-                unset($export['configuration']['ip_ext']);
-            }
-            if (isset($export['configuration']['port_ext'])) {
-                unset($export['configuration']['port_ext']);
-            }
-            if (isset($export['configuration']['username'])) {
-                unset($export['configuration']['username']);
-            }
-            if (isset($export['configuration']['password'])) {
-                unset($export['configuration']['password']);
-            }
-            if (isset($export['configuration']['applyDevice'])) {
-                unset($export['configuration']['applyDevice']);
-            }
-            if (isset($export['configuration']) && count($export['configuration']) == 0) {
-                unset($export['configuration']);
-            }
-            if (isset($export['_object'])) {
-                unset($export['_object']);
-            }
-            if (isset($export['cmd'])) {
-                $export['commands'] = $export['cmd'];
-                unset($export['cmd']);
-            }
-            return array(
-                'todo.todo' => $export
-                );
+    $device = self::devicesParameters($this->getConfiguration('device'));
+    if (!is_array($device) || !isset($device['commands'])) {
+        return true;
+    }
+    if (isset($device['configuration'])) {
+        foreach ($device['configuration'] as $key => $value) {
+            $this->setConfiguration($key, $value);
         }
     }
-
-    /*     * **********************Getteur Setteur*************************** */
-
-    function getHeight() {
-        return $this->_height;
+    $cmd_order = 0;
+    $link_cmds = array();
+    foreach ($device['commands'] as $command) {
+        if (isset($device['commands']['logicalId'])) {
+            continue;
+        }
+        $cmd = null;
+        foreach ($this->getCmd() as $liste_cmd) {
+            if (isset($command['name']) && $liste_cmd->getName() == $command['name']) {
+                $cmd = $liste_cmd;
+                break;
+            }
+        }
+        try {
+            if ($cmd == null || !is_object($cmd)) {
+                $cmd = new cameraCmd();
+                $cmd->setOrder($cmd_order);
+                $cmd->setEqLogic_id($this->getId());
+            } else {
+                $command['name'] = $cmd->getName();
+            }
+            utils::a2o($cmd, $command);
+            if (isset($command['value'])) {
+                $cmd->setValue(null);
+            }
+            $cmd->save();
+            $cmd_order++;
+        } catch (Exception $exc) {
+            error_log($exc->getMessage());
+        }
     }
+    $this->save();
+}
 
-    function getWidth() {
-        return $this->_width;
+public function recordCam($_recordTime = 300) {
+    $cmd = ' php ' . dirname(__FILE__) . '/../../core/php/record.php';
+    $cmd.= ' id=' . $this->getId();
+    $result = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | wc -l');
+    if ($result > 0) {
+        return true;
     }
+    $cmd.= ' recordTime=' . $_recordTime;
+    $cmd.= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
+    log::add('camera', 'debug', $cmd);
+    shell_exec('nohup ' . $cmd);
+}
 
-    function setHeight($_height) {
-        $this->_height = $_height;
+public function stopRecord() {
+    $result = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | wc -l');
+    if ($result > 0) {
+        $pid = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | awk \'{print $1}\'');
+        exec('kill -9 ' . $pid . ' > /dev/null 2>&1');
     }
+    $process = $this->getUrl($this->getConfiguration('urlStream'), 'internal');
+    $pid = shell_exec("ps -ef | grep '" . $process . "' | grep -v grep | awk '{print $2}' | xargs kill -9");
+    $recordState = $this->getCmd(null, 'recordState');
+    $recordState->event(0);
+    $this->refreshWidget();
+    return true;
+}
 
-    function setWidth($_width) {
-        $this->_width = $_width;
+public function export($_withCmd = true) {
+    if ($this->getConfiguration('device') != '') {
+        return array(
+            $this->getConfiguration('device') => self::devicesParameters($this->getConfiguration('device'))
+            );
+    } else {
+        $export = parent::export();
+        if (isset($export['configuration']['device'])) {
+            unset($export['configuration']['device']);
+        }
+        if (isset($export['configuration']['ip'])) {
+            unset($export['configuration']['ip']);
+        }
+        if (isset($export['configuration']['port'])) {
+            unset($export['configuration']['port']);
+        }
+        if (isset($export['configuration']['ip_cam'])) {
+            unset($export['configuration']['ip_cam']);
+        }
+        if (isset($export['configuration']['port_cam'])) {
+            unset($export['configuration']['port_cam']);
+        }
+        if (isset($export['configuration']['ip_ext'])) {
+            unset($export['configuration']['ip_ext']);
+        }
+        if (isset($export['configuration']['port_ext'])) {
+            unset($export['configuration']['port_ext']);
+        }
+        if (isset($export['configuration']['username'])) {
+            unset($export['configuration']['username']);
+        }
+        if (isset($export['configuration']['password'])) {
+            unset($export['configuration']['password']);
+        }
+        if (isset($export['configuration']['applyDevice'])) {
+            unset($export['configuration']['applyDevice']);
+        }
+        if (isset($export['configuration']) && count($export['configuration']) == 0) {
+            unset($export['configuration']);
+        }
+        if (isset($export['_object'])) {
+            unset($export['_object']);
+        }
+        if (isset($export['cmd'])) {
+            $export['commands'] = $export['cmd'];
+            unset($export['cmd']);
+        }
+        return array(
+            'todo.todo' => $export
+            );
     }
+}
+
+/*     * **********************Getteur Setteur*************************** */
+
+function getHeight() {
+    return $this->_height;
+}
+
+function getWidth() {
+    return $this->_width;
+}
+
+function setHeight($_height) {
+    $this->_height = $_height;
+}
+
+function setWidth($_width) {
+    $this->_width = $_width;
+}
 
 }
 
