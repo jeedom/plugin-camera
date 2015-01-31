@@ -54,7 +54,7 @@ if (!file_exists($output_dir)) {
 if (!is_writable($output_dir)) {
     throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
 }
-$output_file = $camera->getId() . '_' . $camera->getHumanName() . '_' . date('Y-m-d_H:i:s') . '.avi';
+$output_file = $camera->getId() . '_' . str_replace('/', '\/', $camera->getHumanName()) . '_' . date('Y-m-d_H:i:s') . '.avi';
 $fp = popen("which ffmpeg", "r");
 $result = fgets($fp, 255);
 $exists = !empty($result);
