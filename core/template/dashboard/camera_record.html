@@ -1,25 +1,25 @@
-<span class="cmd cmd-widget" data-type="action" data-subtype="other" data-cmd_id="recordState#recordState_id#">
+<span class="cmd cmd-widget" data-type="action" data-subtype="other" data-cmd_id="#recordState_id#">
     <span class="cmd cmd-widget" data-cmd_id="#stopRecord_id#" style="display:none;"></span>
     <span class="cmd cmd-widget" data-cmd_id="#record_id#" style="display:none;"></span>
     <a class="btn btn-xs btn-default action"></a>
     <script>
         var cameraState#recordState_id# = '#recordState#';
-                $('.cmd[data-cmd_id=recordState#recordState_id#] .action').off();
-                $('.cmd[data-cmd_id=recordState#recordState_id#] .action').on('click', function () {
-        if (cameraState#recordState_id# == '1'){
-        jeedom.cmd.execute({id: '#stopRecord_id#', notify: false});
-                $('.cmd[data-cmd_id=recordState#recordState_id#] .action').html('<i class="fa fa-circle"></i>');
+        $('.cmd[data-cmd_id=#recordState_id#] .action').off();
+        $('.cmd[data-cmd_id=#recordState_id#] .action').on('click', function () {
+            if (cameraState#recordState_id# == '1'){
+                jeedom.cmd.execute({id: '#stopRecord_id#', notify: false});
+                $('.cmd[data-cmd_id=#recordState_id#] .action').html('<i class="fa fa-circle"></i>');
                 cameraState#recordState_id# = '0';
-        } else{
-        jeedom.cmd.execute({id: '#record_id#', notify: false});
-                $('.cmd[data-cmd_id=recordState#recordState_id#] .action').html('<i class="fa fa-stop"></i>');
+            } else{
+                jeedom.cmd.execute({id: '#record_id#', notify: false});
+                $('.cmd[data-cmd_id=#recordState_id#] .action').html('<i class="fa fa-stop"></i>');
                 cameraState#recordState_id# = '1';
-        }
+            }
         });
-                if ('#recordState#' == 1) {
-        $('.cmd[data-cmd_id=recordState#recordState_id#] .action').html('<i class="fa fa-stop"></i>');
+        if ('#recordState#' == 1) {
+            $('.cmd[data-cmd_id=#recordState_id#] .action').html('<i class="fa fa-stop"></i>');
         } else {
-        $('.cmd[data-cmd_id=recordState#recordState_id#] .action').html('<i class="fa fa-circle"></i>');
+            $('.cmd[data-cmd_id=#recordState_id#] .action').html('<i class="fa fa-circle"></i>');
         }
     </script>
 </span>

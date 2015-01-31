@@ -202,6 +202,20 @@ class camera extends eqLogic {
         if ($this->getConfiguration('applyDevice') != $this->getConfiguration('device')) {
             $this->applyModuleConfiguration();
         }
+         $browseRecord = $this->getCmd(null, 'browseRecord');
+        if (!is_object($browseRecord)) {
+            $browseRecord = new cameraCmd();
+        }
+        $browseRecord->setName(__('Parcourir les video', __FILE__));
+        $browseRecord->setEventOnly(1);
+        $browseRecord->setConfiguration('request', '-');
+        $browseRecord->setType('info');
+        $browseRecord->setLogicalId('browseRecord');
+        $browseRecord->setIsVisible(0);
+        $browseRecord->setEqLogic_id($this->getId());
+        $browseRecord->setSubType('binary');
+        $browseRecord->save();
+
         $recordState = $this->getCmd(null, 'recordState');
         if (!is_object($recordState)) {
             $recordState = new cameraCmd();
@@ -325,6 +339,11 @@ class camera extends eqLogic {
             '#jpegRefreshTime#' => $this->getConfiguration('jpegRefreshTime', 1),
             '#hideFolder#' => 0,
             );
+
+        $browseRecord = $this->getCmd(null, 'browseRecord');
+        if(is_object($browseRecord)){
+            $replace_eqLogic['#browseRecord_id#'] = $browseRecord->getId();
+        }
 
         $stopRecord = $this->getCmd(null, 'stopRecordCmd');
         $record = $this->getCmd(null, 'recordCmd');
