@@ -349,7 +349,7 @@ class camera extends eqLogic {
         }
         $action = '';
         foreach ($this->getCmd('action') as $cmd) {
-            if ($cmd->getIsVisible() == 1 && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd') {
+            if ($cmd->getIsVisible() == 1 && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState') {
               if($cmd->getDisplay('forceReturnLineBefore',0) == 1){
                 $cmd_html .= '<br/>';
             }
@@ -409,21 +409,6 @@ class camera extends eqLogic {
     if(is_object($browseRecord)){
         $replace_eqLogic['#browseRecord_id#'] = $browseRecord->getId();
     }
-
-    $stopRecord = $this->getCmd(null, 'stopRecordCmd');
-    $record = $this->getCmd(null, 'recordCmd');
-    if ($stopRecord->getIsVisible() == 1 && $record->getIsVisible() == 1) {
-        $recordState = $this->getCmd(null, 'recordState');
-        $replace = array(
-            '#record_id#' => $record->getId(),
-            '#stopRecord_id#' => $stopRecord->getId(),
-            '#recordState#' => $recordState->execCmd(),
-            '#recordState_id#' => $recordState->getId(),
-            );
-        $action.= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
-        $replace_eqLogic['#hideFolder#'] = 1;
-    }
-    $replace_eqLogic['#action#'] = $action;
 
     if ($_version == 'dview') {
         $object = $this->getObject();
