@@ -351,7 +351,7 @@ class camera extends eqLogic {
         foreach ($this->getCmd('action') as $cmd) {
             if ($cmd->getIsVisible() == 1 && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState') {
               if($cmd->getDisplay('forceReturnLineBefore',0) == 1){
-                $cmd_html .= '<br/>';
+                $action .= '<br/>';
             }
             if ($cmd->getSubType() == 'other') {
                 $replace = array(
@@ -364,7 +364,7 @@ class camera extends eqLogic {
                 $action .= $cmd->toHtml($_version);
             }
             if($cmd->getDisplay('forceReturnLineAfter',0) == 1){
-                $cmd_html .= '<br/>';
+                $action .= '<br/>';
             }
         }
     }
