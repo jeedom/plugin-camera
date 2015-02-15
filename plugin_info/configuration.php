@@ -27,13 +27,13 @@ if (!isConnect()) {
 <form class="form-horizontal">
     <fieldset>
         <div class="form-group">
-            <label class="col-lg-2 control-label">Chemin des scripts utilisateur</label>
+            <label class="col-lg-2 control-label">{{Chemin des scripts utilisateur}}</label>
             <div class="col-lg-4">
                 <input type="text" class="configKey form-control" data-l1key="recordDir" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-2 control-label">Taille maximum du dossier d'enregistrement (Mo)</label>
+            <label class="col-lg-2 control-label">{{Taille maximum du dossier d'enregistrement (Mo)}</label>
             <div class="col-lg-4">
                 <input type="text" class="configKey form-control" data-l1key="maxSizeRecordDir" />
             </div>
