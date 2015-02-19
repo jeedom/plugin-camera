@@ -1,9 +1,0 @@
-{
-    "plugins\/camera\/core\/template\/dashboard\/camera.html": {
-        "Voir": "View",
-        "Historique #name#": "History #name#"
-    },
-    "plugins\/camera\/core\/template\/mobile\/camera.html": {
-        "Voir": "View"
-    }
-}
