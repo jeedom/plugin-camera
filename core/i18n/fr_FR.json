@@ -50,5 +50,9 @@
         "Afficher": "Afficher",
         "Curl digest": "Curl digest",
         "Tester": "Tester"
+    },
+    "plugins\/camera\/plugin_info\/info.xml": {
+        "Plugin pour afficher les caméras IP": "Plugin pour afficher les caméras IP",
+        "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)": "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)"
     }
 }
