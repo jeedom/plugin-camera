@@ -18,8 +18,8 @@
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 include_file('core', 'authentification', 'php');
 if (!isConnect()) {
-    include_file('desktop', '404', 'php');
-    die();
+	include_file('desktop', '404', 'php');
+	die();
 }
 ?>
 
@@ -33,7 +33,7 @@ if (!isConnect()) {
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-2 control-label">{{Taille maximum du dossier d'enregistrement (Mo)}</label>
+            <label class="col-lg-2 control-label">{{Taille maximum du dossier d'enregistrement (Mo)}}</label>
             <div class="col-lg-4">
                 <input type="text" class="configKey form-control" data-l1key="maxSizeRecordDir" />
             </div>
