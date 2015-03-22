@@ -1,6 +1,6 @@
 <?php
 if (!isConnect('admin')) {
-    throw new Exception('{{401 - Accès non autorisé}}');
+	throw new Exception('{{401 - Accès non autorisé}}');
 }
 include_file('3rdparty', 'jquery.fileupload/jquery.ui.widget', 'js');
 include_file('3rdparty', 'jquery.fileupload/jquery.iframe-transport', 'js');
@@ -16,10 +16,10 @@ $eqLogics = eqLogic::byType('camera');
                 <a class="btn btn-default eqLogicAction" style="width : 100%;margin-top : 5px;margin-bottom: 5px;" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une caméra}}</a>
                 <li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%"/></li>
                 <?php
-                foreach ($eqLogics as $eqLogic) {
-                    echo '<li class="cursor li_eqLogic" data-eqLogic_id="' . $eqLogic->getId() . '"><a>' . $eqLogic->getHumanName(true) . '</a></li>';
-                }
-                ?>
+foreach ($eqLogics as $eqLogic) {
+	echo '<li class="cursor li_eqLogic" data-eqLogic_id="' . $eqLogic->getId() . '"><a>' . $eqLogic->getHumanName(true) . '</a></li>';
+}
+?>
             </ul>
         </div>
     </div>
@@ -31,26 +31,26 @@ $eqLogics = eqLogic::byType('camera');
             </span>
         </legend>
         <?php
-        if (count($eqLogics) == 0) {
-            echo "<br/><br/><br/><center><span style='color:#767676;font-size:1.2em;font-weight: bold;'>Vous n'avez aucune caméra. Cliquez sur le bouton camera à droite pour ajouter une camera</span></center>";
-        } else {
-            ?>
+if (count($eqLogics) == 0) {
+	echo "<br/><br/><br/><center><span style='color:#767676;font-size:1.2em;font-weight: bold;'>Vous n'avez aucune caméra. Cliquez sur le bouton camera à droite pour ajouter une camera</span></center>";
+} else {
+	?>
             <div class="eqLogicThumbnailContainer">
                 <?php
-                foreach ($eqLogics as $eqLogic) {
-                    echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
-                    echo "<center>";
-                    $urlPath = config::byKey('market::address') . '/market/camera/images/' . $eqLogic->getConfiguration('device') . '.jpg';
-                    $urlPath2 = config::byKey('market::address') . '/market/camera/images/' . $eqLogic->getConfiguration('device') . '_icon.png';
-                    $urlPath3 = config::byKey('market::address') . '/market/camera/images/' . $eqLogic->getConfiguration('device') . '_icon.jpg';
-                    echo '<img class="lazy" src="plugins/camera/doc/images/camera_icon.png" data-original3="' . $urlPath3 . '" data-original2="' . $urlPath2 . '" data-original="' . $urlPath . '" height="105" width="95" />';
-                    echo "</center>";
-                    echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
-                    echo '</div>';
-                }
-                ?>
+foreach ($eqLogics as $eqLogic) {
+		echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
+		echo "<center>";
+		$urlPath = config::byKey('market::address') . '/market/camera/images/' . $eqLogic->getConfiguration('device') . '.jpg';
+		$urlPath2 = config::byKey('market::address') . '/market/camera/images/' . $eqLogic->getConfiguration('device') . '_icon.png';
+		$urlPath3 = config::byKey('market::address') . '/market/camera/images/' . $eqLogic->getConfiguration('device') . '_icon.jpg';
+		echo '<img class="lazy" src="plugins/camera/doc/images/camera_icon.png" data-original3="' . $urlPath3 . '" data-original2="' . $urlPath2 . '" data-original="' . $urlPath . '" height="105" width="95" />';
+		echo "</center>";
+		echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
+		echo '</div>';
+	}
+	?>
             </div>
-            <?php } ?>
+            <?php }?>
         </div>
 
         <div class="col-lg-10 col-md-9 col-sm-8 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
@@ -72,10 +72,10 @@ $eqLogics = eqLogic::byType('camera');
                                     <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
                                         <option value="">{{Aucun}}</option>
                                         <?php
-                                        foreach (object::all() as $object) {
-                                            echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
-                                        }
-                                        ?>
+foreach (object::all() as $object) {
+	echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
+}
+?>
                                     </select>
                                 </div>
                             </div>
@@ -83,13 +83,13 @@ $eqLogics = eqLogic::byType('camera');
                                 <label class="col-sm-3 control-label"></label>
                                 <div class="col-sm-1">
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/> Activer 
+                                        <input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/> Activer
                                     </label>
                                 </div>
                                 <label class="col-sm-1 control-label"></label>
                                 <div class="col-sm-1">
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/> Visible 
+                                        <input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/> Visible
                                     </label>
                                 </div>
                             </div>
@@ -105,6 +105,7 @@ $eqLogics = eqLogic::byType('camera');
                                 </div>
                             </div>
                             <div class="proxy_mode nginx apache">
+                                <div class="alert alert-info">{{Pensez bien à configurer l'accès externe dans Générale -> Administration -> Configuration puis partie réseaux}}</div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">{{IP}}</label>
                                     <div class="col-sm-5">
@@ -148,7 +149,7 @@ $eqLogics = eqLogic::byType('camera');
                                     <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
                                 </div>
                             </div>
-                        </fieldset> 
+                        </fieldset>
                     </form>
                 </div>
                 <div class="col-sm-6">
@@ -161,10 +162,10 @@ $eqLogics = eqLogic::byType('camera');
                                     <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
                                         <option value="">{{Aucun}}</option>
                                         <?php
-                                        foreach (camera::devicesParameters() as $id => $info) {
-                                            echo '<option value="' . $id . '">' . $info['name'] . '</option>';
-                                        }
-                                        ?>
+foreach (camera::devicesParameters() as $id => $info) {
+	echo '<option value="' . $id . '">' . $info['name'] . '</option>';
+}
+?>
                                     </select>
                                 </div>
                                 <div class="col-sm-4">
@@ -188,8 +189,8 @@ $eqLogics = eqLogic::byType('camera');
                                 </div>
                             </div>
                             <div class="form-group">
-                             <label class="col-sm-3 control-label">{{Protocole commande}}</label>
-                             <div class="col-sm-3">
+                               <label class="col-sm-3 control-label">{{Protocole commande}}</label>
+                               <div class="col-sm-3">
                                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleCommande">
                                     <option value='http'>HTTP</option>
                                     <option value='https'>HTTPS</option>
@@ -197,7 +198,7 @@ $eqLogics = eqLogic::byType('camera');
                             </div>
                         </div>
                         <div class="form-group">
-                        <label class="col-sm-3 control-label">{{Protocole d'accès interne}}</label>
+                            <label class="col-sm-3 control-label">{{Protocole d'accès interne}}</label>
                             <div class="col-sm-3">
                                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
                                     <option value='http'>HTTP</option>
@@ -234,7 +235,7 @@ $eqLogics = eqLogic::byType('camera');
                             </div>
                         </div>
                     </div>
-                </fieldset> 
+                </fieldset>
             </form>
         </div>
     </div>
@@ -267,5 +268,5 @@ $eqLogics = eqLogic::byType('camera');
 </div>
 </div>
 
-<?php include_file('desktop', 'camera', 'js', 'camera'); ?>
-<?php include_file('core', 'plugin.template', 'js'); ?>
+<?php include_file('desktop', 'camera', 'js', 'camera');?>
+<?php include_file('core', 'plugin.template', 'js');?>
