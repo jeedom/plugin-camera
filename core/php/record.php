@@ -72,12 +72,18 @@ if ($exists) {
 		$cmd = 'avconv -f mjpeg -r ' . $camera->getConfiguration('record::fps', 8);
 	}
 }
-$recordState = $camera->getCmd(null, 'recordState');
+
+$recordCmd = $camera->getCmd(null, 'recordCmd');
 $cmd .= ' -i "' . $url . '"';
-$cmd .= ' -t ' . $recordState->getConfiguration('request', 1800);
+
+if (is_object($recordCmd) && is_numeric($recordCmd->getConfiguration('request', 1800))) {
+	$cmd .= ' -t ' . $recordCmd->getConfiguration('request', 1800);
+} else {
+	$cmd .= ' -t 1800';
+}
 $cmd .= ' -vcodec mpeg4 -y -b:v ' . $camera->getConfiguration('record::bitrate', 1000000) . ' -r ' . $camera->getConfiguration('record::fps', 8) . ' ' . escapeshellarg($output_dir . '/' . $output_file);
 log::add('camera', 'debug', 'Record command : ' . $cmd);
-
+$recordState = $camera->getCmd(null, 'recordState');
 $recordState->event(1);
 $camera->refreshWidget();
 shell_exec($cmd);

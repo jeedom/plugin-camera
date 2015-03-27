@@ -154,11 +154,11 @@ foreach (object::all() as $object) {
                     <div class="form-group">
                         <label class="col-sm-3 control-label">{{FPS}}</label>
                         <div class="col-sm-3">
-                            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="reccord::fps" placeholder="{{Image par secondes}}" value="8"/>
+                            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::fps" placeholder="{{Image par secondes}}" value="8"/>
                         </div>
                         <label class="col-sm-3 control-label">{{Bitrate}}</label>
                         <div class="col-sm-3">
-                            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="reccord::bitrate" placeholder="{{Débit (bit/s)}}" value="1000000"/>
+                            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::bitrate" placeholder="{{Débit (bit/s)}}" value="1000000"/>
                         </div>
                     </div>
                 </div>
