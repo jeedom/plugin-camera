@@ -260,7 +260,7 @@ class camera extends eqLogic {
 		$stopRecordCmd->save();
 
 		if ($this->getConfiguration('proxy_mode') == 'nginx') {
-			if (method_exists('jeedom', 'nginx_saveRule')) {
+			if (method_exists('network', 'nginx_saveRule')) {
 				$ip = $this->getConfiguration('ip_cam');
 				if (trim($this->getConfiguration('port_cam')) != '') {
 					$ip .= ':' . $this->getConfiguration('port_cam');
@@ -273,10 +273,10 @@ class camera extends eqLogic {
 					"proxy_set_header X-Real-IP \$remote_addr;\n" .
 					"}",
 				);
-				jeedom::nginx_saveRule($rules);
+				network::nginx_saveRule($rules);
 			}
 		} else if ($this->getConfiguration('proxy_mode') == 'apache') {
-			if (method_exists('jeedom', 'apache_saveRule')) {
+			if (method_exists('network', 'apache_saveRule')) {
 				$ip = $this->getConfiguration('ip_cam');
 				if (trim($this->getConfiguration('port_cam')) != '') {
 					$ip .= ':' . $this->getConfiguration('port_cam');
@@ -289,29 +289,29 @@ class camera extends eqLogic {
 					"\tAllow from all\n" .
 					"</Location>",
 				);
-				jeedom::apache_saveRule($rules);
+				network::apache_saveRule($rules);
 			}
-			if (method_exists('jeedom', 'nginx_removeRule')) {
+			if (method_exists('network', 'nginx_removeRule')) {
 				$rules = array(
 					"location /cam" . $this->getId() . "/ {\n",
 				);
-				jeedom::nginx_removeRule($rules);
+				network::nginx_removeRule($rules);
 			}
 		} else {
 			try {
-				if (method_exists('jeedom', 'nginx_removeRule')) {
+				if (method_exists('network', 'nginx_removeRule')) {
 					$rules = array(
 						"location /cam" . $this->getId() . "/ {\n",
 					);
-					jeedom::nginx_removeRule($rules);
+					network::nginx_removeRule($rules);
 				}
-				if (method_exists('jeedom', 'apache_removeRule')) {
+				if (method_exists('network', 'apache_removeRule')) {
 					$rules = array(
 						"!.*ProxyPass /cam" . $this->getId() . "/.*!",
 						"!.*ProxyPassReverse /cam" . $this->getId() . "/.*!",
 						"!<Location /cam" . $this->getId() . "/>[^<]*</Location>!s",
 					);
-					jeedom::apache_removeRule($rules);
+					network::apache_removeRule($rules);
 				}
 			} catch (Exception $e) {
 
@@ -321,19 +321,19 @@ class camera extends eqLogic {
 	}
 
 	public function preRemove() {
-		if ($this->getConfiguration('proxy_mode') == 'nginx' && method_exists('jeedom', 'nginx_removeRule')) {
+		if ($this->getConfiguration('proxy_mode') == 'nginx' && method_exists('network', 'nginx_removeRule')) {
 			$rules = array(
 				"location /cam" . $this->getId() . "/ {\n",
 			);
-			jeedom::nginx_removeRule($rules);
+			network::nginx_removeRule($rules);
 		}
-		if ($this->getConfiguration('proxy_mode') == 'apache' && method_exists('jeedom', 'apache_removeRule')) {
+		if ($this->getConfiguration('proxy_mode') == 'apache' && method_exists('network', 'apache_removeRule')) {
 			$rules = array(
 				"!.*ProxyPass /cam" . $this->getId() . "/.*!",
 				"!.*ProxyPassReverse /cam" . $this->getId() . "/.*!",
 				"!<Location /cam" . $this->getId() . "/>[^<]*</Location>!s",
 			);
-			jeedom::apache_removeRule($rules);
+			network::apache_removeRule($rules);
 		}
 	}
 
@@ -439,13 +439,13 @@ class camera extends eqLogic {
 			'#password#' => $this->getConfiguration('password'),
 		);
 		if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
-			$replace['#ip#'] = config::byKey('internalAddr') . ':' . config::byKey('internalPort', 'core', 80);
+			$replace['#ip#'] = network::getNetworkAccess('internal', 'ip:port');
 			$url = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration($_protocole, 'http'));
 			if ($this->getConfiguration('port') != '' && $this->getConfiguration('proxy_mode') != 'nginx' && $this->getConfiguration('proxy_mode') != 'apache') {
 				$url .= ':' . $this->getConfiguration('port');
 			}
 		} else {
-			$replace['#ip#'] = config::byKey('externalAddr') . ':' . config::byKey('externalPort', 'core', 80);
+			$replace['#ip#'] = network::getNetworkAccess('external', 'ip:port');
 			$url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
 			if ($this->getConfiguration('port_ext') != '' && $this->getConfiguration('proxy_mode') != 'nginx' && $this->getConfiguration('proxy_mode') != 'apache') {
 				$url .= ':' . $this->getConfiguration('port_ext');
