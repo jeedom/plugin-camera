@@ -161,93 +161,99 @@ foreach (object::all() as $object) {
                             <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::bitrate" placeholder="{{Débit (bit/s)}}" value="1000000"/>
                         </div>
                     </div>
+                    <div class="form-group expertModeVisible">
+                      <label class="col-sm-3 control-label">{{Option commande d'entregistrement}}</label>
+                      <div class="col-sm-9">
+                        <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdRecordOption" />
+                    </div>
                 </div>
-            </fieldset>
-        </form>
-    </div>
-    <div class="col-sm-6">
-        <legend>{{Configuration}}</legend>
-        <form class="form-horizontal">
-            <fieldset>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">{{Modèle de caméra}}</label>
-                    <div class="col-sm-5">
-                        <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
-                            <option value="">{{Aucun}}</option>
-                            <?php
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="col-sm-6">
+    <legend>{{Configuration}}</legend>
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{Modèle de caméra}}</label>
+                <div class="col-sm-5">
+                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
+                        <option value="">{{Aucun}}</option>
+                        <?php
 foreach (camera::devicesParameters() as $id => $info) {
 	echo '<option value="' . $id . '">' . $info['name'] . '</option>';
 }
 ?>
-                       </select>
-                   </div>
-                   <div class="col-sm-4">
-                    <a class="btn btn-warning" id="bt_shareOnMarket"><i class="fa fa-cloud-upload"></i> {{Partager}}</a>
+                   </select>
+               </div>
+               <div class="col-sm-4">
+                <a class="btn btn-warning" id="bt_shareOnMarket"><i class="fa fa-cloud-upload"></i> {{Partager}}</a>
 
-                </div>
             </div>
-            <div class="form-group expertModeVisible">
-                <label class="col-sm-3 control-label">{{Envoyer une configuration}}</label>
-                <div class="col-sm-5">
-                    <input id="bt_uploadConfCam" type="file" name="file" data-url="plugins/camera/core/ajax/camera.ajax.php?action=uploadConfCam">
-                </div>
-                <div class="col-sm-4">
-                    <a class="btn btn-success eqLogicAction" data-action="export"><i class="fa fa-cloud-download"></i> {{Exporter}}</a>
-                </div>
+        </div>
+        <div class="form-group expertModeVisible">
+            <label class="col-sm-3 control-label">{{Envoyer une configuration}}</label>
+            <div class="col-sm-5">
+                <input id="bt_uploadConfCam" type="file" name="file" data-url="plugins/camera/core/ajax/camera.ajax.php?action=uploadConfCam">
             </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">{{URL du flux}}</label>
-                <div class="col-sm-6">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL du flux}}"/>
-                </div>
-            </div>
-            <div class="form-group">
-             <label class="col-sm-3 control-label">{{Protocole commande}}</label>
-             <div class="col-sm-3">
-                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleCommande">
-                    <option value='http'>HTTP</option>
-                    <option value='https'>HTTPS</option>
-                </select>
+            <div class="col-sm-4">
+                <a class="btn btn-success eqLogicAction" data-action="export"><i class="fa fa-cloud-download"></i> {{Exporter}}</a>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">{{Protocole d'accès interne}}</label>
-            <div class="col-sm-3">
-                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
-                    <option value='http'>HTTP</option>
-                    <option value='https'>HTTPS</option>
-                    <option value='rtsp'>RTSP</option>
-                </select>
+            <label class="col-sm-3 control-label">{{URL du flux}}</label>
+            <div class="col-sm-6">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL du flux}}"/>
             </div>
-
         </div>
         <div class="form-group">
-          <label class="col-sm-3 control-label">{{Protocole d'accès externe}}</label>
-          <div class="col-sm-3">
-            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleExt">
+           <label class="col-sm-3 control-label">{{Protocole commande}}</label>
+           <div class="col-sm-3">
+            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleCommande">
+                <option value='http'>HTTP</option>
+                <option value='https'>HTTPS</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{Protocole d'accès interne}}</label>
+        <div class="col-sm-3">
+            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
                 <option value='http'>HTTP</option>
                 <option value='https'>HTTPS</option>
                 <option value='rtsp'>RTSP</option>
             </select>
         </div>
-    </div>
 
+    </div>
     <div class="form-group">
-        <label class="col-sm-3 control-label">{{Méthode d'affichage}}</label>
+      <label class="col-sm-3 control-label">{{Protocole d'accès externe}}</label>
+      <div class="col-sm-3">
+        <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleExt">
+            <option value='http'>HTTP</option>
+            <option value='https'>HTTPS</option>
+            <option value='rtsp'>RTSP</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-sm-3 control-label">{{Méthode d'affichage}}</label>
+    <div class="col-sm-3">
+        <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
+            <option value='image'>Standard</option>
+            <option value='vlc'>VLC</option>
+            <option value='jpeg'>JPEG</option>
+        </select>
+    </div>
+    <div class="displayProtocol jpeg">
+        <label class="col-sm-3 control-label">{{Fréquence (s)}}</label>
         <div class="col-sm-3">
-            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
-                <option value='image'>Standard</option>
-                <option value='vlc'>VLC</option>
-                <option value='jpeg'>JPEG</option>
-            </select>
-        </div>
-        <div class="displayProtocol jpeg">
-            <label class="col-sm-3 control-label">{{Fréquence (s)}}</label>
-            <div class="col-sm-3">
-                <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" value="1" />
-            </div>
+            <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" value="1" />
         </div>
     </div>
+</div>
 </fieldset>
 </form>
 </div>

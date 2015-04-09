@@ -81,6 +81,9 @@ if (is_object($recordCmd) && is_numeric($recordCmd->getConfiguration('request', 
 } else {
 	$cmd .= ' -t 1800';
 }
+if ($camera->getConfiguration('cmdRecordOption') != '') {
+	$cmd .= ' ' . $camera->getConfiguration('cmdRecordOption');
+}
 $cmd .= ' -vcodec mpeg4 -y -b:v ' . $camera->getConfiguration('record::bitrate', 1000000) . ' -r ' . $camera->getConfiguration('record::fps', 8) . ' ' . escapeshellarg($output_dir . '/' . $output_file);
 log::add('camera', 'debug', 'Record command : ' . $cmd);
 $recordState = $camera->getCmd(null, 'recordState');
