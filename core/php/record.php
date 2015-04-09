@@ -63,14 +63,26 @@ if ($exists) {
 	if ($camera->getConfiguration('protocole') == 'rtsp') {
 		$cmd = 'ffmpeg';
 	} else {
-		$cmd = 'ffmpeg -f mjpeg -r ' . $camera->getConfiguration('record::fps', 8);
+		if ($camera->getConfiguration('cmdRecordOption') != '') {
+			$cmd = 'ffmpeg -f mjpeg ';
+		} else {
+			$cmd = 'ffmpeg -f mjpeg -r ' . $camera->getConfiguration('record::fps', 8);
+		}
 	}
 } else {
 	if ($camera->getConfiguration('protocole') == 'rtsp') {
 		$cmd = 'avconv';
 	} else {
-		$cmd = 'avconv -f mjpeg -r ' . $camera->getConfiguration('record::fps', 8);
+		if ($camera->getConfiguration('cmdRecordOption') != '') {
+			$cmd = 'avconv -f mjpeg ';
+		} else {
+			$cmd = 'avconv -f mjpeg -r ' . $camera->getConfiguration('record::fps', 8);
+		}
 	}
+}
+
+if ($camera->getConfiguration('cmdRecordOption') != '') {
+	$cmd .= ' ' . $camera->getConfiguration('cmdRecordOption');
 }
 
 $recordCmd = $camera->getCmd(null, 'recordCmd');
@@ -82,9 +94,11 @@ if (is_object($recordCmd) && is_numeric($recordCmd->getConfiguration('request', 
 	$cmd .= ' -t 1800';
 }
 if ($camera->getConfiguration('cmdRecordOption') != '') {
-	$cmd .= ' ' . $camera->getConfiguration('cmdRecordOption');
+	$cmd .= ' -vcodec mpeg4 -y -b:v ' . $camera->getConfiguration('record::bitrate', 1000000) . ' ' . escapeshellarg($output_dir . '/' . $output_file);
+} else {
+	$cmd .= ' -vcodec mpeg4 -y -b:v ' . $camera->getConfiguration('record::bitrate', 1000000) . ' -r ' . $camera->getConfiguration('record::fps', 8) . ' ' . escapeshellarg($output_dir . '/' . $output_file);
 }
-$cmd .= ' -vcodec mpeg4 -y -b:v ' . $camera->getConfiguration('record::bitrate', 1000000) . ' -r ' . $camera->getConfiguration('record::fps', 8) . ' ' . escapeshellarg($output_dir . '/' . $output_file);
+
 log::add('camera', 'debug', 'Record command : ' . $cmd);
 $recordState = $camera->getCmd(null, 'recordState');
 $recordState->event(1);

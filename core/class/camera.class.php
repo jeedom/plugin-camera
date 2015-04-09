@@ -445,8 +445,12 @@ class camera extends eqLogic {
 				$url .= ':' . $this->getConfiguration('port');
 			}
 		} else {
-			$replace['#ip#'] = network::getNetworkAccess('external', 'ip:port');
+			$replace['#ip#'] = network::getNetworkAccess('external', 'dns:port');
 			$url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
+			if ($this->getConfiguration('proxy_mode') == 'nginx' || $this->getConfiguration('proxy_mode') == 'apache') {
+				$url = str_replace(array('http://', 'https://'), '', $url);
+				$url = network::getNetworkAccess('external', 'proto') . $url;
+			}
 			if ($this->getConfiguration('port_ext') != '' && $this->getConfiguration('proxy_mode') != 'nginx' && $this->getConfiguration('proxy_mode') != 'apache') {
 				$url .= ':' . $this->getConfiguration('port_ext');
 			}
