@@ -532,7 +532,7 @@ class camera extends eqLogic {
 			exec('kill -9 ' . $pid . ' > /dev/null 2>&1');
 		}
 		$process = $this->getUrl($this->getConfiguration('urlStream'), 'internal');
-		$pid = shell_exec("ps -ef | grep '" . $process . "' | grep -v grep | awk '{print $2}' | xargs kill -9");
+		$pid = shell_exec("ps -ef | grep '" . $process . "' | grep -v grep | awk '{print $2}' | xargs kill -SIGINT");
 		$recordState = $this->getCmd(null, 'recordState');
 		$recordState->event(0);
 		$this->refreshWidget();
