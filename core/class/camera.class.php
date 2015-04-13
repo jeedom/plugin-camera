@@ -341,6 +341,9 @@ class camera extends eqLogic {
 		if ($this->getIsEnable() != 1) {
 			return '';
 		}
+		if (!$this->hasRight('r')) {
+			return '';
+		}
 		$stopCmd_id = '';
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getConfiguration('stopCmd') == 1) {
