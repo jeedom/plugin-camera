@@ -260,59 +260,52 @@ class camera extends eqLogic {
 		$stopRecordCmd->save();
 
 		if ($this->getConfiguration('proxy_mode') == 'nginx') {
-			if (method_exists('network', 'nginx_saveRule')) {
-				$ip = $this->getConfiguration('ip_cam');
-				if (trim($this->getConfiguration('port_cam')) != '') {
-					$ip .= ':' . $this->getConfiguration('port_cam');
-				}
-				$rules = array(
-					"location /cam" . $this->getId() . "/ {\n" .
-					"proxy_pass http://" . $ip . "/;\n" .
-					"proxy_redirect off;\n" .
-					"proxy_set_header Host \$host:\$server_port;\n" .
-					"proxy_set_header X-Real-IP \$remote_addr;\n" .
-					"}",
-				);
-				network::nginx_saveRule($rules);
+			$ip = $this->getConfiguration('ip_cam');
+			if (trim($this->getConfiguration('port_cam')) != '') {
+				$ip .= ':' . $this->getConfiguration('port_cam');
 			}
+			$rules = array(
+				"location /cam" . $this->getId() . "/ {\n" .
+				"proxy_pass http://" . $ip . "/;\n" .
+				"proxy_redirect off;\n" .
+				"proxy_set_header Host \$host:\$server_port;\n" .
+				"proxy_set_header X-Real-IP \$remote_addr;\n" .
+				"}",
+			);
+			network::nginx_saveRule($rules);
 		} else if ($this->getConfiguration('proxy_mode') == 'apache') {
-			if (method_exists('network', 'apache_saveRule')) {
-				$ip = $this->getConfiguration('ip_cam');
-				if (trim($this->getConfiguration('port_cam')) != '') {
-					$ip .= ':' . $this->getConfiguration('port_cam');
-				}
-				$rules = array(
-					"ProxyPass /cam" . $this->getId() . "/ http://" . $ip . "/",
-					"ProxyPassReverse /cam" . $this->getId() . "/ http://" . $ip . "/",
-					"<Location /cam" . $this->getId() . "/>\n" .
-					"\tOrder allow,deny\n" .
-					"\tAllow from all\n" .
-					"</Location>",
-				);
-				network::apache_saveRule($rules);
+			$ip = $this->getConfiguration('ip_cam');
+			if (trim($this->getConfiguration('port_cam')) != '') {
+				$ip .= ':' . $this->getConfiguration('port_cam');
 			}
-			if (method_exists('network', 'nginx_removeRule')) {
+			$rules = array(
+				"ProxyPass /cam" . $this->getId() . "/ http://" . $ip . "/",
+				"ProxyPassReverse /cam" . $this->getId() . "/ http://" . $ip . "/",
+				"<Location /cam" . $this->getId() . "/>\n" .
+				"\tOrder allow,deny\n" .
+				"\tAllow from all\n" .
+				"</Location>",
+			);
+			network::apache_saveRule($rules);
+
+			$rules = array(
+				"location /cam" . $this->getId() . "/ {\n",
+			);
+			network::nginx_removeRule($rules);
+
+		} else {
+			try {
 				$rules = array(
 					"location /cam" . $this->getId() . "/ {\n",
 				);
 				network::nginx_removeRule($rules);
-			}
-		} else {
-			try {
-				if (method_exists('network', 'nginx_removeRule')) {
-					$rules = array(
-						"location /cam" . $this->getId() . "/ {\n",
-					);
-					network::nginx_removeRule($rules);
-				}
-				if (method_exists('network', 'apache_removeRule')) {
-					$rules = array(
-						"!.*ProxyPass /cam" . $this->getId() . "/.*!",
-						"!.*ProxyPassReverse /cam" . $this->getId() . "/.*!",
-						"!<Location /cam" . $this->getId() . "/>[^<]*</Location>!s",
-					);
-					network::apache_removeRule($rules);
-				}
+
+				$rules = array(
+					"!.*ProxyPass /cam" . $this->getId() . "/.*!",
+					"!.*ProxyPassReverse /cam" . $this->getId() . "/.*!",
+					"!<Location /cam" . $this->getId() . "/>[^<]*</Location>!s",
+				);
+				network::apache_removeRule($rules);
 			} catch (Exception $e) {
 
 			}
@@ -321,13 +314,13 @@ class camera extends eqLogic {
 	}
 
 	public function preRemove() {
-		if ($this->getConfiguration('proxy_mode') == 'nginx' && method_exists('network', 'nginx_removeRule')) {
+		if ($this->getConfiguration('proxy_mode') == 'nginx') {
 			$rules = array(
 				"location /cam" . $this->getId() . "/ {\n",
 			);
 			network::nginx_removeRule($rules);
 		}
-		if ($this->getConfiguration('proxy_mode') == 'apache' && method_exists('network', 'apache_removeRule')) {
+		if ($this->getConfiguration('proxy_mode') == 'apache') {
 			$rules = array(
 				"!.*ProxyPass /cam" . $this->getId() . "/.*!",
 				"!.*ProxyPassReverse /cam" . $this->getId() . "/.*!",
