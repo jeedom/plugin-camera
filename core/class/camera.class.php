@@ -615,6 +615,31 @@ class cameraCmd extends cmd {
 
 	/*     * *********************Methode d'instance************************* */
 
+	public function imperihomeGenerate($ISSStructure) {
+		$eqLogic = $this->getEqLogic();
+		$object = $eqLogic->getObject();
+		$type = 'DevCamera';
+		$info_device = array(
+			'id' => $this->getId(),
+			'name' => $eqLogic->getName(),
+			'room' => (is_object($object)) ? $object->getId() : 99999,
+			'type' => $type,
+			'params' => array(),
+		);
+		$info_device['params'] = $ISSStructure[$info_device['type']]['params'];
+		$info_device['params'][0]['value'] = $eqLogic->getConfiguration('username');
+		$info_device['params'][1]['value'] = $eqLogic->getConfiguration('password');
+		$info_device['params'][2]['value'] = $camera->getUrl($camera->getConfiguration('urlStream'), '', 'protocole');
+		$info_device['params'][3]['value'] = $camera->getUrl($camera->getConfiguration('urlStream'), '', 'protocole');
+		$info_device['params'][4]['value'] = $camera->getUrl($camera->getConfiguration('urlStream'), '', 'protocoleExt');
+		$info_device['params'][5]['value'] = $camera->getUrl($camera->getConfiguration('urlStream'), '', 'protocoleExt');
+		return $info_device;
+	}
+
+	public function imperihomeAction($_action, $_value) {
+		return;
+	}
+
 	public function dontRemoveCmd() {
 		if ($this->getLogicalId() == 'recordCmd') {
 			return true;
