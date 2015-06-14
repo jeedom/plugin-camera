@@ -384,6 +384,9 @@ class camera extends eqLogic {
 			'#jpegRefreshTime#' => $this->getConfiguration('jpegRefreshTime', 1),
 			'#hideFolder#' => 0,
 		);
+		if (!$this->hasRight('w')) {
+			$replace['#eqLink#'] = '#';
+		}
 
 		$stopRecord = $this->getCmd(null, 'stopRecordCmd');
 		$record = $this->getCmd(null, 'recordCmd');
