@@ -379,14 +379,11 @@ class camera extends eqLogic {
 			'#background_color#' => $this->getBackgroundColor(jeedom::versionAlias($_version)),
 			'#humanname#' => $this->getHumanName(),
 			'#name#' => $this->getName(),
-			'#eqLink#' => $this->getLinkToConfiguration(),
+			'#eqLink#' => ($this->hasRight('w')) ? $this->getLinkToConfiguration() : '#',
 			'#displayProtocol#' => $this->getConfiguration('displayProtocol', 'image'),
 			'#jpegRefreshTime#' => $this->getConfiguration('jpegRefreshTime', 1),
 			'#hideFolder#' => 0,
 		);
-		if (!$this->hasRight('w')) {
-			$replace['#eqLink#'] = '#';
-		}
 
 		$stopRecord = $this->getCmd(null, 'stopRecordCmd');
 		$record = $this->getCmd(null, 'recordCmd');
