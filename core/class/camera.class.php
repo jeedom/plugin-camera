@@ -346,9 +346,6 @@ class camera extends eqLogic {
 		$action = '';
 		foreach ($this->getCmd('action') as $cmd) {
 			if ($cmd->getIsVisible() == 1 && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState') {
-				if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
-					$action .= '<br/>';
-				}
 				if ($cmd->getSubType() == 'other') {
 					$replace = array(
 						'#id#' => $cmd->getId(),
@@ -358,9 +355,6 @@ class camera extends eqLogic {
 					$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
 				} else {
 					$action .= $cmd->toHtml($_version);
-				}
-				if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
-					$action .= '<br/>';
 				}
 			}
 		}
@@ -395,13 +389,7 @@ class camera extends eqLogic {
 				'#recordState#' => $recordState->execCmd(),
 				'#recordState_id#' => $recordState->getId(),
 			);
-			if ($stopRecord->getDisplay('forceReturnLineBefore', 0) == 1) {
-				$action .= '<br/>';
-			}
 			$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
-			if ($stopRecord->getDisplay('forceReturnLineAfter', 0) == 1) {
-				$action .= '<br/>';
-			}
 			$replace_eqLogic['#hideFolder#'] = 1;
 		}
 		$replace_eqLogic['#action#'] = $action;
@@ -629,10 +617,10 @@ class cameraCmd extends cmd {
 		$info_device['params'] = $ISSStructure[$info_device['type']]['params'];
 		$info_device['params'][0]['value'] = $eqLogic->getConfiguration('username');
 		$info_device['params'][1]['value'] = $eqLogic->getConfiguration('password');
-		$info_device['params'][2]['value'] = $camera->getUrl($camera->getConfiguration('urlStream'), '', 'protocole');
-		$info_device['params'][3]['value'] = $camera->getUrl($camera->getConfiguration('urlStream'), '', 'protocole');
-		$info_device['params'][4]['value'] = $camera->getUrl($camera->getConfiguration('urlStream'), '', 'protocoleExt');
-		$info_device['params'][5]['value'] = $camera->getUrl($camera->getConfiguration('urlStream'), '', 'protocoleExt');
+		$info_device['params'][2]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'), '', 'protocole');
+		$info_device['params'][3]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'), '', 'protocole');
+		$info_device['params'][4]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'), '', 'protocoleExt');
+		$info_device['params'][5]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'), '', 'protocoleExt');
 		return $info_device;
 	}
 
