@@ -347,12 +347,18 @@ class camera extends eqLogic {
 		foreach ($this->getCmd('action') as $cmd) {
 			if ($cmd->getIsVisible() == 1 && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState') {
 				if ($cmd->getSubType() == 'other') {
+					if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
+						$action .= '<br/>';
+					}
 					$replace = array(
 						'#id#' => $cmd->getId(),
 						'#stopCmd_id#' => $stopCmd_id,
 						'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
 					);
 					$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
+					if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
+						$action .= '<br/>';
+					}
 				} else {
 					$action .= $cmd->toHtml($_version);
 				}
@@ -382,6 +388,9 @@ class camera extends eqLogic {
 		$stopRecord = $this->getCmd(null, 'stopRecordCmd');
 		$record = $this->getCmd(null, 'recordCmd');
 		if ($stopRecord->getIsVisible() == 1 && $record->getIsVisible() == 1) {
+			if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
+				$action .= '<br/>';
+			}
 			$recordState = $this->getCmd(null, 'recordState');
 			$replace = array(
 				'#record_id#' => $record->getId(),
@@ -390,6 +399,9 @@ class camera extends eqLogic {
 				'#recordState_id#' => $recordState->getId(),
 			);
 			$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
+			if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
+				$action .= '<br/>';
+			}
 			$replace_eqLogic['#hideFolder#'] = 1;
 		}
 		$replace_eqLogic['#action#'] = $action;
