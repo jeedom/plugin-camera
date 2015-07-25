@@ -66,14 +66,14 @@ foreach ($eqLogics as $eqLogic) {
                     <legend><i class="fa fa-arrow-circle-left eqLogicAction cursor" data-action="returnToThumbnailDisplay"></i> {{Général}}<i class='fa fa-cogs eqLogicAction pull-right cursor expertModeVisible' data-action='configure'></i></legend>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">{{Nom de l'équipement caméra}}</label>
-                        <div class="col-sm-5">
+                        <div class="col-sm-6">
                             <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
                             <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement caméra}}"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" >{{Objet parent}}</label>
-                        <div class="col-sm-5">
+                        <div class="col-sm-6">
                             <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
                                 <option value="">{{Aucun}}</option>
                                 <?php
@@ -93,53 +93,84 @@ foreach (object::all() as $object) {
                </div>
 
                <div class="form-group">
-                <label class="col-sm-3 control-label">{{Utiliser Jeedom comme proxy}}</label>
+                <label class="col-sm-3 control-label">{{Gestion du proxy d'accès à la caméra :}}</label>
                 <div class="col-sm-5">
-                    <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="proxy_mode" checked/>
+                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="proxy_mode">
+                        <option value="nginx">Jeedom (http et nginx seulement)</option>
+                        <option value="apache">Jeedom (http et apache seulement)</option>
+                        <option value="manuel">Manuel</option>
+                    </select>
                 </div>
             </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">{{IP}}</label>
-                <div class="col-sm-5">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
-                </div>
-                <label class="col-sm-2 control-label">{{Port}}</label>
-                <div class="col-sm-2">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
+            <div class="proxy_mode nginx apache">
+                <div class="alert alert-info">{{Pensez bien à configurer l'accès externe dans Générale -> Administration -> Configuration puis partie réseaux}}</div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">{{IP}}</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_cam" placeholder="{{IP}}"/>
+                    </div>
+                    <label class="col-sm-2 control-label">{{Port}}</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_cam" placeholder="{{Port}}"/>
+                    </div>
                 </div>
             </div>
-            <div class="form-group" id="div_noProxy">
-                <label class="col-sm-3 control-label">{{IP Externe}}</label>
-                <div class="col-sm-5">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_ext" placeholder="{{IP}}"/>
+            <div class="proxy_mode manuel">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">{{IP}}</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
+                    </div>
+                    <label class="col-sm-2 control-label">{{Port}}</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
+                    </div>
                 </div>
-                <label class="col-sm-2 control-label">{{Port externe}}</label>
-                <div class="col-sm-2">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_ext" placeholder="{{Port}}"/>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">{{IP Externe}}</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_ext" placeholder="{{IP}}"/>
+                    </div>
+                    <label class="col-sm-2 control-label">{{Port externe}}</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_ext" placeholder="{{Port}}"/>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">{{Nom d'utilisateur}}</label>
-                <div class="col-sm-5">
+                <div class="col-sm-3">
                     <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
                 </div>
-                <label class="col-sm-2 control-label">{{Mot de passe}}</label>
-                <div class="col-sm-2">
+                <label class="col-sm-3 control-label">{{Mot de passe}}</label>
+                <div class="col-sm-3">
                     <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">{{URL du flux}}</label>
-                <div class="col-sm-5">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL du flux}}"/>
+            <div class="expertModeVisible">
+                <legend>{{Enregistrement}}</legend>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">{{FPS}}</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::fps" placeholder="{{Image par secondes}}" value="8"/>
+                    </div>
+                    <label class="col-sm-3 control-label">{{Bitrate}}</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::bitrate" placeholder="{{Débit (bit/s)}}" value="1000000"/>
+                    </div>
+                </div>
+                <div class="form-group expertModeVisible">
+                  <label class="col-sm-3 control-label">{{Option commande d'entregistrement}}</label>
+                  <div class="col-sm-9">
+                    <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdRecordOption" />
                 </div>
             </div>
-        </fieldset>
-    </form>
+        </div>
+    </fieldset>
+</form>
 </div>
 <div class="col-sm-6">
-    <legend>{{Configuration avancée}}</legend>
+    <legend>{{Configuration}}</legend>
     <form class="form-horizontal">
         <fieldset>
             <div class="form-group">
@@ -168,7 +199,12 @@ foreach (camera::devicesParameters() as $id => $info) {
                 <a class="btn btn-success eqLogicAction" data-action="export"><i class="fa fa-cloud-download"></i> {{Exporter}}</a>
             </div>
         </div>
-
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{URL du flux}}</label>
+            <div class="col-sm-6">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL du flux}}"/>
+            </div>
+        </div>
         <div class="form-group">
          <label class="col-sm-3 control-label">{{Protocole commande}}</label>
          <div class="col-sm-3">
@@ -215,25 +251,6 @@ foreach (camera::devicesParameters() as $id => $info) {
             <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" value="1" />
         </div>
     </div>
-</div>
-<div class="expertModeVisible">
-    <legend>{{Enregistrement}}</legend>
-    <div class="form-group">
-        <label class="col-sm-3 control-label">{{FPS}}</label>
-        <div class="col-sm-3">
-            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::fps" placeholder="{{Image par secondes}}" value="8"/>
-        </div>
-        <label class="col-sm-3 control-label">{{Bitrate}}</label>
-        <div class="col-sm-3">
-            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::bitrate" placeholder="{{Débit (bit/s)}}" value="1000000"/>
-        </div>
-    </div>
-    <div class="form-group expertModeVisible">
-      <label class="col-sm-3 control-label">{{Option commande d'entregistrement}}</label>
-      <div class="col-sm-9">
-        <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdRecordOption" />
-    </div>
-</div>
 </div>
 </fieldset>
 </form>

@@ -170,11 +170,31 @@ class camera extends eqLogic {
 
 	public function preSave() {
 		$this->setCategory('security', 1);
-		if ($this->getConfiguration('ip') == '') {
-			throw new Exception(__('L\'adresse IP de la camera ne peut être vide', __FILE__));
-		}
-		if ($this->getConfiguration('port') == '') {
-			$this->setConfiguration('port', 80);
+		if ($this->getConfiguration('proxy_mode') == 'nginx' || $this->getConfiguration('proxy_mode') == 'apache') {
+			if ($this->getConfiguration('ip_cam') == '') {
+				throw new Exception(__('L\'adresse IP de la camera ne peut être vide', __FILE__));
+			}
+			$this->setConfiguration('ip_ext', '#username#:#password#@#ip#/cam' . $this->getId());
+			$this->setConfiguration('ip', '#username#:#password#@#ip#/cam' . $this->getId());
+		} else {
+			if ($this->getConfiguration('username') != '' && strpos($this->getConfiguration('urlStream'), '#username#') === false) {
+				if (strpos($this->getConfiguration('ip_ext'), '#username#') === false) {
+					$ip = explode('://', $this->getConfiguration('ip_ext'));
+					if (count($ip) == 2) {
+						$this->setConfiguration('ip_ext', $ip[0] . '#username#:#password#@' . $ip[1]);
+					} else {
+						$this->setConfiguration('ip_ext', '#username#:#password#@' . $ip[0]);
+					}
+				}
+				if (strpos($this->getConfiguration('ip'), '#username#') === false) {
+					$ip = explode('://', $this->getConfiguration('ip'));
+					if (count($ip) == 2) {
+						$this->setConfiguration('ip', $ip[0] . '#username#:#password#@' . $ip[1]);
+					} else {
+						$this->setConfiguration('ip', '#username#:#password#@' . $ip[0]);
+					}
+				}
+			}
 		}
 	}
 
@@ -239,17 +259,13 @@ class camera extends eqLogic {
 		$stopRecordCmd->setDisplay('icon', '<i class="fa fa-stop"></i>');
 		$stopRecordCmd->save();
 
-		if ($this->getConfiguration('proxy_mode') == 1) {
-			$ip = $this->getConfiguration('ip');
-			if (trim($this->getConfiguration('port')) != '') {
-				$ip .= ':' . $this->getConfiguration('port');
+		if ($this->getConfiguration('proxy_mode') == 'nginx') {
+			$ip = $this->getConfiguration('ip_cam');
+			if (trim($this->getConfiguration('port_cam')) != '') {
+				$ip .= ':' . $this->getConfiguration('port_cam');
 			}
 			$rules = array(
-				"location /cam" . sha1($this->getId()) . "/ {\n",
-			);
-			network::nginx_removeRule($rules);
-			$rules = array(
-				"location /cam" . sha1($this->getId()) . "/ {\n" .
+				"location /cam" . $this->getId() . "/ {\n" .
 				"proxy_pass http://" . $ip . "/;\n" .
 				"proxy_redirect off;\n" .
 				"proxy_set_header Host \$host:\$server_port;\n" .
@@ -257,20 +273,60 @@ class camera extends eqLogic {
 				"}",
 			);
 			network::nginx_saveRule($rules);
-		} else {
+		} else if ($this->getConfiguration('proxy_mode') == 'apache') {
+			$ip = $this->getConfiguration('ip_cam');
+			if (trim($this->getConfiguration('port_cam')) != '') {
+				$ip .= ':' . $this->getConfiguration('port_cam');
+			}
 			$rules = array(
-				"location /cam" . sha1($this->getId()) . "/ {\n",
+				"ProxyPass /cam" . $this->getId() . "/ http://" . $ip . "/",
+				"ProxyPassReverse /cam" . $this->getId() . "/ http://" . $ip . "/",
+				"<Location /cam" . $this->getId() . "/>\n" .
+				"\tOrder allow,deny\n" .
+				"\tAllow from all\n" .
+				"</Location>",
+			);
+			network::apache_saveRule($rules);
+
+			$rules = array(
+				"location /cam" . $this->getId() . "/ {\n",
 			);
 			network::nginx_removeRule($rules);
+
+		} else {
+			try {
+				$rules = array(
+					"location /cam" . $this->getId() . "/ {\n",
+				);
+				network::nginx_removeRule($rules);
+
+				$rules = array(
+					"!.*ProxyPass /cam" . $this->getId() . "/.*!",
+					"!.*ProxyPassReverse /cam" . $this->getId() . "/.*!",
+					"!<Location /cam" . $this->getId() . "/>[^<]*</Location>!s",
+				);
+				network::apache_removeRule($rules);
+			} catch (Exception $e) {
+
+			}
+
 		}
 	}
 
 	public function preRemove() {
 		if ($this->getConfiguration('proxy_mode') == 'nginx') {
 			$rules = array(
-				"location /cam" . sha1($this->getId()) . "/ {\n",
+				"location /cam" . $this->getId() . "/ {\n",
 			);
 			network::nginx_removeRule($rules);
+		}
+		if ($this->getConfiguration('proxy_mode') == 'apache') {
+			$rules = array(
+				"!.*ProxyPass /cam" . $this->getId() . "/.*!",
+				"!.*ProxyPassReverse /cam" . $this->getId() . "/.*!",
+				"!<Location /cam" . $this->getId() . "/>[^<]*</Location>!s",
+			);
+			network::apache_removeRule($rules);
 		}
 	}
 
@@ -315,7 +371,7 @@ class camera extends eqLogic {
 		}
 		$replace_eqLogic = array(
 			'#id#' => $this->getId(),
-			'#url#' => $this->getUrl($this->getConfiguration('urlStream'), 'auto', $protocole),
+			'#url#' => $this->getUrl($this->getConfiguration('urlStream'), '', $protocole),
 			'#width#' => $this->getWidth(),
 			'#height#' => $this->getHeight(),
 			'#password#' => $this->getConfiguration('password'),
@@ -373,37 +429,34 @@ class camera extends eqLogic {
 		return template_replace($replace_eqLogic, getTemplate('core', jeedom::versionAlias($_version), 'camera', 'camera'));
 	}
 
-	public function getUrl($_complement = '', $_mode = 'auto', $_protocole = 'protocole') {
-		if ($_mode == 'auto') {
-			$_mode = network::getUserLocation();
-		}
+	public function getUrl($_complement = '', $_auto = '', $_protocole = 'protocole') {
 		$replace = array(
 			'#username#' => $this->getConfiguration('username'),
 			'#password#' => $this->getConfiguration('password'),
 		);
-		if ($_mode == 'internal') {
-			$url = $this->getConfiguration($_protocole, 'http') . '://';
-			if ($this->getConfiguration('username') != '') {
-				$url .= $this->getConfiguration('username') . ':' . $this->getConfiguration('password') . '@';
+		if (((netMatch('192.168.*.*', getClientIp()) || netMatch('10.0.*.*', getClientIp())) && $_auto == '') || $_auto == 'internal') {
+			$replace['#ip#'] = network::getNetworkAccess('internal', 'ip:port');
+			$url = self::formatIp($this->getConfiguration('ip'), $this->getConfiguration($_protocole, 'http'));
+			if ($this->getConfiguration('port') != '' && $this->getConfiguration('proxy_mode') != 'nginx' && $this->getConfiguration('proxy_mode') != 'apache') {
+				$url .= ':' . $this->getConfiguration('port');
 			}
-			$url .= $this->getConfiguration('ip');
 		} else {
-			if ($this->getConfiguration('proxy_mode') == 1) {
-				$url = network::getNetworkAccess('external', 'proto:dns:port');
-				$url .= '/cam' . sha1($this->getId());
-			} else {
-				$url = $this->getConfiguration($_protocole, 'http') . '://';
-				if ($this->getConfiguration('username') != '') {
-					$url .= $this->getConfiguration('username') . ':' . $this->getConfiguration('password') . '@';
-				}
-				$url .= $this->getConfiguration('ip_ext');
-				$url .= ':' . $this->getConfiguration('port_ext', 80);
+			$replace['#ip#'] = network::getNetworkAccess('external', 'dns:port');
+			$url = self::formatIp($this->getConfiguration('ip_ext'), $this->getConfiguration($_protocole, 'http'));
+			if ($this->getConfiguration('proxy_mode') == 'nginx' || $this->getConfiguration('proxy_mode') == 'apache') {
+				$url = str_replace(array('http://', 'https://'), '', $url);
+				$url = network::getNetworkAccess('external', 'proto') . $url;
+			}
+			if ($this->getConfiguration('port_ext') != '' && $this->getConfiguration('proxy_mode') != 'nginx' && $this->getConfiguration('proxy_mode') != 'apache') {
+				$url .= ':' . $this->getConfiguration('port_ext');
 			}
 		}
-		if (strpos($_complement, '/') !== 0) {
-			$_complement = '/' . $_complement;
+		$url = str_replace(array_keys($replace), $replace, $url);
+		$complement = str_replace(array_keys($replace), $replace, $_complement);
+		if (strpos($complement, '/') !== 0) {
+			$complement = '/' . $complement;
 		}
-		return $url . $_complement;
+		return $url . $complement;
 	}
 
 	public function applyModuleConfiguration() {
@@ -611,10 +664,10 @@ class cameraCmd extends cmd {
 		switch ($this->getType()) {
 			case 'action':
 				switch ($this->getSubType()) {
-					case 'slider':
+				case 'slider':
 						$request = str_replace('#slider#', $_options['slider'], $request);
 						break;
-					case 'color':
+				case 'color':
 						$request = str_replace('#color#', $_options['color'], $request);
 				}
 				break;
