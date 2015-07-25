@@ -93,45 +93,34 @@ foreach (object::all() as $object) {
                </div>
 
                <div class="form-group">
-                <label class="col-sm-3 control-label">{{Gestion du proxy d'accès à la caméra :}}</label>
+                <label class="col-sm-3 control-label">{{Utiliser Jeedom comme proxy}}</label>
                 <div class="col-sm-5">
-                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="proxy_mode">
-                        <option value="nginx">Jeedom (http et nginx seulement)</option>
-                        <option value="apache">Jeedom (http et apache seulement)</option>
-                        <option value="manuel">Manuel</option>
+                    <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="proxy_mode" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{IP}}</label>
+                <div class="col-sm-3">
+                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
+                </div>
+                <label class="col-sm-2 control-label">{{Port}}</label>
+                <div class="col-sm-2">
+                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
+                </div>
+                <div class="col-sm-2">
+                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
+                        <option value='http'>HTTP</option>
+                        <option value='https'>HTTPS</option>
                     </select>
                 </div>
             </div>
-            <div class="proxy_mode nginx apache">
-                <div class="alert alert-info">{{Pensez bien à configurer l'accès externe dans Générale -> Administration -> Configuration puis partie réseaux}}</div>
+            <div id="div_proxy_mode_off">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{IP}}</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_cam" placeholder="{{IP}}"/>
-                    </div>
-                    <label class="col-sm-2 control-label">{{Port}}</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_cam" placeholder="{{Port}}"/>
-                    </div>
-                </div>
-            </div>
-            <div class="proxy_mode manuel">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">{{IP}}</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
-                    </div>
-                    <label class="col-sm-2 control-label">{{Port}}</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">{{IP Externe}}</label>
-                    <div class="col-sm-5">
+                    <label class="col-sm-3 control-label">{{Externe IP}}</label>
+                    <div class="col-sm-3">
                         <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip_ext" placeholder="{{IP}}"/>
                     </div>
-                    <label class="col-sm-2 control-label">{{Port externe}}</label>
+                    <label class="col-sm-2 control-label">{{Port}}</label>
                     <div class="col-sm-2">
                         <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port_ext" placeholder="{{Port}}"/>
                     </div>
@@ -142,37 +131,18 @@ foreach (object::all() as $object) {
                 <div class="col-sm-3">
                     <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
                 </div>
-                <label class="col-sm-3 control-label">{{Mot de passe}}</label>
-                <div class="col-sm-3">
+                <label class="col-sm-2 control-label">{{Mot de passe}}</label>
+                <div class="col-sm-2">
                     <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
                 </div>
             </div>
-            <div class="expertModeVisible">
-                <legend>{{Enregistrement}}</legend>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">{{FPS}}</label>
-                    <div class="col-sm-3">
-                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::fps" placeholder="{{Image par secondes}}" value="8"/>
-                    </div>
-                    <label class="col-sm-3 control-label">{{Bitrate}}</label>
-                    <div class="col-sm-3">
-                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::bitrate" placeholder="{{Débit (bit/s)}}" value="1000000"/>
-                    </div>
-                </div>
-                <div class="form-group expertModeVisible">
-                  <label class="col-sm-3 control-label">{{Option commande d'entregistrement}}</label>
-                  <div class="col-sm-9">
-                    <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdRecordOption" />
-                </div>
-            </div>
-        </div>
-    </fieldset>
-</form>
+        </fieldset>
+    </form>
 </div>
 <div class="col-sm-6">
-    <legend>{{Configuration}}</legend>
     <form class="form-horizontal">
         <fieldset>
+            <legend>{{Configuration}}</legend>
             <div class="form-group">
                 <label class="col-sm-3 control-label">{{Modèle de caméra}}</label>
                 <div class="col-sm-5">
@@ -199,6 +169,7 @@ foreach (camera::devicesParameters() as $id => $info) {
                 <a class="btn btn-success eqLogicAction" data-action="export"><i class="fa fa-cloud-download"></i> {{Exporter}}</a>
             </div>
         </div>
+        <legend>{{Flux}}</legend>
         <div class="form-group">
             <label class="col-sm-3 control-label">{{URL du flux}}</label>
             <div class="col-sm-6">
@@ -206,53 +177,56 @@ foreach (camera::devicesParameters() as $id => $info) {
             </div>
         </div>
         <div class="form-group">
-         <label class="col-sm-3 control-label">{{Protocole commande}}</label>
-         <div class="col-sm-3">
-            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleCommande">
-                <option value='http'>HTTP</option>
-                <option value='https'>HTTPS</option>
-            </select>
+            <label class="col-sm-3 control-label">{{Port}}</label>
+            <div class="col-sm-2">
+                <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="portFlux"/>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{Protocole}}</label>
+                <div class="col-sm-2">
+                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleFlux">
+                        <option value='http'>HTTP</option>
+                        <option value='https'>HTTPS</option>
+                        <option value='rtsp'>RTSP</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{Méthode d'affichage}}</label>
+                <div class="col-sm-3">
+                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
+                        <option value='image'>Standard</option>
+                        <option value='vlc'>VLC</option>
+                        <option value='jpeg'>JPEG</option>
+                    </select>
+                </div>
+                <div class="displayProtocol jpeg">
+                    <label class="col-sm-3 control-label">{{Fréquence (s)}}</label>
+                    <div class="col-sm-3">
+                        <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" value="1" />
+                    </div>
+                </div>
+            </div>
+            <div class="expertModeVisible">
+                <legend>{{Enregistrement}}</legend>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">{{FPS}}</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::fps" placeholder="{{Image par secondes}}" value="8"/>
+                    </div>
+                    <label class="col-sm-3 control-label">{{Bitrate}}</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::bitrate" placeholder="{{Débit (bit/s)}}" value="1000000"/>
+                    </div>
+                </div>
+                <div class="form-group expertModeVisible">
+                  <label class="col-sm-3 control-label">{{Options}}</label>
+                  <div class="col-sm-9">
+                    <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdRecordOption" />
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-3 control-label">{{Protocole d'accès interne}}</label>
-        <div class="col-sm-3">
-            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
-                <option value='http'>HTTP</option>
-                <option value='https'>HTTPS</option>
-                <option value='rtsp'>RTSP</option>
-            </select>
-        </div>
-
-    </div>
-    <div class="form-group">
-      <label class="col-sm-3 control-label">{{Protocole d'accès externe}}</label>
-      <div class="col-sm-3">
-        <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleExt">
-            <option value='http'>HTTP</option>
-            <option value='https'>HTTPS</option>
-            <option value='rtsp'>RTSP</option>
-        </select>
-    </div>
-</div>
-
-<div class="form-group">
-    <label class="col-sm-3 control-label">{{Méthode d'affichage}}</label>
-    <div class="col-sm-3">
-        <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
-            <option value='image'>Standard</option>
-            <option value='vlc'>VLC</option>
-            <option value='jpeg'>JPEG</option>
-        </select>
-    </div>
-    <div class="displayProtocol jpeg">
-        <label class="col-sm-3 control-label">{{Fréquence (s)}}</label>
-        <div class="col-sm-3">
-            <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" value="1" />
-        </div>
-    </div>
-</div>
-</fieldset>
+    </fieldset>
 </form>
 </div>
 </div>
