@@ -60,32 +60,6 @@
             object += '</OBJECT>';
             $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append(object);
             $('.zoom[data-eqLogic_id=#id#]').off().unbind();
-        } else if ('#displayProtocol#' == 'jpeg') {
-            $.ajax({
-                type: "GET",
-                url: "#url#",
-                dataType: 'jsonp',
-                username: '#username#',
-                password: '#password#',
-                timeout: 500,
-                global: false,
-                success: function () {
-                    $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#" width="#width#" height="#height#" />');
-                }
-            });
-            $('.zoom[data-eqLogic_id=#id#]').off().unbind();
-
-            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html($('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#&uid='+Date.now()+'" width="#width#" height="#height#" />'));
-            setInterval(function () {
-                $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html($('<img class="zoom cursor" data-eqLogic_id="#id#" src="#url#&uid='+Date.now()+'" width="#width#" height="#height#" />'));
-            }, parseFloat('#jpegRefreshTime#') * 1000);
-            $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
-                $(".md_cameraZoom[data-eqLogic_id=#id#] .display").html($("<center><img src='#url#&uid="+Date.now()+"' class='img-responsive'/></center>"));
-                setInterval(function () {
-                    $(".md_cameraZoom[data-eqLogic_id=#id#] .display").html($("<center><img src='#url#&uid="+Date.now()+"' class='img-responsive'/></center>"));
-                }, parseFloat('#jpegRefreshTime#') * 1000);
-                $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
-            });
         } else {
             $.ajax({
                 type: "GET",

@@ -15,14 +15,14 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
-$("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
-$('body').delegate('#bt_getFromMarket', 'click', function () {
+ $('body').delegate('#bt_getFromMarket', 'click', function () {
     $('#md_modal').dialog({title: "{{Partager sur le market}}"});
     $('#md_modal').load('index.php?v=d&modal=market.list&type=camera').dialog('open');
 });
 
-$('body').delegate('#bt_shareOnMarket', 'click', function () {
+ $('body').delegate('#bt_shareOnMarket', 'click', function () {
     var logicalId = $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').value();
     if (logicalId == '') {
         $('#div_alert').showAlert({message: '{{Vous devez d\'abord séléctioner un équipement}}', level: 'danger'});
@@ -32,7 +32,7 @@ $('body').delegate('#bt_shareOnMarket', 'click', function () {
     $('#md_modal').load('index.php?v=d&modal=market.send&type=camera&logicalId=' + encodeURI(logicalId) + '&name=' + encodeURI($('.eqLogicAttr[data-l1key=configuration][data-l2key=device] option:selected').text())).dialog('open');
 });
 
-$('#bt_uploadConfCam').fileupload({
+ $('#bt_uploadConfCam').fileupload({
     replaceFileInput: false,
     dataType: 'json',
     done: function (e, data) {
@@ -48,17 +48,20 @@ $('#bt_uploadConfCam').fileupload({
     }
 });
 
-$('.eqLogicAttr[data-l1key=configuration][data-l2key=proxy_mode]').on('change', function () {
-    $('.proxy_mode').hide();
-    $('.proxy_mode.' + $(this).value()).show();
+ $('.eqLogic').on('change switchChange.bootstrapSwitch','.eqLogicAttr[data-l1key=configuration][data-l2key=proxy_mode]', function () {
+    if($(this).value() == 1){
+        $('#div_noProxy').hide();
+    }else{
+        $('#div_noProxy').show();
+    }
 });
 
-$('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').on('change', function () {
+ $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').on('change', function () {
     $('.displayProtocol').hide();
     $('.displayProtocol.' + $(this).value()).show();
 });
 
-function addCmdToTable(_cmd) {
+ function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {};
     }
