@@ -181,52 +181,51 @@ foreach (camera::devicesParameters() as $id => $info) {
             <div class="col-sm-2">
                 <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="portFlux"/>
             </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">{{Protocole}}</label>
+            <label class="col-sm-2 control-label">{{Protocole}}</label>
+            <div class="col-sm-2">
+                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleFlux">
+                    <option value='http'>HTTP</option>
+                    <option value='https'>HTTPS</option>
+                    <option value='rtsp'>RTSP</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{Méthode d'affichage}}</label>
+            <div class="col-sm-2">
+                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
+                    <option value='image'>Standard</option>
+                    <option value='vlc'>VLC</option>
+                    <option value='jpeg'>JPEG</option>
+                </select>
+            </div>
+            <div class="displayProtocol jpeg">
+                <label class="col-sm-3 control-label">{{Fréquence (s)}}</label>
                 <div class="col-sm-2">
-                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleFlux">
-                        <option value='http'>HTTP</option>
-                        <option value='https'>HTTPS</option>
-                        <option value='rtsp'>RTSP</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">{{Méthode d'affichage}}</label>
-                <div class="col-sm-3">
-                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
-                        <option value='image'>Standard</option>
-                        <option value='vlc'>VLC</option>
-                        <option value='jpeg'>JPEG</option>
-                    </select>
-                </div>
-                <div class="displayProtocol jpeg">
-                    <label class="col-sm-3 control-label">{{Fréquence (s)}}</label>
-                    <div class="col-sm-3">
-                        <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" value="1" />
-                    </div>
-                </div>
-            </div>
-            <div class="expertModeVisible">
-                <legend>{{Enregistrement}}</legend>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">{{FPS}}</label>
-                    <div class="col-sm-3">
-                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::fps" placeholder="{{Image par secondes}}" value="8"/>
-                    </div>
-                    <label class="col-sm-3 control-label">{{Bitrate}}</label>
-                    <div class="col-sm-3">
-                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::bitrate" placeholder="{{Débit (bit/s)}}" value="1000000"/>
-                    </div>
-                </div>
-                <div class="form-group expertModeVisible">
-                  <label class="col-sm-3 control-label">{{Options}}</label>
-                  <div class="col-sm-9">
-                    <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdRecordOption" />
+                    <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" value="1" />
                 </div>
             </div>
         </div>
-    </fieldset>
+        <div class="expertModeVisible">
+            <legend>{{Enregistrement}}</legend>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{FPS}}</label>
+                <div class="col-sm-3">
+                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::fps" placeholder="{{Image par secondes}}" value="8"/>
+                </div>
+                <label class="col-sm-3 control-label">{{Bitrate}}</label>
+                <div class="col-sm-3">
+                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::bitrate" placeholder="{{Débit (bit/s)}}" value="1000000"/>
+                </div>
+            </div>
+            <div class="form-group expertModeVisible">
+              <label class="col-sm-3 control-label">{{Options}}</label>
+              <div class="col-sm-9">
+                <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdRecordOption" />
+            </div>
+        </div>
+    </div>
+</fieldset>
 </form>
 </div>
 </div>

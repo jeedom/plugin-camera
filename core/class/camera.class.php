@@ -503,12 +503,6 @@ class camera extends eqLogic {
 			if (isset($export['configuration']['port'])) {
 				unset($export['configuration']['port']);
 			}
-			if (isset($export['configuration']['ip_cam'])) {
-				unset($export['configuration']['ip_cam']);
-			}
-			if (isset($export['configuration']['port_cam'])) {
-				unset($export['configuration']['port_cam']);
-			}
 			if (isset($export['configuration']['ip_ext'])) {
 				unset($export['configuration']['ip_ext']);
 			}

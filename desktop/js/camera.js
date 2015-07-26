@@ -61,6 +61,16 @@
  $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').on('change', function () {
     $('.displayProtocol').hide();
     $('.displayProtocol.' + $(this).value()).show();
+
+});
+
+ $('.eqLogicAttr[data-l1key=configuration][data-l2key=protocoleFlux]').on('change', function () {
+   if($(this).value() == 'rtsp'){
+     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').value('vlc');
+     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',true);
+ }else{
+    $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',false);
+}
 });
 
  function addCmdToTable(_cmd) {
