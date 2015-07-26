@@ -168,7 +168,7 @@ class camera extends eqLogic {
 
 	/*     * *********************Methode d'instance************************* */
 
-	public function preSave() {
+	public function preUpdate() {
 		$this->setCategory('security', 1);
 		if ($this->getConfiguration('ip') == '') {
 			throw new Exception(__('L\'adresse IP de la camera ne peut être vide', __FILE__));
@@ -322,6 +322,8 @@ class camera extends eqLogic {
 			'#displayProtocol#' => $this->getConfiguration('displayProtocol', 'image'),
 			'#jpegRefreshTime#' => $this->getConfiguration('jpegRefreshTime', 1),
 			'#hideFolder#' => 0,
+			'#height#' => $this->getDisplay('height', 'auto'),
+			'#width#' => $this->getDisplay('width', 'auto'),
 		);
 
 		$stopRecord = $this->getCmd(null, 'stopRecordCmd');
