@@ -226,6 +226,7 @@ foreach (camera::devicesParameters() as $id => $info) {
 <table id="table_cmd" class="table table-bordered table-condensed">
     <thead>
         <tr>
+            <th>{{#}}</th>
             <th>{{Nom}}</th>
             <th>{{Type}}</th>
             <th>{{Requête/Durée enregistrement (secondes)}}</th>

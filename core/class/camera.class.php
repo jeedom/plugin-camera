@@ -22,10 +22,15 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 class camera extends eqLogic {
 	/*     * *************************Attributs****************************** */
 
-	private $_height = 110;
-	private $_width = 147;
-
 	/*     * ***********************Methode static*************************** */
+
+	public static function event() {
+		$cmd = virtualCmd::byId(init('id'));
+		if (!is_object($cmd)) {
+			throw new Exception('Commande ID virtuel inconnu : ' . init('id'));
+		}
+		$cmd->event(init('value'));
+	}
 
 	public static function cronHourly() {
 		if (config::byKey('keycam') == '') {
@@ -282,37 +287,27 @@ class camera extends eqLogic {
 			return '';
 		}
 		$stopCmd_id = '';
-		foreach ($this->getCmd() as $cmd) {
-			if ($cmd->getConfiguration('stopCmd') == 1) {
-				$stopCmd_id = $cmd->getId();
-			}
+		$cmd = $this->getCmd(null, 'stopRecordCmd');
+		if (is_object($cmd)) {
+			$stopCmd_id = $cmd->getId();
 		}
 		$action = '';
-		foreach ($this->getCmd('action') as $cmd) {
-			if ($cmd->getIsVisible() == 1 && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState') {
-				if ($cmd->getSubType() == 'other') {
+		foreach ($this->getCmd() as $cmd) {
+			if ($cmd->getIsVisible() == 1) {
+				if ($cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState') {
 					if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 						$action .= '<br/>';
 					}
-					$replace = array(
-						'#id#' => $cmd->getId(),
-						'#stopCmd_id#' => $stopCmd_id,
-						'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
-					);
-					$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
+					$action .= $cmd->toHtml($_version);
 					if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
 						$action .= '<br/>';
 					}
-				} else {
-					$action .= $cmd->toHtml($_version);
 				}
 			}
 		}
 		$replace_eqLogic = array(
 			'#id#' => $this->getId(),
 			'#url#' => $this->getUrl($this->getConfiguration('urlStream'), 'auto', true),
-			'#width#' => $this->getWidth(),
-			'#height#' => $this->getHeight(),
 			'#password#' => $this->getConfiguration('password'),
 			'#username#' => $this->getConfiguration('username'),
 			'#background_color#' => $this->getBackgroundColor(jeedom::versionAlias($_version)),
@@ -538,22 +533,6 @@ class camera extends eqLogic {
 
 /*     * **********************Getteur Setteur*************************** */
 
-	function getHeight() {
-		return $this->_height;
-	}
-
-	function getWidth() {
-		return $this->_width;
-	}
-
-	function setHeight($_height) {
-		$this->_height = $_height;
-	}
-
-	function setWidth($_width) {
-		$this->_width = $_width;
-	}
-
 }
 
 class cameraCmd extends cmd {
@@ -602,8 +581,11 @@ class cameraCmd extends cmd {
 	}
 
 	public function preSave() {
-		if ($this->getConfiguration('request') == '') {
+		if ($this->getConfiguration('request') == '' && $this->getType() == 'action') {
 			throw new Exception(__('Le champs requête ne peut etre vide', __FILE__));
+		}
+		if ($this->getType() == 'info') {
+			$this->setEventOnly(1);
 		}
 	}
 
