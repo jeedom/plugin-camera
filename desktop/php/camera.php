@@ -30,17 +30,17 @@ foreach ($eqLogics as $eqLogic) {
     </legend>
 
     <div class="eqLogicThumbnailContainer">
-       <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-         <center>
-            <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
-        </center>
-        <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
-    </div>
-    <div class="cursor" id="bt_getFromMarket" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-     <center>
-        <i class="fa fa-shopping-cart" style="font-size : 7em;color:#94ca02;"></i>
+     <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
+       <center>
+        <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
     </center>
-    <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Accéder au Market</center></span>
+    <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
+</div>
+<div class="cursor" id="bt_getFromMarket" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
+   <center>
+    <i class="fa fa-shopping-cart" style="font-size : 7em;color:#94ca02;"></i>
+</center>
+<span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Accéder au Market</center></span>
 </div>
 <?php
 foreach ($eqLogics as $eqLogic) {
@@ -87,12 +87,12 @@ foreach (object::all() as $object) {
                    <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                       <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>
-                       <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
-                   </div>
-               </div>
+                     <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>
+                     <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
+                 </div>
+             </div>
 
-               <div class="form-group">
+             <div class="form-group">
                 <label class="col-sm-3 control-label">{{Utiliser Jeedom comme proxy}}</label>
                 <div class="col-sm-5">
                     <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="proxy_mode" />
@@ -144,7 +144,7 @@ foreach (object::all() as $object) {
         <fieldset>
             <legend>{{Configuration}}</legend>
             <div class="form-group">
-                <label class="col-sm-3 control-label">{{Modèle de caméra}}</label>
+                <label class="col-sm-2 control-label">{{Modèle}}</label>
                 <div class="col-sm-5">
                     <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
                         <option value="">{{Aucun}}</option>
@@ -161,7 +161,7 @@ foreach (camera::devicesParameters() as $id => $info) {
             </div>
         </div>
         <div class="form-group expertModeVisible">
-            <label class="col-sm-3 control-label">{{Envoyer une configuration}}</label>
+            <label class="col-sm-2 control-label">{{Envoyer}}</label>
             <div class="col-sm-5">
                 <input id="bt_uploadConfCam" type="file" name="file" data-url="plugins/camera/core/ajax/camera.ajax.php?action=uploadConfCam">
             </div>
@@ -171,17 +171,17 @@ foreach (camera::devicesParameters() as $id => $info) {
         </div>
         <legend>{{Flux}}</legend>
         <div class="form-group">
-            <label class="col-sm-3 control-label">{{URL du flux}}</label>
+            <label class="col-sm-2 control-label">{{URL du flux}}</label>
             <div class="col-sm-6">
                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL du flux}}"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">{{Port}}</label>
+            <label class="col-sm-2 control-label">{{Port}}</label>
             <div class="col-sm-2">
                 <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="portFlux"/>
             </div>
-            <label class="col-sm-2 control-label">{{Protocole}}</label>
+            <label class="col-sm-1 control-label">{{Protocole}}</label>
             <div class="col-sm-2">
                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocoleFlux">
                     <option value='http'>HTTP</option>
@@ -189,27 +189,18 @@ foreach (camera::devicesParameters() as $id => $info) {
                     <option value='rtsp'>RTSP</option>
                 </select>
             </div>
-        </div>
-        <div class="form-group">
             <label class="col-sm-3 control-label">{{Méthode d'affichage}}</label>
             <div class="col-sm-2">
                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
                     <option value='image'>Standard</option>
                     <option value='vlc'>VLC</option>
-                    <option value='jpeg'>JPEG</option>
                 </select>
-            </div>
-            <div class="displayProtocol jpeg">
-                <label class="col-sm-3 control-label">{{Fréquence (s)}}</label>
-                <div class="col-sm-2">
-                    <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="jpegRefreshTime" value="1" />
-                </div>
             </div>
         </div>
         <div class="expertModeVisible">
             <legend>{{Enregistrement}}</legend>
             <div class="form-group">
-                <label class="col-sm-3 control-label">{{FPS}}</label>
+                <label class="col-sm-2 control-label">{{FPS}}</label>
                 <div class="col-sm-3">
                     <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="record::fps" placeholder="{{Image par secondes}}" value="8"/>
                 </div>
@@ -219,7 +210,7 @@ foreach (camera::devicesParameters() as $id => $info) {
                 </div>
             </div>
             <div class="form-group expertModeVisible">
-              <label class="col-sm-3 control-label">{{Options}}</label>
+              <label class="col-sm-2 control-label">{{Options}}</label>
               <div class="col-sm-9">
                 <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdRecordOption" />
             </div>

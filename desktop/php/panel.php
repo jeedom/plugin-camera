@@ -54,29 +54,24 @@ if ($_SESSION['user']->getOptions('displayObjetByDefault') == 1) {
 }
 ?>
 <i class='fa fa-picture-o cursor tooltips pull-left' id='bt_displayObject' data-display='<?php echo $_SESSION['user']->getOptions('displayObjetByDefault')?>' title="Afficher/Masquer les objets"></i>
+<i class="fa fa-pencil pull-right cursor" id="bt_editDashboardWidgetOrder" data-mode="0" style="margin-right : 10px;"></i>
 <br/>
 <?php
 echo '<div class="div_displayEquipement" style="width: 100%;">';
 if (init('object_id') == '') {
 	foreach ($allObject as $object) {
 		foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
-			$camera->setHeight(330);
-			$camera->setWidth(441);
 			echo $camera->toHtml('dview');
 		}
 	}
 } else {
 	foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
-		$camera->setHeight(330);
-		$camera->setWidth(441);
 		echo $camera->toHtml('dview');
 	}
 	foreach ($child_object as $child) {
 		$cameras = $child->getEqLogic(true, false, 'camera');
 		if (count($cameras) > 0) {
 			foreach ($cameras as $camera) {
-				$camera->setHeight(330);
-				$camera->setWidth(441);
 				echo $camera->toHtml('dview');
 			}
 		}
