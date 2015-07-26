@@ -65,10 +65,10 @@
 });
 
  $('.eqLogicAttr[data-l1key=configuration][data-l2key=protocoleFlux]').on('change', function () {
-     if($(this).value() == 'rtsp'){
-       $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').value('vlc');
-       $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',true);
-   }else{
+   if($(this).value() == 'rtsp'){
+     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').value('vlc');
+     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',true);
+ }else{
     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',false);
 }
 });
@@ -80,7 +80,16 @@
     if (!isset(_cmd.configuration)) {
         _cmd.configuration = {};
     }
-    if (isset(_cmd.configuration.recordState) && _cmd.configuration.recordState == 1) {
+    if (isset(_cmd.logicalId) && _cmd.logicalId == 'browseRecord') {
+        return;
+    }
+    if (isset(_cmd.logicalId) && _cmd.logicalId == 'recordState') {
+        return;
+    }
+    if (isset(_cmd.logicalId) && _cmd.logicalId == 'recordCmd') {
+        return;
+    }
+    if (isset(_cmd.logicalId) && _cmd.logicalId == 'stopRecordCmd') {
         return;
     }
     var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
@@ -103,10 +112,13 @@
     tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
     tr += '</td>';
     tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" />';
-    tr += '<td><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="configuration" data-label-text="{{Stop commande}}" data-l2key="stopCmd" data-size="small" /> ';
+    tr += '<td>';
     tr += '<input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" data-label-text="{{Afficher}}" data-size="small" checked/> ';
+    tr += '<span class="actionMode">';
+    tr += '<input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="configuration" data-label-text="{{Stop commande}}" data-l2key="stopCmd" data-size="small" /> ';
     tr += '<input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="configuration" data-l2key="useCurlDigest" data-label-text="{{Curl digest}}" data-size="small" /> ';
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="timeout" style="display : inline-block;width : 100px;margin-left : 5px;" placeholder="timeout"/>';
+    tr += '</span>';
     tr += '</div>';
     tr += '</td>';
     tr += '<td>';
@@ -121,3 +133,16 @@
     jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
     initTooltips();
 }
+
+$('#table_cmd tbody').on('change','.cmd .cmdAttr[data-l1key=type]',function(){
+    var cmd = $(this).closest('.cmd');
+    if($(this).value() == 'info'){
+        cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').hide();
+        cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=timeout]').hide();
+        cmd.find('.actionMode').hide();
+    }else{
+        cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').show();
+        cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=timeout]').show();
+        cmd.find('.actionMode').show();
+    }
+});

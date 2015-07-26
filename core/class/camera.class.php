@@ -577,6 +577,9 @@ class cameraCmd extends cmd {
 		if ($this->getLogicalId() == 'recordState') {
 			return true;
 		}
+		if ($this->getLogicalId() == 'browseRecord') {
+			return true;
+		}
 		return false;
 	}
 
