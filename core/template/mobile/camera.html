@@ -11,27 +11,29 @@
     <script>
         if (isset(deviceInfo) && isset(deviceInfo.bSize)) {
             var width = deviceInfo.bSize;
+            var height = width / (4 / 3);
+            $('#popupCameraZoom#id# > div').attr('width', width);
+            $('#popupCameraZoom#id# > div').attr('height', height);
         }
-        var height = width / (4 / 3);
         $(window).on("orientationchange", function (event) {
             deviceInfo = getDeviceType();
             if (isset(deviceInfo) && isset(deviceInfo.bSize)) {
                 var width = deviceInfo.bSize;
             }
             var height = width / (4 / 3);
-            $('.eqLogic[data-eqLogic_id=#id#] .zoom').attr('width', width);
-            $('.eqLogic[data-eqLogic_id=#id#] .zoom').attr('height', height);
+            $('#popupCameraZoom#id# > div').attr('width', width);
+            $('#popupCameraZoom#id# > div').attr('height', height);
         });
         clearInterval(refreshInterval#id#);
         var refreshInterval#id# =  setInterval(function(){
             var timestamps = (new Date()).getTime();
             var img = $('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" style="width:90%"/>').attr('src', '#url#&t='+timestamps).load(function() {
-             $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
-             var imgFull = img.clone();
-             imgFull.css('width','auto');
-             imgFull.removeClass('zoom');
-             $("#popupCameraZoom#id# > div").empty().append(imgFull);
-         });
+               $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
+               var imgFull = img.clone();
+               imgFull.css('width','auto');
+               imgFull.removeClass('zoom');
+               $("#popupCameraZoom#id# > div").empty().append(imgFull);
+           });
         }, 1000);
     </script>
 
