@@ -58,26 +58,12 @@ if ($camera->getConfiguration('displayProtocol') == 'snapshot') {
 	}
 	$continue = true;
 	$i = 0;
-	$url = $camera->getConfiguration('protocoleFlux', 'http');
-	$url .= '://';
-	if ($camera->getConfiguration('username') != '') {
-		$url .= $camera->getConfiguration('username') . ':' . $camera->getConfiguration('password') . '@';
-	}
-	$url .= $camera->getConfiguration('ip');
-	$url .= ':' . $camera->getConfiguration('portFlux', 80);
-	$url .= $camera->getConfiguration('urlStream');
-	$replace = array(
-		'#username#' => $camera->getConfiguration('username'),
-		'#password#' => $camera->getConfiguration('password'),
-	);
-	$url = str_replace(array_keys($replace), $replace, $url);
 	$recordState = $camera->getCmd(null, 'recordState');
 	$recordState->event(1);
 	$camera->refreshWidget();
 	while ($continue) {
 		$i++;
-		$output_file = $output_dir . '/' . $camera->getId() . '_' . str_replace('/', '\/', $camera->getHumanName()) . '_' . date('Y-m-d_H:i:s') . '.jpg';
-		file_put_contents($output_file, file_get_contents($url));
+		$camera->takeSnapshot();
 		sleep(1);
 		if ($i > $limit) {
 			$continue = false;

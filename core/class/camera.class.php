@@ -244,7 +244,28 @@ class camera extends eqLogic {
 		$stopRecordCmd->setDisplay('icon', '<i class="fa fa-stop"></i>');
 		$stopRecordCmd->save();
 
-		if ($this->getConfiguration('proxy_mode') == 1) {
+		if ($this->getConfiguration('displayProtocol') == 'snapshot') {
+			$takeSnapshot = $this->getCmd(null, 'takeSnapshot');
+			if (!is_object($takeSnapshot)) {
+				$takeSnapshot = new cameraCmd();
+			}
+			$takeSnapshot->setName(__('Capture', __FILE__));
+			$takeSnapshot->setConfiguration('request', '-');
+			$takeSnapshot->setType('action');
+			$takeSnapshot->setLogicalId('takeSnapshot');
+			$takeSnapshot->setEqLogic_id($this->getId());
+			$takeSnapshot->setSubType('other');
+			$takeSnapshot->setOrder(0);
+			$takeSnapshot->setDisplay('icon', '<i class="fa fa-picture-o"></i>');
+			$takeSnapshot->save();
+		} else {
+			$takeSnapshot = $this->getCmd(null, 'takeSnapshot');
+			if (is_object($takeSnapshot)) {
+				$takeSnapshot->remove();
+			}
+		}
+
+		if ($this->getConfiguration('proxy_mode') == 1 && $this->getConfiguration('displayProtocol') != 'snapshot') {
 			$ip = $this->getConfiguration('ip');
 			if (trim($this->getConfiguration('port')) != '') {
 				$ip .= ':' . $this->getConfiguration('port');
@@ -365,16 +386,16 @@ class camera extends eqLogic {
 		return template_replace($replace_eqLogic, getTemplate('core', jeedom::versionAlias($_version), 'camera', 'camera'));
 	}
 
-	public function getUrl($_complement = '', $_mode = 'auto', $_flux = false) {
+	public function getUrl($_complement = '', $_mode = 'auto', $_flux = false, $_forceUrl = false) {
 		$replace = array(
 			'#username#' => $this->getConfiguration('username'),
 			'#password#' => $this->getConfiguration('password'),
 		);
-		if ($this->getConfiguration('displayProtocol') == 'snapshot' && $_flux && $this->getConfiguration('proxy_mode') == 1) {
+		if ($this->getConfiguration('displayProtocol') == 'snapshot' && $_flux && $this->getConfiguration('proxy_mode') == 1 && !$_forceUrl) {
 			$url = network::getNetworkAccess();
 			return network::getNetworkAccess() . '/plugins/camera/core/php/snapshot.php?id=' . $this->getId() . '&apikey=' . config::byKey('api');
 		}
-		if ($_mode = 'auto') {
+		if ($_mode == 'auto') {
 			$_mode = network::getUserLocation();
 		}
 		$url = ($_flux) ? $this->getConfiguration('protocoleFlux', 'http') : $this->getConfiguration('protocole', 'http');
@@ -488,6 +509,22 @@ class camera extends eqLogic {
 		return true;
 	}
 
+	public function takeSnapshot() {
+		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
+		if (!file_exists($output_dir)) {
+			if (!mkdir($output_dir, 0777, true)) {
+				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+			}
+		}
+		if (!is_writable($output_dir)) {
+			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+		}
+		if ($this->getConfiguration('displayProtocol') == 'snapshot') {
+			$output_file = $output_dir . '/' . $this->getId() . '_' . str_replace('/', '\/', $this->getHumanName()) . '_' . date('Y-m-d_H:i:s') . '.jpg';
+			file_put_contents($output_file, file_get_contents($this->getUrl($this->getConfiguration('urlStream'), 'internal', true, true)));
+		}
+	}
+
 	public function export($_withCmd = true) {
 		if ($this->getConfiguration('device') != '') {
 			return array(
@@ -584,6 +621,9 @@ class cameraCmd extends cmd {
 		if ($this->getLogicalId() == 'browseRecord') {
 			return true;
 		}
+		if ($this->getLogicalId() == 'takeSnapshot') {
+			return true;
+		}
 		return false;
 	}
 
@@ -614,6 +654,8 @@ class cameraCmd extends cmd {
 			$eqLogic->recordCam();
 		} elseif ($this->getLogicalId() == 'stopRecordCmd') {
 			$eqLogic->stopRecord();
+		} elseif ($this->getLogicalId() == 'takeSnapshot') {
+			$eqLogic->takeSnapshot();
 		} else {
 			$url = $eqLogic->getUrl($request, 'internal', 'protocoleCommande');
 			$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));

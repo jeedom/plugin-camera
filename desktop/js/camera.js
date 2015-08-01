@@ -69,10 +69,10 @@
 });
 
  $('.eqLogicAttr[data-l1key=configuration][data-l2key=protocoleFlux]').on('change', function () {
-     if($(this).value() == 'rtsp'){
-       $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').value('vlc');
-       $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',true);
-   }else{
+   if($(this).value() == 'rtsp'){
+     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').value('vlc');
+     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',true);
+ }else{
     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',false);
 }
 });
@@ -94,6 +94,9 @@
         return;
     }
     if (isset(_cmd.logicalId) && _cmd.logicalId == 'stopRecordCmd') {
+        return;
+    }
+    if (isset(_cmd.logicalId) && _cmd.logicalId == 'takeSnapshot') {
         return;
     }
     var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';

@@ -172,7 +172,7 @@ foreach (camera::devicesParameters() as $id => $info) {
         <legend>{{Flux}}</legend>
         <div class="form-group">
             <label class="col-sm-2 control-label">{{URL du flux}}</label>
-            <div class="col-sm-6">
+            <div class="col-sm-10">
                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL du flux}}"/>
             </div>
         </div>

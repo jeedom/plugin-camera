@@ -10,20 +10,7 @@ if (!is_object($camera)) {
 if ($camera->getEqType_name() != 'camera') {
 	die();
 }
-$url = $camera->getConfiguration('protocoleFlux', 'http');
-$url .= '://';
-if ($camera->getConfiguration('username') != '') {
-	$url .= $camera->getConfiguration('username') . ':' . $camera->getConfiguration('password') . '@';
-}
-$url .= $camera->getConfiguration('ip');
-$url .= ':' . $camera->getConfiguration('portFlux', 80);
-$url .= $camera->getConfiguration('urlStream');
-$replace = array(
-	'#username#' => $camera->getConfiguration('username'),
-	'#password#' => $camera->getConfiguration('password'),
-);
-$url = str_replace(array_keys($replace), $replace, $url);
-$data = file_get_contents($url);
+$data = file_get_contents($camera->getUrl($camera->getConfiguration('urlStream'), 'internal', true, true));
 header('Content-Type: image/jpeg');
 echo $data;
 exit;
