@@ -42,9 +42,6 @@ if (!is_object($camera)) {
 if ($camera->getEqType_name() != 'camera') {
 	throw new Exception(__('Cet équipement n\'est pas de type camera : ', __FILE__) . $camera->getEqType_name());
 }
-
-$url = $camera->getUrl($camera->getConfiguration('urlStream'), 'internal');
-
 $output_dir = calculPath(config::byKey('recordDir', 'camera'));
 if (!file_exists($output_dir)) {
 	if (!mkdir($output_dir, 0777, true)) {
@@ -54,6 +51,45 @@ if (!file_exists($output_dir)) {
 if (!is_writable($output_dir)) {
 	throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
 }
+if ($camera->getConfiguration('displayProtocol') == 'snapshot') {
+	$limit = 1800;
+	if (is_object($recordCmd) && is_numeric($recordCmd->getConfiguration('request', 1800))) {
+		$limit = $recordCmd->getConfiguration('request', 1800);
+	}
+	$continue = true;
+	$i = 0;
+	$url = $camera->getConfiguration('protocoleFlux', 'http');
+	$url .= '://';
+	if ($camera->getConfiguration('username') != '') {
+		$url .= $camera->getConfiguration('username') . ':' . $camera->getConfiguration('password') . '@';
+	}
+	$url .= $camera->getConfiguration('ip');
+	$url .= ':' . $camera->getConfiguration('portFlux', 80);
+	$url .= $camera->getConfiguration('urlStream');
+	$replace = array(
+		'#username#' => $camera->getConfiguration('username'),
+		'#password#' => $camera->getConfiguration('password'),
+	);
+	$url = str_replace(array_keys($replace), $replace, $url);
+	$recordState = $camera->getCmd(null, 'recordState');
+	$recordState->event(1);
+	$camera->refreshWidget();
+	while ($continue) {
+		$i++;
+		$output_file = $output_dir . '/' . $camera->getId() . '_' . str_replace('/', '\/', $camera->getHumanName()) . '_' . date('Y-m-d_H:i:s') . '.jpg';
+		file_put_contents($output_file, file_get_contents($url));
+		sleep(1);
+		if ($i > $limit) {
+			$continue = false;
+		}
+	}
+	$recordState->event(0);
+	$camera->refreshWidget();
+	die();
+}
+
+$url = $camera->getUrl($camera->getConfiguration('urlStream'), 'internal');
+
 $output_file = $camera->getId() . '_' . str_replace('/', '\/', $camera->getHumanName()) . '_' . date('Y-m-d_H:i:s') . '.avi';
 $fp = popen("which ffmpeg", "r");
 $result = fgets($fp, 255);

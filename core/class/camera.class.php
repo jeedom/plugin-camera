@@ -370,7 +370,7 @@ class camera extends eqLogic {
 			'#username#' => $this->getConfiguration('username'),
 			'#password#' => $this->getConfiguration('password'),
 		);
-		if ($this->getConfiguration('displayProtocol') == 'snapshot') {
+		if ($this->getConfiguration('displayProtocol') == 'snapshot' && $_flux && $this->getConfiguration('proxy_mode') == 1) {
 			$url = network::getNetworkAccess();
 			return network::getNetworkAccess() . '/plugins/camera/core/php/snapshot.php?id=' . $this->getId() . '&apikey=' . config::byKey('api');
 		}

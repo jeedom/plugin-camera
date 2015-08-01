@@ -7,6 +7,9 @@ $camera = camera::byId(init('id'));
 if (!is_object($camera)) {
 	die();
 }
+if ($camera->getEqType_name() != 'camera') {
+	die();
+}
 $url = $camera->getConfiguration('protocoleFlux', 'http');
 $url .= '://';
 if ($camera->getConfiguration('username') != '') {
