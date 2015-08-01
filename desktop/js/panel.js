@@ -68,9 +68,7 @@
     }
   }
   if(_mode == 0){
-    if( $('.div_displayEquipement .eqLogic-widget.ui-draggable.ui-resizable.ui-sortable').length > 0){
-     $('.div_displayEquipement .eqLogic-widget.allowResize').resizable('destroy');
-   }
+   $('.div_displayEquipement .eqLogic-widget.allowResize').resizable('destroy');
  }else{
    $( ".div_displayEquipement .eqLogic-widget.allowResize").resizable({
     grid: [ 40, 80 ],
