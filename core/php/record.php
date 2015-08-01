@@ -51,80 +51,24 @@ if (!file_exists($output_dir)) {
 if (!is_writable($output_dir)) {
 	throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
 }
-if ($camera->getConfiguration('displayProtocol') == 'snapshot') {
-	$limit = 1800;
-	if (is_object($recordCmd) && is_numeric($recordCmd->getConfiguration('request', 1800))) {
-		$limit = $recordCmd->getConfiguration('request', 1800);
-	}
-	$continue = true;
-	$i = 0;
-	$recordState = $camera->getCmd(null, 'recordState');
-	$recordState->event(1);
-	$camera->refreshWidget();
-	while ($continue) {
-		$i++;
-		$camera->takeSnapshot();
-		sleep(1);
-		if ($i > $limit) {
-			$continue = false;
-		}
-	}
-	$recordState->event(0);
-	$camera->refreshWidget();
-	die();
-}
 
-$url = $camera->getUrl($camera->getConfiguration('urlStream'), 'internal');
-
-$output_file = $camera->getId() . '_' . str_replace('/', '\/', $camera->getHumanName()) . '_' . date('Y-m-d_H:i:s') . '.avi';
-$fp = popen("which ffmpeg", "r");
-$result = fgets($fp, 255);
-$exists = !empty($result);
-pclose($fp);
-if ($exists) {
-	if ($camera->getConfiguration('protocole') == 'rtsp') {
-		$cmd = 'ffmpeg';
-	} else {
-		if ($camera->getConfiguration('cmdRecordOption') != '') {
-			$cmd = 'ffmpeg -f mjpeg ';
-		} else {
-			$cmd = 'ffmpeg -f mjpeg -r ' . $camera->getConfiguration('record::fps', 8);
-		}
-	}
-} else {
-	if ($camera->getConfiguration('protocole') == 'rtsp') {
-		$cmd = 'avconv';
-	} else {
-		if ($camera->getConfiguration('cmdRecordOption') != '') {
-			$cmd = 'avconv -f mjpeg ';
-		} else {
-			$cmd = 'avconv -f mjpeg -r ' . $camera->getConfiguration('record::fps', 8);
-		}
-	}
-}
-
-if ($camera->getConfiguration('cmdRecordOption') != '') {
-	$cmd .= ' ' . $camera->getConfiguration('cmdRecordOption');
-}
-
-$recordCmd = $camera->getCmd(null, 'recordCmd');
-$cmd .= ' -i "' . $url . '"';
-
+$limit = 1800;
 if (is_object($recordCmd) && is_numeric($recordCmd->getConfiguration('request', 1800))) {
-	$cmd .= ' -t ' . $recordCmd->getConfiguration('request', 1800);
-} else {
-	$cmd .= ' -t 1800';
+	$limit = $recordCmd->getConfiguration('request', 1800);
 }
-if ($camera->getConfiguration('cmdRecordOption') != '') {
-	$cmd .= ' -vcodec mpeg4 -y -b:v ' . $camera->getConfiguration('record::bitrate', 1000000) . ' ' . escapeshellarg($output_dir . '/' . $output_file);
-} else {
-	$cmd .= ' -vcodec mpeg4 -y -b:v ' . $camera->getConfiguration('record::bitrate', 1000000) . ' -r ' . $camera->getConfiguration('record::fps', 8) . ' ' . escapeshellarg($output_dir . '/' . $output_file);
-}
-
-log::add('camera', 'debug', 'Record command : ' . $cmd);
+$continue = true;
+$i = 0;
 $recordState = $camera->getCmd(null, 'recordState');
 $recordState->event(1);
 $camera->refreshWidget();
-shell_exec($cmd);
+while ($continue) {
+	$i++;
+	$camera->takeSnapshot();
+	sleep(1);
+	if ($i > $limit) {
+		$continue = false;
+	}
+}
 $recordState->event(0);
 $camera->refreshWidget();
+die();

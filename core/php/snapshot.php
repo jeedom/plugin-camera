@@ -10,7 +10,7 @@ if (!is_object($camera)) {
 if ($camera->getEqType_name() != 'camera') {
 	die();
 }
-$data = file_get_contents($camera->getUrl($camera->getConfiguration('urlStream'), 'internal', true, true));
+$data = file_get_contents($camera->getUrl($camera->getConfiguration('urlStream')));
 header('Content-Type: image/jpeg');
 echo $data;
 exit;

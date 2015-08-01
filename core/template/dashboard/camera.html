@@ -18,16 +18,11 @@
         </center>
     </div>
     <script>
-        if('#hideFolder#' == '0'){
-            $('.folder[data-eqLogic_id=#id#]').hide();
-        }
-
         if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
             while ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
                 $(".md_cameraZoom[data-eqLogic_id=#id#]").eq(0).remove();
             }
         }
-
         $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
             $('#md_modal').dialog({title: "Historique #name#"});
             $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
@@ -45,47 +40,22 @@
                 $("body").css({overflow: 'inherit'});
             }
         });
+        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" src="#url#" style="width:90%" />');
+        $('.zoom[data-eqLogic_id=#id#]').off().unbind();
+        $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
+            $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append("<center><img src='#url#' class='img-responsive'/></center>");
+            $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
+        });
+        setInterval(function(){
+            var timestamps = (new Date()).getTime();
+            var img = $('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" style="width:90%"/>').attr('src', '#url#&t='+timestamps).load(function() {
+             $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
+             var imgFull = img.clone();
+             imgFull.css('width','auto');
+             imgFull.removeClass('zoom');
+             $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append(imgFull);
+         });
+        }, 1000);
 
-        if ('#displayProtocol#' == 'vlc') {
-            var object = '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab" id="vlc#id#" events="True">';
-            object += '<param name="Src" value="#url#" />';
-            object += '<param name="ShowDisplay" value="True" />';
-            object += '<param name="AutoLoop" value="False" />';
-            object += '<param name="AutoPlay" value="True" />';
-            object += '<param name="Mute" value="True" />';
-            object += '<param name="Control" value="False" />';
-            object += '<embed id="vlcEmb#id#" width="90%" type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" controls="false" mute="true" autoplay="true" loop="false" target="#url#"></embed>';
-            object += '</OBJECT>';
-            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append(object);
-            $('.zoom[data-eqLogic_id=#id#]').off().unbind();
-            $('.eqLogic[data-eqLogic_id=#id#]').on('resize',function(){
-                $('.eqLogic[data-eqLogic_id=#id#] OBJECT embed').height( $('.eqLogic[data-eqLogic_id=#id#]').height() * 0.8);
-            });
-            setTimeout(function(){ $('.eqLogic[data-eqLogic_id=#id#]').trigger('resize') }, 500);
-        } else if ('#displayProtocol#' == 'snapshot') {
-            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" src="#url#" style="width:90%" />');
-            $('.zoom[data-eqLogic_id=#id#]').off().unbind();
-            $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
-                $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append("<center><img src='#url#' class='img-responsive'/></center>");
-                $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
-            });
-            setInterval(function(){
-                var timestamps = (new Date()).getTime();
-                var img = $('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" style="width:90%"/>').attr('src', '#url#&t='+timestamps).load(function() {
-                   $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
-                   var imgFull = img.clone();
-                   imgFull.css('width','auto');
-                   imgFull.removeClass('zoom');
-                  $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append(imgFull);
-               });
-            }, 1000);
-        }else{
-            $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').append('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" src="#url#" style="width:90%" />');
-            $('.zoom[data-eqLogic_id=#id#]').off().unbind();
-            $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
-                $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append("<center><img src='#url#' class='img-responsive'/></center>");
-                $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
-            });
-        }
     </script>
 </div>
