@@ -196,7 +196,7 @@ class camera extends eqLogic {
 		$browseRecord->setConfiguration('request', '-');
 		$browseRecord->setType('info');
 		$browseRecord->setLogicalId('browseRecord');
-		$browseRecord->setIsVisible(0);
+		$browseRecord->setIsVisible(1000);
 		$browseRecord->setEqLogic_id($this->getId());
 		$browseRecord->setSubType('binary');
 		$browseRecord->save();
@@ -211,7 +211,7 @@ class camera extends eqLogic {
 		$recordState->setConfiguration('request', '-');
 		$recordState->setType('info');
 		$recordState->setLogicalId('recordState');
-		$recordState->setIsVisible(0);
+		$recordState->setIsVisible(999);
 		$recordState->setEqLogic_id($this->getId());
 		$recordState->setSubType('binary');
 		$recordState->save();
@@ -226,7 +226,7 @@ class camera extends eqLogic {
 		$recordCmd->setLogicalId('recordCmd');
 		$recordCmd->setEqLogic_id($this->getId());
 		$recordCmd->setSubType('slider');
-		$recordCmd->setOrder(0);
+		$recordCmd->setOrder(999);
 		$recordCmd->setDisplay('slider_placeholder', __('Durée enregistrement (s)', __FILE__));
 		$recordCmd->setDisplay('icon', '<i class="fa fa-circle"></i>');
 		$recordCmd->save();
@@ -241,7 +241,7 @@ class camera extends eqLogic {
 		$stopRecordCmd->setLogicalId('stopRecordCmd');
 		$stopRecordCmd->setEqLogic_id($this->getId());
 		$stopRecordCmd->setSubType('other');
-		$stopRecordCmd->setOrder(0);
+		$stopRecordCmd->setOrder(999);
 		$stopRecordCmd->setDisplay('icon', '<i class="fa fa-stop"></i>');
 		$stopRecordCmd->save();
 
@@ -255,7 +255,7 @@ class camera extends eqLogic {
 		$takeSnapshot->setLogicalId('takeSnapshot');
 		$takeSnapshot->setEqLogic_id($this->getId());
 		$takeSnapshot->setSubType('other');
-		$takeSnapshot->setOrder(0);
+		$takeSnapshot->setOrder(999);
 		$takeSnapshot->setDisplay('icon', '<i class="fa fa-picture-o"></i>');
 		$takeSnapshot->save();
 	}
@@ -268,18 +268,29 @@ class camera extends eqLogic {
 			return '';
 		}
 		$stopCmd_id = '';
-		$cmd = $this->getCmd(null, 'stopRecordCmd');
-		if (is_object($cmd)) {
-			$stopCmd_id = $cmd->getId();
+		foreach ($this->getCmd() as $cmd) {
+			if ($cmd->getConfiguration('stopCmd') == 1) {
+				$stopCmd_id = $cmd->getId();
+			}
 		}
 		$action = '';
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getIsVisible() == 1) {
-				if ($cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState') {
+				if ($cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState' && $cmd->getConfiguration('stopCmd') != 1) {
 					if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 						$action .= '<br/>';
 					}
-					$action .= $cmd->toHtml($_version);
+					if ($cmd->getType() == 'action' && $cmd->getSubType() == 'other') {
+						$replace = array(
+							'#id#' => $cmd->getId(),
+							'#stopCmd_id#' => $stopCmd_id,
+							'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
+						);
+						$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
+					} else {
+						$action .= $cmd->toHtml($_version);
+					}
+
 					if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
 						$action .= '<br/>';
 					}

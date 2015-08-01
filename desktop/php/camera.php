@@ -176,7 +176,7 @@ foreach (camera::devicesParameters() as $id => $info) {
             <th>{{#}}</th>
             <th>{{Nom}}</th>
             <th>{{Type}}</th>
-            <th>{{Requête}}</th>
+            <th style="width : 600px;">{{Requête}}</th>
             <th>{{Options}}</th>
             <th></th>
         </tr>
