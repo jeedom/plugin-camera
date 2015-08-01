@@ -370,6 +370,10 @@ class camera extends eqLogic {
 			'#username#' => $this->getConfiguration('username'),
 			'#password#' => $this->getConfiguration('password'),
 		);
+		if ($this->getConfiguration('displayProtocol') == 'snapshot') {
+			$url = network::getNetworkAccess();
+			return network::getNetworkAccess() . '/plugins/camera/core/php/snapshot.php?id=' . $this->getId() . '&apikey=' . config::byKey('api');
+		}
 		if ($_mode = 'auto') {
 			$_mode = network::getUserLocation();
 		}

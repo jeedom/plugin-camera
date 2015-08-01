@@ -193,11 +193,12 @@ foreach (camera::devicesParameters() as $id => $info) {
             <div class="col-sm-2">
                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="displayProtocol">
                     <option value='image'>Standard</option>
+                    <option value='snapshot'>Image</option>
                     <option value='vlc'>VLC</option>
                 </select>
             </div>
         </div>
-        <div class="expertModeVisible">
+        <div class="expertModeVisible" id="div_recordOption">
             <legend>{{Enregistrement}}</legend>
             <div class="form-group">
                 <label class="col-sm-2 control-label">{{FPS}}</label>
