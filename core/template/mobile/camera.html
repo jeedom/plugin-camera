@@ -1,46 +1,43 @@
 <div class="eqLogic eqLogic-widget" data-eqLogic_id="#id#" data-version="mobile" style="padding-top : 3px;">
-    <center><a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none" class="directDisplay" style="height : 120px;"></a></center>
-    <div data-role="popup" id="popupCameraZoom#id#">
-        <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-        <div class="display"></div>
-        <center>
-            #action#
-        </center>
-    </div>
+  <center><a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none" class="directDisplay" style="height : 120px;"></a></center>
+  <div data-role="popup" id="popupCameraZoom#id#">
+    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <div class="display"></div>
+    <center>
+      #action#
+    </center>
+  </div>
 
-    <script>
-        if (isset(deviceInfo) && isset(deviceInfo.bSize)) {
-            var width = deviceInfo.bSize;
-            var height = width / (4 / 3);
-            $('#popupCameraZoom#id# > div').attr('width', width);
-            $('#popupCameraZoom#id# > div').attr('height', height);
-        }
-        $(window).on("orientationchange", function (event) {
-            deviceInfo = getDeviceType();
-            if (isset(deviceInfo) && isset(deviceInfo.bSize)) {
-                var width = deviceInfo.bSize;
-            }
-            var height = width / (4 / 3);
-            $('#popupCameraZoom#id# > div').attr('width', width);
-            $('#popupCameraZoom#id# > div').attr('height', height);
-        });
-        function refreshImgCam#id#(){
-          var url = "#url#";
-          if(url.indexOf('?') > 0){
-            url += '&t='+(new Date()).getTime();
-        }else{
-            url += '?t='+(new Date()).getTime();
-        }
-        var img = $('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" style="width:90%"/>').attr('src', url).load(function() {
-         $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
-         var imgFull = img.clone();
-         imgFull.css('width','auto');
-         imgFull.removeClass('zoom');
-         $("#popupCameraZoom#id# > div").empty().append(imgFull);
-         setTimeout(refreshImgCam#id#, #refreshDelay#);
+  <script>
+    if (isset(deviceInfo) && isset(deviceInfo.bSize)) {
+      var width = deviceInfo.bSize;
+      $('#popupCameraZoom#id# > div').css('width', screen.width);
+    }
+    $(window).on("orientationchange", function (event) {
+      deviceInfo = getDeviceType();
+      if (isset(deviceInfo) && isset(deviceInfo.bSize)) {
+        var width = deviceInfo.bSize;
+        $('#popupCameraZoom#id# > div').css('width', screen.width);
+      }
+    });
+    function refreshImgCam#id#(){
+      var url = "#url#";
+      if(url.indexOf('?') > 0){
+        url += '&t='+(new Date()).getTime();
+      }else{
+        url += '?t='+(new Date()).getTime();
+      }
+      var img = $('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" style="width:90%"/>').attr('src', url).load(function() {
+       $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
+       var imgFull = img.clone();
+       imgFull.css('width','auto');
+       imgFull.css('max-width',$("#popupCameraZoom#id# > div").width());
+       imgFull.removeClass('zoom');
+       $("#popupCameraZoom#id# > div").empty().append(imgFull);
+       setTimeout(refreshImgCam#id#, #refreshDelay#);
      });
     };
     refreshImgCam#id#();
-</script>
+  </script>
 
 </div>
