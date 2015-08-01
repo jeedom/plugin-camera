@@ -53,8 +53,8 @@ if (!is_writable($output_dir)) {
 }
 
 $limit = 1800;
-if (is_object($recordCmd) && is_numeric($recordCmd->getConfiguration('request', 1800))) {
-	$limit = $recordCmd->getConfiguration('request', 1800);
+if (is_numeric(init('recordTime')) && init('recordTime') > 0 && init('recordTime') < 1800) {
+	$limit = init('recordTime');
 }
 $continue = true;
 $i = 0;

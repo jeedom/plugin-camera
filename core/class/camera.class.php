@@ -225,8 +225,9 @@ class camera extends eqLogic {
 		$recordCmd->setType('action');
 		$recordCmd->setLogicalId('recordCmd');
 		$recordCmd->setEqLogic_id($this->getId());
-		$recordCmd->setSubType('other');
+		$recordCmd->setSubType('slider');
 		$recordCmd->setOrder(0);
+		$recordCmd->setDisplay('slider_placeholder', __('Durée enregistrement (s)', __FILE__));
 		$recordCmd->setDisplay('icon', '<i class="fa fa-circle"></i>');
 		$recordCmd->save();
 
@@ -591,7 +592,7 @@ class cameraCmd extends cmd {
 		}
 		$eqLogic = $this->getEqLogic();
 		if ($this->getLogicalId() == 'recordCmd') {
-			$eqLogic->recordCam();
+			$eqLogic->recordCam($_options['slider']);
 		} elseif ($this->getLogicalId() == 'stopRecordCmd') {
 			$eqLogic->stopRecord();
 		} elseif ($this->getLogicalId() == 'takeSnapshot') {
