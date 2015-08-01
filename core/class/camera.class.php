@@ -519,8 +519,17 @@ class camera extends eqLogic {
 		if (!is_writable($output_dir)) {
 			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
 		}
+		$output_dir .= '/' . $this->getId();
+		if (!file_exists($output_dir)) {
+			if (!mkdir($output_dir, 0777, true)) {
+				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+			}
+		}
+		if (!is_writable($output_dir)) {
+			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+		}
 		if ($this->getConfiguration('displayProtocol') == 'snapshot') {
-			$output_file = $output_dir . '/' . $this->getId() . '_' . str_replace('/', '\/', $this->getHumanName()) . '_' . date('Y-m-d_H:i:s') . '.jpg';
+			$output_file = $output_dir . '/' . date('Y-m-d_H:i:s') . '.jpg';
 			file_put_contents($output_file, file_get_contents($this->getUrl($this->getConfiguration('urlStream'), 'internal', true, true)));
 		}
 	}
