@@ -157,6 +157,12 @@ foreach (camera::devicesParameters() as $id => $info) {
                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL du flux}}"/>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{Délai de rafraichissement}}</label>
+            <div class="col-sm-4">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelay" placeholder="{{Délai de rafraichissement en secondes}}"/>
+            </div>
+        </div>
     </fieldset>
 </form>
 </div>

@@ -24,17 +24,23 @@
             $('#popupCameraZoom#id# > div').attr('width', width);
             $('#popupCameraZoom#id# > div').attr('height', height);
         });
-        clearInterval(refreshInterval#id#);
-        var refreshInterval#id# =  setInterval(function(){
-            var timestamps = (new Date()).getTime();
-            var img = $('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" style="width:90%"/>').attr('src', '#url#&t='+timestamps).load(function() {
-               $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
-               var imgFull = img.clone();
-               imgFull.css('width','auto');
-               imgFull.removeClass('zoom');
-               $("#popupCameraZoom#id# > div").empty().append(imgFull);
-           });
-        }, 1000);
-    </script>
+        function refreshImgCam#id#(){
+          var url = "#url#";
+          if(url.indexOf('?') > 0){
+            url += '&t='+(new Date()).getTime();
+        }else{
+            url += '?t='+(new Date()).getTime();
+        }
+        var img = $('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" style="width:90%"/>').attr('src', url).load(function() {
+         $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
+         var imgFull = img.clone();
+         imgFull.css('width','auto');
+         imgFull.removeClass('zoom');
+         $("#popupCameraZoom#id# > div").empty().append(imgFull);
+         setTimeout(function(){ refreshImgCam#id#()}, #refreshDelay#);
+     });
+    };
+    refreshImgCam#id#();
+</script>
 
 </div>
