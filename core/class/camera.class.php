@@ -178,14 +178,14 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('ip') == '') {
 			throw new Exception(__('L\'adresse IP de la camera ne peut être vide', __FILE__));
 		}
-		if ($this->getConfiguration('salt') == '') {
-			$this->setConfiguration('salt', config::genKey(128));
-		}
 	}
 
 	public function postSave() {
 		if ($this->getConfiguration('applyDevice') != $this->getConfiguration('device')) {
 			$this->applyModuleConfiguration();
+		}
+		if ($this->getConfiguration('refreshDelay') == '') {
+			$this->setConfiguration('refreshDelay', 2);
 		}
 		$browseRecord = $this->getCmd(null, 'browseRecord');
 		if (!is_object($browseRecord)) {
