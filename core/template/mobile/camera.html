@@ -31,12 +31,20 @@
        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
        var imgFull = img.clone();
        imgFull.css('width','auto');
-       imgFull.css('max-width',$("#popupCameraZoom#id# > div").width());
+       imgFull.css('max-width',$("#popupCameraZoom#id# .display").width());
+       imgFull.css('display','block');
+       imgFull.css('margin-left','auto');
+       imgFull.css('margin-right','auto');
        imgFull.removeClass('zoom');
-       $("#popupCameraZoom#id# > div").empty().append(imgFull);
-       setTimeout(refreshImgCam#id#, #refreshDelay#);
+       $("#popupCameraZoom#id# .display").empty().append(imgFull);
+       if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html() != undefined){
+         timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
+       }
      });
     };
+    if (typeof timeoutCamera#id# !== "undefined") {
+      clearTimeout(timeoutCamera#id#);
+    }
     refreshImgCam#id#();
   </script>
 
