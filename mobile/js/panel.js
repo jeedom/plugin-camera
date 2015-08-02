@@ -64,7 +64,6 @@ function displayCamera(_object_id) {
             $('#div_displayEquipement').empty();
             for (var i in data.result.eqLogics) {
                 $('#div_displayEquipement').append(data.result.eqLogics[i]).trigger('create');
-              
             }
             setTileSize('.eqLogic');
             $('#div_displayEquipement').packery();
