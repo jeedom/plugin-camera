@@ -11,5 +11,6 @@
     <version>1.0</version>
     <category>security</category>
     <display>panel</display>
+    <mobile>panel</mobile>
 </info>
 
