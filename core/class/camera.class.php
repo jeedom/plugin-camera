@@ -258,6 +258,19 @@ class camera extends eqLogic {
 		$takeSnapshot->setOrder(999);
 		$takeSnapshot->setDisplay('icon', '<i class="fa fa-picture-o"></i>');
 		$takeSnapshot->save();
+
+		$sendSnapshot = $this->getCmd(null, 'sendSnapshot');
+		if (!is_object($sendSnapshot)) {
+			$sendSnapshot = new cameraCmd();
+		}
+		$sendSnapshot->setName(__('Envoyer une capture', __FILE__));
+		$sendSnapshot->setConfiguration('request', '-');
+		$sendSnapshot->setType('action');
+		$sendSnapshot->setLogicalId('sendSnapshot');
+		$sendSnapshot->setEqLogic_id($this->getId());
+		$sendSnapshot->setSubType('message');
+		$sendSnapshot->setIsVisible(0);
+		$sendSnapshot->save();
 	}
 
 	public function toHtml($_version = 'dashboard') {
@@ -480,6 +493,7 @@ class camera extends eqLogic {
 		}
 		$output_file = $output_dir . '/' . date('Y-m-d_H:i:s') . '.jpg';
 		file_put_contents($output_file, file_get_contents($this->getUrl($this->getConfiguration('urlStream'))));
+		return $output_file;
 	}
 
 	public function export($_withCmd = true) {
@@ -575,6 +589,9 @@ class cameraCmd extends cmd {
 		if ($this->getLogicalId() == 'takeSnapshot') {
 			return true;
 		}
+		if ($this->getLogicalId() == 'sendSnapshot') {
+			return true;
+		}
 		return false;
 	}
 
@@ -603,19 +620,33 @@ class cameraCmd extends cmd {
 		$eqLogic = $this->getEqLogic();
 		if ($this->getLogicalId() == 'recordCmd') {
 			$eqLogic->recordCam($_options['slider']);
-		} elseif ($this->getLogicalId() == 'stopRecordCmd') {
-			$eqLogic->stopRecord();
-		} elseif ($this->getLogicalId() == 'takeSnapshot') {
-			$eqLogic->takeSnapshot();
-		} else {
-			$url = $eqLogic->getUrl($request);
-			$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
-			$http->setNoReportError(true);
-			if ($this->getConfiguration('useCurlDigest') == 1) {
-				$http->setCURLOPT_HTTPAUTH(CURLAUTH_DIGEST);
-			}
-			$http->exec($this->getConfiguration('timeout', 2));
+			return true;
 		}
+		if ($this->getLogicalId() == 'stopRecordCmd') {
+			$eqLogic->stopRecord();
+			return true;
+		}
+		if ($this->getLogicalId() == 'takeSnapshot') {
+			$eqLogic->takeSnapshot();
+			return true;
+		}
+		if ($this->getLogicalId() == 'sendSnapshot') {
+			$_options['file'] = $eqLogic->takeSnapshot();
+			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('alertMessageCommand')));
+			if (is_object(!$cmd)) {
+				throw new Exception(__('La commande de mail est introuvable :', __FILE__) . ' ' . $eqLogic->getConfiguration('alertMessageCommand'));
+			}
+			$cmd->execCmd($_options);
+			return true;
+		}
+		$url = $eqLogic->getUrl($request);
+		$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
+		$http->setNoReportError(true);
+		if ($this->getConfiguration('useCurlDigest') == 1) {
+			$http->setCURLOPT_HTTPAUTH(CURLAUTH_DIGEST);
+		}
+		$http->exec($this->getConfiguration('timeout', 2));
+
 		return true;
 	}
 

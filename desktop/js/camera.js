@@ -77,6 +77,12 @@
 }
 });
 
+ $("#bt_selectActionMessage").on('click', function () {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action',subType : 'message'}}, function (result) {
+        $(".eqLogicAttr[data-l1key=configuration][data-l2key=alertMessageCommand]").value(result.human);
+    });
+});
+
  function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {};
@@ -97,6 +103,9 @@
         return;
     }
     if (isset(_cmd.logicalId) && _cmd.logicalId == 'takeSnapshot') {
+        return;
+    }
+    if (isset(_cmd.logicalId) && _cmd.logicalId == 'sendSnapshot') {
         return;
     }
     var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';

@@ -117,6 +117,15 @@ foreach (object::all() as $object) {
                     <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{Commande mail}}</label>
+                <div class="col-sm-7">
+                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageCommand" placeholder="{{Commande mail pour l'envoi d'une capture}}"/>
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-default listCmdActionMessage" id="bt_selectActionMessage"><i class="fa fa-list-alt"></i></a>
+                </div>
+            </div>
         </fieldset>
     </form>
 </div>

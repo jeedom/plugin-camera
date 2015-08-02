@@ -26,13 +26,15 @@ foreach (ls($dir, '*') as $file) {
 	}
 	$files[$date][$time] = $file;
 }
+krsort($files);
 ?>
 <?php
-foreach ($files as $date => $file) {
+foreach ($files as $date => &$file) {
 	echo '<legend>' . $date . '</legend>';
 	echo '<div class="cameraThumbnailContainer">';
+	krsort($file);
 	foreach ($file as $time => $filename) {
-		echo '<div class="cameraDisplayCard" style="background-color: #e7e7e7;padding:5px;">';
+		echo '<div class="cameraDisplayCard" style="background-color: #e7e7e7;padding:5px;height:167px;">';
 		echo '<center>' . $time . '</center>';
 		echo '<center><img class="img-responsive cursor displayImage" src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" width="150"/></center>';
 		echo '<center style="margin-top:5px;"><a href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" class="btn btn-success btn-xs" style="color : white"><i class="fa fa-download"></i></a>';
