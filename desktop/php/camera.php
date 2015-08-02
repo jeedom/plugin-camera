@@ -30,17 +30,17 @@ foreach ($eqLogics as $eqLogic) {
     </legend>
 
     <div class="eqLogicThumbnailContainer">
-       <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-         <center>
-            <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
-        </center>
-        <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
-    </div>
-    <div class="cursor" id="bt_getFromMarket" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-     <center>
-        <i class="fa fa-shopping-cart" style="font-size : 7em;color:#94ca02;"></i>
+     <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
+       <center>
+        <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
     </center>
-    <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Accéder au Market</center></span>
+    <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
+</div>
+<div class="cursor" id="bt_getFromMarket" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
+   <center>
+    <i class="fa fa-shopping-cart" style="font-size : 7em;color:#94ca02;"></i>
+</center>
+<span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Accéder au Market</center></span>
 </div>
 <?php
 foreach ($eqLogics as $eqLogic) {
@@ -87,11 +87,11 @@ foreach (object::all() as $object) {
                    <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                       <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>
-                       <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
-                   </div>
-               </div>
-               <div class="form-group">
+                     <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>
+                     <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
+                 </div>
+             </div>
+             <div class="form-group">
                 <label class="col-sm-3 control-label">{{IP}}</label>
                 <div class="col-sm-3">
                     <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
@@ -117,6 +117,7 @@ foreach (object::all() as $object) {
                     <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
                 </div>
             </div>
+            <legend>{{Envoi de capture}}</legend>
             <div class="form-group">
                 <label class="col-sm-3 control-label">{{Commande mail}}</label>
                 <div class="col-sm-7">
@@ -124,6 +125,12 @@ foreach (object::all() as $object) {
                 </div>
                 <div class="col-sm-2">
                     <a class="btn btn-default listCmdActionMessage" id="bt_selectActionMessage"><i class="fa fa-list-alt"></i></a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{Nombre de capture(s)}}</label>
+                <div class="col-sm-3">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageNbSnapshot" placeholder="{{Nombre de capture}}"/>
                 </div>
             </div>
         </fieldset>

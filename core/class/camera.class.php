@@ -631,7 +631,12 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		if ($this->getLogicalId() == 'sendSnapshot') {
-			$_options['files'] = array($eqLogic->takeSnapshot());
+			$_options['files'] = array();
+			$nb = $eqLogic->getConfiguration('alertMessageNbSnapshot', 1);
+			for ($i = 0; $i < $nb; $i++) {
+				$_options['files'][] = $eqLogic->takeSnapshot();
+				sleep(1);
+			}
 			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('alertMessageCommand')));
 			if (is_object(!$cmd)) {
 				throw new Exception(__('La commande de mail est introuvable :', __FILE__) . ' ' . $eqLogic->getConfiguration('alertMessageCommand'));
