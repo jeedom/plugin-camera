@@ -1,13 +1,6 @@
-:icons:
-== Camera
+= Camera
 
-=== Description
-Plugin permetant de creer et gerer ses camera (affichage et enregistrement)
+Plugin permetant de créer et gerer ses cameras (affichage et enregistrement)
 
 '''
-=== Configuration
 include::configuration.asciidoc[]
-
-'''
-=== FAQ
-include::faq.asciidoc[]

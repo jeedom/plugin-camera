@@ -351,11 +351,7 @@ class camera extends eqLogic {
 		}
 		$replace_eqLogic['#action#'] = $action;
 
-		if ($_version == 'dview') {
-			$object = $this->getObject();
-			$replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace_eqLogic['#name#'] : $replace['#name#'];
-		}
-		if ($_version == 'mview') {
+		if ($_version == 'dview' || $_version == 'mview') {
 			$object = $this->getObject();
 			$replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace_eqLogic['#name#'] : $replace['#name#'];
 		}

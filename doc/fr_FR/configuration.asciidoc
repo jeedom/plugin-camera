@@ -1,1 +1,133 @@
-image::../images/camera_screenshot1.JPG[]
+== Configuration du plugin
+
+Après installation du plugin, il vous suffit de l’activer et c'est bon, cependant il y à quelques paramètres de configuration avancés : 
+
+image::../images/camera1.PNG[]
+
+* *Chemin des enregistrements* : indique le chemin ou Jeedom doit mettre les images qu'il capture des cameras (il est conseillé de ne pas y toucher)
+* *Taille maximum du dossier d'enregistrement (Mo)* : donne la taille maximum autorisé pour le dossier ou les captures sont enregistrées (il est conseillé de ne pas y toucher)
+
+[IMPORTANT]
+Attention ses captures ne font pas partie du backup
+
+== Configuration des équipements
+
+La configuration des équipements Caméra est accessible à partir du menu plugin :
+
+image::../images/camera2.PNG[]
+
+Voilà à quoi ressemble la page du plugin Caméra (ici avec déjà 1 équipements) :
+
+image::../images/camera3.PNG[]
+
+[TIP]
+Comme à beaucoup d’endroit sur Jeedom, mettre la souris tout à gauche permet de faire apparaître un menu d’accès rapide (vous pouvez à partir de votre profils le laisser toujours visible)
+
+Vous avez un bouton de création d’équipement Caméra, un bouton pour télécharger une configuration caméra venant du market et vos équipements, avec la photos de ceux-ci si disponible
+
+Une fois que vous cliquez sur l’un des équipements caméra, vous obtenez :
+
+image::../images/camera4.PNG[]
+
+* *Général*
+** *Nom de l’équipement Caméra* : nom de votre équipement caméra
+** *Objet parent* : indique l’objet parent auquel appartient l’équipement
+** *Activer* : permet de rendre votre équipement actif
+** *Visible* : le rend visible sur le dashboard
+** *IP* : l'IP local de votre caméra
+** *Port* : le port pour sur lequel joindre la caméra
+** *Protocole* : le protocole de communication de votre camera (http ou https)
+** *Nom d'utilisateur* : nom d'utilisateur pour se connecter à la caméra (si nécessaire)
+** *Mot de passe* : mot de passe pour se connecter à la caméra (si nécessaire) 
+* *Envoi de capture*
+** *Commande mail* : permet de spécifier une commande mail qui sera utiliser pour l'envoi de capture (commande "Envoyer une capture")
+** *Nombre de capture(s)* : défini le nombre de captures à envoyer (les captures sont prises toute les secondes)
+* *Configuration*
+** *Modèle* : permet de choisir le modele de sa camera, attention si vous changer cela écrasera vos paramètres de configuration
+** *Partager* : permet de partager la configuration courante de la caméra sur le market
+** *Envoyer* : permet d'envoyer un fichier json à Jeedom contenant la configuration du modèle de la caméra (résever aux experts)
+** *Exporter* : permet d'exporter la configuration de la camera courante
+* *Flux*
+** *URL de capture* : URL qui de "snapshot" de la caméra. Change en fonction des caméras. Attention à ne pas mettre une url de flux sous peine de planter Jeedom. Vous pouvez utiliser les tags \#username# et \#password#, qui seront automatiquement remplacé par le nom d'utilisateur et le mot de passe lors de l'utilisateur de cette commande
+** *Délai de rafraichissement* : Délai de rafraichissement des captures sur le widget. Attention plus le délai est faible plus la charge sur Jeedom augmente.
+
+En dessous vous retrouvez la liste des commandes :
+
+* ID de la commande (utiliser avec les commandes de type info pour par exemple que la camera remonte l'information de mouvement à Jeedom par l'api, voir plus bas)
+* Nom de la commande avec la possibilité de mettre une icone à la place (pour la supprimer il faut double cliquer sur l'icone en question)
+* Type et sous type de la commande
+* Requete à envoyer à la caméra pour faire une action (passage en mode nuit, ptz...).Vous pouvez utiliser les tags \#username# et \#password#, qui seront automatiquement remplacé par le nom d'utilisateur et le mot de passe lors de l'utilisateur de cette commande
+* Afficher : permet d'afficher la commande ou non sur le dashboard
+* Stop commande : indique à jeedom que cette commande correspond à la commande de stop de mouvement de la camera
+* Curl digest : indique qu'il faut utilise la méthode d'authentification curl digest pour se connecter à la caméra
+* Timeout : délai maximum autorisé pour que la caméra répond à la commande
+* Configuration avancée (petites roues crantées) : permet d'afficher la configuration avancée de la commande (méthode d'historisation, widget...)
+* Tester : permet de tester la commande
+* Supprimer (signe -) : permet de supprimer la commande
+
+== Le widget
+
+Voila à quoi ressemble le widget d'une caméra : 
+
+image::../images/camera5.PNG[]
+
+On retrouve sur celui-ci l'image de la caméra, les commandes définies dans la configuration, la commande pour prendre une capture, la commande pour lancer la prise de multiple capture et la commande pour parcourir les captures.
+
+[TIP]
+Sur le dashboard et le panel il est possible de redimensionner le widget pour l'adapter à ses besoins
+
+Un clique sur l'image permet d'afficher celle-ci en plus grand : 
+
+image::../images/camera6.PNG[]
+
+Un clique sur la derniere commande pour parcourir les captures vous affichera celle-ci : 
+
+image::../images/camera7.PNG[]
+
+[IMPORTANT]
+Ce sont des images ici absolument pas des videos, les images sont prise soit une fois en mode capture simple, soit toute les secondes en mode enregistrement.
+
+Vous retrouvez ici toute les captures organisées par jour puis par date, vous pouvez pour chacun d'elle : 
+
+* la voir en plus en grand en cliquant sur l'image
+* la télécharger
+* la supprimer
+
+En mobile le widget est un peu different : 
+
+image::../images/camera12.PNG[]
+
+Si vous cliquez sur l'image de la camera vous obtenez celel-ci en plus grande avec les commandes possible : 
+
+image::../images/camera13.PNG[]
+
+== Les panels
+
+Le plugin caméra mets aussi à disposition un panel qui vous permet de voir d'un seul coup toute vos caméras, il est accessible par Acceuil -> Caméra : 
+
+image::../images/camera8.PNG[]
+
+Voila le résultat : 
+
+image::../images/camera9.PNG[]
+
+Il est bien sur aussi disponible en mobile par Plugin -> Caméra : 
+
+image::../images/camera10.PNG[]
+
+Une fois dessus vous obtenez une vue global de toutes vos caméras :
+
+image::../images/camera11.PNG[]
+
+== Envoyer une capture
+
+Cette commande un peu spécifique envoi à travers une commande mail, une ou plusieurs captures. 
+
+[ATTENTION]
+Il vous faut absolument le plugin mail et ca ne marche qu'avec ce plugin. Il n'est pas possible de l'envoyer par MMS
+
+La configuration est très simple sur la page de configuration de votre camera vous indiquez la commande à utiliser ainsi que le nombre de capture à envoyer par mail à chaque utilisation. Ensuite il vous suffit de faire un scénario : 
+
+image::../images/camera14.PNG[]
+
+Ici un scénario très simple qui envoi une série de capture (j'ai mis à 20 dans la configuration du plugin) par mail lors de l'ouverture de la porte
