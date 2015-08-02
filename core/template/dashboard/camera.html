@@ -30,8 +30,8 @@
             autoOpen: false,
             modal: true,
             resizable: false,
-            height: ((jQuery(window).height() - 50) < 550) ? (jQuery(window).height() - 100) : 600,
-            width: ((jQuery(window).width() - 50) < 650) ? (jQuery(window).width() - 100) : 700,
+            height: ((jQuery(window).height() - 100) < 780) ? jQuery(window).height() - 100 : 780,
+            width: ((jQuery(window).width() - 100) < 1280) ? (jQuery(window).width() - 100) : 1280,
             open: function () {
                 $("body").css({overflow: 'hidden'});
             },
@@ -47,20 +47,20 @@
         });
 
         function refreshImgCam#id#(){
-           var url = "#url#";
-           if(url.indexOf('?') > 0){
+         var url = "#url#";
+         if(url.indexOf('?') > 0){
             url += '&t='+(new Date()).getTime();
         }else{
             url += '?t='+(new Date()).getTime();
         }
         var img = $('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" style="width:90%"/>').attr('src', url).load(function() {
-           $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
-           var imgFull = img.clone();
-           imgFull.css('width','auto');
-           imgFull.removeClass('zoom');
-           $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append(imgFull);
-           setTimeout(refreshImgCam#id#, #refreshDelay#);
-       });
+         $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
+         var imgFull = img.clone();
+         imgFull.css('width','auto');
+         imgFull.removeClass('zoom');
+         $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append(imgFull);
+         setTimeout(refreshImgCam#id#, #refreshDelay#);
+     });
     }
 
     refreshImgCam#id#();
