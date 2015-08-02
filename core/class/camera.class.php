@@ -187,19 +187,24 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('refreshDelay') == '') {
 			$this->setConfiguration('refreshDelay', 2);
 		}
-		$browseRecord = $this->getCmd(null, 'browseRecord');
+		$browseRecord = $this->getCmd(null, 'urlFlux');
 		if (!is_object($browseRecord)) {
 			$browseRecord = new cameraCmd();
 		}
-		$browseRecord->setName(__('Parcourir les video', __FILE__));
+		$browseRecord->setName(__('Flux video', __FILE__));
 		$browseRecord->setEventOnly(1);
 		$browseRecord->setConfiguration('request', '-');
 		$browseRecord->setType('info');
-		$browseRecord->setLogicalId('browseRecord');
-		$browseRecord->setIsVisible(1000);
+		$browseRecord->setLogicalId('urlFlux');
+		$browseRecord->setIsVisible(0);
 		$browseRecord->setEqLogic_id($this->getId());
-		$browseRecord->setSubType('binary');
+		$browseRecord->setSubType('string');
 		$browseRecord->save();
+
+		$browseRecord = $this->getCmd(null, 'browseRecord');
+		if (is_object($browseRecord)) {
+			$browseRecord->remove();
+		}
 
 		$recordState = $this->getCmd(null, 'recordState');
 		if (!is_object($recordState)) {
@@ -211,7 +216,7 @@ class camera extends eqLogic {
 		$recordState->setConfiguration('request', '-');
 		$recordState->setType('info');
 		$recordState->setLogicalId('recordState');
-		$recordState->setIsVisible(999);
+		$recordState->setIsVisible(0);
 		$recordState->setEqLogic_id($this->getId());
 		$recordState->setSubType('binary');
 		$recordState->save();
@@ -289,7 +294,7 @@ class camera extends eqLogic {
 		$action = '';
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getIsVisible() == 1) {
-				if ($cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState' && $cmd->getConfiguration('stopCmd') != 1) {
+				if ($cmd->getLogicalId() != 'urlFlux' && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState' && $cmd->getConfiguration('stopCmd') != 1) {
 					if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 						$action .= '<br/>';
 					}
@@ -345,11 +350,6 @@ class camera extends eqLogic {
 			$replace_eqLogic['#hideFolder#'] = 1;
 		}
 		$replace_eqLogic['#action#'] = $action;
-
-		$browseRecord = $this->getCmd(null, 'browseRecord');
-		if (is_object($browseRecord)) {
-			$replace_eqLogic['#browseRecord_id#'] = $browseRecord->getId();
-		}
 
 		if ($_version == 'dview') {
 			$object = $this->getObject();
@@ -563,14 +563,21 @@ class cameraCmd extends cmd {
 		$info_device['params'][0]['value'] = $eqLogic->getConfiguration('username');
 		$info_device['params'][1]['value'] = $eqLogic->getConfiguration('password');
 		$info_device['params'][2]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'));
-		$info_device['params'][3]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'));
-		$info_device['params'][4]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'));
-		$info_device['params'][5]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'));
+		$info_device['params'][3]['value'] = '';
+		$info_device['params'][4]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'), true);
+		$info_device['params'][5]['value'] = '';
 		return $info_device;
 	}
 
 	public function imperihomeAction($_action, $_value) {
 		return;
+	}
+
+	public function imperihomeCmd() {
+		if ($this->getLogicalId() == 'urlFlux') {
+			return true;
+		}
+		return false;
 	}
 
 	public function dontRemoveCmd() {
@@ -590,6 +597,9 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		if ($this->getLogicalId() == 'sendSnapshot') {
+			return true;
+		}
+		if ($this->getLogicalId() == 'urlFlux') {
 			return true;
 		}
 		return false;
