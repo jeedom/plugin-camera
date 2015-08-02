@@ -631,7 +631,7 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		if ($this->getLogicalId() == 'sendSnapshot') {
-			$_options['file'] = $eqLogic->takeSnapshot();
+			$_options['files'] = array($eqLogic->takeSnapshot());
 			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('alertMessageCommand')));
 			if (is_object(!$cmd)) {
 				throw new Exception(__('La commande de mail est introuvable :', __FILE__) . ' ' . $eqLogic->getConfiguration('alertMessageCommand'));
