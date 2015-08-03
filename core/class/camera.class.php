@@ -325,32 +325,21 @@ class camera extends eqLogic {
 			'#humanname#' => $this->getHumanName(),
 			'#name#' => $this->getName(),
 			'#eqLink#' => ($this->hasRight('w')) ? $this->getLinkToConfiguration() : '#',
-			'#hideFolder#' => 0,
 			'#height#' => $this->getDisplay('height', 'auto'),
 			'#width#' => $this->getDisplay('width', 'auto'),
 		);
-
 		$stopRecord = $this->getCmd(null, 'stopRecordCmd');
 		$record = $this->getCmd(null, 'recordCmd');
-		if ($stopRecord->getIsVisible() == 1 && $record->getIsVisible() == 1) {
-			if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
-				$action .= '<br/>';
-			}
-			$recordState = $this->getCmd(null, 'recordState');
-			$replace = array(
-				'#record_id#' => $record->getId(),
-				'#stopRecord_id#' => $stopRecord->getId(),
-				'#recordState#' => $recordState->execCmd(),
-				'#recordState_id#' => $recordState->getId(),
-			);
-			$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
-			if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
-				$action .= '<br/>';
-			}
-			$replace_eqLogic['#hideFolder#'] = 1;
-		}
-		$replace_eqLogic['#action#'] = $action;
+		$recordState = $this->getCmd(null, 'recordState');
+		$replace = array(
+			'#record_id#' => $record->getId(),
+			'#stopRecord_id#' => $stopRecord->getId(),
+			'#recordState#' => $recordState->execCmd(null, 2),
+			'#recordState_id#' => $recordState->getId(),
+		);
+		$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
 
+		$replace_eqLogic['#action#'] = $action;
 		if ($_version == 'dview' || $_version == 'mview') {
 			$object = $this->getObject();
 			$replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace_eqLogic['#name#'] : $replace['#name#'];
