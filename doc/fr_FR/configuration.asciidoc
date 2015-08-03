@@ -139,3 +139,5 @@ Si vous avez une caméra qui possède la détection de mouvement et que vous vou
 ----
 http://#IP_JEEDOM#/core/api/jeeApi.php?apikey=#APIKEY#&type=camera&id=#ID#&value=#value#
 ----
+
+Il faut bien entendu avant avoir creer une commande de type info sur votre caméra
