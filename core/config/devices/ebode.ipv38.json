@@ -1,0 +1,13 @@
+{
+    "ebode.ipv38": {
+	"name" : "Foscam/Ebode non HD, non motorisée",
+        "configuration": {
+            "port_cam": "88",
+            "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
+            "protocole": "http",
+            "refreshDelay": "1"
+        },
+        "commands": [
+        ]
+    }
+}
