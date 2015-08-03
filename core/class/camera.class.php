@@ -66,61 +66,6 @@ class camera extends eqLogic {
 		}
 	}
 
-	public static function shareOnMarket(&$market) {
-		$moduleFile = dirname(__FILE__) . '/../config/devices/' . $market->getLogicalId() . '.json';
-		if (!file_exists($moduleFile)) {
-			throw new Exception('Impossible de trouver le widget ' . $moduleFile);
-		}
-		$tmp = dirname(__FILE__) . '/../../../../tmp/' . $market->getLogicalId() . '.zip';
-		if (file_exists($tmp)) {
-			if (!unlink($tmp)) {
-				throw new Exception(__('Impossible de supprimer : ', __FILE__) . $tmp . __('. Vérifiez les droits', __FILE__));
-			}
-		}
-		if (!create_zip($moduleFile, $tmp)) {
-			throw new Exception(__('Echec de création du zip. Répertoire source : ', __FILE__) . $moduleFile . __(' / Répertoire cible : ', __FILE__) . $tmp);
-		}
-		return $tmp;
-	}
-
-	public static function getFromMarket(&$market, $_path) {
-		$cibDir = dirname(__FILE__) . '/../config/devices/';
-		if (!file_exists($cibDir)) {
-			throw new Exception(__('Impossible d\'installer la configuration du module le repertoire n\éxiste pas : ', __FILE__) . $cibDir);
-		}
-		$zip = new ZipArchive;
-		if ($zip->open($_path) === TRUE) {
-			$zip->extractTo($cibDir . '/');
-			$zip->close();
-		} else {
-			throw new Exception('Impossible de décompresser le zip : ' . $_path);
-		}
-		$moduleFile = dirname(__FILE__) . '/../config/devices/' . $market->getLogicalId() . '.json';
-		if (!file_exists($moduleFile)) {
-			throw new Exception(__('Echec de l\'installation. Impossible de trouver le module ', __FILE__) . $moduleFile);
-		}
-
-		foreach (eqLogic::byTypeAndSearhConfiguration('camera', $market->getLogicalId()) as $eqLogic) {
-			$eqLogic->applyModuleConfiguration();
-		}
-	}
-
-	public static function removeFromMarket(&$market) {
-		$moduleFile = dirname(__FILE__) . '/../config/devices/' . $market->getLogicalId() . '.json';
-		if (!file_exists($moduleFile)) {
-			throw new Exception(__('Echec lors de la suppression. Impossible de trouver le module ', __FILE__) . $moduleFile);
-		}
-		unlink($moduleFile);
-	}
-
-	public static function listMarketObject() {
-		$return = array();
-		foreach (camera::devicesParameters() as $logical_id => $info) {
-			$return[] = $logical_id;
-		}
-		return $return;
-	}
-
 	public static function devicesParameters($_device = '') {
 		$path = dirname(__FILE__) . '/../config/devices';
 		if (isset($_device) && $_device != '') {

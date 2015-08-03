@@ -23,32 +23,23 @@ foreach ($eqLogics as $eqLogic) {
        </div>
    </div>
    <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
-    <legend>{{Mes caméras}}
-        <span style="font-size: 0.7em;color:#c5c5c5">
-            Vous devez être connecté à internet pour voir les prévisualisation
-        </span>
-    </legend>
-
+    <legend>{{Mes caméras}}</legend>
     <div class="eqLogicThumbnailContainer">
-     <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-       <center>
-        <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
-    </center>
-    <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
-</div>
-<div class="cursor" id="bt_getFromMarket" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-   <center>
-    <i class="fa fa-shopping-cart" style="font-size : 7em;color:#94ca02;"></i>
-</center>
-<span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Accéder au Market</center></span>
-</div>
+       <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
+         <center>
+            <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
+        </center>
+        <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
+    </div>
 <?php
 foreach ($eqLogics as $eqLogic) {
 	echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
 	echo "<center>";
-	$urlPath = config::byKey('market::address') . '/filestore/market/camera/images/' . $eqLogic->getConfiguration('device') . '_icon.png';
-	$urlPath2 = config::byKey('market::address') . '/filestore/market/camera/images/' . $eqLogic->getConfiguration('device') . '_icon.jpg';
-	echo '<img class="lazy" src="plugins/camera/doc/images/camera_icon.png" data-original2="' . $urlPath2 . '" data-original="' . $urlPath . '" height="105" width="95" />';
+	if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg')) {
+		echo '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg" height="105" width="95" />';
+	} else {
+		echo '<img class="lazy" src="plugins/camera/doc/images/camera_icon.png" height="105" width="95" />';
+	}
 	echo "</center>";
 	echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
 	echo '</div>';
@@ -86,11 +77,11 @@ foreach (object::all() as $object) {
                    <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                     <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>
-                     <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
-                 </div>
-             </div>
-             <div class="form-group">
+                       <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>
+                       <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
+                   </div>
+               </div>
+               <div class="form-group">
                 <label class="col-sm-3 control-label">{{IP}}</label>
                 <div class="col-sm-3">
                     <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
@@ -129,7 +120,7 @@ foreach (object::all() as $object) {
             <div class="form-group">
                 <label class="col-sm-3 control-label">{{Nombre de capture(s)}}</label>
                 <div class="col-sm-3">
-                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageNbSnapshot" placeholder="{{Nombre de capture}}"/>
+                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageNbSnapshot" placeholder="{{Nombre de capture}}"/>
                 </div>
             </div>
         </fieldset>
@@ -151,22 +142,9 @@ foreach (camera::devicesParameters() as $id => $info) {
 ?>
                    </select>
                </div>
-               <div class="col-sm-4">
-                <a class="btn btn-warning" id="bt_shareOnMarket"><i class="fa fa-cloud-upload"></i> {{Partager}}</a>
-
-            </div>
-        </div>
-        <div class="form-group expertModeVisible">
-            <label class="col-sm-2 control-label">{{Envoyer}}</label>
-            <div class="col-sm-5">
-                <input id="bt_uploadConfCam" type="file" name="file" data-url="plugins/camera/core/ajax/camera.ajax.php?action=uploadConfCam">
-            </div>
-            <div class="col-sm-4">
-                <a class="btn btn-success eqLogicAction" data-action="export"><i class="fa fa-cloud-download"></i> {{Exporter}}</a>
-            </div>
-        </div>
-        <legend>{{Flux}}</legend>
-        <div class="form-group">
+           </div>
+           <legend>{{Flux}}</legend>
+           <div class="form-group">
             <label class="col-sm-2 control-label">{{URL de capture}}</label>
             <div class="col-sm-10">
                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}"/>

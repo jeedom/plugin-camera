@@ -17,37 +17,6 @@
 
  $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
- $('body').delegate('#bt_getFromMarket', 'click', function () {
-    $('#md_modal').dialog({title: "{{Partager sur le market}}"});
-    $('#md_modal').load('index.php?v=d&modal=market.list&type=camera').dialog('open');
-});
-
- $('body').delegate('#bt_shareOnMarket', 'click', function () {
-    var logicalId = $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').value();
-    if (logicalId == '') {
-        $('#div_alert').showAlert({message: '{{Vous devez d\'abord séléctioner un équipement}}', level: 'danger'});
-        return;
-    }
-    $('#md_modal').dialog({title: "{{Partager sur le market}}"});
-    $('#md_modal').load('index.php?v=d&modal=market.send&type=camera&logicalId=' + encodeURI(logicalId) + '&name=' + encodeURI($('.eqLogicAttr[data-l1key=configuration][data-l2key=device] option:selected').text())).dialog('open');
-});
-
- $('#bt_uploadConfCam').fileupload({
-    replaceFileInput: false,
-    dataType: 'json',
-    done: function (e, data) {
-        if (data.result.state != 'ok') {
-            $('#div_alert').showAlert({message: data.result.result, level: 'danger'});
-            return;
-        }
-        if (modifyWithoutSave) {
-            $('#div_alert').showAlert({message: '{{Fichier ajouté avec succes. Vous devez rafraichir pour vous en servir}}', level: 'success'})
-        } else {
-            window.location.reload();
-        }
-    }
-});
-
  $('.eqLogic').on('change switchChange.bootstrapSwitch','.eqLogicAttr[data-l1key=configuration][data-l2key=proxy_mode]', function () {
     if($(this).value() == 1){
         $('#div_proxy_mode_off').hide();
