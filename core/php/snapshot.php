@@ -10,7 +10,16 @@ if (!is_object($camera)) {
 if ($camera->getEqType_name() != 'camera') {
 	die();
 }
-$data = file_get_contents($camera->getUrl($camera->getConfiguration('urlStream')));
+if ($camera->getConfiguration('username') != '') {
+	$context = stream_context_create(array(
+		'http' => array(
+			'header' => "Authorization: Basic " . base64_encode($camera->getConfiguration('username') . ":" . $camera->getConfiguration('password')),
+		),
+	));
+	$data = file_get_contents($camera->getUrl($camera->getConfiguration('urlStream')), false, $context);
+} else {
+	$data = file_get_contents($camera->getUrl($camera->getConfiguration('urlStream')));
+}
 header('Content-Type: image/jpeg');
 echo $data;
 exit;
