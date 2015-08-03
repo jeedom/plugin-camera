@@ -319,8 +319,6 @@ class camera extends eqLogic {
 			'#id#' => $this->getId(),
 			'#url#' => $this->getUrl($this->getConfiguration('urlStream'), true),
 			'#refreshDelay#' => $this->getConfiguration('refreshDelay', 1) * 1000,
-			'#password#' => $this->getConfiguration('password'),
-			'#username#' => $this->getConfiguration('username'),
 			'#background_color#' => $this->getBackgroundColor(jeedom::versionAlias($_version)),
 			'#humanname#' => $this->getHumanName(),
 			'#name#' => $this->getName(),
