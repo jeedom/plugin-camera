@@ -3,7 +3,7 @@
   <center><a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none" class="directDisplay"></a></center>
   
   <div data-role="popup" id="popupCameraZoom#id#">
-    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" data-first="0">Close</a>
     <div class="display"></div>
     <center>
       #action#
@@ -30,7 +30,12 @@
        if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html() != undefined){
          timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
        }
-     });
+       if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').attr('data-first') == 0){
+        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').attr('data-first',1);
+        setTileSize('.eqLogic');
+        $('#div_displayEquipement').packery({gutter : 4});
+      }
+    });
     };
     if (typeof timeoutCamera#id# !== "undefined") {
       clearTimeout(timeoutCamera#id#);
