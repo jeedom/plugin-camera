@@ -1,0 +1,10 @@
+{
+    "d-link.dsc-5020l": {
+	"name" : "Zavio F3115",
+        "configuration": {
+            "urlStream": "\/image\/jpeg.cgi?user=#username#&pwd=#password#",
+            "protocole": "http"
+        },
+        "commands": []
+    }
+}

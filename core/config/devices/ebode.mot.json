@@ -4,8 +4,7 @@
         "configuration": {
             "port_cam": "88",
             "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
-            "protocole": "http",
-            "refreshDelay": "1"
+            "protocole": "http"
         },
          "commands": [
             {
