@@ -370,9 +370,8 @@ class camera extends eqLogic {
 			'#username#' => $this->getConfiguration('username'),
 			'#password#' => $this->getConfiguration('password'),
 		);
-		if ($_flux && $this->getConfiguration('proxy_mode') == 1) {
-			$url = network::getNetworkAccess();
-			return network::getNetworkAccess() . '/plugins/camera/core/php/snapshot.php?id=' . $this->getId() . '&apikey=' . config::byKey('api');
+		if ($_flux) {
+			return 'plugins/camera/core/php/snapshot.php?id=' . $this->getId() . '&apikey=' . config::byKey('api');
 		}
 		$url = $this->getConfiguration('protocole', 'http');
 		$url .= '://';
@@ -560,7 +559,7 @@ class cameraCmd extends cmd {
 		$info_device['params'][1]['value'] = $eqLogic->getConfiguration('password');
 		$info_device['params'][2]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'));
 		$info_device['params'][3]['value'] = '';
-		$info_device['params'][4]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'), true);
+		$info_device['params'][4]['value'] = network::getNetworkAccess('external') . '/' . $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'), true);
 		$info_device['params'][5]['value'] = '';
 		return $info_device;
 	}
