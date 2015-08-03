@@ -131,3 +131,11 @@ La configuration est très simple sur la page de configuration de votre camera v
 image::../images/camera14.PNG[]
 
 Ici un scénario très simple qui envoi une série de capture (j'ai mis à 20 dans la configuration du plugin) par mail lors de l'ouverture de la porte
+
+== Envoi de la detection de mouvement à Jeedom
+
+Si vous avez une caméra qui possède la détection de mouvement et que vous voulez transmettre celle-ci à Jeedom voila l'url à mettre sur votre caméra : 
+
+----
+http://#IP_JEEDOM#/core/api/jeeApi.php?apikey=#APIKEY#&type=camera&id=#ID#&value=#value#
+----
