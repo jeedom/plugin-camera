@@ -3,17 +3,11 @@
     <span class="cmd cmd-widget" data-cmd_id="#record_id#" style="display:none;"></span>
     <a class="btn btn-xs btn-default action" style="margin-top:5px;"></a>
     <script>
-        var cameraState#recordState_id# = '#recordState#';
-        $('.cmd[data-cmd_id=#recordState_id#] .action').off();
-        $('.cmd[data-cmd_id=#recordState_id#] .action').on('click', function () {
-            if (cameraState#recordState_id# == '1'){
+        $('.cmd[data-cmd_id=#recordState_id#] .action').off().on('click', function () {
+            if ('#recordState#' == '1'){
                 jeedom.cmd.execute({id: '#stopRecord_id#', notify: false});
-                $('.cmd[data-cmd_id=#recordState_id#] .action').html('<i class="fa fa-circle"></i>');
-                cameraState#recordState_id# = '0';
             } else{
                 jeedom.cmd.execute({id: '#record_id#', notify: false});
-                $('.cmd[data-cmd_id=#recordState_id#] .action').html('<i class="fa fa-stop"></i>');
-                cameraState#recordState_id# = '1';
             }
         });
         if ('#recordState#' == 1) {
