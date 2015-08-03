@@ -25,12 +25,12 @@ foreach ($eqLogics as $eqLogic) {
    <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
     <legend>{{Mes caméras}}</legend>
     <div class="eqLogicThumbnailContainer">
-       <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-         <center>
-            <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
-        </center>
-        <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
-    </div>
+     <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
+       <center>
+        <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
+    </center>
+    <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
+</div>
 <?php
 foreach ($eqLogics as $eqLogic) {
 	echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
@@ -77,11 +77,11 @@ foreach (object::all() as $object) {
                    <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                       <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>
-                       <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
-                   </div>
-               </div>
-               <div class="form-group">
+                     <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>
+                     <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
+                 </div>
+             </div>
+             <div class="form-group">
                 <label class="col-sm-3 control-label">{{IP}}</label>
                 <div class="col-sm-3">
                     <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
@@ -107,19 +107,25 @@ foreach (object::all() as $object) {
                     <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
                 </div>
             </div>
-            <legend>{{Envoi de capture}}</legend>
             <div class="form-group">
-                <label class="col-sm-3 control-label">{{Commande mail}}</label>
+                <label class="col-sm-3 control-label">{{URL de capture}}</label>
                 <div class="col-sm-7">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageCommand" placeholder="{{Commande mail pour l'envoi d'une capture}}"/>
+                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}"/>
                 </div>
                 <div class="col-sm-2">
-                    <a class="btn btn-default listCmdActionMessage" id="bt_selectActionMessage"><i class="fa fa-list-alt"></i></a>
+                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelay" placeholder="{{Rafraichissement (s)}}"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">{{Nombre de capture(s)}}</label>
+                <label class="col-sm-3 control-label">{{Commande mail}}</label>
                 <div class="col-sm-3">
+                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageCommand" placeholder="{{Commande mail pour l'envoi d'une capture}}"/>
+                </div>
+                <div class="col-sm-1">
+                    <a class="btn btn-default listCmdActionMessage" id="bt_selectActionMessage"><i class="fa fa-list-alt"></i></a>
+                </div>
+                <label class="col-sm-3 control-label">{{Nombre de captures}}</label>
+                <div class="col-sm-2">
                     <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageNbSnapshot" placeholder="{{Nombre de capture}}"/>
                 </div>
             </div>
@@ -143,19 +149,9 @@ foreach (camera::devicesParameters() as $id => $info) {
                    </select>
                </div>
            </div>
-           <legend>{{Flux}}</legend>
-           <div class="form-group">
-            <label class="col-sm-2 control-label">{{URL de capture}}</label>
-            <div class="col-sm-10">
-                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">{{Délai de rafraichissement}}</label>
-            <div class="col-sm-4">
-                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelay" placeholder="{{Délai de rafraichissement en secondes}}"/>
-            </div>
-        </div>
+           <center>
+            <img src="core/img/no_image.gif" data-original=".jpg" id="img_device" class="img-responsive" style="max-height : 250px;"/>
+        </center>
     </fieldset>
 </form>
 </div>

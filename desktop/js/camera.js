@@ -26,6 +26,13 @@
         $('#div_proxy_mode_on').hide();
     }
 });
+ $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').on('change', function () {
+  if($('.li_eqLogic.active').attr('data-eqlogic_id') != ''){
+    $('#img_device').attr("src", $('.eqLogicDisplayCard[data-eqLogic_id='+$('.li_eqLogic.active').attr('data-eqlogic_id')+'] img').attr('src'));
+}else{
+    $('#img_device').attr("src",'plugins/camera/doc/images/camera_icon.png');
+}
+});
 
  $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').on('change', function () {
     $('.displayProtocol').hide();
@@ -38,10 +45,10 @@
 });
 
  $('.eqLogicAttr[data-l1key=configuration][data-l2key=protocoleFlux]').on('change', function () {
-     if($(this).value() == 'rtsp'){
-       $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').value('vlc');
-       $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',true);
-   }else{
+   if($(this).value() == 'rtsp'){
+     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').value('vlc');
+     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',true);
+ }else{
     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',false);
 }
 });
