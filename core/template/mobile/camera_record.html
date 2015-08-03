@@ -5,22 +5,22 @@
     <a class="action ui-btn ui-mini ui-btn-inline"></a>
     <script>
         var cameraState#recordState_id# = '#recordState#';
-                $('.cmd[data-cmd_id=#id#] .action').off();
-                $('.cmd[data-cmd_id=#id#] .action').on('click', function () {
-        if (cameraState#recordState_id# == '1'){
-        jeedom.cmd.execute({id: '#stopRecord_id#', notify: false});
+        $('.cmd[data-cmd_id=#id#] .action').off();
+        $('.cmd[data-cmd_id=#id#] .action').on('click', function () {
+            if (cameraState#recordState_id# == '1'){
+                jeedom.cmd.execute({id: '#stopRecord_id#', notify: false});
                 $('.cmd[data-cmd_id=#id#] .action').html('<i class="fa fa-circle"></i>');
                 cameraState#recordState_id# = '0';
-        } else{
-        jeedom.cmd.execute({id: '#record_id#', notify: false});
+            } else{
+                jeedom.cmd.execute({id: '#record_id#', notify: false});
                 $('.cmd[data-cmd_id=#id#] .action').html('<i class="fa fa-stop"></i>');
                 cameraState#recordState_id# = '1';
-        }
+            }
         });
-                if ('#recordState#' == 1) {
-        $('.cmd[data-cmd_id=#id#] .action').html('<i class="fa fa-stop"></i>');
+        if ('#recordState#' == 1) {
+            $('.cmd[data-cmd_id=#id#] .action').html('<i class="fa fa-stop"></i>');
         } else {
-        $('.cmd[data-cmd_id=#id#] .action').html('<i class="fa fa-circle"></i>');
+            $('.cmd[data-cmd_id=#id#] .action').html('<i class="fa fa-circle"></i>');
         }
     </script>
 </span>
