@@ -378,6 +378,21 @@ class camera extends eqLogic {
 		return $url . $complement;
 	}
 
+	public function getSnapshot() {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+		if ($this->getConfiguration('username') != '') {
+			curl_setopt($ch, CURLOPT_USERPWD, $this->getConfiguration('username') . ':' . $this->getConfiguration('password'));
+		}
+		$data = curl_exec($ch);
+		curl_close($ch);
+		return $data;
+	}
+
 	public function applyModuleConfiguration() {
 		$this->setConfiguration('applyDevice', $this->getConfiguration('device'));
 		if ($this->getConfiguration('device') == '') {
@@ -474,7 +489,7 @@ class camera extends eqLogic {
 			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
 		}
 		$output_file = $output_dir . '/' . date('Y-m-d_H:i:s') . '.jpg';
-		file_put_contents($output_file, file_get_contents($this->getUrl($this->getConfiguration('urlStream'))));
+		file_put_contents($output_file, $this->getSnapshot());
 		return $output_file;
 	}
 
@@ -639,11 +654,7 @@ class cameraCmd extends cmd {
 		$url = $eqLogic->getUrl($request);
 		$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
 		$http->setNoReportError(true);
-		if ($this->getConfiguration('useCurlDigest') == 1) {
-			$http->setCURLOPT_HTTPAUTH(CURLAUTH_DIGEST);
-		}
-		$http->exec($this->getConfiguration('timeout', 2));
-
+		$http->exec(2);
 		return true;
 	}
 

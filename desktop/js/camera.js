@@ -134,9 +134,7 @@
     tr += '<td>';
     tr += '<input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" data-label-text="{{Afficher}}" data-size="small" checked/> ';
     tr += '<span class="actionMode">';
-    tr += '<input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="configuration" data-label-text="{{Stop commande}}" data-l2key="stopCmd" data-size="small" /> ';
-    tr += '<input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="configuration" data-l2key="useCurlDigest" data-label-text="{{Curl digest}}" data-size="small" /> ';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="timeout" style="display : inline-block;width : 100px;margin-left : 5px;" placeholder="timeout"/>';
+    tr += '<input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="configuration" data-label-text="{{Stop commande}}" data-l2key="stopCmd" data-size="small" />';
     tr += '</span>';
     tr += '</div>';
     tr += '</td>';
