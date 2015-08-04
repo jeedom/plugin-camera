@@ -23,33 +23,26 @@ image::../images/camera3.PNG[]
 [TIP]
 Comme à beaucoup d’endroit sur Jeedom, mettre la souris tout à gauche permet de faire apparaître un menu d’accès rapide (vous pouvez à partir de votre profils le laisser toujours visible)
 
-Vous avez un bouton de création d’équipement Caméra, un bouton pour télécharger une configuration caméra venant du market et vos équipements, avec la photos de ceux-ci si disponible
+Vous avez un bouton de création d’équipement Caméra et vos équipements, avec la photos de ceux-ci si disponible
 
 Une fois que vous cliquez sur l’un des équipements caméra, vous obtenez :
 
 image::../images/camera4.PNG[]
 
-* *Général*
-** *Nom de l’équipement Caméra* : nom de votre équipement caméra
-** *Objet parent* : indique l’objet parent auquel appartient l’équipement
-** *Activer* : permet de rendre votre équipement actif
-** *Visible* : le rend visible sur le dashboard
-** *IP* : l'IP local de votre caméra
-** *Port* : le port pour sur lequel joindre la caméra
-** *Protocole* : le protocole de communication de votre camera (http ou https)
-** *Nom d'utilisateur* : nom d'utilisateur pour se connecter à la caméra (si nécessaire)
-** *Mot de passe* : mot de passe pour se connecter à la caméra (si nécessaire) 
-* *Envoi de capture*
-** *Commande mail* : permet de spécifier une commande mail qui sera utiliser pour l'envoi de capture (commande "Envoyer une capture")
-** *Nombre de capture(s)* : défini le nombre de captures à envoyer (les captures sont prises toute les secondes)
-* *Configuration*
-** *Modèle* : permet de choisir le modele de sa camera, attention si vous changer cela écrasera vos paramètres de configuration
-** *Partager* : permet de partager la configuration courante de la caméra sur le market
-** *Envoyer* : permet d'envoyer un fichier json à Jeedom contenant la configuration du modèle de la caméra (résever aux experts)
-** *Exporter* : permet d'exporter la configuration de la camera courante
-* *Flux*
-** *URL de capture* : URL qui de "snapshot" de la caméra. Change en fonction des caméras. Attention à ne pas mettre une url de flux sous peine de planter Jeedom. Vous pouvez utiliser les tags \#username# et \#password#, qui seront automatiquement remplacé par le nom d'utilisateur et le mot de passe lors de l'utilisateur de cette commande
-** *Délai de rafraichissement* : Délai de rafraichissement des captures sur le widget. Attention plus le délai est faible plus la charge sur Jeedom augmente.
+* *Nom de l’équipement Caméra* : nom de votre équipement caméra
+* *Objet parent* : indique l’objet parent auquel appartient l’équipement
+* *Activer* : permet de rendre votre équipement actif
+* *Visible* : le rend visible sur le dashboard
+* *IP* : l'IP local de votre caméra
+* *Port* : le port pour sur lequel joindre la caméra
+* *Protocole* : le protocole de communication de votre camera (http ou https)
+* *Nom d'utilisateur* : nom d'utilisateur pour se connecter à la caméra (si nécessaire)
+* *Mot de passe* : mot de passe pour se connecter à la caméra (si nécessaire) 
+* *URL de capture* : URL qui de "snapshot" de la caméra. Change en fonction des caméras. Attention à ne pas mettre une url de flux sous peine de planter Jeedom. Vous pouvez utiliser les tags \#username# et \#password#, qui seront automatiquement remplacé par le nom d'utilisateur et le mot de passe lors de l'utilisateur de cette commande
+* *Délai de rafraichissement* : Délai de rafraichissement des captures sur le widget. Attention plus le délai est faible plus la charge sur Jeedom augmente.
+* *Commande mail* : permet de spécifier une commande mail qui sera utiliser pour l'envoi de capture (commande "Envoyer une capture")
+* *Nombre de capture(s)* : défini le nombre de captures à envoyer (les captures sont prises toute les secondes)
+* *Modèle* : permet de choisir le modele de sa camera, attention si vous changer cela écrasera vos paramètres de configuration
 
 En dessous vous retrouvez la liste des commandes :
 
