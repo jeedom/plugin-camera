@@ -1,6 +1,6 @@
 {
     "foscam.mot": {
-	"name" : "Ebode motorisée",
+	"name" : "Foscam motorisée",
         "configuration": {
             "port_cam": "88",
             "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
