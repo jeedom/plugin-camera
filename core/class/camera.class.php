@@ -33,37 +33,33 @@ class camera extends eqLogic {
 	}
 
 	public static function cronHourly() {
-		if (config::byKey('keycam') == '') {
-			config::save('keycam', config::genKey());
-		}
-		$c = new Cron\CronExpression('00 * * * *', new Cron\FieldFactory);
-		if ($c->isDue()) {
-			config::save('keycam', config::genKey());
-			$record_dir = calculPath(config::byKey('recordDir', 'camera'));
-			$max_size = config::byKey('maxSizeRecordDir', 'camera') * 1024 * 1024;
-			$i = 0;
-			while (getDirectorySize($record_dir) > $max_size) {
-				$older = array('file' => null, 'datetime' => null);
-				foreach (ls($record_dir, '*') as $file) {
+		$record_dir = calculPath(config::byKey('recordDir', 'camera'));
+		$max_size = config::byKey('maxSizeRecordDir', 'camera') * 1024 * 1024;
+		$i = 0;
+		while (getDirectorySize($record_dir) > $max_size) {
+			$older = array('file' => null, 'datetime' => null);
+			foreach (ls($record_dir, '*') as $dir) {
+				foreach (ls($record_dir . '/' . $dir, '*') as $file) {
 					if ($older['datetime'] == null) {
-						$older['file'] = $record_dir . '/' . $file;
-						$older['datetime'] = filemtime($record_dir . '/' . $file);
+						$older['file'] = $record_dir . '/' . $dir . '/' . $file;
+						$older['datetime'] = filemtime($record_dir . '/' . $dir . '/' . $file);
 					}
-					if ($older['datetime'] > filemtime($record_dir . '/' . $file)) {
-						$older['file'] = $record_dir . '/' . $file;
-						$older['datetime'] = filemtime($record_dir . '/' . $file);
+					if ($older['datetime'] > filemtime($record_dir . '/' . $dir . '/' . $file)) {
+						$older['file'] = $record_dir . '/' . $dir . '/' . $file;
+						$older['datetime'] = filemtime($record_dir . '/' . $dir . '/' . $file);
 					}
-				}
-				if ($older['file'] == null) {
-					throw new Exception(__('Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ' . getDirectorySize($record_dir), __FILE__));
-				}
-				unlink($older['file']);
-				$i++;
-				if ($i > 50) {
-					throw new Exception(__('Plus de 50 enregistrements videos supprimés. Je m\'arrête', __FILE__));
 				}
 			}
+			if ($older['file'] == null) {
+				throw new Exception(__('Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ' . getDirectorySize($record_dir), __FILE__));
+			}
+			unlink($older['file']);
+			$i++;
+			if ($i > 500) {
+				throw new Exception(__('Plus de 500 enregistrements videos supprimés. Je m\'arrête', __FILE__));
+			}
 		}
+
 	}
 
 	public static function devicesParameters($_device = '') {
