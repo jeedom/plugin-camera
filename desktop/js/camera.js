@@ -17,6 +17,10 @@
 
  $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
+ $(".eqLogicAttr[data-l1key=configuration][data-l2key=device]").html($(".eqLogicAttr[data-l1key=configuration][data-l2key=device] option").sort(function (a, b) {
+    return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
+}))
+
  $('.eqLogic').on('change switchChange.bootstrapSwitch','.eqLogicAttr[data-l1key=configuration][data-l2key=proxy_mode]', function () {
     if($(this).value() == 1){
         $('#div_proxy_mode_off').hide();
