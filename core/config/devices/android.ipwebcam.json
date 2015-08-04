@@ -1,0 +1,10 @@
+{
+    "android.ipwebcam": {
+	"name" : "Android IP Webcam",
+        "configuration": {
+            "urlStream": "\//shot.jpg",
+            "protocole": "http"
+        },
+        "commands": []
+    }
+}

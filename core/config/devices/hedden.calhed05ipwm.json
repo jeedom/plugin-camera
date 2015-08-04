@@ -1,0 +1,10 @@
+{
+    "hedden.calhed05ipwm": {
+	"name" : "Heden CAMHED05IPWN (V5.5)",
+        "configuration": {
+            "urlStream": "\/snapshot.cgi",
+            "protocole": "http"
+        },
+        "commands": []
+    }
+}

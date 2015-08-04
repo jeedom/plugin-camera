@@ -1,0 +1,10 @@
+{
+    "d-link.dcs-932l": {
+	"name" : "D-Link DSC-932L",
+        "configuration": {
+            "urlStream": "\/Image.jpg",
+            "protocole": "http"
+        },
+        "commands": []
+    }
+}
