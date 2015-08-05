@@ -16,7 +16,7 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
-function openzwave_pre_update() {
+function camera_pre_update() {
 	exec('rm -rf ' . dirname(__FILE__) . '/../core/config/devices');
 }
 
