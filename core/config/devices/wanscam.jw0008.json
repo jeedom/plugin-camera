@@ -1,0 +1,10 @@
+{
+    "wanscam.jw0008": {
+	"name" : "Wanscam JW0008",
+        "configuration": {
+            "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
+            "protocole": "http"
+        },
+        "commands": []
+    }
+}

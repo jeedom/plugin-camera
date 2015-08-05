@@ -140,7 +140,7 @@ foreach (object::all() as $object) {
                 <label class="col-sm-2 control-label">{{Modèle}}</label>
                 <div class="col-sm-5">
                     <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
-                        <option value="">{{Aucun}}</option>
+                        <option value="">{{1 - Aucun}}</option>
                         <?php
 foreach (camera::devicesParameters() as $id => $info) {
 	echo '<option value="' . $id . '">' . $info['name'] . '</option>';

@@ -1,0 +1,10 @@
+{
+    "hikvision.ds-2cd2132-l": {
+	"name" : "Hikvision DS-2CD2132-I et DS-2CD3332-I",
+        "configuration": {
+            "urlStream": "\/Streaming\/channels\/1\/picture",
+            "protocole": "http"
+        },
+        "commands": []
+    }
+}
