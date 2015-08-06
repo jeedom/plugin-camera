@@ -1,8 +1,8 @@
 {
     "hedden.calhed05ipwm": {
-	"name" : "Heden CAMHED05IPWN (V5.5)",
+	"name" : "Heden CAMHED05IPWN (V5.5), VISIONCAM22",
         "configuration": {
-            "urlStream": "\/snapshot.cgi",
+            "urlStream": "\/snapshot.cgi?user=#username#&pwd=#password#",
             "protocole": "http"
         },
         "commands": []
