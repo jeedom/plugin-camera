@@ -1,0 +1,41 @@
+{
+    "rpi.cam": {
+	"name" : "RPI Cam",
+        "configuration": {
+            "urlStream": "\/cam_pic.php",
+            "protocole": "http"
+        },
+        "commands": [
+			{
+                "name": "Démarrer",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/cmd_pipe.php?cmd=ru%201",
+                    "stopCmd": "0"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-play\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			{
+                "name": "Arrêter",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/cmd_pipe.php?cmd=ru%200",
+                    "stopCmd": "0"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-stop\"><\/i>"
+                },
+                "isVisible": "1"
+            }
+		]
+    }
+}
