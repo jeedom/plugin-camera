@@ -4,7 +4,7 @@
         <span style="font-weight:bold;"><a href="#eqLink#">#name#</a></span>
     </center>
     <center>
-        <span class="directDisplay"></span>
+        <span class="directDisplay zoom cursor" style="width : 90%"></span>
         <br/>
         #action#
         <span class="cmd cmd-widget" data-type="action" data-subtype="other">
@@ -42,7 +42,6 @@
 
         $('.zoom[data-eqLogic_id=#id#]').off().unbind();
         $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
-            $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append("<center><img src='#url#' class='img-responsive'/></center>");
             $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
         });
 
@@ -53,12 +52,9 @@
         }else{
             url += '?t='+(new Date()).getTime();
         }
-        var img = $('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" style="width:90%"/>').attr('src', url).load(function() {
+        var img = $('<img class="img-responsive" data-eqLogic_id="#id#" />').attr('src', url).load(function() {
+         $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append(img.clone());
          $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
-         var imgFull = img.clone();
-         imgFull.css('width','auto');
-         imgFull.removeClass('zoom');
-         $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append(imgFull);
          setTimeout(refreshImgCam#id#, #refreshDelay#);
      });
     }

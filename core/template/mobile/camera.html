@@ -4,7 +4,7 @@
   
   <div data-role="popup" id="popupCameraZoom#id#">
     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-    <div class="display"></div>
+    <div class="display" style="margin-left : auto;margin-right : auto;width:auto;"></div>
     <center>
       #action#
     </center>
@@ -17,16 +17,11 @@
       }else{
         url += '?t='+(new Date()).getTime();
       }
-      var img = $('<img class="zoom cursor img-responsive" data-eqLogic_id="#id#" style="width:90%"/>').attr('src', url).load(function() {
+      $('.eqLogic[data-eqLogic_id=#id#] .display').css('max-width',screen.width);
+      var img = $('<img data-eqLogic_id="#id#" style="width:90%;display:block;"/>').attr('src', url).load(function() {
        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
-       var imgFull = img.clone();
-       imgFull.css('width','auto');
-       imgFull.css('max-width',screen.width);
-       imgFull.css('display','block');
-       imgFull.css('margin-left','auto');
-       imgFull.css('margin-right','auto');
-       imgFull.removeClass('zoom');
-       $("#popupCameraZoom#id# .display").empty().append(imgFull);
+       $("#popupCameraZoom#id# .display").empty().append(img.clone());
+
        if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html() != undefined){
          timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
        }
