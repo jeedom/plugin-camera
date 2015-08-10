@@ -1,0 +1,10 @@
+{
+    "wanscam.hw00XX": {
+	"name" : "Wanscam HW00XX",
+        "configuration": {
+            "urlStream": "\/web\/tmpfs\/snap.jpg ",
+            "protocole": "http"
+        },
+        "commands": []
+    }
+}
