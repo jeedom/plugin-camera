@@ -327,7 +327,13 @@ class camera extends eqLogic {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 		if ($this->getConfiguration('username') != '') {
-			curl_setopt($ch, CURLOPT_USERPWD, $this->getConfiguration('username') . ':' . $this->getConfiguration('password'));
+			$userpwd = $this->getConfiguration('username') . ':' . $this->getConfiguration('password');
+			curl_setopt($ch, CURLOPT_USERPWD, $userpwd);
+			$headers = array(
+				'Content-Type:application/json',
+				'Authorization: Basic ' . base64_encode($userpwd),
+			);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		}
 		$data = curl_exec($ch);
 		curl_close($ch);
