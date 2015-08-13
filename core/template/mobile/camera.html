@@ -1,10 +1,14 @@
 <div class="eqLogic eqLogic-widget" data-eqLogic_id="#id#" data-version="mobile" style="padding-top : 3px;">
   <center>#name#</center>
-  <center><a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none" class="directDisplay" data-first="0"></a></center>
+  <center>
+    <a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none" class="directDisplay" data-first="0">
+    <img data-eqLogic_id="#id#" style="width:90%;display:block;margin-bottom : 5px;" src="#url#"/>
+    </a>
+  </center>
   
   <div data-role="popup" id="popupCameraZoom#id#">
     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-    <div class="display" style="margin-left : auto;margin-right : auto;width:auto;"></div>
+    <div class="display" style="margin-left : auto;margin-right : auto;width:auto;"><img data-eqLogic_id="#id#" style="width:90%;display:block;" src="#url#"/></div>
     <center>
       #action#
     </center>
@@ -18,10 +22,12 @@
         url += '?t='+(new Date()).getTime();
       }
       $('.eqLogic[data-eqLogic_id=#id#] .display').css('max-width',screen.width);
-      var img = $('<img data-eqLogic_id="#id#" style="width:90%;display:block;"/>').attr('src', url).load(function() {
-       $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
-       $("#popupCameraZoom#id# .display").empty().append(img.clone());
 
+      var img = new Image();
+      img.src = url;
+      img.onload = function() {
+       $("#popupCameraZoom#id# .display img").attr('src',img.src);
+       $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
        if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html() != undefined){
          timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
        }
@@ -30,12 +36,12 @@
         setTileSize('.eqLogic');
         $('#div_displayEquipement').packery({gutter : 4});
       }
-    });
-    };
-    if (typeof timeoutCamera#id# !== "undefined") {
-      clearTimeout(timeoutCamera#id#);
     }
-    refreshImgCam#id#();
-  </script>
+  };
+  if (typeof timeoutCamera#id# !== "undefined") {
+    clearTimeout(timeoutCamera#id#);
+  }
+  refreshImgCam#id#();
+</script>
 
 </div>

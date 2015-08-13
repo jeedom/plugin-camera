@@ -4,7 +4,7 @@
         <span style="font-weight:bold;"><a href="#eqLink#">#name#</a></span>
     </center>
     <center>
-        <span class="directDisplay zoom cursor" style="width : 90%"></span>
+        <span class="directDisplay zoom cursor" style="width : 90%"><img src="#url#" class="img-responsive" data-eqLogic_id="#id#"/></span>
         <br/>
         #action#
         <span class="cmd cmd-widget" data-type="action" data-subtype="other">
@@ -13,7 +13,7 @@
     </center>
     <div class="md_cameraZoom" data-eqLogic_id="#id#" title="#humanname#">
         <center>
-            <div class="display"></div>
+            <div class="display"><img src="#url#" class="img-responsive" data-eqLogic_id="#id#" /></div>
         </center>
     </div>
     <script>
@@ -46,19 +46,21 @@
         });
 
         function refreshImgCam#id#(){
-         var url = "#url#";
-         if(url.indexOf('?') > 0){
+           var url = "#url#";
+           if(url.indexOf('?') > 0){
             url += '&t='+(new Date()).getTime();
         }else{
             url += '?t='+(new Date()).getTime();
         }
-        var img = $('<img class="img-responsive" data-eqLogic_id="#id#" />').attr('src', url).load(function() {
-         $(".md_cameraZoom[data-eqLogic_id=#id#] .display").empty().append(img.clone());
-         $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').empty().append(img);
-         setTimeout(refreshImgCam#id#, #refreshDelay#);
-     });
-    }
+        var img = new Image();
+        img.src = url;
+        img.onload = function() {
+           $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
+           $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
+           setTimeout(refreshImgCam#id#, #refreshDelay#);
+       }
+}
 
-    refreshImgCam#id#();
+refreshImgCam#id#();
 </script>
 </div>
