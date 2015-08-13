@@ -84,8 +84,8 @@
     tr += '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
     tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
     tr += '</td>';
-    tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" style="margin-bottom : 5px;" />';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="stopCmdUrl" />';
+    tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" style="margin-bottom : 5px;" placeholder="{{URL de la commande}}"/>';
+    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="stopCmdUrl" placeholder="{{URL de la commande de stop de mouvement (caméra motirisée)}}" />';
     tr += '<td>';
     tr += '<input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" data-label-text="{{Afficher}}" data-size="small" checked/> ';
     tr += '</div>';
