@@ -590,11 +590,14 @@ class cameraCmd extends cmd {
 				$_options['files'][] = $eqLogic->takeSnapshot();
 				sleep(1);
 			}
-			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('alertMessageCommand')));
-			if (is_object(!$cmd)) {
-				throw new Exception(__('La commande de mail est introuvable :', __FILE__) . ' ' . $eqLogic->getConfiguration('alertMessageCommand'));
+			$cmds = explode('&&', $eqLogic->getConfiguration('alertMessageCommand'));
+			foreach ($cmds as $id) {
+				$cmd = cmd::byId(str_replace('#', '', $id));
+				if (is_object(!$cmd)) {
+					continue;
+				}
+				$cmd->execCmd($_options);
 			}
-			$cmd->execCmd($_options);
 			return true;
 		}
 		$url = $eqLogic->getUrl($request);

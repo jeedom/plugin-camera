@@ -33,7 +33,7 @@
 
  $("#bt_selectActionMessage").on('click', function () {
     jeedom.cmd.getSelectModal({cmd: {type: 'action',subType : 'message'}}, function (result) {
-        $(".eqLogicAttr[data-l1key=configuration][data-l2key=alertMessageCommand]").value(result.human);
+        $(".eqLogicAttr[data-l1key=configuration][data-l2key=alertMessageCommand]").atCaret('insert',result.human);
     });
 });
 
