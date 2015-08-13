@@ -40,7 +40,7 @@ image::../images/camera4.PNG[]
 * *Mot de passe* : mot de passe pour se connecter à la caméra (si nécessaire) 
 * *URL de capture* : URL qui de "snapshot" de la caméra. Change en fonction des caméras. Attention à ne pas mettre une url de flux sous peine de planter Jeedom. Vous pouvez utiliser les tags \#username# et \#password#, qui seront automatiquement remplacé par le nom d'utilisateur et le mot de passe lors de l'utilisateur de cette commande
 * *Délai de rafraichissement* : Délai de rafraichissement des captures sur le widget. Attention plus le délai est faible plus la charge sur Jeedom augmente.
-* *Commande mail* : permet de spécifier une commande mail qui sera utiliser pour l'envoi de capture (commande "Envoyer une capture")
+* *Commande mail* : permet de spécifier une commande mail qui sera utiliser pour l'envoi de capture (commande "Envoyer une capture"), vous pouvez en spécifier plusieurs séparées par des &&
 * *Nombre de capture(s)* : défini le nombre de captures à envoyer (les captures sont prises toute les secondes)
 * *Modèle* : permet de choisir le modele de sa camera, attention si vous changer cela écrasera vos paramètres de configuration
 
@@ -50,10 +50,8 @@ En dessous vous retrouvez la liste des commandes :
 * Nom de la commande avec la possibilité de mettre une icone à la place (pour la supprimer il faut double cliquer sur l'icone en question)
 * Type et sous type de la commande
 * Requete à envoyer à la caméra pour faire une action (passage en mode nuit, ptz...).Vous pouvez utiliser les tags \#username# et \#password#, qui seront automatiquement remplacé par le nom d'utilisateur et le mot de passe lors de l'utilisateur de cette commande
+* Commande stop : pour les cameras PTZ il existe souvent une commande qui arrete le mouvement, c'est ici qu'il faut la spécifier
 * Afficher : permet d'afficher la commande ou non sur le dashboard
-* Stop commande : indique à jeedom que cette commande correspond à la commande de stop de mouvement de la camera
-* Curl digest : indique qu'il faut utilise la méthode d'authentification curl digest pour se connecter à la caméra
-* Timeout : délai maximum autorisé pour que la caméra répond à la commande
 * Configuration avancée (petites roues crantées) : permet d'afficher la configuration avancée de la commande (méthode d'historisation, widget...)
 * Tester : permet de tester la commande
 * Supprimer (signe -) : permet de supprimer la commande
