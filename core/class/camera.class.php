@@ -226,12 +226,7 @@ class camera extends eqLogic {
 		if (!$this->hasRight('r')) {
 			return '';
 		}
-		$stopCmd_id = '';
-		foreach ($this->getCmd() as $cmd) {
-			if ($cmd->getConfiguration('stopCmd') == 1) {
-				$stopCmd_id = $cmd->getId();
-			}
-		}
+
 		$action = '';
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getIsVisible() == 1) {
@@ -242,7 +237,7 @@ class camera extends eqLogic {
 					if ($cmd->getType() == 'action' && $cmd->getSubType() == 'other') {
 						$replace = array(
 							'#id#' => $cmd->getId(),
-							'#stopCmd_id#' => $stopCmd_id,
+							'#stopCmd#' => ($cmd->getConfiguration('stopCmdUrl') != '') ? 1 : 0,
 							'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
 						);
 						$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
@@ -559,7 +554,11 @@ class cameraCmd extends cmd {
 	}
 
 	public function execute($_options = null) {
-		$request = $this->getConfiguration('request');
+		if (isset($_options['stopCmd']) && $_options['stopCmd'] == 1) {
+			$request = $this->getConfiguration('stopCmdUrl');
+		} else {
+			$request = $this->getConfiguration('request');
+		}
 		switch ($this->getType()) {
 			case 'action':
 				switch ($this->getSubType()) {

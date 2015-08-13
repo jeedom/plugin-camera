@@ -21,15 +21,7 @@
     return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
 }))
 
- $('.eqLogic').on('change switchChange.bootstrapSwitch','.eqLogicAttr[data-l1key=configuration][data-l2key=proxy_mode]', function () {
-    if($(this).value() == 1){
-        $('#div_proxy_mode_off').hide();
-        $('#div_proxy_mode_on').show();
-    }else{
-        $('#div_proxy_mode_off').show();
-        $('#div_proxy_mode_on').hide();
-    }
-});
+
  $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').on('change', function () {
   if($('.li_eqLogic.active').attr('data-eqlogic_id') != ''){
     $('#img_device').attr("src", $('.eqLogicDisplayCard[data-eqLogic_id='+$('.li_eqLogic.active').attr('data-eqlogic_id')+'] img').attr('src'));
@@ -38,24 +30,6 @@
 }
 });
 
- $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').on('change', function () {
-    $('.displayProtocol').hide();
-    $('.displayProtocol.' + $(this).value()).show();
-    if($(this).value() == 'snapshot'){
-        $('#div_recordOption').hide();
-    }else{
-        $('#div_recordOption').show();
-    }
-});
-
- $('.eqLogicAttr[data-l1key=configuration][data-l2key=protocoleFlux]').on('change', function () {
-   if($(this).value() == 'rtsp'){
-     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').value('vlc');
-     $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',true);
- }else{
-    $('.eqLogicAttr[data-l1key=configuration][data-l2key=displayProtocol]').prop('disabled',false);
-}
-});
 
  $("#bt_selectActionMessage").on('click', function () {
     jeedom.cmd.getSelectModal({cmd: {type: 'action',subType : 'message'}}, function (result) {
@@ -110,12 +84,10 @@
     tr += '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
     tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
     tr += '</td>';
-    tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" />';
+    tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" style="margin-bottom : 5px;" />';
+    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="stopCmdUrl" />';
     tr += '<td>';
     tr += '<input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" data-label-text="{{Afficher}}" data-size="small" checked/> ';
-    tr += '<span class="actionMode">';
-    tr += '<input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="configuration" data-label-text="{{Stop commande}}" data-l2key="stopCmd" data-size="small" />';
-    tr += '</span>';
     tr += '</div>';
     tr += '</td>';
     tr += '<td>';
@@ -135,11 +107,11 @@ $('#table_cmd tbody').on('change','.cmd .cmdAttr[data-l1key=type]',function(){
     var cmd = $(this).closest('.cmd');
     if($(this).value() == 'info'){
         cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').hide();
-        cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=timeout]').hide();
+        cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').hide();
         cmd.find('.actionMode').hide();
     }else{
         cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').show();
-        cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=timeout]').show();
+        cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').show();
         cmd.find('.actionMode').show();
     }
 });

@@ -162,12 +162,12 @@ foreach (camera::devicesParameters() as $id => $info) {
 <table id="table_cmd" class="table table-bordered table-condensed">
     <thead>
         <tr>
-            <th>{{#}}</th>
-            <th>{{Nom}}</th>
-            <th>{{Type}}</th>
-            <th style="width : 600px;">{{Requête}}</th>
-            <th>{{Options}}</th>
-            <th></th>
+            <th style="width : 70px;">{{#}}</th>
+            <th style="width : 300px;">{{Nom}}</th>
+            <th style="width : 150px;">{{Type}}</th>
+            <th >{{Requête}}</th>
+            <th style="width : 150px;">{{Options}}</th>
+            <th style="width : 150px;"></th>
         </tr>
     </thead>
     <tbody>

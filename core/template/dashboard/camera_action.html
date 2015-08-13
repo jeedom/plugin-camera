@@ -5,9 +5,9 @@
         $('.cmd[data-cmd_id=#id#] .action').on('mousedown', function () {
             jeedom.cmd.execute({id: '#id#', notify: false});
         });
-        if ('#stopCmd_id#' != '') {
+        if ('#stopCmd#' == '1') {
             $('.cmd[data-cmd_id=#id#] .action').on('mouseup', function () {
-                jeedom.cmd.execute({id: '#stopCmd_id#', notify: false});
+                jeedom.cmd.execute({id: '#id#', notify: false,value : {stopCmd : 1}});
             });
         }
     </script>
