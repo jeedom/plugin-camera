@@ -16,7 +16,7 @@
                 "eventOnly": "0",
                 "configuration": {
                     "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzMoveDown%261438440651839",
-                    "stopCmd": "0"
+                    "stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzStopRun%261438440945996"
                 },
                 "display": {
                     "icon": "<i class=\"fa fa-arrow-down\"><\/i>"
@@ -32,7 +32,7 @@
                 "eventOnly": "0",
                 "configuration": {
                     "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzMoveUp%261438440597325",
-                    "stopCmd": "0"
+                    "stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzStopRun%261438440945996"
                 },
                 "display": {
                     "icon": "<i class=\"fa fa-arrow-up\"><\/i>"
@@ -48,7 +48,7 @@
                 "eventOnly": "0",
                 "configuration": {
                     "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzMoveLeft%261438440961185",
-                    "stopCmd": "0"
+                    "stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzStopRun%261438440945996"
                 },
                 "display": {
                     "icon": "<i class=\"fa fa-arrow-left\"><\/i>"
@@ -64,7 +64,7 @@
                 "eventOnly": "0",
                 "configuration": {
                     "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzMoveRight%261438440945721",
-                    "stopCmd": "0"
+					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzStopRun%261438440945996"
                 },
                 "display": {
                     "icon": "<i class=\"fa fa-arrow-right\"><\/i>"
@@ -79,8 +79,7 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DopenInfraLed%261438440780159",
-                    "stopCmd": "0"
+                    "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DopenInfraLed%261438440780159"
                 },
                 "display": {
                     "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
@@ -95,24 +94,10 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DcloseInfraLed%261438440854986",
-                    "stopCmd": "0"
+                    "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DcloseInfraLed%261438440854986"
                 },
                 "display": {
                     "icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
-                },
-                "isVisible": "1"
-            },
-            {
-                "eqType": "camera",
-                "name": "stop",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "eventOnly": "0",
-                "configuration": {
-                    "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzStopRun%261438440945996",
-                    "stopCmd": "1"
                 },
                 "isVisible": "1"
             }
