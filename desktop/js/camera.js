@@ -24,7 +24,7 @@
 
  $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').on('change', function () {
   if($('.li_eqLogic.active').attr('data-eqlogic_id') != ''){
-    $('#img_device').attr("src", $('.eqLogicDisplayCard[data-eqLogic_id='+$('.li_eqLogic.active').attr('data-eqlogic_id')+'] img').attr('src'));
+    $('#img_device').attr("src", 'plugins/camera/core/config/devices/'+this.value+'.jpg');
 }else{
     $('#img_device').attr("src",'plugins/camera/doc/images/camera_icon.png');
 }

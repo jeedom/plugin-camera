@@ -1,9 +1,9 @@
 {
-    "foscam.mot": {
-	"name" : "Foscam motorisée",
+    "mustcam.mot.hd": {
+	"name" : "Mustcam HD motorisée",
         "configuration": {
             "port_cam": "80",
-            "urlStream": "\/snapshot.cgi?user=#username#&pwd=#password#",
+            "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
             "protocole": "http"
         },
         "commands": [
@@ -15,8 +15,8 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=2&user=#username#&pwd=#password#",
-                    "stopCmd": "\/decoder_control.cgi?command=1&user=#username#&pwd=#password#"
+                    "request": "\/media/?action=cmd&code=2&value=2",
+                    "stopCmdUrl": "\/media/?action=cmd&code=3&value=2"
                 },
                 "display": {
                     "icon": "<i class=\"fa fa-arrow-down\"><\/i>"
@@ -31,8 +31,8 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=0&user=#username#&pwd=#password#",
-                    "stopCmd": "\/decoder_control.cgi?command=1&user=#username#&pwd=#password#"
+                    "request": "\/media/?action=cmd&code=2&value=1",
+                    "stopCmdUrl": "\/media/?action=cmd&code=3&value=1"
                 },
                 "display": {
                     "icon": "<i class=\"fa fa-arrow-up\"><\/i>"
@@ -47,8 +47,8 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=6&user=#username#&pwd=#password#",
-                    "stopCmd": "\/decoder_control.cgi?command=1&user=#username#&pwd=#password#"
+                    "request": "\/media/?action=cmd&code=2&value=4",
+                    "stopCmdUrl": "\/media/?action=cmd&code=3&value=4"
                 },
                 "display": {
                     "icon": "<i class=\"fa fa-arrow-left\"><\/i>"
@@ -63,43 +63,11 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=4&user=#username#&pwd=#password#",
-                    "stopCmd": "\/decoder_control.cgi?command=1&user=#username#&pwd=#password#"
+                    "request": "\/media/?action=cmd&code=2&value=3",
+                    "stopCmdUrl": "\/media/?action=cmd&code=3&value=3"
                 },
                 "display": {
                     "icon": "<i class=\"fa fa-arrow-right\"><\/i>"
-                },
-                "isVisible": "1"
-            },
-            {
-                "eqType": "camera",
-                "name": "IR On",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "eventOnly": "0",
-                "configuration": {
-                    "request": "\/decoder_control.cgi?command=95&user=#username#&pwd=#password#",
-                    "stopCmd": "0"
-                },
-                "display": {
-                    "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
-                },
-                "isVisible": "1"
-            },
-            {
-                "eqType": "camera",
-                "name": "IR Off",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "eventOnly": "0",
-                "configuration": {
-                    "request": "\/decoder_control.cgi?command=94&user=#username#&pwd=#password#",
-                    "stopCmd": "0"
-                },
-                "display": {
-                    "icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
                 },
                 "isVisible": "1"
             },
@@ -111,7 +79,7 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=31&user=#username#&pwd=#password#",
+                    "request": "\/media/?action=cmd&code=13&value=1",
                     "stopCmd": "0"
                 },
                 "isVisible": "0"
@@ -124,7 +92,7 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=33&user=#username#&pwd=#password#",
+                    "request": "\/media/?action=cmd&code=13&value=2",
                     "stopCmd": "0"
                 },
                 "isVisible": "0"
@@ -137,7 +105,7 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=35&user=#username#&pwd=#password#",
+                    "request": "\/media/?action=cmd&code=13&value=3",
                     "stopCmd": "0"
                 },
                 "isVisible": "0"
@@ -150,7 +118,7 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=37&user=#username#&pwd=#password#",
+                    "request": "\/media/?action=cmd&code=13&value=4",
                     "stopCmd": "0"
                 },
                 "isVisible": "0"
@@ -163,7 +131,7 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=39&user=#username#&pwd=#password#",
+                    "request": "\/media/?action=cmd&code=13&value=5",
                     "stopCmd": "0"
                 },
                 "isVisible": "0"
@@ -176,33 +144,7 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=41&user=#username#&pwd=#password#",
-                    "stopCmd": "0"
-                },
-                "isVisible": "0"
-            },
-            {
-                "eqType": "camera",
-                "name": "Preset 7",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "eventOnly": "0",
-                "configuration": {
-                    "request": "\/decoder_control.cgi?command=43&user=#username#&pwd=#password#",
-                    "stopCmd": "0"
-                },
-                "isVisible": "0"
-            },
-            {
-                "eqType": "camera",
-                "name": "Preset 8",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "eventOnly": "0",
-                "configuration": {
-                    "request": "\/decoder_control.cgi?command=45&user=#username#&pwd=#password#",
+                    "request": "\/media/?action=cmd&code=13&value=6",
                     "stopCmd": "0"
                 },
                 "isVisible": "0"
@@ -215,7 +157,7 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=28&user=#username#&pwd=#password#",
+                    "request": "\/media/?action=cmd&code=2&value=9",
                     "stopCmd": "0"
                 },
                 "isVisible": "0"
@@ -228,7 +170,7 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=26&user=#username#&pwd=#password#",
+                    "request": "\/media/?action=cmd&code=2&value=10",
                     "stopCmd": "0"
                 },
                 "isVisible": "0"
@@ -242,7 +184,7 @@
                 "eventOnly": "0",
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=29&user=#username#&pwd=#password#",
-                    "stopCmd": "0"
+                    "stopCmd": "\/media/?action=cmd&code=3&value=4"
                 },
                 "isVisible": "0"
             },
@@ -255,7 +197,7 @@
                 "eventOnly": "0",
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=27&user=#username#&pwd=#password#",
-                    "stopCmd": "0"
+                    "stopCmd": "\/media/?action=cmd&code=3&value=1"
                 },
                 "isVisible": "0"
             },
@@ -267,7 +209,7 @@
                 "isHistorized": "0",
                 "eventOnly": "0",
                 "configuration": {
-                    "request": "\/decoder_control.cgi?command=25&user=#username#&pwd=#password#",
+                    "request": "\/media/?action=cmd&code=2&value=11",
                     "stopCmd": "0"
                 },
                 "isVisible": "0"

@@ -1,0 +1,13 @@
+{
+    "ebode.ext": {
+	"name" : "Ebode extérieure",
+        "configuration": {
+            "port_cam": "80",
+            "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
+            "protocole": "http"
+        },
+         "commands": [
+            
+        ]
+    }
+}
