@@ -1,0 +1,10 @@
+{
+    "openkarotz.cam": {
+	"name" : "Openkarotz Camera",
+        "configuration": {
+            "urlStream": "\/cgi-bin/snapshot_view?silent=1",
+            "protocole": "http"
+        },
+        "commands": []
+    }
+}
