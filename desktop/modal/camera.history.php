@@ -28,9 +28,17 @@ foreach (ls($dir, '*') as $file) {
 }
 krsort($files);
 ?>
+<div id='div_cameraRecordAlert' style="display: none;"></div>
+<?php
+echo '<a class="btn btn-danger bt_removeCameraFile pull-right" data-all="1" data-filename="' . $camera->getId() . '/' . $date . '*"><i class="fa fa-trash-o"></i> {{Tout supprimer}}</a>';
+?>
 <?php
 foreach ($files as $date => &$file) {
-	echo '<legend>' . $date . '</legend>';
+	echo '<div class="div_dayContainer">';
+	echo '<legend>';
+	echo '<a class="btn btn-xs btn-danger bt_removeCameraFile" data-day="1" data-filename="' . $camera->getId() . '/' . $date . '*"><i class="fa fa-trash-o"></i> {{Supprimer}}</a> ';
+	echo $date;
+	echo '</legend>';
 	echo '<div class="cameraThumbnailContainer">';
 	krsort($file);
 	foreach ($file as $time => $filename) {
@@ -38,9 +46,10 @@ foreach ($files as $date => &$file) {
 		echo '<center>' . $time . '</center>';
 		echo '<center><img class="img-responsive cursor displayImage" src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" width="150"/></center>';
 		echo '<center style="margin-top:5px;"><a href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" class="btn btn-success btn-xs" style="color : white"><i class="fa fa-download"></i></a>';
-		echo ' <a class="btn btn-danger removeCameraFile btn-xs" style="color : white" data-filename="' . $camera->getId() . '/' . $filename . '"><i class="fa fa-trash-o"></i></a></center>';
+		echo ' <a class="btn btn-danger bt_removeCameraFile btn-xs" style="color : white" data-filename="' . $camera->getId() . '/' . $filename . '"><i class="fa fa-trash-o"></i></a></center>';
 		echo '</div>';
 	}
+	echo '</div>';
 	echo '</div>';
 }
 ?>
@@ -50,9 +59,15 @@ foreach ($files as $date => &$file) {
         $('#md_modal2').dialog({title: "Image"});
         $('#md_modal2').load('index.php?v=d&plugin=camera&modal=camera.displayImage&src='+ $(this).attr('src')).dialog('open');
     });
-    $('.removeCameraFile').on('click', function() {
+    $('.bt_removeCameraFile').on('click', function() {
         var filename = $(this).attr('data-filename');
         var card = $(this).closest('.cameraDisplayCard');
+        if($(this).attr('data-day') == 1){
+            card = $(this).closest('.div_dayContainer');
+        }
+         if($(this).attr('data-all') == 1){
+            card = $('.div_dayContainer');
+        }
         $.ajax({// fonction permettant de faire de l'ajax
             type: "POST", // methode de transmission des données au fichier php
             url: "plugins/camera/core/ajax/camera.ajax.php", // url du fichier php
@@ -61,13 +76,12 @@ foreach ($files as $date => &$file) {
                 file: filename,
             },
             dataType: 'json',
-            global: false,
             error: function(request, status, error) {
-                handleAjaxError(request, status, error);
+                handleAjaxError(request, status, error,$('#div_cameraRecordAlert'));
             },
             success: function(data) { // si l'appel a bien fonctionné
             if (data.state != 'ok') {
-                $('#div_alert').showAlert({message: data.result, level: 'danger'});
+                $('#div_cameraRecordAlert').showAlert({message: data.result, level: 'danger'});
                 return;
             }
             card.remove();

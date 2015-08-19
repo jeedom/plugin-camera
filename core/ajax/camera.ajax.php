@@ -54,10 +54,7 @@ try {
 	if (init('action') == 'removeRecord') {
 		$file = init('file');
 		$record_dir = calculPath(config::byKey('recordDir', 'camera'));
-		if (!file_exists($record_dir . '/' . $file)) {
-			throw new Exception(__('Impossible de trouver l\'enregistrement : ' . $record_dir . '/' . $file));
-		}
-		unlink($record_dir . '/' . $file);
+		shell_exec('rm -rf ' . $record_dir . '/' . $file);
 		ajax::success();
 	}
 
