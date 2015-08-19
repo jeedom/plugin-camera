@@ -53,6 +53,7 @@ try {
 
 	if (init('action') == 'removeRecord') {
 		$file = init('file');
+		$file = str_replace('..', '', $file);
 		$record_dir = calculPath(config::byKey('recordDir', 'camera'));
 		shell_exec('rm -rf ' . $record_dir . '/' . $file);
 		ajax::success();
