@@ -1,10 +1,125 @@
 {
     "wanscam.jw0008": {
-	"name" : "Wanscam JW0008",
+	"name" : "Wanscam motorisée",
         "configuration": {
             "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
             "protocole": "http"
         },
-        "commands": []
+        "commands": [
+			 {
+                "eqType": "camera",
+                "name": "Haut",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/decoder_control.cgi?command=0&onestep=1&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			 {
+                "eqType": "camera",
+                "name": "Bas",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/decoder_control.cgi?command=2&onestep=1&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			 {
+                "eqType": "camera",
+                "name": "Gauche",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/decoder_control.cgi?command=4&onestep=1&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			 {
+                "eqType": "camera",
+                "name": "Droite",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/decoder_control.cgi?command=6&onestep=1&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			 {
+                "eqType": "camera",
+                "name": "IR ON",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/decoder_control.cgi?command=94&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			 {
+                "eqType": "camera",
+                "name": "IR OFF",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/decoder_control.cgi?command=95&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			 {
+                "eqType": "camera",
+                "name": "Pos 1",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/decoder_control.cgi?command=31&onestep=1&user=#username#&pwd=#password#"
+                },
+                "isVisible": "1"
+            },
+			 {
+                "eqType": "camera",
+                "name": "Pos 2",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/decoder_control.cgi?command=33&onestep=1&user=#username#&pwd=#password#"
+                },
+                "isVisible": "1"
+            }
+		]
     }
 }
