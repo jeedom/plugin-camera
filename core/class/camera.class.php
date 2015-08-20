@@ -25,9 +25,9 @@ class camera extends eqLogic {
 	/*     * ***********************Methode static*************************** */
 
 	public static function event() {
-		$cmd = virtualCmd::byId(init('id'));
+		$cmd = cameraCmd::byId(init('id'));
 		if (!is_object($cmd)) {
-			throw new Exception('Commande ID virtuel inconnu : ' . init('id'));
+			throw new Exception('Commande ID camera inconnu : ' . init('id'));
 		}
 		$cmd->event(init('value'));
 	}
@@ -97,19 +97,6 @@ class camera extends eqLogic {
 			return array();
 		}
 		return $return;
-	}
-
-	public static function formatIp($_ip, $_protocole = false) {
-		$_ip = str_replace('http://', '', $_ip);
-		$_ip = str_replace('https://', '', $_ip);
-		$_ip = str_replace('rtsp://', '', $_ip);
-		if ($_protocole == 'rtsp') {
-			return 'rtsp://' . $_ip;
-		}
-		if ($_protocole == 'https') {
-			return 'https://' . $_ip;
-		}
-		return 'http://' . $_ip;
 	}
 
 	/*     * *********************Methode d'instance************************* */
@@ -321,12 +308,12 @@ class camera extends eqLogic {
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 		if ($this->getConfiguration('username') != '') {
 			$userpwd = $this->getConfiguration('username') . ':' . $this->getConfiguration('password');
 			curl_setopt($ch, CURLOPT_USERPWD, $userpwd);
 			$headers = array(
 				'Content-Type:application/json',
-				'Authorization: Basic ' . base64_encode($userpwd),
 			);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		}
