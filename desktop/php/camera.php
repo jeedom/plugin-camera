@@ -122,11 +122,13 @@ foreach (object::all() as $object) {
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">{{Commande mail}}</label>
-                <div class="col-sm-4">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageCommand" placeholder="{{Commande mail pour l'envoi d'une capture}}"/>
-                </div>
-                <div class="col-sm-1">
-                    <a class="btn btn-default listCmdActionMessage" id="bt_selectActionMessage"><i class="fa fa-list-alt"></i></a>
+                <div class="col-sm-5">
+                <div class="input-group">
+                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageCommand" placeholder="{{Commande mail pour l'envoi d'une capture}}"/>
+                        <span class="input-group-btn">
+                            <a class="btn btn-default listCmdActionMessage" id="bt_selectActionMessage"><i class="fa fa-list-alt"></i></a>
+                        </span>
+                    </div>
                 </div>
                 <label class="col-sm-3 control-label">{{Nombre de captures}}</label>
                 <div class="col-sm-1">
