@@ -277,8 +277,8 @@ class camera extends eqLogic {
 
 	public function getUrl($_complement = '', $_flux = false) {
 		$replace = array(
-			'#username#' => $this->getConfiguration('username'),
-			'#password#' => $this->getConfiguration('password'),
+			'#username#' => urlencode($this->getConfiguration('username')),
+			'#password#' => urlencode($this->getConfiguration('password')),
 		);
 		if ($_flux) {
 			return 'plugins/camera/core/php/snapshot.php?id=' . $this->getId() . '&apikey=' . config::byKey('api');
@@ -286,7 +286,7 @@ class camera extends eqLogic {
 		$url = $this->getConfiguration('protocole', 'http');
 		$url .= '://';
 		if ($this->getConfiguration('username') != '') {
-			$url .= $this->getConfiguration('username') . ':' . $this->getConfiguration('password') . '@';
+			$url .= urlencode($this->getConfiguration('username')) . ':' . urlencode($this->getConfiguration('password')) . '@';
 		}
 		$port = $this->getConfiguration('port');
 		$url .= $this->getConfiguration('ip');
