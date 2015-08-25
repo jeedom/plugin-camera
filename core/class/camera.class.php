@@ -314,6 +314,7 @@ class camera extends eqLogic {
 			curl_setopt($ch, CURLOPT_USERPWD, $userpwd);
 			$headers = array(
 				'Content-Type:application/json',
+				'Authorization: Basic ' . base64_encode($userpwd),
 			);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		}
