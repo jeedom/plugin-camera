@@ -1,7 +1,7 @@
-<div class="eqLogic eqLogic-widget" data-eqLogic_id="#id#" data-version="mobile" style="padding-top : 3px;">
+<div class="eqLogic eqLogic-widget" data-eqLogic_id="#id#" data-version="mobile" style="padding-top : 3px;" data-first="0">
   <center>#name#</center>
   <center>
-    <a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none" class="directDisplay" data-first="0">
+    <a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none" class="directDisplay">
     <img data-eqLogic_id="#id#" style="width:90%;display:block;margin-bottom : 5px;" src="#url#"/>
     </a>
   </center>
@@ -31,8 +31,8 @@
        if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html() != undefined){
          timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
        }
-       if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').attr('data-first') == 0){
-        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay').attr('data-first',1);
+       if($('.eqLogic[data-eqLogic_id=#id#]').attr('data-first') == 0){
+        $('.eqLogic[data-eqLogic_id=#id#]').attr('data-first',1);
         setTileSize('.eqLogic');
         $('#div_displayEquipement').packery({gutter : 4});
       }
