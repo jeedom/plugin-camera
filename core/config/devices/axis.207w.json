@@ -1,6 +1,6 @@
 {
     "axis.207w": {
-	"name" : "Axis 207W",
+	"name" : "Axis",
         "configuration": {
             "urlStream": "\/axis-cgi\/jpg\/image.cgi",
             "protocole": "http"
