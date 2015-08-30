@@ -6,14 +6,17 @@
     </a>
   </center>
   
-  <div data-role="popup" id="popupCameraZoom#id#">
+  <div data-role="popup" id="popupCameraZoom#id#" style="padding-top : 5px;">
     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-    <div class="display" style="margin-left : auto;margin-right : auto;width:auto;"><img data-eqLogic_id="#id#" style="width:90%;display:block;" src="#url#"/></div>
+    <center>
+      <div class="display" style="margin-left : auto;margin-right : auto;width:auto;"><img data-eqLogic_id="#id#" style="width:90%;display:block;" src="#url#"/></div>
+    </center>
     <center>
       #action#
     </center>
   </div>
   <script>
+    $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (3/4));
     function refreshImgCam#id#(){
       var url = "#url#";
       if(url.indexOf('?') > 0){
@@ -35,10 +38,6 @@
    if (typeof timeoutCamera#id# !== "undefined") {
     clearTimeout(timeoutCamera#id#);
   }
-  cameraAdaptUI = setTimeout(function(){ 
-    setTileSize('.eqLogic');
-    $('#div_displayEquipement').packery({gutter : 4});
-  }, 1500);
   refreshImgCam#id#();
 </script>
 
