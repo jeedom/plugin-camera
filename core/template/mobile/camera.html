@@ -6,8 +6,13 @@
     </a>
   </center>
   
-  <div data-role="popup" id="popupCameraZoom#id#" style="padding-top : 5px;">
+  <div data-role="popup" id="popupCameraZoom#id#">
+   <div data-role="header">
+    <h1 class='nd-title'>#name#</h1>
     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+  </div>
+  <div data-role="content">
+  <br/>
     <center>
       <div class="display" style="margin-left : auto;margin-right : auto;width:auto;"><img data-eqLogic_id="#id#" style="width:90%;display:block;" src="#url#"/></div>
     </center>
@@ -15,30 +20,31 @@
       #action#
     </center>
   </div>
-  <script>
-    $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (3/4));
-    function refreshImgCam#id#(){
-      var url = "#url#";
-      if(url.indexOf('?') > 0){
-        url += '&t='+(new Date()).getTime();
-      }else{
-        url += '?t='+(new Date()).getTime();
-      }
-      $('.eqLogic[data-eqLogic_id=#id#] .display').css('max-width',screen.width);
-      var img = new Image();
-      img.src = url;
-      img.onload = function() {
-       $("#popupCameraZoom#id# .display img").attr('src',img.src);
-       $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
-       if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html() != undefined){
-         timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
-       }
+</div>
+<script>
+  $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (3/4));
+  function refreshImgCam#id#(){
+    var url = "#url#";
+    if(url.indexOf('?') > 0){
+      url += '&t='+(new Date()).getTime();
+    }else{
+      url += '?t='+(new Date()).getTime();
+    }
+    $('.eqLogic[data-eqLogic_id=#id#] .display').css('max-width',screen.width);
+    var img = new Image();
+    img.src = url;
+    img.onload = function() {
+     $("#popupCameraZoom#id# .display img").attr('src',img.src);
+     $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
+     if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html() != undefined){
+       timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
      }
-   };
-   if (typeof timeoutCamera#id# !== "undefined") {
-    clearTimeout(timeoutCamera#id#);
-  }
-  refreshImgCam#id#();
+   }
+ };
+ if (typeof timeoutCamera#id# !== "undefined") {
+  clearTimeout(timeoutCamera#id#);
+}
+refreshImgCam#id#();
 </script>
 
 </div>
