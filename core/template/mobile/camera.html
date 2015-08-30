@@ -31,8 +31,8 @@
        if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html() != undefined){
          timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
        }
-       if($('.eqLogic[data-eqLogic_id=#id#]').attr('data-first') == 0){
-        $('.eqLogic[data-eqLogic_id=#id#]').attr('data-first',1);
+       if($('.eqLogic[data-eqLogic_id=#id#]').attr('data-first') < 2){
+        $('.eqLogic[data-eqLogic_id=#id#]').attr('data-first',$('.eqLogic[data-eqLogic_id=#id#]').attr('data-first') + 1);
         setTileSize('.eqLogic');
         $('#div_displayEquipement').packery({gutter : 4});
       }
