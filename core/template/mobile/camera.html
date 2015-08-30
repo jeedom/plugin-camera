@@ -2,7 +2,7 @@
   <center>#name#</center>
   <center>
     <a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none" class="directDisplay">
-    <img data-eqLogic_id="#id#" style="width:90%;display:block;margin-bottom : 5px;" src="#url#"/>
+      <img data-eqLogic_id="#id#" style="width:90%;display:block;margin-bottom : 5px;" src="#url#"/>
     </a>
   </center>
   
@@ -22,7 +22,6 @@
         url += '?t='+(new Date()).getTime();
       }
       $('.eqLogic[data-eqLogic_id=#id#] .display').css('max-width',screen.width);
-
       var img = new Image();
       img.src = url;
       img.onload = function() {
@@ -31,16 +30,15 @@
        if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html() != undefined){
          timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
        }
-       if($('.eqLogic[data-eqLogic_id=#id#]').attr('data-first') < 2){
-        $('.eqLogic[data-eqLogic_id=#id#]').attr('data-first',$('.eqLogic[data-eqLogic_id=#id#]').attr('data-first') + 1);
-        setTileSize('.eqLogic');
-        $('#div_displayEquipement').packery({gutter : 4});
-      }
-    }
-  };
-  if (typeof timeoutCamera#id# !== "undefined") {
+     }
+   };
+   if (typeof timeoutCamera#id# !== "undefined") {
     clearTimeout(timeoutCamera#id#);
   }
+  cameraAdaptUI = setTimeout(function(){ 
+    setTileSize('.eqLogic');
+    $('#div_displayEquipement').packery({gutter : 4});
+  }, 1000);
   refreshImgCam#id#();
 </script>
 
