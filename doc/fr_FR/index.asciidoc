@@ -3,3 +3,5 @@
 Plugin permetant de créer et gerer ses cameras (affichage et enregistrement)
 
 include::configuration.asciidoc[]
+
+include::faq.asciidoc[]
