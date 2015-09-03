@@ -1,0 +1,11 @@
+{
+    "konx.portier": {
+	"name" : "Konx portier vidéo",
+        "configuration": {
+            "urlStream": "\/videostream.cgi?user=#username#&pwd=#password#",
+            "protocole": "http",
+			"port":"81"
+        },
+        "commands": []
+    }
+}
