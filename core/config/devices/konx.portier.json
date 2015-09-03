@@ -6,6 +6,19 @@
             "protocole": "http",
 			"port":"81"
         },
-        "commands": []
+        "commands": [
+            {
+                "eqType": "Ouvrir/Fermer",
+                "name": "Bas",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/openlock.cgi?user=#username#&pwd=#password#"
+                },
+                "isVisible": "1"
+            }
+        ]
     }
 }
