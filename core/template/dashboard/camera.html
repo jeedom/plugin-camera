@@ -14,6 +14,7 @@
     <div class="md_cameraZoom" data-eqLogic_id="#id#" title="#humanname#">
         <center>
             <div class="display"><img src="#url#" class="img-responsive" data-eqLogic_id="#id#" /></div>
+            #action#
         </center>
     </div>
     <script>
@@ -46,8 +47,8 @@
         });
 
         function refreshImgCam#id#(){
-           var url = "#url#";
-           if(url.indexOf('?') > 0){
+         var url = "#url#";
+         if(url.indexOf('?') > 0){
             url += '&t='+(new Date()).getTime();
         }else{
             url += '?t='+(new Date()).getTime();
@@ -55,12 +56,12 @@
         var img = new Image();
         img.src = url;
         img.onload = function() {
-           $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
-           $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
-           setTimeout(refreshImgCam#id#, #refreshDelay#);
-       }
-}
+         $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
+         $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
+         setTimeout(refreshImgCam#id#, #refreshDelay#);
+     }
+ }
 
-refreshImgCam#id#();
+ refreshImgCam#id#();
 </script>
 </div>
