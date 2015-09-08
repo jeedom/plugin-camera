@@ -1,0 +1,10 @@
+{
+    "ycam.cam": {
+	"name" : "Y-Cam",
+        "configuration": {
+            "urlStream": "\/snapshot.jpg",
+            "protocole": "http"
+        },
+        "commands": []
+    }
+}
