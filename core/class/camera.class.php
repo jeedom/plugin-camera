@@ -217,6 +217,11 @@ class camera extends eqLogic {
 		if ($this->getDisplay('hideOn' . $version) == 1) {
 			return '';
 		}
+		$vcolor = 'cmdColor';
+		if ($version == 'mobile') {
+			$vcolor = 'mcmdColor';
+		}
+		$cmdColor = ($this->getPrimaryCategory() == '') ? '' : jeedom::getConfiguration('eqLogic:category:' . $this->getPrimaryCategory() . ':' . $vcolor);
 		$action = '';
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getIsVisible() == 1) {
@@ -232,10 +237,11 @@ class camera extends eqLogic {
 							'#id#' => $cmd->getId(),
 							'#stopCmd#' => ($cmd->getConfiguration('stopCmdUrl') != '') ? 1 : 0,
 							'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
+							'#cmdColor#' => $cmdColor,
 						);
-						$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_action', 'camera')) . ' ';
+						$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_action', 'camera')) . ' ';
 					} else {
-						$action .= $cmd->toHtml($_version);
+						$action .= $cmd->toHtml($_version, $cmdColor);
 					}
 
 					if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
@@ -254,6 +260,7 @@ class camera extends eqLogic {
 			'#eqLink#' => ($this->hasRight('w')) ? $this->getLinkToConfiguration() : '#',
 			'#height#' => $this->getDisplay('height', 'auto'),
 			'#width#' => $this->getDisplay('width', 'auto'),
+			'#cmdColor#' => $cmdColor,
 		);
 		$stopRecord = $this->getCmd(null, 'stopRecordCmd');
 		$record = $this->getCmd(null, 'recordCmd');
@@ -263,6 +270,7 @@ class camera extends eqLogic {
 			'#stopRecord_id#' => $stopRecord->getId(),
 			'#recordState#' => $recordState->execCmd(null, 2),
 			'#recordState_id#' => $recordState->getId(),
+			'#cmdColor#' => $cmdColor,
 		);
 		$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
 
@@ -278,7 +286,7 @@ class camera extends eqLogic {
 				$replace_eqLogic['#' . $key . '#'] = $value;
 			}
 		}
-		return template_replace($replace_eqLogic, getTemplate('core', jeedom::versionAlias($_version), 'camera', 'camera'));
+		return template_replace($replace_eqLogic, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera'));
 	}
 
 	public function getUrl($_complement = '', $_flux = false) {
