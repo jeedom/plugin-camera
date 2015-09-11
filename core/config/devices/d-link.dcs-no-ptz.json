@@ -1,0 +1,62 @@
+{
+    "d-link.dcs-932l": {
+	"name" : "D-Link DCS",
+        "configuration": {
+            "urlStream": "\/image.jpg",
+            "protocole": "http"
+        },
+        "commands": [
+            {
+                "name": "IR ON",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "setDaynightMode?ReplySuccessPage=night.htm&ReplyErrorPage=errrnight.htm&DayNightMode=3&ConfigDayNightMode=Save"
+                },
+                "display": {
+                    "icon": "<i class=\"icon jeedom-lumiere-on\"><\/i>"
+                }
+            },
+            {
+                "name": "IR OFF",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "setDaynightMode?ReplySuccessPage=night.htm&ReplyErrorPage=errrnight.htm&DayNightMode=2&ConfigDayNightMode=Save"
+                },
+                "display": {
+                    "icon": "<i class=\"icon jeedom-lumiere-off\"><\/i>"
+                }
+            },
+            {
+                "name": "auto",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "setDaynightMode?ReplySuccessPage=night.htm&ReplyErrorPage=errrnight.htm&DayNightMode=0&ConfigDayNightMode=Save"
+                }
+            },
+            {
+                "name": "Detection ON",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "setSystemMotion?ReplySuccessPage=motion.htm&ReplyErrorPage=motion.htm&MotionDetectionEnable=1&MotionDetectionScheduleDay=0&MotionDetectionScheduleMode=0&MotionDetectionSensivity=80&ConfigSystemMotion=Save"
+                }
+            },
+            {
+                "name": "Detection OFF",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "setSystemMotion?ReplySuccessPage=motion.htm&ReplyErrorPage=motion.htm&MotionDetectionEnable=0&MotionDetectionScheduleDay=0&ConfigSystemMotion=Save"
+                }
+            }
+        ]
+    }
+}

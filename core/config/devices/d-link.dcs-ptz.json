@@ -100,6 +100,24 @@
                 }
             },
             {
+                "name": "Detection ON",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "setSystemMotion?ReplySuccessPage=motion.htm&ReplyErrorPage=motion.htm&MotionDetectionEnable=1&MotionDetectionScheduleDay=0&MotionDetectionScheduleMode=0&MotionDetectionSensivity=80&ConfigSystemMotion=Save"
+                }
+            },
+              {
+                "name": "Detection OFF",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "configuration": {
+                    "request": "setSystemMotion?ReplySuccessPage=motion.htm&ReplyErrorPage=motion.htm&MotionDetectionEnable=0&MotionDetectionScheduleDay=0&ConfigSystemMotion=Save"
+                }
+            },
+            {
                 "name": "1",
                 "type": "action",
                 "subtype": "other",
