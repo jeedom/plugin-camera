@@ -1,6 +1,6 @@
 {
     "d-link.dcs-932l": {
-	"name" : "D-Link DCS",
+	"name" : "D-Link DCS PTZ",
         "configuration": {
             "urlStream": "\/image.jpg",
             "protocole": "http"
