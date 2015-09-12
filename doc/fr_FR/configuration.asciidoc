@@ -5,7 +5,7 @@ Après installation du plugin, il vous suffit de l’activer et c'est bon, cepen
 image::../images/camera1.PNG[]
 
 * *Chemin des enregistrements* : indique le chemin ou Jeedom doit mettre les images qu'il capture des cameras (il est conseillé de ne pas y toucher)
-* *Taille maximum du dossier d'enregistrement (Mo)* : donne la taille maximum autorisé pour le dossier ou les captures sont enregistrées (il est conseillé de ne pas y toucher)
+* *Taille maximum du dossier d'enregistrement (Mo)* : donne la taille maximum autorisé pour le dossier ou les captures sont enregistrées (il est conseillé de ne pas y toucher). Si ce quotas est atteind Jeedom supprime les captures les plus veilles
 
 [IMPORTANT]
 Attention ses captures ne font pas partie du backup
