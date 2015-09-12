@@ -30,7 +30,7 @@ krsort($files);
 ?>
 <div id='div_cameraRecordAlert' style="display: none;"></div>
 <?php
-echo '<a class="btn btn-danger bt_removeCameraFile pull-right" data-all="1" data-filename="' . $camera->getId() . '/' . $date . '*"><i class="fa fa-trash-o"></i> {{Tout supprimer}}</a>';
+echo '<a class="btn btn-danger bt_removeCameraFile pull-right" data-all="1" data-filename="' . $camera->getId() . '/*"><i class="fa fa-trash-o"></i> {{Tout supprimer}}</a>';
 ?>
 <?php
 foreach ($files as $date => &$file) {
