@@ -60,6 +60,9 @@
          $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
          setTimeout(refreshImgCam#id#, #refreshDelay#);
      }
+     img.error = function() {
+       setTimeout(refreshImgCam#id#, #refreshDelay#);
+   }
  }
 
  refreshImgCam#id#();

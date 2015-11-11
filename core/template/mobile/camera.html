@@ -12,7 +12,7 @@
     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
   </div>
   <div data-role="content">
-  <br/>
+    <br/>
     <center>
       <div class="display" style="margin-left : auto;margin-right : auto;width:auto;"><img data-eqLogic_id="#id#" style="width:90%;display:block;" src="#url#"/></div>
     </center>
@@ -40,6 +40,9 @@
      if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html() != undefined){
        timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
      }
+   }
+   img.error = function() {
+     timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
    }
  };
  if (typeof timeoutCamera#id# !== "undefined") {
