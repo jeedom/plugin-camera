@@ -119,7 +119,7 @@ foreach (object::all() as $object) {
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">{{Commande mail}}</label>
+                <label class="col-sm-3 control-label">{{Commande d'alerte (mail, slack...)}}</label>
                 <div class="col-sm-5">
                 <div class="input-group">
                         <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageCommand" placeholder="{{Commande mail pour l'envoi d'une capture}}"/>

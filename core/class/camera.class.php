@@ -101,6 +101,15 @@ class camera extends eqLogic {
 
 	/*     * *********************Methode d'instance************************* */
 
+	public function preSave() {
+		if ($this->getConfiguration('alertMessageCommand') != '') {
+			$cmd = cmd::byId(str_replace('#', '', $this->getConfiguration('alertMessageCommand')));
+			if (is_object($cmd) && $cmd->getEqType_name() == 'camera') {
+				throw new Exception(__('La "Commande d\'alerte" ne peut être de type caméra', __FILE__));
+			}
+		}
+	}
+
 	public function preUpdate() {
 		$this->setCategory('security', 1);
 		if ($this->getConfiguration('ip') == '') {
