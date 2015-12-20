@@ -37,6 +37,7 @@ foreach ($files as $date => &$file) {
 	echo '<div class="div_dayContainer">';
 	echo '<legend>';
 	echo '<a class="btn btn-xs btn-danger bt_removeCameraFile" data-day="1" data-filename="' . $camera->getId() . '/' . $date . '*"><i class="fa fa-trash-o"></i> {{Supprimer}}</a> ';
+	echo '<a class="btn btn-xs btn-success"  href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $date . '*') . '" ><i class="fa fa-download"></i> {{Télécharger}}</a> ';
 	echo $date;
 	echo '</legend>';
 	echo '<div class="cameraThumbnailContainer">';

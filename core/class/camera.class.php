@@ -574,6 +574,9 @@ class cameraCmd extends cmd {
 			case 'action':
 				switch ($this->getSubType()) {
 					case 'slider':
+						if (!isset($_options['slider'])) {
+							$_options['slider'] = 0;
+						}
 						$request = str_replace('#slider#', $_options['slider'], $request);
 						break;
 					case 'color':
