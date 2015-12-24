@@ -124,19 +124,19 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('refreshDelay') == '') {
 			$this->setConfiguration('refreshDelay', 2);
 		}
-		$browseRecord = $this->getCmd(null, 'urlFlux');
-		if (!is_object($browseRecord)) {
-			$browseRecord = new cameraCmd();
+		$urlFlux = $this->getCmd(null, 'urlFlux');
+		if (!is_object($urlFlux)) {
+			$urlFlux = new cameraCmd();
 		}
-		$browseRecord->setName(__('Flux video', __FILE__));
-		$browseRecord->setEventOnly(1);
-		$browseRecord->setConfiguration('request', '-');
-		$browseRecord->setType('info');
-		$browseRecord->setLogicalId('urlFlux');
-		$browseRecord->setIsVisible(0);
-		$browseRecord->setEqLogic_id($this->getId());
-		$browseRecord->setSubType('string');
-		$browseRecord->save();
+		$urlFlux->setName(__('Flux video', __FILE__));
+		$urlFlux->setEventOnly(1);
+		$urlFlux->setConfiguration('request', '-');
+		$urlFlux->setType('info');
+		$urlFlux->setLogicalId('urlFlux');
+		$urlFlux->setIsVisible(0);
+		$urlFlux->setEqLogic_id($this->getId());
+		$urlFlux->setSubType('string');
+		$urlFlux->save();
 
 		$browseRecord = $this->getCmd(null, 'browseRecord');
 		if (is_object($browseRecord)) {
@@ -213,6 +213,8 @@ class camera extends eqLogic {
 		$sendSnapshot->setSubType('message');
 		$sendSnapshot->setIsVisible(0);
 		$sendSnapshot->save();
+
+		$urlFlux->event($this->getUrl($this->getConfiguration('urlStream'), true));
 	}
 
 	public function toHtml($_version = 'dashboard') {
