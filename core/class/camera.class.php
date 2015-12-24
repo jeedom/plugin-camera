@@ -108,6 +108,9 @@ class camera extends eqLogic {
 				throw new Exception(__('La "Commande d\'alerte" ne peut être de type caméra', __FILE__));
 			}
 		}
+		if ($this->getConfiguration('localApiKey') == '') {
+			$this->setConfiguration('localApiKey', config::genKey());
+		}
 	}
 
 	public function preUpdate() {
@@ -306,7 +309,7 @@ class camera extends eqLogic {
 			'#password#' => urlencode($this->getConfiguration('password')),
 		);
 		if ($_flux) {
-			return 'plugins/camera/core/php/snapshot.php?id=' . $this->getId() . '&apikey=' . config::byKey('api');
+			return 'plugins/camera/core/php/snapshot.php?id=' . $this->getId() . '&apikey=' . $this->getConfiguration('localApiKey');
 		}
 		$url = $this->getConfiguration('protocole', 'http');
 		$url .= '://';
