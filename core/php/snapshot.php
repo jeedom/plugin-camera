@@ -8,7 +8,7 @@ if ($camera->getEqType_name() != 'camera') {
 	die();
 }
 if ($camera->getConfiguration('localApiKey') != init('apikey')) {
-	exit();
+	die();
 }
 
 header('Content-Type: image/jpeg');

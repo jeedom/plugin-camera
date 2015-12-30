@@ -133,6 +133,12 @@ foreach (object::all() as $object) {
                     <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageNbSnapshot"/>
                 </div>
             </div>
+             <!-- <div class="form-group">
+                <label class="col-sm-3 control-label">{{Rotation de l'image}}</label>
+                <div class="col-sm-2">
+                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="imageRotate" placeholder="{{En ° positif}}"/>
+                </div>
+            </div> -->
         </fieldset>
     </form>
 </div>

@@ -348,6 +348,15 @@ class camera extends eqLogic {
 		}
 		$data = curl_exec($ch);
 		curl_close($ch);
+		if (false && $this->getConfiguration('imageRotate') != '' && is_numeric($this->getConfiguration('imageRotate')) && $this->getConfiguration('imageRotate') > 0 && $this->getConfiguration('imageRotate') < 360) {
+			$source = imagecreatefromstring($data);
+			$rotate = imagerotate($source, $this->getConfiguration('imageRotate'), 0);
+			imagepng($rotate, '/tmp/camera_' . $this->getId());
+			$data = file_get_contents('/tmp/camera_' . $this->getId());
+			imagedestroy($source);
+			imagedestroy($rotate);
+			unlink('/tmp/camera_' . $this->getId());
+		}
 		return $data;
 	}
 
