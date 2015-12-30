@@ -130,7 +130,7 @@ foreach (object::all() as $object) {
                 </div>
                 <label class="col-sm-3 control-label">{{Nombre de captures}}</label>
                 <div class="col-sm-1">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageNbSnapshot" placeholder="{{Nombre de capture}}"/>
+                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageNbSnapshot"/>
                 </div>
             </div>
         </fieldset>
