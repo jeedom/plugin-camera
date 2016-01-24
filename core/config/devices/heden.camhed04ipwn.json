@@ -1,0 +1,101 @@
+{
+    "heden.camhed04ipwn": {
+	"name" : "Heden VisionCam CAMHED04IPWN",
+        "configuration": {
+            "urlStream": "\/tmpfs\/snap.jpg?usr=#username#&pwd=#password#",
+            "protocole": "http"
+        },
+        "commands": [
+			{
+                "eqType": "camera",
+                "name": "Gauche",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/decoder_control.cgi?command=4&onestep=1&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			{
+                "eqType": "camera",
+                "name": "Droite",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                   "request": "\/decoder_control.cgi?command=6&onestep=1&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			{
+                "eqType": "camera",
+                "name": "Haut",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/decoder_control.cgi?command=0&onestep=1&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			{
+                "eqType": "camera",
+                "name": "Bas",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/decoder_control.cgi?command=2&onestep=1&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			{
+                "eqType": "camera",
+                "name": "IR On",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/set_misc.cgi?led_mode=2&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
+                },
+                "isVisible": "1"
+            },
+			{
+                "eqType": "camera",
+                "name": "IR Off",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "eventOnly": "0",
+                "configuration": {
+                    "request": "\/set_misc.cgi?led_mode=0&user=#username#&pwd=#password#"
+                },
+                "display": {
+                    "icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
+                },
+                "isVisible": "1"
+            }
+		]
+    }
+}
