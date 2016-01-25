@@ -2,7 +2,7 @@
     "heden.camhed04ipwn": {
 	"name" : "Heden VisionCam CAMHED04IPWN",
         "configuration": {
-            "urlStream": "\/tmpfs\/snap.jpg?usr=#username#&pwd=#password#",
+            "urlStream": "\/snapshot.cgi?user=#username#&pwd=#password#",
             "protocole": "http"
         },
         "commands": [
