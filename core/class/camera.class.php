@@ -282,7 +282,7 @@ class camera extends eqLogic {
 		$replace = array(
 			'#record_id#' => $record->getId(),
 			'#stopRecord_id#' => $stopRecord->getId(),
-			'#recordState#' => $recordState->execCmd(null, 2),
+			'#recordState#' => $recordState->execCmd(),
 			'#recordState_id#' => $recordState->getId(),
 			'#cmdColor#' => $cmdColor,
 		);
