@@ -132,7 +132,6 @@ class camera extends eqLogic {
 			$urlFlux = new cameraCmd();
 		}
 		$urlFlux->setName(__('Flux video', __FILE__));
-		$urlFlux->setEventOnly(1);
 		$urlFlux->setConfiguration('request', '-');
 		$urlFlux->setType('info');
 		$urlFlux->setLogicalId('urlFlux');
@@ -152,7 +151,6 @@ class camera extends eqLogic {
 		}
 		$recordState->setName(__('Status enregistrement', __FILE__));
 		$recordState->setConfiguration('recordState', 1);
-		$recordState->setEventOnly(1);
 		$recordState->setConfiguration('request', '-');
 		$recordState->setType('info');
 		$recordState->setLogicalId('recordState');
@@ -572,9 +570,6 @@ class cameraCmd extends cmd {
 	public function preSave() {
 		if ($this->getConfiguration('request') == '' && $this->getType() == 'action') {
 			throw new Exception(__('Le champs requête ne peut etre vide', __FILE__));
-		}
-		if ($this->getType() == 'info') {
-			$this->setEventOnly(1);
 		}
 	}
 
