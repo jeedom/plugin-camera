@@ -1,54 +1,33 @@
 <div class="eqLogic eqLogic-widget" data-eqLogic_id="#id#" data-version="mobile" style="padding-top : 3px;background-color: #background_color#;#style#;" data-first="0">
   <center>#name#</center>
   <center>
-    <a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none" class="directDisplay">
-      <img data-eqLogic_id="#id#" style="width:90%;display:block;margin-bottom : 5px;" src="#url#"/>
-    </a>
+    <img data-eqLogic_id="#id#" class="directDisplay" style="width:90%;display:block;margin-bottom : 5px;" src="#url#"/>
   </center>
-  
-  <div data-role="popup" id="popupCameraZoom#id#">
-   <div data-role="header">
-    <h1 class='nd-title'>#name#</h1>
-    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-  </div>
-  <div data-role="content">
-    <br/>
-    <center>
-      <div class="display" style="margin-left : auto;margin-right : auto;width:auto;"><img data-eqLogic_id="#id#" style="width:90%;display:block;" src="#url#"/></div>
-    </center>
-    <center style="margin-top : 5px;">
-      #action#
-    </center>
-    <br/>
-  </div>
-</div>
-<script>
-  $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (3/4) * 1.2);
-  function refreshImgCam#id#(){
-    var url = "#url#";
-    if(url.indexOf('?') > 0){
-      url += '&t='+(new Date()).getTime();
-    }else{
-      url += '?t='+(new Date()).getTime();
-    }
-    $('.eqLogic[data-eqLogic_id=#id#] .display').css('max-width',screen.width);
-    var img = new Image();
-    img.src = url;
-    img.onload = function() {
-     $("#popupCameraZoom#id# .display img").attr('src',img.src);
-     $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
-     if($('.eqLogic[data-eqLogic_id=#id#] .directDisplay').html() != undefined){
+
+  <script>
+    $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (3/4) * 1.2);
+    function refreshImgCam#id#(){
+      var url = "#url#";
+      if(url.indexOf('?') > 0){
+        url += '&t='+(new Date()).getTime();
+      }else{
+        url += '?t='+(new Date()).getTime();
+      }
+      var img = new Image();
+      img.src = url;
+      img.onload = function() {
+       $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src',img.src);
+       if($('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').html() != undefined){
+         timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
+       }
+     }
+     img.error = function() {
        timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
      }
-   }
-   img.error = function() {
-     timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
-   }
- };
- if (typeof timeoutCamera#id# !== "undefined") {
-  clearTimeout(timeoutCamera#id#);
-}
-refreshImgCam#id#();
+   };
+   if (typeof timeoutCamera#id# !== "undefined") {
+    clearTimeout(timeoutCamera#id#);
+  }
+  refreshImgCam#id#();
 </script>
-
 </div>
