@@ -2,7 +2,7 @@
     "foscam.FI9803P": {
 	"name" : "Foscam FI9803P",
         "configuration": {
-            "port_cam": "88",
+            "port": "88",
             "urlStream": "\/cgi-bin\/CGIProxy.fcgi?cmd=snapPicture2&usr=#username#&pwd=#password#",
             "protocole": "http"
         },
