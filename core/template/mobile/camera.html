@@ -21,7 +21,8 @@
          timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
        }
      }
-     img.error = function() {
+     img.onerror = function() {
+       $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src','plugins/camera/core/img/no-image.png');
        timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
      }
    };

@@ -270,8 +270,8 @@ class camera extends eqLogic {
 			'#humanname#' => $this->getHumanName(),
 			'#name#' => $this->getName(),
 			'#eqLink#' => ($this->hasRight('w')) ? $this->getLinkToConfiguration() : '#',
-			'#height#' => $this->getDisplay('height', 'auto'),
-			'#width#' => $this->getDisplay('width', 'auto'),
+			'#height#' => $this->getDisplay('height', 220),
+			'#width#' => $this->getDisplay('width', 360),
 			'#cmdColor#' => $cmdColor,
 		);
 		$stopRecord = $this->getCmd(null, 'stopRecordCmd');
