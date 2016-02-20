@@ -23,7 +23,7 @@
      }
      img.onerror = function() {
        $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src','plugins/camera/core/img/no-image.png');
-       timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
+       timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay# * 5);
      }
    };
    if (typeof timeoutCamera#id# !== "undefined") {

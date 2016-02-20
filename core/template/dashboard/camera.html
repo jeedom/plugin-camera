@@ -64,10 +64,9 @@
            setTimeout(refreshImgCam#id#, #refreshDelay#);
        }
        img.onerror = function() {
-        console.log('je passe');
          $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src','plugins/camera/core/img/no-image.png');
          $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src','plugins/camera/core/img/no-image.png');
-         setTimeout(refreshImgCam#id#, #refreshDelay#);
+         setTimeout(refreshImgCam#id#, #refreshDelay# * 5);
      }
  }
 
