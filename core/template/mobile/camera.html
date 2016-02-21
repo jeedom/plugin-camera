@@ -3,9 +3,11 @@
   <center>
     <img data-eqLogic_id="#id#" class="directDisplay" style="width:90%;display:block;margin-bottom : 5px;" src="#url#"/>
   </center>
-
+  <center>
+    #action#
+  </center>
   <script>
-    $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (3/4) * 1.2);
+    $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (3/4) * 1.5);
     function refreshImgCam#id#(){
       var url = "#url#";
       if(url.indexOf('?') > 0){
@@ -16,6 +18,7 @@
       var img = new Image();
       img.src = url;
       img.onload = function() {
+
        $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src',img.src);
        if($('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').html() != undefined){
          timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
