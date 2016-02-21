@@ -328,6 +328,10 @@ class camera extends eqLogic {
 	}
 
 	public function getSnapshot() {
+		$filename = '/tmp/camSnapshot' . $this->getId();
+		if (file_exists($filename) && date('Y-m-d H:i:s', filemtime($filename)) == date('Y-m-d H:i:s')) {
+			return file_get_contents($filename);
+		}
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 2);
@@ -345,16 +349,7 @@ class camera extends eqLogic {
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		}
 		$data = curl_exec($ch);
-		curl_close($ch);
-		if (false && $this->getConfiguration('imageRotate') != '' && is_numeric($this->getConfiguration('imageRotate')) && $this->getConfiguration('imageRotate') > 0 && $this->getConfiguration('imageRotate') < 360) {
-			$source = imagecreatefromstring($data);
-			$rotate = imagerotate($source, $this->getConfiguration('imageRotate'), 0);
-			imagepng($rotate, '/tmp/camera_' . $this->getId());
-			$data = file_get_contents('/tmp/camera_' . $this->getId());
-			imagedestroy($source);
-			imagedestroy($rotate);
-			unlink('/tmp/camera_' . $this->getId());
-		}
+		file_put_contents($filename, $data);
 		return $data;
 	}
 
