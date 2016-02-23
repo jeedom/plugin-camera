@@ -2,7 +2,7 @@
     "ebode.mot": {
 	"name" : "Ebode motorisée",
         "configuration": {
-            "port_cam": "88",
+            "port": "88",
             "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
             "protocole": "http"
         },

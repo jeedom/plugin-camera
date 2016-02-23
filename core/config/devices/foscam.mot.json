@@ -2,7 +2,7 @@
     "foscam.mot": {
 	"name" : "Foscam motorisée",
         "configuration": {
-            "port_cam": "80",
+            "port": "80",
             "urlStream": "\/snapshot.cgi?user=#username#&pwd=#password#",
             "protocole": "http"
         },
