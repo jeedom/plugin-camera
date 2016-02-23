@@ -1,0 +1,75 @@
+{
+    "plugins/camera/desktop/php/panel.php": {
+        "Liste objets": "Objects list",
+        "Rechercher": "Search"
+    },
+    "plugins/camera/plugin_info/configuration.php": {
+        "Chemin des scripts utilisateur": "User script path",
+        "Taille maximum du dossier d'enregistrement (Mo)": "Maximum size for the recording folder (MB)",
+        "Chemin des enregistrements": "Chemin des enregistrements"
+    },
+    "plugins/camera/desktop/php/camera.php": {
+        "Market": "Market",
+        "Ajouter une caméra": "Add a camera",
+        "Rechercher": "Search",
+        "Mes caméras": "My cameras",
+        "Général": "Main",
+        "Nom de l'équipement caméra": "Camera device name",
+        "Objet parent": "Parent object",
+        "Aucun": "None",
+        "Gestion du proxy d'accès à la caméra :": "Camera proxy management",
+        "IP": "IP",
+        "Port": "Port",
+        "IP Externe": "External IP",
+        "Port externe": "External port",
+        "Nom d'utilisateur": "Username",
+        "Mot de passe": "Password",
+        "Configuration": "Setup",
+        "Modèle de caméra": "Camera model",
+        "Partager": "Share",
+        "Envoyer une configuration": "Send a configuration",
+        "Exporter": "Export",
+        "URL du flux": "Stream URL",
+        "Protocole commande": "Command protocol",
+        "Protocole d'accès interne": "Internal access protocol",
+        "Protocole d'accès externe": "External access protocol",
+        "Méthode d'affichage": "Display method",
+        "Fréquence (s)": "Frequency (s)",
+        "Caméra": "Camera",
+        "Ajouter une commande": "Add a command",
+        "Nom": "Name",
+        "Type": "Type",
+        "Requête/Durée enregistrement (secondes)": "Request/record duration (seconds)",
+        "Options": "Options",
+        "Supprimer": "Delete",
+        "Sauvegarder": "Save",
+        "Enregistrement": "Recording",
+        "FPS": "FPS",
+        "Image par secondes": "Frames per second",
+        "Bitrate": "Bitrate",
+        "Débit (bit/s)": "Bitrate (bit/s)",
+        "Pensez bien à configurer l'accès externe dans Générale -> Administration -> Configuration puis dans la partie réseaux": "Remember to configure external access in General -> Administration -> Configuration then in networks section",
+        "Pensez bien à configurer l'accès externe dans Générale -> Administration -> Configuration puis partie réseaux": "Remember to configure external access in General -> Administration -> Configuration then in networks section",
+        "Option commande d'entregistrement": "Option commande d'entregistrement"
+    },
+    "plugins/camera/desktop/js/camera.js": {
+        "Partager sur le market": "Share on market",
+        "Vous devez d\\'abord séléctioner un équipement": "First, select a device",
+        "Fichier ajouté avec succes. Vous devez rafraichir pour vous en servir": "File successfully added. Refresh to use it.",
+        "Stop commande": "Stop command",
+        "Afficher": "Diplay",
+        "Curl digest": "Curl digest",
+        "Tester": "Test"
+    },
+    "plugins/camera/plugin_info/info.xml": {
+        "Plugin pour afficher les caméras IP": "Plugin to display IP cameras",
+        "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)": "Warning ! To be able to save, you must have installed ffmpeg or avconv (sudo apt-get install ffmpeg or sudo apt-get install libav-tools)"
+    },
+    "plugins/camera/core/class/camera.class.php": {
+        "Parcourir les video": "Parcourir les video",
+        "Status enregistrement": "Status enregistrement",
+        "Lancer enregistrement": "Lancer enregistrement",
+        "Arrêter enregistrement": "Arrêter enregistrement",
+        "L'adresse IP de la camera ne peut être vide": "L'adresse IP de la camera ne peut être vide"
+    }
+}

@@ -4,7 +4,9 @@
         "Rechercher": "Rechercher"
     },
     "plugins\/camera\/plugin_info\/configuration.php": {
-        "Chemin des scripts utilisateur": "Chemin des scripts utilisateur"
+        "Chemin des scripts utilisateur": "Chemin des scripts utilisateur",
+        "Chemin des enregistrements": "Chemin des enregistrements",
+        "Taille maximum du dossier d'enregistrement (Mo)": "Taille maximum du dossier d'enregistrement (Mo)"
     },
     "plugins\/camera\/desktop\/php\/camera.php": {
         "Market": "Market",
@@ -40,7 +42,22 @@
         "Requête\/Durée enregistrement (secondes)": "Requête\/Durée enregistrement (secondes)",
         "Options": "Options",
         "Supprimer": "Supprimer",
-        "Sauvegarder": "Sauvegarder"
+        "Sauvegarder": "Sauvegarder",
+        "Activer": "Activer",
+        "Visible": "Visible",
+        "URL de capture": "URL de capture",
+        "Rafraichissement (s)": "Rafraichissement (s)",
+        "Commande mail": "Commande mail",
+        "Commande mail pour l'envoi d'une capture": "Commande mail pour l'envoi d'une capture",
+        "Nombre de captures": "Nombre de captures",
+        "Nombre de capture": "Nombre de capture",
+        "Modèle": "Modèle",
+        "1 - Aucun": "1 - Aucun",
+        "#": "#",
+        "Requête": "Requête",
+        "Commande d'alerte (mail, slack...)": "Commande d'alerte (mail, slack...)",
+        "Rotation de l'image": "Rotation de l'image",
+        "En ° positif": "En ° positif"
     },
     "plugins\/camera\/desktop\/js\/camera.js": {
         "Partager sur le market": "Partager sur le market",
@@ -49,10 +66,35 @@
         "Stop commande": "Stop commande",
         "Afficher": "Afficher",
         "Curl digest": "Curl digest",
-        "Tester": "Tester"
+        "Tester": "Tester",
+        "URL de la commande": "URL de la commande",
+        "URL de la commande de stop de mouvement (caméra motirisée)": "URL de la commande de stop de mouvement (caméra motirisée)",
+        "Valeur retour d\\'état": "Valeur retour d\\'état",
+        "Durée avant retour d\\'état (min)": "Durée avant retour d\\'état (min)"
     },
     "plugins\/camera\/plugin_info\/info.xml": {
         "Plugin pour afficher les caméras IP": "Plugin pour afficher les caméras IP",
         "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)": "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)"
+    },
+    "plugins\/camera\/desktop\/js\/panel.js": {
+        "Vous êtes en mode édition vous pouvez redimensionner les widgets": "Vous êtes en mode édition vous pouvez redimensionner les widgets"
+    },
+    "plugins\/camera\/core\/class\/camera.class.php": {
+        "Flux video": "Flux video",
+        "Status enregistrement": "Status enregistrement",
+        "Lancer enregistrement": "Lancer enregistrement",
+        "Durée enregistrement (s)": "Durée enregistrement (s)",
+        "Arrêter enregistrement": "Arrêter enregistrement",
+        "Capture": "Capture",
+        "Envoyer une capture": "Envoyer une capture",
+        "L'adresse IP de la camera ne peut être vide": "L'adresse IP de la camera ne peut être vide"
+    },
+    "plugins\/camera\/desktop\/modal\/camera.history.php": {
+        "Supprimer": "Supprimer",
+        "Tout supprimer": "Tout supprimer",
+        "Télécharger": "Télécharger"
+    },
+    "plugins\/camera\/core\/ajax\/camera.ajax.php": {
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
     }
 }

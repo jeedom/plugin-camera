@@ -132,7 +132,6 @@ class camera extends eqLogic {
 			$urlFlux = new cameraCmd();
 		}
 		$urlFlux->setName(__('Flux video', __FILE__));
-		$urlFlux->setEventOnly(1);
 		$urlFlux->setConfiguration('request', '-');
 		$urlFlux->setType('info');
 		$urlFlux->setLogicalId('urlFlux');
@@ -152,7 +151,6 @@ class camera extends eqLogic {
 		}
 		$recordState->setName(__('Status enregistrement', __FILE__));
 		$recordState->setConfiguration('recordState', 1);
-		$recordState->setEventOnly(1);
 		$recordState->setConfiguration('request', '-');
 		$recordState->setType('info');
 		$recordState->setLogicalId('recordState');
@@ -272,8 +270,8 @@ class camera extends eqLogic {
 			'#humanname#' => $this->getHumanName(),
 			'#name#' => $this->getName(),
 			'#eqLink#' => ($this->hasRight('w')) ? $this->getLinkToConfiguration() : '#',
-			'#height#' => $this->getDisplay('height', 'auto'),
-			'#width#' => $this->getDisplay('width', 'auto'),
+			'#height#' => $this->getDisplay('height', 220),
+			'#width#' => $this->getDisplay('width', 360),
 			'#cmdColor#' => $cmdColor,
 		);
 		$stopRecord = $this->getCmd(null, 'stopRecordCmd');
@@ -282,7 +280,7 @@ class camera extends eqLogic {
 		$replace = array(
 			'#record_id#' => $record->getId(),
 			'#stopRecord_id#' => $stopRecord->getId(),
-			'#recordState#' => $recordState->execCmd(null, 2),
+			'#recordState#' => $recordState->execCmd(),
 			'#recordState_id#' => $recordState->getId(),
 			'#cmdColor#' => $cmdColor,
 		);
@@ -330,6 +328,10 @@ class camera extends eqLogic {
 	}
 
 	public function getSnapshot() {
+		$filename = '/tmp/camSnapshot' . $this->getId();
+		if (file_exists($filename) && date('Y-m-d H:i:s', filemtime($filename)) == date('Y-m-d H:i:s')) {
+			return file_get_contents($filename);
+		}
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 2);
@@ -347,16 +349,7 @@ class camera extends eqLogic {
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		}
 		$data = curl_exec($ch);
-		curl_close($ch);
-		if (false && $this->getConfiguration('imageRotate') != '' && is_numeric($this->getConfiguration('imageRotate')) && $this->getConfiguration('imageRotate') > 0 && $this->getConfiguration('imageRotate') < 360) {
-			$source = imagecreatefromstring($data);
-			$rotate = imagerotate($source, $this->getConfiguration('imageRotate'), 0);
-			imagepng($rotate, '/tmp/camera_' . $this->getId());
-			$data = file_get_contents('/tmp/camera_' . $this->getId());
-			imagedestroy($source);
-			imagedestroy($rotate);
-			unlink('/tmp/camera_' . $this->getId());
-		}
+		file_put_contents($filename, $data);
 		return $data;
 	}
 
@@ -572,9 +565,6 @@ class cameraCmd extends cmd {
 	public function preSave() {
 		if ($this->getConfiguration('request') == '' && $this->getType() == 'action') {
 			throw new Exception(__('Le champs requête ne peut etre vide', __FILE__));
-		}
-		if ($this->getType() == 'info') {
-			$this->setEventOnly(1);
 		}
 	}
 

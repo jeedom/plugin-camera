@@ -1,0 +1,75 @@
+{
+    "plugins/camera/desktop/php/panel.php": {
+        "Liste objets": "Список элементов",
+        "Rechercher": "Искать"
+    },
+    "plugins/camera/plugin_info/configuration.php": {
+        "Chemin des scripts utilisateur": "Путь к пользовательским скриптам",
+        "Taille maximum du dossier d'enregistrement (Mo)": "Максимальный размер регистрационного досье (MB)",
+        "Chemin des enregistrements": "Запись пути"
+    },
+    "plugins/camera/desktop/php/camera.php": {
+        "Market": "Маркет",
+        "Ajouter une caméra": "Добавить камеру",
+        "Rechercher": "Искать",
+        "Mes caméras": "Мои камеры",
+        "Général": "Главная",
+        "Nom de l'équipement caméra": "Название оборудования для Камеры",
+        "Objet parent": "Родительский объект",
+        "Aucun": "Нет",
+        "Gestion du proxy d'accès à la caméra :": "Управление доступом прокси-сервера на камере:",
+        "IP": "IP",
+        "Port": "Порт",
+        "IP Externe": "Внешний IP",
+        "Port externe": "Внешний порт",
+        "Nom d'utilisateur": "Имя пользователя",
+        "Mot de passe": "Пароль",
+        "Configuration": "Конфигурация",
+        "Modèle de caméra": "Модель камеры",
+        "Partager": "Распределение",
+        "Envoyer une configuration": "Отправить конфигурацию",
+        "Exporter": "Экспорт",
+        "URL du flux": "URL ленты",
+        "Protocole commande": "Протокол управления",
+        "Protocole d'accès interne": "Внутренний протокол доступа",
+        "Protocole d'accès externe": "Протокол внешнего доступа",
+        "Méthode d'affichage": "Способ отображения",
+        "Fréquence (s)": "Частота (ы)",
+        "Caméra": "Камера",
+        "Ajouter une commande": "Добавить команду",
+        "Nom": "Имя",
+        "Type": "Тип",
+        "Requête/Durée enregistrement (secondes)": "Запрос/Время записи (в секундах)",
+        "Options": "Опции",
+        "Supprimer": "Удалить",
+        "Sauvegarder": "Сохранить",
+        "Enregistrement": "Регистрация",
+        "FPS": "FPS",
+        "Image par secondes": "Число кадров в секунду",
+        "Bitrate": "Битрейт",
+        "Débit (bit/s)": "Поток (бит / с)",
+        "Pensez bien à configurer l'accès externe dans Générale -> Administration -> Configuration puis dans la partie réseaux": "Не забудьте настроить внешний доступ в меню Главная -> Администрирование -> Конфигурация и сети",
+        "Pensez bien à configurer l'accès externe dans Générale -> Administration -> Configuration puis partie réseaux": "Не забудьте настроить внешний доступ в меню Главная -> Администрирование -> Конфигурация и сети",
+        "Option commande d'entregistrement": "Запись опций управления"
+    },
+    "plugins/camera/desktop/js/camera.js": {
+        "Partager sur le market": "Участвовать в Маркете",
+        "Vous devez d\\'abord séléctioner un équipement": "Вам необходимо первое объявленное оборудование",
+        "Fichier ajouté avec succes. Vous devez rafraichir pour vous en servir": "Файл успешно добавлен. Вы должны обновить его для использования",
+        "Stop commande": "Команда останова",
+        "Afficher": "Отобразить",
+        "Curl digest": "Ветвистый дайджест",
+        "Tester": "Тест"
+    },
+    "plugins/camera/plugin_info/info.xml": {
+        "Plugin pour afficher les caméras IP": "Плагин для просмотра IP камер ",
+        "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)": "Предупреждение: для записи должны быть установлены ffmpeg или avconv (выполнить sudo apt-get install ffmpeg или sudo apt-get install libav-tools)"
+    },
+    "plugins/camera/core/class/camera.class.php": {
+        "Parcourir les video": "Посмотреть видео",
+        "Status enregistrement": "Проверка состояния",
+        "Lancer enregistrement": "Начните запись",
+        "Arrêter enregistrement": "Остановка записи",
+        "L'adresse IP de la camera ne peut être vide": "IP-адрес камеры не может быть пустым"
+    }
+}

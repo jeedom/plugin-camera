@@ -1,0 +1,75 @@
+{
+    "plugins/camera/desktop/php/panel.php": {
+        "Liste objets": "Elenco oggetti",
+        "Rechercher": "Cerca"
+    },
+    "plugins/camera/plugin_info/configuration.php": {
+        "Chemin des scripts utilisateur": "Chemin des scripts utilisateur",
+        "Taille maximum du dossier d'enregistrement (Mo)": "Taille maximum du dossier d'enregistrement (Mo)",
+        "Chemin des enregistrements": "Chemin des enregistrements"
+    },
+    "plugins/camera/desktop/php/camera.php": {
+        "Market": "Market",
+        "Ajouter une caméra": "Ajouter une caméra",
+        "Rechercher": "Cerca",
+        "Mes caméras": "Mes caméras",
+        "Général": "Generale",
+        "Nom de l'équipement caméra": "Nom de l'équipement caméra",
+        "Objet parent": "Objet parent",
+        "Aucun": "Nessuno",
+        "Gestion du proxy d'accès à la caméra :": "Gestion du proxy d'accès à la caméra :",
+        "IP": "IP",
+        "Port": "Port",
+        "IP Externe": "IP Externe",
+        "Port externe": "Port externe",
+        "Nom d'utilisateur": "Nome utente",
+        "Mot de passe": "Password",
+        "Configuration": "Configurazione",
+        "Modèle de caméra": "Modèle de caméra",
+        "Partager": "Condividi",
+        "Envoyer une configuration": "Envoyer une configuration",
+        "Exporter": "Esporta",
+        "URL du flux": "URL du flux",
+        "Protocole commande": "Protocole commande",
+        "Protocole d'accès interne": "Protocole d'accès interne",
+        "Protocole d'accès externe": "Protocole d'accès externe",
+        "Méthode d'affichage": "Méthode d'affichage",
+        "Fréquence (s)": "Fréquence (s)",
+        "Caméra": "Caméra",
+        "Ajouter une commande": "Ajouter une commande",
+        "Nom": "Nome",
+        "Type": "Type",
+        "Requête/Durée enregistrement (secondes)": "Requête/Durée enregistrement (secondes)",
+        "Options": "Options",
+        "Supprimer": "Elimina",
+        "Sauvegarder": "Salva",
+        "Enregistrement": "Enregistrement",
+        "FPS": "FPS",
+        "Image par secondes": "Image par secondes",
+        "Bitrate": "Bitrate",
+        "Débit (bit/s)": "Débit (bit/s)",
+        "Pensez bien à configurer l'accès externe dans Générale -> Administration -> Configuration puis dans la partie réseaux": "Pensez bien à configurer l'accès externe dans Générale -> Administration -> Configuration puis dans la partie réseaux",
+        "Pensez bien à configurer l'accès externe dans Générale -> Administration -> Configuration puis partie réseaux": "Pensez bien à configurer l'accès externe dans Générale -> Administration -> Configuration puis partie réseaux",
+        "Option commande d'entregistrement": "Option commande d'entregistrement"
+    },
+    "plugins/camera/desktop/js/camera.js": {
+        "Partager sur le market": "Partager sur le market",
+        "Vous devez d\\'abord séléctioner un équipement": "Vous devez d\\'abord séléctioner un équipement",
+        "Fichier ajouté avec succes. Vous devez rafraichir pour vous en servir": "Fichier ajouté avec succes. Vous devez rafraichir pour vous en servir",
+        "Stop commande": "Stop commande",
+        "Afficher": "Mostra",
+        "Curl digest": "Curl digest",
+        "Tester": "Tester"
+    },
+    "plugins/camera/plugin_info/info.xml": {
+        "Plugin pour afficher les caméras IP": "Plugin pour afficher les caméras IP",
+        "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)": "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)"
+    },
+    "plugins/camera/core/class/camera.class.php": {
+        "Parcourir les video": "Parcourir les video",
+        "Status enregistrement": "Status enregistrement",
+        "Lancer enregistrement": "Lancer enregistrement",
+        "Arrêter enregistrement": "Arrêter enregistrement",
+        "L'adresse IP de la camera ne peut être vide": "L'adresse IP de la camera ne peut être vide"
+    }
+}
