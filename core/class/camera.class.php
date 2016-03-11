@@ -22,6 +22,8 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 class camera extends eqLogic {
 	/*     * *************************Attributs****************************** */
 
+	public static $_widgetPossibility = array('custom' => true);
+
 	/*     * ***********************Methode static*************************** */
 
 	public static function event() {
@@ -219,21 +221,12 @@ class camera extends eqLogic {
 	}
 
 	public function toHtml($_version = 'dashboard') {
-		if ($this->getIsEnable() != 1) {
-			return '';
+		$replace = $this->preToHtml($_version);
+		if (!is_array($replace)) {
+			return $replace;
 		}
-		if (!$this->hasRight('r')) {
-			return '';
-		}
+
 		$version = jeedom::versionAlias($_version);
-		if ($this->getDisplay('hideOn' . $version) == 1) {
-			return '';
-		}
-		$vcolor = 'cmdColor';
-		if ($version == 'mobile') {
-			$vcolor = 'mcmdColor';
-		}
-		$cmdColor = ($this->getPrimaryCategory() == '') ? '' : jeedom::getConfiguration('eqLogic:category:' . $this->getPrimaryCategory() . ':' . $vcolor);
 		$action = '';
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getIsVisible() == 1) {
@@ -245,15 +238,15 @@ class camera extends eqLogic {
 						$action .= '<br/>';
 					}
 					if ($cmd->getType() == 'action' && $cmd->getSubType() == 'other') {
-						$replace = array(
+						$replaceCmd = array(
 							'#id#' => $cmd->getId(),
 							'#stopCmd#' => ($cmd->getConfiguration('stopCmdUrl') != '') ? 1 : 0,
 							'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
-							'#cmdColor#' => $cmdColor,
+							'#cmdColor#' => $replace['#cmd-background-color#'],
 						);
-						$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_action', 'camera')) . ' ';
+						$action .= template_replace($replaceCmd, getTemplate('core', jeedom::versionAlias($version), 'camera_action', 'camera')) . ' ';
 					} else {
-						$action .= $cmd->toHtml($_version, $cmdColor);
+						$action .= $cmd->toHtml($_version, $replace['#cmd-background-color#']);
 					}
 
 					if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
@@ -262,43 +255,21 @@ class camera extends eqLogic {
 				}
 			}
 		}
-		$replace_eqLogic = array(
-			'#id#' => $this->getId(),
-			'#url#' => $this->getUrl($this->getConfiguration('urlStream'), true),
-			'#refreshDelay#' => $this->getConfiguration('refreshDelay', 1) * 1000,
-			'#background_color#' => $this->getBackgroundColor(jeedom::versionAlias($_version)),
-			'#humanname#' => $this->getHumanName(),
-			'#name#' => $this->getName(),
-			'#eqLink#' => ($this->hasRight('w')) ? $this->getLinkToConfiguration() : '#',
-			'#height#' => $this->getDisplay('height', 220),
-			'#width#' => $this->getDisplay('width', 360),
-			'#cmdColor#' => $cmdColor,
-		);
 		$stopRecord = $this->getCmd(null, 'stopRecordCmd');
 		$record = $this->getCmd(null, 'recordCmd');
 		$recordState = $this->getCmd(null, 'recordState');
-		$replace = array(
+		$replace_action = array(
 			'#record_id#' => $record->getId(),
 			'#stopRecord_id#' => $stopRecord->getId(),
 			'#recordState#' => $recordState->execCmd(),
 			'#recordState_id#' => $recordState->getId(),
-			'#cmdColor#' => $cmdColor,
+			'#cmdColor#' => $replace['#cmd-background-color#'],
 		);
-		$action .= template_replace($replace, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
-
-		$replace_eqLogic['#action#'] = $action;
-		if ($_version == 'dview' || $_version == 'mview') {
-			$object = $this->getObject();
-			$replace_eqLogic['#name#'] = (is_object($object)) ? $object->getName() . ' - ' . $replace_eqLogic['#name#'] : $replace['#name#'];
-		}
-
-		$parameters = $this->getDisplay('parameters');
-		if (is_array($parameters)) {
-			foreach ($parameters as $key => $value) {
-				$replace_eqLogic['#' . $key . '#'] = $value;
-			}
-		}
-		return template_replace($replace_eqLogic, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera'));
+		$action .= template_replace($replace_action, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
+		$replace['#action#'] = $action;
+		$replace['#url#'] = $this->getUrl($this->getConfiguration('urlStream'), true);
+		$replace['#refreshDelay#'] = $this->getConfiguration('refreshDelay', 1) * 1000;
+		return template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera'));
 	}
 
 	public function getUrl($_complement = '', $_flux = false) {
