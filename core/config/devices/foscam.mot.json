@@ -13,7 +13,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=2&user=#username#&pwd=#password#",
                     "stopCmd": "\/decoder_control.cgi?command=1&user=#username#&pwd=#password#"
@@ -29,7 +29,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=0&user=#username#&pwd=#password#",
                     "stopCmd": "\/decoder_control.cgi?command=1&user=#username#&pwd=#password#"
@@ -45,7 +45,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=6&user=#username#&pwd=#password#",
                     "stopCmd": "\/decoder_control.cgi?command=1&user=#username#&pwd=#password#"
@@ -61,7 +61,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=4&user=#username#&pwd=#password#",
                     "stopCmd": "\/decoder_control.cgi?command=1&user=#username#&pwd=#password#"
@@ -77,7 +77,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=95&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -93,7 +93,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=94&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -109,7 +109,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=31&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -122,7 +122,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=33&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -135,7 +135,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=35&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -148,7 +148,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=37&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -161,7 +161,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=39&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -174,7 +174,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=41&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -187,7 +187,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=43&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -200,7 +200,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=45&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -213,7 +213,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=28&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -226,7 +226,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=26&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -239,7 +239,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=29&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -252,7 +252,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=27&user=#username#&pwd=#password#",
                     "stopCmd": "0"
@@ -265,7 +265,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=25&user=#username#&pwd=#password#",
                     "stopCmd": "0"

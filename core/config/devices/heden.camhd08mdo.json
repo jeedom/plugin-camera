@@ -12,7 +12,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=left&usr=#username#&pwd=#password# "
                 },
@@ -27,7 +27,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=right&usr=#username#&pwd=#password# "
                 },
@@ -42,7 +42,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=up&usr=#username#&pwd=#password#"
                 },
@@ -57,7 +57,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=down&usr=#username#&pwd=#password# "
                 },
@@ -72,7 +72,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setinfrared&-infraredstat=auto&usr=#username#&pwd=#password#"
                 },
@@ -87,7 +87,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setinfrared&-infraredstat=close&usr=#username#&pwd=#password#"
                 },

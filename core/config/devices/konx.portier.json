@@ -13,7 +13,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/openlock.cgi?user=#username#&pwd=#password#"
                 },

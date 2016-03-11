@@ -12,7 +12,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/cgi-bin\/remctrl.sh?id=relay1"
                 },
@@ -24,7 +24,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/cgi-bin\/remctrl.sh?id=relay2"
                 },

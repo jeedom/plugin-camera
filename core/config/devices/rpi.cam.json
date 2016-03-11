@@ -11,7 +11,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/cmd_pipe.php?cmd=ru%201",
                     "stopCmd": "0"
@@ -26,7 +26,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/cmd_pipe.php?cmd=ru%200",
                     "stopCmd": "0"

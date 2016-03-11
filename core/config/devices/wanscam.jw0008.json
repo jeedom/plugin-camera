@@ -12,7 +12,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=0&onestep=1&user=#username#&pwd=#password#"
                 },
@@ -27,7 +27,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=2&onestep=1&user=#username#&pwd=#password#"
                 },
@@ -42,7 +42,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=4&onestep=1&user=#username#&pwd=#password#"
                 },
@@ -57,7 +57,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=6&onestep=1&user=#username#&pwd=#password#"
                 },
@@ -72,7 +72,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=94&user=#username#&pwd=#password#"
                 },
@@ -87,7 +87,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=95&user=#username#&pwd=#password#"
                 },
@@ -102,7 +102,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=31&onestep=1&user=#username#&pwd=#password#"
                 },
@@ -114,7 +114,7 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                "eventOnly": "0",
+                
                 "configuration": {
                     "request": "\/decoder_control.cgi?command=33&onestep=1&user=#username#&pwd=#password#"
                 },
