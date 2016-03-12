@@ -419,8 +419,12 @@ class camera extends eqLogic {
 		if (!is_writable($output_dir)) {
 			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
 		}
+		$snapshot = $this->getSnapshot();
+		if (empty($snapshot)) {
+			throw new Exception(__('Le fichier est vide : ', __FILE__) . $output_dir);
+		}
 		$output_file = $output_dir . '/' . date('Y-m-d_H:i:s') . '.jpg';
-		file_put_contents($output_file, $this->getSnapshot());
+		file_put_contents($output_file, $snapshot);
 		return $output_file;
 	}
 
