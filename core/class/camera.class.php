@@ -242,7 +242,7 @@ class camera extends eqLogic {
 							'#id#' => $cmd->getId(),
 							'#stopCmd#' => ($cmd->getConfiguration('stopCmdUrl') != '') ? 1 : 0,
 							'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
-							'#cmdColor#' => $replace['#cmd-background-color#'],
+							'#cmd-background-color#' => $replace['#cmd-background-color#'],
 						);
 						$action .= template_replace($replaceCmd, getTemplate('core', jeedom::versionAlias($version), 'camera_action', 'camera')) . ' ';
 					} else {
@@ -263,7 +263,7 @@ class camera extends eqLogic {
 			'#stopRecord_id#' => $stopRecord->getId(),
 			'#recordState#' => $recordState->execCmd(),
 			'#recordState_id#' => $recordState->getId(),
-			'#cmdColor#' => $replace['#cmd-background-color#'],
+			'#cmd-background-color#' => $replace['#cmd-background-color#'],
 		);
 		$action .= template_replace($replace_action, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
 		$replace['#action#'] = $action;
