@@ -216,7 +216,6 @@ class camera extends eqLogic {
 		$sendSnapshot->setSubType('message');
 		$sendSnapshot->setIsVisible(0);
 		$sendSnapshot->save();
-
 		$urlFlux->event($this->getUrl($this->getConfiguration('urlStream'), true));
 	}
 
