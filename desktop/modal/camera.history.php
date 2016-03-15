@@ -39,13 +39,14 @@ foreach ($files as $date => &$file) {
 	echo '<a class="btn btn-xs btn-danger bt_removeCameraFile" data-day="1" data-filename="' . $camera->getId() . '/' . $date . '*"><i class="fa fa-trash-o"></i> {{Supprimer}}</a> ';
 	echo '<a class="btn btn-xs btn-success"  href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $date . '*') . '" ><i class="fa fa-download"></i> {{Télécharger}}</a> ';
 	echo $date;
+	echo ' <a class="btn btn-xs btn-default toggleList"><i class="fa fa-chevron-down"></i></a> ';
 	echo '</legend>';
 	echo '<div class="cameraThumbnailContainer">';
 	krsort($file);
 	foreach ($file as $time => $filename) {
 		echo '<div class="cameraDisplayCard" style="background-color: #e7e7e7;padding:5px;height:167px;">';
 		echo '<center>' . $time . '</center>';
-		echo '<center><img class="img-responsive cursor displayImage" src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" width="150"/></center>';
+		echo '<center><img class="img-responsive cursor displayImage lazy" src="plugins/camera/core/img/no-image.png" data-original="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" width="150"/></center>';
 		echo '<center style="margin-top:5px;"><a href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" class="btn btn-success btn-xs" style="color : white"><i class="fa fa-download"></i></a>';
 		echo ' <a class="btn btn-danger bt_removeCameraFile btn-xs" style="color : white" data-filename="' . $camera->getId() . '/' . $filename . '"><i class="fa fa-trash-o"></i></a></center>';
 		echo '</div>';
@@ -66,7 +67,7 @@ foreach ($files as $date => &$file) {
         if($(this).attr('data-day') == 1){
             card = $(this).closest('.div_dayContainer');
         }
-         if($(this).attr('data-all') == 1){
+        if($(this).attr('data-all') == 1){
             card = $('.div_dayContainer');
         }
         $.ajax({// fonction permettant de faire de l'ajax
@@ -90,4 +91,14 @@ foreach ($files as $date => &$file) {
         }
     });
     });
+
+    $(".cameraThumbnailContainer").slideToggle("slow");
+    $(".cameraThumbnailContainer").eq(0).slideToggle("slow");
+    $('.toggleList').on('click', function() {
+        $(this).closest('.div_dayContainer').find(".cameraThumbnailContainer").slideToggle("slow");
+    });
+
+    $("img.lazy").lazyload({
+      container: $("#md_modal")
+  });
 </script>

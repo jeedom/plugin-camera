@@ -7,7 +7,7 @@
     <licence>AGPL</licence>
     <author>Loïc Gevrey</author>
     <installation>Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)</installation>
-    <require>1.199</require>
+    <require>2.2</require>
     <version>2</version>
     <category>security</category>
     <display>panel</display>
