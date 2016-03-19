@@ -226,11 +226,12 @@ class camera extends eqLogic {
 		}
 
 		$version = jeedom::versionAlias($_version);
+		$version2 = jeedom::versionAlias($_version, false);
 		$action = '';
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getIsVisible() == 1) {
 				if ($cmd->getLogicalId() != 'urlFlux' && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState' && $cmd->getConfiguration('stopCmd') != 1) {
-					if ($cmd->getDisplay('hideOn' . $version) == 1) {
+					if ($cmd->getDisplay('hideOn' . $version2) == 1) {
 						continue;
 					}
 					if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
