@@ -23,15 +23,30 @@ foreach ($eqLogics as $eqLogic) {
            </ul>
        </div>
    </div>
-   <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
-    <legend>{{Mes caméras}}</legend>
-    <div class="eqLogicThumbnailContainer">
-     <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-       <center>
-        <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
+    <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
+  <legend><i class="fa fa-cog"></i>  {{Gestion}}</legend>
+  <div class="eqLogicThumbnailContainer">
+   <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 140px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
+     <center>
+      <i class="fa fa-plus-circle" style="font-size : 5em;color:#94ca02;"></i>
     </center>
-    <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
+    <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>{{Ajouter}}</center></span>
+  </div>
+	<div class="cursor eqLogicAction" data-action="gotoPluginConf" style="background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;">
+        <center>
+        <i class="fa fa-wrench" style="font-size : 5em;color:#767676;"></i>
+      </center>
+      <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676"><center>{{Configuration}}</center></span>
+      </div>
+      <div class="cursor" id="bt_healthCamera" style="background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
+        <center>
+        <i class="fa fa-medkit" style="font-size : 5em;color:#767676;"></i>
+      </center>
+      <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676"><center>{{Santé}}</center></span>
+      </div>
 </div>
+   <legend><i class="fa fa-video-camera"></i>  {{Mes caméras}}</legend>
+    <div class="eqLogicThumbnailContainer">
 <?php
 foreach ($eqLogics as $eqLogic) {
 	$opacity = ($eqLogic->getIsEnable()) ? '' : jeedom::getConfiguration('eqLogic:style:noactive');
@@ -145,7 +160,7 @@ foreach (object::all() as $object) {
 <div class="col-sm-6">
     <form class="form-horizontal">
         <fieldset>
-            <legend>{{Configuration}}</legend>
+            <legend><i class="fa fa-wrench"></i>  {{Configuration}}</legend>
             <div class="form-group">
                 <label class="col-sm-2 control-label">{{Modèle}}</label>
                 <div class="col-sm-5">
@@ -166,8 +181,15 @@ foreach (camera::devicesParameters() as $id => $info) {
 </form>
 </div>
 </div>
-
-<legend>{{Caméra}}</legend>
+<form class="form-horizontal">
+    <fieldset>
+        <div class="form-actions" align="right">
+            <a class="btn btn-danger eqLogicAction" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
+            <a class="btn btn-success eqLogicAction" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a>
+        </div>
+    </fieldset>
+</form>
+<legend><i class="fa fa-camera"></i>  {{Caméra}}</legend>
 <a class="btn btn-success btn-sm cmdAction" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une commande}}</a><br/><br/>
 <table id="table_cmd" class="table table-bordered table-condensed">
     <thead>

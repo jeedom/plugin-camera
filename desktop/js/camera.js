@@ -14,6 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
+$('#bt_healthCamera').on('click', function () {
+    $('#md_modal').dialog({title: "{{Santé Caméras}}"});
+    $('#md_modal').load('index.php?v=d&plugin=camera&modal=health').dialog('open');
+});
 
  $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
