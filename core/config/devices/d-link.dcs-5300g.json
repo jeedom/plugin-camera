@@ -1,0 +1,95 @@
+{
+    "d-link.dcs-5300g": {
+	"name" : "D-Link DCS-5300G",
+        "configuration": {
+            "port": "80",
+            "urlStream": "\/cgi-bin\/video.jpg?size=1?cmd=snapPicture2&usr=#username#&pwd=#password#",
+            "protocole": "http"
+        },
+        "commands": [
+            {
+                "eqType": "camera",
+                "name": "Bas",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                
+                "configuration": {
+                    "request": "\/cgi-bin\/camctrl.cgi?move%3Ddown%26usr%3D#username#%26pwd%3D#password#",
+                    "stopCmdUrl": ""
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>",
+                    "generic_type": "CAMERA_DOWN"
+                },
+                "isVisible": "1"
+            },
+            {
+                "eqType": "camera",
+                "name": "Haut",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                
+                "configuration": {
+                    "request": "\/cgi-bin\/camctrl.cgi?move%3Dup%26usr%3D#username#%26pwd%3D#password#",
+                    "stopCmdUrl": ""
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>",
+                    "generic_type": "CAMERA_UP"
+                },
+                "isVisible": "1"
+            },
+            {
+                "eqType": "camera",
+                "name": "Gauche",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                
+                "configuration": {
+                    "request": "\/cgi-bin\/camctrl.cgi?move%3Dleft%26usr%3D#username#%26pwd%3D#password#",
+                    "stopCmdUrl": ""
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>",
+                    "generic_type": "CAMERA_LEFT"
+                },
+                "isVisible": "1"
+            },
+            {
+                "eqType": "camera",
+                "name": "Droite",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "request": "\/cgi-bin\/camctrl.cgi?move%3Dright%26usr%3D#username#%26pwd%3D#password#",
+					"stopCmdUrl": ""
+                },
+                "display": {
+                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>",
+                    "generic_type": "CAMERA_RIGHT"
+                },
+                "isVisible": "1"
+            },
+            {
+                "eqType": "camera",
+                "name": "Home",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "request": "\/cgi-bin\/camctrl.cgi?move%3Dhome%26usr%3D#username#%26pwd%3D#password#",
+					"stopCmdUrl": ""
+                },
+                "display": {
+                    "icon": "<i class=\"maison maison-home63\"><\/i>",
+                    "generic_type": "CAMERA_PRESET"
+                },
+                "isVisible": "1"
+            }
+        ]
+    }
+}
