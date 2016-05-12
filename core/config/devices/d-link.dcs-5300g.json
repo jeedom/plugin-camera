@@ -3,7 +3,7 @@
 	"name" : "D-Link DCS-5300G",
         "configuration": {
             "port": "80",
-            "urlStream": "\/cgi-bin\/video.jpg?size=1?cmd=snapPicture2&usr=#username#&pwd=#password#",
+            "urlStream": "\/cgi-bin\/video.jpg?size=1&usr=#username#&pwd=#password#",
             "protocole": "http"
         },
         "commands": [
@@ -15,7 +15,7 @@
                 "isHistorized": "0",
                 
                 "configuration": {
-                    "request": "\/cgi-bin\/camctrl.cgi?move%3Ddown%26usr%3D#username#%26pwd%3D#password#",
+                    "request": "\/cgi-bin\/camctrl.cgi?move=down&usr=#username#&pwd=#password#",
                     "stopCmdUrl": ""
                 },
                 "display": {
@@ -32,7 +32,7 @@
                 "isHistorized": "0",
                 
                 "configuration": {
-                    "request": "\/cgi-bin\/camctrl.cgi?move%3Dup%26usr%3D#username#%26pwd%3D#password#",
+                    "request": "\/cgi-bin\/camctrl.cgi?move=up&usr=#username#&pwd=#password#",
                     "stopCmdUrl": ""
                 },
                 "display": {
@@ -49,7 +49,7 @@
                 "isHistorized": "0",
                 
                 "configuration": {
-                    "request": "\/cgi-bin\/camctrl.cgi?move%3Dleft%26usr%3D#username#%26pwd%3D#password#",
+                    "request": "\/cgi-bin\/camctrl.cgi?move=left&usr=#username#&pwd=#password#",
                     "stopCmdUrl": ""
                 },
                 "display": {
@@ -65,7 +65,7 @@
                 "subType": "other",
                 "isHistorized": "0",
                 "configuration": {
-                    "request": "\/cgi-bin\/camctrl.cgi?move%3Dright%26usr%3D#username#%26pwd%3D#password#",
+                    "request": "\/cgi-bin\/camctrl.cgi?move=right&usr=#username#&pwd=#password#",
 					"stopCmdUrl": ""
                 },
                 "display": {
@@ -81,7 +81,7 @@
                 "subType": "other",
                 "isHistorized": "0",
                 "configuration": {
-                    "request": "\/cgi-bin\/camctrl.cgi?move%3Dhome%26usr%3D#username#%26pwd%3D#password#",
+                    "request": "\/cgi-bin\/camctrl.cgi?move=home&usr=#username#&pwd=#password##",
 					"stopCmdUrl": ""
                 },
                 "display": {
