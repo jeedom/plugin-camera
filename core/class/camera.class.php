@@ -140,7 +140,7 @@ class camera extends eqLogic {
 		$urlFlux->setIsVisible(0);
 		$urlFlux->setEqLogic_id($this->getId());
 		$urlFlux->setSubType('string');
-        $urlFlux->setDisplay('generic_type', 'CAMERA_URL');
+        	$urlFlux->setDisplay('generic_type', 'CAMERA_URL');
 		$urlFlux->save();
 
 		$browseRecord = $this->getCmd(null, 'browseRecord');
@@ -160,7 +160,7 @@ class camera extends eqLogic {
 		$recordState->setIsVisible(0);
 		$recordState->setEqLogic_id($this->getId());
 		$recordState->setSubType('binary');
-        $recordState->setDisplay('generic_type', 'CAMERA_RECORD_STATE');
+        	$recordState->setDisplay('generic_type', 'CAMERA_RECORD_STATE');
 		$recordState->save();
 
 		$recordCmd = $this->getCmd(null, 'recordCmd');
@@ -175,7 +175,7 @@ class camera extends eqLogic {
 		$recordCmd->setSubType('slider');
 		$recordCmd->setOrder(999);
 		$recordCmd->setDisplay('slider_placeholder', __('Durée enregistrement (s)', __FILE__));
-        $recordCmd->setDisplay('generic_type', 'CAMERA_RECORD');
+        	$recordCmd->setDisplay('generic_type', 'CAMERA_RECORD');
 		$recordCmd->setDisplay('icon', '<i class="fa fa-circle"></i>');
 		$recordCmd->save();
 
@@ -191,7 +191,7 @@ class camera extends eqLogic {
 		$stopRecordCmd->setSubType('other');
 		$stopRecordCmd->setOrder(999);
 		$stopRecordCmd->setDisplay('icon', '<i class="fa fa-stop"></i>');
-        $stopRecordCmd->setDisplay('generic_type', 'CAMERA_STOP');
+        	$stopRecordCmd->setDisplay('generic_type', 'CAMERA_STOP');
 		$stopRecordCmd->save();
 
 		$takeSnapshot = $this->getCmd(null, 'takeSnapshot');
@@ -206,7 +206,7 @@ class camera extends eqLogic {
 		$takeSnapshot->setSubType('other');
 		$takeSnapshot->setOrder(999);
 		$takeSnapshot->setDisplay('icon', '<i class="fa fa-picture-o"></i>');
-        $takeSnapshot->setDisplay('generic_type', 'CAMERA_TAKE');
+        	$takeSnapshot->setDisplay('generic_type', 'CAMERA_TAKE');
 		$takeSnapshot->save();
 
 		$sendSnapshot = $this->getCmd(null, 'sendSnapshot');
