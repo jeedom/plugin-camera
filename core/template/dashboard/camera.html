@@ -4,7 +4,7 @@
         <span style="font-weight:bold;#hideEqLogicName#"><a href="#eqLink#">#name_display# <span style="font-size: 0.85em;">#object_name#</span></a></span>
     </center>
     <center>
-        <span class="directDisplay zoom cursor"><img src="#url#" class="img-responsive" data-eqLogic_id="#id#"/></span>
+        <span class="directDisplay zoom cursor"><img src="#url#" style="display:block;" data-eqLogic_id="#id#"/></span>
         <span style="position:absolute;bottom:4px;left:0px;width:100%;">
             <center>
              <span>#action#</span>
@@ -27,6 +27,12 @@
             $(".md_cameraZoom[data-eqLogic_id=#id#]").eq(0).remove();
         }
     }
+    $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 60);
+    $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
+    $('.eqLogic[data-eqLogic_id=#id#]').off('resize').on('resize',function(){
+        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 60);
+        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
+    });
     $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
         $('#md_modal').dialog({title: "Historique #name#"});
         $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
