@@ -64,7 +64,6 @@ foreach ($eqLogics as $eqLogic) {
 ?>
 </div>
 </div>
-
 <div class="col-lg-10 col-md-9 col-sm-8 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
     <div class="row">
         <div class="col-sm-6">
