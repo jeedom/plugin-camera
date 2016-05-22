@@ -33,23 +33,17 @@ if (isset($argv)) {
 	}
 }
 if (init('id') == '') {
-	throw new Exception(__('L\'id ne peut etre vide', __FILE__));
+	log::add('camera', 'error', __('[camera/reccord] L\'id ne peut etre vide', __FILE__));
+	die();
 }
 $camera = camera::byId(init('id'));
 if (!is_object($camera)) {
-	throw new Exception(__('L\'équipement est introuvable : ', __FILE__) . init('id'));
+	log::add('camera', 'error', __('[camera/reccord] L\'équipement est introuvable : ', __FILE__) . init('id'));
+	die();
 }
 if ($camera->getEqType_name() != 'camera') {
-	throw new Exception(__('Cet équipement n\'est pas de type camera : ', __FILE__) . $camera->getEqType_name());
-}
-$output_dir = calculPath(config::byKey('recordDir', 'camera'));
-if (!file_exists($output_dir)) {
-	if (!mkdir($output_dir, 0777, true)) {
-		throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
-	}
-}
-if (!is_writable($output_dir)) {
-	throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+	log::add('camera', 'error', __('[camera/reccord] Cet équipement n\'est pas de type camera : ', __FILE__) . $camera->getEqType_name());
+	die();
 }
 
 $limit = 1800;
@@ -61,9 +55,11 @@ $i = 0;
 $recordState = $camera->getCmd(null, 'recordState');
 $recordState->event(1);
 $camera->refreshWidget();
+$options = array();
+$options['files'] = array();
 while ($continue) {
 	$i++;
-	$camera->takeSnapshot();
+	$options['files'][] = $camera->takeSnapshot();
 	sleep(1);
 	if ($i > $limit) {
 		$continue = false;
@@ -71,4 +67,21 @@ while ($continue) {
 }
 $recordState->event(0);
 $camera->refreshWidget();
+
+if (init('sendSnapshot') != '') {
+	$options['title'] = init('title', __('Alerte sur la camera : ', __FILE__) . $camera->getName());
+	$options['message'] = init('message', __('Alerte sur la camera : ', __FILE__) . $camera->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s'));
+	$cmds = explode('&&', $camera->getConfiguration('alertMessageCommand'));
+	foreach ($cmds as $id) {
+		$cmd = cmd::byId(str_replace('#', '', $id));
+		if (is_object(!$cmd)) {
+			continue;
+		}
+		try {
+			$cmd->execCmd($options);
+		} catch (Exception $e) {
+			log::add('camera', 'error', __('[camera/reccord] Erreur lors de l\'envoi des images : ', __FILE__) . $cmd->getHumanName() . ' => ' . log::exception($e));
+		}
+	}
+}
 die();

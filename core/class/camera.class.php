@@ -140,7 +140,7 @@ class camera extends eqLogic {
 		$urlFlux->setIsVisible(0);
 		$urlFlux->setEqLogic_id($this->getId());
 		$urlFlux->setSubType('string');
-        	$urlFlux->setDisplay('generic_type', 'CAMERA_URL');
+		$urlFlux->setDisplay('generic_type', 'CAMERA_URL');
 		$urlFlux->save();
 
 		$browseRecord = $this->getCmd(null, 'browseRecord');
@@ -160,7 +160,7 @@ class camera extends eqLogic {
 		$recordState->setIsVisible(0);
 		$recordState->setEqLogic_id($this->getId());
 		$recordState->setSubType('binary');
-        	$recordState->setDisplay('generic_type', 'CAMERA_RECORD_STATE');
+		$recordState->setDisplay('generic_type', 'CAMERA_RECORD_STATE');
 		$recordState->save();
 
 		$recordCmd = $this->getCmd(null, 'recordCmd');
@@ -175,7 +175,7 @@ class camera extends eqLogic {
 		$recordCmd->setSubType('slider');
 		$recordCmd->setOrder(999);
 		$recordCmd->setDisplay('slider_placeholder', __('Durée enregistrement (s)', __FILE__));
-        	$recordCmd->setDisplay('generic_type', 'CAMERA_RECORD');
+		$recordCmd->setDisplay('generic_type', 'CAMERA_RECORD');
 		$recordCmd->setDisplay('icon', '<i class="fa fa-circle"></i>');
 		$recordCmd->save();
 
@@ -191,7 +191,7 @@ class camera extends eqLogic {
 		$stopRecordCmd->setSubType('other');
 		$stopRecordCmd->setOrder(999);
 		$stopRecordCmd->setDisplay('icon', '<i class="fa fa-stop"></i>');
-        	$stopRecordCmd->setDisplay('generic_type', 'CAMERA_STOP');
+		$stopRecordCmd->setDisplay('generic_type', 'CAMERA_STOP');
 		$stopRecordCmd->save();
 
 		$takeSnapshot = $this->getCmd(null, 'takeSnapshot');
@@ -206,7 +206,7 @@ class camera extends eqLogic {
 		$takeSnapshot->setSubType('other');
 		$takeSnapshot->setOrder(999);
 		$takeSnapshot->setDisplay('icon', '<i class="fa fa-picture-o"></i>');
-        	$takeSnapshot->setDisplay('generic_type', 'CAMERA_TAKE');
+		$takeSnapshot->setDisplay('generic_type', 'CAMERA_TAKE');
 		$takeSnapshot->save();
 
 		$sendSnapshot = $this->getCmd(null, 'sendSnapshot');
@@ -378,7 +378,7 @@ class camera extends eqLogic {
 		$this->save();
 	}
 
-	public function recordCam($_recordTime = 300) {
+	public function recordCam($_recordTime = 300, $_option = array()) {
 		$cmd = ' php ' . dirname(__FILE__) . '/../../core/php/record.php';
 		$cmd .= ' id=' . $this->getId();
 		$result = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | wc -l');
@@ -386,6 +386,11 @@ class camera extends eqLogic {
 			return true;
 		}
 		$cmd .= ' recordTime=' . $_recordTime;
+		if (isset($_option['title']) && isset($_option['message'])) {
+			$cmd .= ' sendSnapshot=1';
+			$cmd .= ' title=' . escapeshellarg(sanitizeAccent($_option['title']));
+			$cmd .= ' message=' . escapeshellarg(sanitizeAccent($_option['message']));
+		}
 		$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
 		log::add('camera', 'debug', $cmd);
 		shell_exec('nohup ' . $cmd);
@@ -582,20 +587,7 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		if ($this->getLogicalId() == 'sendSnapshot') {
-			$_options['files'] = array();
-			$nb = $eqLogic->getConfiguration('alertMessageNbSnapshot', 1);
-			for ($i = 0; $i < $nb; $i++) {
-				$_options['files'][] = $eqLogic->takeSnapshot();
-				sleep(1);
-			}
-			$cmds = explode('&&', $eqLogic->getConfiguration('alertMessageCommand'));
-			foreach ($cmds as $id) {
-				$cmd = cmd::byId(str_replace('#', '', $id));
-				if (is_object(!$cmd)) {
-					continue;
-				}
-				$cmd->execCmd($_options);
-			}
+			$eqLogic->recordCam($eqLogic->getConfiguration('alertMessageNbSnapshot', 1), $_options);
 			return true;
 		}
 		$url = $eqLogic->getUrl($request);
