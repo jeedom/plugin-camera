@@ -68,10 +68,10 @@ while ($continue) {
 $recordState->event(0);
 $camera->refreshWidget();
 
-if (init('sendSnapshot') != '') {
-	$options['title'] = init('title', __('Alerte sur la camera : ', __FILE__) . $camera->getName());
-	$options['message'] = init('message', __('Alerte sur la camera : ', __FILE__) . $camera->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s'));
-	$cmds = explode('&&', $camera->getConfiguration('alertMessageCommand'));
+if (init('sendTo') != '') {
+	$options['title'] = __('Alerte sur la camera : ', __FILE__) . $camera->getName();
+	$options['message'] = __('Alerte sur la camera : ', __FILE__) . $camera->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s');
+	$cmds = explode('&&', init('sendTo'));
 	foreach ($cmds as $id) {
 		$cmd = cmd::byId(str_replace('#', '', $id));
 		if (is_object(!$cmd)) {

@@ -220,6 +220,10 @@ class camera extends eqLogic {
 		$sendSnapshot->setEqLogic_id($this->getId());
 		$sendSnapshot->setSubType('message');
 		$sendSnapshot->setIsVisible(0);
+		$sendSnapshot->setDisplay('title_placeholder', __('Nombre de captures', __FILE__));
+		$sendSnapshot->setDisplay('message_placeholder', __('Commande message d\'envoi des captures', __FILE__));
+		$sendSnapshot->setDisplay('message_cmd_type', 'action');
+		$sendSnapshot->setDisplay('message_cmd_subtype', 'message');
 		$sendSnapshot->save();
 		$urlFlux->event($this->getUrl($this->getConfiguration('urlStream'), true));
 	}
@@ -378,18 +382,14 @@ class camera extends eqLogic {
 		$this->save();
 	}
 
-	public function recordCam($_recordTime = 300, $_option = array()) {
-		$cmd = ' php ' . dirname(__FILE__) . '/../../core/php/record.php';
-		$cmd .= ' id=' . $this->getId();
-		$result = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | wc -l');
-		if ($result > 0) {
+	public function recordCam($_recordTime = 300, $_sendTo = null) {
+
+		if (count(system::ps('core/php/record.php id=' . $this->getId() . ' recordTime')) > 0) {
 			return true;
 		}
-		$cmd .= ' recordTime=' . $_recordTime;
-		if (isset($_option['title']) && isset($_option['message'])) {
-			$cmd .= ' sendSnapshot=1';
-			$cmd .= ' title=' . escapeshellarg(sanitizeAccent($_option['title']));
-			$cmd .= ' message=' . escapeshellarg(sanitizeAccent($_option['message']));
+		$cmd = ' php ' . dirname(__FILE__) . '/../../core/php/record.php id=' . $this->getId() . ' recordTime=' . $_recordTime;
+		if ($_sendTo != null) {
+			$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
 		}
 		$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
 		log::add('camera', 'debug', $cmd);
@@ -587,7 +587,13 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		if ($this->getLogicalId() == 'sendSnapshot') {
-			$eqLogic->recordCam($eqLogic->getConfiguration('alertMessageNbSnapshot', 1), $_options);
+			if (!isset($_options['title']) || !is_numeric($_options['title']) || $_options['title'] < 1 || $_options['title'] > 1800) {
+				throw new Exception(__('Le nombre de capture pour l\'envoi de capture de caméra doit etre compris entre 1 et 1800', __FILE__));
+			}
+			if (!isset($_options['message']) || $_options['message'] == '') {
+				throw new Exception(__('Une commande d\'envoi pour l\'envoi de capture de caméra est obligatoire', __FILE__));
+			}
+			$eqLogic->recordCam($_options['title'], $_options['message']);
 			return true;
 		}
 		$url = $eqLogic->getUrl($request);

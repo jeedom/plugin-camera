@@ -132,27 +132,6 @@ foreach (object::all() as $object) {
                     <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelay" placeholder="{{Rafraichissement (s)}}"/>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">{{Commande d'alerte (mail, slack...)}}</label>
-                <div class="col-sm-5">
-                <div class="input-group">
-                        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageCommand" placeholder="{{Commande mail pour l'envoi d'une capture}}"/>
-                        <span class="input-group-btn">
-                            <a class="btn btn-default listCmdActionMessage" id="bt_selectActionMessage"><i class="fa fa-list-alt"></i></a>
-                        </span>
-                    </div>
-                </div>
-                <label class="col-sm-3 control-label">{{Nombre de captures}}</label>
-                <div class="col-sm-1">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="alertMessageNbSnapshot"/>
-                </div>
-            </div>
-             <!-- <div class="form-group">
-                <label class="col-sm-3 control-label">{{Rotation de l'image}}</label>
-                <div class="col-sm-2">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="imageRotate" placeholder="{{En ° positif}}"/>
-                </div>
-            </div> -->
         </fieldset>
     </form>
 </div>
