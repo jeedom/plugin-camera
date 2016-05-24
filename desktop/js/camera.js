@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
-$('#bt_healthCamera').on('click', function () {
+ $('#bt_healthCamera').on('click', function () {
     $('#md_modal').dialog({title: "{{Santé Caméras}}"});
     $('#md_modal').load('index.php?v=d&plugin=camera&modal=health').dialog('open');
 });
@@ -34,10 +34,10 @@ $('#bt_healthCamera').on('click', function () {
 }
 });
 
-
- $("#bt_selectActionMessage").on('click', function () {
-    jeedom.cmd.getSelectModal({cmd: {type: 'action',subType : 'message'}}, function (result) {
-        $(".eqLogicAttr[data-l1key=configuration][data-l2key=alertMessageCommand]").atCaret('insert',result.human);
+ $(".listCmdActionOther").on('click', function () {
+    var el = $(this);
+    jeedom.cmd.getSelectModal({cmd: {type: 'action',subType : 'other'}}, function (result) {
+        el.closest('.input-group').find('input').value(result.human);
     });
 });
 
@@ -67,6 +67,12 @@ $('#bt_healthCamera').on('click', function () {
         return;
     }
     if (isset(_cmd.logicalId) && _cmd.logicalId == 'urlFlux') {
+        return;
+    }
+    if (isset(_cmd.logicalId) && _cmd.logicalId == 'on') {
+        return;
+    }
+    if (isset(_cmd.logicalId) && _cmd.logicalId == 'off') {
         return;
     }
     var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';

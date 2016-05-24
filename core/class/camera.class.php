@@ -226,6 +226,45 @@ class camera extends eqLogic {
 		$sendSnapshot->setDisplay('message_cmd_subtype', 'message');
 		$sendSnapshot->save();
 		$urlFlux->event($this->getUrl($this->getConfiguration('urlStream'), true));
+
+		if ($this->getConfiguration('commandOn') != '' && $this->getConfiguration('commandOff') != '') {
+			$on = $this->getCmd(null, 'on');
+			if (!is_object($on)) {
+				$on = new cameraCmd();
+			}
+			$on->setName(__('On', __FILE__));
+			$on->setOrder(-1);
+			$on->setType('action');
+			$on->setLogicalId('on');
+			$on->setEqLogic_id($this->getId());
+			$on->setSubType('other');
+			$on->setDisplay('icon', '<i class="fa fa-check"></i>');
+			$on->setConfiguration('request', '-');
+			$on->save();
+
+			$off = $this->getCmd(null, 'off');
+			if (!is_object($off)) {
+				$off = new cameraCmd();
+			}
+			$off->setName(__('Off', __FILE__));
+			$off->setOrder(-1);
+			$off->setType('action');
+			$off->setLogicalId('off');
+			$off->setEqLogic_id($this->getId());
+			$off->setSubType('other');
+			$off->setDisplay('icon', '<i class="fa fa-times"></i>');
+			$off->setConfiguration('request', '-');
+			$off->save();
+		} else {
+			$on = $this->getCmd(null, 'on');
+			if (is_object($on)) {
+				$on->remove();
+			}
+			$off = $this->getCmd(null, 'off');
+			if (is_object($off)) {
+				$off->remove();
+			}
+		}
 	}
 
 	public function toHtml($_version = 'dashboard') {
@@ -274,6 +313,15 @@ class camera extends eqLogic {
 			'#recordState_id#' => $recordState->getId(),
 			'#cmd-background-color#' => $replace['#cmd-background-color#'],
 		);
+		$on = $this->getCmd(null, 'on');
+		$off = $this->getCmd(null, 'off');
+		if (is_object($on) && is_object($off)) {
+			$replace['#cmd_on_id#'] = $on->getId();
+			$replace['#cmd_off_id#'] = $off->getId();
+		} else {
+			$replace['#cmd_on_id#'] = '';
+			$replace['#cmd_off_id#'] = '';
+		}
 		$action .= template_replace($replace_action, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
 		$replace['#action#'] = $action;
 		$replace['#url#'] = $this->getUrl($this->getConfiguration('urlStream'), true);
@@ -544,6 +592,12 @@ class cameraCmd extends cmd {
 		if ($this->getLogicalId() == 'urlFlux') {
 			return true;
 		}
+		if ($this->getLogicalId() == 'on') {
+			return true;
+		}
+		if ($this->getLogicalId() == 'off') {
+			return true;
+		}
 		return false;
 	}
 
@@ -584,6 +638,22 @@ class cameraCmd extends cmd {
 		}
 		if ($this->getLogicalId() == 'takeSnapshot') {
 			$eqLogic->takeSnapshot();
+			return true;
+		}
+		if ($this->getLogicalId() == 'on') {
+			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('commandOn')));
+			if (is_object(!$cmd)) {
+				throw new Exception(__('Impossible de trouver la commande ON', __FILE__));
+			}
+			$cmd->execCmd();
+			return true;
+		}
+		if ($this->getLogicalId() == 'off') {
+			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('commandOff')));
+			if (is_object(!$cmd)) {
+				throw new Exception(__('Impossible de trouver la commande OFF', __FILE__));
+			}
+			$cmd->execCmd();
 			return true;
 		}
 		if ($this->getLogicalId() == 'sendSnapshot') {

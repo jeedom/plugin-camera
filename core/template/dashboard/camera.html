@@ -22,60 +22,69 @@
     </center>
 </div>
 <script>
-    if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
-        while ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
-            $(".md_cameraZoom[data-eqLogic_id=#id#]").eq(0).remove();
-        }
+   $('.cmd[data-cmd_id=#cmd_off_id#]').hide();
+   if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
+    while ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
+        $(".md_cameraZoom[data-eqLogic_id=#id#]").eq(0).remove();
     }
+}
+$('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 60);
+$('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
+$('.eqLogic[data-eqLogic_id=#id#]').off('resize').on('resize',function(){
     $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 60);
     $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
-    $('.eqLogic[data-eqLogic_id=#id#]').off('resize').on('resize',function(){
-        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 60);
-        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
-    });
-    $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
-        $('#md_modal').dialog({title: "Historique #name#"});
-        $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
-    });
-    $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog({
-        autoOpen: false,
-        modal: true,
-        resizable: false,
-        height: ((jQuery(window).height() - 100) < 780) ? jQuery(window).height() - 100 : 780,
-        width: ((jQuery(window).width() - 100) < 1280) ? (jQuery(window).width() - 100) : 1280,
-        open: function () {
-            $("body").css({overflow: 'hidden'});
-            $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").height($(".md_cameraZoom[data-eqLogic_id=#id#]").height() - 50);
-        },
-        beforeClose: function (event, ui) {
-            $("body").css({overflow: 'inherit'});
-        }
-    });
-
-    $('.zoom[data-eqLogic_id=#id#]').off().unbind();
-    $('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
-        $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
-    });
-
-    function refreshImgCam#id#(){
-       var url = "#url#";
-       if(url.indexOf('?') > 0){
-        url += '&t='+(new Date()).getTime();
-    }else{
-        url += '?t='+(new Date()).getTime();
+});
+$('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
+    $('#md_modal').dialog({title: "Historique #name#"});
+    $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
+});
+$(".md_cameraZoom[data-eqLogic_id=#id#]").dialog({
+    autoOpen: false,
+    modal: true,
+    resizable: false,
+    height: ((jQuery(window).height() - 100) < 780) ? jQuery(window).height() - 100 : 780,
+    width: ((jQuery(window).width() - 100) < 1280) ? (jQuery(window).width() - 100) : 1280,
+    open: function () {
+        $("body").css({overflow: 'hidden'});
+        $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").height($(".md_cameraZoom[data-eqLogic_id=#id#]").height() - 50);
+    },
+    beforeClose: function (event, ui) {
+        $("body").css({overflow: 'inherit'});
     }
-    var img = new Image();
-    img.src = url;
-    img.onload = function() {
-       $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
-       $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
-       setTimeout(refreshImgCam#id#, #refreshDelay#);
-   }
-   img.onerror = function() {
-     $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
-     $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src','plugins/camera/core/img/no-image-blanc.png');
-     setTimeout(refreshImgCam#id#, #refreshDelay# * 5);
- }
+});
+
+$('.zoom[data-eqLogic_id=#id#]').off().unbind();
+$('.eqLogic[data-eqLogic_id=#id#]').delegate('.zoom', 'click', function () {
+    $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog("open");
+});
+
+function refreshImgCam#id#(){
+   var url = "#url#";
+   if(url.indexOf('?') > 0){
+    url += '&t='+(new Date()).getTime();
+}else{
+    url += '?t='+(new Date()).getTime();
+}
+var img = new Image();
+img.src = url;
+img.onload = function() {
+   $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
+   $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
+   if('#cmd_off_id#' != '' && '#cmd_on_id#' != ''){
+    $('.cmd[data-cmd_id=#cmd_off_id#]').show();
+    $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
+}
+setTimeout(refreshImgCam#id#, #refreshDelay#);
+}
+img.onerror = function() {
+ $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
+ $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src','plugins/camera/core/img/no-image-blanc.png');
+ if('#cmd_off_id#' != '' && '#cmd_on_id#' != ''){
+    $('.cmd[data-cmd_id=#cmd_off_id#]').hide();
+    $('.cmd[data-cmd_id=#cmd_on_id#]').show();
+}
+setTimeout(refreshImgCam#id#, #refreshDelay# * 5);
+}
 }
 
 refreshImgCam#id#();
