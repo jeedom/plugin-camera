@@ -59,7 +59,11 @@ $options = array();
 $options['files'] = array();
 while ($continue) {
 	$i++;
-	$options['files'][] = $camera->takeSnapshot();
+	try {
+		$options['files'][] = $camera->takeSnapshot();
+	} catch (Exception $e) {
+
+	}
 	sleep(1);
 	if ($i > $limit) {
 		$continue = false;
