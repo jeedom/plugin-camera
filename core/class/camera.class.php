@@ -431,7 +431,6 @@ class camera extends eqLogic {
 	}
 
 	public function recordCam($_recordTime = 300, $_sendTo = null) {
-
 		if (count(system::ps('core/php/record.php id=' . $this->getId() . ' recordTime')) > 0) {
 			return true;
 		}
@@ -440,13 +439,11 @@ class camera extends eqLogic {
 			$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
 		}
 		$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
-		log::add('camera', 'debug', $cmd);
 		shell_exec('nohup ' . $cmd);
 	}
 
 	public function stopRecord() {
-		$result = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | wc -l');
-		if ($result > 0) {
+		if (count(system::ps('core/php/record.php id=' . $this->getId() . ' recordTime')) > 0) {
 			$pid = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | awk \'{print $1}\'');
 			exec('kill -9 ' . $pid . ' > /dev/null 2>&1');
 		}
@@ -456,6 +453,15 @@ class camera extends eqLogic {
 		$recordState->event(0);
 		$this->refreshWidget();
 		return true;
+	}
+
+	public function stopCam() {
+		if (count(system::ps('core/php/stopCam.php id=' . $this->getId())) > 0) {
+			return true;
+		}
+		$cmd = ' php ' . dirname(__FILE__) . '/../../core/php/stopCam.php id=' . $this->getId();
+		$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
+		shell_exec('nohup ' . $cmd);
 	}
 
 	public function takeSnapshot() {
@@ -649,6 +655,12 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		if ($this->getLogicalId() == 'off') {
+			$record_state = $eqLogic->getCmd(null, 'recordState');
+			if ($record_state->execCmd() == 1) {
+				$eqLogic->stopCam();
+				return true;
+			}
+			$eqLogic->stopRecord();
 			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('commandOff')));
 			if (is_object(!$cmd)) {
 				throw new Exception(__('Impossible de trouver la commande OFF', __FILE__));
