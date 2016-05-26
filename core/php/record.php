@@ -47,26 +47,39 @@ if ($camera->getEqType_name() != 'camera') {
 }
 
 $limit = 1800;
+$wait = 0;
+$delay = 1;
+
 if (is_numeric(init('recordTime')) && init('recordTime') > 0 && init('recordTime') < 1800) {
 	$limit = init('recordTime');
 }
-$continue = true;
+if (is_numeric(init('wait')) && init('wait') > 0 && init('wait') < 600) {
+	$wait = init('wait');
+}
+if (is_numeric(init('delay')) && init('delay') > 0 && init('delay') < 31) {
+	$delay = init('delay');
+}
+
 $i = 0;
 $recordState = $camera->getCmd(null, 'recordState');
 $recordState->event(1);
 $camera->refreshWidget();
-$options = array();
-$options['files'] = array();
-while ($continue) {
+
+if ($wait !== 0) {
+	sleep($wait);
+}
+
+$options = array('file' => array());
+while (true) {
 	$i++;
 	try {
 		$options['files'][] = $camera->takeSnapshot();
 	} catch (Exception $e) {
 
 	}
-	sleep(1);
+	sleep($delay);
 	if ($i > $limit) {
-		$continue = false;
+		break;
 	}
 }
 $recordState->event(0);

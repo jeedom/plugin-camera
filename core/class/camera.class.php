@@ -220,7 +220,7 @@ class camera extends eqLogic {
 		$sendSnapshot->setEqLogic_id($this->getId());
 		$sendSnapshot->setSubType('message');
 		$sendSnapshot->setIsVisible(0);
-		$sendSnapshot->setDisplay('title_placeholder', __('Nombre de captures', __FILE__));
+		$sendSnapshot->setDisplay('title_placeholder', __('Nb captures;Tps entre capture;Retard déclanchement', __FILE__));
 		$sendSnapshot->setDisplay('message_placeholder', __('Commande message d\'envoi des captures', __FILE__));
 		$sendSnapshot->setDisplay('message_cmd_type', 'action');
 		$sendSnapshot->setDisplay('message_cmd_subtype', 'message');
@@ -434,7 +434,21 @@ class camera extends eqLogic {
 		if (count(system::ps('core/php/record.php id=' . $this->getId() . ' recordTime')) > 0) {
 			return true;
 		}
-		$cmd = ' php ' . dirname(__FILE__) . '/../../core/php/record.php id=' . $this->getId() . ' recordTime=' . $_recordTime;
+		$cmd = ' php ' . dirname(__FILE__) . '/../../core/php/record.php id=' . $this->getId();
+		if (strpos(';', $recordTime) !== false) {
+			$timming = explode(';', $recordTime);
+			if (isset($timming[0])) {
+				$cmd .= ' recordTime=' . escapeshellarg($timming[0]);
+			}
+			if (isset($timming[1])) {
+				$cmd .= ' wait=' . escapeshellarg($timming[1]);
+			}
+			if (isset($timming[2])) {
+				$cmd .= ' delay=' . escapeshellarg($timming[2]);
+			}
+		} else {
+			$cmd .= ' recordTime=' . escapeshellarg($_recordTime);
+		}
 		if ($_sendTo != null) {
 			$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
 		}
