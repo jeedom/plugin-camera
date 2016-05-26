@@ -23,6 +23,7 @@ if (php_sapi_name() != 'cli' || isset($_SERVER['REQUEST_METHOD']) || !isset($_SE
 	echo "The page that you have requested could not be found.";
 	exit();
 }
+set_time_limit(54600);
 require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
 if (isset($argv)) {
 	foreach ($argv as $arg) {
