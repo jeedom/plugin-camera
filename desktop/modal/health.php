@@ -24,6 +24,7 @@ $eqLogics = camera::byType('camera');
 <table class="table table-condensed tablesorter" id="table_healthcamera">
 	<thead>
 		<tr>
+			<th>{{Image}}</th>
 			<th>{{Module}}</th>
 			<th>{{ID}}</th>
 			<th>{{Statut}}</th>
@@ -36,7 +37,12 @@ $eqLogics = camera::byType('camera');
 	<tbody>
 	 <?php
 foreach ($eqLogics as $eqLogic) {
-	echo '<tr><td><a href="' . $eqLogic->getLinkToConfiguration() . '" style="text-decoration: none;">' . $eqLogic->getHumanName(true) . '</a></td>';
+	if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg')) {
+		$img = '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg" height="65" width="55" />';
+	} else {
+		$img = '<img class="lazy" src="plugins/camera/doc/images/camera_icon.png" height="65" width="55" />';
+	}
+	echo '<tr><td>'.$img.'</td><td><a href="' . $eqLogic->getLinkToConfiguration() . '" style="text-decoration: none;">' . $eqLogic->getHumanName(true) . '</a></td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getId() . '</span></td>';
 	$status = '<span class="label label-success" style="font-size : 1em; cursor : default;">{{OK}}</span>';
 	if ($eqLogic->getStatus('state') == 'nok') {
