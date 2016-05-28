@@ -435,8 +435,8 @@ class camera extends eqLogic {
 			return true;
 		}
 		$cmd = ' php ' . dirname(__FILE__) . '/../../core/php/record.php id=' . $this->getId();
-		if (strpos(';', $recordTime) !== false) {
-			$timming = explode(';', $recordTime);
+		if (strpos(';', $_recordTime) !== false) {
+			$timming = explode(';', $_recordTime);
 			if (isset($timming[0])) {
 				$cmd .= ' recordTime=' . escapeshellarg($timming[0]);
 			}
@@ -457,12 +457,10 @@ class camera extends eqLogic {
 	}
 
 	public function stopRecord() {
-		if (count(system::ps('core/php/record.php id=' . $this->getId() . ' recordTime')) > 0) {
-			$pid = shell_exec('ps ax | grep "core/php/record.php id=' . $this->getId() . ' recordTime" | grep -v "grep" | awk \'{print $1}\'');
-			exec('kill -9 ' . $pid . ' > /dev/null 2>&1');
+		if (count(system::ps('core/php/record.php id=' . $this->getId())) > 0) {
+			system::kill('core/php/record.php id=' . $this->getId());
 		}
 		$process = $this->getUrl($this->getConfiguration('urlStream'));
-		$pid = shell_exec("ps -ef | grep '" . $process . "' | grep -v grep | awk '{print $2}' | xargs kill -SIGINT");
 		$recordState = $this->getCmd(null, 'recordState');
 		$recordState->event(0);
 		$this->refreshWidget();
