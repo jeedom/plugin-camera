@@ -356,10 +356,6 @@ class camera extends eqLogic {
 	}
 
 	public function getSnapshot() {
-		$filename = '/tmp/camSnapshot' . $this->getId();
-		if (file_exists($filename) && date('Y-m-d H:i:s', filemtime($filename)) == date('Y-m-d H:i:s')) {
-			return file_get_contents($filename);
-		}
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 2);
@@ -377,7 +373,6 @@ class camera extends eqLogic {
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		}
 		$data = curl_exec($ch);
-		file_put_contents($filename, $data);
 		return $data;
 	}
 
@@ -434,7 +429,7 @@ class camera extends eqLogic {
 		if (count(system::ps('core/php/record.php id=' . $this->getId() . ' recordTime')) > 0) {
 			return true;
 		}
-		$cmd = 'nohup php ' . dirname(__FILE__) . '/../../core/php/record.php id=' . $this->getId();
+		$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/record.php id=' . $this->getId();
 		if (strpos($_recordTime, ';') !== false) {
 			$timming = explode(';', $_recordTime);
 			if (isset($timming[0])) {
@@ -473,7 +468,7 @@ class camera extends eqLogic {
 		}
 		$cmd = ' php ' . dirname(__FILE__) . '/../../core/php/stopCam.php id=' . $this->getId();
 		$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
-		shell_exec('nohup ' . $cmd);
+		shell_exec($cmd);
 	}
 
 	public function takeSnapshot() {
