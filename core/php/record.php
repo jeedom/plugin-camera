@@ -72,15 +72,19 @@ if ($wait !== 0) {
 
 $options = array('file' => array());
 while (true) {
+	$cycleStartTime = getmicrotime();
 	$i++;
 	try {
 		$options['files'][] = $camera->takeSnapshot();
 	} catch (Exception $e) {
 
 	}
-	sleep($delay);
 	if ($i > $limit) {
 		break;
+	}
+	$cycleDuration = getmicrotime() - $cycleStartTime;
+	if ($cycleDuration < $delay) {
+		usleep(round(($delay - $cycleDuration) * 1000000));
 	}
 }
 $recordState->event(0);

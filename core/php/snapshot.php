@@ -10,7 +10,6 @@ if ($camera->getEqType_name() != 'camera') {
 if ($camera->getConfiguration('localApiKey') != init('apikey')) {
 	die();
 }
-
 header('Content-Type: image/jpeg');
 echo $camera->getSnapshot();
 exit;

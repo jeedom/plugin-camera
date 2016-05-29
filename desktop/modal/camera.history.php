@@ -16,8 +16,13 @@ $dir = calculPath(config::byKey('recordDir', 'camera')) . '/' . $camera->getId()
 $files = array();
 foreach (ls($dir, '*') as $file) {
 	$date = explode('_', str_replace('.jpg', '', $file));
-	$time = $date[1];
-	$date = $date[0];
+	if (count($date) > 2) {
+		$time = $date[2];
+		$date = $date[1];
+	} else {
+		$time = $date[1];
+		$date = $date[0];
+	}
 	if ($date == '') {
 		continue;
 	}

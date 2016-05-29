@@ -434,17 +434,17 @@ class camera extends eqLogic {
 		if (count(system::ps('core/php/record.php id=' . $this->getId() . ' recordTime')) > 0) {
 			return true;
 		}
-		$cmd = ' php ' . dirname(__FILE__) . '/../../core/php/record.php id=' . $this->getId();
-		if (strpos(';', $_recordTime) !== false) {
+		$cmd = 'nohup php ' . dirname(__FILE__) . '/../../core/php/record.php id=' . $this->getId();
+		if (strpos($_recordTime, ';') !== false) {
 			$timming = explode(';', $_recordTime);
 			if (isset($timming[0])) {
 				$cmd .= ' recordTime=' . escapeshellarg($timming[0]);
 			}
 			if (isset($timming[1])) {
-				$cmd .= ' wait=' . escapeshellarg($timming[1]);
+				$cmd .= ' delay=' . escapeshellarg($timming[1]);
 			}
 			if (isset($timming[2])) {
-				$cmd .= ' delay=' . escapeshellarg($timming[2]);
+				$cmd .= ' wait=' . escapeshellarg($timming[2]);
 			}
 		} else {
 			$cmd .= ' recordTime=' . escapeshellarg($_recordTime);
@@ -453,7 +453,7 @@ class camera extends eqLogic {
 			$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
 		}
 		$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
-		shell_exec('nohup ' . $cmd);
+		shell_exec($cmd);
 	}
 
 	public function stopRecord() {
@@ -499,7 +499,7 @@ class camera extends eqLogic {
 		if (empty($snapshot)) {
 			throw new Exception(__('Le fichier est vide : ', __FILE__) . $output_dir);
 		}
-		$output_file = $output_dir . '/' . date('Y-m-d_H:i:s') . '.jpg';
+		$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.jpg';
 		file_put_contents($output_file, $snapshot);
 		return $output_file;
 	}
@@ -684,9 +684,6 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		if ($this->getLogicalId() == 'sendSnapshot') {
-			if (!isset($_options['title']) || !is_numeric($_options['title']) || $_options['title'] < 1 || $_options['title'] > 1800) {
-				throw new Exception(__('Le nombre de capture pour l\'envoi de capture de caméra doit etre compris entre 1 et 1800', __FILE__));
-			}
 			if (!isset($_options['message']) || $_options['message'] == '') {
 				throw new Exception(__('Une commande d\'envoi pour l\'envoi de capture de caméra est obligatoire', __FILE__));
 			}
