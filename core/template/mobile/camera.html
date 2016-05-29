@@ -33,6 +33,7 @@
   $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
 });
  function refreshImgCam#id#(){
+  var start = Date.now();
   var url = "#url#";
   if(url.indexOf('?') > 0){
     url += '&t='+(new Date()).getTime();
@@ -49,7 +50,11 @@
     $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
   }
   if($('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').html() != undefined){
-   timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay#);
+   var delay = #refreshDelay# - (Date.now() - start);
+   if(delay < 1){
+     delay = 1;
+   }
+   timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
  }
 }
 img.onerror = function() {
