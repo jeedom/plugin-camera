@@ -61,7 +61,7 @@ if (is_numeric(init('delay')) && init('delay') > 0 && init('delay') < 31) {
 	$delay = init('delay');
 }
 
-$i = 0;
+$i = 1;
 $recordState = $camera->getCmd(null, 'recordState');
 $recordState->event(1);
 $camera->refreshWidget();
@@ -72,7 +72,6 @@ if ($wait !== 0) {
 
 $options = array('file' => array());
 while (true) {
-	$cycleStartTime = getmicrotime();
 	$i++;
 	try {
 		$options['files'][] = $camera->takeSnapshot();
@@ -82,10 +81,7 @@ while (true) {
 	if ($i > $limit) {
 		break;
 	}
-	$cycleDuration = getmicrotime() - $cycleStartTime;
-	if ($cycleDuration < $delay) {
-		usleep(round(($delay - $cycleDuration) * 1000000));
-	}
+	sleep($delay);
 }
 $recordState->event(0);
 $camera->refreshWidget();

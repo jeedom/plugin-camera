@@ -355,27 +355,6 @@ class camera extends eqLogic {
 		return $url . $complement;
 	}
 
-	public function getSnapshot() {
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 2);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-		if ($this->getConfiguration('username') != '') {
-			$userpwd = $this->getConfiguration('username') . ':' . $this->getConfiguration('password');
-			curl_setopt($ch, CURLOPT_USERPWD, $userpwd);
-			$headers = array(
-				'Content-Type:application/json',
-				'Authorization: Basic ' . base64_encode($userpwd),
-			);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		}
-		$data = curl_exec($ch);
-		return $data;
-	}
-
 	public function applyModuleConfiguration() {
 		$this->setConfiguration('applyDevice', $this->getConfiguration('device'));
 		if ($this->getConfiguration('device') == '') {
@@ -471,6 +450,44 @@ class camera extends eqLogic {
 		shell_exec($cmd);
 	}
 
+	public function getSnapshot($_takesnapshot = false) {
+		$files = ls('/tmp/', 'camSnapshot' . $this->getId() . '*');
+		if (count($files) > 0) {
+			$file = $files[count($files) - 1];
+			$time = explode('_', $file);
+			$delay = ($_takesnapshot) ? $this->getConfiguration('refreshDelay', 1) * 1.2 : ($this->getConfiguration('refreshDelay', 1) * 0.7);
+			if ((getmicrotime() - $delay) < $time[count($time) - 1]) {
+				return file_get_contents('/tmp/' . $file);
+			}
+		}
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 2);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+		if ($this->getConfiguration('username') != '') {
+			$userpwd = $this->getConfiguration('username') . ':' . $this->getConfiguration('password');
+			curl_setopt($ch, CURLOPT_USERPWD, $userpwd);
+			$headers = array(
+				'Content-Type:application/json',
+				'Authorization: Basic ' . base64_encode($userpwd),
+			);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		}
+		$data = curl_exec($ch);
+		$filename = '/tmp/camSnapshot' . $this->getId() . '_' . getmicrotime();
+		file_put_contents($filename, $data);
+		chmod($filename, 0777);
+		$files = ls('/tmp/', 'camSnapshot' . $this->getId() . '*');
+		array_pop($files);
+		foreach ($files as $file) {
+			@unlink('/tmp/' . $file);
+		}
+		return $data;
+	}
+
 	public function takeSnapshot() {
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
 		if (!file_exists($output_dir)) {
@@ -490,7 +507,7 @@ class camera extends eqLogic {
 		if (!is_writable($output_dir)) {
 			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
 		}
-		$snapshot = $this->getSnapshot();
+		$snapshot = $this->getSnapshot(true);
 		if (empty($snapshot)) {
 			throw new Exception(__('Le fichier est vide : ', __FILE__) . $output_dir);
 		}
