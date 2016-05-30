@@ -70,7 +70,7 @@ if ($wait !== 0) {
 	sleep($wait);
 }
 
-$options = array('file' => array());
+$options = array('files' => array());
 while (true) {
 	$i++;
 	try {
