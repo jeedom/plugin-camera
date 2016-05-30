@@ -86,7 +86,7 @@ while (true) {
 $recordState->event(0);
 $camera->refreshWidget();
 
-if (init('sendTo') != '') {
+if (init('sendTo') != '' && count($options['files']) > 0) {
 	$options['title'] = __('Alerte sur la camera : ', __FILE__) . $camera->getName();
 	$options['message'] = __('Alerte sur la camera : ', __FILE__) . $camera->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s');
 	$cmds = explode('&&', init('sendTo'));
