@@ -451,15 +451,16 @@ class camera extends eqLogic {
 	}
 
 	public function getSnapshot($_takesnapshot = false) {
-		$files = ls('/tmp/', 'camSnapshot' . $this->getId() . '*');
-		if (count($files) > 0) {
-			$file = $files[count($files) - 1];
-			$time = explode('_', $file);
-			$delay = ($_takesnapshot) ? $this->getConfiguration('refreshDelay', 1) * 1.2 : ($this->getConfiguration('refreshDelay', 1) * 0.7);
-			if ((getmicrotime() - $delay) < $time[count($time) - 1]) {
-				return file_get_contents('/tmp/' . $file);
+		$inprogress = cache::bykey('camera' . $this->getId() . 'inprogress');
+		$info = $inprogress->getValue(array('state' => 0, 'datetime' => strtotime('now')));
+		log::add('camera', 'debug', print_r($info, true));
+		if ($info['state'] == 1 && (strtotime('now') - 1) <= $info['datetime']) {
+			$cahe = cache::bykey('camera' . $this->getId() . 'cache');
+			if ($cahe->getValue() != '') {
+				return $cahe->getValue();
 			}
 		}
+		cache::set('camera' . $this->getId() . 'inprogress', array('state' => 1, 'datetime' => strtotime('now')));
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 2);
@@ -477,14 +478,8 @@ class camera extends eqLogic {
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		}
 		$data = curl_exec($ch);
-		$filename = '/tmp/camSnapshot' . $this->getId() . '_' . getmicrotime();
-		file_put_contents($filename, $data);
-		chmod($filename, 0777);
-		$files = ls('/tmp/', 'camSnapshot' . $this->getId() . '*');
-		array_pop($files);
-		foreach ($files as $file) {
-			@unlink('/tmp/' . $file);
-		}
+		cache::set('camera' . $this->getId() . 'cache', $data);
+		cache::set('camera' . $this->getId() . 'inprogress', array('state' => 0, 'datetime' => ''));
 		return $data;
 	}
 
