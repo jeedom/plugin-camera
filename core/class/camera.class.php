@@ -453,7 +453,6 @@ class camera extends eqLogic {
 	public function getSnapshot($_takesnapshot = false) {
 		$inprogress = cache::bykey('camera' . $this->getId() . 'inprogress');
 		$info = $inprogress->getValue(array('state' => 0, 'datetime' => strtotime('now')));
-		log::add('camera', 'debug', print_r($info, true));
 		if ($info['state'] == 1 && (strtotime('now') - 1) <= $info['datetime']) {
 			$cahe = cache::bykey('camera' . $this->getId() . 'cache');
 			if ($cahe->getValue() != '') {

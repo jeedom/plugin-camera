@@ -1,4 +1,4 @@
-<div class="eqLogic eqLogic-widget allowResize" data-eqLogic_id="#id#" data-version="#version#" style="border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#">
+<div class="eqLogic eqLogic-widget allowResize" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#">
     <span class="statusCmd" style="position : absolute;right : 3px;top:0px; width : 15px;z-index: 1030;"></span>
     <center class="widget-name">
         <span style="font-weight:bold;#hideEqLogicName#"><a href="#eqLink#">#name_display# <span style="font-size: 0.85em;">#object_name#</span></a></span>
@@ -7,8 +7,8 @@
         <span class="directDisplay zoom cursor"><img src="#url#" style="display:block;" data-eqLogic_id="#id#"/></span>
         <span style="position:absolute;bottom:4px;left:0px;width:100%;">
             <center>
-             <span>#action#</span>
-             <span class="cmd cmd-widget" data-type="action" data-subtype="other">
+               <span>#action#</span>
+               <span class="cmd cmd-widget" data-type="action" data-subtype="other">
                 <a class="camera_history btn btn-default btn-sm folder" data-eqLogic_id="#id#" style="background-color:#cmd-background-color# !important;border-color : transparent !important;"><i class="fa fa-folder-open"></i></a>
             </center>
         </span>
@@ -22,8 +22,8 @@
     </center>
 </div>
 <script>
-   $('.cmd[data-cmd_id=#cmd_off_id#]').hide();
-   if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
+ $('.cmd[data-cmd_id=#cmd_off_id#]').hide();
+ if ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
     while ($(".md_cameraZoom[data-eqLogic_id=#id#]").length > 1) {
         $(".md_cameraZoom[data-eqLogic_id=#id#]").eq(0).remove();
     }
@@ -69,30 +69,35 @@ function refreshImgCam#id#(){
     var img = new Image();
     img.src = url;
     img.onload = function() {
-       $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
-       $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
-       if('#cmd_off_id#' != '' && '#cmd_on_id#' != ''){
+     $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
+     $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
+     if('#cmd_off_id#' != '' && '#cmd_on_id#' != ''){
         $('.cmd[data-cmd_id=#cmd_off_id#]').show();
         $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
     }
     var delay = #refreshDelay# - (Date.now() - start);
-    if(delay > 1){
-        setTimeout(refreshImgCam#id#,delay);
-    }else{
-        refreshImgCam#id#();
+    if(delay < 10){
+        delay = 10;
+    }
+    if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
+        timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
     }
 }
 img.onerror = function() {
- $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
- $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src','plugins/camera/core/img/no-image-blanc.png');
- if('#cmd_off_id#' != '' && '#cmd_on_id#' != ''){
+   $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
+   $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src','plugins/camera/core/img/no-image-blanc.png');
+   if('#cmd_off_id#' != '' && '#cmd_on_id#' != ''){
     $('.cmd[data-cmd_id=#cmd_off_id#]').hide();
     $('.cmd[data-cmd_id=#cmd_on_id#]').show();
 }
-setTimeout(refreshImgCam#id#, #refreshDelay# * 5);
+if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
+    timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay# * 5);
 }
 }
-
+}
+if (typeof timeoutCamera#id# !== "undefined") {
+    clearTimeout(timeoutCamera#id#);
+}
 refreshImgCam#id#();
 </script>
 </div>
