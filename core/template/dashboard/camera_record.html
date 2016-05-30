@@ -1,4 +1,4 @@
-<span class="cmd cmd-widget" data-type="action" data-subtype="other" data-cmd_id="#recordState_id#">
+<span class="cmd cmd-widget noRefresh" data-type="action" data-subtype="other" data-cmd_id="#recordState_id#">
     <span class="cmd cmd-widget" data-cmd_id="#stopRecord_id#" style="display:none;"></span>
     <span class="cmd cmd-widget" data-cmd_id="#record_id#" style="display:none;"></span>
     <a class="btn btn-sm btn-default action" style="background-color:#cmd-background-color# !important;border-color : transparent !important;"></a>
@@ -11,9 +11,9 @@
             }
         });
         if ('#recordState#' == 1) {
-            $('.cmd[data-cmd_id=#recordState_id#] .action').html('<i class="fa fa-stop"></i>');
+            $('.cmd[data-cmd_id=#recordState_id#] .action').empty().html('<i class="fa fa-stop"></i>');
         } else {
-            $('.cmd[data-cmd_id=#recordState_id#] .action').html('<i class="fa fa-circle"></i>');
+            $('.cmd[data-cmd_id=#recordState_id#] .action').empty().html('<i class="fa fa-circle"></i>');
         }
     </script>
 </span>
