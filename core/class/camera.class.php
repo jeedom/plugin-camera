@@ -174,7 +174,7 @@ class camera extends eqLogic {
 		$recordCmd->setEqLogic_id($this->getId());
 		$recordCmd->setSubType('slider');
 		$recordCmd->setOrder(999);
-		$recordCmd->setDisplay('slider_placeholder', __('Nb captures;Tps entre capture;Retard déclanchement', __FILE__));
+		$recordCmd->setDisplay('slider_placeholder', __('Nombre captures ou options', __FILE__));
 		$recordCmd->setDisplay('generic_type', 'CAMERA_RECORD');
 		$recordCmd->setDisplay('icon', '<i class="fa fa-circle"></i>');
 		$recordCmd->save();
@@ -220,7 +220,7 @@ class camera extends eqLogic {
 		$sendSnapshot->setEqLogic_id($this->getId());
 		$sendSnapshot->setSubType('message');
 		$sendSnapshot->setIsVisible(0);
-		$sendSnapshot->setDisplay('title_placeholder', __('Nb captures;Tps entre capture;Retard déclanchement', __FILE__));
+		$sendSnapshot->setDisplay('title_placeholder', __('Nombre captures ou options', __FILE__));
 		$sendSnapshot->setDisplay('message_placeholder', __('Commande message d\'envoi des captures', __FILE__));
 		$sendSnapshot->setDisplay('message_cmd_type', 'action');
 		$sendSnapshot->setDisplay('message_cmd_subtype', 'message');
