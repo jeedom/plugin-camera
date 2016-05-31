@@ -404,24 +404,15 @@ class camera extends eqLogic {
 		$this->save();
 	}
 
-	public function recordCam($_recordTime = 300, $_sendTo = null) {
-		if (count(system::ps('core/php/record.php id=' . $this->getId() . ' recordTime')) > 0) {
+	public function recordCam($_args = 300, $_sendTo = null) {
+		if (count(system::ps('core/php/record.php id=' . $this->getId())) > 0) {
 			return true;
 		}
 		$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/record.php id=' . $this->getId();
-		if (strpos($_recordTime, ';') !== false) {
-			$timming = explode(';', $_recordTime);
-			if (isset($timming[0])) {
-				$cmd .= ' recordTime=' . escapeshellarg($timming[0]);
-			}
-			if (isset($timming[1])) {
-				$cmd .= ' delay=' . escapeshellarg($timming[1]);
-			}
-			if (isset($timming[2])) {
-				$cmd .= ' wait=' . escapeshellarg($timming[2]);
-			}
+		if (!is_numeric($_args)) {
+			$cmd .= ' ' . $_args;
 		} else {
-			$cmd .= ' recordTime=' . escapeshellarg($_recordTime);
+			$cmd .= ' nbSnap=' . escapeshellarg($_args);
 		}
 		if ($_sendTo != null) {
 			$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
@@ -432,12 +423,11 @@ class camera extends eqLogic {
 
 	public function stopRecord() {
 		if (count(system::ps('core/php/record.php id=' . $this->getId())) > 0) {
-			system::kill('core/php/record.php id=' . $this->getId());
+			system::kill('core/php/record.php id=' . $this->getId(), false);
+		} else {
+			$recordState = $this->getCmd(null, 'recordState')->event(0);
+			$this->refreshWidget();
 		}
-		$process = $this->getUrl($this->getConfiguration('urlStream'));
-		$recordState = $this->getCmd(null, 'recordState');
-		$recordState->event(0);
-		$this->refreshWidget();
 		return true;
 	}
 
@@ -445,6 +435,7 @@ class camera extends eqLogic {
 		if (count(system::ps('core/php/stopCam.php id=' . $this->getId())) > 0) {
 			return true;
 		}
+		$this->stopRecord();
 		$cmd = ' php ' . dirname(__FILE__) . '/../../core/php/stopCam.php id=' . $this->getId();
 		$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
 		shell_exec($cmd);
@@ -653,9 +644,6 @@ class cameraCmd extends cmd {
 		}
 		$eqLogic = $this->getEqLogic();
 		if ($this->getLogicalId() == 'recordCmd') {
-			if (!isset($_options['slider'])) {
-				$_options['slider'] = 1800;
-			}
 			$eqLogic->recordCam($_options['slider']);
 			return true;
 		}
@@ -676,8 +664,7 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		if ($this->getLogicalId() == 'off') {
-			$record_state = $eqLogic->getCmd(null, 'recordState');
-			if ($record_state->execCmd() == 1) {
+			if ($eqLogic->getCmd(null, 'recordState')->execCmd() == 1) {
 				$eqLogic->stopCam();
 				return true;
 			}

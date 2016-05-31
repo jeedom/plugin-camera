@@ -110,18 +110,23 @@ Une fois dessus vous obtenez une vue global de toutes vos caméras :
 
 image::../images/camera11.PNG[]
 
-== Envoyer une capture
+== Enregistrement et envoi de capture
 
-Cette commande un peu spécifique envoi à travers une commande mail, une ou plusieurs captures. 
+Cette commande un peu spécifique elle permet suite à la prise de capture de faire l'envoi de celle-ci (compatible avec le plugin slack, mail et transfert)
 
-[ATTENTION]
-Il vous faut absolument le plugin mail et ca ne marche qu'avec ce plugin. Il n'est pas possible de l'envoyer par MMS
+La configuration est assez simple vous appellez l'action d'envoi de capture, dans la partie titre vous passez les options (par défaut il faut juste mettre le nombre de capture voulu mais vous pouvez aller plus loin avec les options avancées) et dans la partie message la commande du plugin (actuellement slack, mail ou transfert) qui fait l'envoi des captures. Vous pouvez en mettre plusieurs séparé par des &&.
 
-La configuration est très simple sur la page de configuration de votre camera vous indiquez la commande à utiliser ainsi que le nombre de capture à envoyer par mail à chaque utilisation. Ensuite il vous suffit de faire un scénario : 
+=== Options avancés de captures
 
-image::../images/camera14.PNG[]
+* nbSnap : nombre de capture, si non précisé alors les captures sont faite jusqu'a une demande d'arret d'enregistrement ou d'arret de la caméra
+* delay : délai entre 2 capture, si non précisé alors le délai est de 1s
+* wait : délai d'attente avant de commencer les captures, si non précié alors aucun envoi n'est fait
+* sendPacket : nombre de capture déclenchant l'envoi de paquet, si non précisé alors les captures seront envoyée qu'a la fin
 
-Ici un scénario très simple qui envoi une série de capture (j'ai mis à 20 dans la configuration du plugin) par mail lors de l'ouverture de la porte
+Example : 
+image::../images/camera15.PNG[]
+
+Ici le plugin va attendre 5s avant de commencer l'enregistrement puis faire un envoi au nas (par le plugin transfert) toute les 10 captures jusqu'a ce qu'on lui dise d'arreter (stop enregistrement ou arret de la caméra)
 
 == Envoi de la detection de mouvement à Jeedom
 

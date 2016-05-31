@@ -15,6 +15,19 @@
  * You should have received a copy of the GNU General Public License
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
+declare (ticks = 1);
+
+global $SIG;
+$SIG = false;
+
+function sig_handler($signo) {
+	global $SIG;
+	$SIG = true;
+}
+
+pcntl_signal(SIGTERM, "sig_handler");
+pcntl_signal(SIGHUP, "sig_handler");
+
 if (php_sapi_name() != 'cli' || isset($_SERVER['REQUEST_METHOD']) || !isset($_SERVER['argc'])) {
 	header("Status: 404 Not Found");
 	header('HTTP/1.0 404 Not Found');
@@ -23,7 +36,6 @@ if (php_sapi_name() != 'cli' || isset($_SERVER['REQUEST_METHOD']) || !isset($_SE
 	echo "The page that you have requested could not be found.";
 	exit();
 }
-set_time_limit(54600);
 require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
 if (isset($argv)) {
 	foreach ($argv as $arg) {
@@ -47,48 +59,14 @@ if ($camera->getEqType_name() != 'camera') {
 	die();
 }
 
-$limit = 1800;
-$wait = 0;
-$delay = 1;
-
-if (is_numeric(init('recordTime')) && init('recordTime') > 0 && init('recordTime') < 1800) {
-	$limit = init('recordTime');
-}
-if (is_numeric(init('wait')) && init('wait') > 0 && init('wait') < 600) {
-	$wait = init('wait');
-}
-if (is_numeric(init('delay')) && init('delay') > 0 && init('delay') < 31) {
-	$delay = init('delay');
-}
-
-$i = 1;
-$recordState = $camera->getCmd(null, 'recordState');
-$recordState->event(1);
-$camera->refreshWidget();
-
-if ($wait !== 0) {
-	sleep($wait);
-}
-
-$options = array('files' => array());
-while (true) {
-	$i++;
-	try {
-		$options['files'][] = $camera->takeSnapshot();
-	} catch (Exception $e) {
-
+function sendSnap($_files, $_camera) {
+	if (init('sendTo') == '' || count($_files) == 0) {
+		return;
 	}
-	if ($i > $limit) {
-		break;
-	}
-	sleep($delay);
-}
-$recordState->event(0);
-$camera->refreshWidget();
-
-if (init('sendTo') != '' && count($options['files']) > 0) {
-	$options['title'] = __('Alerte sur la camera : ', __FILE__) . $camera->getName();
-	$options['message'] = __('Alerte sur la camera : ', __FILE__) . $camera->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s');
+	$options = array();
+	$options['files'] = $_files;
+	$options['title'] = __('Alerte sur la camera : ', __FILE__) . $_camera->getName();
+	$options['message'] = __('Alerte sur la camera : ', __FILE__) . $_camera->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s');
 	$cmds = explode('&&', init('sendTo'));
 	foreach ($cmds as $id) {
 		$cmd = cmd::byId(str_replace('#', '', $id));
@@ -102,4 +80,63 @@ if (init('sendTo') != '' && count($options['files']) > 0) {
 		}
 	}
 }
+
+$recordState = $camera->getCmd(null, 'recordState');
+$nbSnap = -1;
+$wait = 0;
+$delay = 1;
+$i = 1;
+$sendPacket = -1;
+
+if (is_numeric(init('nbSnap')) && init('nbSnap') > 0) {
+	$nbSnap = init('nbSnap');
+}
+if (is_numeric(init('wait')) && init('wait') > 0) {
+	$wait = init('wait');
+}
+if (is_numeric(init('delay')) && init('delay') > 0) {
+	$delay = init('delay');
+}
+if (is_numeric(init('sendPacket')) && init('sendPacket') > 0) {
+	$sendPacket = init('sendPacket');
+}
+
+$recordState->event(1);
+$camera->refreshWidget();
+
+if ($wait !== 0) {
+	sleep($wait);
+}
+$files = array();
+while (true) {
+	$cycleStartTime = getmicrotime();
+	$i++;
+	try {
+		$files[] = $camera->takeSnapshot();
+	} catch (Exception $e) {
+
+	}
+	if ($SIG) {
+		break;
+	}
+	if ($nbSnap > 0 && $i > $nbSnap) {
+		break;
+	}
+	if ($sendPacket > 1 && count($files) >= $sendPacket) {
+		sendSnap($files, $camera);
+		$files = array();
+	}
+	$cycleDuration = getmicrotime() - $cycleStartTime;
+	if ($cycleDuration < $delay) {
+		usleep(round(($delay - $cycleDuration) * 1000000));
+	}
+	if ($SIG) {
+		break;
+	}
+}
+if (count($files) > 0) {
+	sendSnap($files, $camera);
+}
+$recordState->event(0);
+$camera->refreshWidget();
 die();
