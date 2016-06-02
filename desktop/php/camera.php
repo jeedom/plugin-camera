@@ -98,19 +98,19 @@ foreach (object::all() as $object) {
          </div>
        </div>
        <div class="form-group">
+
         <label class="col-sm-3 control-label">{{IP}}</label>
-        <div class="col-sm-3">
-          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
-        </div>
-        <label class="col-sm-2 control-label">{{Port}}</label>
-        <div class="col-sm-2">
-          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
-        </div>
-        <div class="col-sm-2">
-          <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
-            <option value='http'>HTTP</option>
-            <option value='https'>HTTPS</option>
-          </select>
+        <div class="col-sm-9">
+          <div class="input-group">
+            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
+              <option value='http'>HTTP</option>
+              <option value='https'>HTTPS</option>
+            </select>
+            <span class="input-group-addon">://</span>
+            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
+            <span class="input-group-addon">:</span>
+            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
+          </div>
         </div>
       </div>
       <div class="form-group">
@@ -144,15 +144,15 @@ foreach (object::all() as $object) {
       </div>
       <label class="col-sm-1 control-label">{{OFF}}</label>
       <div class="col-sm-4">
-         <div class="input-group">
-          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOff"/>
-          <span class="input-group-btn">
-            <a class="btn btn-default listCmdActionOther"><i class="fa fa-list-alt"></i></a>
-          </span>
-        </div>
+       <div class="input-group">
+        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOff"/>
+        <span class="input-group-btn">
+          <a class="btn btn-default listCmdActionOther"><i class="fa fa-list-alt"></i></a>
+        </span>
       </div>
     </div>
-  </fieldset>
+  </div>
+</fieldset>
 </form>
 </div>
 <div class="col-sm-6">
