@@ -130,7 +130,7 @@ class camera extends eqLogic {
 			$this->applyModuleConfiguration();
 		}
 		if ($this->getConfiguration('refreshDelay') == '') {
-			$this->setConfiguration('refreshDelay', 2);
+			$this->setConfiguration('refreshDelay', 1);
 		}
 		$urlFlux = $this->getCmd(null, 'urlFlux');
 		if (!is_object($urlFlux)) {

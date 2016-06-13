@@ -24,7 +24,7 @@
 </div>
 
 <script>
- $('.cmd[data-cmd_id=#cmd_off_id#]').hide();
+ $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
  $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (9/16) + 40);
  $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 15);
  $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
@@ -45,9 +45,9 @@
   img.onload = function() {
    $("#popupCameraZoom#id# .display img").attr('src',img.src);
    $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src',img.src);
-   if('#cmd_off_id#' != '' && '#cmd_on_id#' != ''){
-    $('.cmd[data-cmd_id=#cmd_off_id#]').show();
-    $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
+   if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').show();
+    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
   }
   if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
    var delay = #refreshDelay# - (Date.now() - start);
@@ -60,9 +60,9 @@
 img.onerror = function() {
  $("#popupCameraZoom#id# .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
  $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src','plugins/camera/core/img/no-image-blanc.png');
- if('#cmd_off_id#' != '' && '#cmd_on_id#' != ''){
-  $('.cmd[data-cmd_id=#cmd_off_id#]').hide();
-  $('.cmd[data-cmd_id=#cmd_on_id#]').show();
+ if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
+  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').show();
 }
 if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
   timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay# * 5);
