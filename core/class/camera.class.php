@@ -36,6 +36,9 @@ class camera extends eqLogic {
 
 	public static function cronHourly() {
 		$record_dir = calculPath(config::byKey('recordDir', 'camera'));
+		if (file_exists($record_dir)) {
+			mkdir($record_dir);
+		}
 		$max_size = config::byKey('maxSizeRecordDir', 'camera') * 1024 * 1024;
 		$i = 0;
 		while (getDirectorySize($record_dir) > $max_size) {
