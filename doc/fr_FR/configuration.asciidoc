@@ -124,6 +124,7 @@ La configuration est assez simple vous appellez l'action d'envoi de capture, dan
 * sendPacket : nombre de capture déclenchant l'envoi de paquet, si non précisé alors les captures seront envoyée qu'a la fin
 
 Example : 
+
 image::../images/camera15.PNG[]
 
 Ici le plugin va attendre 5s avant de commencer l'enregistrement puis faire un envoi au nas (par le plugin transfert) toute les 10 captures jusqu'a ce qu'on lui dise d'arreter (stop enregistrement ou arret de la caméra)
