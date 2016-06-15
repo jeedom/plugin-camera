@@ -56,7 +56,7 @@ class camera extends eqLogic {
 				}
 			}
 			if ($older['file'] == null) {
-				throw new Exception(__('Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ' . getDirectorySize($record_dir), __FILE__));
+				throw new Exception(__('Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ', __FILE__) . getDirectorySize($record_dir));
 			}
 			unlink($older['file']);
 			$i++;
