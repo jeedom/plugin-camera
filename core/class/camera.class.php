@@ -45,11 +45,7 @@ class camera extends eqLogic {
 			$older = array('file' => null, 'datetime' => null);
 			foreach (ls($record_dir, '*') as $dir) {
 				foreach (ls($record_dir . '/' . $dir, '*') as $file) {
-					if ($older['datetime'] == null) {
-						$older['file'] = $record_dir . '/' . $dir . '/' . $file;
-						$older['datetime'] = filemtime($record_dir . '/' . $dir . '/' . $file);
-					}
-					if ($older['datetime'] > filemtime($record_dir . '/' . $dir . '/' . $file)) {
+					if ($older['datetime'] == null || $older['datetime'] > filemtime($record_dir . '/' . $dir . '/' . $file)) {
 						$older['file'] = $record_dir . '/' . $dir . '/' . $file;
 						$older['datetime'] = filemtime($record_dir . '/' . $dir . '/' . $file);
 					}
