@@ -56,6 +56,11 @@ En dessous vous retrouvez la liste des commandes :
 * Tester : permet de tester la commande
 * Supprimer (signe -) : permet de supprimer la commande
 
+
+[IMPORTANT]
+L'enregistrement n'a pas de limite de durée et peut prendre beaucoup de place, attention donc si vous remplisser votre disque jeedom pourrait ne plus marcher du tout.
+
+
 == Le widget
 
 Voila à quoi ressemble le widget d'une caméra : 
