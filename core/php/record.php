@@ -70,7 +70,7 @@ function sendSnap($_files, $_camera) {
 	$cmds = explode('&&', init('sendTo'));
 	foreach ($cmds as $id) {
 		$cmd = cmd::byId(str_replace('#', '', $id));
-		if (is_object(!$cmd)) {
+		if (!is_object($cmd)) {
 			continue;
 		}
 		try {
