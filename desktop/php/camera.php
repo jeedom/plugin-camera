@@ -128,8 +128,15 @@ foreach (object::all() as $object) {
         <div class="col-sm-7">
           <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}"/>
         </div>
+      </div>
+       <div class="form-group">
+        <label class="col-sm-3 control-label">{{Rafraichissement (s)}}</label>
+        <div class="col-sm-3">
+          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelaySlow" />
+        </div>
+         <label class="col-sm-3 control-label">{{Zoom (s)}}</label>
         <div class="col-sm-2">
-          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelay" placeholder="{{Rafraichissement (s)}}"/>
+          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelayFast" />
         </div>
       </div>
       <div class="form-group">

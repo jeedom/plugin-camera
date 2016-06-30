@@ -106,6 +106,12 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('localApiKey') == '') {
 			$this->setConfiguration('localApiKey', config::genKey());
 		}
+		if ($this->getConfiguration('refreshDelayFast') == '') {
+			$this->setConfiguration('refreshDelayFast', 1);
+		}
+		if ($this->getConfiguration('refreshDelaySlow') == '') {
+			$this->setConfiguration('refreshDelaySlow', 5);
+		}
 	}
 
 	public function preUpdate() {
@@ -318,7 +324,8 @@ class camera extends eqLogic {
 		$action .= template_replace($replace_action, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
 		$replace['#action#'] = $action;
 		$replace['#url#'] = $this->getUrl($this->getConfiguration('urlStream'), true);
-		$replace['#refreshDelay#'] = $this->getConfiguration('refreshDelay', 1) * 1000;
+		$replace['#refreshDelaySlow#'] = $this->getConfiguration('refreshDelaySlow', 1) * 1000;
+		$replace['#refreshDelayFast#'] = $this->getConfiguration('refreshDelayFast', 5) * 1000;
 		return template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera'));
 	}
 

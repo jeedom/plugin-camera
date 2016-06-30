@@ -32,6 +32,14 @@
   $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 15);
   $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
 });
+
+ $( "#popupCameraZoom#id#" ).on( "popupafteropen", function( event, ui ) {
+   if (typeof timeoutCamera#id# !== "undefined") {
+    clearTimeout(timeoutCamera#id#);
+  }
+  refreshImgCam#id#();
+} );
+
  function refreshImgCam#id#(){
   var start = Date.now();
   var url = "#url#";
@@ -50,8 +58,12 @@
     $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
   }
   if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
-   var delay = #refreshDelay# - (Date.now() - start);
-   if(delay < 1){
+    if ($("#popupCameraZoom#id#-popup").hasClass("ui-popup-active")){
+      var delay = #refreshDelayFast# - (Date.now() - start);
+    }else{
+      var delay = #refreshDelaySlow# - (Date.now() - start);
+    }
+    if(delay < 1){
      delay = 1;
    }
    timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
@@ -65,7 +77,7 @@ img.onerror = function() {
   $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').show();
 }
 if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
-  timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelay# * 5);
+  timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
 }
 }
 };
