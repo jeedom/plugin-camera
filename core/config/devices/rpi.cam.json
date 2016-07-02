@@ -11,10 +11,8 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                
                 "configuration": {
-                    "request": "\/cmd_pipe.php?cmd=ru%201",
-                    "stopCmd": "0"
+                    "request": "\/cmd_pipe.php?cmd=ru%201"
                 },
                 "display": {
                     "icon": "<i class=\"fa fa-play\"><\/i>"
@@ -26,10 +24,8 @@
                 "type": "action",
                 "subType": "other",
                 "isHistorized": "0",
-                
                 "configuration": {
-                    "request": "\/cmd_pipe.php?cmd=ru%200",
-                    "stopCmd": "0"
+                    "request": "\/cmd_pipe.php?cmd=ru%200"
                 },
                 "display": {
                     "icon": "<i class=\"fa fa-stop\"><\/i>"
