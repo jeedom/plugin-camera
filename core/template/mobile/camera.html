@@ -33,7 +33,7 @@
   $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
 });
 
- $( "#popupCameraZoom#id#" ).on( "popupafteropen", function( event, ui ) {
+ $( "#popupCameraZoom#id#" ).off('popupafteropen').on('popupafteropen', function( event, ui ) {
    if (typeof timeoutCamera#id# !== "undefined") {
     clearTimeout(timeoutCamera#id#);
   }
