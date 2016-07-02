@@ -15,7 +15,7 @@
     </span>
 
 </center>
-<div class="md_cameraZoom" data-eqLogic_uid="#uid#" title="#name_display#">
+<div class="md_cameraZoom" data-eqLogic_uid="#uid#" data-eqLogic_id="#id#" title="#name_display#">
     <center>
         <div class="display"><img src="plugins/camera/core/img/no-image-noir.png" class="img-responsive" data-eqLogic_id="#id#" /></div>
         <br/>#action#
@@ -38,7 +38,7 @@ $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
     $('#md_modal').dialog({title: "Historique #name#"});
     $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
 });
-$(".md_cameraZoom[data-eqLogic_uid=#uid#]").dialog({
+$(".md_cameraZoom[data-eqLogic_id=#id#]").dialog({
     autoOpen: false,
     modal: true,
     resizable: false,
@@ -72,13 +72,13 @@ function refreshImgCam#id#(){
     var img = new Image();
     img.src = url;
     img.onload = function() {
-       $(".md_cameraZoom[data-eqLogic_uid=#uid#] .display img").attr('src',img.src);
+       $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
        $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
        if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
         $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').show();
         $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
     }
-    if ($(".md_cameraZoom[data-eqLogic_uid=#uid#]").is(':visible')){
+    if ($(".md_cameraZoom[data-eqLogic_id=#id#]").is(':visible')){
         var delay = #refreshDelayFast# - (Date.now() - start);
     }else{
         var delay = #refreshDelaySlow# - (Date.now() - start);
@@ -91,7 +91,7 @@ function refreshImgCam#id#(){
     }
 }
 img.onerror = function() {
- $(".md_cameraZoom[data-eqLogic_uid=#uid#] .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
+ $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
  $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src','plugins/camera/core/img/no-image-blanc.png');
  if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
     $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
