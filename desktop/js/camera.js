@@ -99,7 +99,7 @@
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateValue" placeholder="{{Valeur retour d\'état}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;">';
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateTime" placeholder="{{Durée avant retour d\'état (min)}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;">';
     tr += '<td>';
-    tr += '<label><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" checked/>{{Afficher}}</label>';
+    tr += '<span><label><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" checked/>{{Afficher}}</label></span>';
     tr += '</div>';
     tr += '</td>';
     tr += '<td>';
