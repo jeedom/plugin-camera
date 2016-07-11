@@ -112,7 +112,6 @@
     $('#table_cmd tbody').append(tr);
     $('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
     jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
-    initTooltips();
 }
 
 $('#table_cmd tbody').on('change','.cmd .cmdAttr[data-l1key=type]',function(){
