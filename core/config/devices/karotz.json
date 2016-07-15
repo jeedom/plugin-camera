@@ -1,0 +1,13 @@
+{
+    "karotz": {
+	"name" : "Karotz",
+        "configuration": {
+            "port": "80",
+            "urlStream": "\/cgi-bin\/snapshot_view?silent=1",
+            "protocole": "http"
+        },
+        "commands": [
+           
+        ]
+    }
+}
