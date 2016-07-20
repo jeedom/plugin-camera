@@ -140,7 +140,7 @@ foreach (object::all() as $object) {
         </div>
       </div>
        <div class="form-group">
-        <label class="col-sm-3 control-label">{{Durée maximum d'un enregistrement}}</label>
+        <label class="col-sm-3 control-label">{{Durée maximum d'un enregistrement (s)}}</label>
         <div class="col-sm-2">
           <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="maxReccordTime" />
         </div>
