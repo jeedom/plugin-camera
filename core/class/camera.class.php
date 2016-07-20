@@ -112,6 +112,9 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('refreshDelaySlow') == '') {
 			$this->setConfiguration('refreshDelaySlow', 5);
 		}
+		if ($this->getConfiguration('maxReccordTime') == '') {
+			$this->setConfiguration('maxReccordTime', 600);
+		}
 	}
 
 	public function preUpdate() {

@@ -108,6 +108,7 @@ if ($wait !== 0) {
 	sleep($wait);
 }
 $files = array();
+$starttime = strtotime('now');
 while (true) {
 	$cycleStartTime = getmicrotime();
 	$i++;
@@ -131,6 +132,9 @@ while (true) {
 		usleep(round(($delay - $cycleDuration) * 1000000));
 	}
 	if ($SIG) {
+		break;
+	}
+	if ((strtotime('now') - $starttime) > $camera->getConfiguration('maxReccordTime', 600)) {
 		break;
 	}
 }
