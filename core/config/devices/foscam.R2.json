@@ -1,0 +1,198 @@
+{
+	"foscam.R2": {
+	"name" : "Foscam R2",
+		"configuration": {
+			"port": "88",
+			"urlStream": "\/cgi-bin\/CGIProxy.fcgi?cmd=snapPicture2&usr=#username#&pwd=#password#",
+			"protocole": "http"
+		},
+		"commands": [
+			{
+				"eqType": "camera",
+				"name": "Bas",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzMoveDown&usr=#username#&pwd=#password#",
+					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzStopRun&usr=#username#&pwd=#password#"
+				},
+				"display": {
+					"icon": "<i class=\"fa fa-arrow-down\"><\/i>"
+				},
+				"isVisible": "1"
+			},
+			{
+				"eqType": "camera",
+				"name": "Haut",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzMoveUp&usr=#username#&pwd=#password#",
+					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzStopRun&usr=#username#&pwd=#password#"
+				},
+				"display": {
+					"icon": "<i class=\"fa fa-arrow-up\"><\/i>"
+				},
+				"isVisible": "1"
+			},
+			{
+				"eqType": "camera",
+				"name": "Gauche",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzMoveLeft&usr=#username#&pwd=#password#",
+					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzStopRun&usr=#username#&pwd=#password#"
+				},
+				"display": {
+					"icon": "<i class=\"fa fa-arrow-left\"><\/i>"
+				},
+				"isVisible": "1"
+			},
+			{
+				"eqType": "camera",
+				"name": "Droite",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzMoveRight&usr=#username#&pwd=#password#",
+					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzStopRun&usr=#username#&pwd=#password#"
+				},
+				"display": {
+					"icon": "<i class=\"fa fa-arrow-right\"><\/i>"
+				},
+				"isVisible": "1"
+			},
+			{
+				"eqType": "camera",
+				"name": "IR On",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=openInfraLed&usr=#username#&pwd=#password#"
+				},
+				"display": {
+					"icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
+				},
+				"isVisible": "1"
+			},
+			{
+				"eqType": "camera",
+				"name": "IR Off",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=closeInfraLed&usr=#username#&pwd=#password#"
+				},
+				"display": {
+					"icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
+				},
+				"isVisible": "1"
+			},
+			{
+				"eqType": "camera",
+				"name": "Zoom IN",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=zoomIn&usr=#username#&pwd=#password#",
+					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=zoomStop&usr=#username#&pwd=#password#"
+				},
+				"display": {
+					"icon": "<i class=\"icon fa-plus\"><\/i>"
+				},
+				"isVisible": "1"
+			},
+			{
+				"eqType": "camera",
+				"name": "Zoom OUT",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=zoomOut&usr=#username#&pwd=#password#",
+					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=zoomStop&usr=#username#&pwd=#password#"
+				},
+				"display": {
+					"icon": "<i class=\"icon fa-minus\"><\/i>"
+				},
+				"isVisible": "1"
+			},
+			{
+				"eqType": "camera",
+				"name": "PRESET 1",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzGotoPresetPoint&name=NOM_DU_PRESET1&usr=#username#&pwd=#password#"
+				},
+				"isVisible": "0"
+			},
+			{
+				"eqType": "camera",
+				"name": "PRESET 2",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzGotoPresetPoint&name=NOM_DU_PRESET2&usr=#username#&pwd=#password#"
+				},
+				"isVisible": "0"
+			},
+			{
+				"eqType": "camera",
+				"name": "PRESET 3",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzGotoPresetPoint&name=NOM_DU_PRESET3&usr=#username#&pwd=#password#"
+				},
+				"isVisible": "0"
+			},
+			{
+				"eqType": "camera",
+				"name": "PRESET 4",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzGotoPresetPoint&name=NOM_DU_PRESET4&usr=#username#&pwd=#password#"
+				},
+				"isVisible": "0"
+			},
+			{
+				"eqType": "camera",
+				"name": "PRESET 5",
+				"type": "action",
+				"subType": "other",
+				"isHistorized": "0",
+				
+				"configuration": {
+					"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzGotoPresetPoint&name=NOM_DU_PRESET5&usr=#username#&pwd=#password#"
+				},
+				"isVisible": "0"
+			}
+		]
+	}
+}
