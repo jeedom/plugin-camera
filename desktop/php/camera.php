@@ -65,167 +65,166 @@ foreach ($eqLogics as $eqLogic) {
 </div>
 </div>
 <div class="col-lg-10 col-md-9 col-sm-8 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
-  <div class="row">
-    <div class="col-sm-6">
-      <form class="form-horizontal">
-        <fieldset>
-          <legend><i class="fa fa-arrow-circle-left eqLogicAction cursor" data-action="returnToThumbnailDisplay"></i> {{Général}}<i class='fa fa-cogs eqLogicAction pull-right cursor expertModeVisible' data-action='configure'></i></legend>
-          <div class="form-group">
-            <label class="col-sm-3 control-label">{{Nom de l'équipement caméra}}</label>
-            <div class="col-sm-6">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
-              <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement caméra}}"/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label" >{{Objet parent}}</label>
-            <div class="col-sm-6">
-              <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
-                <option value="">{{Aucun}}</option>
-                <?php
+
+
+  <a class="btn btn-success eqLogicAction pull-right" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a>
+  <a class="btn btn-danger eqLogicAction pull-right" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
+
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Equipement}}</a></li>
+    <li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Commandes}}</a></li>
+  </ul>
+
+  <div class="tab-content" style="height:calc(100% - 100px);overflow:auto;overflow-x: hidden;">
+    <div role="tabpanel" class="tab-pane active" id="eqlogictab">
+      <div class="row">
+        <div class="col-sm-6">
+          <form class="form-horizontal">
+            <fieldset>
+              <legend><i class="fa fa-arrow-circle-left eqLogicAction cursor" data-action="returnToThumbnailDisplay"></i> {{Général}}<i class='fa fa-cogs eqLogicAction pull-right cursor expertModeVisible' data-action='configure'></i></legend>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">{{Nom de l'équipement caméra}}</label>
+                <div class="col-sm-6">
+                  <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
+                  <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement caméra}}"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label" >{{Objet parent}}</label>
+                <div class="col-sm-6">
+                  <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
+                    <option value="">{{Aucun}}</option>
+                    <?php
 foreach (object::all() as $object) {
 	echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
 }
 ?>
-             </select>
-           </div>
-         </div>
-       <div class="form-group">
-        <label class="col-sm-3 control-label"></label>
-        <div class="col-sm-9">
-            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>{{Activer}}</label>
-            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
-        </div>
-    </div>
-       <div class="form-group">
+                 </select>
+               </div>
+             </div>
+             <div class="form-group">
+              <label class="col-sm-3 control-label"></label>
+              <div class="col-sm-9">
+                <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>{{Activer}}</label>
+                <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
+              </div>
+            </div>
+            <div class="form-group">
 
-        <label class="col-sm-3 control-label">{{IP}}</label>
-        <div class="col-sm-9">
-          <div class="input-group">
-            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
-              <option value='http'>HTTP</option>
-              <option value='https'>HTTPS</option>
-            </select>
-            <span class="input-group-addon">://</span>
-            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
-            <span class="input-group-addon">:</span>
-            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
+              <label class="col-sm-3 control-label">{{IP}}</label>
+              <div class="col-sm-9">
+                <div class="input-group">
+                  <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
+                    <option value='http'>HTTP</option>
+                    <option value='https'>HTTPS</option>
+                  </select>
+                  <span class="input-group-addon">://</span>
+                  <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
+                  <span class="input-group-addon">:</span>
+                  <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">{{Nom d'utilisateur}}</label>
+              <div class="col-sm-3">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
+              </div>
+              <label class="col-sm-2 control-label">{{Mot de passe}}</label>
+              <div class="col-sm-2">
+                <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">{{URL de capture}}</label>
+              <div class="col-sm-7">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">{{Rafraichissement (s)}}</label>
+              <div class="col-sm-3">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelaySlow" />
+              </div>
+              <label class="col-sm-3 control-label">{{Zoom (s)}}</label>
+              <div class="col-sm-2">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelayFast" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">{{Durée maximum d'un enregistrement (s)}}</label>
+              <div class="col-sm-2">
+                <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="maxReccordTime" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">{{Commande ON}}</label>
+              <div class="col-sm-4">
+               <div class="input-group">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOn"/>
+                <span class="input-group-btn">
+                  <a class="btn btn-default listCmdActionOther"><i class="fa fa-list-alt"></i></a>
+                </span>
+              </div>
+            </div>
+            <label class="col-sm-1 control-label">{{OFF}}</label>
+            <div class="col-sm-4">
+             <div class="input-group">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOff"/>
+              <span class="input-group-btn">
+                <a class="btn btn-default listCmdActionOther"><i class="fa fa-list-alt"></i></a>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label">{{Nom d'utilisateur}}</label>
-        <div class="col-sm-3">
-          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
-        </div>
-        <label class="col-sm-2 control-label">{{Mot de passe}}</label>
-        <div class="col-sm-2">
-          <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label">{{URL de capture}}</label>
-        <div class="col-sm-7">
-          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}"/>
-        </div>
-      </div>
-       <div class="form-group">
-        <label class="col-sm-3 control-label">{{Rafraichissement (s)}}</label>
-        <div class="col-sm-3">
-          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelaySlow" />
-        </div>
-         <label class="col-sm-3 control-label">{{Zoom (s)}}</label>
-        <div class="col-sm-2">
-          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelayFast" />
-        </div>
-      </div>
-       <div class="form-group">
-        <label class="col-sm-3 control-label">{{Durée maximum d'un enregistrement (s)}}</label>
-        <div class="col-sm-2">
-          <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="maxReccordTime" />
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label">{{Commande ON}}</label>
-        <div class="col-sm-4">
-         <div class="input-group">
-          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOn"/>
-          <span class="input-group-btn">
-            <a class="btn btn-default listCmdActionOther"><i class="fa fa-list-alt"></i></a>
-          </span>
-        </div>
-      </div>
-      <label class="col-sm-1 control-label">{{OFF}}</label>
-      <div class="col-sm-4">
-       <div class="input-group">
-        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOff"/>
-        <span class="input-group-btn">
-          <a class="btn btn-default listCmdActionOther"><i class="fa fa-list-alt"></i></a>
-        </span>
-      </div>
-    </div>
+      </fieldset>
+    </form>
   </div>
-</fieldset>
-</form>
-</div>
-<div class="col-sm-6">
-  <form class="form-horizontal">
-    <fieldset>
-      <legend><i class="fa fa-wrench"></i>  {{Configuration}}</legend>
-      <div class="form-group">
-        <label class="col-sm-2 control-label">{{Modèle}}</label>
-        <div class="col-sm-5">
-          <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
-            <option value="">{{1 - Aucun}}</option>
-            <?php
+  <div class="col-sm-6">
+    <form class="form-horizontal">
+      <fieldset>
+        <legend><i class="fa fa-wrench"></i>  {{Configuration}}</legend>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">{{Modèle}}</label>
+          <div class="col-sm-5">
+            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
+              <option value="">{{1 - Aucun}}</option>
+              <?php
 foreach (camera::devicesParameters() as $id => $info) {
 	echo '<option value="' . $id . '">' . $info['name'] . '</option>';
 }
 ?>
-         </select>
+           </select>
+         </div>
        </div>
-     </div>
-     <center>
-      <img src="core/img/no_image.gif" data-original=".jpg" id="img_device" class="img-responsive" style="max-height : 250px;" onerror="this.src='plugins/camera/doc/images/camera_icon.png'"/>
-    </center>
-  </fieldset>
-</form>
+       <center>
+        <img src="core/img/no_image.gif" data-original=".jpg" id="img_device" class="img-responsive" style="max-height : 250px;" onerror="this.src='plugins/camera/doc/images/camera_icon.png'"/>
+      </center>
+    </fieldset>
+  </form>
 </div>
 </div>
-<form class="form-horizontal">
-  <fieldset>
-    <div class="form-actions" align="right">
-      <a class="btn btn-danger eqLogicAction" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
-      <a class="btn btn-success eqLogicAction" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a>
-    </div>
-  </fieldset>
-</form>
-<legend><i class="fa fa-camera"></i>  {{Caméra}}</legend>
-<a class="btn btn-success btn-sm cmdAction" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une commande}}</a><br/><br/>
-<table id="table_cmd" class="table table-bordered table-condensed">
-  <thead>
-    <tr>
-      <th style="width : 70px;">{{#}}</th>
-      <th style="width : 300px;">{{Nom}}</th>
-      <th style="width : 150px;">{{Type}}</th>
-      <th >{{Requête}}</th>
-      <th style="width : 150px;">{{Options}}</th>
-      <th style="width : 150px;"></th>
-    </tr>
-  </thead>
-  <tbody>
+</div>
+<div role="tabpanel" class="tab-pane" id="commandtab">
+<a class="btn btn-success btn-sm cmdAction pull-right" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une commande}}</a><br/><br/>
+  <table id="table_cmd" class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th style="width : 70px;">{{#}}</th>
+        <th style="width : 300px;">{{Nom}}</th>
+        <th style="width : 150px;">{{Type}}</th>
+        <th >{{Requête}}</th>
+        <th style="width : 150px;">{{Options}}</th>
+        <th style="width : 150px;"></th>
+      </tr>
+    </thead>
+    <tbody>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<form class="form-horizontal">
-  <fieldset>
-    <div class="form-actions">
-      <a class="btn btn-danger eqLogicAction" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
-      <a class="btn btn-success eqLogicAction" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a>
-    </div>
-  </fieldset>
-</form>
+</div>
+</div>
 </div>
 </div>
 
