@@ -239,6 +239,7 @@ class camera extends eqLogic {
 			$on->setType('action');
 			$on->setLogicalId('on');
 			$on->setEqLogic_id($this->getId());
+			$on->setDisplay('generic_type', 'CAMERA_PRESET');
 			$on->setSubType('other');
 			$on->setDisplay('icon', '<i class="fa fa-check"></i>');
 			$on->setConfiguration('request', '-');
@@ -254,6 +255,7 @@ class camera extends eqLogic {
 			$off->setLogicalId('off');
 			$off->setEqLogic_id($this->getId());
 			$off->setSubType('other');
+			$off->setDisplay('generic_type', 'CAMERA_PRESET');
 			$off->setDisplay('icon', '<i class="fa fa-times"></i>');
 			$off->setConfiguration('request', '-');
 			$off->save();
