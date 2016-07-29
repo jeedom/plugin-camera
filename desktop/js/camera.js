@@ -126,3 +126,30 @@ $('#table_cmd tbody').on('change','.cmd .cmdAttr[data-l1key=type]',function(){
         cmd.find('.actionMode').show();
     }
 });
+
+
+$('#bt_removeAllCapture').on('click',function(){
+   bootbox.confirm('{{Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?}}', function (result) {
+    if (result) {
+     $.ajax({
+        type: "POST", 
+        url: "plugins/camera/core/ajax/camera.ajax.php", 
+        data: {
+            action: "removeAllSnapshot",
+            id : $('.eqLogicAttr[data-l1key=id]').value()
+        },
+        dataType: 'json',
+        error: function (request, status, error) {
+            handleAjaxError(request, status, error);
+        },
+        success: function (data) { 
+            if (data.state != 'ok') {
+                $('#div_alert').showAlert({message: data.result, level: 'danger'});
+                return;
+            }
+            $('#div_alert').showAlert({message: '{{Supression réussie}}', level: 'success'});
+        }
+    });
+ }
+});
+});

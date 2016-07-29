@@ -506,6 +506,28 @@ class camera extends eqLogic {
 		return $output_file;
 	}
 
+	public function removeAllSnapshot() {
+		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
+		if (!file_exists($output_dir)) {
+			if (!mkdir($output_dir, 0777, true)) {
+				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+			}
+		}
+		if (!is_writable($output_dir)) {
+			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+		}
+		$output_dir .= '/' . $this->getId();
+		if (!file_exists($output_dir)) {
+			if (!mkdir($output_dir, 0777, true)) {
+				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+			}
+		}
+		if (!is_writable($output_dir)) {
+			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+		}
+		shell_exec('sudo rm -rf ' . $output_dir);
+	}
+
 	public function export($_withCmd = true) {
 		if ($this->getConfiguration('device') != '') {
 			return array(

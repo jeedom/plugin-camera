@@ -177,6 +177,12 @@ foreach (object::all() as $object) {
             </div>
           </div>
         </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">{{Supprimer toutes les captures de la caméra}}</label>
+          <div class="col-sm-2">
+          <a class="btn btn-danger" id="bt_removeAllCapture"><i class="fa fa-trash"></i> {{Supprimer}}</a>
+          </div>
+        </div>
       </fieldset>
     </form>
   </div>
@@ -206,7 +212,7 @@ foreach (camera::devicesParameters() as $id => $info) {
 </div>
 </div>
 <div role="tabpanel" class="tab-pane" id="commandtab">
-<a class="btn btn-success btn-sm cmdAction pull-right" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une commande}}</a><br/><br/>
+  <a class="btn btn-success btn-sm cmdAction pull-right" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une commande}}</a><br/><br/>
   <table id="table_cmd" class="table table-bordered table-condensed">
     <thead>
       <tr>

@@ -26,38 +26,20 @@ try {
 
 	ajax::init();
 
-	if (init('action') == 'uploadConfCam') {
-		$uploaddir = dirname(__FILE__) . '/../config';
-		if (!file_exists($uploaddir)) {
-			mkdir($uploaddir);
-		}
-		$uploaddir .= '/devices/';
-		if (!file_exists($uploaddir)) {
-			mkdir($uploaddir);
-		}
-		if (!file_exists($uploaddir)) {
-			throw new Exception(__('Répertoire d\'upload non trouvé : ', __FILE__) . $uploaddir);
-		}
-		if (!isset($_FILES['file'])) {
-			throw new Exception(__('Aucun fichier trouvé. Vérifié parametre PHP (post size limit)', __FILE__));
-		}
-		if (filesize($_FILES['file']['tmp_name']) > 2000000) {
-			throw new Exception(__('Le fichier est trop gros (miximum 2mo)', __FILE__));
-		}
-		if (!is_json(file_get_contents($_FILES['file']['tmp_name']))) {
-			throw new Exception(__('Le fichier json est invalide', __FILE__));
-		}
-		if (!move_uploaded_file($_FILES['file']['tmp_name'], $uploaddir . '/' . $_FILES['file']['name'])) {
-			throw new Exception(__('Impossible de déplacer le fichier temporaire', __FILE__));
-		}
-		ajax::success();
-	}
-
 	if (init('action') == 'removeRecord') {
 		$file = init('file');
 		$file = str_replace('..', '', $file);
 		$record_dir = calculPath(config::byKey('recordDir', 'camera'));
 		shell_exec('rm -rf ' . $record_dir . '/' . $file);
+		ajax::success();
+	}
+
+	if (init('action') == 'removeAllSnapshot') {
+		$camera = camera::byId(init('id'));
+		if (!is_object($camera)) {
+			throw new Exception(__('Impossible de trouver la caméra : ' . init('id'), __FILE__));
+		}
+		$camera->removeAllSnapshot();
 		ajax::success();
 	}
 
