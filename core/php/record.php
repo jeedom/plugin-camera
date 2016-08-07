@@ -65,8 +65,16 @@ function sendSnap($_files, $_camera) {
 	}
 	$options = array();
 	$options['files'] = $_files;
-	$options['title'] = __('Alerte sur la camera : ', __FILE__) . $_camera->getName();
-	$options['message'] = __('Alerte sur la camera : ', __FILE__) . $_camera->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s');
+	if (null !== init('title') && init('title') != ''){
+		$options['title'] = init('title');
+	} else {
+		$options['title'] = __('Alerte sur la camera : ', __FILE__) . $_camera->getName();
+	}
+	if (null !== init('message') && init('message') != ''){
+		$options['message'] = init('message');
+	} else {
+		$options['message'] = __('Alerte sur la camera : ', __FILE__) . $_camera->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s');
+	}
 	$cmds = explode('&&', init('sendTo'));
 	foreach ($cmds as $id) {
 		$cmd = cmd::byId(str_replace('#', '', $id));
