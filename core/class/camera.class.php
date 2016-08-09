@@ -441,11 +441,18 @@ class camera extends eqLogic {
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
 		$output_dir .= '/' . $this->getId();
 		$output_file = '';
+		$start = '';
 		if (file_exists($output_dir.'/movie_temp')) {
 			$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.mp4';
-			shell_exec('avconv -r 1 -i ' .$output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -qscale 2 ' . $output_file);
+			$files = scandir ($output_dir.'/movie_temp');
+			if (count($files)>1){
+				$first_number = substr($files[2],0,6);
+				$start = '-start_number ' . $first_number . ' ';
+			}
+			shell_exec('avconv -r 1 ' . $start . ' -i ' .$output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -qscale 2 ' . $output_file);
 			shell_exec('sudo rm ' .$output_dir . '/movie_temp/*');
 			shell_exec('sudo rm -R ' .$output_dir . '/movie_temp');
+			log::add('camera','debug','avconv -r 1 ' . $start . ' -i ' .$output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -qscale 2 ' . $output_file);
 			return $output_file;
 		}
 		return $output_file;
