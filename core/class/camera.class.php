@@ -441,7 +441,7 @@ class camera extends eqLogic {
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
 		$output_dir .= '/' . $this->getId();
 		$output_file = '';
-		if (!file_exists($output_dir.'/movie_temp')) {
+		if (file_exists($output_dir.'/movie_temp')) {
 			$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.mp4';
 			shell_exec('avconv -r 1 -i ' .$output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -qscale 2 ' . $output_file);
 			shell_exec('sudo rm ' .$output_dir . '/movie_temp/*');
