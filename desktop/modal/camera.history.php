@@ -15,6 +15,10 @@ if ($camera->getEqType_name() != 'camera') {
 $dir = calculPath(config::byKey('recordDir', 'camera')) . '/' . $camera->getId();
 $files = array();
 foreach (ls($dir, '*') as $file) {
+	log::add('camera','error',$file);
+	if ($file == 'movie_temp/') {
+		continue;
+	}
 	$date = explode('_', str_replace('.jpg', '', $file));
 	if (count($date) > 2) {
 		$time = $date[2];
