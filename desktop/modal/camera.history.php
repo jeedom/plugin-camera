@@ -39,13 +39,15 @@ krsort($files);
 <div id='div_cameraRecordAlert' style="display: none;"></div>
 <?php
 echo '<a class="btn btn-danger bt_removeCameraFile pull-right" data-all="1" data-filename="' . $camera->getId() . '/*"><i class="fa fa-trash-o"></i> {{Tout supprimer}}</a>';
+echo '<a class="btn btn-success  pull-right" href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/*') .'" ><i class="fa fa-download"></i> {{Tout télécharger}}</a>';
 ?>
 <?php
 foreach ($files as $date => &$file) {
+	$cameraName =  str_replace(' ', '-', $camera->getName());
 	echo '<div class="div_dayContainer">';
 	echo '<legend>';
-	echo '<a class="btn btn-xs btn-danger bt_removeCameraFile" data-day="1" data-filename="' . $camera->getId() . '/' . $date . '*"><i class="fa fa-trash-o"></i> {{Supprimer}}</a> ';
-	echo '<a class="btn btn-xs btn-success"  href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $date . '*') . '" ><i class="fa fa-download"></i> {{Télécharger}}</a> ';
+	echo '<a class="btn btn-xs btn-danger bt_removeCameraFile" data-day="1" data-filename="' . $camera->getId() . '/' . $cameraName . '_' . $date . '*"><i class="fa fa-trash-o"></i> {{Supprimer}}</a> ';
+	echo '<a class="btn btn-xs btn-success"  href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $cameraName . '_' . $date . '*') . '" ><i class="fa fa-download"></i> {{Télécharger}}</a> ';
 	echo $date;
 	echo ' <a class="btn btn-xs btn-default toggleList"><i class="fa fa-chevron-down"></i></a> ';
 	echo '</legend>';
@@ -110,7 +112,9 @@ Your browser does not support the video tag.
                 return;
             }
             card.remove();
-            $('.cameraThumbnailContainer').packery({gutter : 5});
+			$(".cameraThumbnailContainer").slideToggle(1);
+			$('.cameraThumbnailContainer').packery({gutter : 5});
+			$(".cameraThumbnailContainer").slideToggle(1);
         }
     });
     });

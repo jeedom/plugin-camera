@@ -30,7 +30,11 @@ try {
 		$file = init('file');
 		$file = str_replace('..', '', $file);
 		$record_dir = calculPath(config::byKey('recordDir', 'camera'));
+		
+		log::add('camera','error',print_r($file,true));
+		log::add('camera','error',print_r($record_dir,true));
 		shell_exec('rm -rf ' . $record_dir . '/' . $file);
+		log::add('camera','error','rm -rf ' . $record_dir . '/' . $file);
 		ajax::success();
 	}
 
