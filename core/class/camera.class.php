@@ -440,9 +440,14 @@ class camera extends eqLogic {
 	public function convertMovie(){
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
 		$output_dir .= '/' . $this->getId();
-		$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.mp4';
-		shell_exec('avconv -framerate 1 -i ' .$output_dir . '/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p ' . $output_file);
-		shell_exec('sudo rm ' .$output_dir . '/*' . str_replace(' ', '-', $this->getName()) . '.jpg');
+		$output_file = '';
+		if (!file_exists($output_dir.'/movie_temp')) {
+			$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.mp4';
+			shell_exec('avconv -r 1 -i ' .$output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -qscale 2 ' . $output_file);
+			shell_exec('sudo rm ' .$output_dir . '/movie_temp/*');
+			shell_exec('sudo rm -R ' .$output_dir . '/movie_temp');
+			return $output_file;
+		}
 		return $output_file;
 	}
 
@@ -512,6 +517,12 @@ class camera extends eqLogic {
 			throw new Exception(__('Le fichier est vide : ', __FILE__) . $output_dir);
 		}
 		if ($_forVideo == 1) {
+			$output_dir .= '/movie_temp';
+			if (!file_exists($output_dir)) {
+				if (!mkdir($output_dir, 0777, true)) {
+					throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+				}
+			}
 			$number = str_pad($_number,6,'0', STR_PAD_LEFT);
 			$output_file = $output_dir . '/' . $number . '.' . str_replace(' ', '-', $this->getName()) . '.jpg';
 		} else {
@@ -689,7 +700,6 @@ class cameraCmd extends cmd {
 			if ($eqLogic->getConfiguration('preferVideo',0) == 1){
 				$_options['slider'] .= ' movie=1';
 			}
-			log::add('camera','error',print_r($_options['slider'],true));
 			$eqLogic->recordCam($_options['slider']);
 			return true;
 		}
