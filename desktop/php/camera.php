@@ -163,6 +163,12 @@ foreach (object::all() as $object) {
                 <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="preferVideo" />
               </div>
             </div>
+			<div class="form-group">
+              <label class="col-sm-3 control-label">{{Nombre d'images par seconde de la vidéo}}</label>
+              <div class="col-sm-2">
+                <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="videoFramerate" />
+              </div>
+            </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">{{Commande ON}}</label>
               <div class="col-sm-4">
