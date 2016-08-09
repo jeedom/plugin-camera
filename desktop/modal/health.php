@@ -31,6 +31,7 @@ $eqLogics = camera::byType('camera');
 			<th>{{Ip}}</th>
 			<th>{{Protocole}}</th>
 			<th>{{Modèle}}</th>
+			<th>{{Vidéo}}</th>
 			<th>{{Date création}}</th>
 		</tr>
 	</thead>
@@ -52,6 +53,12 @@ foreach ($eqLogics as $eqLogic) {
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('ip') . '</span></td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . ucfirst($eqLogic->getConfiguration('protocole')) . '</span></td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . ucfirst($eqLogic->getConfiguration('device')) . '</span></td>';
+	if ($eqLogic->getConfiguration('preferVideo') == 1) {
+		$video = '<span class="label label-success" style="font-size : 1em; cursor : default;">{{OUI}}</span>';
+	} else {
+		$video = '<span class="label label-warning" style="font-size : 1em; cursor : default;">{{NON}}</span>';
+	}
+	echo '<td>' . $video . '</td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('createtime') . '</span></td></tr>';
 }
 ?>
