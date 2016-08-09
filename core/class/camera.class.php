@@ -452,7 +452,7 @@ class camera extends eqLogic {
 			shell_exec('avconv -r 1 ' . $start . ' -i ' .$output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -qscale 2 ' . $output_file);
 			shell_exec('sudo rm ' .$output_dir . '/movie_temp/*');
 			shell_exec('sudo rm -R ' .$output_dir . '/movie_temp');
-			log::add('camera','debug','avconv -r 1 ' . $start . ' -i ' .$output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -qscale 2 ' . $output_file);
+			log::add('camera','debug','avconv -framerate 1 ' . $start . ' -i ' .$output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -qscale 2 ' . $output_file);
 			return $output_file;
 		}
 		return $output_file;
