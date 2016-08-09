@@ -433,7 +433,17 @@ class camera extends eqLogic {
 			$recordState = $this->getCmd(null, 'recordState')->event(0);
 			$this->refreshWidget();
 		}
+		$this->convertMovie();
 		return true;
+	}
+	
+	public function convertMovie(){
+		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
+		$output_dir .= '/' . $this->getId();
+		$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.mp4';
+		shell_exec('avconv -framerate 1 -i ' .$output_dir . '/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p ' . $output_file);
+		shell_exec('sudo rm ' .$output_dir . '/*' . str_replace(' ', '-', $this->getName()) . '.jpg');
+		return $output_file;
 	}
 
 	public function stopCam() {
@@ -478,7 +488,7 @@ class camera extends eqLogic {
 		return $data;
 	}
 
-	public function takeSnapshot() {
+	public function takeSnapshot($_forVideo = 0,$_number = 0) {
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
@@ -501,7 +511,12 @@ class camera extends eqLogic {
 		if (empty($snapshot)) {
 			throw new Exception(__('Le fichier est vide : ', __FILE__) . $output_dir);
 		}
-		$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.jpg';
+		if ($_forVideo == 1) {
+			$number = str_pad($_number,6,'0', STR_PAD_LEFT);
+			$output_file = $output_dir . '/' . $number . '.' . str_replace(' ', '-', $this->getName()) . '.jpg';
+		} else {
+			$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.jpg';
+		}
 		file_put_contents($output_file, $snapshot);
 		return $output_file;
 	}
@@ -671,6 +686,10 @@ class cameraCmd extends cmd {
 		}
 		$eqLogic = $this->getEqLogic();
 		if ($this->getLogicalId() == 'recordCmd') {
+			if ($eqLogic->getConfiguration('preferVideo',0) == 1){
+				$_options['slider'] .= ' movie=1';
+			}
+			log::add('camera','error',print_r($_options['slider'],true));
 			$eqLogic->recordCam($_options['slider']);
 			return true;
 		}

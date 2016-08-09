@@ -95,6 +95,7 @@ $wait = 0;
 $delay = 1;
 $i = 1;
 $sendPacket = -1;
+$isMovie == 0;
 
 if (is_numeric(init('nbSnap')) && init('nbSnap') > 0) {
 	$nbSnap = init('nbSnap');
@@ -107,6 +108,9 @@ if (is_numeric(init('delay')) && init('delay') > 0) {
 }
 if (is_numeric(init('sendPacket')) && init('sendPacket') > 0) {
 	$sendPacket = init('sendPacket');
+}
+if (null !== init('movie') && init('movie') == 1) {
+	$isMovie = 1;
 }
 
 $recordState->event(1);
@@ -121,7 +125,11 @@ while (true) {
 	$cycleStartTime = getmicrotime();
 	$i++;
 	try {
-		$files[] = $camera->takeSnapshot();
+		if ($isMovie == 1){
+			$files[] = $camera->takeSnapshot($_forVideo = 1,$_number = $i);
+		} else {
+			$files[] = $camera->takeSnapshot();
+		}
 	} catch (Exception $e) {
 
 	}
@@ -132,7 +140,13 @@ while (true) {
 		break;
 	}
 	if ($sendPacket > 1 && count($files) >= $sendPacket) {
-		sendSnap($files, $camera);
+		if ($isMovie == 1){
+			$files = array();
+			$files[] = $camera->convertMovie();
+			sendSnap($files, $camera);
+		} else {
+			sendSnap($files, $camera);
+		}
 		$files = array();
 	}
 	$cycleDuration = getmicrotime() - $cycleStartTime;
@@ -147,7 +161,13 @@ while (true) {
 	}
 }
 if (count($files) > 0) {
-	sendSnap($files, $camera);
+	if ($isMovie == 1){
+		$files = array();
+		$files[] = $camera->convertMovie();
+		sendSnap($files, $camera);
+	} else {
+		sendSnap($files, $camera);
+	}
 }
 $recordState->event(0);
 $camera->refreshWidget();

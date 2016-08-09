@@ -51,7 +51,14 @@ foreach ($files as $date => &$file) {
 	foreach ($file as $time => $filename) {
 		echo '<div class="cameraDisplayCard" style="background-color: #e7e7e7;padding:5px;height:167px;">';
 		echo '<center>' . $time . '</center>';
+				if (strpos($filename,'.mp4')){
+					echo '<video class="displayVideo" width="160" height="100" controls data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer">
+  <source src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '">
+Your browser does not support the video tag.
+</video>';
+				}else{
 		echo '<center><img class="img-responsive cursor displayImage lazy" src="plugins/camera/core/img/no-image.png" data-original="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" width="150"/></center>';
+				}
 		echo '<center style="margin-top:5px;"><a href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" class="btn btn-success btn-xs" style="color : white"><i class="fa fa-download"></i></a>';
 		echo ' <a class="btn btn-danger bt_removeCameraFile btn-xs" style="color : white" data-filename="' . $camera->getId() . '/' . $filename . '"><i class="fa fa-trash-o"></i></a></center>';
 		echo '</div>';
@@ -65,6 +72,10 @@ foreach ($files as $date => &$file) {
     $('.displayImage').on('click', function() {
         $('#md_modal2').dialog({title: "Image"});
         $('#md_modal2').load('index.php?v=d&plugin=camera&modal=camera.displayImage&src='+ $(this).attr('src')).dialog('open');
+    });
+	$('.displayVideo').on('click', function() {
+        $('#md_modal2').dialog({title: "Vidéo"});
+        $('#md_modal2').load('index.php?v=d&plugin=camera&modal=camera.displayVideo&src='+ $(this).attr('data-src')).dialog('open');
     });
     $('.bt_removeCameraFile').on('click', function() {
         var filename = $(this).attr('data-filename');
