@@ -32,16 +32,20 @@ $eqLogics = camera::byType('camera');
 			<th>{{Protocole}}</th>
 			<th>{{Modèle}}</th>
 			<th>{{Vidéo}}</th>
+			<th>{{Rafraichissement}}</th>
+			<th>{{Zoom}}</th>
+			<th>{{Max Enregistrement}}</th>
 			<th>{{Date création}}</th>
 		</tr>
 	</thead>
 	<tbody>
 	 <?php
 foreach ($eqLogics as $eqLogic) {
+	$opacity = ($eqLogic->getIsEnable()) ? '' : jeedom::getConfiguration('eqLogic:style:noactive');
 	if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg')) {
-		$img = '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg" height="65" width="55" />';
+		$img = '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg" height="65" width="55" style="'. $opacity .'"/>';
 	} else {
-		$img = '<img class="lazy" src="plugins/camera/doc/images/camera_icon.png" height="65" width="55" />';
+		$img = '<img class="lazy" src="plugins/camera/doc/images/camera_icon.png" height="65" width="55" style="'. $opacity .'"/>';
 	}
 	echo '<tr><td>'.$img.'</td><td><a href="' . $eqLogic->getLinkToConfiguration() . '" style="text-decoration: none;">' . $eqLogic->getHumanName(true) . '</a></td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getId() . '</span></td>';
@@ -59,6 +63,9 @@ foreach ($eqLogics as $eqLogic) {
 		$video = '<span class="label label-warning" style="font-size : 1em; cursor : default;">{{NON}}</span>';
 	}
 	echo '<td>' . $video . '</td>';
+	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('refreshDelaySlow') . '/s</span></td>';
+	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('refreshDelayFast') . '/s</span></td>';
+	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('maxReccordTime') . 's</span></td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('createtime') . '</span></td></tr>';
 }
 ?>
