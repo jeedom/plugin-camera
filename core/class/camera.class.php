@@ -523,6 +523,9 @@ class camera extends eqLogic {
 					throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
 				}
 			}
+			if ($_number == 2){
+				shell_exec('sudo rm ' .$output_dir . '/*');
+			}
 			$number = str_pad($_number,6,'0', STR_PAD_LEFT);
 			$output_file = $output_dir . '/' . $number . '.' . str_replace(' ', '-', $this->getName()) . '.jpg';
 		} else {
