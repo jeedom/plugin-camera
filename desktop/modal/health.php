@@ -32,6 +32,7 @@ $eqLogics = camera::byType('camera');
 			<th>{{Protocole}}</th>
 			<th>{{Modèle}}</th>
 			<th>{{Vidéo}}</th>
+			<th>{{Framerate}}</th>
 			<th>{{Rafraichissement}}</th>
 			<th>{{Zoom}}</th>
 			<th>{{Max Enregistrement}}</th>
@@ -63,6 +64,17 @@ foreach ($eqLogics as $eqLogic) {
 		$video = '<span class="label label-warning" style="font-size : 1em; cursor : default;">{{NON}}</span>';
 	}
 	echo '<td>' . $video . '</td>';
+	$framerate = $eqLogic->getConfiguration('videoFramerate',1);
+	if ($framerate == 1) {
+		echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $framerate . '/s</span></td>';
+	} else if ($framerate <= 5) {
+		echo '<td><span class="label label-success" style="font-size : 1em; cursor : default;">' . $framerate . '/s</span></td>';
+	} else if ($framerate <= 10) {
+		echo '<td><span class="label label-warning" style="font-size : 1em; cursor : default;">' . $framerate . '/s</span></td>';
+	} else {
+		echo '<td><span class="label label-danger" style="font-size : 1em; cursor : default;">' . $framerate . '/s</span></td>';
+	}
+	
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('refreshDelaySlow') . '/s</span></td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('refreshDelayFast') . '/s</span></td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('maxReccordTime') . 's</span></td>';
