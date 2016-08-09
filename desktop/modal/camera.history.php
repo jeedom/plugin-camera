@@ -15,11 +15,10 @@ if ($camera->getEqType_name() != 'camera') {
 $dir = calculPath(config::byKey('recordDir', 'camera')) . '/' . $camera->getId();
 $files = array();
 foreach (ls($dir, '*') as $file) {
-	log::add('camera','error',$file);
 	if ($file == 'movie_temp/') {
 		continue;
 	}
-	$date = explode('_', str_replace('.jpg', '', $file));
+	$date = explode('_', str_replace('.mp4','',str_replace('.jpg', '', $file)));
 	if (count($date) > 2) {
 		$time = $date[2];
 		$date = $date[1];
@@ -53,8 +52,12 @@ foreach ($files as $date => &$file) {
 	echo '<div class="cameraThumbnailContainer">';
 	krsort($file);
 	foreach ($file as $time => $filename) {
+		$fontType = 'fa-camera';
+		if (strpos($filename,'.mp4')){
+			$fontType = 'fa-video-camera';
+		}
 		echo '<div class="cameraDisplayCard" style="background-color: #e7e7e7;padding:5px;height:167px;">';
-		echo '<center>' . $time . '</center>';
+		echo '<center><i class="fa ' . $fontType . ' pull-right"></i>  ' . $time . '</center>';
 				if (strpos($filename,'.mp4')){
 					echo '<video class="displayVideo" width="150" height="100" controls data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer">
   <source src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '">
@@ -112,8 +115,8 @@ Your browser does not support the video tag.
     });
     });
 
-    $(".cameraThumbnailContainer").slideToggle("slow");
-    $(".cameraThumbnailContainer").eq(0).slideToggle("slow");
+    $(".cameraThumbnailContainer").slideToggle(1);
+    $(".cameraThumbnailContainer").eq(0).slideToggle(1);
     $('.toggleList').on('click', function() {
         $(this).closest('.div_dayContainer').find(".cameraThumbnailContainer").slideToggle("slow");
     });
