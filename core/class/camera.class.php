@@ -570,7 +570,7 @@ class camera extends eqLogic {
 				}
 			}
 			if ($_number == 2) {
-				shell_exec('sudo rm ' . $output_dir . '/*');
+				shell_exec('sudo rm ' . $output_dir . '/* > /dev/null 2>&1');
 			}
 			$number = str_pad($_number, 6, '0', STR_PAD_LEFT);
 			$output_file = $output_dir . '/' . $number . '.' . str_replace(' ', '-', $this->getName()) . '.jpg';
