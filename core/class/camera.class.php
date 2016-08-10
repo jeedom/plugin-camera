@@ -444,9 +444,11 @@ class camera extends eqLogic {
 		if ($_background) {
 			$this->setCache('fileToSend', $_files);
 			$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/sendSnapshot.php id=' . $this->getId();
-			$cmd .= 'sendTo=' . init('sendTo');
-			$cmd .= 'title=' . init('title');
-			$cmd .= 'message=' . init('message');
+			$cmd .= ' sendTo=' . init('sendTo');
+			$cmd .= ' title=' . init('title');
+			$cmd .= ' message=' . init('message');
+			$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
+			shell_exec($cmd);
 			return;
 		}
 		$options = array();

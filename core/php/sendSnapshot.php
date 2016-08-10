@@ -49,6 +49,7 @@ if ($camera->getEqType_name() != 'camera') {
 $files = $camera->getCache('fileToSend');
 $camera->setCache('fileToSend', '');
 if (!is_array($files) || count($files) == 0) {
+	log::add('camera', 'error', __('[camera/sendsnapshot]No file found ', __FILE__) . print_r($files, true));
 	die();
 }
 $camera->sendSnap($files);
