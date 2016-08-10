@@ -110,7 +110,7 @@ $starttime = strtotime('now');
 while (true) {
 	$cycleStartTime = getmicrotime();
 	if ($totalSend > 1){
-		$part = ' ' . $nbSend . '/' . $totalSend;
+		$part = ' (' . $nbSend . '/' . $totalSend . ')';
 	}
 	$i++;
 	try {
