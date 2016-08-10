@@ -59,36 +59,6 @@ if ($camera->getEqType_name() != 'camera') {
 	die();
 }
 
-function sendSnap($_files, $_camera) {
-	if (init('sendTo') == '' || count($_files) == 0) {
-		return;
-	}
-	$options = array();
-	$options['files'] = $_files;
-	if (null !== init('title') && init('title') != ''){
-		$options['title'] = init('title');
-	} else {
-		$options['title'] = __('Alerte sur la camera : ', __FILE__) . $_camera->getName();
-	}
-	if (null !== init('message') && init('message') != ''){
-		$options['message'] = init('message');
-	} else {
-		$options['message'] = __('Alerte sur la camera : ', __FILE__) . $_camera->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s');
-	}
-	$cmds = explode('&&', init('sendTo'));
-	foreach ($cmds as $id) {
-		$cmd = cmd::byId(str_replace('#', '', $id));
-		if (!is_object($cmd)) {
-			continue;
-		}
-		try {
-			$cmd->execCmd($options);
-		} catch (Exception $e) {
-			log::add('camera', 'error', __('[camera/reccord] Erreur lors de l\'envoi des images : ', __FILE__) . $cmd->getHumanName() . ' => ' . log::exception($e));
-		}
-	}
-}
-
 $recordState = $camera->getCmd(null, 'recordState');
 $nbSnap = -1;
 $wait = 0;
@@ -129,10 +99,10 @@ while (true) {
 	$cycleStartTime = getmicrotime();
 	$i++;
 	try {
-		if ($isMovie == 1){
-			$files[] = $camera->takeSnapshot($_forVideo = 1,$_number = $i);
-			if ($i == 2 && $sendFirstSnap == 1){
-				sendSnap($files, $camera);
+		if ($isMovie == 1) {
+			$files[] = $camera->takeSnapshot($_forVideo = 1, $_number = $i);
+			if ($i == 2 && $sendFirstSnap == 1) {
+				$camera->sendSnap($files);
 			}
 		} else {
 			$files[] = $camera->takeSnapshot();
@@ -147,12 +117,12 @@ while (true) {
 		break;
 	}
 	if ($sendPacket > 1 && count($files) >= $sendPacket) {
-		if ($isMovie == 1){
+		if ($isMovie == 1) {
 			$files = array();
 			$files[] = $camera->convertMovie();
-			sendSnap($files, $camera);
+			$camera->sendSnap($files, true);
 		} else {
-			sendSnap($files, $camera);
+			$camera->sendSnap($files, true);
 		}
 		$files = array();
 	}
@@ -168,12 +138,12 @@ while (true) {
 	}
 }
 if (count($files) > 0) {
-	if ($isMovie == 1){
+	if ($isMovie == 1) {
 		$files = array();
 		$files[] = $camera->convertMovie();
-		sendSnap($files, $camera);
+		$camera->sendSnap($files);
 	} else {
-		sendSnap($files, $camera);
+		$camera->sendSnap($files);
 	}
 }
 $recordState->event(0);

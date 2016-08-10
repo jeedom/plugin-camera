@@ -436,23 +436,61 @@ class camera extends eqLogic {
 		$this->convertMovie();
 		return true;
 	}
-	
-	public function convertMovie(){
+
+	public function sendSnap($_files, $_background = false) {
+		if (init('sendTo') == '' || count($_files) == 0) {
+			return;
+		}
+		if ($_background) {
+			$this->setCache('fileToSend', $_files);
+			$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/sendSnapshot.php id=' . $this->getId();
+			$cmd .= 'sendTo=' . init('sendTo');
+			$cmd .= 'title=' . init('title');
+			$cmd .= 'message=' . init('message');
+			return;
+		}
+		$options = array();
+		$options['files'] = $_files;
+		if (null !== init('title') && init('title') != '') {
+			$options['title'] = init('title');
+		} else {
+			$options['title'] = __('Alerte sur la camera : ', __FILE__) . $this->getName();
+		}
+		if (null !== init('message') && init('message') != '') {
+			$options['message'] = init('message');
+		} else {
+			$options['message'] = __('Alerte sur la camera : ', __FILE__) . $this->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s');
+		}
+		$cmds = explode('&&', init('sendTo'));
+		foreach ($cmds as $id) {
+			$cmd = cmd::byId(str_replace('#', '', $id));
+			if (!is_object($cmd)) {
+				continue;
+			}
+			try {
+				$cmd->execCmd($options);
+			} catch (Exception $e) {
+				log::add('camera', 'error', __('[camera/sendSnap] Erreur lors de l\'envoi des images : ', __FILE__) . $cmd->getHumanName() . ' => ' . log::exception($e));
+			}
+		}
+	}
+
+	public function convertMovie() {
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
 		$output_dir .= '/' . $this->getId();
 		$output_file = '';
 		$start = '';
-		if (file_exists($output_dir.'/movie_temp')) {
+		if (file_exists($output_dir . '/movie_temp')) {
 			$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.mp4';
-			$files = scandir ($output_dir.'/movie_temp');
-			if (count($files)>1){
-				$first_number = substr($files[2],0,6);
+			$files = scandir($output_dir . '/movie_temp');
+			if (count($files) > 1) {
+				$first_number = substr($files[2], 0, 6);
 				$start = '-start_number ' . $first_number . ' ';
 			}
-			$framerate = $this->getConfiguration('videoFramerate',1);
-			shell_exec('avconv -framerate ' . $framerate . ' ' . $start . ' -f image2 -i ' .$output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg ' . $output_file);
-			shell_exec('sudo rm ' .$output_dir . '/movie_temp/*');
-			shell_exec('sudo rm -R ' .$output_dir . '/movie_temp');
+			$framerate = $this->getConfiguration('videoFramerate', 1);
+			shell_exec('avconv -framerate ' . $framerate . ' ' . $start . ' -f image2 -i ' . $output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg ' . $output_file);
+			shell_exec('sudo rm ' . $output_dir . '/movie_temp/*');
+			shell_exec('sudo rm -R ' . $output_dir . '/movie_temp');
 			return $output_file;
 		}
 		return $output_file;
@@ -500,7 +538,7 @@ class camera extends eqLogic {
 		return $data;
 	}
 
-	public function takeSnapshot($_forVideo = 0,$_number = 0) {
+	public function takeSnapshot($_forVideo = 0, $_number = 0) {
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
@@ -530,10 +568,10 @@ class camera extends eqLogic {
 					throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
 				}
 			}
-			if ($_number == 2){
-				shell_exec('sudo rm ' .$output_dir . '/*');
+			if ($_number == 2) {
+				shell_exec('sudo rm ' . $output_dir . '/*');
 			}
-			$number = str_pad($_number,6,'0', STR_PAD_LEFT);
+			$number = str_pad($_number, 6, '0', STR_PAD_LEFT);
 			$output_file = $output_dir . '/' . $number . '.' . str_replace(' ', '-', $this->getName()) . '.jpg';
 		} else {
 			$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.jpg';
@@ -707,7 +745,7 @@ class cameraCmd extends cmd {
 		}
 		$eqLogic = $this->getEqLogic();
 		if ($this->getLogicalId() == 'recordCmd') {
-			if ($eqLogic->getConfiguration('preferVideo',0) == 1){
+			if ($eqLogic->getConfiguration('preferVideo', 0) == 1) {
 				$_options['slider'] .= ' movie=1';
 			}
 			$eqLogic->recordCam($_options['slider']);
