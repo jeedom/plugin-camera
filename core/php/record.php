@@ -102,7 +102,7 @@ while (true) {
 		if ($isMovie == 1) {
 			$files[] = $camera->takeSnapshot($_forVideo = 1, $_number = $i);
 			if ($i == 2 && $sendFirstSnap == 1) {
-				$camera->sendSnap($files);
+				$camera->sendSnap($files, true);
 			}
 		} else {
 			$files[] = $camera->takeSnapshot();
