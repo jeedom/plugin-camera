@@ -437,7 +437,7 @@ class camera extends eqLogic {
 		return true;
 	}
 
-	public function sendSnap($_files, $_background = false) {
+	public function sendSnap($_files, $_background = false, $_part = '') {
 		if (init('sendTo') == '' || count($_files) == 0) {
 			return;
 		}
@@ -446,7 +446,7 @@ class camera extends eqLogic {
 			$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/sendSnapshot.php id=' . $this->getId();
 			$cmd .= ' sendTo=' . init('sendTo');
 			$cmd .= ' title="' . init('title') . '"';
-			$cmd .= ' message="' . init('message') . '"';
+			$cmd .= ' message="' . init('message')  . $_part . '"';
 			$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
 			shell_exec($cmd);
 			return;
@@ -459,9 +459,9 @@ class camera extends eqLogic {
 			$options['title'] = __('Alerte sur la camera : ', __FILE__) . $this->getName();
 		}
 		if (null !== init('message') && init('message') != '') {
-			$options['message'] = init('message');
+			$options['message'] = init('message') . $_part ;
 		} else {
-			$options['message'] = __('Alerte sur la camera : ', __FILE__) . $this->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s');
+			$options['message'] = __('Alerte sur la camera : ', __FILE__) . $this->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s')  . $_part;
 		}
 		$cmds = explode('&&', init('sendTo'));
 		foreach ($cmds as $id) {
