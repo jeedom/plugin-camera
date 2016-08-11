@@ -15,7 +15,7 @@ if ($camera->getEqType_name() != 'camera') {
 $dir = calculPath(config::byKey('recordDir', 'camera')) . '/' . $camera->getId();
 $files = array();
 foreach (ls($dir, '*') as $file) {
-	if ($file == 'movie_temp/') {
+	if ($file == 'movie_temp/' || strpos($file,'.mkv')) {
 		continue;
 	}
 	$date = explode('_', str_replace('.mp4','',str_replace('.jpg', '', $file)));
@@ -42,6 +42,7 @@ echo '<a class="btn btn-danger bt_removeCameraFile pull-right" data-all="1" data
 echo '<a class="btn btn-success  pull-right" href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/*') .'" ><i class="fa fa-download"></i> {{Tout télécharger}}</a>';
 ?>
 <?php
+$i=0;
 foreach ($files as $date => &$file) {
 	$cameraName =  str_replace(' ', '-', $camera->getName());
 	echo '<div class="div_dayContainer">';
@@ -57,11 +58,17 @@ foreach ($files as $date => &$file) {
 		$fontType = 'fa-camera';
 		if (strpos($filename,'.mp4')){
 			$fontType = 'fa-video-camera';
+			$i++;
 		}
 		echo '<div class="cameraDisplayCard" style="background-color: #e7e7e7;padding:5px;height:167px;">';
 		echo '<center><i class="fa ' . $fontType . ' pull-right"></i>  ' . $time . '</center>';
 				if (strpos($filename,'.mp4')){
-					echo '<video class="displayVideo" width="150" height="100" controls autoplay loop data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer">
+					if ($i<=5){
+						$autoplay = ' autoplay';
+					} else {
+						$autoplay = '';
+					}
+					echo '<video class="displayVideo" width="150" height="100" controls'. $autoplay . ' loop data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer">
   <source src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '">
 Your browser does not support the video tag.
 </video>';
