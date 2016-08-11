@@ -492,7 +492,7 @@ class camera extends eqLogic {
 				$start = '-start_number ' . $first_number . ' ';
 			}
 			$framerate = $this->getConfiguration('videoFramerate', 1);
-			shell_exec('avconv -framerate ' . $framerate . ' ' . $start . ' -f image2 -i ' . $output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg ' . $output_file);
+			shell_exec('avconv -framerate ' . $framerate . ' ' . $start . ' -f image2 -i ' . $output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -pix_fmt yuv420p ' . $output_file);
 			shell_exec('sudo rm -rf ' . $output_dir . '/movie_temp');
 			return $output_file;
 		}
