@@ -433,7 +433,6 @@ class camera extends eqLogic {
 			$recordState = $this->getCmd(null, 'recordState')->event(0);
 			$this->refreshWidget();
 		}
-		$this->convertMovie();
 		return true;
 	}
 
@@ -449,7 +448,7 @@ class camera extends eqLogic {
 			$cmd .= ' message="' . init('message') . '"';
 			$cmd .= ' part="' . $_part . '"';
 			$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
-			log::add('camera','debug',$cmd);
+			log::add('camera', 'debug', $cmd);
 			shell_exec($cmd);
 			return;
 		}
@@ -461,9 +460,9 @@ class camera extends eqLogic {
 			$options['title'] = __('Alerte sur la camera : ', __FILE__) . $this->getName();
 		}
 		if (null !== init('message') && init('message') != '') {
-			$options['message'] = init('message') . $_part ;
+			$options['message'] = init('message') . $_part;
 		} else {
-			$options['message'] = __('Alerte sur la camera : ', __FILE__) . $this->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s')  . $_part;
+			$options['message'] = __('Alerte sur la camera : ', __FILE__) . $this->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s') . $_part;
 		}
 		$cmds = explode('&&', init('sendTo'));
 		foreach ($cmds as $id) {
