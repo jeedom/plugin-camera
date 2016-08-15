@@ -52,28 +52,5 @@ if (!is_array($files) || count($files) == 0) {
 	log::add('camera', 'error', __('[camera/sendsnapshot]No file found ', __FILE__) . print_r($files, true));
 	die();
 }
-$options = array();
-$options['files'] = $files;
-if (null !== init('title') && init('title') != '') {
-	$options['title'] = init('title');
-} else {
-	$options['title'] = __('Alerte sur la camera : ', __FILE__) . $this->getName();
-}
-if (null !== init('message') && init('message') != '') {
-	$options['message'] = init('message') . init('part');
-} else {
-	$options['message'] = __('Alerte sur la camera : ', __FILE__) . $this->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s')  . init('part');
-}
-$cmds = explode('&&', init('sendTo'));
-foreach ($cmds as $id) {
-	$cmd = cmd::byId(str_replace('#', '', $id));
-	if (!is_object($cmd)) {
-		continue;
-	}
-	try {
-		$cmd->execCmd($options);
-	} catch (Exception $e) {
-		log::add('camera', 'error', __('[camera/sendSnap] Erreur lors de l\'envoi des images : ', __FILE__) . $cmd->getHumanName() . ' => ' . log::exception($e));
-	}
-}
+$camera->sendSnap($files);
 ?>
