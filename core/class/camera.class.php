@@ -331,7 +331,7 @@ class camera extends eqLogic {
 		$replace['#url#'] = $this->getUrl($this->getConfiguration('urlStream'), true);
 		$replace['#refreshDelaySlow#'] = $this->getConfiguration('refreshDelaySlow', 1) * 1000;
 		$replace['#refreshDelayFast#'] = $this->getConfiguration('refreshDelayFast', 5) * 1000;
-		return template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera'));
+		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera')));
 	}
 
 	public function getUrl($_complement = '', $_flux = false) {
