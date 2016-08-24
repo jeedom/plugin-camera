@@ -1,0 +1,11 @@
+{
+	"id" : "camera",
+	"name" : "Caméra",
+	"description" : "Plugin pour afficher les caméras IP",
+	"licence" : "AGPL",
+	"author" : "Loïc",
+	"require" : "2.3",
+	"category" : "security",
+	"display" : "panel",
+	"mobile" : "panel"
+}

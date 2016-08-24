@@ -3,11 +3,9 @@
     <id>camera</id>
     <name>Camera</name>
     <description>Plugin pour afficher les caméras IP</description>
-    <icon>fa fa-video-camera</icon>
     <licence>AGPL</licence>
-    <author>Loïc Gevrey</author>
+    <author>Loïc</author>
     <require>2.2</require>
-    <version>2</version>
     <category>security</category>
     <display>panel</display>
     <mobile>panel</mobile>
