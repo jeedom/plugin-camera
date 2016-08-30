@@ -52,5 +52,5 @@ if (!is_array($files) || count($files) == 0) {
 	log::add('camera', 'error', __('[camera/sendsnapshot]No file found ', __FILE__) . print_r($files, true));
 	die();
 }
-$camera->sendSnap($files);
+$camera->sendSnap($files,false,init('part'));
 ?>
