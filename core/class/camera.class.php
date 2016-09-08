@@ -26,6 +26,25 @@ class camera extends eqLogic {
 
 	/*     * ***********************Methode static*************************** */
 
+	public static function dependancy_info() {
+		$return = array();
+		$return['log'] = 'camera_update';
+		$return['progress_file'] = '/tmp/dependancy_camera_in_progress';
+		if (exec('which avconv | wc -l') != 0) {
+			$return['state'] = 'ok';
+		} else {
+			$return['state'] = 'nok';
+		}
+		return $return;
+	}
+
+	public static function dependancy_install() {
+		log::remove('camera_update');
+		$cmd = 'sudo /bin/bash ' . dirname(__FILE__) . '/../../resources/install.sh';
+		$cmd .= ' >> ' . log::getPathToLog('camera_update') . ' 2>&1 &';
+		exec($cmd);
+	}
+
 	public static function event() {
 		$cmd = cameraCmd::byId(init('id'));
 		if (!is_object($cmd)) {

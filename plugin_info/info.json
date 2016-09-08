@@ -7,5 +7,6 @@
 	"require" : "2.3",
 	"category" : "security",
 	"display" : "panel",
-	"mobile" : "panel"
+	"mobile" : "panel",
+	"hasDependency" : true
 }

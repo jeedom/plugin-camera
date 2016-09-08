@@ -9,5 +9,6 @@
     <category>security</category>
     <display>panel</display>
     <mobile>panel</mobile>
+    <hasDependency>1</hasDependency>
 </info>
 
