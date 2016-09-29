@@ -1,0 +1,100 @@
+{
+    "plugins/camera/desktop/php/panel.php": {
+        "Liste objets": "Lista de objetos",
+        "Rechercher": "Buscar"
+    },
+    "plugins/camera/plugin_info/configuration.php": {
+        "Chemin des scripts utilisateur": "Ruta de los scripts de usuarios ",
+        "Chemin des enregistrements": "Ruta de las grabaciones",
+        "Taille maximum du dossier d'enregistrement (Mo)": "Tamaño máximo del registro de grabación (MB)"
+    },
+    "plugins/camera/desktop/php/camera.php": {
+        "Market": "Market",
+        "Ajouter une caméra": "Añadir una cámara",
+        "Rechercher": "Buscar",
+        "Mes caméras": "Mis cámaras",
+        "Général": "General",
+        "Nom de l'équipement caméra": "Nombre del dispositivo cámara",
+        "Objet parent": "Objeto padre",
+        "Aucun": "Ninguno",
+        "Gestion du proxy d'accès à la caméra :": "Administrar el proxy de acceso a la cámara:",
+        "IP": "IP",
+        "Port": "Puerto",
+        "IP Externe": "IP Externa",
+        "Port externe": "Puerto externo",
+        "Nom d'utilisateur": "Nombre de usuario",
+        "Mot de passe": "Contraseña",
+        "Configuration": "Configuración",
+        "Modèle de caméra": "Modelo de cámara",
+        "Partager": "Compartir",
+        "Envoyer une configuration": "Enviar mi configuración",
+        "Exporter": "Exportar",
+        "URL du flux": "URL del flujo",
+        "Protocole commande": "Protocolo de control",
+        "Protocole d'accès interne": "Protocolo de acceso interno",
+        "Protocole d'accès externe": "Protocolo de acceso externo",
+        "Méthode d'affichage": "Método de visualización",
+        "Fréquence (s)": "Frecuencia (s)",
+        "Caméra": "Cámara",
+        "Ajouter une commande": "Añadir un comando",
+        "Nom": "Nombre",
+        "Type": "Tipo",
+        "Requête/Durée enregistrement (secondes)": "Solicitud / tiempo de grabación (segundos)",
+        "Options": "Opciones",
+        "Supprimer": "Borrar",
+        "Sauvegarder": "Guardar",
+        "Activer": "Activar",
+        "Visible": "Visible",
+        "URL de capture": "URL de captura",
+        "Rafraichissement (s)": "Refresco (s)",
+        "Commande mail": "Comando para envío de correo",
+        "Commande mail pour l'envoi d'une capture": "Comando para el envío de una captura por correo",
+        "Nombre de captures": "Número de capturas",
+        "Nombre de capture": "Número de captura",
+        "Modèle": "Modelo",
+        "1 - Aucun": "1- Ninguno",
+        "#": "#",
+        "Requête": "Petición",
+        "Commande d'alerte (mail, slack...)": "Comando de alerta (correo electrónico, Slack, etc.)",
+        "Rotation de l'image": "Rotación de la imagen",
+        "En ° positif": "En ° positivo"
+    },
+    "plugins/camera/desktop/js/camera.js": {
+        "Partager sur le market": "Compartir en el Market",
+        "Vous devez d\\'abord séléctioner un équipement": "Primero debe seleccionar un dispositivo",
+        "Fichier ajouté avec succes. Vous devez rafraichir pour vous en servir": "Archivo añadido correctamente. Debe actualizar para utilizarlo",
+        "Stop commande": "Parar comando",
+        "Afficher": "Mostrar",
+        "Curl digest": "Curl digest",
+        "Tester": "Probar",
+        "URL de la commande": "URL del comando",
+        "URL de la commande de stop de mouvement (caméra motirisée)": "URL del comando para parar el movimiento (cámara motorizada)",
+        "Valeur retour d\\'état": "Valor de retorno de condición",
+        "Durée avant retour d\\'état (min)": "Tiempo para el retorno de condición (min)"
+    },
+    "plugins/camera/plugin_info/info.xml": {
+        "Plugin pour afficher les caméras IP": "Plugin para ver las cámaras IP",
+        "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)": "Advertencia: Para grabar debe tener instalado Ffmpeg o avconv (sudo apt-get install ffmpeg o sudo apt-get install libav-tools)"
+    },
+    "plugins/camera/desktop/js/panel.js": {
+        "Vous êtes en mode édition vous pouvez redimensionner les widgets": "Está en el modo de edición, puede cambiar el tamaño de los widgets"
+    },
+    "plugins/camera/core/class/camera.class.php": {
+        "Flux video": "Flujo de vídeo",
+        "Status enregistrement": "Estado grabación",
+        "Lancer enregistrement": "Iniciar la grabación",
+        "Durée enregistrement (s)": "Duración de la(s) grabación(es)",
+        "Arrêter enregistrement": "Parar la grabación",
+        "Capture": "Captura",
+        "Envoyer une capture": "Enviar una captura",
+        "L'adresse IP de la camera ne peut être vide": "La dirección IP de la cámara no puede estar vacía"
+    },
+    "plugins/camera/desktop/modal/camera.history.php": {
+        "Supprimer": "Borrar",
+        "Tout supprimer": "Borrar todo",
+        "Télécharger": "Descargar"
+    },
+    "plugins/camera/core/ajax/camera.ajax.php": {
+        "Aucune methode correspondante à : ": "Ningún método corresponde con:"
+    }
+}

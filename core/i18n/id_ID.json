@@ -1,0 +1,100 @@
+{
+    "plugins/camera/desktop/php/panel.php": {
+        "Liste objets": "Daftar objek",
+        "Rechercher": "Mencari"
+    },
+    "plugins/camera/plugin_info/configuration.php": {
+        "Chemin des scripts utilisateur": "Skrip pengguna jalan",
+        "Chemin des enregistrements": "Chemin des enregistrements",
+        "Taille maximum du dossier d'enregistrement (Mo)": "Taille maximum du dossier d'enregistrement (Mo)"
+    },
+    "plugins/camera/desktop/php/camera.php": {
+        "Market": "Market",
+        "Ajouter une caméra": "Ajouter une caméra",
+        "Rechercher": "Mencari",
+        "Mes caméras": "Mes caméras",
+        "Général": "Umum",
+        "Nom de l'équipement caméra": "Nama peralatan kamera",
+        "Objet parent": "Objek induk",
+        "Aucun": "Tak ada",
+        "Gestion du proxy d'accès à la caméra :": "Gestion du proxy d'accès à la caméra :",
+        "IP": "IP",
+        "Port": "Port",
+        "IP Externe": "IP Externe",
+        "Port externe": "Port externe",
+        "Nom d'utilisateur": "Nama pemakai",
+        "Mot de passe": "Password",
+        "Configuration": "Konfigurasi",
+        "Modèle de caméra": "Modèle de caméra",
+        "Partager": "Berbagi",
+        "Envoyer une configuration": "Envoyer une configuration",
+        "Exporter": "Ekspor",
+        "URL du flux": "URL du flux",
+        "Protocole commande": "Protocole commande",
+        "Protocole d'accès interne": "Protocole d'accès interne",
+        "Protocole d'accès externe": "Protocole d'accès externe",
+        "Méthode d'affichage": "Méthode d'affichage",
+        "Fréquence (s)": "Fréquence (s)",
+        "Caméra": "Caméra",
+        "Ajouter une commande": "Tambahan pesanan",
+        "Nom": "Nama",
+        "Type": "Jenis",
+        "Requête/Durée enregistrement (secondes)": "Requête/Durée enregistrement (secondes)",
+        "Options": "Pilihan",
+        "Supprimer": "Menghapus",
+        "Sauvegarder": "Menyimpan",
+        "Activer": "Mengaktifkan",
+        "Visible": "Terlihat",
+        "URL de capture": "URL de capture",
+        "Rafraichissement (s)": "Rafraichissement (s)",
+        "Commande mail": "Commande mail",
+        "Commande mail pour l'envoi d'une capture": "Commande mail pour l'envoi d'une capture",
+        "Nombre de captures": "Nombre de captures",
+        "Nombre de capture": "Nombre de capture",
+        "Modèle": "Model",
+        "1 - Aucun": "1 - Aucun",
+        "#": "#",
+        "Requête": "Query",
+        "Commande d'alerte (mail, slack...)": "Commande d'alerte (mail, slack...)",
+        "Rotation de l'image": "Rotation de l'image",
+        "En ° positif": "En ° positif"
+    },
+    "plugins/camera/desktop/js/camera.js": {
+        "Partager sur le market": "Pangsa di Market",
+        "Vous devez d\\'abord séléctioner un équipement": "Vous devez d\\'abord séléctioner un équipement",
+        "Fichier ajouté avec succes. Vous devez rafraichir pour vous en servir": "Fichier ajouté avec succes. Vous devez rafraichir pour vous en servir",
+        "Stop commande": "Stop commande",
+        "Afficher": "Memenitikan",
+        "Curl digest": "Curl digest",
+        "Tester": "Coba",
+        "URL de la commande": "URL de la commande",
+        "URL de la commande de stop de mouvement (caméra motirisée)": "URL de la commande de stop de mouvement (caméra motirisée)",
+        "Valeur retour d\\'état": "Nilai kondisi kembali ",
+        "Durée avant retour d\\'état (min)": "Waktu untuk kembali kondisi (min)"
+    },
+    "plugins/camera/plugin_info/info.xml": {
+        "Plugin pour afficher les caméras IP": "Plugin pour afficher les caméras IP",
+        "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)": "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)"
+    },
+    "plugins/camera/desktop/js/panel.js": {
+        "Vous êtes en mode édition vous pouvez redimensionner les widgets": "Vous êtes en mode édition vous pouvez redimensionner les widgets"
+    },
+    "plugins/camera/core/class/camera.class.php": {
+        "Flux video": "Flux video",
+        "Status enregistrement": "Status enregistrement",
+        "Lancer enregistrement": "Lancer enregistrement",
+        "Durée enregistrement (s)": "Durée enregistrement (s)",
+        "Arrêter enregistrement": "Arrêter enregistrement",
+        "Capture": "Capture",
+        "Envoyer une capture": "Envoyer une capture",
+        "L'adresse IP de la camera ne peut être vide": "L'adresse IP de la camera ne peut être vide"
+    },
+    "plugins/camera/desktop/modal/camera.history.php": {
+        "Supprimer": "Menghapus",
+        "Tout supprimer": "Tout supprimer",
+        "Télécharger": "Télécharger"
+    },
+    "plugins/camera/core/ajax/camera.ajax.php": {
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à :"
+    }
+}
