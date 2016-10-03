@@ -1,5 +1,5 @@
 <?php
-if (!isConnect())) {
+if (!isConnect()) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
 
