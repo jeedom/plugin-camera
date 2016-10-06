@@ -290,8 +290,12 @@ class camera extends eqLogic {
 		}
 	}
 
-	public function toHtml($_version = 'dashboard') {
-		$replace = $this->preToHtml($_version);
+	public function toHtml($_version = 'dashboard', $_fluxOnly = false) {
+		if ($_fluxOnly) {
+			$replace = $this->preToHtml($_version, array(), true);
+		} else {
+			$replace = $this->preToHtml($_version);
+		}
 		if (!is_array($replace)) {
 			return $replace;
 		}
@@ -299,58 +303,64 @@ class camera extends eqLogic {
 		$version = jeedom::versionAlias($_version);
 		$version2 = jeedom::versionAlias($_version, false);
 		$action = '';
-		foreach ($this->getCmd() as $cmd) {
-			if ($cmd->getIsVisible() == 1) {
-				if ($cmd->getLogicalId() != 'urlFlux' && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState' && $cmd->getConfiguration('stopCmd') != 1) {
-					if ($cmd->getDisplay('hideOn' . $version2) == 1) {
-						continue;
-					}
-					if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
-						$action .= '<br/>';
-					}
-					if ($cmd->getType() == 'action' && $cmd->getSubType() == 'other') {
-						$replaceCmd = array(
-							'#id#' => $cmd->getId(),
-							'#stopCmd#' => ($cmd->getConfiguration('stopCmdUrl') != '') ? 1 : 0,
-							'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
-							'#cmd-background-color#' => $replace['#cmd-background-color#'],
-						);
-						$action .= template_replace($replaceCmd, getTemplate('core', jeedom::versionAlias($version), 'camera_action', 'camera')) . ' ';
-					} else {
-						$action .= $cmd->toHtml($_version, $replace['#cmd-background-color#']);
-					}
+		if (!$_fluxOnly) {
+			foreach ($this->getCmd() as $cmd) {
+				if ($cmd->getIsVisible() == 1) {
+					if ($cmd->getLogicalId() != 'urlFlux' && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState' && $cmd->getConfiguration('stopCmd') != 1) {
+						if ($cmd->getDisplay('hideOn' . $version2) == 1) {
+							continue;
+						}
+						if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
+							$action .= '<br/>';
+						}
+						if ($cmd->getType() == 'action' && $cmd->getSubType() == 'other') {
+							$replaceCmd = array(
+								'#id#' => $cmd->getId(),
+								'#stopCmd#' => ($cmd->getConfiguration('stopCmdUrl') != '') ? 1 : 0,
+								'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
+								'#cmd-background-color#' => $replace['#cmd-background-color#'],
+							);
+							$action .= template_replace($replaceCmd, getTemplate('core', jeedom::versionAlias($version), 'camera_action', 'camera')) . ' ';
+						} else {
+							$action .= $cmd->toHtml($_version, $replace['#cmd-background-color#']);
+						}
 
-					if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
-						$action .= '<br/>';
+						if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
+							$action .= '<br/>';
+						}
 					}
 				}
 			}
+			$stopRecord = $this->getCmd(null, 'stopRecordCmd');
+			$record = $this->getCmd(null, 'recordCmd');
+			$recordState = $this->getCmd(null, 'recordState');
+			$replace_action = array(
+				'#record_id#' => $record->getId(),
+				'#stopRecord_id#' => $stopRecord->getId(),
+				'#recordState#' => $recordState->execCmd(),
+				'#recordState_id#' => $recordState->getId(),
+				'#cmd-background-color#' => $replace['#cmd-background-color#'],
+			);
+			$on = $this->getCmd(null, 'on');
+			$off = $this->getCmd(null, 'off');
+			if (is_object($on) && is_object($off)) {
+				$replace['#cmd_on_id#'] = $on->getId();
+				$replace['#cmd_off_id#'] = $off->getId();
+			} else {
+				$replace['#cmd_on_id#'] = '""';
+				$replace['#cmd_off_id#'] = '""';
+			}
+			$action .= template_replace($replace_action, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
 		}
-		$stopRecord = $this->getCmd(null, 'stopRecordCmd');
-		$record = $this->getCmd(null, 'recordCmd');
-		$recordState = $this->getCmd(null, 'recordState');
-		$replace_action = array(
-			'#record_id#' => $record->getId(),
-			'#stopRecord_id#' => $stopRecord->getId(),
-			'#recordState#' => $recordState->execCmd(),
-			'#recordState_id#' => $recordState->getId(),
-			'#cmd-background-color#' => $replace['#cmd-background-color#'],
-		);
-		$on = $this->getCmd(null, 'on');
-		$off = $this->getCmd(null, 'off');
-		if (is_object($on) && is_object($off)) {
-			$replace['#cmd_on_id#'] = $on->getId();
-			$replace['#cmd_off_id#'] = $off->getId();
-		} else {
-			$replace['#cmd_on_id#'] = '""';
-			$replace['#cmd_off_id#'] = '""';
-		}
-		$action .= template_replace($replace_action, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
 		$replace['#action#'] = $action;
 		$replace['#url#'] = $this->getUrl($this->getConfiguration('urlStream'), true);
 		$replace['#refreshDelaySlow#'] = $this->getConfiguration('refreshDelaySlow', 1) * 1000;
 		$replace['#refreshDelayFast#'] = $this->getConfiguration('refreshDelayFast', 5) * 1000;
-		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera')));
+		if (!$_fluxOnly) {
+			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera')));
+		} else {
+			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_flux_only', 'camera')));
+		}
 	}
 
 	public function getUrl($_complement = '', $_flux = false) {

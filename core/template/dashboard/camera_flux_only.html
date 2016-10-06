@@ -1,0 +1,36 @@
+<div class="camera" data-camera_uid="#uid#" data-camera_id="#id#" style="width: 100%;height: 100%">
+    <span class="directDisplay" style="width: 100%;height: 100%"><img src="plugins/camera/core/img/no-image-blanc.png" style="width: 100%;height: 100%" data-camera_id="#id#"/></span>
+    <script>
+        function refreshImgCam#id#(){
+            var start = Date.now();
+            var url = "#url#";
+            if(url.indexOf('?') > 0){
+                url += '&t='+(new Date()).getTime();
+            }else{
+                url += '?t='+(new Date()).getTime();
+            }
+            var img = new Image();
+            img.src = url;
+            img.onload = function() {
+             $('.camera[data-camera_id=#id#] .directDisplay img').attr('src',img.src);
+             var delay = #refreshDelayFast# - (Date.now() - start);
+             if(delay < 10){
+                delay = 10;
+            }
+            if($('.camera[data-camera_uid=#uid#]').html() != undefined){
+                timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
+            }
+        }
+        img.onerror = function() {
+           $('.camera[data-camera_id=#id#] .directDisplay img').attr('src','plugins/camera/core/img/no-image-blanc.png');
+           if($('.camera[data-camera_uid=#uid#]').html() != undefined){
+            timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
+        }
+    }
+}
+if (typeof timeoutCamera#id# !== "undefined") {
+    clearTimeout(timeoutCamera#id#);
+}
+refreshImgCam#id#();
+</script>
+</div>
