@@ -299,7 +299,6 @@ class camera extends eqLogic {
 		if (!is_array($replace)) {
 			return $replace;
 		}
-
 		$version = jeedom::versionAlias($_version);
 		$version2 = jeedom::versionAlias($_version, false);
 		$action = '';
