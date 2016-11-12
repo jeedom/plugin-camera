@@ -57,7 +57,20 @@
         "Requête": "Petición",
         "Commande d'alerte (mail, slack...)": "Comando de alerta (correo electrónico, Slack, etc.)",
         "Rotation de l'image": "Rotación de la imagen",
-        "En ° positif": "En ° positivo"
+        "En ° positif": "En ° positivo",
+        "Gestion": "Administración",
+        "Ajouter": "Añadir",
+        "Santé": "Salud",
+        "Equipement": "Dispositivos",
+        "Commandes": "Órdenes",
+        "Zoom (s)": "Zoom (s)",
+        "Durée maximum d'un enregistrement (s)": "Durée maximum d'un enregistrement (s)",
+        "Préférer une vidéo si enregistrement via le bouton": "Préférer une vidéo si enregistrement via le bouton",
+        "Nombre d'images par seconde de la vidéo": "Nombre d'images par seconde de la vidéo",
+        "Commande ON": "Orden ON",
+        "OFF": "OFF",
+        "Supprimer toutes les captures de la caméra": "Supprimer toutes les captures de la caméra",
+        "Configuration avancée": "Configuración avanzada"
     },
     "plugins/camera/desktop/js/camera.js": {
         "Partager sur le market": "Compartir en el Market",
@@ -70,7 +83,10 @@
         "URL de la commande": "URL del comando",
         "URL de la commande de stop de mouvement (caméra motirisée)": "URL del comando para parar el movimiento (cámara motorizada)",
         "Valeur retour d\\'état": "Valor de retorno de condición",
-        "Durée avant retour d\\'état (min)": "Tiempo para el retorno de condición (min)"
+        "Durée avant retour d\\'état (min)": "Tiempo para el retorno de condición (min)",
+        "Santé Caméras": "Salud de las cámaras",
+        "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?",
+        "Supression réussie": "Supression réussie"
     },
     "plugins/camera/plugin_info/info.xml": {
         "Plugin pour afficher les caméras IP": "Plugin para ver las cámaras IP",
@@ -87,14 +103,21 @@
         "Arrêter enregistrement": "Parar la grabación",
         "Capture": "Captura",
         "Envoyer une capture": "Enviar una captura",
-        "L'adresse IP de la camera ne peut être vide": "La dirección IP de la cámara no puede estar vacía"
+        "L'adresse IP de la camera ne peut être vide": "La dirección IP de la cámara no puede estar vacía",
+        "Alerte sur la camera : ": "Alerta de la cámara:",
+        " à ": "a",
+        "Le fichier est vide : ": "El archivo está vacío:"
     },
     "plugins/camera/desktop/modal/camera.history.php": {
         "Supprimer": "Borrar",
         "Tout supprimer": "Borrar todo",
-        "Télécharger": "Descargar"
+        "Télécharger": "Descargar",
+        "Tout télécharger": "Tout télécharger"
     },
     "plugins/camera/core/ajax/camera.ajax.php": {
         "Aucune methode correspondante à : ": "Ningún método corresponde con:"
+    },
+    "plugins/camera/plugin_info/info.json": {
+        "Plugin pour afficher les caméras IP": "Plugin para ver las cámaras IP"
     }
 }

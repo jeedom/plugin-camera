@@ -57,7 +57,20 @@
         "Requête": "Запрос",
         "Commande d'alerte (mail, slack...)": "Commande d'alerte (mail, slack...)",
         "Rotation de l'image": "Rotation de l'image",
-        "En ° positif": "En ° positif"
+        "En ° positif": "En ° positif",
+        "Gestion": "Управление",
+        "Ajouter": "Добавить",
+        "Santé": "Здоровье",
+        "Equipement": "Оборудование",
+        "Commandes": "Команды",
+        "Zoom (s)": "Zoom (s)",
+        "Durée maximum d'un enregistrement (s)": "Durée maximum d'un enregistrement (s)",
+        "Préférer une vidéo si enregistrement via le bouton": "Préférer une vidéo si enregistrement via le bouton",
+        "Nombre d'images par seconde de la vidéo": "Nombre d'images par seconde de la vidéo",
+        "Commande ON": "Commande ON",
+        "OFF": "OFF",
+        "Supprimer toutes les captures de la caméra": "Supprimer toutes les captures de la caméra",
+        "Configuration avancée": "Расширенные настройки"
     },
     "plugins/camera/desktop/js/camera.js": {
         "Partager sur le market": "Участвовать в Маркете",
@@ -70,7 +83,10 @@
         "URL de la commande": "URL de la commande",
         "URL de la commande de stop de mouvement (caméra motirisée)": "URL de la commande de stop de mouvement (caméra motirisée)",
         "Valeur retour d\\'état": "Состояние обратной связи",
-        "Durée avant retour d\\'état (min)": "Время обратной связи (мин)"
+        "Durée avant retour d\\'état (min)": "Время обратной связи (мин)",
+        "Santé Caméras": "Santé Caméras",
+        "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?",
+        "Supression réussie": "Supression réussie"
     },
     "plugins/camera/plugin_info/info.xml": {
         "Plugin pour afficher les caméras IP": "Плагин для просмотра IP камер ",
@@ -87,14 +103,21 @@
         "Arrêter enregistrement": "Остановка записи",
         "Capture": "Capture",
         "Envoyer une capture": "Envoyer une capture",
-        "L'adresse IP de la camera ne peut être vide": "IP-адрес камеры не может быть пустым"
+        "L'adresse IP de la camera ne peut être vide": "IP-адрес камеры не может быть пустым",
+        "Alerte sur la camera : ": "Alerte sur la camera :",
+        " à ": "à",
+        "Le fichier est vide : ": "Le fichier est vide :"
     },
     "plugins/camera/desktop/modal/camera.history.php": {
         "Supprimer": "Удалить",
         "Tout supprimer": "Tout supprimer",
-        "Télécharger": "Скачать"
+        "Télécharger": "Скачать",
+        "Tout télécharger": "Tout télécharger"
     },
     "plugins/camera/core/ajax/camera.ajax.php": {
         "Aucune methode correspondante à : ": "Нет соответствующего метода:"
+    },
+    "plugins/camera/plugin_info/info.json": {
+        "Plugin pour afficher les caméras IP": "Плагин для просмотра IP камер "
     }
 }
