@@ -1,4 +1,4 @@
-== Configuration du plugin
+== Plugin Konfiguration
 
 Après installation du plugin, il vous suffit de l’activer et c'est bon, cependant il y à quelques paramètres de configuration avancés : 
 
@@ -97,7 +97,7 @@ Si vous cliquez sur l'image de la camera vous obtenez celel-ci en plus grande av
 
 image::../images/camera13.PNG[]
 
-== Les panels
+== Panel
 
 Le plugin caméra mets aussi à disposition un panel qui vous permet de voir d'un seul coup toute vos caméras, il est accessible par Acceuil -> Caméra : 
 
