@@ -10,7 +10,7 @@ image::../images/camera1.PNG[]
 [IMPORTANT]
 Attention ses captures ne font pas partie du backup
 
-== Configuration des équipements
+== Geräte Konfiguration
 
 La configuration des équipements Caméra est accessible à partir du menu plugin :
 
