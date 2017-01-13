@@ -15,7 +15,7 @@
                 "isHistorized": "0",
                 
                 "configuration": {
-                    "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DopenInfraLed%261438440780159"
+                    "request": "\/cgi-bin\/CGIProxy.fcgi?usr=#username#&pwd=#password#&cmd=openInfraLed"
                 },
                 "display": {
                     "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
@@ -30,7 +30,7 @@
                 "isHistorized": "0",
                 
                 "configuration": {
-                    "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DcloseInfraLed%261438440854986"
+                    "request": "\/cgi-bin\/CGIProxy.fcgi?usr=#username#&pwd=#password#&cmd=closeInfraLed"
                 },
                 "display": {
                     "icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
