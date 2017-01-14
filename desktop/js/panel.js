@@ -26,8 +26,10 @@
       rowHeight: 80,
       gutter : 2,
     });
+    var itemElems =  container.find('.eqLogic-widget');
+    itemElems.draggable();
+    container.packery( 'bindUIDraggableEvents', itemElems );
   });
-
   $('#bt_editDashboardWidgetOrder').on('click',function(){
     if($(this).attr('data-mode') == 1){
       $.hideAlert();

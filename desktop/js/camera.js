@@ -48,31 +48,8 @@
     if (!isset(_cmd.configuration)) {
         _cmd.configuration = {};
     }
-    if (isset(_cmd.logicalId) && _cmd.logicalId == 'browseRecord') {
-        return;
-    }
-    if (isset(_cmd.logicalId) && _cmd.logicalId == 'recordState') {
-        return;
-    }
-    if (isset(_cmd.logicalId) && _cmd.logicalId == 'recordCmd') {
-        return;
-    }
-    if (isset(_cmd.logicalId) && _cmd.logicalId == 'stopRecordCmd') {
-        return;
-    }
-    if (isset(_cmd.logicalId) && _cmd.logicalId == 'takeSnapshot') {
-        return;
-    }
-    if (isset(_cmd.logicalId) && _cmd.logicalId == 'sendSnapshot') {
-        return;
-    }
-    if (isset(_cmd.logicalId) && _cmd.logicalId == 'urlFlux') {
-        return;
-    }
-    if (isset(_cmd.logicalId) && _cmd.logicalId == 'on') {
-        return;
-    }
-    if (isset(_cmd.logicalId) && _cmd.logicalId == 'off') {
+    if (isset(_cmd.logicalId) && 
+        (_cmd.logicalId == 'browseRecord' || _cmd.logicalId == 'recordState' || _cmd.logicalId == 'recordCmd' || _cmd.logicalId == 'stopRecordCmd' ||  _cmd.logicalId == 'takeSnapshot' || _cmd.logicalId == 'sendSnapshot' ||  _cmd.logicalId == 'urlFlux' || _cmd.logicalId == 'on' || _cmd.logicalId == 'off')) {
         return;
     }
     var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
@@ -96,10 +73,12 @@
     tr += '</td>';
     tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" style="margin-bottom : 5px;" placeholder="{{URL de la commande}}"/>';
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="stopCmdUrl" placeholder="{{URL de la commande de stop de mouvement (caméra motirisée)}}" />';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateValue" placeholder="{{Valeur retour d\'état}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;">';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateTime" placeholder="{{Durée avant retour d\'état (min)}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;">';
+    tr += '<input class="cmdAttr form-control input-sm" data-l1key="logicalId" />';
+    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateValue" placeholder="{{Valeur retour d\'état}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;" />';
+    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateTime" placeholder="{{Durée avant retour d\'état (min)}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;" />';
     tr += '<td>';
-    tr += '<span><label><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" checked/>{{Afficher}}</label></span>';
+    tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr expertModeVisible" data-l1key="display" data-l2key="invertBinary"/>{{Inverser}}</label></span> ';
+    tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" checked/>{{Afficher}}</label></span>';
     tr += '</div>';
     tr += '</td>';
     tr += '<td>';
@@ -121,6 +100,7 @@ $('#table_cmd tbody').on('change','.cmd .cmdAttr[data-l1key=type]',function(){
         cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').hide();
         cmd.find('.actionMode').hide();
     }else{
+         cmd.find('.cmdAttr[data-l1key=logicalId]').hide();
         cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').show();
         cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').show();
         cmd.find('.actionMode').show();

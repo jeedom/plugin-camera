@@ -23,8 +23,62 @@ class camera extends eqLogic {
 	/*     * *************************Attributs****************************** */
 
 	public static $_widgetPossibility = array('custom' => true);
+	private static $_eqLogics = null;
 
 	/*     * ***********************Methode static*************************** */
+
+	public static function deamon_info() {
+		$return = array();
+		$return['log'] = '';
+		$return['state'] = 'nok';
+		$cron = cron::byClassAndFunction('camera', 'pull');
+		if (is_object($cron) && $cron->running()) {
+			$return['state'] = 'ok';
+		}
+		$return['launchable'] = 'ok';
+		return $return;
+	}
+
+	public static function deamon_start() {
+		self::deamon_stop();
+		$deamon_info = self::deamon_info();
+		if ($deamon_info['launchable'] != 'ok') {
+			throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
+		}
+		$cron = cron::byClassAndFunction('camera', 'pull');
+		if (!is_object($cron)) {
+			throw new Exception(__('Tache cron introuvable', __FILE__));
+		}
+		$cron->run();
+	}
+
+	public static function deamon_stop() {
+		$cron = cron::byClassAndFunction('camera', 'pull');
+		if (!is_object($cron)) {
+			throw new Exception(__('Tache cron introuvable', __FILE__));
+		}
+		$cron->halt();
+	}
+
+	public function pull() {
+		if (self::$_eqLogics == null) {
+			self::$_eqLogics = self::byType('camera');
+		}
+		foreach (self::$_eqLogics as $eqLogic) {
+			if ($eqLogic->getIsEnable() == 0 || $eqLogic->getConfiguration('hasPullFunction', 0) == 0) {
+				continue;
+			}
+			try {
+				require_once dirname(__FILE__) . '/../config/devices/' . $eqLogic->getConfiguration('device') . '.php';
+				$function = str_replace('.', '_', $eqLogic->getConfiguration('device')) . '_update';
+				if (function_exists($function)) {
+					$function($eqLogic);
+				}
+			} catch (Exception $e) {
+
+			}
+		}
+	}
 
 	public static function dependancy_info() {
 		$return = array();
@@ -134,6 +188,11 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('maxReccordTime') == '') {
 			$this->setConfiguration('maxReccordTime', 600);
 		}
+		if (file_exists(dirname(__FILE__) . '/../config/devices/' . $this->getConfiguration('device') . '.php')) {
+			$this->setConfiguration('hasPullFunction', 1);
+		} else {
+			$this->setConfiguration('hasPullFunction', 0);
+		}
 	}
 
 	public function preUpdate() {
@@ -146,6 +205,7 @@ class camera extends eqLogic {
 	public function postSave() {
 		if ($this->getConfiguration('applyDevice') != $this->getConfiguration('device')) {
 			$this->applyModuleConfiguration();
+			self::deamon_start();
 		}
 		if ($this->getConfiguration('refreshDelay') == '') {
 			$this->setConfiguration('refreshDelay', 1);
@@ -302,6 +362,7 @@ class camera extends eqLogic {
 		$version = jeedom::versionAlias($_version);
 		$version2 = jeedom::versionAlias($_version, false);
 		$action = '';
+		$info = '';
 		if (!$_fluxOnly) {
 			foreach ($this->getCmd() as $cmd) {
 				if ($cmd->getIsVisible() == 1) {
@@ -321,7 +382,11 @@ class camera extends eqLogic {
 							);
 							$action .= template_replace($replaceCmd, getTemplate('core', jeedom::versionAlias($version), 'camera_action', 'camera')) . ' ';
 						} else {
-							$action .= $cmd->toHtml($_version, $replace['#cmd-background-color#']);
+							if ($cmd->getType() == 'info') {
+								$info .= $cmd->toHtml($_version, $replace['#cmd-background-color#']);
+							} else {
+								$action .= $cmd->toHtml($_version, $replace['#cmd-background-color#']);
+							}
 						}
 
 						if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
@@ -352,6 +417,7 @@ class camera extends eqLogic {
 			$action .= template_replace($replace_action, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
 		}
 		$replace['#action#'] = $action;
+		$replace['#info#'] = $info;
 		$replace['#url#'] = $this->getUrl($this->getConfiguration('urlStream'), true);
 		$replace['#refreshDelaySlow#'] = $this->getConfiguration('refreshDelaySlow', 1) * 1000;
 		$replace['#refreshDelayFast#'] = $this->getConfiguration('refreshDelayFast', 5) * 1000;

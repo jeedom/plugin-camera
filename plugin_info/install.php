@@ -18,10 +18,44 @@
 
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
+function camera_install() {
+	$cron = cron::byClassAndFunction('camera', 'pull');
+	if (!is_object($cron)) {
+		$cron = new cron();
+		$cron->setClass('camera');
+		$cron->setFunction('pull');
+		$cron->setEnable(1);
+		$cron->setDeamon(1);
+		$cron->setDeamonSleepTime(1);
+		$cron->setSchedule('* * * * *');
+		$cron->setTimeout(1440);
+		$cron->save();
+	}
+}
+
 function camera_update() {
-    foreach (camera::byType('camera') as $camera) {
-        $camera->save();
-    }
+	$cron = cron::byClassAndFunction('camera', 'pull');
+	if (!is_object($cron)) {
+		$cron = new cron();
+		$cron->setClass('camera');
+		$cron->setFunction('pull');
+		$cron->setEnable(1);
+		$cron->setDeamon(1);
+		$cron->setDeamonSleepTime(1);
+		$cron->setSchedule('* * * * *');
+		$cron->setTimeout(1440);
+		$cron->save();
+	}
+	foreach (camera::byType('camera') as $camera) {
+		$camera->save();
+	}
+}
+
+function camera_remove() {
+	$cron = cron::byClassAndFunction('camera', 'pull');
+	if (is_object($cron)) {
+		$cron->remove();
+	}
 }
 
 ?>
