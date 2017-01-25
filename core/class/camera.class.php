@@ -584,7 +584,7 @@ class camera extends eqLogic {
 			}
 			$framerate = $this->getConfiguration('videoFramerate', 1);
 			shell_exec('avconv -framerate ' . $framerate . ' ' . $start . ' -f image2 -i ' . $output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -pix_fmt yuv420p ' . $output_file);
-			shell_exec('sudo rm -rf ' . $output_dir . '/movie_temp');
+			shell_exec(system::getCmdSudo() . 'rm -rf ' . $output_dir . '/movie_temp');
 			return $output_file;
 		}
 		return $output_file;
@@ -663,7 +663,7 @@ class camera extends eqLogic {
 				}
 			}
 			if ($_number == 2) {
-				shell_exec('sudo rm ' . $output_dir . '/* > /dev/null 2>&1');
+				shell_exec(system::getCmdSudo() . 'rm ' . $output_dir . '/* > /dev/null 2>&1');
 			}
 			$number = str_pad($_number, 6, '0', STR_PAD_LEFT);
 			$output_file = $output_dir . '/' . $number . '.' . str_replace(' ', '-', $this->getName()) . '.jpg';
@@ -693,7 +693,7 @@ class camera extends eqLogic {
 		if (!is_writable($output_dir)) {
 			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
 		}
-		shell_exec('sudo rm -rf ' . $output_dir);
+		shell_exec(system::getCmdSudo() . 'rm -rf ' . $output_dir);
 	}
 
 	public function export($_withCmd = true) {
