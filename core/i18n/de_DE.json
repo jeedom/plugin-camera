@@ -112,7 +112,7 @@
         "Supprimer": "Löschen",
         "Tout supprimer": "alles Löschen",
         "Télécharger": "Herunterladen",
-        "Tout télécharger": "Tout télécharger"
+        "Tout télécharger": "Alles herunterladen "
     },
     "plugins/camera/core/ajax/camera.ajax.php": {
         "Aucune methode correspondante à : ": "Keine passenden Methode, um :"

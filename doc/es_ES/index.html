@@ -416,9 +416,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table des matières</div>
 <ul class="sectlevel1">
-<li><a href="#_configuration_du_plugin">1. Configuration du plugin</a></li>
-<li><a href="#_configuration_des_équipements">2. Configuration des équipements</a></li>
-<li><a href="#_le_widget">3. Le widget</a></li>
+<li><a href="#_configuration_del_plugin">1. Configuration del plugin</a></li>
+<li><a href="#_configuración_de_dispositivos">2. Configuración de dispositivos</a></li>
+<li><a href="#_el_widget">3. El widget</a></li>
 <li><a href="#_les_panels">4. Les panels</a></li>
 <li><a href="#_enregistrement_et_envoi_de_capture">5. Enregistrement et envoi de capture</a>
 <ul class="sectlevel2">
@@ -439,10 +439,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuration_du_plugin">1. Configuration du plugin</h2>
+<h2 id="_configuration_del_plugin">1. Configuration del plugin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Après installation du plugin, il vous suffit de l’activer et c&#8217;est bon, cependant il y à quelques paramètres de configuration avancés :</p>
+<p>Después de instalar el plugin, simplemente activarlo es suficiente, sin embargo, hay algunos ajustes de configuración avanzada:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -452,32 +452,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Chemin des enregistrements</strong> : indique le chemin ou Jeedom doit mettre les images qu&#8217;il capture des cameras (il est conseillé de ne pas y toucher)</p>
-</li>
+<p>directorio de registros *: indica la ruta de acceso donde Jeedom debe poner las imágenes que captan las cámaras (es recomendable no tocar)</p>
+<div class="ulist">
+<ul>
 <li>
-<p><strong>Taille maximum du dossier d&#8217;enregistrement (Mo)</strong> : donne la taille maximum autorisé pour le dossier ou les captures sont enregistrées (il est conseillé de ne pas y toucher). Si ce quotas est atteind Jeedom supprime les captures les plus veilles</p>
+<p><strong>Tamaño máximo del archivo de registro (MB)</strong> : Indica el tamaño máximo permitido para la carpeta o las capturas registradas (es recomendable no tocar). Si se sobrepasa esta cuota, Jeedom elimina las capturas más antiguas</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Attention ses captures ne font pas partie du backup
-</td>
-</tr>
-</table>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Atención las capturas no son parte de la copia de seguridad</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuration_des_équipements">2. Configuration des équipements</h2>
+<h2 id="_configuración_de_dispositivos">2. Configuración de dispositivos</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>La configuration des équipements Caméra est accessible à partir du menu plugin :</p>
+<p>La configuración de las cámaras es accesible desde el menu plugin:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -485,7 +480,7 @@ Attention ses captures ne font pas partie du backup
 </div>
 </div>
 <div class="paragraph">
-<p>Voilà à quoi ressemble la page du plugin Caméra (ici avec déjà 1 équipements) :</p>
+<p>Esta es la página del plugin cámara (aquí con 1 cámara instalada):</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -499,16 +494,16 @@ Attention ses captures ne font pas partie du backup
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Comme à beaucoup d’endroit sur Jeedom, mettre la souris tout à gauche permet de faire apparaître un menu d’accès rapide (vous pouvez à partir de votre profils le laisser toujours visible)
+Como en muchos apartados en Jeedom, llevar el ratón totalmente a la izquierda le permite acceder al menú de acceso rápido (desde sus perfiles se puede dejar siempre visible)
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Vous avez un bouton de création d’équipement Caméra et vos équipements, avec la photos de ceux-ci si disponible</p>
+<p>Tienes un botón de creación de dispositivos y sus cámaras actuales, con sus respectivas imágenes si están disponibles.</p>
 </div>
 <div class="paragraph">
-<p>Une fois que vous cliquez sur l’un des équipements caméra, vous obtenez :</p>
+<p>Haciendo clic en uno de los equipos de cámara, se obtiene:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -518,102 +513,99 @@ Comme à beaucoup d’endroit sur Jeedom, mettre la souris tout à gauche permet
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Nom de l’équipement Caméra</strong> : nom de votre équipement caméra</p>
+<p>Nombre del dispositivo cámara *: nombre de su dispositivo cámara</p>
 </li>
 <li>
-<p><strong>Objet parent</strong> : indique l’objet parent auquel appartient l’équipement</p>
+<p>Objeto padre *: indica el objeto padre al que pertenece el dispositivo</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Activar</strong> : permite activar su dispositivo</p>
 </li>
 <li>
-<p><strong>Activer</strong> : permet de rendre votre équipement actif</p>
+<p><strong>Visible</strong> : lo hace visible en el Dashboard</p>
 </li>
 <li>
-<p><strong>Visible</strong> : le rend visible sur le dashboard</p>
+<p><strong>IP</strong> : IP local de la cámara</p>
 </li>
 <li>
-<p><strong>IP</strong> : l&#8217;IP local de votre caméra</p>
+<p><strong>Puerto</strong> : El puerto con el que conectar a la cámara</p>
 </li>
 <li>
-<p><strong>Port</strong> : le port pour sur lequel joindre la caméra</p>
+<p><strong>Protocolo</strong> : el protocolo de comunicación de la camera (http o https)</p>
 </li>
 <li>
-<p><strong>Protocole</strong> : le protocole de communication de votre camera (http ou https)</p>
+<p><strong>Usuario</strong> : nombre de usuario para conectar a la cámara (si es necesario)</p>
 </li>
 <li>
-<p><strong>Nom d&#8217;utilisateur</strong> : nom d&#8217;utilisateur pour se connecter à la caméra (si nécessaire)</p>
+<p><strong>Contraseña</strong> : contraseña para conectar a la cámara (si es necesario)</p>
 </li>
 <li>
-<p><strong>Mot de passe</strong> : mot de passe pour se connecter à la caméra (si nécessaire)</p>
+<p><strong>URL de captura</strong> : URL del "snapshot" de la cámara. Cambia en función de las cámaras. Cuidado de no poner una url de fujo directo puede colgar Jeedom. Puede utilizar las etiquetas #username# y #password#, que será sustituido automáticamente por el nombre de usuario y la contraseña cuando se use este comando</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><strong>URL de capture</strong> : URL qui de "snapshot" de la caméra. Change en fonction des caméras. Attention à ne pas mettre une url de flux sous peine de planter Jeedom. Vous pouvez utiliser les tags #username# et #password#, qui seront automatiquement remplacé par le nom d&#8217;utilisateur et le mot de passe lors de l&#8217;utilisateur de cette commande</p>
+<p>frecuencia de refresco *: Frecuencia de refresco de las capturas en el widget . Atención a menor refresco mayor carga de trabajo para Jeedom.</p>
 </li>
 <li>
-<p><strong>Délai de rafraichissement</strong> : Délai de rafraichissement des captures sur le widget. Attention plus le délai est faible plus la charge sur Jeedom augmente.</p>
+<p>Enviar correo *: permite especificar un comando de correo que se utilizará para enviar capturas (comando "Enviar una captura"), puedes especificar varias direcciones separadas por &amp;.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>*Número de captura(s) *: establece el número de capturas a enviar (las capturas se toman cada segundo)</p>
 </li>
 <li>
-<p><strong>Commande mail</strong> : permet de spécifier une commande mail qui sera utiliser pour l&#8217;envoi de capture (commande "Envoyer une capture"), vous pouvez en spécifier plusieurs séparées par des &amp;&amp;</p>
+<p><strong>Modelo</strong> : permite elegir el modelo de la cámara, Atención cambiar esto supone sobreescribir  los parametros de configuración actuales.</p>
 </li>
-<li>
-<p><strong>Nombre de capture(s)</strong> : défini le nombre de captures à envoyer (les captures sont prises toute les secondes)</p>
-</li>
-<li>
-<p><strong>Modèle</strong> : permet de choisir le modele de sa camera, attention si vous changer cela écrasera vos paramètres de configuration</p>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>En dessous vous retrouvez la liste des commandes :</p>
+<p>A continuación encontrará la lista de ordenes :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>ID de la commande (utiliser avec les commandes de type info pour par exemple que la camera remonte l&#8217;information de mouvement à Jeedom par l&#8217;api, voir plus bas)</p>
+<p>ID de la orden (para uso con ordenes de tipo info, por ejemplo que la cámara devuelve la información de movimiento a Jeedom a través de la api, vea abajo)
+Nombre de la orden, con la posibilidad de poner un icono en el lugar (para eliminar doble clic en el icono en cuestión)</p>
 </li>
 <li>
-<p>Nom de la commande avec la possibilité de mettre une icone à la place (pour la supprimer il faut double cliquer sur l&#8217;icone en question)</p>
+<p>Tipo y subtipos de ordenes</p>
 </li>
 <li>
-<p>Type et sous type de la commande</p>
+<p>Solicitud para enviar a la cámara para hacer una acción (cambiar a modo night, ptz,&#8230;&#8203;). Puede utilizar las etiquetas #username# y #password#, que será sustituido automáticamente por el nombre de usuario y la contraseña cuando se use este comando</p>
 </li>
 <li>
-<p>Requete à envoyer à la caméra pour faire une action (passage en mode nuit, ptz&#8230;&#8203;).Vous pouvez utiliser les tags #username# et #password#, qui seront automatiquement remplacé par le nom d&#8217;utilisateur et le mot de passe lors de l&#8217;utilisateur de cette commande</p>
+<p>Orden Stop : para cámaras PTZ a veces  existe un comando de Stop, aquí especificado</p>
 </li>
 <li>
-<p>Commande stop : pour les cameras PTZ il existe souvent une commande qui arrete le mouvement, c&#8217;est ici qu&#8217;il faut la spécifier</p>
+<p>Ver : Permite decidir si desea o no mostrar la orden en el dashboard</p>
 </li>
 <li>
-<p>Afficher : permet d&#8217;afficher la commande ou non sur le dashboard</p>
+<p>Configuración avanzada (pequeñas ruedas dentadas): muestra la configuración avanzada de la orden (método de historico, widget&#8230;&#8203;)</p>
 </li>
 <li>
-<p>Configuration avancée (petites roues crantées) : permet d&#8217;afficher la configuration avancée de la commande (méthode d&#8217;historisation, widget&#8230;&#8203;)</p>
+<p>Probar : le permite probar la orden</p>
 </li>
 <li>
-<p>Tester : permet de tester la commande</p>
-</li>
-<li>
-<p>Supprimer (signe -) : permet de supprimer la commande</p>
+<p>Eliminar (signo - ) : permite borrar la orden</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-L&#8217;enregistrement n&#8217;a pas de limite de durée et peut prendre beaucoup de place, attention donc si vous remplisser votre disque jeedom pourrait ne plus marcher du tout.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>El registro no tiene límite de tiempo y puede ocupar un montón de espacio, así que cuidado, si llena tu disco, jeedom podría dejar de verlos  a todos.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_le_widget">3. Le widget</h2>
+<h2 id="_el_widget">3. El widget</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Voila à quoi ressemble le widget d&#8217;une caméra :</p>
+<p>Así es como se ve el widget de cámara:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -621,7 +613,7 @@ L&#8217;enregistrement n&#8217;a pas de limite de durée et peut prendre beaucou
 </div>
 </div>
 <div class="paragraph">
-<p>On retrouve sur celui-ci l&#8217;image de la caméra, les commandes définies dans la configuration, la commande pour prendre une capture, la commande pour lancer la prise de multiple capture et la commande pour parcourir les captures.</p>
+<p>En la imagen, captura de la cámara, ordenes definidas en la configuración, la orden para tomar una captura, la orden para iniciar la toma de captura múltiple y la orden para ver las capturas.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -630,13 +622,13 @@ L&#8217;enregistrement n&#8217;a pas de limite de durée et peut prendre beaucou
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Sur le dashboard et le panel il est possible de redimensionner le widget pour l&#8217;adapter à ses besoins
+En el dashboard es posible redimensionar el widget para adaptarlo a tus necesidades
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Un clique sur l&#8217;image permet d&#8217;afficher celle-ci en plus grand :</p>
+<p>Click en la imagen para verla más grande :</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -651,17 +643,8 @@ Sur le dashboard et le panel il est possible de redimensionner le widget pour l&
 <img src="../images/camera7.PNG" alt="camera7">
 </div>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Ce sont des images ici absolument pas des videos, les images sont prise soit une fois en mode capture simple, soit toute les secondes en mode enregistrement.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Ce sont des images ici absolument pas des videos, les images sont prise soit une fois en mode capture simple, soit toute les secondes en mode enregistrement.</p>
 </div>
 <div class="paragraph">
 <p>Vous retrouvez ici toute les captures organisées par jour puis par date, vous pouvez pour chacun d&#8217;elle :</p>

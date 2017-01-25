@@ -1,78 +1,78 @@
-== Configuration du plugin
+== Configuration del plugin
 
-Après installation du plugin, il vous suffit de l’activer et c'est bon, cependant il y à quelques paramètres de configuration avancés : 
+Después de instalar el plugin, simplemente activarlo es suficiente, sin embargo, hay algunos ajustes de configuración avanzada: 
 
 image::../images/camera1.PNG[]
 
-* *Chemin des enregistrements* : indique le chemin ou Jeedom doit mettre les images qu'il capture des cameras (il est conseillé de ne pas y toucher)
-* *Taille maximum du dossier d'enregistrement (Mo)* : donne la taille maximum autorisé pour le dossier ou les captures sont enregistrées (il est conseillé de ne pas y toucher). Si ce quotas est atteind Jeedom supprime les captures les plus veilles
+** directorio de registros *: indica la ruta de acceso donde Jeedom debe poner las imágenes que captan las cámaras (es recomendable no tocar)
+* *Tamaño máximo del archivo de registro (MB)* : Indica el tamaño máximo permitido para la carpeta o las capturas registradas (es recomendable no tocar). Si se sobrepasa esta cuota, Jeedom elimina las capturas más antiguas
 
-[IMPORTANT]
-Attention ses captures ne font pas partie du backup
+[IMPORTANTE]
+Atención las capturas no son parte de la copia de seguridad
 
-== Configuration des équipements
+== Configuración de dispositivos
 
-La configuration des équipements Caméra est accessible à partir du menu plugin :
+La configuración de las cámaras es accesible desde el menu plugin:
 
 image::../images/camera2.PNG[]
 
-Voilà à quoi ressemble la page du plugin Caméra (ici avec déjà 1 équipements) :
+Esta es la página del plugin cámara (aquí con 1 cámara instalada):
 
 image::../images/camera3.PNG[]
 
 [TIP]
-Comme à beaucoup d’endroit sur Jeedom, mettre la souris tout à gauche permet de faire apparaître un menu d’accès rapide (vous pouvez à partir de votre profils le laisser toujours visible)
+Como en muchos apartados en Jeedom, llevar el ratón totalmente a la izquierda le permite acceder al menú de acceso rápido (desde sus perfiles se puede dejar siempre visible)
 
-Vous avez un bouton de création d’équipement Caméra et vos équipements, avec la photos de ceux-ci si disponible
+Tienes un botón de creación de dispositivos y sus cámaras actuales, con sus respectivas imágenes si están disponibles.
 
-Une fois que vous cliquez sur l’un des équipements caméra, vous obtenez :
+Haciendo clic en uno de los equipos de cámara, se obtiene:
 
 image::../images/camera4.PNG[]
 
-* *Nom de l’équipement Caméra* : nom de votre équipement caméra
-* *Objet parent* : indique l’objet parent auquel appartient l’équipement
-* *Activer* : permet de rendre votre équipement actif
-* *Visible* : le rend visible sur le dashboard
-* *IP* : l'IP local de votre caméra
-* *Port* : le port pour sur lequel joindre la caméra
-* *Protocole* : le protocole de communication de votre camera (http ou https)
-* *Nom d'utilisateur* : nom d'utilisateur pour se connecter à la caméra (si nécessaire)
-* *Mot de passe* : mot de passe pour se connecter à la caméra (si nécessaire) 
-* *URL de capture* : URL qui de "snapshot" de la caméra. Change en fonction des caméras. Attention à ne pas mettre une url de flux sous peine de planter Jeedom. Vous pouvez utiliser les tags \#username# et \#password#, qui seront automatiquement remplacé par le nom d'utilisateur et le mot de passe lors de l'utilisateur de cette commande
-* *Délai de rafraichissement* : Délai de rafraichissement des captures sur le widget. Attention plus le délai est faible plus la charge sur Jeedom augmente.
-* *Commande mail* : permet de spécifier une commande mail qui sera utiliser pour l'envoi de capture (commande "Envoyer une capture"), vous pouvez en spécifier plusieurs séparées par des &&
-* *Nombre de capture(s)* : défini le nombre de captures à envoyer (les captures sont prises toute les secondes)
-* *Modèle* : permet de choisir le modele de sa camera, attention si vous changer cela écrasera vos paramètres de configuration
+** Nombre del dispositivo cámara *: nombre de su dispositivo cámara
+** Objeto padre *: indica el objeto padre al que pertenece el dispositivo
+* *Activar* : permite activar su dispositivo
+* *Visible* : lo hace visible en el Dashboard
+* *IP* : IP local de la cámara
+* *Puerto* : El puerto con el que conectar a la cámara
+* *Protocolo* : el protocolo de comunicación de la camera (http o https)
+* *Usuario* : nombre de usuario para conectar a la cámara (si es necesario)
+* *Contraseña* : contraseña para conectar a la cámara (si es necesario) 
+* *URL de captura* : URL del "snapshot" de la cámara. Cambia en función de las cámaras. Cuidado de no poner una url de fujo directo puede colgar Jeedom. Puede utilizar las etiquetas \#username# y \#password#, que será sustituido automáticamente por el nombre de usuario y la contraseña cuando se use este comando
+** frecuencia de refresco *: Frecuencia de refresco de las capturas en el widget . Atención a menor refresco mayor carga de trabajo para Jeedom.
+** Enviar correo *: permite especificar un comando de correo que se utilizará para enviar capturas (comando "Enviar una captura"), puedes especificar varias direcciones separadas por &.
+* *Número de captura(s) *: establece el número de capturas a enviar (las capturas se toman cada segundo)
+* *Modelo* : permite elegir el modelo de la cámara, Atención cambiar esto supone sobreescribir  los parametros de configuración actuales.
 
-En dessous vous retrouvez la liste des commandes :
+A continuación encontrará la lista de ordenes :
 
-* ID de la commande (utiliser avec les commandes de type info pour par exemple que la camera remonte l'information de mouvement à Jeedom par l'api, voir plus bas)
-* Nom de la commande avec la possibilité de mettre une icone à la place (pour la supprimer il faut double cliquer sur l'icone en question)
-* Type et sous type de la commande
-* Requete à envoyer à la caméra pour faire une action (passage en mode nuit, ptz...).Vous pouvez utiliser les tags \#username# et \#password#, qui seront automatiquement remplacé par le nom d'utilisateur et le mot de passe lors de l'utilisateur de cette commande
-* Commande stop : pour les cameras PTZ il existe souvent une commande qui arrete le mouvement, c'est ici qu'il faut la spécifier
-* Afficher : permet d'afficher la commande ou non sur le dashboard
-* Configuration avancée (petites roues crantées) : permet d'afficher la configuration avancée de la commande (méthode d'historisation, widget...)
-* Tester : permet de tester la commande
-* Supprimer (signe -) : permet de supprimer la commande
-
-
-[IMPORTANT]
-L'enregistrement n'a pas de limite de durée et peut prendre beaucoup de place, attention donc si vous remplisser votre disque jeedom pourrait ne plus marcher du tout.
+* ID de la orden (para uso con ordenes de tipo info, por ejemplo que la cámara devuelve la información de movimiento a Jeedom a través de la api, vea abajo)
+Nombre de la orden, con la posibilidad de poner un icono en el lugar (para eliminar doble clic en el icono en cuestión)
+* Tipo y subtipos de ordenes
+* Solicitud para enviar a la cámara para hacer una acción (cambiar a modo night, ptz,...). Puede utilizar las etiquetas \#username# y \#password#, que será sustituido automáticamente por el nombre de usuario y la contraseña cuando se use este comando
+* Orden Stop : para cámaras PTZ a veces  existe un comando de Stop, aquí especificado
+* Ver : Permite decidir si desea o no mostrar la orden en el dashboard
+* Configuración avanzada (pequeñas ruedas dentadas): muestra la configuración avanzada de la orden (método de historico, widget...)
+* Probar : le permite probar la orden
+* Eliminar (signo - ) : permite borrar la orden
 
 
-== Le widget
+[IMPORTANTE]
+El registro no tiene límite de tiempo y puede ocupar un montón de espacio, así que cuidado, si llena tu disco, jeedom podría dejar de verlos  a todos.
 
-Voila à quoi ressemble le widget d'une caméra : 
+
+== El widget
+
+Así es como se ve el widget de cámara: 
 
 image::../images/camera5.PNG[]
 
-On retrouve sur celui-ci l'image de la caméra, les commandes définies dans la configuration, la commande pour prendre une capture, la commande pour lancer la prise de multiple capture et la commande pour parcourir les captures.
+En la imagen, captura de la cámara, ordenes definidas en la configuración, la orden para tomar una captura, la orden para iniciar la toma de captura múltiple y la orden para ver las capturas.
 
 [TIP]
-Sur le dashboard et le panel il est possible de redimensionner le widget pour l'adapter à ses besoins
+En el dashboard es posible redimensionar el widget para adaptarlo a tus necesidades
 
-Un clique sur l'image permet d'afficher celle-ci en plus grand : 
+Click en la imagen para verla más grande :  
 
 image::../images/camera6.PNG[]
 
@@ -80,7 +80,7 @@ Un clique sur la derniere commande pour parcourir les captures vous affichera ce
 
 image::../images/camera7.PNG[]
 
-[IMPORTANT]
+[IMPORTANTE]
 Ce sont des images ici absolument pas des videos, les images sont prise soit une fois en mode capture simple, soit toute les secondes en mode enregistrement.
 
 Vous retrouvez ici toute les captures organisées par jour puis par date, vous pouvez pour chacun d'elle : 
