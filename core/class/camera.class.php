@@ -94,9 +94,7 @@ class camera extends eqLogic {
 
 	public static function dependancy_install() {
 		log::remove('camera_update');
-		$cmd = system::sudo() . ' /bin/bash ' . dirname(__FILE__) . '/../../resources/install_' . system::get('type') . '.sh';
-		$cmd .= ' >> ' . log::getPathToLog('camera_update') . ' 2>&1 &';
-		exec($cmd);
+		return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh', 'log' => log::getPathToLog('camera_update'));
 	}
 
 	public static function event() {
