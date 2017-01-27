@@ -64,12 +64,12 @@
         "Equipement": "Dispositivos",
         "Commandes": "Órdenes",
         "Zoom (s)": "Zoom (s)",
-        "Durée maximum d'un enregistrement (s)": "Durée maximum d'un enregistrement (s)",
+        "Durée maximum d'un enregistrement (s)": "Duración máxima de grabación (s)",
         "Préférer une vidéo si enregistrement via le bouton": "Préférer une vidéo si enregistrement via le bouton",
-        "Nombre d'images par seconde de la vidéo": "Nombre d'images par seconde de la vidéo",
+        "Nombre d'images par seconde de la vidéo": "Número de fotogramas por segundo de video",
         "Commande ON": "Orden ON",
         "OFF": "OFF",
-        "Supprimer toutes les captures de la caméra": "Supprimer toutes les captures de la caméra",
+        "Supprimer toutes les captures de la caméra": "Eliminar todas las capturas de la cámara",
         "Configuration avancée": "Configuración avanzada"
     },
     "plugins/camera/desktop/js/camera.js": {
@@ -85,8 +85,8 @@
         "Valeur retour d\\'état": "Valor de retorno de condición",
         "Durée avant retour d\\'état (min)": "Tiempo para el retorno de condición (min)",
         "Santé Caméras": "Salud de las cámaras",
-        "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?",
-        "Supression réussie": "Supression réussie"
+        "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "¿Desea borrar todas las capturas de la cámara?",
+        "Supression réussie": "Eliminado exitoso"
     },
     "plugins/camera/plugin_info/info.xml": {
         "Plugin pour afficher les caméras IP": "Plugin para ver las cámaras IP",
@@ -112,7 +112,7 @@
         "Supprimer": "Borrar",
         "Tout supprimer": "Borrar todo",
         "Télécharger": "Descargar",
-        "Tout télécharger": "Tout télécharger"
+        "Tout télécharger": "Descargar"
     },
     "plugins/camera/core/ajax/camera.ajax.php": {
         "Aucune methode correspondante à : ": "Ningún método corresponde con:"
