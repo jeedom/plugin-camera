@@ -30,6 +30,7 @@
     itemElems.draggable();
     container.packery( 'bindUIDraggableEvents', itemElems );
   });
+   $('.div_displayEquipement .eqLogic-widget').draggable('disable');
   $('#bt_editDashboardWidgetOrder').on('click',function(){
     if($(this).attr('data-mode') == 1){
       $.hideAlert();
