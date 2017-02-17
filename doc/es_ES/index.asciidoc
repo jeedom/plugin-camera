@@ -1,6 +1,6 @@
-= Camera
+= Camara
 
-Plugin permetant de créer et gerer ses cameras (affichage et enregistrement)
+Plugin que permite crear y gestionar sus cámaras (visualización y grabación)
 
 include::configuration.asciidoc[]
 

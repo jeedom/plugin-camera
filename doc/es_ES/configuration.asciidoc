@@ -76,70 +76,70 @@ Click en la imagen para verla más grande :
 
 image::../images/camera6.PNG[]
 
-Un clique sur la derniere commande pour parcourir les captures vous affichera celle-ci : 
+Pulsando sobre el último comando se muestran las capturas de pantalla, así: 
 
 image::../images/camera7.PNG[]
 
 [IMPORTANTE]
-Ce sont des images ici absolument pas des videos, les images sont prise soit une fois en mode capture simple, soit toute les secondes en mode enregistrement.
+Estas son imágenes, no vídeos, los imágenes son capturadas ya sea una vez en modo de captura individual o cada segundo en modo grabación.
 
-Vous retrouvez ici toute les captures organisées par jour puis par date, vous pouvez pour chacun d'elle : 
+Aquí encontraras todas las capturas organizadas por día y fecha, por cada una de ellas puedes : 
 
-* la voir en plus en grand en cliquant sur l'image
-* la télécharger
-* la supprimer
+* Verla más grande pulsando sobre la imagen
+* Descargarla
+* Borrarla
 
-En mobile le widget est un peu different : 
+El Widget móvil es un poco diferente: 
 
 image::../images/camera12.PNG[]
 
-Si vous cliquez sur l'image de la camera vous obtenez celel-ci en plus grande avec les commandes possible : 
+Si pulsas sobre la imagen de la cámara, se abre una ventana mayor con los posibles comandos: 
 
 image::../images/camera13.PNG[]
 
-== Les panels
+== El panel
 
-Le plugin caméra mets aussi à disposition un panel qui vous permet de voir d'un seul coup toute vos caméras, il est accessible par Acceuil -> Caméra : 
+El plugin dispone de un panel que permite ver todas sus cámaras en conjunto, es accesible a traves de la página de Inicio -> Cámara: 
 
 image::../images/camera8.PNG[]
 
-Voila le résultat : 
+Aquí el resultado : 
 
 image::../images/camera9.PNG[]
 
-Il est bien sur aussi disponible en mobile par Plugin -> Caméra : 
+Por supuesto también está disponible desde el  móvil desde  Plugin -> Cámara: 
 
 image::../images/camera10.PNG[]
 
-Une fois dessus vous obtenez une vue global de toutes vos caméras :
+Una vez dentro, obtendrá una visión global de todas sus cámaras:
 
 image::../images/camera11.PNG[]
 
-== Enregistrement et envoi de capture
+== Grabación y envío de captura
 
-Cette commande un peu spécifique elle permet suite à la prise de capture de faire l'envoi de celle-ci (compatible avec le plugin slack, mail et transfert)
+Este comando algo específico que permite después de la captura, enviarla (compatible con los plugin slack, mail y transfert)
 
-La configuration est assez simple vous appellez l'action d'envoi de capture, dans la partie titre vous passez les options (par défaut il faut juste mettre le nombre de capture voulu mais vous pouvez aller plus loin avec les options avancées) et dans la partie message la commande du plugin (actuellement slack, mail ou transfert) qui fait l'envoi des captures. Vous pouvez en mettre plusieurs séparé par des &&.
+La configuración es simple,  basta con llamar la acción de enviar captura, en el título puedes pasar más opciones (por defecto el número de captura, pero puedes ir más allá con las opciones avanzadas) y en el cuadro de mensaje, la orden del plugin (actualmente slack, mail o transfert) para realizar el envío de capturas. Puedes poner varias separados por &&
 
-=== Options avancés de captures
+=== Opciones avanzadas de captura
 
-* nbSnap : nombre de capture, si non précisé alors les captures sont faite jusqu'a une demande d'arret d'enregistrement ou d'arret de la caméra
-* delay : délai entre 2 capture, si non précisé alors le délai est de 1s
-* wait : délai d'attente avant de commencer les captures, si non précié alors aucun envoi n'est fait
-* sendPacket : nombre de capture déclenchant l'envoi de paquet, si non précisé alors les captures seront envoyée qu'a la fin
+* nbSnap: número de captura, si no se indica, las capturas se realizan a una petición para detener la grabación o detener la cámara
+* retardo: tiempo entre 2 capturas, si no indica el período es de 1s
+* wait : tiempo de espera antes de la captura, si no se indica entonces ningún envio se hará
+* sendPacket: número de captura disparadas que serán enviadas, si no se indica entonces se enviarán las capturas al final.
 
-Example : 
+Ejemplo 
 
 image::../images/camera15.PNG[]
 
-Ici le plugin va attendre 5s avant de commencer l'enregistrement puis faire un envoi au nas (par le plugin transfert) toute les 10 captures jusqu'a ce qu'on lui dise d'arreter (stop enregistrement ou arret de la caméra)
+Aquí el plugin espera 5 s antes de empezar a grabar y luego hace un envío a un nas (el plugin transfert) todas las capturas, 10,  hasta que se interrumpa (parar grabación o cámara)
 
-== Envoi de la detection de mouvement à Jeedom
+== Encio de la detección de movimiento a Jeedom
 
-Si vous avez une caméra qui possède la détection de mouvement et que vous voulez transmettre celle-ci à Jeedom voila l'url à mettre sur votre caméra : 
+Si tienes una cámara que tiene detección de movimiento y quieres enviarlo a Jeedom esta es la url para poner en la cámara: 
 
 ----
 http://#IP_JEEDOM#/core/api/jeeApi.php?apikey=#APIKEY#&type=camera&id=#ID#&value=#value#
 ----
 
-Il faut bien entendu avant avoir creer une commande de type info sur votre caméra
+Por supuesto antes se deben de crear un comando de tipo info en la cámara
