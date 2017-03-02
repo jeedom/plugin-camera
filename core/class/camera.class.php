@@ -462,43 +462,7 @@ class camera extends eqLogic {
 		if (!is_array($device) || !isset($device['commands'])) {
 			return true;
 		}
-		if (isset($device['configuration'])) {
-			foreach ($device['configuration'] as $key => $value) {
-				$this->setConfiguration($key, $value);
-			}
-		}
-		$cmd_order = 0;
-		$link_cmds = array();
-		foreach ($device['commands'] as $command) {
-			if (isset($device['commands']['logicalId'])) {
-				continue;
-			}
-			$cmd = null;
-			foreach ($this->getCmd() as $liste_cmd) {
-				if (isset($command['name']) && $liste_cmd->getName() == $command['name']) {
-					$cmd = $liste_cmd;
-					break;
-				}
-			}
-			try {
-				if ($cmd == null || !is_object($cmd)) {
-					$cmd = new cameraCmd();
-					$cmd->setOrder($cmd_order);
-					$cmd->setEqLogic_id($this->getId());
-				} else {
-					$command['name'] = $cmd->getName();
-				}
-				utils::a2o($cmd, $command);
-				if (isset($command['value'])) {
-					$cmd->setValue(null);
-				}
-				$cmd->save();
-				$cmd_order++;
-			} catch (Exception $exc) {
-				error_log($exc->getMessage());
-			}
-		}
-		$this->save();
+		$this->import($device);
 	}
 
 	public function recordCam($_args = 300, $_sendTo = null) {
