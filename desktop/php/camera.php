@@ -150,17 +150,22 @@ foreach (object::all() as $object) {
             <div class="col-sm-2">
               <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="maxReccordTime" />
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label">{{Préférer une vidéo si enregistrement via le bouton}}</label>
-            <div class="col-sm-2">
+            <label class="col-sm-6 control-label">{{Préférer une vidéo si enregistrement via le bouton}}</label>
+            <div class="col-sm-1">
               <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="preferVideo" />
             </div>
+          </div>
+          <div class="form-group">
+
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Nombre d'images par seconde de la vidéo}}</label>
             <div class="col-sm-2">
               <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="videoFramerate" />
+            </div>
+            <label class="col-sm-5 control-label">{{Seuil de détection mouvement (0-100)}}</label>
+            <div class="col-sm-2">
+              <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="moveThreshold" />
             </div>
           </div>
           <div class="form-group">
@@ -194,7 +199,7 @@ foreach (object::all() as $object) {
 </div>
 <div class="col-sm-6">
   <form class="form-horizontal">
-  <fieldset>
+    <fieldset>
       <div class="form-group">
         <label class="col-sm-2 control-label">{{Modèle}}</label>
         <div class="col-sm-5">

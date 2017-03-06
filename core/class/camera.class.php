@@ -186,6 +186,9 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('maxReccordTime') == '') {
 			$this->setConfiguration('maxReccordTime', 600);
 		}
+		if ($this->getConfiguration('moveThreshold') == '') {
+			$this->setConfiguration('moveThreshold', 10);
+		}
 		if (file_exists(dirname(__FILE__) . '/../config/devices/' . $this->getConfiguration('device') . '.php')) {
 			$this->setConfiguration('hasPullFunction', 1);
 		} else {
@@ -479,6 +482,22 @@ class camera extends eqLogic {
 			$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
 		}
 		$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
+		shell_exec($cmd);
+	}
+
+	public function detectMove($_sendTo, $_forVideo = 0) {
+		if (count(system::ps('core/php/detectChange.php id=' . $this->getId())) > 0) {
+			return true;
+		}
+		$folder = calculPath(config::byKey('recordDir', 'camera'));
+		$folder .= '/' . $this->getId();
+		if ($_forVideo) {
+			$folder .= '/movie_temp';
+		}
+		$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/detectChange.php id=' . $this->getId();
+		$cmd .= ' folder="' . $folder . '"';
+		$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
+		$cmd .= ' >> ' . log::getPathToLog('camera_detectChange') . ' 2>&1 &';
 		shell_exec($cmd);
 	}
 

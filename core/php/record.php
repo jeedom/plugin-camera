@@ -90,6 +90,10 @@ if (null !== init('sendFirstSnap') && init('sendFirstSnap') != 0) {
 	$sendFirstSnap = 1;
 }
 
+if (init('detectMove') == 1) {
+	$camera->detectMove(init('sendTo'), $isMovie);
+}
+
 if ($nbSnap > 0 && $sendPacket > 0) {
 	$totalSend = ceil($nbSnap / $sendPacket);
 }
@@ -114,7 +118,7 @@ while (true) {
 	$i++;
 	try {
 		if ($isMovie == 1) {
-			$files[] = $camera->takeSnapshot($_forVideo = 1, $_number = $i);
+			$files[] = $camera->takeSnapshot(1, $i);
 			if ($i == 2 && $sendFirstSnap == 1) {
 				$camera->sendSnap($files, true, $_part = $part);
 				$nbSend++;
@@ -157,12 +161,13 @@ while (true) {
 if ($totalSend > 1) {
 	$part = ' ' . $nbSend . '/' . $totalSend;
 }
+
 if (count($files) > 0) {
 	if ($isMovie == 1) {
 		$files = array();
 		$files[] = $camera->convertMovie();
-		$camera->sendSnap($files, false, $_part = $part);
-	} else {
+	}
+	if (init('detectMove') != 1) {
 		$camera->sendSnap($files, false, $_part = $part);
 	}
 }
