@@ -92,6 +92,7 @@ while ($continue) {
 			$last = $image2;
 			$numcontinue = 0;
 			$diff = trim(compare($folder, $image1, $image2));
+			log::add('camera', 'debug', __('Image difference : ', __FILE__) . $diff . __(' sur ', __FILE__) . $camera->getHumanName());
 			if ($diff > $threshold) {
 				$camera->sendSnap(array($folder . '/' . $image2), false);
 			}
