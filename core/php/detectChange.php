@@ -71,7 +71,7 @@ $folder = init('folder');
 $continue = true;
 $last = null;
 $numcontinue = 0;
-$threshold = $camera->getConfiguration('moveThreshold', 10);
+$threshold = $camera->getConfiguration('moveThreshold', 2);
 
 while ($continue) {
 	$file = ls(init('folder'), '*.jpg');

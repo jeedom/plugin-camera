@@ -187,7 +187,7 @@ class camera extends eqLogic {
 			$this->setConfiguration('maxReccordTime', 600);
 		}
 		if ($this->getConfiguration('moveThreshold') == '') {
-			$this->setConfiguration('moveThreshold', 10);
+			$this->setConfiguration('moveThreshold', 2);
 		}
 		if (file_exists(dirname(__FILE__) . '/../config/devices/' . $this->getConfiguration('device') . '.php')) {
 			$this->setConfiguration('hasPullFunction', 1);
