@@ -127,6 +127,9 @@ La configuración es simple,  basta con llamar la acción de enviar captura, en 
 * retardo: tiempo entre 2 capturas, si no indica el período es de 1s
 * wait : tiempo de espera antes de la captura, si no se indica entonces ningún envio se hará
 * sendPacket: número de captura disparadas que serán enviadas, si no se indica entonces se enviarán las capturas al final.
+* detectMove=1 : envoi les captures que si un changement superieur au seuil de detection (voir configuration de la caméra) arrive 
+* movie=1 : une fois l'enregistrement terminé, les images sont convertie en video
+* sendFirstSnap=1 : envoi la premiere capture de l'enregistrement
 
 Ejemplo 
 
