@@ -127,6 +127,9 @@ La configuration est assez simple vous appellez l'action d'envoi de capture, dan
 * delay : délai entre 2 capture, si non précisé alors le délai est de 1s
 * wait : délai d'attente avant de commencer les captures, si non précié alors aucun envoi n'est fait
 * sendPacket : nombre de capture déclenchant l'envoi de paquet, si non précisé alors les captures seront envoyée qu'a la fin
+* detectMove=1 : envoi les captures que si un changement superieur au seuil de detection (voir configuration de la caméra) arrive 
+* movie=1 : une fois l'enregistrement terminé, les images sont convertie en video
+* sendFirstSnap=1 : envoi la premiere capture de l'enregistrement
 
 Example : 
 

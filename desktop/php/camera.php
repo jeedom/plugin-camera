@@ -150,7 +150,7 @@ foreach (object::all() as $object) {
             <div class="col-sm-2">
               <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="maxReccordTime" />
             </div>
-            <label class="col-sm-6 control-label">{{Préférer une vidéo si enregistrement via le bouton}}</label>
+            <label class="col-sm-6 control-label">{{Toujours faire une video}}</label>
             <div class="col-sm-1">
               <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="preferVideo" />
             </div>
