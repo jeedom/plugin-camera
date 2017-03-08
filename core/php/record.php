@@ -83,7 +83,7 @@ if (is_numeric(init('delay')) && init('delay') > 0) {
 if (is_numeric(init('sendPacket')) && init('sendPacket') > 0) {
 	$sendPacket = init('sendPacket');
 }
-if (init('movie', $camera->getConfiguration('preferVideo', 0)) !== 0) {
+if (init('movie', $camera->getConfiguration('preferVideo', 0)) != 0) {
 	$isMovie = 1;
 }
 if (init('sendFirstSnap') !== 0) {
