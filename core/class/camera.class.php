@@ -136,7 +136,6 @@ class camera extends eqLogic {
 				$files[] = $camera->takeSnapshot();
 			}
 		}
-		var_dump($files);
 		if (count($files) == 0) {
 			return null;
 		}
