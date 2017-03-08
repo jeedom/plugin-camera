@@ -105,6 +105,44 @@ class camera extends eqLogic {
 		$cmd->event(init('value'));
 	}
 
+	public static function interact($_query, $_parameters = array()) {
+		$ok = false;
+		$files = array();
+		$matchs = array('affiche moi une photo', 'montre moi une photo');
+		$query = strtolower(sanitizeAccent($_query));
+		foreach ($matchs as $match) {
+			if (strpos($query, $match) !== false) {
+				$ok = true;
+				break;
+			}
+		}
+		if (!$ok) {
+			return null;
+		}
+		$data = array();
+		$data['object_name'] = interactQuery::getQuerySynonym($query, 'object');
+		foreach (object::all() as $object) {
+			if (count($data['object_name']) > 0 && in_array(strtolower($object->getName()), $data['object_name'])) {
+				$data['object'] = $object;
+				break;
+			}
+			if (interactQuery::autoInteractWordFind($query, $object->getName())) {
+				$data['object'] = $object;
+				break;
+			}
+		}
+		if (isset($data['object'])) {
+			foreach ($data['object']->getEqLogic(true, false, 'camera') as $camera) {
+				$files[] = $camera->takeSnapshot();
+			}
+		}
+		var_dump($files);
+		if (count($files) == 0) {
+			return null;
+		}
+		return array('reply' => 'Ok', 'file' => $files);
+	}
+
 	public static function cronHourly() {
 		$record_dir = calculPath(config::byKey('recordDir', 'camera'));
 		if (!file_exists($record_dir)) {
