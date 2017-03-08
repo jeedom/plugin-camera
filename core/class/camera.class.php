@@ -135,6 +135,11 @@ class camera extends eqLogic {
 			foreach ($data['object']->getEqLogic(true, false, 'camera') as $camera) {
 				$files[] = $camera->takeSnapshot();
 			}
+			foreach ($data['object']->getChilds() as $object) {
+				foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
+					$files[] = $camera->takeSnapshot();
+				}
+			}
 		}
 		if (count($files) == 0) {
 			return null;
