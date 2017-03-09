@@ -120,18 +120,8 @@ class camera extends eqLogic {
 			return null;
 		}
 		$data = array();
-		$data['object_name'] = interactQuery::getQuerySynonym($query, 'object');
-		foreach (object::all() as $object) {
-			if (count($data['object_name']) > 0 && in_array(strtolower($object->getName()), $data['object_name'])) {
-				$data['object'] = $object;
-				break;
-			}
-			if (interactQuery::autoInteractWordFind($query, $object->getName())) {
-				$data['object'] = $object;
-				break;
-			}
-		}
-		if (isset($data['object'])) {
+		$data = interactQuery::findInQuery('object', $_query);
+		if (is_object($data['object'])) {
 			foreach ($data['object']->getEqLogic(true, false, 'camera') as $camera) {
 				$files[] = $camera->takeSnapshot();
 			}
