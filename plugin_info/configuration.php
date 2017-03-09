@@ -37,5 +37,11 @@ if (!isConnect('admin')) {
                 <input type="text" class="configKey form-control" data-l1key="maxSizeRecordDir" />
             </div>
         </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">{{Le plugin caméra doit réagir aux interactions qui contiennent :}}</label>
+            <div class="col-lg-4">
+                <textarea class="configKey form-control" data-l1key="interact::sentence"></textarea>
+            </div>
+        </div>
     </fieldset>
 </form>
