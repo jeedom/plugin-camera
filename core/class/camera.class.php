@@ -121,16 +121,6 @@ class camera extends eqLogic {
 		if (!$ok) {
 			return null;
 		}
-		foreach ($matchs as $match) {
-			if (strpos($query, $match) !== false) {
-				$ok = true;
-				break;
-			}
-		}
-		if (!$ok) {
-			return null;
-		}
-		$data = array();
 		$data = interactQuery::findInQuery('object', $_query);
 		if (is_object($data['object'])) {
 			foreach ($data['object']->getEqLogic(true, false, 'camera') as $camera) {
