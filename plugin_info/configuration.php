@@ -26,19 +26,19 @@ if (!isConnect('admin')) {
 <form class="form-horizontal">
     <fieldset>
         <div class="form-group">
-            <label class="col-lg-2 control-label">{{Chemin des enregistrements}}</label>
+            <label class="col-lg-3 control-label">{{Chemin des enregistrements}}</label>
             <div class="col-lg-4">
                 <input type="text" class="configKey form-control" data-l1key="recordDir" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-2 control-label">{{Taille maximum du dossier d'enregistrement (Mo)}}</label>
+            <label class="col-lg-3 control-label">{{Taille maximum du dossier d'enregistrement (Mo)}}</label>
             <div class="col-lg-4">
                 <input type="text" class="configKey form-control" data-l1key="maxSizeRecordDir" />
             </div>
         </div>
           <div class="form-group">
-            <label class="col-lg-2 control-label">{{Le plugin caméra doit réagir aux interactions qui contiennent :}}</label>
+            <label class="col-lg-3 control-label">{{Le plugin caméra doit réagir aux interactions :}}</label>
             <div class="col-lg-4">
                 <textarea class="configKey form-control" data-l1key="interact::sentence"></textarea>
             </div>
