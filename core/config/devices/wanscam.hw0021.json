@@ -1,0 +1,241 @@
+{
+	"wanscam.hw0021": {
+		"name": "Wanscam HW0021",
+		"configuration": {
+			"urlStream": "\/web\/tmpfs\/snap.jpg",
+			"protocole": "http"
+		},
+		"commands": [{
+			"eqType": "camera",
+			"name": "Gauche",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/ytleft.cgi?usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"fa fa-arrow-left\"><\/i>"
+			},
+			"isVisible": "1"
+		}, {
+			"eqType": "camera",
+			"name": "Droite",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/ytright.cgi?usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"fa fa-arrow-right\"><\/i>"
+			},
+			"isVisible": "1"
+		}, {
+			"eqType": "camera",
+			"name": "Haut",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/ytup.cgi?usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"fa fa-arrow-up\"><\/i>"
+			},
+			"isVisible": "1"
+		}, {
+			"eqType": "camera",
+			"name": "Bas",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/ytdown.cgi?usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"fa fa-arrow-down\"><\/i>"
+			},
+			"isVisible": "1"
+		}, {
+			"eqType": "camera",
+			"name": "IR On",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setinfrared&-infraredstat=open&usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "IR Off",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setinfrared&-infraredstat=close&usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "IR Auto",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setinfrared&-infraredstat=auto&usr=#username#&pwd=#password# "
+			},
+			"display": {
+				"icon": "<i class=\"icon jeedom2-idea13\"><\/i>"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "P1",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=preset&-act=goto&-number=1&usr=#username#&pwd=#password# "
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "setP1",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=preset&-act=set&-status=1&-number=1&usr=#username#&pwd=#password#"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "P2",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=preset&-act=goto&-number=2&usr=#username#&pwd=#password# "
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "setP2",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=preset&-act=set&-status=1&-number=2&usr=#username#&pwd=#password#"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "P3",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=preset&-act=goto&-number=3&usr=#username#&pwd=#password# "
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "setP3",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=preset&-act=set&-status=1&-number=3&usr=#username#&pwd=#password#"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "P4",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=preset&-act=goto&-number=4&usr=#username#&pwd=#password# "
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "setP4",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=preset&-act=set&-status=1&-number=4&usr=#username#&pwd=#password#"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "motionOn",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setmdattr&-enable=1&-name=1&usr=#username#&pwd=#password#"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "motionOff",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setmdattr&-enable=0&-name=1&usr=#username#&pwd=#password#"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "alarmOn",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setioattr&-io_enable=1&-io_flag=1&usr=#username#&pwd=#password#"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "alarmOff",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setioattr&-io_enable=1&-io_flag=0&usr=#username#&pwd=#password#"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "SDOn",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setplanrecattr&-planrec_enable=1&usr=#username#&pwd=#password#"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "SDOff",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setplanrecattr&-planrec_enable=0&usr=#username#&pwd=#password#"
+			},
+			"isVisible": "0"
+		}]
+	}
+}
