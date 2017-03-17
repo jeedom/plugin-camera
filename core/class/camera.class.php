@@ -536,7 +536,7 @@ class camera extends eqLogic {
 			$folder .= '/movie_temp';
 		}
 		$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/detectChange.php id=' . $this->getId();
-		$cmd .= ' folder="' . $folder . '"';
+		$cmd .= ' "folder=' . $folder . '"';
 		$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
 		$cmd .= ' >> ' . log::getPathToLog('camera_detectChange') . ' 2>&1 &';
 		shell_exec($cmd);
