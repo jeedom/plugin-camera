@@ -536,7 +536,7 @@ class camera extends eqLogic {
 			$folder .= '/movie_temp';
 		}
 		$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/detectChange.php id=' . $this->getId();
-		$cmd .= ' folder=' . escapeshellarg($folder);
+		$cmd .= ' folder="' . $folder . '"';
 		$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
 		$cmd .= ' >> ' . log::getPathToLog('camera_detectChange') . ' 2>&1 &';
 		shell_exec($cmd);
@@ -559,10 +559,10 @@ class camera extends eqLogic {
 		if ($_background) {
 			$this->setCache('fileToSend', $_files);
 			$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/sendSnapshot.php id=' . $this->getId();
-			$cmd .= ' sendTo=' . escapeshellarg(init('sendTo'));
-			$cmd .= ' title=' . escapeshellarg(init('title'));
-			$cmd .= ' message=' . escapeshellarg(init('message'));
-			$cmd .= ' part=' . escapeshellarg($_part);
+			$cmd .= ' sendTo="' . init('sendTo') . '"';
+			$cmd .= ' title="' . init('title') . '"';
+			$cmd .= ' message="' . init('message') . '"';
+			$cmd .= ' part="' . $_part . '"';
 			$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
 			log::add('camera', 'debug', $cmd);
 			shell_exec($cmd);
