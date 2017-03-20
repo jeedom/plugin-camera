@@ -83,7 +83,7 @@ class camera extends eqLogic {
 	public static function dependancy_info() {
 		$return = array();
 		$return['log'] = 'camera_update';
-		$return['progress_file'] = '/tmp/dependancy_camera_in_progress';
+		$return['progress_file'] = jeedom::getTmpFolder('camera') . '/dependance';
 		if (exec('which avconv | wc -l') != 0) {
 			$return['state'] = 'ok';
 		} else {
@@ -94,7 +94,7 @@ class camera extends eqLogic {
 
 	public static function dependancy_install() {
 		log::remove(__CLASS__ . '_update');
-		return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh', 'log' => log::getPathToLog(__CLASS__ . '_update'));
+		return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh ' . jeedom::getTmpFolder('camera') . '/dependance', 'log' => log::getPathToLog(__CLASS__ . '_update'));
 	}
 
 	public static function event() {
