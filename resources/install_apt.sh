@@ -1,9 +1,13 @@
-touch /tmp/dependancy_camera_in_progress
-echo 0 > /tmp/dependancy_camera_in_progress
+PROGRESS_FILE=/tmp/dependancy_camera_in_progress
+if [ ! -z $1 ]; then
+	PROGRESS_FILE=$1
+fi
+touch ${PROGRESS_FILE}
+echo 0 > ${PROGRESS_FILE}
 echo "Launch install of camera dependancy"
 sudo apt-get update
-echo 50 > /tmp/dependancy_camera_in_progress
+echo 50 > ${PROGRESS_FILE}
 sudo apt-get install -y libav-tools python-imaging
-echo 100 > /tmp/dependancy_camera_in_progress
+echo 100 > ${PROGRESS_FILE}
 echo "Everything is successfully installed!"
-rm /tmp/dependancy_camera_in_progress
+rm ${PROGRESS_FILE}
