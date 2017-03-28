@@ -761,6 +761,10 @@ class camera extends eqLogic {
 		}
 	}
 
+	public function getImage() {
+		return 'plugins/camera/core/config/devices/' . $this->getConfiguration('device') . '.jpg';
+	}
+
 	/*     * **********************Getteur Setteur*************************** */
 
 }
