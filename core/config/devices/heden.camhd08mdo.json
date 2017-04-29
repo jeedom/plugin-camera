@@ -17,7 +17,8 @@
                     "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=left&usr=#username#&pwd=#password# "
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>"
+                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>",
+                    "generic_type": "CAMERA_LEFT"
                 },
                 "isVisible": "1"
             },
@@ -32,7 +33,8 @@
                     "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=right&usr=#username#&pwd=#password# "
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>"
+                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>",
+                    "generic_type": "CAMERA_RIGHT"
                 },
                 "isVisible": "1"
             },
@@ -47,7 +49,8 @@
                     "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=up&usr=#username#&pwd=#password#"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>"
+                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>",
+                    "generic_type": "CAMERA_UP"
                 },
                 "isVisible": "1"
             },
@@ -62,7 +65,8 @@
                     "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=down&usr=#username#&pwd=#password# "
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>"
+                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>",
+                    "generic_type": "CAMERA_DOWN"
                 },
                 "isVisible": "1"
             },

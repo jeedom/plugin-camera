@@ -19,7 +19,8 @@
 					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzStopRun&usr=#username#&pwd=#password#"
 				},
 				"display": {
-					"icon": "<i class=\"fa fa-arrow-down\"><\/i>"
+					"icon": "<i class=\"fa fa-arrow-down\"><\/i>",
+                    "generic_type": "CAMERA_DOWN"
 				},
 				"isVisible": "1"
 			},
@@ -35,7 +36,8 @@
 					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzStopRun&usr=#username#&pwd=#password#"
 				},
 				"display": {
-					"icon": "<i class=\"fa fa-arrow-up\"><\/i>"
+					"icon": "<i class=\"fa fa-arrow-up\"><\/i>",
+                    "generic_type": "CAMERA_UP"
 				},
 				"isVisible": "1"
 			},
@@ -51,7 +53,8 @@
 					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzStopRun&usr=#username#&pwd=#password#"
 				},
 				"display": {
-					"icon": "<i class=\"fa fa-arrow-left\"><\/i>"
+					"icon": "<i class=\"fa fa-arrow-left\"><\/i>",
+                    "generic_type": "CAMERA_LEFT"
 				},
 				"isVisible": "1"
 			},
@@ -67,7 +70,8 @@
 					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=ptzStopRun&usr=#username#&pwd=#password#"
 				},
 				"display": {
-					"icon": "<i class=\"fa fa-arrow-right\"><\/i>"
+					"icon": "<i class=\"fa fa-arrow-right\"><\/i>",
+                    "generic_type": "CAMERA_RIGHT"
 				},
 				"isVisible": "1"
 			},
@@ -113,7 +117,8 @@
 					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=zoomStop&usr=#username#&pwd=#password#"
 				},
 				"display": {
-					"icon": "<i class=\"icon fa-plus\"><\/i>"
+					"icon": "<i class=\"icon fa-plus\"><\/i>",
+                    "generic_type": "CAMERA_ZOOM"
 				},
 				"isVisible": "1"
 			},
@@ -129,7 +134,8 @@
 					"stopCmdUrl": "\/cgi-bin\/CGIProxy.fcgi?cmd=zoomStop&usr=#username#&pwd=#password#"
 				},
 				"display": {
-					"icon": "<i class=\"icon fa-minus\"><\/i>"
+					"icon": "<i class=\"icon fa-minus\"><\/i>",
+                    "generic_type": "CAMERA_DEZOOM"
 				},
 				"isVisible": "1"
 			},

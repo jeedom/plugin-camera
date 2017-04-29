@@ -17,7 +17,8 @@
                     "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzMoveDown%261438440651839"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>"
+                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>",
+                    "generic_type": "CAMERA_DOWN"
                 },
                 "isVisible": "1"
             },
@@ -31,7 +32,8 @@
                     "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzMoveUp%261438440597325"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>"
+                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>",
+                    "generic_type": "CAMERA_UP"
                 },
                 "isVisible": "1",
                 "eqType": "camera",
@@ -43,7 +45,8 @@
                     "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzMoveLeft%261438440961185"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>"
+                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>",
+                    "generic_type": "CAMERA_LEFT"
                 },
                 "isVisible": "1",
                 "eqType": "camera",
@@ -55,7 +58,8 @@
                     "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzMoveRight%261438440945721"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>"
+                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>",
+                    "generic_type": "CAMERA_RIGHT"
                 },
                 "isVisible": "1",
                 "eqType": "camera",
