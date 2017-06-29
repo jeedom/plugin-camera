@@ -5,7 +5,7 @@
     <description>Plugin pour afficher les caméras IP</description>
     <licence>AGPL</licence>
     <author>Loïc</author>
-    <require>2.2</require>
+    <require>3.0</require>
     <category>security</category>
     <display>panel</display>
     <mobile>panel</mobile>
