@@ -108,7 +108,7 @@ class camera extends eqLogic {
 	public static function interact($_query, $_parameters = array()) {
 		$ok = false;
 		$files = array();
-		$matchs = explode("\n", config::byKey('interact::sentence', 'camera'));
+		$matchs = explode("\n", str_replace('\n', "\n", config::byKey('interact::sentence', 'camera')));
 		if (count($matchs) == 0) {
 			return null;
 		}
