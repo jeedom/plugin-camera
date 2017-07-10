@@ -286,22 +286,6 @@ class camera extends eqLogic {
 		$recordState->setDisplay('generic_type', 'CAMERA_RECORD_STATE');
 		$recordState->save();
 
-		$recordCmd = $this->getCmd(null, 'recordCmd');
-		if (!is_object($recordCmd)) {
-			$recordCmd = new cameraCmd();
-		}
-		$recordCmd->setName(__('Lancer enregistrement', __FILE__));
-		$recordCmd->setConfiguration('request', '-');
-		$recordCmd->setType('action');
-		$recordCmd->setLogicalId('recordCmd');
-		$recordCmd->setEqLogic_id($this->getId());
-		$recordCmd->setSubType('slider');
-		$recordCmd->setOrder(999);
-		$recordCmd->setDisplay('slider_placeholder', __('Nombre captures ou options', __FILE__));
-		$recordCmd->setDisplay('generic_type', 'CAMERA_RECORD');
-		$recordCmd->setDisplay('icon', '<i class="fa fa-circle"></i>');
-		$recordCmd->save();
-
 		$stopRecordCmd = $this->getCmd(null, 'stopRecordCmd');
 		if (!is_object($stopRecordCmd)) {
 			$stopRecordCmd = new cameraCmd();
@@ -336,7 +320,7 @@ class camera extends eqLogic {
 		if (!is_object($sendSnapshot)) {
 			$sendSnapshot = new cameraCmd();
 		}
-		$sendSnapshot->setName(__('Envoyer une capture', __FILE__));
+		$sendSnapshot->setName(__('Enregistrer', __FILE__));
 		$sendSnapshot->setConfiguration('request', '-');
 		$sendSnapshot->setType('action');
 		$sendSnapshot->setLogicalId('sendSnapshot');
@@ -438,10 +422,10 @@ class camera extends eqLogic {
 				}
 			}
 			$stopRecord = $this->getCmd(null, 'stopRecordCmd');
-			$record = $this->getCmd(null, 'recordCmd');
+			$sendSnapshot = $this->getCmd(null, 'sendSnapshot');
 			$recordState = $this->getCmd(null, 'recordState');
 			$replace_action = array(
-				'#record_id#' => $record->getId(),
+				'#record_id#' => $sendSnapshot->getId(),
 				'#stopRecord_id#' => $stopRecord->getId(),
 				'#recordState#' => $recordState->execCmd(),
 				'#recordState_id#' => $recordState->getId(),
@@ -867,9 +851,6 @@ class cameraCmd extends cmd {
 		}
 		$eqLogic = $this->getEqLogic();
 		if ($this->getLogicalId() == 'recordCmd') {
-			if ($eqLogic->getConfiguration('preferVideo', 0) == 1) {
-				$_options['slider'] .= ' movie=1';
-			}
 			$eqLogic->recordCam($_options['slider']);
 			return true;
 		}
@@ -903,9 +884,6 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		if ($this->getLogicalId() == 'sendSnapshot') {
-			if (!isset($_options['message']) || $_options['message'] == '') {
-				throw new Exception(__('Une commande d\'envoi pour l\'envoi de capture de caméra est obligatoire', __FILE__));
-			}
 			$eqLogic->recordCam($_options['title'], $_options['message']);
 			return true;
 		}
