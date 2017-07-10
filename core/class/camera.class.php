@@ -83,10 +83,12 @@ class camera extends eqLogic {
 	public static function dependancy_info() {
 		$return = array();
 		$return['log'] = 'camera_update';
+		$return['state'] = 'ok';
 		$return['progress_file'] = jeedom::getTmpFolder('camera') . '/dependance';
-		if (exec('which avconv | wc -l') != 0) {
-			$return['state'] = 'ok';
-		} else {
+		if (exec('which avconv | wc -l') == 0) {
+			$return['state'] = 'nok';
+		}
+		if (exec(system::getCmdSudo() . system::get('cmd_check') . '-E "python\-imaging" | wc -l') != 1) {
 			$return['state'] = 'nok';
 		}
 		return $return;
