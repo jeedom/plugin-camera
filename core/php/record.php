@@ -159,7 +159,7 @@ while (true) {
 	}
 }
 if ($totalSend > 1) {
-	$part = ' ' . $nbSend . '/' . $totalSend;
+	$part = ' (' . $nbSend . '/' . $totalSend . ')';
 }
 
 if (count($files) > 0) {
