@@ -886,6 +886,12 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		if ($this->getLogicalId() == 'sendSnapshot') {
+			if (!isset($_options['title'])) {
+				$_options['title'] = '';
+			}
+			if (!isset($_options['message'])) {
+				$_options['message'] = '';
+			}
 			$eqLogic->recordCam($_options['title'], $_options['message']);
 			return true;
 		}
