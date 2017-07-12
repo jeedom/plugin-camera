@@ -101,6 +101,9 @@ if ($nbSnap > 0 && $sendPacket > 0) {
 if ($sendFirstSnap == 1) {
 	$totalSend += 1;
 }
+if ($nbSnap == 1) {
+	$isMovie = 0;
+}
 
 $recordState->event(1);
 $camera->refreshWidget();
@@ -161,7 +164,6 @@ while (true) {
 if ($totalSend > 1) {
 	$part = ' (' . $nbSend . '/' . $totalSend . ')';
 }
-
 if (count($files) > 0) {
 	if ($isMovie == 1) {
 		$files = array();

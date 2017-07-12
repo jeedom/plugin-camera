@@ -559,7 +559,7 @@ class camera extends eqLogic {
 		if (null !== init('title') && init('title') != '') {
 			$options['title'] = init('title');
 		} else {
-			$options['title'] = __('Alerte sur la camera : ', __FILE__) . $this->getName();
+			$options['title'] = __('Alerte sur la camera : ', __FILE__) . $this->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s') . $_part;
 		}
 		if (null !== init('message') && init('message') != '') {
 			$options['message'] = init('message') . $_part;
