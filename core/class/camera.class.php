@@ -207,6 +207,23 @@ class camera extends eqLogic {
 		}
 		return $return;
 	}
+	
+	public static function deadCmd() {
+		$return = array();
+		foreach (eqLogic::byType('camera') as $camera){
+			if ($camera->getConfiguration('commandOn') != '' && strpos($camera->getConfiguration('commandOn'),'#') !== false) {
+				if (!cmd::byId(str_replace('#','',$camera->getConfiguration('commandOn')))){
+					$return[]= array('detail' => 'Camera ' . $camera->getHumanName(),'help' => 'Commande On','who'=>$camera->getConfiguration('commandOn'));
+				}
+			}
+			if ($camera->getConfiguration('commandOff') != '' && strpos($camera->getConfiguration('commandOff'),'#') !== false) {
+				if (!cmd::byId(str_replace('#','',$camera->getConfiguration('commandOn')))){
+					$return[]= array('detail' => 'Camera ' . $camera->getHumanName(),'help' => 'Commande Off','who'=>$camera->getConfiguration('commandOff'));
+				}
+			}
+		}
+		return $return;
+	}
 
 	/*     * *********************Methode d'instance************************* */
 
