@@ -90,10 +90,10 @@
     },
     "plugins/camera/plugin_info/info.xml": {
         "Plugin pour afficher les caméras IP": "Plugin to display IP cameras",
-        "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)": "Warning ! To be able to save, you must have installed ffmpeg or avconv (sudo apt-get install ffmpeg or sudo apt-get install libav-tools)"
+        "Attention pour pouvoir enregistrer il faut avoir installer ffmpeg ou avconv (sudo apt-get install ffmpeg ou sudo apt-get install libav-tools)": "Warning: to be able to save, you must have installed ffmpeg or avconv (sudo apt-get install ffmpeg or sudo apt-get install libav-tools)"
     },
     "plugins/camera/desktop/js/panel.js": {
-        "Vous êtes en mode édition vous pouvez redimensionner les widgets": "Your are in edit mode an can resize widgets"
+        "Vous êtes en mode édition vous pouvez redimensionner les widgets": "Your are in edit mode and can resize widgets"
     },
     "plugins/camera/core/class/camera.class.php": {
         "Flux video": "Video stream",
@@ -106,7 +106,7 @@
         "L'adresse IP de la camera ne peut être vide": "IP address of camera can not be empty",
         "Alerte sur la camera : ": "Alert on camera :",
         " à ": "to",
-        "Le fichier est vide : ": "The file is empty :"
+        "Le fichier est vide : ": "The file is empty:"
     },
     "plugins/camera/desktop/modal/camera.history.php": {
         "Supprimer": "Delete",
@@ -115,7 +115,7 @@
         "Tout télécharger": "Download all"
     },
     "plugins/camera/core/ajax/camera.ajax.php": {
-        "Aucune methode correspondante à : ": "No methode matches:"
+        "Aucune methode correspondante à : ": "No method matches:"
     },
     "plugins/camera/plugin_info/info.json": {
         "Plugin pour afficher les caméras IP": "Plugin to display IP cameras"
