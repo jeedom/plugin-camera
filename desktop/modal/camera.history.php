@@ -15,17 +15,12 @@ if ($camera->getEqType_name() != 'camera') {
 $dir = calculPath(config::byKey('recordDir', 'camera')) . '/' . $camera->getId();
 $files = array();
 foreach (ls($dir, '*') as $file) {
-	if ($file == 'movie_temp/' || strpos($file,'.mkv')) {
+	if ($file == 'movie_temp/' || strpos($file, '.mkv')) {
 		continue;
 	}
-	$date = explode('_', str_replace('.mp4','',str_replace('.jpg', '', $file)));
-	if (count($date) > 2) {
-		$time = $date[2];
-		$date = $date[1];
-	} else {
-		$time = $date[1];
-		$date = $date[0];
-	}
+	$date = explode('_', str_replace('.mp4', '', str_replace('.jpg', '', $file)));
+	$time = $date[count($date) - 1];
+	$date = $date[count($date) - 2];
 	if ($date == '') {
 		continue;
 	}
@@ -39,12 +34,12 @@ krsort($files);
 <div id='div_cameraRecordAlert' style="display: none;"></div>
 <?php
 echo '<a class="btn btn-danger bt_removeCameraFile pull-right" data-all="1" data-filename="' . $camera->getId() . '/*"><i class="fa fa-trash-o"></i> {{Tout supprimer}}</a>';
-echo '<a class="btn btn-success  pull-right" href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/*') .'" ><i class="fa fa-download"></i> {{Tout télécharger}}</a>';
+echo '<a class="btn btn-success  pull-right" href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/*') . '" ><i class="fa fa-download"></i> {{Tout télécharger}}</a>';
 ?>
 <?php
-$i=0;
+$i = 0;
 foreach ($files as $date => &$file) {
-	$cameraName =  str_replace(' ', '-', $camera->getName());
+	$cameraName = str_replace(' ', '-', $camera->getName());
 	echo '<div class="div_dayContainer">';
 	echo '<legend>';
 	echo '<a class="btn btn-xs btn-danger bt_removeCameraFile" data-day="1" data-filename="' . $camera->getId() . '/' . $cameraName . '_' . $date . '*"><i class="fa fa-trash-o"></i> {{Supprimer}}</a> ';
@@ -56,25 +51,25 @@ foreach ($files as $date => &$file) {
 	krsort($file);
 	foreach ($file as $time => $filename) {
 		$fontType = 'fa-camera';
-		if (strpos($filename,'.mp4')){
+		if (strpos($filename, '.mp4')) {
 			$fontType = 'fa-video-camera';
 			$i++;
 		}
 		echo '<div class="cameraDisplayCard" style="background-color: #e7e7e7;padding:5px;height:167px;">';
 		echo '<center><i class="fa ' . $fontType . ' pull-right"></i>  ' . $time . '</center>';
-				if (strpos($filename,'.mp4')){
-					if ($i<=5){
-						$autoplay = ' autoplay';
-					} else {
-						$autoplay = '';
-					}
-					echo '<video class="displayVideo" width="150" height="100" controls'. $autoplay . ' loop data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer">
+		if (strpos($filename, '.mp4')) {
+			if ($i <= 5) {
+				$autoplay = ' autoplay';
+			} else {
+				$autoplay = '';
+			}
+			echo '<video class="displayVideo" width="150" height="100" controls' . $autoplay . ' loop data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer">
   <source src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '">
 Your browser does not support the video tag.
 </video>';
-				}else{
-		echo '<center><img class="img-responsive cursor displayImage lazy" src="plugins/camera/core/img/no-image.png" data-original="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" width="150"/></center>';
-				}
+		} else {
+			echo '<center><img class="img-responsive cursor displayImage lazy" src="plugins/camera/core/img/no-image.png" data-original="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" width="150"/></center>';
+		}
 		echo '<center style="margin-top:5px;"><a href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" class="btn btn-success btn-xs" style="color : white"><i class="fa fa-download"></i></a>';
 		echo ' <a class="btn btn-danger bt_removeCameraFile btn-xs" style="color : white" data-filename="' . $camera->getId() . '/' . $filename . '"><i class="fa fa-trash-o"></i></a></center>';
 		echo '</div>';
