@@ -58,15 +58,7 @@ foreach ($files as $date => &$file) {
 		echo '<div class="cameraDisplayCard" style="background-color: #e7e7e7;padding:5px;height:167px;">';
 		echo '<center><i class="fa ' . $fontType . ' pull-right"></i>  ' . $time . '</center>';
 		if (strpos($filename, '.mp4')) {
-			if ($i <= 5) {
-				$autoplay = ' autoplay';
-			} else {
-				$autoplay = '';
-			}
-			echo '<video class="displayVideo" width="150" height="100" controls' . $autoplay . ' loop data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer">
-  <source src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '">
-Your browser does not support the video tag.
-</video>';
+			echo '<video class="displayVideo" width="150" height="100" controls loop data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer"><source src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '">Your browser does not support the video tag.</video>';
 		} else {
 			echo '<center><img class="img-responsive cursor displayImage lazy" src="plugins/camera/core/img/no-image.png" data-original="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" width="150"/></center>';
 		}
