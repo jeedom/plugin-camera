@@ -207,18 +207,18 @@ class camera extends eqLogic {
 		}
 		return $return;
 	}
-	
+
 	public static function deadCmd() {
 		$return = array();
-		foreach (eqLogic::byType('camera') as $camera){
-			if ($camera->getConfiguration('commandOn') != '' && strpos($camera->getConfiguration('commandOn'),'#') !== false) {
-				if (!cmd::byId(str_replace('#','',$camera->getConfiguration('commandOn')))){
-					$return[]= array('detail' => 'Camera ' . $camera->getHumanName(),'help' => 'Commande On','who'=>$camera->getConfiguration('commandOn'));
+		foreach (eqLogic::byType('camera') as $camera) {
+			if ($camera->getConfiguration('commandOn') != '' && strpos($camera->getConfiguration('commandOn'), '#') !== false) {
+				if (!cmd::byId(str_replace('#', '', $camera->getConfiguration('commandOn')))) {
+					$return[] = array('detail' => 'Camera ' . $camera->getHumanName(), 'help' => 'Commande On', 'who' => $camera->getConfiguration('commandOn'));
 				}
 			}
-			if ($camera->getConfiguration('commandOff') != '' && strpos($camera->getConfiguration('commandOff'),'#') !== false) {
-				if (!cmd::byId(str_replace('#','',$camera->getConfiguration('commandOn')))){
-					$return[]= array('detail' => 'Camera ' . $camera->getHumanName(),'help' => 'Commande Off','who'=>$camera->getConfiguration('commandOff'));
+			if ($camera->getConfiguration('commandOff') != '' && strpos($camera->getConfiguration('commandOff'), '#') !== false) {
+				if (!cmd::byId(str_replace('#', '', $camera->getConfiguration('commandOn')))) {
+					$return[] = array('detail' => 'Camera ' . $camera->getHumanName(), 'help' => 'Commande Off', 'who' => $camera->getConfiguration('commandOff'));
 				}
 			}
 		}
@@ -548,6 +548,11 @@ class camera extends eqLogic {
 	public function stopRecord() {
 		if (count(system::ps('core/php/record.php id=' . $this->getId())) > 0) {
 			system::kill('core/php/record.php id=' . $this->getId(), false);
+			sleep(1);
+			if (count(system::ps('core/php/record.php id=' . $this->getId())) > 0) {
+				sleep(1);
+				system::kill('core/php/record.php id=' . $this->getId(), true);
+			}
 		} else {
 			$recordState = $this->getCmd(null, 'recordState')->event(0);
 			$this->refreshWidget();
