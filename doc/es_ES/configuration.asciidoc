@@ -2,32 +2,16 @@
 
 Después de instalar el plugin, simplemente activarlo es suficiente, sin embargo, hay algunos ajustes de configuración avanzada: 
 
-image::../images/camera1.PNG[]
-
 ** directorio de registros *: indica la ruta de acceso donde Jeedom debe poner las imágenes que captan las cámaras (es recomendable no tocar)
 * *Tamaño máximo del archivo de registro (MB)* : Indica el tamaño máximo permitido para la carpeta o las capturas registradas (es recomendable no tocar). Si se sobrepasa esta cuota, Jeedom elimina las capturas más antiguas
 
-[IMPORTANTE]
-Atención las capturas no son parte de la copia de seguridad
-
 == Configuración de dispositivos
 
-La configuración de las cámaras es accesible desde el menu plugin:
-
-image::../images/camera2.PNG[]
-
-Esta es la página del plugin cámara (aquí con 1 cámara instalada):
-
-image::../images/camera3.PNG[]
-
-[TIP]
-Como en muchos apartados en Jeedom, llevar el ratón totalmente a la izquierda le permite acceder al menú de acceso rápido (desde sus perfiles se puede dejar siempre visible)
+La configuration des équipements Caméra est accessible à partir du menu plugin puis securité :
 
 Tienes un botón de creación de dispositivos y sus cámaras actuales, con sus respectivas imágenes si están disponibles.
 
 Haciendo clic en uno de los equipos de cámara, se obtiene:
-
-image::../images/camera4.PNG[]
 
 ** Nombre del dispositivo cámara *: nombre de su dispositivo cámara
 ** Objeto padre *: indica el objeto padre al que pertenece el dispositivo
@@ -56,32 +40,19 @@ Nombre de la orden, con la posibilidad de poner un icono en el lugar (para elimi
 * Probar : le permite probar la orden
 * Eliminar (signo - ) : permite borrar la orden
 
-
 [IMPORTANTE]
 El registro no tiene límite de tiempo y puede ocupar un montón de espacio, así que cuidado, si llena tu disco, jeedom podría dejar de verlos  a todos.
 
-
 == El widget
-
-Así es como se ve el widget de cámara: 
-
-image::../images/camera5.PNG[]
 
 En la imagen, captura de la cámara, ordenes definidas en la configuración, la orden para tomar una captura, la orden para iniciar la toma de captura múltiple y la orden para ver las capturas.
 
 [TIP]
 En el dashboard es posible redimensionar el widget para adaptarlo a tus necesidades
 
-Click en la imagen para verla más grande :  
+Un clique sur l'image permet d'afficher celle-ci en plus grand.
 
-image::../images/camera6.PNG[]
-
-Pulsando sobre el último comando se muestran las capturas de pantalla, así: 
-
-image::../images/camera7.PNG[]
-
-[IMPORTANTE]
-Estas son imágenes, no vídeos, los imágenes son capturadas ya sea una vez en modo de captura individual o cada segundo en modo grabación.
+Un clique sur la derniere commande pour parcourir les captures vous affichera celle-ci.
 
 Aquí encontraras todas las capturas organizadas por día y fecha, por cada una de ellas puedes : 
 
@@ -89,31 +60,16 @@ Aquí encontraras todas las capturas organizadas por día y fecha, por cada una 
 * Descargarla
 * Borrarla
 
-El Widget móvil es un poco diferente: 
-
-image::../images/camera12.PNG[]
-
-Si pulsas sobre la imagen de la cámara, se abre una ventana mayor con los posibles comandos: 
-
-image::../images/camera13.PNG[]
+En mobile le widget est un peu different si vous cliquez sur l'image de la camera vous obtenez celel-ci en plus grande avec les commandes possible.
 
 == El panel
 
-El plugin dispone de un panel que permite ver todas sus cámaras en conjunto, es accesible a traves de la página de Inicio -> Cámara: 
+Le plugin caméra mets aussi à disposition un panel qui vous permet de voir d'un seul coup toute vos caméras, il est accessible par Acceuil -> Caméra.
 
-image::../images/camera8.PNG[]
-
-Aquí el resultado : 
-
-image::../images/camera9.PNG[]
+[NOTE]
+Pour l'avoir il faut l'activer sur la page de configuration du plugin
 
 Por supuesto también está disponible desde el  móvil desde  Plugin -> Cámara: 
-
-image::../images/camera10.PNG[]
-
-Una vez dentro, obtendrá una visión global de todas sus cámaras:
-
-image::../images/camera11.PNG[]
 
 == Grabación y envío de captura
 
@@ -130,12 +86,6 @@ La configuración es simple,  basta con llamar la acción de enviar captura, en 
 * detectMove=1 : envoi les captures que si un changement superieur au seuil de detection (voir configuration de la caméra) arrive 
 * movie=1 : une fois l'enregistrement terminé, les images sont convertie en video
 * sendFirstSnap=1 : envoi la premiere capture de l'enregistrement
-
-Ejemplo 
-
-image::../images/camera15.PNG[]
-
-Aquí el plugin espera 5 s antes de empezar a grabar y luego hace un envío a un nas (el plugin transfert) todas las capturas, 10,  hasta que se interrumpa (parar grabación o cámara)
 
 == Encio de la detección de movimiento a Jeedom
 

@@ -2,32 +2,16 @@
 
 Après installation du plugin, il vous suffit de l’activer et c'est bon, cependant il y à quelques paramètres de configuration avancés : 
 
-image::../images/camera1.PNG[]
-
 * *Chemin des enregistrements* : indique le chemin ou Jeedom doit mettre les images qu'il capture des cameras (il est conseillé de ne pas y toucher)
 * *Taille maximum du dossier d'enregistrement (Mo)* : donne la taille maximum autorisé pour le dossier ou les captures sont enregistrées (il est conseillé de ne pas y toucher). Si ce quotas est atteind Jeedom supprime les captures les plus veilles
 
-[IMPORTANT]
-Attention ses captures ne font pas partie du backup
-
 == Configuration des équipements
 
-La configuration des équipements Caméra est accessible à partir du menu plugin :
-
-image::../images/camera2.PNG[]
-
-Voilà à quoi ressemble la page du plugin Caméra (ici avec déjà 1 équipements) :
-
-image::../images/camera3.PNG[]
-
-[TIP]
-Comme à beaucoup d’endroit sur Jeedom, mettre la souris tout à gauche permet de faire apparaître un menu d’accès rapide (vous pouvez à partir de votre profils le laisser toujours visible)
+La configuration des équipements Caméra est accessible à partir du menu plugin puis securité :
 
 Vous avez un bouton de création d’équipement Caméra et vos équipements, avec la photos de ceux-ci si disponible
 
 Une fois que vous cliquez sur l’un des équipements caméra, vous obtenez :
-
-image::../images/camera4.PNG[]
 
 * *Nom de l’équipement Caméra* : nom de votre équipement caméra
 * *Objet parent* : indique l’objet parent auquel appartient l’équipement
@@ -56,32 +40,19 @@ En dessous vous retrouvez la liste des commandes :
 * Tester : permet de tester la commande
 * Supprimer (signe -) : permet de supprimer la commande
 
-
 [IMPORTANT]
 L'enregistrement n'a pas de limite de durée et peut prendre beaucoup de place, attention donc si vous remplisser votre disque jeedom pourrait ne plus marcher du tout.
 
-
 == Le widget
-
-Voila à quoi ressemble le widget d'une caméra : 
-
-image::../images/camera5.PNG[]
 
 On retrouve sur celui-ci l'image de la caméra, les commandes définies dans la configuration, la commande pour prendre une capture, la commande pour lancer la prise de multiple capture et la commande pour parcourir les captures.
 
 [TIP]
 Sur le dashboard et le panel il est possible de redimensionner le widget pour l'adapter à ses besoins
 
-Un clique sur l'image permet d'afficher celle-ci en plus grand : 
+Un clique sur l'image permet d'afficher celle-ci en plus grand.
 
-image::../images/camera6.PNG[]
-
-Un clique sur la derniere commande pour parcourir les captures vous affichera celle-ci : 
-
-image::../images/camera7.PNG[]
-
-[IMPORTANT]
-Ce sont des images ici absolument pas des videos, les images sont prise soit une fois en mode capture simple, soit toute les secondes en mode enregistrement.
+Un clique sur la derniere commande pour parcourir les captures vous affichera celle-ci.
 
 Vous retrouvez ici toute les captures organisées par jour puis par date, vous pouvez pour chacun d'elle : 
 
@@ -89,31 +60,16 @@ Vous retrouvez ici toute les captures organisées par jour puis par date, vous p
 * la télécharger
 * la supprimer
 
-En mobile le widget est un peu different : 
-
-image::../images/camera12.PNG[]
-
-Si vous cliquez sur l'image de la camera vous obtenez celel-ci en plus grande avec les commandes possible : 
-
-image::../images/camera13.PNG[]
+En mobile le widget est un peu different si vous cliquez sur l'image de la camera vous obtenez celel-ci en plus grande avec les commandes possible.
 
 == Les panels
 
-Le plugin caméra mets aussi à disposition un panel qui vous permet de voir d'un seul coup toute vos caméras, il est accessible par Acceuil -> Caméra : 
+Le plugin caméra mets aussi à disposition un panel qui vous permet de voir d'un seul coup toute vos caméras, il est accessible par Acceuil -> Caméra.
 
-image::../images/camera8.PNG[]
-
-Voila le résultat : 
-
-image::../images/camera9.PNG[]
+[NOTE]
+Pour l'avoir il faut l'activer sur la page de configuration du plugin
 
 Il est bien sur aussi disponible en mobile par Plugin -> Caméra : 
-
-image::../images/camera10.PNG[]
-
-Une fois dessus vous obtenez une vue global de toutes vos caméras :
-
-image::../images/camera11.PNG[]
 
 == Enregistrement et envoi de capture
 
@@ -130,12 +86,6 @@ La configuration est assez simple vous appellez l'action d'envoi de capture, dan
 * detectMove=1 : envoi les captures que si un changement superieur au seuil de detection (voir configuration de la caméra) arrive 
 * movie=1 : une fois l'enregistrement terminé, les images sont convertie en video
 * sendFirstSnap=1 : envoi la premiere capture de l'enregistrement
-
-Example : 
-
-image::../images/camera15.PNG[]
-
-Ici le plugin va attendre 5s avant de commencer l'enregistrement puis faire un envoi au nas (par le plugin transfert) toute les 10 captures jusqu'a ce qu'on lui dise d'arreter (stop enregistrement ou arret de la caméra)
 
 == Envoi de la detection de mouvement à Jeedom
 

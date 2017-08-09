@@ -1,4 +1,4 @@
 == FAQ
 
 ¿donde están las grabaciones ?::
-Las graciones se encuentra por defecto en tmp/camera_records /#ID_CAM #, atenciónm, esto puede variar si configuraste que Jeedom los guardara en otra parte
+Les enregistrements se trouve par defaut dans plugins/camera/data/records/#ID_CAM#, attention cela peut varier si vous avez demandé à Jeedom de les enregistrer ailleurs
