@@ -13,7 +13,7 @@
       <img data-eqLogic_id="#id#" class="directDisplay" style="width:90%;display:block;margin-bottom : 5px;" src="plugins/camera/core/img/no-image-blanc.png"/>
     </a>
   </center>
-  <div data-role="popup" id="popupCameraZoom#id#">
+  <div data-role="popup" id="popupCameraZoom#id#" class="popup_cam">
    <div data-role="header">
     <h1 class='nd-title'>#name_display#</h1>
     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
@@ -59,41 +59,45 @@
   }else{
     url += '?t='+(new Date()).getTime();
   }
-  var img = new Image();
-  if($("#popupCameraZoom#id#-popup").hasClass("ui-popup-active")){
-    img.src = url;
-  }else{
-    img.src = url+'&low=20';
-  }
-  img.onload = function() {
-   $("#popupCameraZoom#id# .display img").attr('src',img.src);
-   $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src',img.src);
-   if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').show();
-    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
-  }
-  if($('.eqLogic[data-eqLogic_id=#id#]').html() != undefined){
-    if ($("#popupCameraZoom#id#-popup").hasClass("ui-popup-active")){
-      var delay = #refreshDelayFast# - (Date.now() - start);
+  if($("#popupCameraZoom#id#-popup").hasClass("ui-popup-active")|| !$(".popup_cam").hasClass("ui-popup-active")){
+    var img = new Image();
+    if($("#popupCameraZoom#id#-popup").hasClass("ui-popup-active")){
+      img.src = url;
     }else{
-      var delay = #refreshDelaySlow# - (Date.now() - start);
+      img.src = url+'&low=20';
     }
-    if(delay < 1){
-     delay = 1;
+    img.onload = function() {
+     $("#popupCameraZoom#id# .display img").attr('src',img.src);
+     $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src',img.src);
+     if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+      $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').show();
+      $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
+    }
+    if($('.eqLogic[data-eqLogic_id=#id#]').html() != undefined){
+      if ($("#popupCameraZoom#id#-popup").hasClass("ui-popup-active")){
+        var delay = #refreshDelayFast# - (Date.now() - start);
+      }else{
+        var delay = #refreshDelaySlow# - (Date.now() - start);
+      }
+      if(delay < 1){
+       delay = 1;
+     }
+     timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
    }
-   timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
  }
+ img.onerror = function() {
+   $("#popupCameraZoom#id# .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
+   $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src','plugins/camera/core/img/no-image-blanc.png');
+   if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
+    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').show();
+  }
+  if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
+    timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
+  }
 }
-img.onerror = function() {
- $("#popupCameraZoom#id# .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
- $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src','plugins/camera/core/img/no-image-blanc.png');
- if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
-  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').show();
-}
-if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
-  timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
-}
+}else{
+
 }
 };
 if (typeof timeoutCamera#id# !== "undefined") {
