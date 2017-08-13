@@ -72,20 +72,18 @@ function refreshImgCam#id#(){
     }else{
         url += '?t='+(new Date()).getTime();
     }
-    var img = new Image();
-    img.src = url;
-    img.onload = function() {
-       $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
-       $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
-       if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-        $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').show();
-        $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
+    if($(".md_cameraZoom[data-eqLogic_uid=#uid#]").is(':visible') || !$(".md_cameraZoom").is(':visible')){
+        var img = new Image();
+        img.src = url;
+        img.onload = function() {
+           $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
+           $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
+           if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+            $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').show();
+            $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
+        }
     }
-    if ($(".md_cameraZoom[data-eqLogic_id=#id#]").is(':visible')){
-        var delay = #refreshDelayFast# - (Date.now() - start);
-    }else{
-        var delay = #refreshDelaySlow# - (Date.now() - start);
-    }
+    var delay = ($(".md_cameraZoom[data-eqLogic_id=#id#]").is(':visible')) ? #refreshDelayFast# - (Date.now() - start) : #refreshDelaySlow# - (Date.now() - start);
     if(delay < 10){
         delay = 10;
     }
