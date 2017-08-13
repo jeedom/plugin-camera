@@ -74,7 +74,11 @@ function refreshImgCam#id#(){
     }
     if($(".md_cameraZoom[data-eqLogic_uid=#uid#]").is(':visible') || !$(".md_cameraZoom").is(':visible')){
         var img = new Image();
-        img.src = url;
+        if($(".md_cameraZoom[data-eqLogic_uid=#uid#]").is(':visible')){
+            img.src = url;
+        }else{
+            img.src = url+'&low=30';
+        }
         img.onload = function() {
          $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
          $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);

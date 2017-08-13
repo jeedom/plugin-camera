@@ -28,5 +28,14 @@ if ($camera->getConfiguration('localApiKey') != init('apikey')) {
 	die();
 }
 header('Content-Type: image/jpeg');
-echo $camera->getSnapshot();
+if (init('low', false) !== false) {
+	$data = $camera->getSnapshot();
+	$img = imagecreatefromstring($data);
+	if ($img === false) {
+		echo $data;
+	}
+	imagejpeg($img, null, init('low'));
+} else {
+	echo $camera->getSnapshot();
+}
 exit;
