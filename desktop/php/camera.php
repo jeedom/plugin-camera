@@ -169,6 +169,12 @@ foreach (object::all() as $object) {
             <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="moveThreshold" />
           </div>
         </div>
+         <div class="form-group">
+          <label class="col-sm-3 control-label">{{Compression minimum}}</label>
+          <div class="col-sm-2">
+            <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="minCompress" />
+          </div>
+        </div>
         <div class="form-group">
           <label class="col-sm-3 control-label">{{Commande ON}}</label>
           <div class="col-sm-4">

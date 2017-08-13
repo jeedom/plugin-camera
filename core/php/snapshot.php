@@ -28,13 +28,17 @@ if ($camera->getConfiguration('localApiKey') != init('apikey')) {
 	die();
 }
 header('Content-Type: image/jpeg');
-if (init('low', false) !== false) {
+$compress = init('low', $camera->getConfiguration('minCompress', null));
+if ($compress != null) {
+	if ($compress > $camera->getConfiguration('minCompress', $compress)) {
+		$compress = $camera->getConfiguration('minCompress', $compress);
+	}
 	$data = $camera->getSnapshot();
 	$img = imagecreatefromstring($data);
 	if ($img === false) {
 		echo $data;
 	}
-	imagejpeg($img, null, init('low'));
+	imagejpeg($img, null, $compress);
 } else {
 	echo $camera->getSnapshot();
 }
