@@ -1,12 +1,12 @@
 <div class="eqLogic eqLogic-widget" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="padding-top : 3px;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;#style#" data-first="0">
-<style>
-#popupCameraZoom#id# .info .cmd {
-    display: inline-block;
-    position: relative;
-    vertical-align: top;
-    margin: 7px;
-}
-</style>
+  <style>
+    #popupCameraZoom#id# .info .cmd {
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      margin: 7px;
+    }
+  </style>
   <center style="#hideEqLogicName#">#name_display# <span style="font-size: 0.85em;">#object_name#</span></center>
   <center>
     <a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none">
@@ -24,7 +24,7 @@
       <div class="display" style="margin-left : auto;margin-right : auto;width:auto;"><img data-eqLogic_id="#id#" style="width:99%;display:block;" src="plugins/camera/core/img/no-image-noir.png"/></div>
     </center>
     <br/>
-     <center class="info">
+    <center class="info">
       #info#
     </center>
     <center>
@@ -60,7 +60,11 @@
     url += '?t='+(new Date()).getTime();
   }
   var img = new Image();
-  img.src = url;
+  if($("#popupCameraZoom#id#-popup").hasClass("ui-popup-active")){
+    img.src = url;
+  }else{
+    img.src = url+'&low=20';
+  }
   img.onload = function() {
    $("#popupCameraZoom#id# .display img").attr('src',img.src);
    $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src',img.src);
