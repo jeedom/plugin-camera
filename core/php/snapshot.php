@@ -28,9 +28,16 @@ if ($camera->getConfiguration('localApiKey') != init('apikey')) {
 	die();
 }
 header('Content-Type: image/jpeg');
-$compress = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::compress', null) : $camera->getConfiguration('normal::compress', null);
+if (init('mobile',0) == 0) {
+	$compress = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::compress', null) : $camera->getConfiguration('normal::compress', null);
+	$resize = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::resize', null) : $camera->getConfiguration('normal::resize', null);
+	
+} else {
+	$compress = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::mobilecompress', null) : $camera->getConfiguration('normal::mobilecompress', null);
+	$resize = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::mobileresize', null) : $camera->getConfiguration('normal::mobileresize', null);
+}
 $data = $camera->getSnapshot();
-if (init('width', 0) == 0 && $compress == null) {
+if (init('width', 0) == 0 && ($compress == null || $compress >= 100) && ($resize == null || $resize >= 100)) {
 	echo $data;
 	exit();
 }
@@ -39,27 +46,42 @@ if ($source === false) {
 	echo $data;
 	exit();
 }
-if (init('width', 0) == 0) {
-	imagejpeg($source, null, $compress);
-	exit();
-}
-$width = imagesx($source);
-if ($width < init('width')) {
-	if ($compress == null) {
-		echo $data;
+if ($resize == null || $resize >= 100) {
+	if (init('width', 0) == 0) {
+		imagejpeg($source, null, $compress);
 		exit();
 	}
-	imagejpeg($source, null, $compress);
-	exit();
+	$width = imagesx($source);
+	if ($width < init('width')) {
+		if ($compress == null || $compress >= 100) {
+			echo $data;
+			exit();
+		}
+		imagejpeg($source, null, $compress);
+		exit();
+	}
+	if ($compress == null || $compress >100) {
+		$compress = 100;
+	}
+	$height = imagesy($source);
+	$ratio = $width / $height;
+	$newwidth = init('width');
+	$newheight = $newwidth / $ratio;
+	$result = imagecreatetruecolor($newwidth, $newheight);
+	imagecopyresized($result, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+	imagejpeg($result, null, $compress);
+	exit;
+} else {
+	if ($compress == null || $compress >= 100) {
+		$compress = 100;
+	}
+	$width = imagesx($source);
+	$height = imagesy($source);
+	$ratio = $width / $height;
+	$newwidth = $width * $resize/100;
+	$newheight = $newwidth / $ratio;
+	$result = imagecreatetruecolor($newwidth, $newheight);
+	imagecopyresized($result, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+	imagejpeg($result, null, $compress);
+	exit;
 }
-if ($compress == null) {
-	$compress = 100;
-}
-$height = imagesy($source);
-$ratio = $width / $height;
-$newwidth = init('width');
-$newheight = $newwidth / $ratio;
-$result = imagecreatetruecolor($newwidth, $newheight);
-imagecopyresized($result, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-imagejpeg($result, null, $compress);
-exit;
