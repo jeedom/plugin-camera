@@ -52,52 +52,43 @@
 } );
 
  function refreshImgCam#id#(){
-  var start = Date.now();
-  var url = "#url#";
-  if(url.indexOf('?') > 0){
-    url += '&t='+(new Date()).getTime();
-  }else{
-    url += '?t='+(new Date()).getTime();
-  }
-  if($("#popupCameraZoom#id#-popup").hasClass("ui-popup-active")|| !$(".popup_cam").hasClass("ui-popup-active")){
-    var img = new Image();
-    if($("#popupCameraZoom#id#-popup").hasClass("ui-popup-active")){
-      img.src = url;
-    }else{
-      img.src = url+'&low=20';
-    }
-    img.onload = function() {
-     $("#popupCameraZoom#id# .display img").attr('src',img.src);
-     $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src',img.src);
-     if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-      $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').show();
-      $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
-    }
-    if($('.eqLogic[data-eqLogic_id=#id#]').html() != undefined){
-      if ($("#popupCameraZoom#id#-popup").hasClass("ui-popup-active")){
-        var delay = #refreshDelayFast# - (Date.now() - start);
-      }else{
-        var delay = #refreshDelaySlow# - (Date.now() - start);
-      }
-      if(delay < 1){
-       delay = 1;
-     }
-     timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
-   }
+  if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
+    return;
+  } 
+  if(!$("#popupCameraZoom#id#-popup").hasClass("ui-popup-active") && $('.ui-popup-active').length > 0){
+   timeoutCamera#id# =  setTimeout(refreshImgCam#id#,#refreshDelaySlow#);    
+   return;
  }
- img.onerror = function() {
-   $("#popupCameraZoom#id# .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
-   $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src','plugins/camera/core/img/no-image-blanc.png');
-   if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
-    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').show();
-  }
-  if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
-    timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
-  }
-}
-}else{
+ var thumbnail = !$("#popupCameraZoom#id#-popup").hasClass("ui-popup-active");
+ var start = Date.now();
+ var url = "#url#";
+ url += (url.indexOf('?') > 0) ? '&t='+(new Date()).getTime() : '?t='+(new Date()).getTime();
+ url += (thumbnail)?  '&thumbnail=1&width='+ $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').width():'&width='+ (deviceInfo.width - 50);
 
+ var img = new Image();
+ img.src = url;
+
+ img.onload = function() {
+  if(thumbnail){
+   $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src',img.src);
+ }else{
+   $("#popupCameraZoom#id# .display img").attr('src',img.src);
+ }
+ if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').show();
+  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
+}
+var delay = (thumbnail) ? #refreshDelaySlow# - (Date.now() - start) :  #refreshDelayFast# - (Date.now() - start);
+timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
+}
+img.onerror = function() {
+ $("#popupCameraZoom#id# .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
+ $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src','plugins/camera/core/img/no-image-blanc.png');
+ if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
+  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').show();
+}
+timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
 }
 };
 if (typeof timeoutCamera#id# !== "undefined") {
