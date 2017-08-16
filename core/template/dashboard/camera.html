@@ -106,6 +106,6 @@ timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
 if (typeof timeoutCamera#id# !== "undefined") {
   clearTimeout(timeoutCamera#id#);
 }
-refreshImgCam#id#();
+setTimeout(refreshImgCam#id#,50);
 </script>
 </div>
