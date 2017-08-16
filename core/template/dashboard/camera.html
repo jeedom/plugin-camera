@@ -65,54 +65,42 @@ $('.eqLogic[data-eqLogic_id=#id#]').undelegate('.zoom', 'click').delegate('.zoom
 });
 
 function refreshImgCam#id#(){
-    var start = Date.now();
-    var url = "#url#";
-    if(url.indexOf('?') > 0){
-        url += '&t='+(new Date()).getTime();
-    }else{
-        url += '?t='+(new Date()).getTime();
+    if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
+        return;
     }
-    if($(".md_cameraZoom[data-eqLogic_uid=#uid#]").is(':visible') || !$(".md_cameraZoom").is(':visible')){
-        var img = new Image();
-        if($(".md_cameraZoom[data-eqLogic_uid=#uid#]").is(':visible')){
-            img.src = url;
-        }else{
-            img.src = url+'&low=20';
-        }
-        img.onload = function() {
-         $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
-         $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
-         if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-            $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').show();
-            $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
-        }
-        var delay = ($(".md_cameraZoom[data-eqLogic_id=#id#]").is(':visible')) ? #refreshDelayFast# - (Date.now() - start) : #refreshDelaySlow# - (Date.now() - start);
-        if(delay < 10){
-            delay = 10;
-        }
-        if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
-            timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
-        }
-    }
-    img.onerror = function() {
-       $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
-       $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src','plugins/camera/core/img/no-image-blanc.png');
-       if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-        $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
-        $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').show();
-    }
-    if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
-        timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
-    }
+    var thumbnail = !$(".md_cameraZoom[data-eqLogic_uid=#uid#]").is(':visible');
+    if(!$(".md_cameraZoom[data-eqLogic_uid=#uid#]").is(':visible') && $(".md_cameraZoom").is(':visible')){
+     timeoutCamera#id# =  setTimeout(refreshImgCam#id#,#refreshDelaySlow#);    
+     return;
+ }
+ var start = Date.now();
+ var url = "#url#";
+ url += (url.indexOf('?') > 0) ? '&t='+(new Date()).getTime() : '?t='+(new Date()).getTime();
+ url += (thumbnail)?  '&thumbnail=1&width='+ $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').width():'&width='+$(".md_cameraZoom[data-eqLogic_id=#id#] .display img").width();
+
+ var img = new Image();
+ img.src = url;
+ img.onload = function() {
+    if(thumbnail){
+       $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
+   }else{
+      $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
+  }
+  if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').show();
+    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
 }
-}else{
-   var delay = ($(".md_cameraZoom[data-eqLogic_id=#id#]").is(':visible')) ? #refreshDelayFast# - (Date.now() - start) : #refreshDelaySlow# - (Date.now() - start);
-   if(delay < 10){
-    delay = 10;
+var delay = (thumbnail) ? #refreshDelaySlow# - (Date.now() - start) :  #refreshDelayFast# - (Date.now() - start);
+timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
 }
-if($('.eqLogic[data-eqLogic_uid=#uid#]').html() != undefined){
-    timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
+img.onerror = function() {
+   $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
+   $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src','plugins/camera/core/img/no-image-blanc.png');
+   if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
+    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').show();
 }
+timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
 }
 }
 if (typeof timeoutCamera#id# !== "undefined") {
