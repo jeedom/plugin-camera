@@ -1,0 +1,3 @@
+== Changelog
+
+- Refonte de la gestion de l'affiche des caméras (reglage de la compression et de la taille de l'image)
