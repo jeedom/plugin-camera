@@ -216,32 +216,60 @@ foreach (camera::devicesParameters() as $id => $info) {
 
 <div role="tabpanel" class="tab-pane" id="displaytab">
   <form class="form-horizontal">
-    <legend>{{Miniature}}</legend>
-    <div class="form-group">
-      <label class="col-sm-3 control-label">{{Rafraichissement (s)}}</label>
-      <div class="col-sm-3">
-        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::refresh" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-3 control-label">{{Compression (%)}}</label>
-      <div class="col-sm-3">
-        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::compress" />
-      </div>
-    </div>
+  <legend>{{Miniature}}</legend>
+  <table id="table_image" class="table table-bordered table-condensed">
+    <thead>
+     <tr>
+        <th style="width : 70px;">{{}}</th>
+        <th style="width : 300px;">{{Dashboard}}</th>
+        <th style="width : 300px;">{{Mobile}}</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><label>{{Rafraichissement (s)}}</label></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::refresh" /></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::mobilerefresh" /></td>
+    </tr>
+    <tr>
+        <td><label>{{Compression (%)}}</label></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::compress" /></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::mobilecompress" /></td>
+    </tr>
+    <tr>
+        <td><label>{{Taille (%)}}</label></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::resize" /></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::mobileresize" /></td>
+    </tr>
+    </tbody>
+  </table>
     <legend>{{Normal}}</legend>
-    <div class="form-group">
-      <label class="col-sm-3 control-label">{{Rafraichissement (s)}}</label>
-      <div class="col-sm-2">
-        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::refresh" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-3 control-label">{{Compression (%)}}</label>
-      <div class="col-sm-3">
-        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::compress" />
-      </div>
-    </div>
+    <table id="table_image" class="table table-bordered table-condensed">
+    <thead>
+     <tr>
+        <th style="width : 70px;">{{}}</th>
+        <th style="width : 300px;">{{Dashboard}}</th>
+        <th style="width : 300px;">{{Mobile}}</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><label>{{Rafraichissement (s)}}</label></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::refresh" /></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::mobilerefresh" /></td>
+    </tr>
+    <tr>
+        <td><label>{{Compression (%)}}</label></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::compress" /></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::mobilecompress" /></td>
+    </tr>
+    <tr>
+        <td><label>{{Taille (%)}}</label></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::resize" /></td>
+        <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::mobileresize" /></td>
+    </tr>
+    </tbody>
+  </table>
   </form>
 </div>
 

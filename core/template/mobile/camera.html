@@ -35,7 +35,7 @@
 </div>
 
 <script>
- $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
+ $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide() ;
  $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (9/16) + 40);
  $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 15);
  $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
@@ -64,6 +64,7 @@
  var url = "#url#";
  url += (url.indexOf('?') > 0) ? '&t='+(new Date()).getTime() : '?t='+(new Date()).getTime();
  url += (thumbnail)?  '&thumbnail=1&width='+ $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').width():'&width='+ (deviceInfo.width - 50);
+ url += '&mobile=1';
 
  var img = new Image();
  img.src = url;

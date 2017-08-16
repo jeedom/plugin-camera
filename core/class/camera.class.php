@@ -469,6 +469,10 @@ class camera extends eqLogic {
 		$replace['#url#'] = $this->getUrl($this->getConfiguration('urlStream'), true);
 		$replace['#refreshDelaySlow#'] = $this->getConfiguration('thumbnail::refresh', 1) * 1000;
 		$replace['#refreshDelayFast#'] = $this->getConfiguration('normal::refresh', 5) * 1000;
+		if ($version == 'mobile') {
+			$replace['#refreshDelaySlow#'] = $this->getConfiguration('thumbnail::mobilerefresh', 1) * 1000;
+			$replace['#refreshDelayFast#'] = $this->getConfiguration('normal::mobilerefresh', 5) * 1000;
+		} 
 		if (!$_fluxOnly) {
 			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera')));
 		} else {
