@@ -237,11 +237,17 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('localApiKey') == '') {
 			$this->setConfiguration('localApiKey', config::genKey());
 		}
-		if ($this->getConfiguration('refreshDelayFast') == '') {
-			$this->setConfiguration('refreshDelayFast', 1);
+		if ($this->getConfiguration('normal::refresh') == '') {
+			$this->setConfiguration('normal::refresh', 1);
 		}
-		if ($this->getConfiguration('refreshDelaySlow') == '') {
-			$this->setConfiguration('refreshDelaySlow', 5);
+		if ($this->getConfiguration('thumbnail::refresh') == '') {
+			$this->setConfiguration('thumbnail::refresh', 5);
+		}
+		if ($this->getConfiguration('normal::compress') == '') {
+			$this->setConfiguration('normal::compress', 70);
+		}
+		if ($this->getConfiguration('thumbnail::compress') == '') {
+			$this->setConfiguration('thumbnail::compress', 30);
 		}
 		if ($this->getConfiguration('maxReccordTime') == '') {
 			$this->setConfiguration('maxReccordTime', 600);
@@ -267,9 +273,6 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('applyDevice') != $this->getConfiguration('device')) {
 			$this->applyModuleConfiguration();
 			self::deamon_start();
-		}
-		if ($this->getConfiguration('refreshDelay') == '') {
-			$this->setConfiguration('refreshDelay', 1);
 		}
 		$urlFlux = $this->getCmd(null, 'urlFlux');
 		if (!is_object($urlFlux)) {
@@ -464,8 +467,8 @@ class camera extends eqLogic {
 		$replace['#action#'] = $action;
 		$replace['#info#'] = $info;
 		$replace['#url#'] = $this->getUrl($this->getConfiguration('urlStream'), true);
-		$replace['#refreshDelaySlow#'] = $this->getConfiguration('refreshDelaySlow', 1) * 1000;
-		$replace['#refreshDelayFast#'] = $this->getConfiguration('refreshDelayFast', 5) * 1000;
+		$replace['#refreshDelaySlow#'] = $this->getConfiguration('thumbnail::refresh', 1) * 1000;
+		$replace['#refreshDelayFast#'] = $this->getConfiguration('normal::refresh', 5) * 1000;
 		if (!$_fluxOnly) {
 			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera')));
 		} else {

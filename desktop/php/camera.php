@@ -70,6 +70,7 @@ foreach ($eqLogics as $eqLogic) {
   <ul class="nav nav-tabs" role="tablist">
    <li role="presentation"><a class="eqLogicAction cursor" aria-controls="home" role="tab" data-action="returnToThumbnailDisplay"><i class="fa fa-arrow-circle-left"></i></a></li>
    <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Equipement}}</a></li>
+   <li role="presentation"><a href="#displaytab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Image}}</a></li>
    <li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Commandes}}</a></li>
  </ul>
  <div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
@@ -137,16 +138,6 @@ foreach (object::all() as $object) {
           </div>
         </div>
         <div class="form-group">
-          <label class="col-sm-3 control-label">{{Rafraichissement (s)}}</label>
-          <div class="col-sm-3">
-            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelaySlow" />
-          </div>
-          <label class="col-sm-3 control-label">{{Zoom (s)}}</label>
-          <div class="col-sm-2">
-            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelayFast" />
-          </div>
-        </div>
-        <div class="form-group">
           <label class="col-sm-3 control-label">{{Durée maximum d'un enregistrement (s)}}</label>
           <div class="col-sm-2">
             <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="maxReccordTime" />
@@ -167,12 +158,6 @@ foreach (object::all() as $object) {
           <label class="col-sm-5 control-label">{{Seuil de détection mouvement (0-100)}}</label>
           <div class="col-sm-2">
             <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="moveThreshold" />
-          </div>
-        </div>
-         <div class="form-group">
-          <label class="col-sm-3 control-label">{{Compression minimum}}</label>
-          <div class="col-sm-2">
-            <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="minCompress" />
           </div>
         </div>
         <div class="form-group">
@@ -228,6 +213,39 @@ foreach (camera::devicesParameters() as $id => $info) {
 </div>
 </div>
 </div>
+
+<div role="tabpanel" class="tab-pane" id="displaytab">
+  <form class="form-horizontal">
+    <legend>{{Miniature}}</legend>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">{{Rafraichissement (s)}}</label>
+      <div class="col-sm-3">
+        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::refresh" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">{{Compression (%)}}</label>
+      <div class="col-sm-3">
+        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::compress" />
+      </div>
+    </div>
+    <legend>{{Normal}}</legend>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">{{Rafraichissement (s)}}</label>
+      <div class="col-sm-2">
+        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::refresh" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">{{Compression (%)}}</label>
+      <div class="col-sm-3">
+        <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::compress" />
+      </div>
+    </div>
+  </form>
+</div>
+
+
 <div role="tabpanel" class="tab-pane" id="commandtab">
   <a class="btn btn-success btn-sm cmdAction pull-right" data-action="add" style="margin-top:5px;"><i class="fa fa-plus-circle"></i> {{Ajouter une commande}}</a><br/><br/>
   <table id="table_cmd" class="table table-bordered table-condensed">

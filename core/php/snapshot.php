@@ -28,18 +28,38 @@ if ($camera->getConfiguration('localApiKey') != init('apikey')) {
 	die();
 }
 header('Content-Type: image/jpeg');
-$compress = init('low', $camera->getConfiguration('minCompress', null));
-if ($compress != null) {
-	if ($compress > $camera->getConfiguration('minCompress', $compress)) {
-		$compress = $camera->getConfiguration('minCompress', $compress);
-	}
-	$data = $camera->getSnapshot();
-	$img = imagecreatefromstring($data);
-	if ($img === false) {
-		echo $data;
-	}
-	imagejpeg($img, null, $compress);
-} else {
-	echo $camera->getSnapshot();
+$compress = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::compress', null) : $camera->getConfiguration('normal::compress', null);
+$data = $camera->getSnapshot();
+if (init('width') == '' && $compress == null) {
+	echo $data;
+	exit();
 }
+$source = imagecreatefromstring($data);
+if ($source === false) {
+	echo $data;
+	exit();
+}
+if (init('width') == '') {
+	imagejpeg($source, null, $compress);
+	exit();
+}
+$width = imagesx($source);
+if ($width < init('width')) {
+	if ($compress == null) {
+		echo $data;
+		exit();
+	}
+	imagejpeg($source, null, $compress);
+	exit();
+}
+if ($compress == null) {
+	$compress = 100;
+}
+$height = imagesy($source);
+$ratio = $width / $height;
+$newwidth = init('width');
+$newheight = $newwidth / $ratio;
+$result = imagecreatetruecolor($newwidth, $newheight);
+imagecopyresized($result, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+imagejpeg($result, null, $compress);
 exit;
