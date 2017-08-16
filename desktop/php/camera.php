@@ -71,6 +71,8 @@ foreach ($eqLogics as $eqLogic) {
    <li role="presentation"><a class="eqLogicAction cursor" aria-controls="home" role="tab" data-action="returnToThumbnailDisplay"><i class="fa fa-arrow-circle-left"></i></a></li>
    <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Equipement}}</a></li>
    <li role="presentation"><a href="#displaytab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Image}}</a></li>
+   <li role="presentation"><a href="#capturetab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-video-camera"></i> {{Capture}}</a></li>
+   <li role="presentation"><a href="#alimtab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-power-off"></i> {{Alimentation}}</a></li>
    <li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Commandes}}</a></li>
  </ul>
  <div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
@@ -137,55 +139,6 @@ foreach (object::all() as $object) {
             <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}"/>
           </div>
         </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">{{Durée maximum d'un enregistrement (s)}}</label>
-          <div class="col-sm-2">
-            <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="maxReccordTime" />
-          </div>
-          <label class="col-sm-6 control-label">{{Toujours faire une video}}</label>
-          <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="preferVideo" />
-          </div>
-        </div>
-        <div class="form-group">
-
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">{{Nombre d'images par seconde de la vidéo}}</label>
-          <div class="col-sm-2">
-            <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="videoFramerate" />
-          </div>
-          <label class="col-sm-5 control-label">{{Seuil de détection mouvement (0-100)}}</label>
-          <div class="col-sm-2">
-            <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="moveThreshold" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">{{Commande ON}}</label>
-          <div class="col-sm-4">
-           <div class="input-group">
-            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOn"/>
-            <span class="input-group-btn">
-              <a class="btn btn-default listCmdActionOther"><i class="fa fa-list-alt"></i></a>
-            </span>
-          </div>
-        </div>
-        <label class="col-sm-1 control-label">{{OFF}}</label>
-        <div class="col-sm-4">
-         <div class="input-group">
-          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOff"/>
-          <span class="input-group-btn">
-            <a class="btn btn-default listCmdActionOther"><i class="fa fa-list-alt"></i></a>
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-3 control-label">{{Supprimer toutes les captures de la caméra}}</label>
-      <div class="col-sm-2">
-        <a class="btn btn-danger" id="bt_removeAllCapture"><i class="fa fa-trash"></i> {{Supprimer}}</a>
-      </div>
-    </div>
   </fieldset>
 </form>
 </div>
@@ -271,6 +224,66 @@ foreach (camera::devicesParameters() as $id => $info) {
     </tbody>
   </table>
   </form>
+</div>
+
+<div role="tabpanel" class="tab-pane" id="capturetab">
+  </br>
+  <form class="form-horizontal">
+   <div class="form-group">
+          <label class="col-sm-2 control-label">{{Durée maximum d'un enregistrement (s)}}</label>
+          <div class="col-sm-2">
+            <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="maxReccordTime" />
+          </div>
+          <label class="col-sm-2 control-label">{{Toujours faire une video}}</label>
+          <div class="col-sm-1">
+            <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="preferVideo" />
+          </div>
+        </div>
+   <div class="form-group">
+          <label class="col-sm-2 control-label">{{Nombre d'images par seconde de la vidéo}}</label>
+          <div class="col-sm-2">
+            <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="videoFramerate" />
+          </div>
+          <label class="col-sm-2 control-label">{{Seuil de détection mouvement (0-100)}}</label>
+          <div class="col-sm-2">
+            <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="moveThreshold" />
+          </div>
+        </div>
+   <div class="form-group">
+      <label class="col-sm-2 control-label">{{Supprimer toutes les captures de la caméra}}</label>
+      <div class="col-sm-2">
+        <a class="btn btn-danger" id="bt_removeAllCapture"><i class="fa fa-trash"></i> {{Supprimer}}</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div role="tabpanel" class="tab-pane" id="alimtab">
+  </br>
+  <form class="form-horizontal">
+   <div class="form-group">
+         <div class="form-group">
+          <label class="col-sm-1 control-label">{{Commande ON}}</label>
+          <div class="col-sm-4">
+           <div class="input-group">
+            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOn"/>
+            <span class="input-group-btn">
+              <a class="btn btn-default listCmdActionOther"><i class="fa fa-list-alt"></i></a>
+            </span>
+          </div>
+        </div>
+        <label class="col-sm-1 control-label">{{OFF}}</label>
+        <div class="col-sm-4">
+         <div class="input-group">
+          <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOff"/>
+          <span class="input-group-btn">
+            <a class="btn btn-default listCmdActionOther"><i class="fa fa-list-alt"></i></a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
 </div>
 
 
