@@ -237,7 +237,7 @@ foreach (camera::devicesParameters() as $id => $info) {
         <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::mobilecompress" /></td>
     </tr>
     <tr>
-        <td><label>{{Taille (%)}}</label></td>
+        <td><label>{{Taille (% - 0 : automatique)}}</label></td>
         <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::resize" /></td>
         <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::mobileresize" /></td>
     </tr>
@@ -264,7 +264,7 @@ foreach (camera::devicesParameters() as $id => $info) {
         <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::mobilecompress" /></td>
     </tr>
     <tr>
-        <td><label>{{Taille (%)}}</label></td>
+        <td><label>{{Taille (% - 0 : automatique)}}</label></td>
         <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::resize" /></td>
         <td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="normal::mobileresize" /></td>
     </tr>

@@ -46,7 +46,7 @@ if ($source === false) {
 	echo $data;
 	exit();
 }
-if ($resize == null || $resize >= 100) {
+if ($resize == null || $resize == 0) {
 	if (init('width', 0) == 0) {
 		imagejpeg($source, null, $compress);
 		exit();
@@ -74,6 +74,9 @@ if ($resize == null || $resize >= 100) {
 } else {
 	if ($compress == null || $compress >= 100) {
 		$compress = 100;
+	}
+	if ($resize > 100) {
+		$resize = 100;
 	}
 	$width = imagesx($source);
 	$height = imagesy($source);
