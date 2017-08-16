@@ -30,7 +30,7 @@ if ($camera->getConfiguration('localApiKey') != init('apikey')) {
 header('Content-Type: image/jpeg');
 $compress = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::compress', null) : $camera->getConfiguration('normal::compress', null);
 $data = $camera->getSnapshot();
-if (init('width') == '' && $compress == null) {
+if (init('width', 0) == 0 && $compress == null) {
 	echo $data;
 	exit();
 }
@@ -39,7 +39,7 @@ if ($source === false) {
 	echo $data;
 	exit();
 }
-if (init('width') == '') {
+if (init('width', 0) == 0) {
 	imagejpeg($source, null, $compress);
 	exit();
 }
