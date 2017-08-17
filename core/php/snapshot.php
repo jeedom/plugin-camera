@@ -28,18 +28,23 @@ if ($camera->getConfiguration('localApiKey') != init('apikey')) {
 	die();
 }
 header('Content-Type: image/jpeg');
-if (init('mobile',0) == 0) {
+if (init('mobile', 0) == 0) {
 	$compress = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::compress', null) : $camera->getConfiguration('normal::compress', null);
 	$resize = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::resize', null) : $camera->getConfiguration('normal::resize', null);
-	
+
 } else {
 	$compress = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::mobilecompress', null) : $camera->getConfiguration('normal::mobilecompress', null);
 	$resize = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::mobileresize', null) : $camera->getConfiguration('normal::mobileresize', null);
 }
+
 $data = $camera->getSnapshot();
 if (init('width', 0) == 0 && ($compress == null || $compress >= 100) && ($resize == null || $resize >= 100)) {
 	echo $data;
 	exit();
+}
+$askWidth = init('width', 0);
+if ($askWidth == 0 && init('thumbnail') == 1) {
+	$askWidth = 360;
 }
 $source = imagecreatefromstring($data);
 if ($source === false) {
@@ -47,12 +52,12 @@ if ($source === false) {
 	exit();
 }
 if ($resize == null || $resize == 0) {
-	if (init('width', 0) == 0) {
+	if ($askWidth == 0) {
 		imagejpeg($source, null, $compress);
 		exit();
 	}
 	$width = imagesx($source);
-	if ($width < init('width')) {
+	if ($width < $askWidth) {
 		if ($compress == null || $compress >= 100) {
 			echo $data;
 			exit();
@@ -60,12 +65,12 @@ if ($resize == null || $resize == 0) {
 		imagejpeg($source, null, $compress);
 		exit();
 	}
-	if ($compress == null || $compress >100) {
+	if ($compress == null || $compress > 100) {
 		$compress = 100;
 	}
 	$height = imagesy($source);
 	$ratio = $width / $height;
-	$newwidth = init('width');
+	$newwidth = $askWidth;
 	$newheight = $newwidth / $ratio;
 	$result = imagecreatetruecolor($newwidth, $newheight);
 	imagecopyresized($result, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
@@ -81,7 +86,7 @@ if ($resize == null || $resize == 0) {
 	$width = imagesx($source);
 	$height = imagesy($source);
 	$ratio = $width / $height;
-	$newwidth = $width * $resize/100;
+	$newwidth = $width * $resize / 100;
 	$newheight = $newwidth / $ratio;
 	$result = imagecreatetruecolor($newwidth, $newheight);
 	imagecopyresized($result, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
