@@ -31,15 +31,14 @@ if ($_SESSION['user']->getOptions('displayObjetByDefault') == 1 && init('report'
         <ul id="ul_object" class="nav nav-list bs-sidenav">
             <li class="nav-header">{{Liste objets}} </li>
             <li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%"/></li>
-            <?php
+           			<?php
 $allObject = object::buildTree(null, true);
 foreach ($allObject as $object_li) {
-	$parentNumber[$object_li->getId()] = $object_li->parentNumber();
-	$margin = 15 * $parentNumber[$object_li->getId()];
+	$margin = 5 * $object_li->getConfiguration('parentNumber');
 	if ($object_li->getId() == $object->getId()) {
-		echo '<li class="cursor li_object active" ><a href="index.php?v=d&p=panel&m=camera&object_id=' . $object_li->getId() . '" style="position:relative;left:' . $margin . 'px;">' . $object_li->getHumanName(true) . '</a></li>';
+		echo '<li class="cursor li_object active" ><a data-object_id="' . $object_li->getId() . '" data-href="index.php?v=d&p=dashboard&object_id=' . $object_li->getId() . '&category=' . init('category', 'all') . '" style="padding: 2px 0px;"><span style="position:relative;left:' . $margin . 'px;">' . $object_li->getHumanName(true) . '</span><span style="font-size : 0.65em;float:right;position:relative;top:7px;">' . $object_li->getHtmlSummary() . '</span></a></li>';
 	} else {
-		echo '<li class="cursor li_object" ><a href="index.php?v=d&p=panel&m=camera&object_id=' . $object_li->getId() . '" style="position:relative;left:' . $margin . 'px;">' . $object_li->getHumanName(true) . '</a></li>';
+		echo '<li class="cursor li_object" ><a data-object_id="' . $object_li->getId() . '" data-href="index.php?v=d&p=dashboard&object_id=' . $object_li->getId() . '&category=' . init('category', 'all') . '" style="padding: 2px 0px;"><span style="position:relative;left:' . $margin . 'px;">' . $object_li->getHumanName(true) . '</span><span style="font-size : 0.65em;float:right;position:relative;top:7px;">' . $object_li->getHtmlSummary() . '</span></a></li>';
 	}
 }
 ?>
