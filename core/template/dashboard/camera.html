@@ -4,7 +4,9 @@
     <span style="font-size: 1.5em;#hideEqLogicName#"><a href="#eqLink#">#name_display# <span style="font-size: 0.85em;">#object_name#</span></a></span>
   </center>
   <center>
-    <span class="directDisplay zoom cursor"><img src="plugins/camera/core/img/no-image-blanc.png" style="display:block;" data-eqLogic_id="#id#"/></span>
+    <span class="directDisplay zoom cursor">
+      <img src="plugins/camera/core/img/no-image-blanc.png" style="display:block;" data-eqLogic_id="#id#"/>
+    </span>
     <span style="position:relative;top:4px;width:100%;">
      <center>
        <span>#info#</span>
@@ -76,7 +78,7 @@ function refreshImgCam#id#(){
  var start = Date.now();
  var url = "#url#";
  url += (url.indexOf('?') > 0) ? '&t='+(new Date()).getTime() : '?t='+(new Date()).getTime();
- url += (thumbnail)?  '&thumbnail=1&width='+ $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').width():'&width='+$(".md_cameraZoom[data-eqLogic_id=#id#] .display img").width();
+ url += (thumbnail)?  '&thumbnail=1&width='+ $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-width').replace('px',''):'&width='+$(".md_cameraZoom[data-eqLogic_id=#id#] .display img").width();
 
  var img = new Image();
  img.src = url;
