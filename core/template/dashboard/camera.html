@@ -47,8 +47,9 @@ $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog({
   modal: true,
   resizable: false,
   closeText: '',
-  height: ((jQuery(window).height() - 100) < 780) ? jQuery(window).height() - 100 : 780,
-  width: ((jQuery(window).width() - 100) < 1280) ? (jQuery(window).width() - 100) : 1280,
+  height: jQuery(window).height() - 65,
+  width: jQuery(window).width() - 40,
+  position: { my: "center bottom-10", at: "center bottom", of: window },
   open: function () {
     $("body").css({overflow: 'hidden'});
     $(".md_cameraZoom[data-eqLogic_uid=#uid#] .display img").height($(".md_cameraZoom[data-eqLogic_uid=#uid#]").height() - 50);
