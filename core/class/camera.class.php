@@ -22,7 +22,7 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 class camera extends eqLogic {
 	/*     * *************************Attributs****************************** */
 
-	public static $_widgetPossibility = array('custom' => true);
+	public static $_widgetPossibility = array('custom' => true, 'custom::layout' => false);
 	private static $_eqLogics = null;
 
 	/*     * ***********************Methode static*************************** */
@@ -472,7 +472,7 @@ class camera extends eqLogic {
 		if ($version == 'mobile') {
 			$replace['#refreshDelaySlow#'] = $this->getConfiguration('thumbnail::mobilerefresh', 1) * 1000;
 			$replace['#refreshDelayFast#'] = $this->getConfiguration('normal::mobilerefresh', 5) * 1000;
-		} 
+		}
 		if (!$_fluxOnly) {
 			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera')));
 		} else {
