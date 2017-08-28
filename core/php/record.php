@@ -65,8 +65,8 @@ $wait = 0;
 $delay = 1;
 $i = 1;
 $sendPacket = -1;
-$isMovie = 0;
-$sendFirstSnap = 0;
+$isMovie = init('movie', $camera->getConfiguration('preferVideo', 0));
+$sendFirstSnap = init('sendFirstSnap', 0);
 $nbSend = 1;
 $totalSend = 1;
 $part = '';
@@ -83,13 +83,6 @@ if (is_numeric(init('delay')) && init('delay') > 0) {
 if (is_numeric(init('sendPacket')) && init('sendPacket') > 0) {
 	$sendPacket = init('sendPacket');
 }
-if (init('movie', $camera->getConfiguration('preferVideo', 0)) != 0) {
-	$isMovie = 1;
-}
-if (init('sendFirstSnap') !== 0) {
-	$sendFirstSnap = 1;
-}
-
 if (init('detectMove') == 1) {
 	$camera->detectMove(init('sendTo'), $isMovie);
 }

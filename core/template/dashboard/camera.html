@@ -1,10 +1,11 @@
-<div class="eqLogic eqLogic-widget allowResize" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="min-width : 150px;min-height : 180px ;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#">
-  <span class="statusCmd" style="float:left;margin-top: 3px;margin-right: 3px;"></span>
+<div class="eqLogic eqLogic-widget allowResize" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="min-width : 50px;min-height : 80px ;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#" >
   <center>
-    <span style="font-size: 1.5em;#hideEqLogicName#"><a href="#eqLink#">#name_display# <span style="font-size: 0.85em;">#object_name#</span></a></span>
+    <span style="font-size: 1.2em;#hideEqLogicName#"><a href="#eqLink#">#name_display# <span style="font-size: 0.85em;">#object_name#</span></a></span>
   </center>
   <center>
-    <span class="directDisplay zoom cursor"><img src="plugins/camera/core/img/no-image-blanc.png" style="display:block;" data-eqLogic_id="#id#"/></span>
+    <span class="directDisplay zoom cursor">
+      <img src="plugins/camera/core/img/no-image-blanc.png" style="display:block;" data-eqLogic_id="#id#"/>
+    </span>
     <span style="position:relative;top:4px;width:100%;">
      <center>
        <span>#info#</span>
@@ -23,6 +24,7 @@
     <br/>#action#
   </center>
 </div>
+<span class="statusCmd" style="position : absolute;left : 5px;bottom : 0px; width : 30px;z-index: 1030;"></span>
 <script>
  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
  if ($(".md_cameraZoom[data-eqLogic_uid=#uid#]").length > 1) {
@@ -45,8 +47,9 @@ $(".md_cameraZoom[data-eqLogic_id=#id#]").dialog({
   modal: true,
   resizable: false,
   closeText: '',
-  height: ((jQuery(window).height() - 100) < 780) ? jQuery(window).height() - 100 : 780,
-  width: ((jQuery(window).width() - 100) < 1280) ? (jQuery(window).width() - 100) : 1280,
+  height: jQuery(window).height() - 65,
+  width: jQuery(window).width() - 40,
+  position: { my: "center bottom-10", at: "center bottom", of: window },
   open: function () {
     $("body").css({overflow: 'hidden'});
     $(".md_cameraZoom[data-eqLogic_uid=#uid#] .display img").height($(".md_cameraZoom[data-eqLogic_uid=#uid#]").height() - 50);
@@ -76,7 +79,7 @@ function refreshImgCam#id#(){
  var start = Date.now();
  var url = "#url#";
  url += (url.indexOf('?') > 0) ? '&t='+(new Date()).getTime() : '?t='+(new Date()).getTime();
- url += (thumbnail)?  '&thumbnail=1&width='+ $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').width():'&width='+$(".md_cameraZoom[data-eqLogic_id=#id#] .display img").width();
+ url += (thumbnail)?  '&thumbnail=1&width='+ $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').css('max-width').replace('px',''):'&width='+$(".md_cameraZoom[data-eqLogic_id=#id#] .display img").width();
 
  var img = new Image();
  img.src = url;

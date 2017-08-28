@@ -22,9 +22,7 @@
   $('.div_displayEquipement').each(function(){
     var container = $(this).packery({
       itemSelector: ".eqLogic-widget",
-      columnWidth:40,
-      rowHeight: 80,
-      gutter : 2,
+      gutter : 1.5,
     });
     var itemElems =  container.find('.eqLogic-widget');
     itemElems.draggable();
@@ -87,7 +85,7 @@
  $('.div_displayEquipement .eqLogic-widget').draggable('enable');
 
  $( ".div_displayEquipement .eqLogic-widget.allowResize").resizable({
-  grid: [ 40, 80 ],
+  grid: [ 10, 10 ],
   resize: function( event, ui ) {
    var el = ui.element;
    el.closest('.div_displayEquipement').packery();
@@ -98,8 +96,8 @@
   el.closest('.div_displayEquipement').packery();
   var eqLogic = {id : el.attr('data-eqlogic_id')}
   eqLogic.display = {};
-  eqLogic.display.width =  Math.floor(el.width() / 40) * 40 + 'px';
-  eqLogic.display.height = Math.floor(el.height() / 80) * 80+ 'px';
+  eqLogic.display.width =  (Math.floor(el.width() / 10)) * 10 + 'px';
+  eqLogic.display.height = (Math.floor(el.height() / 10))* 10+ 'px';
   jeedom.eqLogic.simpleSave({
     eqLogic : eqLogic,
     error: function (error) {
