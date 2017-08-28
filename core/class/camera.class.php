@@ -22,7 +22,7 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 class camera extends eqLogic {
 	/*     * *************************Attributs****************************** */
 
-	public static $_widgetPossibility = array('custom' => true);
+	public static $_widgetPossibility = array('custom' => true, 'custom::layout' => false);
 	private static $_eqLogics = null;
 
 	/*     * ***********************Methode static*************************** */
@@ -472,7 +472,7 @@ class camera extends eqLogic {
 		if ($version == 'mobile') {
 			$replace['#refreshDelaySlow#'] = $this->getConfiguration('thumbnail::mobilerefresh', 1) * 1000;
 			$replace['#refreshDelayFast#'] = $this->getConfiguration('normal::mobilerefresh', 5) * 1000;
-		} 
+		}
 		if (!$_fluxOnly) {
 			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera')));
 		} else {
@@ -615,7 +615,7 @@ class camera extends eqLogic {
 		$output_file = '';
 		$start = '';
 		if (file_exists($output_dir . '/movie_temp')) {
-			$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.mp4';
+			$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H-i-s') . '.mp4';
 			$files = scandir($output_dir . '/movie_temp');
 			if (count($files) > 1) {
 				$first_number = substr($files[2], 0, 6);
@@ -707,7 +707,7 @@ class camera extends eqLogic {
 			$number = str_pad($_number, 6, '0', STR_PAD_LEFT);
 			$output_file = $output_dir . '/' . $number . '.' . str_replace(' ', '-', $this->getName()) . '.jpg';
 		} else {
-			$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H:i:s') . '.jpg';
+			$output_file = $output_dir . '/' . str_replace(' ', '-', $this->getName()) . '_' . date('Y-m-d_H-i-s') . '.jpg';
 		}
 		file_put_contents($output_file, $snapshot);
 		return $output_file;

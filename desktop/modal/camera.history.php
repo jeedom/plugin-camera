@@ -56,7 +56,7 @@ foreach ($files as $date => &$file) {
 			$i++;
 		}
 		echo '<div class="cameraDisplayCard" style="background-color: #e7e7e7;padding:5px;height:167px;">';
-		echo '<center><i class="fa ' . $fontType . ' pull-right"></i>  ' . $time . '</center>';
+		echo '<center><i class="fa ' . $fontType . ' pull-right"></i>  ' . str_replace('-',':',$time) . '</center>';
 		if (strpos($filename, '.mp4')) {
 			echo '<video class="displayVideo" width="150" height="100" controls loop data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer"><source src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '">Your browser does not support the video tag.</video>';
 		} else {

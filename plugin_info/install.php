@@ -47,6 +47,13 @@ function camera_update() {
 		$cron->save();
 	}
 	foreach (camera::byType('camera') as $camera) {
+		$dir = calculPath(config::byKey('recordDir', 'camera')) . '/' . $camera->getId();
+		foreach (ls($dir, '*') as $file) {
+			if ($file == 'movie_temp/' || strpos($file, '.mkv')) {
+				continue;
+			}
+			rename($dir.'/'.$file, $dir.'/'.str_replace(':','-', $file));
+		}
 		$camera->save();
 	}
 }
