@@ -51,6 +51,9 @@
   refreshImgCam#id#();
 } );
 
+ maxWidth_#id#_thumbnail = 0;
+ maxWidth_#id# = 0;
+
  function refreshImgCam#id#(){
   if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
     return;
@@ -63,7 +66,14 @@
  var start = Date.now();
  var url = "#url#";
  url += (url.indexOf('?') > 0) ? '&t='+(new Date()).getTime() : '?t='+(new Date()).getTime();
- url += (thumbnail)?  '&thumbnail=1&width='+ $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').width():'&width='+ (deviceInfo.width - 50);
+
+ if(maxWidth_#id#_thumbnail < $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').width()){
+    maxWidth_#id#_thumbnail = $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').width();
+ }
+ if(maxWidth_#id# < (deviceInfo.width-50)){
+    maxWidth_#id# = (deviceInfo.width-50);
+ }
+ url += (thumbnail)?  '&thumbnail=1&width='+ maxWidth_#id#:'&width='+maxWidth_#id#;
  url += '&mobile=1';
 
  var img = new Image();
