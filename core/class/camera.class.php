@@ -88,7 +88,10 @@ class camera extends eqLogic {
 		if (exec('which avconv | wc -l') == 0) {
 			$return['state'] = 'nok';
 		}
-		if (exec(system::getCmdSudo() . system::get('cmd_check') . '-E "python\-imaging" | wc -l') != 1) {
+		if (exec(system::getCmdSudo() . system::get('cmd_check') . '-E "python\-imaging" | wc -l') == 0) {
+			$return['state'] = 'nok';
+		}
+		if (exec(system::getCmdSudo() . system::get('cmd_check') . '-E "php(.*)gd" | wc -l') == 0) {
 			$return['state'] = 'nok';
 		}
 		return $return;
