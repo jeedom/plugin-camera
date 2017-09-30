@@ -12,8 +12,7 @@ echo 80 > ${PROGRESS_FILE}
 sudo apt-get install -y php5-gd
 echo 90 > ${PROGRESS_FILE}
 sudo apt-get install -y php7.0-gd
-echo 95 > ${PROGRESS_FILE}
-sudo systemctl restart apache2
 echo 100 > ${PROGRESS_FILE}
 echo "Everything is successfully installed!"
 rm ${PROGRESS_FILE}
+sudo systemctl restart apache2
