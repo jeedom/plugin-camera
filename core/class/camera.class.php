@@ -91,7 +91,7 @@ class camera extends eqLogic {
 		if (exec(system::getCmdSudo() . system::get('cmd_check') . '-E "python\-imaging" | wc -l') == 0) {
 			$return['state'] = 'nok';
 		}
-		if (exec(system::getCmdSudo() . system::get('cmd_check') . '-E "php(.*)gd" | wc -l') == 0) {
+		if (exec(system::getCmdSudo() . system::get('cmd_check') . ' gd | grep php | wc -l') == 0) {
 			$return['state'] = 'nok';
 		}
 		return $return;
