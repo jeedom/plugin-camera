@@ -417,7 +417,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table des matières</div>
 <ul class="sectlevel1">
 <li><a href="#_plugin_konfiguration">1. Plugin Konfiguration</a></li>
-<li><a href="#_geräte_konfiguration">2. Geräte Konfiguration</a></li>
+<li><a href="#_geräte_konfiguration">2. Geräte Konfiguration</a>
+<ul class="sectlevel2">
+<li><a href="#_equipement">2.1. Equipement</a></li>
+<li><a href="#_images">2.2. Images</a></li>
+<li><a href="#_capture">2.3. Capture</a></li>
+<li><a href="#_alimentation">2.4. Alimentation</a></li>
+<li><a href="#_commandes">2.5. Commandes</a></li>
+</ul>
+</li>
 <li><a href="#_le_widget">3. Le widget</a></li>
 <li><a href="#_panel">4. Panel</a></li>
 <li><a href="#_enregistrement_et_envoi_de_capture">5. Enregistrement et envoi de capture</a>
@@ -459,14 +467,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_geräte_konfiguration">2. Geräte Konfiguration</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_equipement">2.1. Equipement</h3>
 <div class="paragraph">
-<p>La configuration des équipements Caméra est accessible à partir du menu plugin puis securité :</p>
-</div>
-<div class="paragraph">
-<p>Vous avez un bouton de création d’équipement Caméra et vos équipements, avec la photos de ceux-ci si disponible</p>
-</div>
-<div class="paragraph">
-<p>Une fois que vous cliquez sur l’un des équipements caméra, vous obtenez :</p>
+<p>Ici vous avez les informations principal de votre caméra :</p>
 </div>
 <div class="ulist">
 <ul>
@@ -501,22 +505,54 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>URL de capture</strong> : URL qui de "snapshot" de la caméra. Change en fonction des caméras. Attention à ne pas mettre une url de flux sous peine de planter Jeedom. Vous pouvez utiliser les tags #username# et #password#, qui seront automatiquement remplacé par le nom d&#8217;utilisateur et le mot de passe lors de l&#8217;utilisateur de cette commande</p>
 </li>
 <li>
-<p><strong>Délai de rafraichissement</strong> : Délai de rafraichissement des captures sur le widget. Attention plus le délai est faible plus la charge sur Jeedom augmente.</p>
-</li>
-<li>
-<p><strong>Commande mail</strong> : permet de spécifier une commande mail qui sera utiliser pour l&#8217;envoi de capture (commande "Envoyer une capture"), vous pouvez en spécifier plusieurs séparées par des &amp;&amp;</p>
-</li>
-<li>
-<p><strong>Nombre de capture(s)</strong> : défini le nombre de captures à envoyer (les captures sont prises toute les secondes)</p>
-</li>
-<li>
 <p><strong>Modèle</strong> : permet de choisir le modele de sa camera, attention si vous changer cela écrasera vos paramètres de configuration</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>En dessous vous retrouvez la liste des commandes :</p>
 </div>
+<div class="sect2">
+<h3 id="_images">2.2. Images</h3>
+<div class="paragraph">
+<p>Cette partie vous permets de configurer la qualité de l&#8217;image. En effet Jeedom peut diminuer la taille de l&#8217;image ou la compresser avant de l&#8217;envoyer à votre navigateur. Cela permet de gagner en fluidité des images (car elles sont moins lourde). C&#8217;est aussi dans cette partie que vous pouvez configurer le nombre d&#8217;image par secondes à afficher.
+Tous les reglages sont déclinés en : mobile/desktop et miniature/normal.</p>
+</div>
+<div class="paragraph">
+<p>Rafraichissement (s) : délai en seconde entre l&#8217;affichage de 2 images (vous pouvez ici mettre des chiffre inférieure à 1)
+Compression (%) : plus il est faible moins on compresse l&#8217;image, à 0% aucune compression n&#8217;est faite
+Taille (% - 0 : automatique) : plus le % est élévé plus on est proche de la taille d&#8217;origine de l&#8217;image. A 100% aucun redimensionnement de l&#8217;image n&#8217;a lieu</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Si vous mettez une compression de 0% et une taille de 100% Jeedom ne touchera pas à l&#8217;image en mode normal. Cela n&#8217;est pas valable en mode miniature ou il y a une taille maximum de l&#8217;image de 360px.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_capture">2.3. Capture</h3>
+<div class="paragraph">
+<p>Durée maximum d&#8217;un enregistrement (s) : durée maximum des enregistrements
+Toujours faire une video : force Jeedom à toujours transformer les enregistrements en video avant l&#8217;enregistrement
+Nombre d&#8217;images par seconde de la vidéo : nombre d&#8217;image par seconde des vidéos
+Seuil de détection mouvement (0-100) : seuil de détection de mouvement (il est conseillé de mettre 2)
+Supprimer toutes les captures de la caméra Supprimer : supprime toute les captures et enregistrement des caméras</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_alimentation">2.4. Alimentation</h3>
+<div class="paragraph">
+<p>Commande ON : Commande permetant de mettre en marche l&#8217;alimentation de la caméra
+Commande OFF : Commande permetant de couper l&#8217;alimentation de la caméra</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_commandes">2.5. Commandes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -548,17 +584,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-L&#8217;enregistrement n&#8217;a pas de limite de durée et peut prendre beaucoup de place, attention donc si vous remplisser votre disque jeedom pourrait ne plus marcher du tout.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>

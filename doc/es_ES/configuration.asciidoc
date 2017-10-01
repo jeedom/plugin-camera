@@ -7,11 +7,9 @@ Después de instalar el plugin, simplemente activarlo es suficiente, sin embargo
 
 == Configuración de dispositivos
 
-La configuration des équipements Caméra est accessible à partir du menu plugin puis securité :
+=== Equipement
 
-Tienes un botón de creación de dispositivos y sus cámaras actuales, con sus respectivas imágenes si están disponibles.
-
-Haciendo clic en uno de los equipos de cámara, se obtiene:
+Ici vous avez les informations principal de votre caméra :
 
 ** Nombre del dispositivo cámara *: nombre de su dispositivo cámara
 ** Objeto padre *: indica el objeto padre al que pertenece el dispositivo
@@ -23,12 +21,34 @@ Haciendo clic en uno de los equipos de cámara, se obtiene:
 * *Usuario* : nombre de usuario para conectar a la cámara (si es necesario)
 * *Contraseña* : contraseña para conectar a la cámara (si es necesario) 
 * *URL de captura* : URL del "snapshot" de la cámara. Cambia en función de las cámaras. Cuidado de no poner una url de fujo directo puede colgar Jeedom. Puede utilizar las etiquetas \#username# y \#password#, que será sustituido automáticamente por el nombre de usuario y la contraseña cuando se use este comando
-** frecuencia de refresco *: Frecuencia de refresco de las capturas en el widget . Atención a menor refresco mayor carga de trabajo para Jeedom.
-** Enviar correo *: permite especificar un comando de correo que se utilizará para enviar capturas (comando "Enviar una captura"), puedes especificar varias direcciones separadas por &.
-* *Número de captura(s) *: establece el número de capturas a enviar (las capturas se toman cada segundo)
 * *Modelo* : permite elegir el modelo de la cámara, Atención cambiar esto supone sobreescribir  los parametros de configuración actuales.
 
-A continuación encontrará la lista de ordenes :
+=== Images
+
+Cette partie vous permets de configurer la qualité de l'image. En effet Jeedom peut diminuer la taille de l'image ou la compresser avant de l'envoyer à votre navigateur. Cela permet de gagner en fluidité des images (car elles sont moins lourde). C'est aussi dans cette partie que vous pouvez configurer le nombre d'image par secondes à afficher. 
+Tous les reglages sont déclinés en : mobile/desktop et miniature/normal.
+
+Rafraichissement (s) : délai en seconde entre l'affichage de 2 images (vous pouvez ici mettre des chiffre inférieure à 1)
+Compression (%) : plus il est faible moins on compresse l'image, à 0% aucune compression n'est faite
+Taille (% - 0 : automatique) : plus le % est élévé plus on est proche de la taille d'origine de l'image. A 100% aucun redimensionnement de l'image n'a lieu
+
+[NOTE]
+Si vous mettez une compression de 0% et une taille de 100% Jeedom ne touchera pas à l'image en mode normal. Cela n'est pas valable en mode miniature ou il y a une taille maximum de l'image de 360px.
+
+=== Capture
+
+Durée maximum d'un enregistrement (s) : durée maximum des enregistrements
+Toujours faire une video : force Jeedom à toujours transformer les enregistrements en video avant l'enregistrement
+Nombre d'images par seconde de la vidéo : nombre d'image par seconde des vidéos
+Seuil de détection mouvement (0-100) : seuil de détection de mouvement (il est conseillé de mettre 2)
+Supprimer toutes les captures de la caméra Supprimer : supprime toute les captures et enregistrement des caméras
+
+=== Alimentation
+
+Commande ON : Commande permetant de mettre en marche l'alimentation de la caméra
+Commande OFF : Commande permetant de couper l'alimentation de la caméra
+
+=== Commandes
 
 * ID de la orden (para uso con ordenes de tipo info, por ejemplo que la cámara devuelve la información de movimiento a Jeedom a través de la api, vea abajo)
 Nombre de la orden, con la posibilidad de poner un icono en el lugar (para eliminar doble clic en el icono en cuestión)
@@ -39,9 +59,6 @@ Nombre de la orden, con la posibilidad de poner un icono en el lugar (para elimi
 * Configuración avanzada (pequeñas ruedas dentadas): muestra la configuración avanzada de la orden (método de historico, widget...)
 * Probar : le permite probar la orden
 * Eliminar (signo - ) : permite borrar la orden
-
-[IMPORTANTE]
-El registro no tiene límite de tiempo y puede ocupar un montón de espacio, así que cuidado, si llena tu disco, jeedom podría dejar de verlos  a todos.
 
 == El widget
 

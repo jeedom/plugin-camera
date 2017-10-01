@@ -7,11 +7,9 @@ Après installation du plugin, il vous suffit de l’activer et c'est bon, cepen
 
 == Geräte Konfiguration
 
-La configuration des équipements Caméra est accessible à partir du menu plugin puis securité :
+=== Equipement
 
-Vous avez un bouton de création d’équipement Caméra et vos équipements, avec la photos de ceux-ci si disponible
-
-Une fois que vous cliquez sur l’un des équipements caméra, vous obtenez :
+Ici vous avez les informations principal de votre caméra :
 
 * *Nom de l’équipement Caméra* : nom de votre équipement caméra
 * *Objet parent* : indique l’objet parent auquel appartient l’équipement
@@ -23,12 +21,34 @@ Une fois que vous cliquez sur l’un des équipements caméra, vous obtenez :
 * *Nom d'utilisateur* : nom d'utilisateur pour se connecter à la caméra (si nécessaire)
 * *Mot de passe* : mot de passe pour se connecter à la caméra (si nécessaire) 
 * *URL de capture* : URL qui de "snapshot" de la caméra. Change en fonction des caméras. Attention à ne pas mettre une url de flux sous peine de planter Jeedom. Vous pouvez utiliser les tags \#username# et \#password#, qui seront automatiquement remplacé par le nom d'utilisateur et le mot de passe lors de l'utilisateur de cette commande
-* *Délai de rafraichissement* : Délai de rafraichissement des captures sur le widget. Attention plus le délai est faible plus la charge sur Jeedom augmente.
-* *Commande mail* : permet de spécifier une commande mail qui sera utiliser pour l'envoi de capture (commande "Envoyer une capture"), vous pouvez en spécifier plusieurs séparées par des &&
-* *Nombre de capture(s)* : défini le nombre de captures à envoyer (les captures sont prises toute les secondes)
 * *Modèle* : permet de choisir le modele de sa camera, attention si vous changer cela écrasera vos paramètres de configuration
 
-En dessous vous retrouvez la liste des commandes :
+=== Images
+
+Cette partie vous permets de configurer la qualité de l'image. En effet Jeedom peut diminuer la taille de l'image ou la compresser avant de l'envoyer à votre navigateur. Cela permet de gagner en fluidité des images (car elles sont moins lourde). C'est aussi dans cette partie que vous pouvez configurer le nombre d'image par secondes à afficher. 
+Tous les reglages sont déclinés en : mobile/desktop et miniature/normal.
+
+Rafraichissement (s) : délai en seconde entre l'affichage de 2 images (vous pouvez ici mettre des chiffre inférieure à 1)
+Compression (%) : plus il est faible moins on compresse l'image, à 0% aucune compression n'est faite
+Taille (% - 0 : automatique) : plus le % est élévé plus on est proche de la taille d'origine de l'image. A 100% aucun redimensionnement de l'image n'a lieu
+
+[NOTE]
+Si vous mettez une compression de 0% et une taille de 100% Jeedom ne touchera pas à l'image en mode normal. Cela n'est pas valable en mode miniature ou il y a une taille maximum de l'image de 360px.
+
+=== Capture
+
+Durée maximum d'un enregistrement (s) : durée maximum des enregistrements
+Toujours faire une video : force Jeedom à toujours transformer les enregistrements en video avant l'enregistrement
+Nombre d'images par seconde de la vidéo : nombre d'image par seconde des vidéos
+Seuil de détection mouvement (0-100) : seuil de détection de mouvement (il est conseillé de mettre 2)
+Supprimer toutes les captures de la caméra Supprimer : supprime toute les captures et enregistrement des caméras
+
+=== Alimentation
+
+Commande ON : Commande permetant de mettre en marche l'alimentation de la caméra
+Commande OFF : Commande permetant de couper l'alimentation de la caméra
+
+=== Commandes
 
 * ID de la commande (utiliser avec les commandes de type info pour par exemple que la camera remonte l'information de mouvement à Jeedom par l'api, voir plus bas)
 * Nom de la commande avec la possibilité de mettre une icone à la place (pour la supprimer il faut double cliquer sur l'icone en question)
@@ -39,9 +59,6 @@ En dessous vous retrouvez la liste des commandes :
 * Configuration avancée (petites roues crantées) : permet d'afficher la configuration avancée de la commande (méthode d'historisation, widget...)
 * Tester : permet de tester la commande
 * Supprimer (signe -) : permet de supprimer la commande
-
-[IMPORTANT]
-L'enregistrement n'a pas de limite de durée et peut prendre beaucoup de place, attention donc si vous remplisser votre disque jeedom pourrait ne plus marcher du tout.
 
 == Le widget
 
