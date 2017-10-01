@@ -31,7 +31,6 @@ header('Content-Type: image/jpeg');
 if (init('mobile', 0) == 0) {
 	$compress = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::compress', null) : $camera->getConfiguration('normal::compress', null);
 	$resize = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::resize', null) : $camera->getConfiguration('normal::resize', null);
-
 } else {
 	$compress = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::mobilecompress', null) : $camera->getConfiguration('normal::mobilecompress', null);
 	$resize = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::mobileresize', null) : $camera->getConfiguration('normal::mobileresize', null);
