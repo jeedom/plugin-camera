@@ -7,7 +7,11 @@ echo 0 > ${PROGRESS_FILE}
 echo "Launch install of camera dependancy"
 sudo apt-get update
 echo 50 > ${PROGRESS_FILE}
-sudo apt-get install -y libav-tools python-imaging
+sudo apt-get install -y libav-tools
+echo 80 > ${PROGRESS_FILE}
+sudo apt-get install -y python-imaging
+echo 80 > ${PROGRESS_FILE}
+sudo apt-get install -y python-pil
 echo 80 > ${PROGRESS_FILE}
 sudo apt-get install -y php5-gd
 echo 90 > ${PROGRESS_FILE}
