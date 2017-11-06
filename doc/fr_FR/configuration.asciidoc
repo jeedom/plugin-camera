@@ -30,25 +30,25 @@ Ici vous avez les informations principales de votre caméra :
 Cette partie vous permets de configurer la qualité de l'image. En effet Jeedom diminue la taille de l'image ou la compresse avant de l'envoyer à votre navigateur. Cela permet de gagner en fluidité des images (car elles sont moins lourde). C'est aussi dans cette partie que vous pouvez configurer le nombre d'image par secondes à afficher. 
 Tous les reglages sont déclinés en : mobile/desktop et miniature/normal.
 
-Rafraichissement (s) : délai en seconde entre l'affichage de 2 images (vous pouvez ici mettre des chiffre inférieure à 1)
-Compression (%) : plus il est faible moins on compresse l'image, à 0% aucune compression n'est faite
-Taille (% - 0 : automatique) : plus le % est élévé plus on est proche de la taille d'origine de l'image. A 100% aucun redimensionnement de l'image n'a lieu
+* Rafraichissement (s) : délai en seconde entre l'affichage de 2 images (vous pouvez ici mettre des chiffre inférieure à 1)
+* Compression (%) : plus il est faible moins on compresse l'image, à 0% aucune compression n'est faite
+* Taille (% - 0 : automatique) : plus le % est élévé plus on est proche de la taille d'origine de l'image. A 100% aucun redimensionnement de l'image n'a lieu
 
 [NOTE]
 Si vous mettez une compression de 0% et une taille de 100% Jeedom ne touchera pas à l'image en mode normal. Cela n'est pas valable en mode miniature ou il y a une taille maximum de l'image de 360px.
 
 === Capture
 
-Durée maximum d'un enregistrement (s) : durée maximum des enregistrements
-Toujours faire une video : force Jeedom à toujours transformer les enregistrements en video avant l'enregistrement
-Nombre d'images par seconde de la vidéo : nombre d'images par seconde des vidéos
-Seuil de détection mouvement (0-100) : seuil de détection de mouvement (il est conseillé de mettre 2). Plus la valeur est grande plus la sensibilité augmente.
-Supprimer toutes les captures de la caméra : supprime toutes les captures et enregistrements de la caméra
+* Durée maximum d'un enregistrement (s) : durée maximum des enregistrements
+* Toujours faire une video : force Jeedom à toujours transformer les enregistrements en video avant l'enregistrement
+* Nombre d'images par seconde de la vidéo : nombre d'images par seconde des vidéos
+* Seuil de détection mouvement (0-100) : seuil de détection de mouvement (il est conseillé de mettre 2). Plus la valeur est grande plus la sensibilité augmente.
+* Supprimer toutes les captures de la caméra : supprime toutes les captures et enregistrements de la caméra
 
 === Alimentation
 
-Commande ON : Commande permetant de mettre en marche l'alimentation de la caméra
-Commande OFF : Commande permetant de couper l'alimentation de la caméra
+* Commande ON : Commande permetant de mettre en marche l'alimentation de la caméra
+* Commande OFF : Commande permetant de couper l'alimentation de la caméra
 
 === Commandes
 
