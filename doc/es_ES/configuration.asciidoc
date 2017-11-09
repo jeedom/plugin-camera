@@ -1,9 +1,9 @@
 == Configuration del plugin
 
-Après installation du plugin, il vous suffit de l’activer, cependant il y a quelques paramètres de configuration avancés : 
+Après installation du plugin, il vous suffit de l’activer, cependant il y a quelques paramètres de configuration avancée : 
 
-* *Chemin des enregistrements* : indique le chemin où Jeedom doit stocker les images qu'il capture de vos caméras (il est conseillé de ne pas y toucher)
-* *Taille maximum du dossier d'enregistrement (Mo)* : indique la taille maximum autorisée pour le dossier où les captures sont enregistrées (il est conseillé de ne pas y toucher). Si ce quotas est atteind Jeedom supprimera les captures les plus anciennes.
+* *Chemin des enregistrements* : indique le chemin où Jeedom doit stocker les images qu'il capture de vos caméras (il est déconseillé d'y toucher)
+* *Taille maximum du dossier d'enregistrement (Mo)* : indique la taille maximum autorisée pour le dossier où les captures sont enregistrées (il est déconseillé d'y toucher). Si ce quotas est atteint Jeedom supprimera les captures les plus anciennes.
 * *Le plugin caméra doit réagir aux intéractions* : mots clés / phrases auxquels le plugin réagira via les intéractions de Jeedom.
 * *Panel* : Vous permet d'afficher le panel (Menu Accueil > Caméra) et d'avoir une vue sur l'ensemble de vos caméras (voir plus bas)
 
@@ -28,7 +28,7 @@ Ici vous avez les informations principales de votre caméra :
 === Images
 
 Cette partie vous permets de configurer la qualité de l'image. En effet Jeedom diminue la taille de l'image ou la compresse avant de l'envoyer à votre navigateur. Cela permet de gagner en fluidité des images (car elles sont moins lourde). C'est aussi dans cette partie que vous pouvez configurer le nombre d'image par secondes à afficher. 
-Tous les reglages sont déclinés en : mobile/desktop et miniature/normal.
+Tous les réglages sont déclinés en : mobile/desktop et miniature/normal.
 
 * Rafraichissement (s) : délai en seconde entre l'affichage de 2 images (vous pouvez ici mettre des chiffre inférieure à 1)
 * Compression (%) : plus il est faible moins on compresse l'image, à 0% aucune compression n'est faite
@@ -69,7 +69,7 @@ On retrouve sur celui-ci l'image de la caméra, les commandes définies dans la 
 [TIP]
 En el dashboard es posible redimensionar el widget para adaptarlo a tus necesidades
 
-Un clique sur l'image permet d'afficher celle-ci dans une fnêtre et dans un format plus grand.
+Un clique sur l'image permet d'afficher celle-ci dans une fenêtre et dans un format plus grand.
 
 Un clique sur la dernière commande pour parcourir les captures vous affichera celle-ci.
 
@@ -83,7 +83,7 @@ En mobile le widget est un peu différent si vous cliquez sur l'image de la cam�
 
 == El panel
 
-Le plugin caméra mets aussi à disposition un panel qui vous permet de voir d'un seul coup toutes vos caméras, il est accessible par Acceuil -> Caméra.
+Le plugin caméra met aussi à disposition un panel qui vous permet de voir d'un seul coup toutes vos caméras, il est accessible par Acceuil -> Caméra.
 
 [NOTE]
 Pour l'avoir il faut l'activer sur la page de configuration du plugin
@@ -92,7 +92,7 @@ Por supuesto también está disponible desde el  móvil desde  Plugin -> Cámara
 
 == Grabación y envío de captura
 
-Este comando algo específico que permite después de la captura, enviarla (compatible con los plugin slack, mail y transfert)
+Cette commande un peu spécifique permet suite à la prise de capture de faire l'envoi de celle-ci (compatible avec le plugin slack, mail et transfert)
 
 La configuración es simple,  basta con llamar la acción de enviar captura, en el título puedes pasar más opciones (por defecto el número de captura, pero puedes ir más allá con las opciones avanzadas) y en el cuadro de mensaje, la orden del plugin (actualmente slack, mail o transfert) para realizar el envío de capturas. Puedes poner varias separados por &&
 
