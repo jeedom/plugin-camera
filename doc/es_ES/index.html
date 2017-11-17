@@ -442,7 +442,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Plugin que permite crear y gestionar sus cámaras (visualización y grabación)</p>
+<p>Plugin permetant de créer et gérer des caméras wifi (affichage et enregistrement)</p>
 </div>
 </div>
 </div>
@@ -450,19 +450,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_configuration_del_plugin">1. Configuration del plugin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Después de instalar el plugin, simplemente activarlo es suficiente, sin embargo, hay algunos ajustes de configuración avanzada:</p>
+<p>Après installation du plugin, il vous suffit de l’activer, cependant il y a quelques paramètres de configuration avancée :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>directorio de registros *: indica la ruta de acceso donde Jeedom debe poner las imágenes que captan las cámaras (es recomendable no tocar)</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Tamaño máximo del archivo de registro (MB)</strong> : Indica el tamaño máximo permitido para la carpeta o las capturas registradas (es recomendable no tocar). Si se sobrepasa esta cuota, Jeedom elimina las capturas más antiguas</p>
+<p><strong>Chemin des enregistrements</strong> : indique le chemin où Jeedom doit stocker les images qu&#8217;il capture de vos caméras (il est déconseillé d&#8217;y toucher)</p>
 </li>
-</ul>
-</div>
+<li>
+<p><strong>Taille maximum du dossier d&#8217;enregistrement (Mo)</strong> : indique la taille maximum autorisée pour le dossier où les captures sont enregistrées (il est déconseillé d&#8217;y toucher). Si ce quotas est atteint Jeedom supprimera les captures les plus anciennes.</p>
+</li>
+<li>
+<p><strong>Le plugin caméra doit réagir aux intéractions</strong> : mots clés / phrases auxquels le plugin réagira via les intéractions de Jeedom.</p>
+</li>
+<li>
+<p><strong>Panel</strong> : Vous permet d&#8217;afficher le panel (Menu Accueil &gt; Caméra) et d&#8217;avoir une vue sur l&#8217;ensemble de vos caméras (voir plus bas)</p>
 </li>
 </ul>
 </div>
@@ -474,17 +476,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_equipement">2.1. Equipement</h3>
 <div class="paragraph">
-<p>Ici vous avez les informations principal de votre caméra :</p>
+<p>Ici vous avez les informations principales de votre caméra :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Nombre del dispositivo cámara *: nombre de su dispositivo cámara</p>
-</li>
-<li>
-<p>Objeto padre *: indica el objeto padre al que pertenece el dispositivo</p>
+<p><strong>Nom de l’équipement caméra</strong> : nom de votre équipement caméra</p>
 <div class="ulist">
 <ul>
+<li>
+<p>Objeto padre *: indica el objeto padre al que pertenece el dispositivo</p>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p><strong>Activar</strong> : permite activar su dispositivo</p>
 </li>
@@ -492,13 +497,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>Visible</strong> : lo hace visible en el Dashboard</p>
 </li>
 <li>
-<p><strong>IP</strong> : IP local de la cámara</p>
+<p><strong>IP</strong> : l&#8217;adresse IP local de votre caméra</p>
 </li>
 <li>
 <p><strong>Puerto</strong> : El puerto con el que conectar a la cámara</p>
 </li>
 <li>
-<p><strong>Protocolo</strong> : el protocolo de comunicación de la camera (http o https)</p>
+<p><strong>Protocole</strong> : le protocole de communication de votre caméra (http ou https)</p>
 </li>
 <li>
 <p><strong>Usuario</strong> : nombre de usuario para conectar a la cámara (si es necesario)</p>
@@ -507,13 +512,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>Contraseña</strong> : contraseña para conectar a la cámara (si es necesario)</p>
 </li>
 <li>
-<p><strong>URL de captura</strong> : URL del "snapshot" de la cámara. Cambia en función de las cámaras. Cuidado de no poner una url de fujo directo puede colgar Jeedom. Puede utilizar las etiquetas #username# y #password#, que será sustituido automáticamente por el nombre de usuario y la contraseña cuando se use este comando</p>
+<p><strong>URL de capture</strong> : URL de "snapshot" de la caméra. Change en fonction des caméras. Attention à ne pas mettre une url de flux sous peine de planter Jeedom. Vous pouvez ajouter les tags #username# et #password#, qui seront automatiquement remplacé par le nom d&#8217;utilisateur et le mot de passe lors de l&#8217;utilisation de cette commande</p>
 </li>
 <li>
-<p><strong>Modelo</strong> : permite elegir el modelo de la cámara, Atención cambiar esto supone sobreescribir  los parametros de configuración actuales.</p>
-</li>
-</ul>
-</div>
+<p><strong>Modèle</strong> : permet de choisir le modèle de la caméra. Attention si vous changez cela écrasera vos paramètres de configuration</p>
 </li>
 </ul>
 </div>
@@ -521,13 +523,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_images">2.2. Images</h3>
 <div class="paragraph">
-<p>Cette partie vous permets de configurer la qualité de l&#8217;image. En effet Jeedom peut diminuer la taille de l&#8217;image ou la compresser avant de l&#8217;envoyer à votre navigateur. Cela permet de gagner en fluidité des images (car elles sont moins lourde). C&#8217;est aussi dans cette partie que vous pouvez configurer le nombre d&#8217;image par secondes à afficher.
-Tous les reglages sont déclinés en : mobile/desktop et miniature/normal.</p>
+<p>Cette partie vous permets de configurer la qualité de l&#8217;image. En effet Jeedom diminue la taille de l&#8217;image ou la compresse avant de l&#8217;envoyer à votre navigateur. Cela permet de gagner en fluidité des images (car elles sont moins lourde). C&#8217;est aussi dans cette partie que vous pouvez configurer le nombre d&#8217;image par secondes à afficher.
+Tous les réglages sont déclinés en : mobile/desktop et miniature/normal.</p>
 </div>
-<div class="paragraph">
-<p>Rafraichissement (s) : délai en seconde entre l&#8217;affichage de 2 images (vous pouvez ici mettre des chiffre inférieure à 1)
-Compression (%) : plus il est faible moins on compresse l&#8217;image, à 0% aucune compression n&#8217;est faite
-Taille (% - 0 : automatique) : plus le % est élévé plus on est proche de la taille d&#8217;origine de l&#8217;image. A 100% aucun redimensionnement de l&#8217;image n&#8217;a lieu</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rafraichissement (s) : délai en seconde entre l&#8217;affichage de 2 images (vous pouvez ici mettre des chiffre inférieure à 1)</p>
+</li>
+<li>
+<p>Compression (%) : plus il est faible moins on compresse l&#8217;image, à 0% aucune compression n&#8217;est faite</p>
+</li>
+<li>
+<p>Taille (% - 0 : automatique) : plus le % est élévé plus on est proche de la taille d&#8217;origine de l&#8217;image. A 100% aucun redimensionnement de l&#8217;image n&#8217;a lieu</p>
+</li>
+</ul>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -544,19 +554,37 @@ Si vous mettez une compression de 0% et une taille de 100% Jeedom ne touchera pa
 </div>
 <div class="sect2">
 <h3 id="_capture">2.3. Capture</h3>
-<div class="paragraph">
-<p>Durée maximum d&#8217;un enregistrement (s) : durée maximum des enregistrements
-Toujours faire une video : force Jeedom à toujours transformer les enregistrements en video avant l&#8217;enregistrement
-Nombre d&#8217;images par seconde de la vidéo : nombre d&#8217;image par seconde des vidéos
-Seuil de détection mouvement (0-100) : seuil de détection de mouvement (il est conseillé de mettre 2)
-Supprimer toutes les captures de la caméra Supprimer : supprime toute les captures et enregistrement des caméras</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Durée maximum d&#8217;un enregistrement (s) : durée maximum des enregistrements</p>
+</li>
+<li>
+<p>Toujours faire une video : force Jeedom à toujours transformer les enregistrements en video avant l&#8217;enregistrement</p>
+</li>
+<li>
+<p>Nombre d&#8217;images par seconde de la vidéo : nombre d&#8217;images par seconde des vidéos</p>
+</li>
+<li>
+<p>Seuil de détection mouvement (0-100) : seuil de détection de mouvement (il est conseillé de mettre 2). Plus la valeur est grande plus la sensibilité augmente.</p>
+</li>
+<li>
+<p>Supprimer toutes les captures de la caméra : supprime toutes les captures et enregistrements de la caméra</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_alimentation">2.4. Alimentation</h3>
-<div class="paragraph">
-<p>Commande ON : Commande permetant de mettre en marche l&#8217;alimentation de la caméra
-Commande OFF : Commande permetant de couper l&#8217;alimentation de la caméra</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Commande ON : Commande permetant de mettre en marche l&#8217;alimentation de la caméra</p>
+</li>
+<li>
+<p>Commande OFF : Commande permetant de couper l&#8217;alimentation de la caméra</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -564,23 +592,23 @@ Commande OFF : Commande permetant de couper l&#8217;alimentation de la caméra</
 <div class="ulist">
 <ul>
 <li>
-<p>ID de la orden (para uso con ordenes de tipo info, por ejemplo que la cámara devuelve la información de movimiento a Jeedom a través de la api, vea abajo)
+<p>ID de la commande (utiliser avec les commandes de type info pour par exemple remonter l&#8217;information de mouvement de la caméra à Jeedom par l&#8217;api, voir plus bas)
 Nombre de la orden, con la posibilidad de poner un icono en el lugar (para eliminar doble clic en el icono en cuestión)</p>
 </li>
 <li>
 <p>Tipo y subtipos de ordenes</p>
 </li>
 <li>
-<p>Solicitud para enviar a la cámara para hacer una acción (cambiar a modo night, ptz,&#8230;&#8203;). Puede utilizar las etiquetas #username# y #password#, que será sustituido automáticamente por el nombre de usuario y la contraseña cuando se use este comando</p>
+<p>Requête à envoyer à la caméra pour faire une action (passage en mode nuit, ptz, etc.). Vous pouvez utiliser les tags #username# et #password#, qui seront automatiquement remplacé par le nom d&#8217;utilisateur et le mot de passe lors de l&#8217;utilisation de cette commande</p>
 </li>
 <li>
-<p>Orden Stop : para cámaras PTZ a veces  existe un comando de Stop, aquí especificado</p>
+<p>Commande stop : pour les caméras PTZ il existe souvent une commande qui arrête le mouvement, c&#8217;est ici qu&#8217;il faut la spécifier</p>
 </li>
 <li>
 <p>Ver : Permite decidir si desea o no mostrar la orden en el dashboard</p>
 </li>
 <li>
-<p>Configuración avanzada (pequeñas ruedas dentadas): muestra la configuración avanzada de la orden (método de historico, widget&#8230;&#8203;)</p>
+<p>Configuration avancée (petites roues crantées) : permet d&#8217;afficher la configuration avancée de la commande (méthode d&#8217;historisation, widget, etc.)</p>
 </li>
 <li>
 <p>Probar : le permite probar la orden</p>
@@ -597,7 +625,7 @@ Nombre de la orden, con la posibilidad de poner un icono en el lugar (para elimi
 <h2 id="_el_widget">3. El widget</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>En la imagen, captura de la cámara, ordenes definidas en la configuración, la orden para tomar una captura, la orden para iniciar la toma de captura múltiple y la orden para ver las capturas.</p>
+<p>On retrouve sur celui-ci l&#8217;image de la caméra, les commandes définies dans la configuration, la commande pour prendre une capture, la commande pour lancer la prise de multiples captures images et la commande pour parcourir ces captures.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -612,13 +640,13 @@ En el dashboard es posible redimensionar el widget para adaptarlo a tus necesida
 </table>
 </div>
 <div class="paragraph">
-<p>Un clique sur l&#8217;image permet d&#8217;afficher celle-ci en plus grand.</p>
+<p>Un clique sur l&#8217;image permet d&#8217;afficher celle-ci dans une fenêtre et dans un format plus grand.</p>
 </div>
 <div class="paragraph">
-<p>Un clique sur la derniere commande pour parcourir les captures vous affichera celle-ci.</p>
+<p>Un clique sur la dernière commande pour parcourir les captures vous affichera celle-ci.</p>
 </div>
 <div class="paragraph">
-<p>Aquí encontraras todas las capturas organizadas por día y fecha, por cada una de ellas puedes :</p>
+<p>Vous retrouvez ici toutes les captures organisées par jour puis par date, vous pouvez pour chacune d&#8217;elle :</p>
 </div>
 <div class="ulist">
 <ul>
@@ -634,7 +662,7 @@ En el dashboard es posible redimensionar el widget para adaptarlo a tus necesida
 </ul>
 </div>
 <div class="paragraph">
-<p>En mobile le widget est un peu different si vous cliquez sur l&#8217;image de la camera vous obtenez celel-ci en plus grande avec les commandes possible.</p>
+<p>En mobile le widget est un peu différent si vous cliquez sur l&#8217;image de la caméra vous obtenez celle-ci en plus grande avec les commandes possibles.</p>
 </div>
 </div>
 </div>
@@ -642,7 +670,7 @@ En el dashboard es posible redimensionar el widget para adaptarlo a tus necesida
 <h2 id="_el_panel">4. El panel</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Le plugin caméra mets aussi à disposition un panel qui vous permet de voir d&#8217;un seul coup toute vos caméras, il est accessible par Acceuil &#8594; Caméra.</p>
+<p>Le plugin caméra met aussi à disposition un panel qui vous permet de voir d&#8217;un seul coup toutes vos caméras, il est accessible par Acceuil &#8594; Caméra.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -665,7 +693,7 @@ Pour l&#8217;avoir il faut l&#8217;activer sur la page de configuration du plugi
 <h2 id="_grabación_y_envío_de_captura">5. Grabación y envío de captura</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Este comando algo específico que permite después de la captura, enviarla (compatible con los plugin slack, mail y transfert)</p>
+<p>Cette commande un peu spécifique permet suite à la prise de capture de faire l&#8217;envoi de celle-ci (compatible avec le plugin slack, mail et transfert)</p>
 </div>
 <div class="paragraph">
 <p>La configuración es simple,  basta con llamar la acción de enviar captura, en el título puedes pasar más opciones (por defecto el número de captura, pero puedes ir más allá con las opciones avanzadas) y en el cuadro de mensaje, la orden del plugin (actualmente slack, mail o transfert) para realizar el envío de capturas. Puedes poner varias separados por &amp;&amp;</p>
@@ -704,7 +732,7 @@ Pour l&#8217;avoir il faut l&#8217;activer sur la page de configuration du plugi
 <h2 id="_encio_de_la_detección_de_movimiento_a_jeedom">6. Encio de la detección de movimiento a Jeedom</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Si tienes una cámara que tiene detección de movimiento y quieres enviarlo a Jeedom esta es la url para poner en la cámara:</p>
+<p>Si vous avez une caméra qui possède la détection de mouvement et que vous voulez transmettre celle-ci à Jeedom voilà l&#8217;url à mettre sur votre caméra :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -712,7 +740,7 @@ Pour l&#8217;avoir il faut l&#8217;activer sur la page de configuration du plugi
 </div>
 </div>
 <div class="paragraph">
-<p>Por supuesto antes se deben de crear un comando de tipo info en la cámara</p>
+<p>Il faut bien entendu avant avoir créé une commande de type info sur votre caméra</p>
 </div>
 </div>
 </div>
@@ -721,11 +749,14 @@ Pour l&#8217;avoir il faut l&#8217;activer sur la page de configuration du plugi
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">¿donde están las grabaciones ?</dt>
+<dt class="hdlist1">Où sont les enregistrements ?</dt>
 <dd>
-<p>Les enregistrements se trouve par defaut dans plugins/camera/data/records/<mark>ID_CAM</mark>, attention cela peut varier si vous avez demandé à Jeedom de les enregistrer ailleurs</p>
+<p>Les enregistrements se trouvent par défaut dans plugins/camera/data/records/<mark>ID_CAM</mark>, attention cela peut varier si vous avez demandé à Jeedom de les enregistrer ailleurs</p>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p>La liste des caméras compatibles est <a href="https://github.com/jeedom/documentation/blob/master/camera/fr_FR/equipement.compatible.asciidoc">ici</a></p>
 </div>
 <hr>
 <div class="paragraph">
