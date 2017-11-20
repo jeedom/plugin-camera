@@ -41,6 +41,10 @@ if (init('width', 0) == 0 && ($compress == null || $compress >= 100) && ($resize
 	echo $data;
 	exit();
 }
+if (empty($data) || $data == '') {
+	echo $data;
+	exit();
+}
 $askWidth = init('width', 0);
 if ($askWidth == 0 && init('thumbnail') == 1) {
 	$askWidth = 360;
