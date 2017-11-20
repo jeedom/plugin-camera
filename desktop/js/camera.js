@@ -19,6 +19,14 @@
     $('#md_modal').load('index.php?v=d&plugin=camera&modal=health').dialog('open');
 });
 
+ $('.eqLogicAttr[data-l1key=configuration][data-l2key=doNotCompressImage]').on('change', function () {
+    if($(this).value() == 1){
+        $('.compressOpt').prop('disabled', true);
+    }else{
+       $('.compressOpt').prop('disabled', false);
+   }
+});
+
  $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
  $(".eqLogicAttr[data-l1key=configuration][data-l2key=device]").html($(".eqLogicAttr[data-l1key=configuration][data-l2key=device] option").sort(function (a, b) {
@@ -51,46 +59,46 @@
     if (isset(_cmd.logicalId) && 
         (_cmd.logicalId == 'browseRecord' || _cmd.logicalId == 'recordState' || _cmd.logicalId == 'recordCmd' || _cmd.logicalId == 'stopRecordCmd' ||  _cmd.logicalId == 'takeSnapshot' || _cmd.logicalId == 'sendSnapshot' ||  _cmd.logicalId == 'urlFlux' || _cmd.logicalId == 'on' || _cmd.logicalId == 'off')) {
         return;
-    }
-    var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
-    tr += '<td>';
-    tr += '<span class="cmdAttr" data-l1key="id"></span>';
-    tr += '</td>';
-    tr += '<td>';
-    tr += '<div class="row">';
-    tr += '<div class="col-sm-6">';
-    tr += '<a class="cmdAction btn btn-default btn-sm" data-l1key="chooseIcon"><i class="fa fa-flag"></i> Icone</a>';
-    tr += '<span class="cmdAttr" data-l1key="display" data-l2key="icon" style="margin-left : 10px;"></span>';
-    tr += '</div>';
-    tr += '<div class="col-sm-6">';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="name">';
-    tr += '</div>';
-    tr += '</div>';
-    tr += '</td>';
-    tr += '<td>';
-    tr += '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
-    tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
-    tr += '</td>';
-    tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" style="margin-bottom : 5px;" placeholder="{{URL de la commande}}"/>';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="stopCmdUrl" placeholder="{{URL de la commande de stop de mouvement (caméra motirisée)}}" />';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="logicalId" />';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateValue" placeholder="{{Valeur retour d\'état}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;" />';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateTime" placeholder="{{Durée avant retour d\'état (min)}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;" />';
-    tr += '<td>';
-    tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="display" data-l2key="invertBinary"/>{{Inverser}}</label></span> ';
-    tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" checked/>{{Afficher}}</label></span>';
-    tr += '</div>';
-    tr += '</td>';
-    tr += '<td>';
-    if (is_numeric(_cmd.id)) {
-        tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fa fa-cogs"></i></a> ';
-        tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
-    }
-    tr += '<i class="fa fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>';
-    tr += '</tr>';
-    $('#table_cmd tbody').append(tr);
-    $('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
-    jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
+}
+var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
+tr += '<td>';
+tr += '<span class="cmdAttr" data-l1key="id"></span>';
+tr += '</td>';
+tr += '<td>';
+tr += '<div class="row">';
+tr += '<div class="col-sm-6">';
+tr += '<a class="cmdAction btn btn-default btn-sm" data-l1key="chooseIcon"><i class="fa fa-flag"></i> Icone</a>';
+tr += '<span class="cmdAttr" data-l1key="display" data-l2key="icon" style="margin-left : 10px;"></span>';
+tr += '</div>';
+tr += '<div class="col-sm-6">';
+tr += '<input class="cmdAttr form-control input-sm" data-l1key="name">';
+tr += '</div>';
+tr += '</div>';
+tr += '</td>';
+tr += '<td>';
+tr += '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
+tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
+tr += '</td>';
+tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" style="margin-bottom : 5px;" placeholder="{{URL de la commande}}"/>';
+tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="stopCmdUrl" placeholder="{{URL de la commande de stop de mouvement (caméra motirisée)}}" />';
+tr += '<input class="cmdAttr form-control input-sm" data-l1key="logicalId" />';
+tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateValue" placeholder="{{Valeur retour d\'état}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;" />';
+tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateTime" placeholder="{{Durée avant retour d\'état (min)}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;" />';
+tr += '<td>';
+tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="display" data-l2key="invertBinary"/>{{Inverser}}</label></span> ';
+tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" checked/>{{Afficher}}</label></span>';
+tr += '</div>';
+tr += '</td>';
+tr += '<td>';
+if (is_numeric(_cmd.id)) {
+    tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fa fa-cogs"></i></a> ';
+    tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
+}
+tr += '<i class="fa fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>';
+tr += '</tr>';
+$('#table_cmd tbody').append(tr);
+$('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
+jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
 }
 
 $('#table_cmd tbody').on('change','.cmd .cmdAttr[data-l1key=type]',function(){
@@ -100,11 +108,11 @@ $('#table_cmd tbody').on('change','.cmd .cmdAttr[data-l1key=type]',function(){
         cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').hide();
         cmd.find('.actionMode').hide();
     }else{
-         cmd.find('.cmdAttr[data-l1key=logicalId]').hide();
-        cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').show();
-        cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').show();
-        cmd.find('.actionMode').show();
-    }
+     cmd.find('.cmdAttr[data-l1key=logicalId]').hide();
+     cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').show();
+     cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').show();
+     cmd.find('.actionMode').show();
+ }
 });
 
 
