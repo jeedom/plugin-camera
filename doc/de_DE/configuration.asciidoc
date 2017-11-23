@@ -62,7 +62,7 @@ Si vous mettez une compression de 0% et une taille de 100% Jeedom ne touchera pa
 * Tester : permet de tester la commande
 * Supprimer (signe -) : permet de supprimer la commande
 
-== Le widget
+== Das Widget
 
 On retrouve sur celui-ci l'image de la caméra, les commandes définies dans la configuration, la commande pour prendre une capture, la commande pour lancer la prise de multiples captures images et la commande pour parcourir ces captures.
 
