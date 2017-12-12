@@ -44,6 +44,7 @@ foreach ($eqLogics as $eqLogic) {
   </div>
 </div>
 <legend><i class="fa fa-video-camera"></i>  {{Mes caméras}}</legend>
+<input class="form-control" placeholder="{{Rechercher}}" style="margin-bottom:4px;" id="in_searchEqlogic" />
 <div class="eqLogicThumbnailContainer">
   <?php
 foreach ($eqLogics as $eqLogic) {
@@ -56,7 +57,7 @@ foreach ($eqLogics as $eqLogic) {
 		echo '<img src="' . $plugin->getPathImgIcon() . '" height="105" width="95" />';
 	}
 	echo "</center>";
-	echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
+	echo '<span class="name" style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
 	echo '</div>';
 }
 ?>
