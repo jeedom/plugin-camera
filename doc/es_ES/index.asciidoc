@@ -1,10 +1,12 @@
 = Camara
 
-Plugin que permite crear y gestionar sus cámaras (visualización y grabación)
+Plugin permetant de créer et gérer des caméras wifi (affichage et enregistrement)
 
 include::configuration.asciidoc[]
 
 include::faq.asciidoc[]
+
+La liste des caméras compatibles est https://github.com/jeedom/documentation/blob/master/camera/fr_FR/equipement.compatible.asciidoc[ici]
 
 '''
 

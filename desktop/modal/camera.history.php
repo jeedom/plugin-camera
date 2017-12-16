@@ -34,7 +34,7 @@ krsort($files);
 <div id='div_cameraRecordAlert' style="display: none;"></div>
 <?php
 echo '<a class="btn btn-danger bt_removeCameraFile pull-right" data-all="1" data-filename="' . $camera->getId() . '/*"><i class="fa fa-trash-o"></i> {{Tout supprimer}}</a>';
-echo '<a class="btn btn-success  pull-right" href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/*') . '" ><i class="fa fa-download"></i> {{Tout télécharger}}</a>';
+echo '<a class="btn btn-success  pull-right" target="_blank" href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/*') . '" ><i class="fa fa-download"></i> {{Tout télécharger}}</a>';
 ?>
 <?php
 $i = 0;
@@ -43,7 +43,7 @@ foreach ($files as $date => &$file) {
 	echo '<div class="div_dayContainer">';
 	echo '<legend>';
 	echo '<a class="btn btn-xs btn-danger bt_removeCameraFile" data-day="1" data-filename="' . $camera->getId() . '/' . $cameraName . '_' . $date . '*"><i class="fa fa-trash-o"></i> {{Supprimer}}</a> ';
-	echo '<a class="btn btn-xs btn-success"  href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $cameraName . '_' . $date . '*') . '" ><i class="fa fa-download"></i> {{Télécharger}}</a> ';
+	echo '<a class="btn btn-xs btn-success" target="_blank"  href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $cameraName . '_' . $date . '*') . '" ><i class="fa fa-download"></i> {{Télécharger}}</a> ';
 	echo $date;
 	echo ' <a class="btn btn-xs btn-default toggleList"><i class="fa fa-chevron-down"></i></a> ';
 	echo '</legend>';
@@ -56,13 +56,13 @@ foreach ($files as $date => &$file) {
 			$i++;
 		}
 		echo '<div class="cameraDisplayCard" style="background-color: #e7e7e7;padding:5px;height:167px;">';
-		echo '<center><i class="fa ' . $fontType . ' pull-right"></i>  ' . str_replace('-',':',$time) . '</center>';
+		echo '<center><i class="fa ' . $fontType . ' pull-right"></i>  ' . str_replace('-', ':', $time) . '</center>';
 		if (strpos($filename, '.mp4')) {
 			echo '<video class="displayVideo" width="150" height="100" controls loop data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer"><source src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '">Your browser does not support the video tag.</video>';
 		} else {
 			echo '<center><img class="img-responsive cursor displayImage lazy" src="plugins/camera/core/img/no-image.png" data-original="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" width="150"/></center>';
 		}
-		echo '<center style="margin-top:5px;"><a href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" class="btn btn-success btn-xs" style="color : white"><i class="fa fa-download"></i></a>';
+		echo '<center style="margin-top:5px;"><a target="_blank" href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" class="btn btn-success btn-xs" style="color : white"><i class="fa fa-download"></i></a>';
 		echo ' <a class="btn btn-danger bt_removeCameraFile btn-xs" style="color : white" data-filename="' . $camera->getId() . '/' . $filename . '"><i class="fa fa-trash-o"></i></a></center>';
 		echo '</div>';
 	}

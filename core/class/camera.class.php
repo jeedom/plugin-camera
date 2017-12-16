@@ -88,7 +88,7 @@ class camera extends eqLogic {
 		if (exec('which avconv | wc -l') == 0) {
 			$return['state'] = 'nok';
 		}
-		if (exec(system::getCmdSudo() . system::get('cmd_check') . '-E "python\-imaging" | wc -l') == 0) {
+		if (exec(system::getCmdSudo() . system::get('cmd_check') . '-E "python\-imaging|python\-pil" | wc -l') == 0) {
 			$return['state'] = 'nok';
 		}
 		if (exec(system::getCmdSudo() . system::get('cmd_check') . ' gd | grep php | wc -l') == 0) {
@@ -928,10 +928,16 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		$url = $eqLogic->getUrl($request);
-		$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
-		$http->setNoReportError(true);
-		$http->exec(2);
+		if (strpos($request,'curl ') !== false){
+			log::add('camera','debug','Executing ' . $url);
+			shell_exec($request);
+		} else {
+			$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
+			$http->setNoReportError(true);
+			$http->exec(2);
+		}
 		return true;
+
 	}
 
 	/*     * **********************Getteur Setteur*************************** */
