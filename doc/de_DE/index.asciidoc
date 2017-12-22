@@ -1,6 +1,6 @@
 = Camera
 
-Plugin permetant de créer et gérer des caméras wifi (affichage et enregistrement)
+Plugin permettant de créer et gérer des caméras wifi (affichage et enregistrement)
 
 include::configuration.asciidoc[]
 
