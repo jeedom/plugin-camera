@@ -85,6 +85,32 @@
 			"isVisible": "0"
 		}, {
 			"eqType": "camera",
+			"name": "Focus +",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=0&-act=focusin&-speed=45&usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"fa fa-search-plus\"><\/i>"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
+			"name": "Focus -",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=0&-act=focusout&-speed=45&usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"fa fa-search-minus\"><\/i>"
+			},
+			"isVisible": "0"
+		}, {
+			"eqType": "camera",
 			"name": "IR On",
 			"type": "action",
 			"subType": "other",

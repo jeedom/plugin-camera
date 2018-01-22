@@ -2,7 +2,7 @@
 
 Après installation du plugin, il vous suffit de l’activer, cependant il y a quelques paramètres de configuration avancée : 
 
-* *Chemin des enregistrements* : indique le chemin où Jeedom doit stocker les images qu'il capture de vos caméras (il est déconseillé d'y toucher)
+* *Chemin des enregistrements* : indique le chemin où Jeedom doit stocker les images qu'il capture de vos caméras (il est déconseillé d'y toucher). Si votre chemin n'est pas dans le chemin d'installation de Jeedom alors vous ne pourrez visualiser les captures dans Jeedom.
 * *Taille maximum du dossier d'enregistrement (Mo)* : indique la taille maximum autorisée pour le dossier où les captures sont enregistrées (il est déconseillé d'y toucher). Si ce quotas est atteint Jeedom supprimera les captures les plus anciennes.
 * *Le plugin caméra doit réagir aux intéractions* : mots clés / phrases auxquels le plugin réagira via les intéractions de Jeedom.
 * *Panel* : Vous permet d'afficher le panel (Menu Accueil > Caméra) et d'avoir une vue sur l'ensemble de vos caméras (voir plus bas)
