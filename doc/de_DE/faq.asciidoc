@@ -1,4 +1,0 @@
-== FAQ
-
-Où sont les enregistrements ?::
-Les enregistrements se trouvent par défaut dans plugins/camera/data/records/#ID_CAM#, attention cela peut varier si vous avez demandé à Jeedom de les enregistrer ailleurs

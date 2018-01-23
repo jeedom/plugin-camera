@@ -1,5 +1,0 @@
-== Änderungsprotokoll
-
-- JEED-336 : Rajout du bouton historique sur la vue pleine ecran
-
-- Refonte de la gestion de l'affichage des caméras (réglage de la compression et de la taille de l'image)
