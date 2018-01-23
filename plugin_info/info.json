@@ -9,5 +9,7 @@
 	"display" : "panel",
 	"mobile" : "panel",
 	"hasOwnDeamon" : true,
-	"hasDependency" : true
+	"hasDependency" : true,
+	"changelog" : "https://jeedom.github.io/plugin-camera/fr_FR/changelog",
+	"documentation" : "https://jeedom.github.io/plugin-camera/fr_FR/"
 }
