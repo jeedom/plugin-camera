@@ -27,6 +27,17 @@
     var itemElems =  container.find('.eqLogic-widget');
     itemElems.draggable();
     container.packery( 'bindUIDraggableEvents', itemElems );
+    container.packery( 'on', 'dragItemPositioned',function(){
+      $('.div_displayEquipement').packery();
+    });
+    function orderItems() {
+      var itemElems = container.packery('getItemElements');
+      $( itemElems ).each( function( i, itemElem ) {
+        $( itemElem ).attr('data-order', i + 1 );
+      });
+    }
+    container.on( 'layoutComplete', orderItems );
+    container.on( 'dragItemPositioned', orderItems );
   });
   $('.div_displayEquipement .eqLogic-widget').draggable('disable');
   $('#bt_editDashboardWidgetOrder').on('click',function(){

@@ -82,102 +82,141 @@ foreach ($eqLogics as $eqLogic) {
     <div class="row">
       <div class="col-sm-6">
         <form class="form-horizontal">
-          <div class="form-group">
-            <label class="col-sm-3 control-label">{{Nom de l'équipement caméra}}</label>
-            <div class="col-sm-6">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
-              <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement caméra}}"/>
+          <fieldset>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">{{Nom de l'équipement caméra}}</label>
+              <div class="col-sm-6">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
+                <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement caméra}}"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" >{{Objet parent}}</label>
+              <div class="col-sm-6">
+                <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
+                  <option value="">{{Aucun}}</option>
+                  <?php
+foreach (object::all() as $object) {
+	echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
+}
+?>
+               </select>
+             </div>
+           </div>
+           <div class="form-group">
+            <label class="col-sm-3 control-label"></label>
+            <div class="col-sm-9">
+              <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>{{Activer}}</label>
+              <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label" >{{Objet parent}}</label>
-            <div class="col-sm-6">
-              <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
-                <option value="">{{Aucun}}</option>
+            <label class="col-sm-3 control-label">{{IP}}</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
+                  <option value='http'>HTTP</option>
+                  <option value='https'>HTTPS</option>
+                </select>
+                <span class="input-group-addon">://</span>
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
+                <span class="input-group-addon">:</span>
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Nom d'utilisateur}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
+            </div>
+            <label class="col-sm-2 control-label">{{Mot de passe}}</label>
+            <div class="col-sm-2">
+              <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{URL de capture}}</label>
+            <div class="col-sm-7">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}"/>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <form class="form-horizontal">
+        <fieldset>
+          <legend>{{Google assistant}}</legend>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{URL du flux}}</label>
+            <div class="col-sm-7">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cameraStreamAccessUrl" placeholder="{{URL du flux, RTSP}}"/>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-sm-6">
+      <form class="form-horizontal">
+        <fieldset>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{Modèle}}</label>
+            <div class="col-sm-5">
+              <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
+                <option value="">{{1 - Aucun}}</option>
                 <?php
-foreach (object::all() as $object) {
-	echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
+foreach (camera::devicesParameters() as $id => $info) {
+	echo '<option value="' . $id . '">' . $info['name'] . '</option>';
 }
 ?>
              </select>
            </div>
          </div>
-         <div class="form-group">
-          <label class="col-sm-3 control-label"></label>
-          <div class="col-sm-9">
-            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>{{Activer}}</label>
-            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">{{IP}}</label>
-          <div class="col-sm-9">
-            <div class="input-group">
-              <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
-                <option value='http'>HTTP</option>
-                <option value='https'>HTTPS</option>
-              </select>
-              <span class="input-group-addon">://</span>
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
-              <span class="input-group-addon">:</span>
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="{{Port}}"/>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">{{Nom d'utilisateur}}</label>
-          <div class="col-sm-3">
-            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
-          </div>
-          <label class="col-sm-2 control-label">{{Mot de passe}}</label>
-          <div class="col-sm-2">
-            <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">{{URL de capture}}</label>
-          <div class="col-sm-7">
-            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}"/>
-          </div>
-        </div>
+         <center>
+          <img src="core/img/no_image.gif" data-original=".jpg" id="img_device" class="img-responsive" style="max-height : 250px;" onerror="this.src='plugins/camera/doc/images/camera_icon.png'"/>
+        </center>
       </fieldset>
     </form>
   </div>
-  <div class="col-sm-6">
-    <form class="form-horizontal">
-      <fieldset>
-        <div class="form-group">
-          <label class="col-sm-2 control-label">{{Modèle}}</label>
-          <div class="col-sm-5">
-            <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
-              <option value="">{{1 - Aucun}}</option>
-              <?php
-foreach (camera::devicesParameters() as $id => $info) {
-	echo '<option value="' . $id . '">' . $info['name'] . '</option>';
-}
-?>
-           </select>
-         </div>
-       </div>
-       <center>
-        <img src="core/img/no_image.gif" data-original=".jpg" id="img_device" class="img-responsive" style="max-height : 250px;" onerror="this.src='plugins/camera/doc/images/camera_icon.png'"/>
-      </center>
-    </fieldset>
-  </form>
-</div>
 </div>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="displaytab">
   <form class="form-horizontal">
     <legend>{{Configuration}}</legend>
-   <div class="form-group">
-    <label class="col-sm-3 control-label">{{Ne pas compresser ou redimensionner l'image}}</label>
-    <div class="col-sm-7">
-      <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="doNotCompressImage" />
+    <div class="form-group">
+      <label class="col-sm-3 control-label">{{Ne pas compresser ou redimensionner l'image}}</label>
+      <div class="col-sm-7">
+        <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="doNotCompressImage" />
+      </div>
     </div>
-  </div>
-  <legend>{{Miniature}}</legend>
+    <legend>{{Miniature}}</legend>
+    <table id="table_image" class="table table-bordered table-condensed">
+      <thead>
+       <tr>
+        <th style="width : 70px;"></th>
+        <th style="width : 300px;">{{Dashboard}}</th>
+        <th style="width : 300px;">{{Mobile}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><label>{{Rafraichissement (s)}}</label></td>
+        <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::refresh" /></td>
+        <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobilerefresh" /></td>
+      </tr>
+      <tr>
+        <td><label>{{Compression (%)}}</label></td>
+        <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::compress" /></td>
+        <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobilecompress" /></td>
+      </tr>
+      <tr>
+        <td><label>{{Taille (% - 0 : automatique)}}</label></td>
+        <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::resize" /></td>
+        <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobileresize" /></td>
+      </tr>
+    </tbody>
+  </table>
+  <legend>{{Normal}}</legend>
   <table id="table_image" class="table table-bordered table-condensed">
     <thead>
      <tr>
@@ -189,47 +228,20 @@ foreach (camera::devicesParameters() as $id => $info) {
   <tbody>
     <tr>
       <td><label>{{Rafraichissement (s)}}</label></td>
-      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::refresh" /></td>
-      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobilerefresh" /></td>
+      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::refresh" /></td>
+      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobilerefresh" /></td>
     </tr>
     <tr>
       <td><label>{{Compression (%)}}</label></td>
-      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::compress" /></td>
-      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobilecompress" /></td>
+      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::compress" /></td>
+      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobilecompress" /></td>
     </tr>
     <tr>
       <td><label>{{Taille (% - 0 : automatique)}}</label></td>
-      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::resize" /></td>
-      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobileresize" /></td>
+      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::resize" /></td>
+      <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobileresize" /></td>
     </tr>
   </tbody>
-</table>
-<legend>{{Normal}}</legend>
-<table id="table_image" class="table table-bordered table-condensed">
-  <thead>
-   <tr>
-    <th style="width : 70px;"></th>
-    <th style="width : 300px;">{{Dashboard}}</th>
-    <th style="width : 300px;">{{Mobile}}</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><label>{{Rafraichissement (s)}}</label></td>
-    <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::refresh" /></td>
-    <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobilerefresh" /></td>
-  </tr>
-  <tr>
-    <td><label>{{Compression (%)}}</label></td>
-    <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::compress" /></td>
-    <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobilecompress" /></td>
-  </tr>
-  <tr>
-    <td><label>{{Taille (% - 0 : automatique)}}</label></td>
-    <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::resize" /></td>
-    <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobileresize" /></td>
-  </tr>
-</tbody>
 </table>
 </form>
 </div>
