@@ -6,7 +6,8 @@
     "plugins\/camera\/plugin_info\/configuration.php": {
         "Chemin des scripts utilisateur": "Chemin des scripts utilisateur",
         "Chemin des enregistrements": "Chemin des enregistrements",
-        "Taille maximum du dossier d'enregistrement (Mo)": "Taille maximum du dossier d'enregistrement (Mo)"
+        "Taille maximum du dossier d'enregistrement (Mo)": "Taille maximum du dossier d'enregistrement (Mo)",
+        "Le plugin caméra doit réagir aux interactions": "Le plugin caméra doit réagir aux interactions"
     },
     "plugins\/camera\/desktop\/php\/camera.php": {
         "Market": "Market",
@@ -70,7 +71,20 @@
         "Commande ON": "Commande ON",
         "OFF": "OFF",
         "Supprimer toutes les captures de la caméra": "Supprimer toutes les captures de la caméra",
-        "Configuration avancée": "Configuration avancée"
+        "Configuration avancée": "Configuration avancée",
+        "Dupliquer": "Dupliquer",
+        "Image": "Image",
+        "Capture": "Capture",
+        "Alimentation": "Alimentation",
+        "Miniature": "Miniature",
+        "Dashboard": "Dashboard",
+        "Mobile": "Mobile",
+        "Compression (%)": "Compression (%)",
+        "Taille (% - 0 : automatique)": "Taille (% - 0 : automatique)",
+        "Normal": "Normal",
+        "Toujours faire une video": "Toujours faire une video",
+        "Seuil de détection mouvement (0-100)": "Seuil de détection mouvement (0-100)",
+        "Ne pas compresser ou redimensionner l'image": "Ne pas compresser ou redimensionner l'image"
     },
     "plugins\/camera\/desktop\/js\/camera.js": {
         "Partager sur le market": "Partager sur le market",
@@ -86,7 +100,8 @@
         "Durée avant retour d\\'état (min)": "Durée avant retour d\\'état (min)",
         "Santé Caméras": "Santé Caméras",
         "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?",
-        "Supression réussie": "Supression réussie"
+        "Supression réussie": "Supression réussie",
+        "Inverser": "Inverser"
     },
     "plugins\/camera\/plugin_info\/info.xml": {
         "Plugin pour afficher les caméras IP": "Plugin pour afficher les caméras IP",
@@ -106,7 +121,12 @@
         "L'adresse IP de la camera ne peut être vide": "L'adresse IP de la camera ne peut être vide",
         "Alerte sur la camera : ": "Alerte sur la camera : ",
         " à ": " à ",
-        "Le fichier est vide : ": "Le fichier est vide : "
+        "Le fichier est vide : ": "Le fichier est vide : ",
+        "Enregistrer": "Enregistrer",
+        "Nombre captures ou options": "Nombre captures ou options",
+        "Commande message d'envoi des captures": "Commande message d'envoi des captures",
+        "On": "On",
+        "Off": "Off"
     },
     "plugins\/camera\/desktop\/modal\/camera.history.php": {
         "Supprimer": "Supprimer",
