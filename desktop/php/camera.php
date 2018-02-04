@@ -143,6 +143,10 @@ foreach (object::all() as $object) {
           </div>
         </fieldset>
       </form>
+      <?php
+$plugin = plugin::byId('gsh');
+if (is_object($plugin)) {
+	?>
       <form class="form-horizontal">
         <fieldset>
           <legend>{{Google assistant}}</legend>
@@ -154,6 +158,7 @@ foreach (object::all() as $object) {
           </div>
         </fieldset>
       </form>
+      <?php }?>
     </div>
     <div class="col-sm-6">
       <form class="form-horizontal">
