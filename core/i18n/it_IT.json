@@ -6,7 +6,8 @@
     "plugins/camera/plugin_info/configuration.php": {
         "Chemin des scripts utilisateur": "Percorso script utente",
         "Chemin des enregistrements": "Percorso registrazioni",
-        "Taille maximum du dossier d'enregistrement (Mo)": "Massima dimensione della cartella registrazioni (MB)"
+        "Taille maximum du dossier d'enregistrement (Mo)": "Massima dimensione della cartella registrazioni (MB)",
+        "Le plugin caméra doit réagir aux interactions": "Le plugin caméra doit réagir aux interactions"
     },
     "plugins/camera/desktop/php/camera.php": {
         "Market": "Market",
@@ -64,13 +65,26 @@
         "Equipement": "Dispositivo",
         "Commandes": "Comandi",
         "Zoom (s)": "Zoom (s)",
-        "Durée maximum d'un enregistrement (s)": "Durée maximum d'un enregistrement (s)",
-        "Préférer une vidéo si enregistrement via le bouton": "Préférer une vidéo si enregistrement via le bouton",
-        "Nombre d'images par seconde de la vidéo": "Nombre d'images par seconde de la vidéo",
-        "Commande ON": "Commande ON",
+        "Durée maximum d'un enregistrement (s)": "Durata massima di una registrazione (s)",
+        "Préférer une vidéo si enregistrement via le bouton": "Preferire una registrazione video tramite il pulsante se",
+        "Nombre d'images par seconde de la vidéo": "Numero di fotogrammi al secondo video",
+        "Commande ON": "comando ON",
         "OFF": "FF",
-        "Supprimer toutes les captures de la caméra": "Supprimer toutes les captures de la caméra",
-        "Configuration avancée": "Configurazione avanzata"
+        "Supprimer toutes les captures de la caméra": "Eliminare tutte le catture della telecamera",
+        "Configuration avancée": "Configurazione avanzata",
+        "Dupliquer": "Dupliquer",
+        "Image": "Image",
+        "Capture": "Capture",
+        "Alimentation": "Alimentation",
+        "Miniature": "Miniature",
+        "Dashboard": "Dashboard",
+        "Mobile": "Mobile",
+        "Compression (%)": "Compression (%)",
+        "Taille (% - 0 : automatique)": "Taille (% - 0 : automatique)",
+        "Normal": "Normal",
+        "Toujours faire une video": "Toujours faire une video",
+        "Seuil de détection mouvement (0-100)": "Seuil de détection mouvement (0-100)",
+        "Ne pas compresser ou redimensionner l'image": "Ne pas compresser ou redimensionner l'image"
     },
     "plugins/camera/desktop/js/camera.js": {
         "Partager sur le market": "Condividi sul Market",
@@ -84,9 +98,10 @@
         "URL de la commande de stop de mouvement (caméra motirisée)": "Comando URL per fermare il movimento (telecamere motorizzate)",
         "Valeur retour d\\'état": "Valore di feedback",
         "Durée avant retour d\\'état (min)": "Durata prima del feedback (min)",
-        "Santé Caméras": "Santé Caméras",
-        "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?",
-        "Supression réussie": "Supression réussie"
+        "Santé Caméras": "Telecamere salute",
+        "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Sei sicuro di voler eliminare tutte le catture della telecamera?",
+        "Supression réussie": "soppressione di successo",
+        "Inverser": "Inverser"
     },
     "plugins/camera/plugin_info/info.xml": {
         "Plugin pour afficher les caméras IP": "Plugin per mostrare telecamere IP",
@@ -104,15 +119,20 @@
         "Capture": "Snapshot",
         "Envoyer une capture": "Invia uno snapshot",
         "L'adresse IP de la camera ne peut être vide": "L\\'indirizzo IP della telecamera non può essere vuoto",
-        "Alerte sur la camera : ": "Alerte sur la camera :",
-        " à ": "à",
-        "Le fichier est vide : ": "Le fichier est vide :"
+        "Alerte sur la camera : ": "Avvertire in cam:",
+        " à ": "a",
+        "Le fichier est vide : ": "Il file è vuoto:",
+        "Enregistrer": "Enregistrer",
+        "Nombre captures ou options": "Nombre captures ou options",
+        "Commande message d'envoi des captures": "Commande message d'envoi des captures",
+        "On": "On",
+        "Off": "Off"
     },
     "plugins/camera/desktop/modal/camera.history.php": {
         "Supprimer": "Elimina",
         "Tout supprimer": "Elimina tutti",
         "Télécharger": "Scarica",
-        "Tout télécharger": "Tout télécharger"
+        "Tout télécharger": "scaricare tutti"
     },
     "plugins/camera/core/ajax/camera.ajax.php": {
         "Aucune methode correspondante à : ": "Nessun metodo corrispondente :"
