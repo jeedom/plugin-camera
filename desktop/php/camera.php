@@ -144,21 +144,26 @@ foreach (object::all() as $object) {
         </fieldset>
       </form>
       <?php
-$plugin = plugin::byId('gsh');
-if (is_object($plugin)) {
-	?>
-      <form class="form-horizontal">
-        <fieldset>
-          <legend>{{Google assistant}}</legend>
-          <div class="form-group">
-            <label class="col-sm-3 control-label">{{URL du flux}}</label>
-            <div class="col-sm-7">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cameraStreamAccessUrl" placeholder="{{URL du flux, RTSP}}"/>
+try {
+	$plugin = plugin::byId('gsh');
+	if (is_object($plugin)) {
+		?>
+         <form class="form-horizontal">
+          <fieldset>
+            <legend>{{Google assistant}}</legend>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">{{URL du flux}}</label>
+              <div class="col-sm-7">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cameraStreamAccessUrl" placeholder="{{URL du flux, RTSP}}"/>
+              </div>
             </div>
-          </div>
-        </fieldset>
-      </form>
-      <?php }?>
+          </fieldset>
+        </form>
+        <?php }
+} catch (Exception $e) {
+
+}
+?>
     </div>
     <div class="col-sm-6">
       <form class="form-horizontal">
