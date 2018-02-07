@@ -6,7 +6,8 @@
     "plugins/camera/plugin_info/configuration.php": {
         "Chemin des scripts utilisateur": "Pfad Benutzer-Skript",
         "Chemin des enregistrements": "Aufzeichnungs Pfad",
-        "Taille maximum du dossier d'enregistrement (Mo)": "Maximale Größe des Registrierungsdossiers (MB)"
+        "Taille maximum du dossier d'enregistrement (Mo)": "Maximale Größe des Registrierungsdossiers (MB)",
+        "Le plugin caméra doit réagir aux interactions": "Le plugin caméra doit réagir aux interactions"
     },
     "plugins/camera/desktop/php/camera.php": {
         "Market": "Markt",
@@ -65,12 +66,25 @@
         "Commandes": "Befehle",
         "Zoom (s)": "Zoom (s)",
         "Durée maximum d'un enregistrement (s)": "Maximale Dauer einer Aufnahme (s)",
-        "Préférer une vidéo si enregistrement via le bouton": "Préférer une vidéo si enregistrement via le bouton",
-        "Nombre d'images par seconde de la vidéo": "Nombre d'images par seconde de la vidéo",
+        "Préférer une vidéo si enregistrement via le bouton": "Bevorzugen Sie eine Videoaufzeichnung über die Schaltfläche, wenn",
+        "Nombre d'images par seconde de la vidéo": "Anzahl der Bilder pro Sekunde Video",
         "Commande ON": "Befehl An",
         "OFF": "AUS",
-        "Supprimer toutes les captures de la caméra": "Supprimer toutes les captures de la caméra",
-        "Configuration avancée": "Erweiterte Konfiguration"
+        "Supprimer toutes les captures de la caméra": "Löschen Sie alle Fänge der Kamera",
+        "Configuration avancée": "Erweiterte Konfiguration",
+        "Dupliquer": "Dupliquer",
+        "Image": "Image",
+        "Capture": "Capture",
+        "Alimentation": "Alimentation",
+        "Miniature": "Miniature",
+        "Dashboard": "Dashboard",
+        "Mobile": "Mobile",
+        "Compression (%)": "Compression (%)",
+        "Taille (% - 0 : automatique)": "Taille (% - 0 : automatique)",
+        "Normal": "Normal",
+        "Toujours faire une video": "Toujours faire une video",
+        "Seuil de détection mouvement (0-100)": "Seuil de détection mouvement (0-100)",
+        "Ne pas compresser ou redimensionner l'image": "Ne pas compresser ou redimensionner l'image"
     },
     "plugins/camera/desktop/js/camera.js": {
         "Partager sur le market": "auf dem Markt Teilen",
@@ -85,8 +99,9 @@
         "Valeur retour d\\'état": "Statuswert zurück",
         "Durée avant retour d\\'état (min)": "Zustand vor Rückkehr gedauert (min)",
         "Santé Caméras": "Kameras Gesundheit",
-        "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?",
-        "Supression réussie": "Supression réussie"
+        "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Sind Sie sicher, dass Sie alle Fänge der Kamera löschen?",
+        "Supression réussie": "erfolgreiche Unterdrückung",
+        "Inverser": "Inverser"
     },
     "plugins/camera/plugin_info/info.xml": {
         "Plugin pour afficher les caméras IP": "Plugin um IP Kameras anzuzeigen",
@@ -104,9 +119,14 @@
         "Capture": "Einfangen",
         "Envoyer une capture": "Aufnahme senden",
         "L'adresse IP de la camera ne peut être vide": "Die IP-Adresse der Kamera darf nicht leer sein",
-        "Alerte sur la camera : ": "Alerte sur la camera :",
+        "Alerte sur la camera : ": "Alarmieren Sie vor der Kamera:",
         " à ": "bis",
-        "Le fichier est vide : ": "Le fichier est vide :"
+        "Le fichier est vide : ": "Die Datei ist leer:",
+        "Enregistrer": "Enregistrer",
+        "Nombre captures ou options": "Nombre captures ou options",
+        "Commande message d'envoi des captures": "Commande message d'envoi des captures",
+        "On": "On",
+        "Off": "Off"
     },
     "plugins/camera/desktop/modal/camera.history.php": {
         "Supprimer": "Löschen",
