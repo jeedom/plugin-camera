@@ -72,16 +72,16 @@
         "OFF": "OFF",
         "Supprimer toutes les captures de la caméra": "Excluir todas as capturas da câmera",
         "Configuration avancée": "configuração avançada",
-        "Dupliquer": "Dupliquer",
-        "Image": "Image",
+        "Dupliquer": "duplicar",
+        "Image": "imagem",
         "Capture": "Capture",
         "Alimentation": "Alimentation",
         "Miniature": "Miniature",
-        "Dashboard": "Dashboard",
-        "Mobile": "Mobile",
+        "Dashboard": "painel de instrumentos",
+        "Mobile": "móvel",
         "Compression (%)": "Compression (%)",
         "Taille (% - 0 : automatique)": "Taille (% - 0 : automatique)",
-        "Normal": "Normal",
+        "Normal": "normal",
         "Toujours faire une video": "Toujours faire une video",
         "Seuil de détection mouvement (0-100)": "Seuil de détection mouvement (0-100)",
         "Ne pas compresser ou redimensionner l'image": "Ne pas compresser ou redimensionner l'image"
@@ -101,7 +101,7 @@
         "Santé Caméras": "Câmeras de saúde",
         "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Tem certeza de que deseja excluir todas as capturas da câmera?",
         "Supression réussie": "supressão bem sucedida",
-        "Inverser": "Inverser"
+        "Inverser": "inverter"
     },
     "plugins/camera/plugin_info/info.xml": {
         "Plugin pour afficher les caméras IP": "Plugin para ver as câmeras IP",
@@ -122,11 +122,11 @@
         "Alerte sur la camera : ": "Alertar na câmera:",
         " à ": "para",
         "Le fichier est vide : ": "O arquivo está vazio:",
-        "Enregistrer": "Enregistrer",
+        "Enregistrer": "registro",
         "Nombre captures ou options": "Nombre captures ou options",
         "Commande message d'envoi des captures": "Commande message d'envoi des captures",
-        "On": "On",
-        "Off": "Off"
+        "On": "um",
+        "Off": "fora"
     },
     "plugins/camera/desktop/modal/camera.history.php": {
         "Supprimer": "remover",

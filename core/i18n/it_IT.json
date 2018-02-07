@@ -72,16 +72,16 @@
         "OFF": "FF",
         "Supprimer toutes les captures de la caméra": "Eliminare tutte le catture della telecamera",
         "Configuration avancée": "Configurazione avanzata",
-        "Dupliquer": "Dupliquer",
-        "Image": "Image",
-        "Capture": "Capture",
+        "Dupliquer": "Duplica",
+        "Image": "Immagine",
+        "Capture": "Snapshot",
         "Alimentation": "Alimentation",
         "Miniature": "Miniature",
         "Dashboard": "Dashboard",
         "Mobile": "Mobile",
         "Compression (%)": "Compression (%)",
         "Taille (% - 0 : automatique)": "Taille (% - 0 : automatique)",
-        "Normal": "Normal",
+        "Normal": "normale",
         "Toujours faire une video": "Toujours faire une video",
         "Seuil de détection mouvement (0-100)": "Seuil de détection mouvement (0-100)",
         "Ne pas compresser ou redimensionner l'image": "Ne pas compresser ou redimensionner l'image"
@@ -101,7 +101,7 @@
         "Santé Caméras": "Telecamere salute",
         "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Sei sicuro di voler eliminare tutte le catture della telecamera?",
         "Supression réussie": "soppressione di successo",
-        "Inverser": "Inverser"
+        "Inverser": "Inverti"
     },
     "plugins/camera/plugin_info/info.xml": {
         "Plugin pour afficher les caméras IP": "Plugin per mostrare telecamere IP",
@@ -122,7 +122,7 @@
         "Alerte sur la camera : ": "Avvertire in cam:",
         " à ": "a",
         "Le fichier est vide : ": "Il file è vuoto:",
-        "Enregistrer": "Enregistrer",
+        "Enregistrer": "Salva",
         "Nombre captures ou options": "Nombre captures ou options",
         "Commande message d'envoi des captures": "Commande message d'envoi des captures",
         "On": "On",
