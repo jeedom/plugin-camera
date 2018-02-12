@@ -25,7 +25,7 @@ y a quelques paramètres de configuration avancée :
     Accueil &gt; Caméra) et d’avoir une vue sur l’ensemble de vos
     caméras (voir plus bas)
 
-Configuration des équipements 
+Configuración del dispositivo
 =============================
 
 Equipement 
