@@ -23,8 +23,8 @@
     if($(this).value() == 1){
         $('.compressOpt').prop('disabled', true);
     }else{
-       $('.compressOpt').prop('disabled', false);
-   }
+     $('.compressOpt').prop('disabled', false);
+ }
 });
 
  $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
@@ -38,7 +38,7 @@
   if($('.li_eqLogic.active').attr('data-eqlogic_id') != ''){
     $('#img_device').attr("src", 'plugins/camera/core/config/devices/'+$(this).value()+'.jpg');
 }else{
-    $('#img_device').attr("src",'plugins/camera/doc/images/camera_icon.png');
+    $('#img_device').attr("src",'plugins/camera/plugin_info/camera_icon.png');
 }
 });
 
@@ -108,18 +108,18 @@ $('#table_cmd tbody').on('change','.cmd .cmdAttr[data-l1key=type]',function(){
         cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').hide();
         cmd.find('.actionMode').hide();
     }else{
-     cmd.find('.cmdAttr[data-l1key=logicalId]').hide();
-     cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').show();
-     cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').show();
-     cmd.find('.actionMode').show();
- }
+       cmd.find('.cmdAttr[data-l1key=logicalId]').hide();
+       cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').show();
+       cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').show();
+       cmd.find('.actionMode').show();
+   }
 });
 
 
 $('#bt_removeAllCapture').on('click',function(){
-   bootbox.confirm('{{Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?}}', function (result) {
+ bootbox.confirm('{{Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?}}', function (result) {
     if (result) {
-     $.ajax({
+       $.ajax({
         type: "POST", 
         url: "plugins/camera/core/ajax/camera.ajax.php", 
         data: {
@@ -138,6 +138,6 @@ $('#bt_removeAllCapture').on('click',function(){
             $('#div_alert').showAlert({message: '{{Supression réussie}}', level: 'success'});
         }
     });
- }
+   }
 });
 });

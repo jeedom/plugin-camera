@@ -182,7 +182,7 @@ foreach (camera::devicesParameters() as $id => $info) {
            </div>
          </div>
          <center>
-          <img src="core/img/no_image.gif" data-original=".jpg" id="img_device" class="img-responsive" style="max-height : 250px;" onerror="this.src='plugins/camera/doc/images/camera_icon.png'"/>
+          <img src="core/img/no_image.gif" data-original=".jpg" id="img_device" class="img-responsive" style="max-height : 250px;" onerror="this.src='plugins/camera/plugin_info/camera_icon.png'"/>
         </center>
       </fieldset>
     </form>
