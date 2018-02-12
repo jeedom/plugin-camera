@@ -72,13 +72,13 @@
         "OFF": "AUS",
         "Supprimer toutes les captures de la caméra": "Löschen Sie alle Fänge der Kamera",
         "Configuration avancée": "Erweiterte Konfiguration",
-        "Dupliquer": "Dupliquer",
-        "Image": "Image",
-        "Capture": "Capture",
+        "Dupliquer": "Kopieren",
+        "Image": "Bild",
+        "Capture": "Einfangen",
         "Alimentation": "Alimentation",
         "Miniature": "Miniature",
-        "Dashboard": "Dashboard",
-        "Mobile": "Mobile",
+        "Dashboard": "Armaturenbrett",
+        "Mobile": "Mobil",
         "Compression (%)": "Compression (%)",
         "Taille (% - 0 : automatique)": "Taille (% - 0 : automatique)",
         "Normal": "Normal",
@@ -101,7 +101,7 @@
         "Santé Caméras": "Kameras Gesundheit",
         "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Sind Sie sicher, dass Sie alle Fänge der Kamera löschen?",
         "Supression réussie": "erfolgreiche Unterdrückung",
-        "Inverser": "Inverser"
+        "Inverser": "umgekehrt"
     },
     "plugins/camera/plugin_info/info.xml": {
         "Plugin pour afficher les caméras IP": "Plugin um IP Kameras anzuzeigen",
@@ -122,11 +122,11 @@
         "Alerte sur la camera : ": "Alarmieren Sie vor der Kamera:",
         " à ": "bis",
         "Le fichier est vide : ": "Die Datei ist leer:",
-        "Enregistrer": "Enregistrer",
+        "Enregistrer": "Speichern",
         "Nombre captures ou options": "Nombre captures ou options",
         "Commande message d'envoi des captures": "Commande message d'envoi des captures",
-        "On": "On",
-        "Off": "Off"
+        "On": "An",
+        "Off": "Aus"
     },
     "plugins/camera/desktop/modal/camera.history.php": {
         "Supprimer": "Löschen",

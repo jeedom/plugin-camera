@@ -1,7 +1,7 @@
 Plugin permettant de créer et gérer des caméras wifi (affichage et
 enregistrement)
 
-Configuration du plugin 
+configuración del plugin
 =======================
 
 Après installation du plugin, il vous suffit de l’activer, cependant il
@@ -25,7 +25,7 @@ y a quelques paramètres de configuration avancée :
     Accueil &gt; Caméra) et d’avoir une vue sur l’ensemble de vos
     caméras (voir plus bas)
 
-Configuration des équipements 
+Configuración del dispositivo
 =============================
 
 Equipement 
@@ -246,7 +246,7 @@ caméra :
 Il faut bien entendu avant avoir créé une commande de type info sur
 votre caméra
 
-FAQ 
+Preguntas frecuentes
 ===
 
 Où sont les enregistrements ?

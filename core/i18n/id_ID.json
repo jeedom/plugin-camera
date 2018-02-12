@@ -72,16 +72,16 @@
         "OFF": "OFF",
         "Supprimer toutes les captures de la caméra": "Hapus semua tangkapan kamera",
         "Configuration avancée": "konfigurasi lanjutan",
-        "Dupliquer": "Dupliquer",
-        "Image": "Image",
+        "Dupliquer": "duplikat",
+        "Image": "gambar",
         "Capture": "Capture",
         "Alimentation": "Alimentation",
         "Miniature": "Miniature",
         "Dashboard": "Dashboard",
-        "Mobile": "Mobile",
+        "Mobile": "mobil",
         "Compression (%)": "Compression (%)",
         "Taille (% - 0 : automatique)": "Taille (% - 0 : automatique)",
-        "Normal": "Normal",
+        "Normal": "normal",
         "Toujours faire une video": "Toujours faire une video",
         "Seuil de détection mouvement (0-100)": "Seuil de détection mouvement (0-100)",
         "Ne pas compresser ou redimensionner l'image": "Ne pas compresser ou redimensionner l'image"
@@ -101,7 +101,7 @@
         "Santé Caméras": "Kamera kesehatan",
         "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Apakah Anda yakin ingin menghapus semua tangkapan kamera?",
         "Supression réussie": "penekanan sukses",
-        "Inverser": "Inverser"
+        "Inverser": "Membalikkan"
     },
     "plugins/camera/plugin_info/info.xml": {
         "Plugin pour afficher les caméras IP": "Plugin untuk melihat kamera IP",
@@ -122,10 +122,10 @@
         "Alerte sur la camera : ": "Waspada pada kamera:",
         " à ": "untuk",
         "Le fichier est vide : ": "file kosong:",
-        "Enregistrer": "Enregistrer",
+        "Enregistrer": "rekor",
         "Nombre captures ou options": "Nombre captures ou options",
         "Commande message d'envoi des captures": "Commande message d'envoi des captures",
-        "On": "On",
+        "On": "satu",
         "Off": "Off"
     },
     "plugins/camera/desktop/modal/camera.history.php": {

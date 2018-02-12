@@ -72,16 +72,16 @@
         "OFF": "OFF",
         "Supprimer toutes les captures de la caméra": "カメラのすべての漁獲を削除します。",
         "Configuration avancée": "高度な設定",
-        "Dupliquer": "Dupliquer",
-        "Image": "Image",
+        "Dupliquer": "複写",
+        "Image": "画像",
         "Capture": "Capture",
         "Alimentation": "Alimentation",
         "Miniature": "Miniature",
-        "Dashboard": "Dashboard",
-        "Mobile": "Mobile",
+        "Dashboard": "計器盤",
+        "Mobile": "モバイル",
         "Compression (%)": "Compression (%)",
         "Taille (% - 0 : automatique)": "Taille (% - 0 : automatique)",
-        "Normal": "Normal",
+        "Normal": "ノーマル",
         "Toujours faire une video": "Toujours faire une video",
         "Seuil de détection mouvement (0-100)": "Seuil de détection mouvement (0-100)",
         "Ne pas compresser ou redimensionner l'image": "Ne pas compresser ou redimensionner l'image"
@@ -101,7 +101,7 @@
         "Santé Caméras": "健康カメラ",
         "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "あなたは、カメラのすべての漁獲を削除してもよろしいですか？",
         "Supression réussie": "成功した抑制",
-        "Inverser": "Inverser"
+        "Inverser": "逆"
     },
     "plugins/camera/plugin_info/info.xml": {
         "Plugin pour afficher les caméras IP": "IPカメラを表示するプラグイン",
@@ -122,11 +122,11 @@
         "Alerte sur la camera : ": "カメラの警告：",
         " à ": "へ",
         "Le fichier est vide : ": "ファイルは空です。",
-        "Enregistrer": "Enregistrer",
+        "Enregistrer": "記録",
         "Nombre captures ou options": "Nombre captures ou options",
         "Commande message d'envoi des captures": "Commande message d'envoi des captures",
-        "On": "On",
-        "Off": "Off"
+        "On": "一つ",
+        "Off": "オフ"
     },
     "plugins/camera/desktop/modal/camera.history.php": {
         "Supprimer": "取り除きます",
