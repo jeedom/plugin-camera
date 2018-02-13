@@ -7,7 +7,7 @@
         "Chemin des scripts utilisateur": "Ruta de los scripts de usuarios ",
         "Chemin des enregistrements": "Ruta de las grabaciones",
         "Taille maximum du dossier d'enregistrement (Mo)": "Tamaño máximo del registro de grabación (MB)",
-        "Le plugin caméra doit réagir aux interactions": "Le plugin caméra doit réagir aux interactions"
+        "Le plugin caméra doit réagir aux interactions": "El plugin de la cámara debe reaccionar a las interacciones"
     },
     "plugins/camera/desktop/php/camera.php": {
         "Market": "Market",
@@ -75,16 +75,16 @@
         "Dupliquer": "Duplicar",
         "Image": "Imagen",
         "Capture": "Captura",
-        "Alimentation": "Alimentation",
-        "Miniature": "Miniature",
+        "Alimentation": "Alimentación",
+        "Miniature": "Miniatura",
         "Dashboard": "Dashboard",
         "Mobile": "Móvil",
-        "Compression (%)": "Compression (%)",
-        "Taille (% - 0 : automatique)": "Taille (% - 0 : automatique)",
+        "Compression (%)": "Compresión (%)",
+        "Taille (% - 0 : automatique)": "Tamaño (% - 0: automático)",
         "Normal": "Normal",
-        "Toujours faire une video": "Toujours faire une video",
-        "Seuil de détection mouvement (0-100)": "Seuil de détection mouvement (0-100)",
-        "Ne pas compresser ou redimensionner l'image": "Ne pas compresser ou redimensionner l'image"
+        "Toujours faire une video": "Siempre hacer un video",
+        "Seuil de détection mouvement (0-100)": "Umbral de detección de movimiento (0-100)",
+        "Ne pas compresser ou redimensionner l'image": "No comprimir ni redimensionar la imagen"
     },
     "plugins/camera/desktop/js/camera.js": {
         "Partager sur le market": "Compartir en el Market",
