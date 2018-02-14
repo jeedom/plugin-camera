@@ -141,3 +141,7 @@ $('#bt_removeAllCapture').on('click',function(){
    }
 });
 });
+
+function prePrintEqLogic(){
+    $('.eqLogicAttr[data-l1key=configuration][data-l2key=doNotCompressImage]').value()
+}
