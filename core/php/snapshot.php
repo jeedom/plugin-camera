@@ -44,7 +44,7 @@ if (init('width', 0) == 0 && ($compress == null || $compress >= 100) && ($resize
 	echo $data;
 	exit();
 }
-if (empty($data) || $data == '') {
+if (empty($data) || $data == false || $data == '') {
 	echo $data;
 	exit();
 }
