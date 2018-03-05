@@ -356,6 +356,7 @@ class camera extends eqLogic {
 		$sendSnapshot->setDisplay('message_placeholder', __('Commande message d\'envoi des captures', __FILE__));
 		$sendSnapshot->setDisplay('message_cmd_type', 'action');
 		$sendSnapshot->setDisplay('message_cmd_subtype', 'message');
+		$takeSnapshot->setDisplay('generic_type', 'CAMERA_RECORD');
 		$sendSnapshot->save();
 		$urlFlux->event($this->getUrl($this->getConfiguration('urlStream'), true));
 

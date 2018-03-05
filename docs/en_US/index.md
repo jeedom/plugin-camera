@@ -1,7 +1,8 @@
 Plugin for creating and managing wifi cameras (display and
 recording)
 
-== Plugin configuration
+Plugin configuration
+=======================
 
 After installing the plugin, you just have to activate it, however
 there are some advanced configuration settings:
@@ -34,7 +35,7 @@ Here you have the main information of your camera:
 
 -   **Name of camera equipment**: name of your camera equipment
 
--   **Parent Object** : means the parent object the equipment depend
+-   **Parent Object**: Specifies the parent object to which belongs
     equipment
 
 -   **Enable**: makes your equipment active

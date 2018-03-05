@@ -7,7 +7,7 @@
         "Chemin des scripts utilisateur": "User script path",
         "Chemin des enregistrements": "Record Path",
         "Taille maximum du dossier d'enregistrement (Mo)": "Maximum size for the recording folder (MB)",
-        "Le plugin caméra doit réagir aux interactions": "Le plugin caméra doit réagir aux interactions"
+        "Le plugin caméra doit réagir aux interactions": "The camera plugin must react to interactions"
     },
     "plugins/camera/desktop/php/camera.php": {
         "Market": "Market",
@@ -75,16 +75,16 @@
         "Dupliquer": "Duplicate",
         "Image": "Picture",
         "Capture": "Snapshot",
-        "Alimentation": "Alimentation",
+        "Alimentation": "Power",
         "Miniature": "Miniature",
         "Dashboard": "Dashboard",
         "Mobile": "Mobile",
         "Compression (%)": "Compression (%)",
-        "Taille (% - 0 : automatique)": "Taille (% - 0 : automatique)",
+        "Taille (% - 0 : automatique)": "Size (% - 0: automatic)",
         "Normal": "Normal",
-        "Toujours faire une video": "Toujours faire une video",
-        "Seuil de détection mouvement (0-100)": "Seuil de détection mouvement (0-100)",
-        "Ne pas compresser ou redimensionner l'image": "Ne pas compresser ou redimensionner l'image"
+        "Toujours faire une video": "Always make a video",
+        "Seuil de détection mouvement (0-100)": "Motion Detection Threshold (0-100)",
+        "Ne pas compresser ou redimensionner l'image": "Do not compress or resize the image"
     },
     "plugins/camera/desktop/js/camera.js": {
         "Partager sur le market": "Share on Market",
