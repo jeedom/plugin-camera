@@ -116,7 +116,7 @@ while (true) {
 		if ($isMovie == 1) {
 			$files[] = $camera->takeSnapshot(1, $i);
 			if ($i == 2 && $sendFirstSnap == 1) {
-				$camera->sendSnap($files, true, $_part = $part);
+				$camera->sendSnap($files, true, $part);
 				$nbSend++;
 			}
 		} else {
@@ -133,12 +133,11 @@ while (true) {
 	}
 	if ($sendPacket > 1 && count($files) >= $sendPacket) {
 		if ($isMovie == 1) {
-			$files = array();
-			$files[] = $camera->convertMovie();
-			$camera->sendSnap($files, true, $_part = $part);
+			$files = array($camera->convertMovie());
+			$camera->sendSnap($files, true, $part);
 			$nbSend++;
 		} else {
-			$camera->sendSnap($files, true, $_part = $part);
+			$camera->sendSnap($files, true, $part);
 			$nbSend++;
 		}
 		$files = array();
@@ -159,11 +158,10 @@ if ($totalSend > 1) {
 }
 if (count($files) > 0) {
 	if ($isMovie == 1) {
-		$files = array();
-		$files[] = $camera->convertMovie();
+		$files = array( $camera->convertMovie());
 	}
 	if (init('detectMove') != 1) {
-		$camera->sendSnap($files, false, $_part = $part);
+		$camera->sendSnap($files, false, $part);
 	}
 }
 $recordState->event(0);
