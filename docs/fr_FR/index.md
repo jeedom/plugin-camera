@@ -18,12 +18,13 @@ y a quelques paramètres de configuration avancée :
     enregistrées (il est déconseillé d’y toucher). Si ce quotas est
     atteint Jeedom supprimera les captures les plus anciennes.
 
--   **Le plugin caméra doit réagir aux intéractions** : mots clés /
-    phrases auxquels le plugin réagira via les intéractions de Jeedom.
+-   **Le plugin caméra doit réagir aux interactions** : mots clés /
+    phrases auxquel(le)s le plugin réagira via les interactions de Jeedom.
 
 -   **Panel** : Vous permet d’afficher le panel (Menu
-    Accueil &gt; Caméra) et d’avoir une vue sur l’ensemble de vos
-    caméras (voir plus bas)
+    Accueil -> Caméra) et d’avoir une vue sur l’ensemble de vos
+    caméras (voir plus bas). N'oubliez pas d'activer le panel dans la configuration du plugin pour y avoir accès plus tard.
+   
 
 Configuration des équipements 
 =============================
@@ -58,7 +59,7 @@ Ici vous avez les informations principales de votre caméra :
 -   **URL de capture** : URL de "snapshot" de la caméra. Change en
     fonction des caméras. Attention à ne pas mettre une url de flux sous
     peine de planter Jeedom. Vous pouvez ajouter les tags \#username\#
-    et \#password\#, qui seront automatiquement remplacé par le nom
+    et \#password\#, qui seront automatiquement remplacés par le nom
     d’utilisateur et le mot de passe lors de l’utilisation de cette
     commande
 
@@ -68,37 +69,37 @@ Ici vous avez les informations principales de votre caméra :
 Images 
 ------
 
-Cette partie vous permets de configurer la qualité de l’image. En effet
+Cette partie vous permet de configurer la qualité de l’image. En effet
 Jeedom diminue la taille de l’image ou la compresse avant de l’envoyer à
 votre navigateur. Cela permet de gagner en fluidité des images (car
-elles sont moins lourde). C’est aussi dans cette partie que vous pouvez
-configurer le nombre d’image par secondes à afficher. Tous les réglages
+elles sont moins lourdes). C’est aussi dans cette partie que vous pouvez
+configurer le nombre d’images par seconde à afficher. Tous les réglages
 sont déclinés en : mobile/desktop et miniature/normal.
 
 -   Rafraichissement (s) : délai en seconde entre l’affichage de 2
-    images (vous pouvez ici mettre des chiffre inférieure à 1)
+    images (vous pouvez ici mettre des chiffres inférieurs à 1)
 
 -   Compression (%) : plus il est faible moins on compresse l’image, à
-    100% aucune compression n’est faite
+    100 % aucune compression n’est faite
 
 -   Taille (% - 0 : automatique) : plus le % est élévé plus on est
-    proche de la taille d’origine de l’image. A 100% aucun
+    proche de la taille d’origine de l’image. A 100 % aucun
     redimensionnement de l’image n’a lieu
 
 > **Note**
 >
-> Si vous mettez une compression de 0% et une taille de 100% Jeedom ne
+> Si vous mettez une compression de 0% et une taille de 100%, Jeedom ne
 > touchera pas à l’image en mode normal. Cela n’est pas valable en mode
-> miniature ou il y a une taille maximum de l’image de 360px.
+> miniature où il y a une taille maximum de l’image de 360px.
 
 Capture 
 -------
 
--   Durée maximum d’un enregistrement (s) : durée maximum des
+-   Durée maximum d’un enregistrement : durée maximum des
     enregistrements
 
--   Toujours faire une video : force Jeedom à toujours transformer les
-    enregistrements en video avant l’enregistrement
+-   Toujours faire une vidéo : force Jeedom à toujours transformer les
+    enregistrements en vidéo avant l’enregistrement
 
 -   Nombre d’images par seconde de la vidéo : nombre d’images par
     seconde des vidéos
@@ -113,10 +114,10 @@ Capture
 Alimentation 
 ------------
 
--   Commande ON : Commande permetant de mettre en marche l’alimentation
+-   Commande ON : Commande permettant de mettre en marche l’alimentation
     de la caméra
 
--   Commande OFF : Commande permetant de couper l’alimentation de la
+-   Commande OFF : Commande permettant de couper l’alimentation de la
     caméra
 
 Commandes 
@@ -126,19 +127,19 @@ Commandes
     exemple remonter l’information de mouvement de la caméra à Jeedom
     par l’api, voir plus bas)
 
--   Nom de la commande avec la possibilité de mettre une icone à la
-    place (pour la supprimer il faut double cliquer sur l’icone
+-   Nom de la commande avec la possibilité de mettre une icône à la
+    place (pour la supprimer il faut double-cliquer sur l’icône
     en question)
 
--   Type et sous type de la commande
+-   Type et sous-type de la commande
 
 -   Requête à envoyer à la caméra pour faire une action (passage en mode
     nuit, ptz, etc.). Vous pouvez utiliser les tags \#username\# et
-    \#password\#, qui seront automatiquement remplacé par le nom
+    \#password\#, qui seront automatiquement remplacés par le nom
     d’utilisateur et le mot de passe lors de l’utilisation de cette
     commande
 
--   Commande stop : pour les caméras PTZ il existe souvent une commande
+-   Commande stop : pour les caméras PTZ, il existe souvent une commande
     qui arrête le mouvement, c’est ici qu’il faut la spécifier
 
 -   Afficher : permet d’afficher la commande ou non sur le dashboard
@@ -164,10 +165,10 @@ parcourir ces captures.
 > Sur le dashboard et le panel il est possible de redimensionner le
 > widget pour l’adapter à ses besoins
 
-Un clique sur l’image permet d’afficher celle-ci dans une fenêtre et
+Un clic sur l’image permet d’afficher celle-ci dans une fenêtre et
 dans un format plus grand.
 
-Un clique sur la dernière commande pour parcourir les captures vous
+Un clic sur la dernière commande pour parcourir les captures vous
 affichera celle-ci.
 
 Vous retrouvez ici toutes les captures organisées par jour puis par
@@ -179,7 +180,7 @@ date, vous pouvez pour chacune d’elle :
 
 -   la supprimer
 
-En mobile le widget est un peu différent si vous cliquez sur l’image de
+En mobile le widget est un peu différent : si vous cliquez sur l’image de
 la caméra vous obtenez celle-ci en plus grande avec les commandes
 possibles.
 
@@ -201,38 +202,42 @@ Enregistrement et envoi de capture
 
 Cette commande un peu spécifique permet suite à la prise de capture de
 faire l’envoi de celle-ci (compatible avec le plugin slack, mail et
-transfert)
+transfert).
 
-La configuration est assez simple vous appellez l’action d’envoi de
-capture, dans la partie titre vous passez les options (par défaut il
-faut juste mettre le nombre de capture voulu mais vous pouvez aller plus
-loin avec les options avancées) et dans la partie message la commande du
-plugin (actuellement slack, mail ou transfert) qui fait l’envoi des
-captures. Vous pouvez en mettre plusieurs séparé par des &&.
+La configuration est assez simple vous appelez l’action d’envoi de
+capture (dénommée "Enregistrement") dans un scénario. Dans la partie titre vous passez les options.
 
-Options avancés de captures 
+Par défaut il suffit de mettre le nombre de captures voulues dans le champ "nombre captures ou options", mais vous pouvez aller plus
+loin avec des options (voir détail ci-dessous "options avancées des captures"). Dans la partie message, vous n'avez plus qu'à renseigner la commande du plugin (actuellement slack, mail ou transfert) qui fait l’envoi des captures. Vous pouvez en mettre plusieurs séparés par des &&.
+
+Options avancées des captures 
 ---------------------------
 
 -   nbSnap : nombre de capture, si non précisé alors les captures sont
-    faite jusqu’a une demande d’arret d’enregistrement ou d’arret de la
+    faites jusqu’à une demande d’arrêt d’enregistrement ou d’arrêt de la
     caméra
 
 -   delay : délai entre 2 capture, si non précisé alors le délai est de
-    1s
+    1 s
 
 -   wait : délai d’attente avant de commencer les captures, si non
     précié alors aucun envoi n’est fait
 
--   sendPacket : nombre de capture déclenchant l’envoi de paquet, si non
-    précisé alors les captures seront envoyée qu’a la fin
+-   sendPacket : nombre de capture déclenchant l’envoi de paquet de captures, si non
+    précisé alors les captures seront envoyées qu’à la fin
 
--   detectMove=1 : envoi les captures que si un changement superieur au
-    seuil de detection (voir configuration de la caméra) arrive
+-   detectMove=1 : envoi les captures que s'il y a un changement supérieur au
+    seuil de détection (voir configuration de la caméra)
 
 -   movie=1 : une fois l’enregistrement terminé, les images sont
-    convertie en video
+    converties en vidéo
 
--   sendFirstSnap=1 : envoi la premiere capture de l’enregistrement
+-   sendFirstSnap=1 : envoi la première capture de l’enregistrement
+
+> ** Exemples **
+> nbSnap=3 delay=5 ==> envoi 3 captures faites à 5 secondes d'intervalle (envoi déclenché via le scénario)
+> movie=1 sendFirstSnap=1 detectMove=1 => envoi la première capture, puis envoi d'une capture à chaque détection de mouvement et enregistre une vidéo jusqu'à la commande "Arrêter Enregistrement" à insérer dans le scénario. Le film sera stocké sur votre Jeedom.
+
 
 Envoi de la detection de mouvement à Jeedom 
 ===========================================
@@ -261,7 +266,7 @@ La liste des caméras compatibles est
 Changelog 
 =========
 
--   JEED-336 : Rajout du bouton historique sur la vue pleine ecran
+-   JEED-336 : Rajout du bouton historique sur la vue pleine écran
 
 -   Refonte de la gestion de l’affichage des caméras (réglage de la
     compression et de la taille de l’image)
