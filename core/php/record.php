@@ -133,8 +133,7 @@ while (true) {
 	}
 	if ($sendPacket > 1 && count($files) >= $sendPacket) {
 		if ($isMovie == 1) {
-			$files = array($camera->convertMovie());
-			$camera->sendSnap($files, true, $part);
+			$camera->sendSnap(array($camera->convertMovie()), true, $part);
 			$nbSend++;
 		} else {
 			$camera->sendSnap($files, true, $part);
@@ -158,7 +157,7 @@ if ($totalSend > 1) {
 }
 if (count($files) > 0) {
 	if ($isMovie == 1) {
-		$files = array( $camera->convertMovie());
+		$files = array($camera->convertMovie());
 	}
 	if (init('detectMove') != 1) {
 		$camera->sendSnap($files, false, $part);
