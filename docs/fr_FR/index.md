@@ -239,7 +239,7 @@ Options avancées des captures
 > movie=1 sendFirstSnap=1 detectMove=1 => envoi la première capture, puis envoi d'une capture à chaque détection de mouvement et enregistre une vidéo jusqu'à la commande "Arrêter Enregistrement" à insérer dans le scénario. Le film sera stocké sur votre Jeedom.
 
 
-Envoi de la detection de mouvement à Jeedom 
+Envoi de la détection de mouvement à Jeedom 
 ===========================================
 
 Si vous avez une caméra qui possède la détection de mouvement et que
