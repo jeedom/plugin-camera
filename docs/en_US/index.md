@@ -18,12 +18,13 @@ there are some advanced configuration settings:
     recorded (it is not recommended to touch it). If this quota is
     reaches Jeedom will delete the oldest captures.
 
--   **The camera plugin must react to interactions**: keywords /
-    sentences that the plugin will react via Jeedom's interactions.
+-   **Le plugin caméra doit réagir aux interactions** : mots clés /
+    phrases auxquel(le)s le plugin réagira via les interactions de Jeedom.
 
 -   **Panel**: Allows you to display the panel (Menu
-    Home &gt; Camera) and have a view on all of your
-    cameras (see below)
+    Accueil -> Caméra) et d’avoir une vue sur l’ensemble de vos
+    caméras (voir plus bas). N'oubliez pas d'activer le panel dans la configuration du plugin pour y avoir accès plus tard.
+
 
 Equipment configuration
 =============================
@@ -58,7 +59,7 @@ Here you have the main information of your camera:
 -   **Capture URL**: Snapshot URL of the camera. Changed into
     function of the cameras. Be careful not to put a feed url under
     to plant Jeedom. You can add \ #username \ # tags
-    and \ #password \ #, which will automatically be replaced by the name
+    et \#password\#, qui seront automatiquement remplacés par le nom
     user name and password when using this
     order
 
@@ -68,37 +69,37 @@ Here you have the main information of your camera:
 imagery
 ------
 
-This part allows you to configure the quality of the image. Indeed
-Jeedom decreases the size of the image or compresses it before sending it to
-your browser. This helps to increase the fluidity of the images (because
-they are less heavy). It's also in this part that you can
-set the number of frames per second to display. All settings
-are available in: mobile / desktop and miniature / normal.
+Cette partie vous permet de configurer la qualité de l’image. En effet
+Jeedom diminue la taille de l’image ou la compresse avant de l’envoyer à
+votre navigateur. Cela permet de gagner en fluidité des images (car
+elles sont moins lourdes). C’est aussi dans cette partie que vous pouvez
+configurer le nombre d’images par seconde à afficher. Tous les réglages
+sont déclinés en : mobile/desktop et miniature/normal.
 
 -   Refreshment (s): delay in seconds between the display of 2
-    images (here you can put numbers less than 1)
+    images (vous pouvez ici mettre des chiffres inférieurs à 1)
 
 -   Compression (%): the lower it is, the less the image is compressed,
-    100% no compression is done
+    100 % aucune compression n’est faite
 
 -   Size (% - 0: automatic): the higher the% the higher one is
-    close to the original size of the image. 100% none
+    proche de la taille d’origine de l’image. A 100 % aucun
     image resizing does not take place
 
 > **Note**
 >
-> If you put a compression of 0% and a size of 100% Jeedom does not
-> will not touch the image in normal mode. This is not valid in
-> Miniature or there is a maximum image size of 360px.
+> Si vous mettez une compression de 0% et une taille de 100%, Jeedom ne
+> touchera pas à l’image en mode normal. Cela n’est pas valable en mode
+> miniature où il y a une taille maximum de l’image de 360px.
 
 Capture
 -------
 
--   Maximum duration of a recording (s): maximum duration of
+-   Durée maximum d’un enregistrement : durée maximum des
     recordings
 
--   Always make a video: force Jeedom to always transform the
-    video recordings before recording
+-   Toujours faire une vidéo : force Jeedom à toujours transformer les
+    enregistrements en vidéo avant l’enregistrement
 
 -   Number of frames per second of the video: number of frames per
     second videos
@@ -113,10 +114,10 @@ Capture
 Food
 ------------
 
--   ON command: Command to turn on the power supply
+-   Commande ON : Commande permettant de mettre en marche l’alimentation
     from the camera
 
--   OFF command: command to switch off the power supply of the
+-   Commande OFF : Commande permettant de couper l’alimentation de la
     camera
 
 Orders
@@ -126,19 +127,19 @@ Orders
     example back up the motion information from the camera to Jeedom
     by API, see below)
 
--   Name of the order with the possibility to put an icon to the
-    place (to remove it you must double click on the icon
+-   Nom de la commande avec la possibilité de mettre une icône à la
+    place (pour la supprimer il faut double-cliquer sur l’icône
     in question)
 
--   Type and subtype of the order
+-   Type et sous-type de la commande
 
 -   Query to send to the camera to do an action (switch to mode
     night, ptz, etc.). You can use \ #username \ # tags and
-    \ #password \ #, which will automatically be replaced by the name
+    \#password\#, qui seront automatiquement remplacés par le nom
     user name and password when using this
     order
 
--   Stop command: for PTZ cameras there is often a command
+-   Commande stop : pour les caméras PTZ, il existe souvent une commande
     which stops the movement, it is here that it must be specified
 
 -   Show: to display the command or not on the dashboard
@@ -164,11 +165,11 @@ browse these captures.
 > On the dashboard and the panel it is possible to resize the
 > widget to adapt it to his needs
 
-Clicking on the image displays it in a window and
-in a larger format.
+Un clic sur l’image permet d’afficher celle-ci dans une fenêtre et
+dans un format plus grand.
 
-A click on the last command to browse the captures you
-will display this one.
+Un clic sur la dernière commande pour parcourir les captures vous
+affichera celle-ci.
 
 You find here all the catches organized by day then by
 date, you can for each of them:
@@ -179,9 +180,9 @@ date, you can for each of them:
 
 -   delete it
 
-In mobile the widget is a bit different if you click on the image of
-the camera you get this one in bigger with the controls
-possible.
+En mobile le widget est un peu différent : si vous cliquez sur l’image de
+la caméra vous obtenez celle-ci en plus grande avec les commandes
+possibles.
 
 The panels
 ==========
@@ -199,42 +200,47 @@ It is of course also available in mobile by Plugin → Camera:
 Saving and sending capture
 ==================================
 
-This command a little specific allows following the catch of capture of
-send it (compatible with the plugin slack, mail and
-transfer)
+Cette commande un peu spécifique permet suite à la prise de capture de
+faire l’envoi de celle-ci (compatible avec le plugin slack, mail et
+transfert).
 
-The configuration is simple enough you call the send action of
-capture, in the title section you pass the options (by default it
-you just have to put the number of capture wanted but you can go more
-far with the advanced options) and in the message part the command of the
-plugin (currently slack, mail or transfer) which sends the
-catches. You can put several separated by &&.
+La configuration est assez simple vous appelez l’action d’envoi de
+capture (dénommée "Enregistrement") dans un scénario. Dans la partie titre vous passez les options.
 
-Advanced capture options
+Par défaut il suffit de mettre le nombre de captures voulues dans le champ "nombre captures ou options", mais vous pouvez aller plus
+loin avec des options (voir détail ci-dessous "options avancées des captures"). Dans la partie message, vous n'avez plus qu'à renseigner la commande du plugin (actuellement slack, mail ou transfert) qui fait l’envoi des captures. Vous pouvez en mettre plusieurs séparés par des &&.
+
+Options avancées des captures 
 ---------------------------
 
 -   nbSnap: number of captures, if not specified then the catches are
-    made up to a request to stop the recording or arrest of the
+    faites jusqu’à une demande d’arrêt d’enregistrement ou d’arrêt de la
     camera
 
 -   delay: delay between 2 capture, if not specified then the delay is
-    1s
+    1 s
 
 -   wait: timeout before starting the captures, if not
     specified then no sending is done
 
--   sendPacket: number of snapshot triggering sending packet, if not
-    specified then the catches will be sent at the end
+-   sendPacket : nombre de capture déclenchant l’envoi de paquet de captures, si non
+    précisé alors les captures seront envoyées qu’à la fin
 
--   detectMove = 1: send the captures only if a change greater than
-    detection threshold (see camera configuration) arrives
+-   detectMove=1 : envoi les captures que s'il y a un changement supérieur au
+    seuil de détection (voir configuration de la caméra)
 
 -   movie = 1: Once the recording is finished, the images are
-    converted to video
+    converties en vidéo
 
--   sendFirstSnap = 1: send the first capture of the record
+-   sendFirstSnap=1 : envoi la première capture de l’enregistrement
 
-Sending motion detection to Jeedom
+> **Exemples**
+>
+> nbSnap=3 delay=5 ==> envoi 3 captures faites à 5 secondes d'intervalle (envoi déclenché via le scénario)
+> movie=1 sendFirstSnap=1 detectMove=1 ==> envoi la première capture, puis envoi d'une capture à chaque détection de mouvement et enregistre une vidéo jusqu'à la commande "Arrêter Enregistrement" à insérer dans le scénario. Le film sera stocké sur votre Jeedom.
+
+
+Envoi de la détection de mouvement à Jeedom 
 ===========================================
 
 If you have a camera that has motion detection and that
@@ -261,7 +267,7 @@ The list of compatible cameras is
 Changelog
 =========
 
--   JEED-336: Addition of the history button on the full screen view
+-   JEED-336 : Rajout du bouton historique sur la vue pleine écran
 
 -   Redesign of camera display management (setting the
     compression and size of the image)

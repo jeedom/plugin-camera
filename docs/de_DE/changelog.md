@@ -1,7 +1,7 @@
 # 10/03/2018
 
 - Mise à jour de la doc
-- Optimisation du code
+- Code-Optimierung
 
 # 05/03/2018
 
