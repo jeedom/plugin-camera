@@ -1,3 +1,5 @@
+- Amélioration du widget en mobile
+
 # 10/03/2018
 
 - Mise à jour de la doc
