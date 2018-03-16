@@ -86,8 +86,8 @@
    $("#popupCameraZoom#id# .display img").attr('src',img.src);
  }
  if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').show();
-  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').hide();
+  $('.cmd[data-cmd_id=#cmd_off_id#]').show();
+  $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
 }
 var delay = (thumbnail) ? #refreshDelaySlow# - (Date.now() - start) :  #refreshDelayFast# - (Date.now() - start);
 timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
@@ -96,8 +96,8 @@ img.onerror = function() {
  $("#popupCameraZoom#id# .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
  $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src','plugins/camera/core/img/no-image-blanc.png');
  if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
-  $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_on_id#]').show();
+  $('.cmd[data-cmd_id=#cmd_off_id#]').hide();
+  $('.cmd[data-cmd_id=#cmd_on_id#]').show();
 }
 timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
 }
