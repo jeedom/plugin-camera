@@ -22,7 +22,6 @@ if (!isConnect('admin')) {
 }
 ?>
 
-
 <form class="form-horizontal">
     <fieldset>
         <div class="form-group">
@@ -37,11 +36,28 @@ if (!isConnect('admin')) {
                 <input type="text" class="configKey form-control" data-l1key="maxSizeRecordDir" />
             </div>
         </div>
-          <div class="form-group">
+        <div class="form-group">
             <label class="col-lg-3 control-label">{{Le plugin caméra doit réagir aux interactions}}</label>
             <div class="col-lg-4">
                 <textarea class="configKey form-control" data-l1key="interact::sentence"></textarea>
             </div>
         </div>
     </fieldset>
+</form>
+<form class="form-horizontal">
+    <fieldset>
+        <legend>{{Panel}}</legend>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">{{Nombre de ligne}}</label>
+            <div class="col-lg-2">
+                <input type="number" class="configKey form-control" data-l1key="panel::nbLine" />
+            </div>
+        </div>
+        <div class="form-group">
+           <label class="col-lg-3 control-label">{{Nombre de colonne}}</label>
+           <div class="col-lg-2">
+            <input type="number" class="configKey form-control" data-l1key="panel::nbColumn" />
+        </div>
+    </div>
+</fieldset>
 </form>

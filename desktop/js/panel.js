@@ -14,104 +14,27 @@
  * You should have received a copy of the GNU General Public License
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
- setTimeout(function () {
+
+ $('.div_displayEquipement').disableSelection();
+ $( "input").click(function() { $(this).focus(); });
+ $( "textarea").click(function() { $(this).focus(); });
+ autosizeCamWidget(NB_COLUMN,NB_LINE);
+
+ function autosizeCamWidget(nbCamByLine,nbCamByColumn){
+  var totalWidth = $('#div_displayObject').width();
+  var camWidth = (totalWidth / nbCamByLine) - (2 * nbCamByLine);
+  $('#div_displayObject .eqLogic-widget').width(camWidth);
+  $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-width',camWidth);
+
+  var totalHeight = $(window).outerHeight() - $('header').outerHeight() - $('#div_alert').outerHeight()-4;
+  var camHeight = (totalHeight / nbCamByColumn) - (2 * nbCamByColumn);
+  $('#div_displayObject .eqLogic-widget').height(camHeight);
+  $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-height',camHeight);
   positionEqLogic();
-  $('.div_displayEquipement').disableSelection();
-  $( "input").click(function() { $(this).focus(); });
-  $( "textarea").click(function() { $(this).focus(); });
-  $('.div_displayEquipement').each(function(){
+  $('#div_displayObject').each(function(){
     var container = $(this).packery({
       itemSelector: ".eqLogic-widget",
       gutter : 2,
     });
-    var itemElems =  container.find('.eqLogic-widget');
-    itemElems.draggable();
-    container.packery( 'bindUIDraggableEvents', itemElems );
-    container.packery( 'on', 'dragItemPositioned',function(){
-      $('.div_displayEquipement').packery();
-    });
-    function orderItems() {
-      var itemElems = container.packery('getItemElements');
-      $( itemElems ).each( function( i, itemElem ) {
-        $( itemElem ).attr('data-order', i + 1 );
-      });
-    }
-    container.on( 'layoutComplete', orderItems );
-    container.on( 'dragItemPositioned', orderItems );
   });
-  $('.div_displayEquipement .eqLogic-widget').draggable('disable');
-  $('#bt_editDashboardWidgetOrder').on('click',function(){
-    if($(this).attr('data-mode') == 1){
-      $.hideAlert();
-      $(this).attr('data-mode',0);
-      editWidgetMode(0);
-      $(this).css('color','black');
-    }else{
-      $('#div_alert').showAlert({message: "{{Vous êtes en mode édition vous pouvez redimensionner les widgets}}", level: 'info'});
-      $(this).attr('data-mode',1);
-      editWidgetMode(1);
-      $(this).css('color','rgb(46, 176, 75)');
-    }
-  });
-}, 1);
-
-
- $('#bt_displayObject').on('click', function () {
-  if ($(this).attr('data-display') == 1) {
-    $('#div_displayObjectList').hide();
-    $('#div_displayObject').removeClass('col-lg-8 col-lg-10 col-lg-12 col-lg-8 col-lg-10 col-lg-12 col-md-8 col-md-10 col-md-12 col-sm-8 col-sm-10 col-sm-12').addClass('col-lg-12 col-md-12 col-sm-12');
-    $('.div_displayEquipement').each(function () {
-      $(this).packery();
-    });
-    $(this).attr('data-display', 0);
-  } else {
-    $('#div_displayObjectList').show();
-    $('#div_displayObject').removeClass('col-lg-8 col-lg-10 col-lg-12 col-lg-8 col-lg-10 col-lg-12 col-md-8 col-md-10 col-md-12 col-sm-8 col-sm-10 col-sm-12').addClass('col-lg-10 col-md-9 col-sm-8');
-    $('.div_displayEquipement').packery();
-    $(this).attr('data-display', 1);
-  }
-});
-
- function editWidgetMode(_mode){
-  if(!isset(_mode)){
-    if($('#bt_editDashboardWidgetOrder').attr('data-mode') != undefined && $('#bt_editDashboardWidgetOrder').attr('data-mode') == 1){
-      editWidgetMode(0);
-      editWidgetMode(1);
-    }
-    return;
-  }
-  if(_mode == 0){
-   if( $('.div_displayEquipement .eqLogic-widget.ui-resizable').length > 0){
-    $('.div_displayEquipement .eqLogic-widget.allowResize').resizable('destroy');
-  }
-  if( $('.div_displayEquipement .eqLogic-widget.ui-draggable').length > 0){
-   $('.div_displayEquipement .eqLogic-widget').draggable('disable');
- }
-}else{
- $('.div_displayEquipement .eqLogic-widget').draggable('enable');
-
- $( ".div_displayEquipement .eqLogic-widget.allowResize").resizable({
-  grid: [ 2, 2 ],
-  resize: function( event, ui ) {
-   var el = ui.element;
-   el.closest('.div_displayEquipement').packery();
- },
- stop: function( event, ui ) {
-  var el = ui.element;
-  positionEqLogic(el.attr('data-eqlogic_id'));
-  el.closest('.div_displayEquipement').packery();
-  var eqLogic = {id : el.attr('data-eqlogic_id')}
-  eqLogic.display = {};
-  eqLogic.display.width =  Math.floor(el.width() / 2) * 2 + 'px';
-  eqLogic.display.height = Math.floor(el.height() / 2) * 2+ 'px';
-  jeedom.eqLogic.simpleSave({
-    eqLogic : eqLogic,
-    error: function (error) {
-      $('#div_alert').showAlert({message: error.message, level: 'danger'});
-    }
-  });
-}
-});
-}
-editWidgetCmdMode(_mode);
 }

@@ -98,6 +98,7 @@ img.src = url;
 img.onload = function() {
   if(thumbnail){
    $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('src',img.src);
+   $('.eqLogic[data-eqLogic_id=#id#] .directDisplay img').attr('data-imgready',1);
  }else{
   $(".md_cameraZoom[data-eqLogic_id=#id#] .display img").attr('src',img.src);
 }

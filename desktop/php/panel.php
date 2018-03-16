@@ -2,7 +2,6 @@
 if (!isConnect()) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
-
 if (init('object_id') == '') {
 	$object = object::byId($_SESSION['user']->getOptions('defaultDashboardObject'));
 } else {
@@ -16,22 +15,51 @@ if (!is_object($object)) {
 }
 $child_object = object::buildTree($object);
 $parentNumber = array();
-?>
+sendVarToJS('NB_LINE', config::byKey('panel::nbLine', 'camera', 2));
+sendVarToJS('NB_COLUMN', config::byKey('panel::nbColumn', 'camera', 2));
+$allObject = object::buildTree(null, true);
+$camera_widgets = array();
+if (init('object_id') == '') {
+	foreach ($allObject as $object) {
+		foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
+			$camera_widgets[] = array('widget' => $camera->toHtml('dview'), 'position' => $camera->getConfiguration('panel::position', 99));
+		}
+	}
+} else {
+	foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
+		$camera_widgets[] = array('widget' => $camera->toHtml('dview'), 'position' => $camera->getConfiguration('panel::position', 99));
+	}
+	foreach ($child_object as $child) {
+		$cameras = $child->getEqLogic(true, false, 'camera');
+		if (count($cameras) > 0) {
+			foreach ($cameras as $camera) {
+				$camera_widgets[] = array('widget' => $camera->toHtml('dview'), 'position' => $camera->getConfiguration('panel::position', 99));
+			}
+		}
+	}
+}
 
+function cmpCameraWidgetPosition($a, $b) {
+	if ($a['position'] == $b['position']) {
+		return 0;
+	}
+	return ($a['position'] < $b['position']) ? -1 : 1;
+}
+usort($camera_widgets, "cmpCameraWidgetPosition");
+?>
 <div class="row row-overflow">
-    <?php
+	<?php
 if ($_SESSION['user']->getOptions('displayObjetByDefault') == 1 && init('report') != 1) {
 	echo '<div class="col-lg-2 col-md-3 col-sm-4" id="div_displayObjectList">';
 } else {
 	echo '<div class="col-lg-2 col-md-3 col-sm-4" style="display:none;" id="div_displayObjectList">';
 }
 ?>
+	<div class="bs-sidebar">
+		<ul id="ul_object" class="nav nav-list bs-sidenav">
+			<li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%"/></li>
+			<?php
 
-    <div class="bs-sidebar">
-        <ul id="ul_object" class="nav nav-list bs-sidenav">
-            <li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%"/></li>
-           			<?php
-$allObject = object::buildTree(null, true);
 foreach ($allObject as $object_li) {
 	$margin = 5 * $object_li->getConfiguration('parentNumber');
 	if ($object_li->getId() == $object->getId()) {
@@ -41,8 +69,8 @@ foreach ($allObject as $object_li) {
 	}
 }
 ?>
-        </ul>
-    </div>
+		</ul>
+	</div>
 </div>
 <?php
 if ($_SESSION['user']->getOptions('displayObjetByDefault') == 1 && init('report') != 1) {
@@ -51,29 +79,10 @@ if ($_SESSION['user']->getOptions('displayObjetByDefault') == 1 && init('report'
 	echo '<div class="col-lg-12 col-md-12 col-sm-12" id="div_displayObject">';
 }
 ?>
-<i class='fa fa-picture-o cursor pull-left reportModeHidden' id='bt_displayObject' data-display='<?php echo $_SESSION['user']->getOptions('displayObjetByDefault') ?>' title="Afficher/Masquer les objets"></i>
-<i class="fa fa-pencil pull-right cursor reportModeHidden" id="bt_editDashboardWidgetOrder" data-mode="0" style="margin-right : 10px;"></i>
-<br/>
 <?php
 echo '<div class="div_displayEquipement" style="width: 100%;">';
-if (init('object_id') == '') {
-	foreach ($allObject as $object) {
-		foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
-			echo $camera->toHtml('dview');
-		}
-	}
-} else {
-	foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
-		echo $camera->toHtml('dview');
-	}
-	foreach ($child_object as $child) {
-		$cameras = $child->getEqLogic(true, false, 'camera');
-		if (count($cameras) > 0) {
-			foreach ($cameras as $camera) {
-				echo $camera->toHtml('dview');
-			}
-		}
-	}
+foreach ($camera_widgets as $widget) {
+	echo $widget['widget'];
 }
 echo '</div>';
 ?>

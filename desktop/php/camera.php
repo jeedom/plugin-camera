@@ -115,8 +115,8 @@ foreach (object::all() as $object) {
             <div class="col-sm-9">
               <div class="input-group">
                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="protocole">
-                  <option value='http'>HTTP</option>
-                  <option value='https'>HTTPS</option>
+                  <option value='http'>{{HTTP}}</option>
+                  <option value='https'>{{HTTPS}}</option>
                 </select>
                 <span class="input-group-addon">://</span>
                 <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{IP}}"/>
@@ -139,6 +139,12 @@ foreach (object::all() as $object) {
             <label class="col-sm-3 control-label">{{URL de capture}}</label>
             <div class="col-sm-7">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Position sur le panel}}</label>
+            <div class="col-sm-7">
+              <input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="panel::position" />
             </div>
           </div>
         </fieldset>
