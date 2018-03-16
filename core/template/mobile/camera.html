@@ -44,11 +44,32 @@
   $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
 });
 
+ $(window).on("orientationchange", function (event) {
+  if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
+    return;
+  } 
+  reposition_popup_#id# = 0;
+  if($(window).width() > $(window).height()){
+   $("#popupCameraZoom#id# .display img").css('max-width',$(window).width()*0.9);
+   $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.60);
+ }else{
+   $("#popupCameraZoom#id# .display img").css('max-width',$(window).width()*0.98);
+   $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.8);
+ }
+ $("#popupCameraZoom#id#").popup( "reposition", {positionTo : 'origin'});
+});
+
  $("#popupCameraZoom#id#").off('popupafteropen').on('popupafteropen', function( event, ui ) {
-  $("#popupCameraZoom#id# .display img").css('max-width',$(window).width()*0.9);
-  $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.75);
-  $("#popupCameraZoom#id#").popup( "reposition", {positionTo : 'origin'});
-  if (typeof timeoutCamera#id# !== "undefined") {
+   reposition_popup_#id# = 0;
+   if($(window).width() > $(window).height()){
+     $("#popupCameraZoom#id# .display img").css('max-width',$(window).width()*0.9);
+     $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.60);
+   }else{
+     $("#popupCameraZoom#id# .display img").css('max-width',$(window).width()*0.98);
+     $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.8);
+   }
+   $("#popupCameraZoom#id#").popup( "reposition", {positionTo : 'origin'});
+   if (typeof timeoutCamera#id# !== "undefined") {
     clearTimeout(timeoutCamera#id#);
   }
   refreshImgCam#id#();
@@ -92,8 +113,8 @@ img.onload = function() {
  if(reposition_popup_#id# < 10){
   reposition_popup_#id#++;
   $("#popupCameraZoom#id#").popup( "reposition", {positionTo : 'origin'});
- }
- if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+}
+if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
   $('.cmd[data-cmd_id=#cmd_off_id#]').show();
   $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
 }
