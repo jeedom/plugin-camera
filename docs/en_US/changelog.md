@@ -1,3 +1,6 @@
+- Refonte du panel, on choisi maintenant le nombre de camera par ligne dans la configuration du plugin, leur dimension est calculé automatiquement
+- Amélioration du widget en mobile
+
 # 10/03/2018
 
 - Mise à jour de la doc
