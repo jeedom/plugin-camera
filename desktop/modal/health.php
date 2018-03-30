@@ -18,7 +18,8 @@
 if (!isConnect('admin')) {
 	throw new Exception('401 Unauthorized');
 }
-$eqLogics = camera::byType('camera');
+$plugin = plugin::byId('camera');
+$eqLogics = eqLogic::byType($plugin->getId());
 ?>
 
 <table class="table table-condensed tablesorter" id="table_healthcamera">
@@ -44,11 +45,11 @@ $eqLogics = camera::byType('camera');
 foreach ($eqLogics as $eqLogic) {
 	$opacity = ($eqLogic->getIsEnable()) ? '' : jeedom::getConfiguration('eqLogic:style:noactive');
 	if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg')) {
-		$img = '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg" height="65" width="55" style="'. $opacity .'"/>';
+		$img = '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg" height="65" width="55" style="' . $opacity . '"/>';
 	} else {
-		$img = '<img class="lazy" src="plugins/camera/doc/images/camera_icon.png" height="65" width="55" style="'. $opacity .'"/>';
+		$img = '<img class="lazy" src="' . $plugin->getPathImgIcon() . '" height="65" width="55" style="' . $opacity . '"/>';
 	}
-	echo '<tr><td>'.$img.'</td><td><a href="' . $eqLogic->getLinkToConfiguration() . '" style="text-decoration: none;">' . $eqLogic->getHumanName(true) . '</a></td>';
+	echo '<tr><td>' . $img . '</td><td><a href="' . $eqLogic->getLinkToConfiguration() . '" style="text-decoration: none;">' . $eqLogic->getHumanName(true) . '</a></td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getId() . '</span></td>';
 	$status = '<span class="label label-success" style="font-size : 1em; cursor : default;">{{OK}}</span>';
 	if ($eqLogic->getStatus('state') == 'nok') {
@@ -64,7 +65,7 @@ foreach ($eqLogics as $eqLogic) {
 		$video = '<span class="label label-warning" style="font-size : 1em; cursor : default;">{{NON}}</span>';
 	}
 	echo '<td>' . $video . '</td>';
-	$framerate = $eqLogic->getConfiguration('videoFramerate',1);
+	$framerate = $eqLogic->getConfiguration('videoFramerate', 1);
 	if ($framerate == 1) {
 		echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $framerate . '/s</span></td>';
 	} else if ($framerate <= 5) {
@@ -74,7 +75,7 @@ foreach ($eqLogics as $eqLogic) {
 	} else {
 		echo '<td><span class="label label-danger" style="font-size : 1em; cursor : default;">' . $framerate . '/s</span></td>';
 	}
-	
+
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('refreshDelaySlow') . '/s</span></td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('refreshDelayFast') . '/s</span></td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('maxReccordTime') . 's</span></td>';
