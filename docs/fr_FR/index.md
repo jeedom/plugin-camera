@@ -255,21 +255,10 @@ votre caméra
 FAQ 
 ===
 
-Où sont les enregistrements ?
+>**Où sont les enregistrements ?**
+>
+>Les enregistrements se trouvent par défaut dans plugins/camera/data/records/*ID\_CAM*, attention cela peut varier si vous avez demandé à Jeedom de les enregistrer ailleurs
 
-:   Les enregistrements se trouvent par défaut dans
-    plugins/camera/data/records/*ID\_CAM*, attention cela peut varier si
-    vous avez demandé à Jeedom de les enregistrer ailleurs
 
-La liste des caméras compatibles est
-[ici](https://github.com/jeedom/documentation/blob/master/camera/fr_FR/equipement.compatible.asciidoc)
-
-Changelog 
-=========
-
--   JEED-336 : Rajout du bouton historique sur la vue pleine écran
-
--   Refonte de la gestion de l’affichage des caméras (réglage de la
-    compression et de la taille de l’image)
 
 
