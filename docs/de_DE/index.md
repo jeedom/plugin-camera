@@ -255,21 +255,10 @@ Ihre Kamera
 FAQ
 ===
 
-Wo sind die Bänder?
+>**Où sont les enregistrements ?**
+>
+>Les enregistrements se trouvent par défaut dans plugins/camera/data/records/*ID\_CAM*, attention cela peut varier si vous avez demandé à Jeedom de les enregistrer ailleurs
 
-: Aufnahmen sind standardmäßig
-    Plugins / Kamera / data / Records / ID * \ * _CAM, passen diese variieren kann, wenn
-    Sie fragte Jeedom speichern sie anderswo
-
-Die Liste der kompatiblen Kameras
-[Hier] (https://github.com/jeedom/documentation/blob/master/camera/fr_FR/equipement.compatible.asciidoc)
-
-Changelog
-=========
-
--   JEED-336 : Rajout du bouton historique sur la vue pleine écran
-
--   Neu gestaltete Management-Kamera-Display (Einstellung der
-    Kompression und Bildgröße)
-
-
+>**Les dépendances n'arrivents pas à s'installer ?**
+>
+>En ssh ou dans administration -> OS/DB -> Système faire : dpkg --configure -a

@@ -255,21 +255,10 @@ su cámara
 Preguntas frecuentes
 ===
 
-¿Dónde están las cintas?
+>**Où sont les enregistrements ?**
+>
+>Les enregistrements se trouvent par défaut dans plugins/camera/data/records/*ID\_CAM*, attention cela peut varier si vous avez demandé à Jeedom de les enregistrer ailleurs
 
-: Las grabaciones son de forma predeterminada
-    plugins / cámara / datos / registros / Identificación * \ * _cam, cuidado con esto puede variar si
-    Jeedom que pidió guardar en otra parte
-
-La lista de cámaras compatibles es
-[Aquí] (https://github.com/jeedom/documentation/blob/master/camera/fr_FR/equipement.compatible.asciidoc)
-
-cambios
-=========
-
--   JEED-336 : Rajout du bouton historique sur la vue pleine écran
-
--   pantalla de la cámara de administración rediseñada (ajuste de la
-    compresión y tamaño de la imagen)
-
-
+>**Les dépendances n'arrivents pas à s'installer ?**
+>
+>En ssh ou dans administration -> OS/DB -> Système faire : dpkg --configure -a
