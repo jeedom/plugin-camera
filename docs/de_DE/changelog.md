@@ -11,9 +11,9 @@
 
 # 05/03/2018
 
-- Correction de bugs
+- Fehlerbehebungen
 
 # 12/02/2018
 
-- Correction de bugs
+- Fehlerbehebungen
 - Ajout d'une option pour désactiver toute compression d'image coté Jeedom
