@@ -262,3 +262,7 @@ Preguntas frecuentes
 >**Les dépendances n'arrivents pas à s'installer ?**
 >
 >En ssh ou dans administration -> OS/DB -> Système faire : dpkg --configure -a
+
+>**Quelles sont les conditions pour que ma caméra soit compatible Jeedom (si elle n'est pas dans la liste de compatibilité) ?**
+>
+> La seule condition c'est que la camera possède une url qui renvoi une image (et bien une image pas un flux video)
