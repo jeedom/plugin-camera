@@ -6,7 +6,7 @@
 
 # 10/03/2018
 
-- Mise à jour de la doc
+- Aktualisierung des Dokuments
 - Code-Optimierung
 
 # 05/03/2018
