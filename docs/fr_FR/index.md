@@ -56,12 +56,16 @@ Ici vous avez les informations principales de votre caméra :
 -   **Mot de passe** : mot de passe pour se connecter à la caméra
     (si nécessaire)
 
--   **URL de capture** : URL de "snapshot" de la caméra. Change en
+-   **Mode de capture** : mode de capture de l'image, soit par l'url de snapshot (à priviliègier) ou par flux vidéo (attention ce mode est plus lent et consomme plus de ressource du à la convertion)
+
+-   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
     fonction des caméras. Attention à ne pas mettre une url de flux sous
     peine de planter Jeedom. Vous pouvez ajouter les tags \#username\#
     et \#password\#, qui seront automatiquement remplacés par le nom
     d’utilisateur et le mot de passe lors de l’utilisation de cette
     commande
+
+-   **URL du flux** : url du flux video de la caméra de type rtsp://#username#:#password#@#ip#:554/videoMain (exemple pour les caméras Foscam)
 
 -   **Modèle** : permet de choisir le modèle de la caméra. Attention si
     vous changez cela écrasera vos paramètres de configuration

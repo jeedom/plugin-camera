@@ -653,23 +653,35 @@ class camera extends eqLogic {
 			}
 		}
 		cache::set('camera' . $this->getId() . 'inprogress', array('state' => 1, 'datetime' => strtotime('now')));
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-		if ($this->getConfiguration('username') != '') {
-			$userpwd = $this->getConfiguration('username') . ':' . $this->getConfiguration('password');
-			curl_setopt($ch, CURLOPT_USERPWD, $userpwd);
-			$headers = array(
-				'Content-Type:application/json',
-				'Authorization: Basic ' . base64_encode($userpwd),
+		if ($this->getConfiguration('mode') == 'stream') {
+			$replace = array(
+				'#username#' => urlencode($this->getConfiguration('username')),
+				'#password#' => urlencode($this->getConfiguration('password')),
+				'#ip#' => urlencode($this->getConfiguration('ip')),
+				'#port#' => urlencode($this->getConfiguration('port')),
 			);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			shell_exec('avconv -i ' . str_replace(array_keys($replace), $replace, $this->getConfiguration('cameraStreamAccessUrl')) . ' -frames:v 1 -y -r 1 -vsync 1 -qscale 1 -f image2 /tmp/cam' . $this->getId() . '.jpeg 2>&1 >> /dev/null');
+			$data = file_get_contents('/tmp/cam' . $this->getId() . '.jpeg');
+
+		} else {
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+			curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+			if ($this->getConfiguration('username') != '') {
+				$userpwd = $this->getConfiguration('username') . ':' . $this->getConfiguration('password');
+				curl_setopt($ch, CURLOPT_USERPWD, $userpwd);
+				$headers = array(
+					'Content-Type:application/json',
+					'Authorization: Basic ' . base64_encode($userpwd),
+				);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			}
+			$data = curl_exec($ch);
 		}
-		$data = curl_exec($ch);
 		cache::set('camera' . $this->getId() . 'cache', $data);
 		cache::set('camera' . $this->getId() . 'inprogress', array('state' => 0, 'datetime' => ''));
 		return $data;
@@ -809,7 +821,7 @@ class cameraCmd extends cmd {
 		$info_device['params'] = $ISSStructure[$info_device['type']]['params'];
 		$info_device['params'][0]['value'] = $eqLogic->getConfiguration('username');
 		$info_device['params'][1]['value'] = $eqLogic->getConfiguration('password');
-		$info_device['params'][2]['value'] = $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'));
+		$info_device['params'][2]['value'] = network::getNetworkAccess('internal') . '/' . $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'), true);
 		$info_device['params'][3]['value'] = '';
 		$info_device['params'][4]['value'] = network::getNetworkAccess('external') . '/' . $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'), true);
 		$info_device['params'][5]['value'] = '';
@@ -929,8 +941,8 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		$url = $eqLogic->getUrl($request);
-		if (strpos($request,'curl ') !== false){
-			log::add('camera','debug','Executing ' . $url);
+		if (strpos($request, 'curl ') !== false) {
+			log::add('camera', 'debug', 'Executing ' . $url);
 			shell_exec($request);
 		} else {
 			$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
