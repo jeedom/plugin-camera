@@ -16,6 +16,7 @@
 
  function initCameraPanel(_object_id) {
     jeedom.object.all({
+        onlyHasEqLogic : 'camera', 
         error: function (error) {
             $('#div_alert').showAlert({message: error.message, level: 'danger'});
         },

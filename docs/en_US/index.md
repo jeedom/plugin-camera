@@ -255,21 +255,14 @@ your camera
 FAQ
 ===
 
-Where are the recordings?
+>**Où sont les enregistrements ?**
+>
+>Les enregistrements se trouvent par défaut dans plugins/camera/data/records/*ID\_CAM*, attention cela peut varier si vous avez demandé à Jeedom de les enregistrer ailleurs
 
-: Records are by default in
-    plugins / camera / data / records / * ID \ _CAM *, be careful this may vary if
-    you asked Jeedom to register them elsewhere
+>**Les dépendances n'arrivents pas à s'installer ?**
+>
+>En ssh ou dans administration -> OS/DB -> Système faire : dpkg --configure -a
 
-The list of compatible cameras is
-[Here] (https://github.com/jeedom/documentation/blob/master/camera/fr_FR/equipement.compatible.asciidoc)
-
-Changelog
-=========
-
--   JEED-336 : Rajout du bouton historique sur la vue pleine écran
-
--   Redesign of camera display management (setting the
-    compression and size of the image)
-
-
+>**Quelles sont les conditions pour que ma caméra soit compatible Jeedom (si elle n'est pas dans la liste de compatibilité) ?**
+>
+> La seule condition c'est que la camera possède une url qui renvoi une image (et bien une image pas un flux video)
