@@ -660,9 +660,9 @@ class camera extends eqLogic {
 				'#ip#' => urlencode($this->getConfiguration('ip')),
 				'#port#' => urlencode($this->getConfiguration('port')),
 			);
-			shell_exec('avconv -i ' . str_replace(array_keys($replace), $replace, $this->getConfiguration('cameraStreamAccessUrl')) . ' -frames:v 1 -y -r 1 -vsync 1 -qscale 1 -f image2 /tmp/cam' . $this->getId() . '.jpeg 2>&1 >> /dev/null');
-			$data = file_get_contents('/tmp/cam' . $this->getId() . '.jpeg');
-
+			shell_exec('avconv -i ' . str_replace(array_keys($replace), $replace, $this->getConfiguration('cameraStreamAccessUrl')) . ' -frames:v 1 -y -r 1 -vsync 1 -qscale 1 -f image2 ' . jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg 2>&1 >> /dev/null');
+			$data = file_get_contents(jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg');
+			unlink(jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg');
 		} else {
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
