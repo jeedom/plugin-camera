@@ -1,0 +1,8 @@
+{
+    "onvif": {
+	"name" : "Onvif",
+        "configuration": {
+        },
+        "commands": []
+    }
+}

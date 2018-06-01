@@ -265,6 +265,7 @@ class camera extends eqLogic {
 		$eqLogic->setEqType_name('camera');
 		$eqLogic->setIsVisible(1);
 		$eqLogic->setIsEnable(1);
+		$eqLogic->setConfiguration('device', 'onvif');
 		$eqLogic->save();
 		if ($_config['discover'] == 'onvif') {
 			$onvif = new Ponvif();
