@@ -26,6 +26,11 @@ try {
 
 	ajax::init();
 
+	if (init('action') == 'addDiscoverCam') {
+		camera::addDiscoverCam(json_decode(init('config'), true));
+		ajax::success();
+	}
+
 	if (init('action') == 'removeRecord') {
 		$file = init('file');
 		$file = str_replace('..', '', $file);

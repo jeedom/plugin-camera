@@ -30,6 +30,12 @@ foreach ($eqLogics as $eqLogic) {
     </center>
     <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>{{Ajouter}}</center></span>
   </div>
+  <div class="cursor" id="bt_discoverCam" style="background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;">
+    <center>
+      <i class="fa fa-search" style="font-size : 6em;color:#767676;"></i>
+    </center>
+    <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676"><center>{{Découverte}}</center></span>
+  </div>
   <div class="cursor eqLogicAction" data-action="gotoPluginConf" style="background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;">
     <center>
       <i class="fa fa-wrench" style="font-size : 6em;color:#767676;"></i>

@@ -18,6 +18,7 @@
 
 /* * ***************************Includes********************************* */
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
+require_once dirname(__FILE__) . '/../../3rdparty/ponvif.php';
 
 class camera extends eqLogic {
 	/*     * *************************Attributs****************************** */
@@ -226,6 +227,51 @@ class camera extends eqLogic {
 			}
 		}
 		return $return;
+	}
+
+	public static function discoverCam() {
+		$return = array();
+		$onvif = new Ponvif();
+		$onvif->setDiscoveryTimeout(10);
+		$result = $onvif->discover();
+		if (count($result) > 0) {
+			foreach ($result as $cam) {
+				$return[] = array(
+					'ip' => $cam['IPAddr'],
+					'type' => $cam['Types'],
+					'discover' => 'onvif',
+					'exist' => false,
+				);
+			}
+		}
+		$cameras = self::byType('camera');
+		foreach ($return as &$cam) {
+			foreach ($cameras as $camera) {
+				if ($cam['ip'] == $camera->getConfiguration('ip')) {
+					$cam['exist'] = true;
+					break;
+				}
+			}
+		}
+		return $return;
+	}
+
+	public static function addDiscoverCam($_config) {
+		$eqLogic = new self();
+		$eqLogic->setName($_config['ip']);
+		$eqLogic->setConfiguration('username', $_config['username']);
+		$eqLogic->setConfiguration('password', $_config['password']);
+		$eqLogic->setConfiguration('ip', $_config['ip']);
+		$eqLogic->setEqType_name('camera');
+		$eqLogic->setIsVisible(1);
+		$eqLogic->setIsEnable(1);
+		$eqLogic->save();
+		if ($_config['discover'] == 'onvif') {
+			$onvif = new Ponvif();
+			$onvif->setUsername($_config['username']);
+			$onvif->setPassword($_config['password']);
+			$onvif->setIPAddress($_config['ip']);
+		}
 	}
 
 	/*     * *********************Methode d'instance************************* */

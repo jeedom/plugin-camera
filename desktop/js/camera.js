@@ -19,6 +19,11 @@
     $('#md_modal').load('index.php?v=d&plugin=camera&modal=health').dialog('open');
 });
 
+ $('#bt_discoverCam').on('click', function () {
+    $('#md_modal').dialog({title: "{{Santé Caméras}}"});
+    $('#md_modal').load('index.php?v=d&plugin=camera&modal=discover.cam').dialog('open');
+});
+
  $('.eqLogicAttr[data-l1key=configuration][data-l2key=doNotCompressImage]').on('change', function () {
     if($(this).value() == 1){
         $('.compressOpt').prop('disabled', true);
