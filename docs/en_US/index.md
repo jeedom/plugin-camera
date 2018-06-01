@@ -56,12 +56,16 @@ Here you have the main information of your camera:
 -   **Password**: password to connect to the camera
     (if necessary)
 
--   **Capture URL**: Snapshot URL of the camera. Changed into
+-   **Mode de capture** : mode de capture de l'image, soit par l'url de snapshot (à priviliègier) ou par flux vidéo (attention ce mode est plus lent et consomme plus de ressource du à la convertion)
+
+-   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
     function of the cameras. Be careful not to put a feed url under
     to plant Jeedom. You can add \ #username \ # tags
     et \#password\#, qui seront automatiquement remplacés par le nom
     user name and password when using this
     order
+
+-   **URL du flux** : url du flux video de la caméra de type rtsp://#username#:#password#@#ip#:554/videoMain (exemple pour les caméras Foscam)
 
 -   **Model**: Choose the model of the camera. Attention if
     you change that will overwrite your configuration settings

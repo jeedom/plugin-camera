@@ -56,12 +56,16 @@ Hier haben Sie die grundlegenden Informationen der Kamera:
 -   ** ** Passwort: Passwort an die Kamera anschließen
     (Falls erforderlich)
 
--   Erfassen ** ** URL: URL "Schnappschuss" der Kamera. ändern Sie in
+-   **Mode de capture** : mode de capture de l'image, soit par l'url de snapshot (à priviliègier) ou par flux vidéo (attention ce mode est plus lent et consomme plus de ressource du à la convertion)
+
+-   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
     basierte Kameras. Achten Sie darauf, eine Stream-URL zu setzen unter
     Jeedom Strafe Pflanze. Sie können Tags hinzufügen \ #benutzername \ #
     et \#password\#, qui seront automatiquement remplacés par le nom
     Benutzer und Kennwort ein, wenn diese mit
     bestellen
+
+-   **URL du flux** : url du flux video de la caméra de type rtsp://#username#:#password#@#ip#:554/videoMain (exemple pour les caméras Foscam)
 
 -   ** ** Modell: wählt das Kameramodell. Hüten Sie sich vor, wenn
     ändern Sie die Konfigurationseinstellungen überschreiben
