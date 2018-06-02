@@ -1,20 +1,23 @@
+# 01/06/2018
+
+- Rediseño del panel, ahora elegimos la cantidad de cámaras por línea en la configuración del plugin, su dimensión se calcula automáticamente
+- Mejora del Widget móvil
+- Support des flux video RTSP/MJPEG... Attention vu qu'il y a une conversion de faite ce n'est à utiliser que si vous n'avez pas le choix, il faut priviliegé les snapshot (plus rapide et moins de charge sur Jeedom)
+
 # 03/04/2018
 
-- Mise à jour documentation
-- Refonte du panel, on choisi maintenant le nombre de camera par ligne dans la configuration du plugin, leur dimension est calculé automatiquement
-- Amélioration du widget en mobile
-- Support des flux video RTSP/MJPEG... Attention vu qu'il y a une conversion de faite ce n'est à utiliser que si vous n'avez pas le choix, il faut priviliegé les snapshot (plus rapide et moins de charge sur Jeedom)
+- Actualización de documentación
 
 # 10/03/2018
 
-- Mise à jour de la doc
+- Actualización de la documentación
 - optimización de código
 
 # 05/03/2018
 
-- Correction de bugs
+- Corrección de errores
 
 # 12/02/2018
 
-- Correction de bugs
-- Ajout d'une option pour désactiver toute compression d'image coté Jeedom
+- Corrección de errores
+- Se agregó la opción para desactivar cualquier compresión de imagen lateral Jeedom
