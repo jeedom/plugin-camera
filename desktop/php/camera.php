@@ -131,6 +131,12 @@ foreach (object::all() as $object) {
               </div>
             </div>
           </div>
+          <div class="form-group onvifgOnly">
+            <label class="col-sm-3 control-label">{{Port ONVIF}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="onvif_port"/>
+            </div>
+          </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Nom d'utilisateur}}</label>
             <div class="col-sm-3">

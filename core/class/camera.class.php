@@ -267,15 +267,21 @@ class camera extends eqLogic {
 		$eqLogic->setIsEnable(1);
 		$eqLogic->setConfiguration('device', 'onvif');
 		$eqLogic->save();
-		if ($_config['discover'] == 'onvif') {
-			$onvif = new Ponvif();
-			$onvif->setUsername($_config['username']);
-			$onvif->setPassword($_config['password']);
-			$onvif->setIPAddress($_config['ip']);
-		}
 	}
 
 	/*     * *********************Methode d'instance************************* */
+
+	public function configOnvif() {
+		$onvif = new Ponvif();
+		$onvif->setUsername($this->getConfiguration('username'));
+		$onvif->setPassword($this->getConfiguration('password'));
+		$onvif->setIPAddress($this->getConfiguration('ip') . ':' . $this->getConfiguration('onvif_port', 80));
+		$onvif->initialize();
+		$sources = $onvif->getSources();
+		$mediaUri = preg_replace('/(([0-9]{1,3}\.){3}[0-9]{1,3})/m', '#username#:#password#@#ip#', $onvif->media_GetStreamUri($sources[0][0]['profiletoken']));
+		$this->setConfiguration('cameraStreamAccessUrl', $mediaUri);
+		$this->save();
+	}
 
 	public function preSave() {
 		if ($this->getConfiguration('alertMessageCommand') != '') {
@@ -562,6 +568,10 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('device') == '') {
 			$this->save();
 			return true;
+		}
+		if ($this->getConfiguration('device') == 'onvif') {
+			$this->configOnvif();
+			return;
 		}
 		$device = self::devicesParameters($this->getConfiguration('device'));
 		if (!is_array($device) || !isset($device['commands'])) {
