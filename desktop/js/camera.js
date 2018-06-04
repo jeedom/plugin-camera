@@ -20,7 +20,7 @@
 });
 
  $('#bt_discoverCam').on('click', function () {
-    $('#md_modal').dialog({title: "{{Santé Caméras}}"});
+    $('#md_modal').dialog({title: "{{Découverte Caméras}}"});
     $('#md_modal').load('index.php?v=d&plugin=camera&modal=discover.cam').dialog('open');
 });
 
