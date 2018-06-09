@@ -533,7 +533,7 @@ class camera extends eqLogic {
 		if (!$_fluxOnly) {
 			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera')));
 		} else {
-			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_flux_only', 'camera')));
+			return template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_flux_only', 'camera'));
 		}
 	}
 
