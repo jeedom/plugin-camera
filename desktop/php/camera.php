@@ -148,15 +148,6 @@ foreach (object::all() as $object) {
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label">{{Mode de capture}}</label>
-            <div class="col-sm-7">
-              <select class="eqLogicAttr form-control" data-l1key="configuration"  data-l2key="mode">
-                <option value="snapshot">{{Snapshot (Recommandé)}}</option>
-                <option value="stream">{{Flux}}</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
             <label class="col-sm-3 control-label">{{URL de snaphot}}</label>
             <div class="col-sm-7">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}"/>

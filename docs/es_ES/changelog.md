@@ -1,3 +1,6 @@
+- Support du onvif (uniquement le flux vidéo pour le moment)
+- Selection du mode automatiquement en fonction de l'url de capture et du flux vidéo (RTSP)
+
 # 01/06/2018
 
 - Rediseño del panel, ahora elegimos la cantidad de cámaras por línea en la configuración del plugin, su dimensión se calcula automáticamente

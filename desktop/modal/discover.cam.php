@@ -23,10 +23,10 @@ $discover_cameras = camera::discoverCam();
 foreach ($discover_cameras as $cam) {
 	echo '<tr>';
 	echo '<td>';
-	echo '<span lass="camDiscoverAttr" data-l1key="ip">' . $cam['ip'] . '</span>';
+	echo '<span class="camDiscoverAttr" data-l1key="ip">' . $cam['ip'] . '</span>';
 	echo '</td>';
 	echo '<td>';
-	echo '<span lass="camDiscoverAttr" data-l1key="discover">' . $cam['discover'] . '</span>';
+	echo '<span class="camDiscoverAttr" data-l1key="discover">' . $cam['discover'] . '</span>';
 	echo '</td>';
 	echo '<td>';
 	echo $cam['type'];

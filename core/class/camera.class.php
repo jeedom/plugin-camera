@@ -710,7 +710,7 @@ class camera extends eqLogic {
 			}
 		}
 		cache::set('camera' . $this->getId() . 'inprogress', array('state' => 1, 'datetime' => strtotime('now')));
-		if ($this->getConfiguration('mode') == 'stream') {
+		if ($this->getConfiguration('urlStream') == '' && $this->getConfiguration('cameraStreamAccessUrl') != '') {
 			$replace = array(
 				'#username#' => urlencode($this->getConfiguration('username')),
 				'#password#' => urlencode($this->getConfiguration('password')),
