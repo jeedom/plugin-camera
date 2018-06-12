@@ -64,7 +64,7 @@ foreach ($allObject as $object_li) {
 	if ($object_li->getIsVisible() != 1 || count($object_li->getEqLogic(true, false, 'camera', null, true)) == 0) {
 		continue;
 	}
-	$margin = 5 * $object_li->getConfiguration('parentNumber');
+	$margin = 10 * $object_li->getConfiguration('parentNumber');
 	if ($object_li->getId() == $object->getId()) {
 		echo '<li class="cursor li_object active" ><a data-object_id="' . $object_li->getId() . '" href="index.php?v=d&p=panel&m=camera&object_id=' . $object_li->getId() . '" style="padding: 2px 0px;"><span style="position:relative;left:' . $margin . 'px;">' . $object_li->getHumanName(true) . '</span><span style="font-size : 0.65em;float:right;position:relative;top:7px;">' . $object_li->getHtmlSummary() . '</span></a></li>';
 	} else {
