@@ -133,7 +133,7 @@ class camera extends eqLogic {
 				try {
 					$files[] = $camera->takeSnapshot();
 				} catch (Exception $e) {
-					return array('reply' => __('Erreur : ', __FILE__) . $e->getMessage());
+					log::add('camera', 'warning', $e->getMessage());
 				}
 			}
 			foreach ($data['object']->getChilds() as $object) {
@@ -141,7 +141,7 @@ class camera extends eqLogic {
 					try {
 						$files[] = $camera->takeSnapshot();
 					} catch (Exception $e) {
-						return array('reply' => __('Erreur : ', __FILE__) . $e->getMessage());
+						log::add('camera', 'warning', $e->getMessage());
 					}
 				}
 			}
