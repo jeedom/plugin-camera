@@ -1004,6 +1004,11 @@ class cameraCmd extends cmd {
 		} else {
 			$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
 			$http->setNoReportError(true);
+			$http->setCURLOPT_HTTPAUTH(CURLAUTH_ANY);
+			$headers = array(
+				'User-Agent: Jeedom',
+			);
+			$http->setHeader($headers);
 			$http->exec(2);
 		}
 		return true;
