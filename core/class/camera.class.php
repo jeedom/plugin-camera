@@ -133,7 +133,7 @@ class camera extends eqLogic {
 				try {
 					$files[] = $camera->takeSnapshot();
 				} catch (Exception $e) {
-					return array('reply' => __('Erreur : ', __FILE__) . $e->getMessage());
+					log::add('camera', 'warning', $e->getMessage());
 				}
 			}
 			foreach ($data['object']->getChilds() as $object) {
@@ -141,7 +141,7 @@ class camera extends eqLogic {
 					try {
 						$files[] = $camera->takeSnapshot();
 					} catch (Exception $e) {
-						return array('reply' => __('Erreur : ', __FILE__) . $e->getMessage());
+						log::add('camera', 'warning', $e->getMessage());
 					}
 				}
 			}
@@ -1004,6 +1004,11 @@ class cameraCmd extends cmd {
 		} else {
 			$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
 			$http->setNoReportError(true);
+			$http->setCURLOPT_HTTPAUTH(CURLAUTH_ANY);
+			$headers = array(
+				'User-Agent: Jeedom',
+			);
+			$http->setHeader($headers);
 			$http->exec(2);
 		}
 		return true;
