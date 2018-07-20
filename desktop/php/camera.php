@@ -49,7 +49,7 @@ foreach ($eqLogics as $eqLogic) {
     <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676"><center>{{Santé}}</center></span>
   </div>
 </div>
-<legend><i class="fa fa-video-camera"></i>  {{Mes caméras}}</legend>
+<legend><i class="fa fa-video-camera"></i> {{Mes caméras}}</legend>
 <input class="form-control" placeholder="{{Rechercher}}" style="margin-bottom:4px;" id="in_searchEqlogic" />
 <div class="eqLogicThumbnailContainer">
   <?php
