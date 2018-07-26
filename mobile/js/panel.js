@@ -15,32 +15,33 @@
  */
 
  function initCameraPanel(_object_id) {
-    jeedom.object.all({
-        onlyHasEqLogic : 'camera', 
-        error: function (error) {
-            $('#div_alert').showAlert({message: error.message, level: 'danger'});
-        },
-        success: function (objects) {
-            var li = ' <ul data-role="listview">';
-            for (var i in objects) {
-                if (objects[i].isVisible == 1) {
-                    var icon = '';
-                    if (isset(objects[i].display) && isset(objects[i].display.icon)) {
-                        icon = objects[i].display.icon;
-                    }
-                    li += '<li></span><a href="#" class="link" data-page="panel" data-plugin="camera" data-title="' + icon.replace(/\"/g, "\'") + ' ' + objects[i].name + '" data-option="' + objects[i].id + '"><span>' + icon + '</span> ' + objects[i].name + '</a></li>';
+   setBackgroundImage('plugins/camera/core/img/panel.jpg');
+   jeedom.object.all({
+    onlyHasEqLogic : 'camera', 
+    error: function (error) {
+        $('#div_alert').showAlert({message: error.message, level: 'danger'});
+    },
+    success: function (objects) {
+        var li = ' <ul data-role="listview">';
+        for (var i in objects) {
+            if (objects[i].isVisible == 1) {
+                var icon = '';
+                if (isset(objects[i].display) && isset(objects[i].display.icon)) {
+                    icon = objects[i].display.icon;
                 }
+                li += '<li></span><a href="#" class="link" data-page="panel" data-plugin="camera" data-title="' + icon.replace(/\"/g, "\'") + ' ' + objects[i].name + '" data-option="' + objects[i].id + '"><span>' + icon + '</span> ' + objects[i].name + '</a></li>';
             }
-            li += '</ul>';
-            panel(li);
         }
-    });
-    displayCamera(_object_id);
+        li += '</ul>';
+        panel(li);
+    }
+});
+   displayCamera(_object_id);
 
-    $(window).on("orientationchange", function (event) {
-        setTileSize('.eqLogic');
-        $('#div_displayEquipementCamera').packery({gutter : 4});
-    });
+   $(window).on("orientationchange", function (event) {
+    setTileSize('.eqLogic');
+    $('#div_displayEquipementCamera').packery({gutter : 4});
+});
 }
 
 function displayCamera(_object_id) {
