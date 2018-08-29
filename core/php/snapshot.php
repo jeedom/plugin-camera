@@ -80,7 +80,12 @@ if ($resize == null || $resize == 0) {
 	$newheight = $newwidth / $ratio;
 	$result = imagecreatetruecolor($newwidth, $newheight);
 	imagecopyresized($result, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-	imagejpeg($result, null, $compress);
+	if ($compress < 100) {
+		imagejpeg($result, null, $compress);
+		exit;
+	}
+	echo $data;
+	exit();
 	exit;
 } else {
 	if ($compress == null || $compress >= 100) {
@@ -96,6 +101,10 @@ if ($resize == null || $resize == 0) {
 	$newheight = $newwidth / $ratio;
 	$result = imagecreatetruecolor($newwidth, $newheight);
 	imagecopyresized($result, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-	imagejpeg($result, null, $compress);
-	exit;
+	if ($compress < 100) {
+		imagejpeg($result, null, $compress);
+		exit;
+	}
+	echo $data;
+	exit();
 }
