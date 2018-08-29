@@ -218,7 +218,7 @@ foreach (camera::devicesParameters() as $id => $info) {
         <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobilerefresh" /></td>
       </tr>
       <tr>
-        <td><label>{{Compression (%)}}</label></td>
+        <td><label>{{Qualité (%)}}</label></td>
         <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::compress" /></td>
         <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobilecompress" /></td>
       </tr>
@@ -245,7 +245,7 @@ foreach (camera::devicesParameters() as $id => $info) {
       <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobilerefresh" /></td>
     </tr>
     <tr>
-      <td><label>{{Compression (%)}}</label></td>
+      <td><label>{{Qualité (%)}}</label></td>
       <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::compress" /></td>
       <td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobilecompress" /></td>
     </tr>
