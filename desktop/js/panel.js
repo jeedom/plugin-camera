@@ -22,7 +22,7 @@
 
  function autosizeCamWidget(nbCamByLine,nbCamByColumn){
   var totalWidth = $('#div_displayObject').width() + 20;
-  var camWidth = (totalWidth / nbCamByLine) - (2 * nbCamByLine);
+  var camWidth = (totalWidth / nbCamByLine) - (2 * nbCamByLine) - 2;
   $('#div_displayObject .eqLogic-widget').width(camWidth);
   $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-width',camWidth);
 
