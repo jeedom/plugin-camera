@@ -453,6 +453,11 @@ class camera extends eqLogic {
 				$off->remove();
 			}
 		}
+		if ($this->getIsEnable() == 0) {
+			if ($this->getCmd(null, 'recordState')->execCmd() == 1) {
+				$eqLogic->stopRecord();
+			}
+		}
 	}
 
 	public function toHtml($_version = 'dashboard', $_fluxOnly = false) {
@@ -621,8 +626,9 @@ class camera extends eqLogic {
 				sleep(1);
 				system::kill('core/php/record.php id=' . $this->getId(), true);
 			}
-		} else {
-			$recordState = $this->getCmd(null, 'recordState')->event(0);
+		}
+		if (count(system::ps('core/php/record.php id=' . $this->getId())) == 0 && $this->getCmd(null, 'recordState')->execCmd() == 1) {
+			$this->getCmd(null, 'recordState')->event(0);
 			$this->refreshWidget();
 		}
 		return true;
