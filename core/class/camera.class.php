@@ -455,7 +455,7 @@ class camera extends eqLogic {
 		}
 		if ($this->getIsEnable() == 0) {
 			if ($this->getCmd(null, 'recordState')->execCmd() == 1) {
-				$eqLogic->stopRecord();
+				$this->stopRecord();
 			}
 		}
 	}
