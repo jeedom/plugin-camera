@@ -468,11 +468,6 @@ class camera extends eqLogic {
 				$off->remove();
 			}
 		}
-		if ($this->getIsEnable() == 0) {
-			if ($this->getCmd(null, 'recordState')->execCmd() == 1) {
-				$this->stopRecord();
-			}
-		}
 	}
 
 	public function toHtml($_version = 'dashboard', $_fluxOnly = false) {
@@ -876,6 +871,19 @@ class camera extends eqLogic {
 	}
 
 	/*     * **********************Getteur Setteur*************************** */
+
+	public function setIsEnable($_isEnable) {
+		if ($this->isEnable != $_isEnable) {
+			try {
+				if ($this->getCmd(null, 'recordState')->execCmd() == 1) {
+					$this->stopRecord();
+				}
+			} catch (Exception $e) {
+
+			}
+		}
+		return parent::setIsEnable($_isEnable);
+	}
 
 }
 
