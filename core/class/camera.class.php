@@ -178,10 +178,9 @@ class camera extends eqLogic {
 				$processes = system::ps('core/php/record.php id=' . $camera->getId());
 				foreach ($processes as $process) {
 					$duration = shell_exec('ps -p ' . $process['pid'] . ' -o etimes -h');
-					if ($duration < 3600) {
-						continue;
+					if ($duration > $camera->getConfiguration('maxReccordTime', 600)) {
+						$camera->stopRecord();
 					}
-					$camera->stopRecord();
 				}
 			} catch (Exception $e) {
 
