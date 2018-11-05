@@ -173,6 +173,21 @@ class camera extends eqLogic {
 			}
 			unlink($older['file']);
 		}
+		foreach (camera::byType('camera') as $camera) {
+			try {
+				$processes = system::ps('core/php/record.php id=' . $camera->getId());
+				foreach ($processes as $process) {
+					$duration = shell_exec('ps -p ' . $process['pid'] . ' -o etimes -h');
+					if ($duration < 3600) {
+						continue;
+					}
+					$camera->stopRecord();
+				}
+			} catch (Exception $e) {
+
+			}
+		}
+
 	}
 
 	public static function devicesParameters($_device = '') {

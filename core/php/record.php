@@ -58,6 +58,7 @@ if ($camera->getEqType_name() != 'camera') {
 	log::add('camera', 'error', __('[camera/reccord] Cet équipement n\'est pas de type camera : ', __FILE__) . $camera->getEqType_name());
 	die();
 }
+set_time_limit($camera->getConfiguration('maxReccordTime', 600));
 
 $recordState = $camera->getCmd(null, 'recordState');
 $nbSnap = -1;
