@@ -196,10 +196,8 @@ class camera extends eqLogic {
 			if (count($files) == 1) {
 				try {
 					$content = file_get_contents($path . '/' . $files[0]);
-					if (is_json($content)) {
-						$deviceConfiguration = json_decode($content, true);
-						return $deviceConfiguration[$_device];
-					}
+					$deviceConfiguration = is_json($content, array());
+					return $deviceConfiguration[$_device];
 				} catch (Exception $e) {
 					return array();
 				}
@@ -209,10 +207,7 @@ class camera extends eqLogic {
 		$return = array();
 		foreach ($files as $file) {
 			try {
-				$content = file_get_contents($path . '/' . $file);
-				if (is_json($content)) {
-					$return = array_merge($return, json_decode($content, true));
-				}
+				$return = array_merge($return, is_json(file_get_contents($path . '/' . $file), array()));
 			} catch (Exception $e) {
 
 			}
