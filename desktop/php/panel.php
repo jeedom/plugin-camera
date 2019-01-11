@@ -78,13 +78,13 @@ usort($camera_widgets, "cmpCameraWidgetPosition");
 </div>
 <?php
 if ($_SESSION['user']->getOptions('displayObjetByDefault') == 1 && init('report') != 1) {
-	echo '<div class="col-lg-10 col-md-9 col-sm-8" id="div_displayObject">';
+	echo '<div class="col-lg-10 col-md-9 col-sm-8 col-xs-12" id="div_displayObject">';
 } else {
-	echo '<div class="col-lg-12 col-md-12 col-sm-12" id="div_displayObject">';
+	echo '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="div_displayObject">';
 }
 ?>
 <?php
-echo '<div class="div_displayEquipement row row-eq-height" style="width: 100%;">';
+echo '<div class="div_displayEquipement row row-eq-height">';
 foreach ($camera_widgets as $widget) {
 	echo $widget['widget'];
 }

@@ -44,10 +44,11 @@
       modal: true,
       resizable: false,
       closeText: '',
-      height: jQuery(window).height() - 65,
-      width: jQuery(window).width() - 40,
-      position: { my: "center bottom-10", at: "center bottom", of: window },
+      width: $(window).width() - 40,
+      position: { my: "center top+60", at: "center top", of: window },
       open: function () {
+        $(this).dialog('option', 'maxHeight', $(window).height() - 60);
+        $(".md_cameraZoom[data-eqLogic_uid=#uid#] .display img").css('maxHeight', $(window).height() - 200);
         $("body").css({overflow: 'hidden'});
         if (typeof timeoutCamera#id# !== "undefined") {
           clearTimeout(timeoutCamera#id#);
