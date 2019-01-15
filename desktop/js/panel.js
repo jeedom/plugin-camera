@@ -18,10 +18,22 @@
 $('.div_displayEquipement').disableSelection();
 $( "input").click(function() { $(this).focus(); });
 $( "textarea").click(function() { $(this).focus(); });
-autosizeCamWidget();
+autosizeCamWidget(NB_COLUMN,NB_LINE);
 
-function autosizeCamWidget(){
-  var col = Math.ceil(12 / NB_COLUMN)
-  $('#div_displayObject .eqLogic-widget').wrap('<div class="col-lg-'+col+' col-sm-12"></div>');
-  $('#div_displayObject .eqLogic-widget').width('100%');
+function autosizeCamWidget(nbCamByLine,nbCamByColumn){
+  var totalWidth = $('#div_displayObject').width() + 20;
+  var camWidth = (totalWidth / nbCamByLine) - (2 * nbCamByLine) - 2;
+  $('#div_displayObject .eqLogic-widget').width(camWidth);
+  $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-width',camWidth);
+  
+  var totalHeight = $(window).outerHeight() - $('header').outerHeight() - $('#div_alert').outerHeight()-5;
+  var camHeight = (totalHeight / nbCamByColumn) - (2 * nbCamByColumn);
+  $('#div_displayObject .eqLogic-widget').height(camHeight);
+  $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-height',camHeight);
+  $('#div_displayObject').each(function(){
+    var container = $(this).packery({
+      itemSelector: ".eqLogic-widget",
+      gutter : 2,
+    });
+  });
 }
