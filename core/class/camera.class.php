@@ -869,7 +869,7 @@ public function getImage() {
 public function setIsEnable($_isEnable) {
 	if ($this->isEnable != $_isEnable) {
 		try {
-			if ($this->getCmd(null, 'recordState')->execCmd() == 1) {
+			if (is_object($this->getCmd(null, 'recordState')) && $this->getCmd(null, 'recordState')->execCmd() == 1) {
 				$this->stopRecord();
 			}
 		} catch (Exception $e) {

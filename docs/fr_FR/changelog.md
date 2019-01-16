@@ -1,7 +1,6 @@
 # 15/01/2018
 
 - Ajout de la camera Wanscam q3(s)
-- Support du onvif (uniquement le flux vidéo pour le moment)
 - Selection du mode automatiquement en fonction de l'url de capture et du flux vidéo (RTSP)
 - Correction de bugs
 - Ajout du remplacement de #username# et #password# dans les commandes
