@@ -1,6 +1,7 @@
 # 17/01/2018
 
 - Mise à jour de la doc
+- Correction d'un soucis sur la configuration de Wanscam q3(s)
 
 # 15/01/2018
 
