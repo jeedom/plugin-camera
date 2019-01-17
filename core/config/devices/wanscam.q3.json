@@ -1,401 +1,373 @@
 {
-    "wanscam.q3": {
-	"name" : "Wanscam q3(s)",
+  "wanscam.q3": {
+    "name" : "Wanscam q3(s)",
+    "configuration": {
+      "urlStream": "\/mjpeg/snap.cgi",
+      "protocole": "http"
+    },
+    "commands": [
+      {
+        "eqType": "camera",
+        "name": "Haut",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
         "configuration": {
-            "urlStream": "\/mjpeg/snap.cgi",
-            "protocole": "http"
+          "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=up",
+          "stopCmdUrl": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=stop"
         },
-        "commands": [
-			 {
-                "eqType": "camera",
-                "name": "Haut",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=up",
-                    "stopCmdUrl": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=stop"
-                },
-                "display": {
-                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>",
-                    "generic_type": "CAMERA_UP"
-                },
-                "isVisible": "1"
-            },
-			 {
-                "eqType": "camera",
-                "name": "Bas",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=down",
-                    "stopCmdUrl": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=stop"
-                },
-                "display": {
-                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>",
-                    "generic_type": "CAMERA_DOWN"
-                },
-                "isVisible": "1"
-            },
-			 {
-                "eqType": "camera",
-                "name": "Gauche",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=left",
-                    "stopCmdUrl": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=stop"
-                },
-                "display": {
-                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>",
-                    "generic_type": "CAMERA_LEFT"
-                },
-                "isVisible": "1"
-            },
-			 {
-                "eqType": "camera",
-                "name": "Droite",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=right",
-                    "stopCmdUrl": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=stop"
-                },
-                "display": {
-                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>",
-                    "generic_type": "CAMERA_RIGHT"
-                },
-                "isVisible": "1"
-            },
-            {
-                "eqType": "camera",
-                "name": "Patrouille horizontale",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=hscan"
-                },
-                "isVisible": "0"
-            },
-            {
-                "eqType": "camera",
-                "name": "Patrouille verticale",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=vscan"
-                },
-                "isVisible": "0"
-            },
-            {
-                "eqType": "camera",
-                "name": "Patrouille stop",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=stop"
-                },
-                "isVisible": "0"
-            },
-            {
-                "eqType": "camera",
-                "name": "Home",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=home"
-                },
-                "display": {
-                    "icon": "<i class=\"fa fa-home\"><\/i>",
-                    "generic_type": "CAMERA_PRESET"
-                }
-            },
-
-			 {
-                "eqType": "camera",
-                "name": "IR ON",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/irctrl.cgi?cmd=setircutstatus&ircutstatus=ope
-n"
-                },
-                "display": {
-                    "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
-                },
-                "isVisible": "1"
-            },
-			 {
-                "eqType": "camera",
-                "name": "IR OFF",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/irctrl.cgi?cmd=setircutstatus&ircutstatus=close"
-                },
-                "display": {
-                    "icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
-                },
-                "isVisible": "1"
-            },
-            {
-                "eqType": "camera",
-                "name": "IR AUTO",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/irctrl.cgi?cmd=setircutctrl&ircutctrlstatus=auto"
-                },
-                
-                "isVisible": "1"
-            },
-            {
-                "eqType": "camera",
-                "name": "IR MANU",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/irctrl.cgi?cmd=setircutctrl&ircutctrlstatus=manual"
-                },
-                
-                "isVisible": "1"
-            },
-            {
-                "eqType": "camera",
-                "name": "Set Pos 1",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=1"
-                },
-                "isVisible": "1"
-            },
-			 {
-                "eqType": "camera",
-                "name": "Pos 1",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=1"
-                },
-                "isVisible": "1"
-            },
-            {
-                "eqType": "camera",
-                "name": "Set Pos 2",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=1"
-                },
-                "isVisible": "1"
-            },
-			 {
-                "eqType": "camera",
-                "name": "Pos 2",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=2"
-                },
-                "isVisible": "1"
-            },
-            {
-                "eqType": "camera",
-                "name": "Set Pos 3",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=3"
-                },
-                "isVisible": "0"
-            },
-			 {
-                "eqType": "camera",
-                "name": "Pos 3",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=3"
-                },
-                "isVisible": "0"
-            },
-            {
-                "eqType": "camera",
-                "name": "Set Pos 4",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=4"
-                },
-                "isVisible": "0"
-            },
-			 {
-                "eqType": "camera",
-                "name": "Pos 4",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=4"
-                },
-                "isVisible": "0"
-            },
-            {
-                "eqType": "camera",
-                "name": "Set Pos 5",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=5"
-                },
-                "isVisible": "0"
-            },
-			 {
-                "eqType": "camera",
-                "name": "Pos 5",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=5"
-                },
-                "isVisible": "0"
-            },
-            {
-                "eqType": "camera",
-                "name": "Set Pos 6",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=6"
-                },
-                "isVisible": "0"
-            },
-			 {
-                "eqType": "camera",
-                "name": "Pos 6",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=6"
-                },
-                "isVisible": "0"
-            },
-            {
-                "eqType": "camera",
-                "name": "Set Pos 7",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=7"
-                },
-                "isVisible": "0"
-            },
-			 {
-                "eqType": "camera",
-                "name": "Pos 7",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=7"
-                },
-                "isVisible": "0"
-            },
-            {
-                "eqType": "camera",
-                "name": "Set Pos 8",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=8"
-                },
-                "isVisible": "0"
-            },
-			 {
-                "eqType": "camera",
-                "name": "Pos 8",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=8"
-                },
-                "isVisible": "0"
-            },
-            {
-                "eqType": "camera",
-                "name": "C1",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/mjpeg/setchn.cgi?chn=0"
-                },
-                "isVisible": "1"
-            },
-            {
-                "eqType": "camera",
-                "name": "C2",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                
-                "configuration": {
-                    "request": "\/mjpeg/setchn.cgi?chn=1"
-                },
-                "isVisible": "1"
-            }
-		]
-    }
+        "display": {
+          "icon": "<i class=\"fa fa-arrow-up\"><\/i>",
+          "generic_type": "CAMERA_UP"
+        },
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "Bas",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=down",
+          "stopCmdUrl": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=stop"
+        },
+        "display": {
+          "icon": "<i class=\"fa fa-arrow-down\"><\/i>",
+          "generic_type": "CAMERA_DOWN"
+        },
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "Gauche",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=left",
+          "stopCmdUrl": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=stop"
+        },
+        "display": {
+          "icon": "<i class=\"fa fa-arrow-left\"><\/i>",
+          "generic_type": "CAMERA_LEFT"
+        },
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "Droite",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=right",
+          "stopCmdUrl": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=stop"
+        },
+        "display": {
+          "icon": "<i class=\"fa fa-arrow-right\"><\/i>",
+          "generic_type": "CAMERA_RIGHT"
+        },
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "Patrouille horizontale",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=hscan"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Patrouille verticale",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=vscan"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Patrouille stop",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=stop"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Home",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=ptzctrl&act=home"
+        },
+        "display": {
+          "icon": "<i class=\"fa fa-home\"><\/i>",
+          "generic_type": "CAMERA_PRESET"
+        }
+      },
+      
+      {
+        "eqType": "camera",
+        "name": "IR ON",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/irctrl.cgi?cmd=setircutstatus&ircutstatus=open"
+        },
+        "display": {
+          "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
+        },
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "IR OFF",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/irctrl.cgi?cmd=setircutstatus&ircutstatus=close"
+        },
+        "display": {
+          "icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
+        },
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "IR AUTO",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/irctrl.cgi?cmd=setircutctrl&ircutctrlstatus=auto"
+        },
+        
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "IR MANU",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/irctrl.cgi?cmd=setircutctrl&ircutctrlstatus=manual"
+        },
+        
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "Set Pos 1",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=1"
+        },
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "Pos 1",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=1"
+        },
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "Set Pos 2",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=1"
+        },
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "Pos 2",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=2"
+        },
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "Set Pos 3",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=3"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Pos 3",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=3"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Set Pos 4",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=4"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Pos 4",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=4"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Set Pos 5",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=5"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Pos 5",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=5"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Set Pos 6",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=6"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Pos 6",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=6"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Set Pos 7",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=7"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Pos 7",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=7"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Set Pos 8",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=set&number=8"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "Pos 8",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/hy-cgi/ptz.cgi?cmd=preset&act=goto&number=8"
+        },
+        "isVisible": "0"
+      },
+      {
+        "eqType": "camera",
+        "name": "C1",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/mjpeg/setchn.cgi?chn=0"
+        },
+        "isVisible": "1"
+      },
+      {
+        "eqType": "camera",
+        "name": "C2",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/mjpeg/setchn.cgi?chn=1"
+        },
+        "isVisible": "1"
+      }
+    ]
+  }
 }
