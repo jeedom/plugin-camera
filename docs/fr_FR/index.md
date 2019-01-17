@@ -1,7 +1,7 @@
 Plugin permettant de créer et gérer des caméras wifi (affichage et
 enregistrement)
 
-Configuration du plugin 
+Configuration du plugin
 =======================
 
 Après installation du plugin, il vous suffit de l’activer, cependant il
@@ -24,12 +24,12 @@ y a quelques paramètres de configuration avancée :
 -   **Panel** : Vous permet d’afficher le panel (Menu
     Accueil -> Caméra) et d’avoir une vue sur l’ensemble de vos
     caméras (voir plus bas). N'oubliez pas d'activer le panel dans la configuration du plugin pour y avoir accès plus tard.
-   
 
-Configuration des équipements 
+
+Configuration des équipements
 =============================
 
-Equipement 
+Equipement
 ----------
 
 Ici vous avez les informations principales de votre caméra :
@@ -56,8 +56,6 @@ Ici vous avez les informations principales de votre caméra :
 -   **Mot de passe** : mot de passe pour se connecter à la caméra
     (si nécessaire)
 
--   **Mode de capture** : mode de capture de l'image, soit par l'url de snapshot (à priviliègier) ou par flux vidéo (attention ce mode est plus lent et consomme plus de ressource du à la convertion)
-
 -   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
     fonction des caméras. Attention à ne pas mettre une url de flux sous
     peine de planter Jeedom. Vous pouvez ajouter les tags \#username\#
@@ -70,7 +68,7 @@ Ici vous avez les informations principales de votre caméra :
 -   **Modèle** : permet de choisir le modèle de la caméra. Attention si
     vous changez cela écrasera vos paramètres de configuration
 
-Images 
+Images
 ------
 
 Cette partie vous permet de configurer la qualité de l’image. En effet
@@ -96,7 +94,7 @@ sont déclinés en : mobile/desktop et miniature/normal.
 > touchera pas à l’image en mode normal. Cela n’est pas valable en mode
 > miniature où il y a une taille maximum de l’image de 360px.
 
-Capture 
+Capture
 -------
 
 -   Durée maximum d’un enregistrement : durée maximum des
@@ -115,7 +113,7 @@ Capture
 -   Supprimer toutes les captures de la caméra : supprime toutes les
     captures et enregistrements de la caméra
 
-Alimentation 
+Alimentation
 ------------
 
 -   Commande ON : Commande permettant de mettre en marche l’alimentation
@@ -124,7 +122,7 @@ Alimentation
 -   Commande OFF : Commande permettant de couper l’alimentation de la
     caméra
 
-Commandes 
+Commandes
 ---------
 
 -   ID de la commande (utiliser avec les commandes de type info pour par
@@ -156,7 +154,7 @@ Commandes
 
 -   Supprimer (signe -) : permet de supprimer la commande
 
-Le widget 
+Le widget
 =========
 
 On retrouve sur celui-ci l’image de la caméra, les commandes définies
@@ -188,7 +186,7 @@ En mobile le widget est un peu différent : si vous cliquez sur l’image de
 la caméra vous obtenez celle-ci en plus grande avec les commandes
 possibles.
 
-Les panels 
+Les panels
 ==========
 
 Le plugin caméra met aussi à disposition un panel qui vous permet de
@@ -201,7 +199,7 @@ Caméra.
 
 Il est bien sur aussi disponible en mobile par Plugin → Caméra :
 
-Enregistrement et envoi de capture 
+Enregistrement et envoi de capture
 ==================================
 
 Cette commande un peu spécifique permet suite à la prise de capture de
@@ -214,7 +212,7 @@ capture (dénommée "Enregistrement") dans un scénario. Dans la partie titre vo
 Par défaut il suffit de mettre le nombre de captures voulues dans le champ "nombre captures ou options", mais vous pouvez aller plus
 loin avec des options (voir détail ci-dessous "options avancées des captures"). Dans la partie message, vous n'avez plus qu'à renseigner la commande du plugin (actuellement slack, mail ou transfert) qui fait l’envoi des captures. Vous pouvez en mettre plusieurs séparés par des &&.
 
-Options avancées des captures 
+Options avancées des captures
 ---------------------------
 
 -   nbSnap : nombre de capture, si non précisé alors les captures sont
@@ -244,7 +242,7 @@ Options avancées des captures
 > movie=1 sendFirstSnap=1 detectMove=1 ==> envoi la première capture, puis envoi d'une capture à chaque détection de mouvement et enregistre une vidéo jusqu'à la commande "Arrêter Enregistrement" à insérer dans le scénario. Le film sera stocké sur votre Jeedom.
 
 
-Envoi de la détection de mouvement à Jeedom 
+Envoi de la détection de mouvement à Jeedom
 ===========================================
 
 Si vous avez une caméra qui possède la détection de mouvement et que
@@ -256,7 +254,7 @@ caméra :
 Il faut bien entendu avant avoir créé une commande de type info sur
 votre caméra
 
-FAQ 
+FAQ
 ===
 
 >**Où sont les enregistrements ?**
