@@ -1,3 +1,8 @@
+# 17/01/2018
+
+- Actualización de la documentación
+- Correction d'un soucis sur la configuration de Wanscam q3(s)
+
 # 15/01/2018
 
 - Ajout de la camera Wanscam q3(s)

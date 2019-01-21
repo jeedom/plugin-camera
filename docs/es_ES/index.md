@@ -1,7 +1,7 @@
 Plugin para crear y gestionar cámaras inalámbricas (pantalla y
 registro)
 
-configuración del plugin
+Configuration du plugin
 =======================
 
 Después de instalar el plugin, sólo hay que activarlo, sin embargo,
@@ -26,10 +26,10 @@ Unos ajustes de configuración avanzada:
     caméras (voir plus bas). N'oubliez pas d'activer le panel dans la configuration du plugin pour y avoir accès plus tard.
 
 
-Configuración del dispositivo
+Configuration des équipements
 =============================
 
-equipo
+Equipement
 ----------
 
 Aquí tienes la información básica de la cámara:
@@ -56,8 +56,6 @@ Aquí tienes la información básica de la cámara:
 -   ** ** Contraseña: contraseña para conectarse a la cámara
     (si es necesario)
 
--   **Mode de capture** : mode de capture de l'image, soit par l'url de snapshot (à priviliègier) ou par flux vidéo (attention ce mode est plus lent et consomme plus de ressource du à la convertion)
-
 -   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
     cámaras basadas. Tenga cuidado de no poner un url flujo bajo
     planta pena de Jeedom. Puede añadir etiquetas \ #username \ #
@@ -70,7 +68,7 @@ Aquí tienes la información básica de la cámara:
 -   ** ** Modelo: selecciona el modelo de la cámara. Tenga cuidado si
     cambia que se sobreponen a los parámetros de configuración
 
-imágenes
+Images
 ------
 
 Cette partie vous permet de configurer la qualité de l’image. En effet
@@ -96,7 +94,7 @@ sont déclinés en : mobile/desktop et miniature/normal.
 > touchera pas à l’image en mode normal. Cela n’est pas valable en mode
 > miniature où il y a une taille maximum de l’image de 360px.
 
-captura
+Capture
 -------
 
 -   Durée maximum d’un enregistrement : durée maximum des
@@ -115,7 +113,7 @@ captura
 -   Eliminar todas las capturas de la cámara: borra todos
     las capturas y la cámara graba
 
-suministro
+Alimentation
 ------------
 
 -   Commande ON : Commande permettant de mettre en marche l’alimentation
@@ -124,7 +122,7 @@ suministro
 -   Commande OFF : Commande permettant de couper l’alimentation de la
     cámara
 
-comandos
+Commandes
 ---------
 
 -   Identificación de la orden (usar con comandos de información de tipo de
@@ -156,7 +154,7 @@ comandos
 
 -   Eliminar (signo -): eliminar comandos
 
-el widget
+Le widget
 =========
 
 Nos encontramos en él la imagen de la cámara, que se define comandos
@@ -188,7 +186,7 @@ En mobile le widget est un peu différent : si vous cliquez sur l’image de
 la caméra vous obtenez celle-ci en plus grande avec les commandes
 possibles.
 
-paneles
+Les panels
 ==========
 
 El plug-in cámara también proporciona un panel que le permite
@@ -201,7 +199,7 @@ Cámara.
 
 Por supuesto, es también disponible en móviles → plug-in de la cámara:
 
-Almacenamiento y envío de captura
+Enregistrement et envoi de capture
 ==================================
 
 Cette commande un peu spécifique permet suite à la prise de capture de
@@ -214,7 +212,7 @@ capture (dénommée "Enregistrement") dans un scénario. Dans la partie titre vo
 Par défaut il suffit de mettre le nombre de captures voulues dans le champ "nombre captures ou options", mais vous pouvez aller plus
 loin avec des options (voir détail ci-dessous "options avancées des captures"). Dans la partie message, vous n'avez plus qu'à renseigner la commande du plugin (actuellement slack, mail ou transfert) qui fait l’envoi des captures. Vous pouvez en mettre plusieurs séparés par des &&.
 
-Options avancées des captures 
+Options avancées des captures
 ---------------------------
 
 -   nbSnap: número de captura, si no se especifica a continuación, la captura es
@@ -244,7 +242,7 @@ Options avancées des captures
 > movie=1 sendFirstSnap=1 detectMove=1 ==> envoi la première capture, puis envoi d'une capture à chaque détection de mouvement et enregistre une vidéo jusqu'à la commande "Arrêter Enregistrement" à insérer dans le scénario. Le film sera stocké sur votre Jeedom.
 
 
-Envoi de la détection de mouvement à Jeedom 
+Envoi de la détection de mouvement à Jeedom
 ===========================================
 
 Si usted tiene una cámara que cuenta con detección de movimiento y
@@ -256,7 +254,7 @@ la cámara:
 Se debe entender antes de crear un tipo de información de comandos
 su cámara
 
-Preguntas frecuentes
+FAQ
 ===
 
 >**Où sont les enregistrements ?**
