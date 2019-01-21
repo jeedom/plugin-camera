@@ -1,7 +1,7 @@
 Plugin for creating and managing wifi cameras (display and
 recording)
 
-Plugin configuration
+Configuration du plugin
 =======================
 
 After installing the plugin, you just have to activate it, however
@@ -26,10 +26,10 @@ there are some advanced configuration settings:
     caméras (voir plus bas). N'oubliez pas d'activer le panel dans la configuration du plugin pour y avoir accès plus tard.
 
 
-Equipment configuration
+Configuration des équipements
 =============================
 
-Equipment
+Equipement
 ----------
 
 Here you have the main information of your camera:
@@ -56,8 +56,6 @@ Here you have the main information of your camera:
 -   **Password**: password to connect to the camera
     (if necessary)
 
--   **Mode de capture** : mode de capture de l'image, soit par l'url de snapshot (à priviliègier) ou par flux vidéo (attention ce mode est plus lent et consomme plus de ressource du à la convertion)
-
 -   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
     function of the cameras. Be careful not to put a feed url under
     to plant Jeedom. You can add \ #username \ # tags
@@ -70,7 +68,7 @@ Here you have the main information of your camera:
 -   **Model**: Choose the model of the camera. Attention if
     you change that will overwrite your configuration settings
 
-imagery
+Images
 ------
 
 Cette partie vous permet de configurer la qualité de l’image. En effet
@@ -115,7 +113,7 @@ Capture
 -   Delete all captures from the camera: delete all
     camera captures and recordings
 
-Food
+Alimentation
 ------------
 
 -   Commande ON : Commande permettant de mettre en marche l’alimentation
@@ -124,7 +122,7 @@ Food
 -   Commande OFF : Commande permettant de couper l’alimentation de la
     camera
 
-Orders
+Commandes
 ---------
 
 -   ID of the command (use with info type commands for by
@@ -156,7 +154,7 @@ Orders
 
 -   Delete (sign -): delete the command
 
-The widget
+Le widget
 =========
 
 We find on this one the image of the camera, the commands defined
@@ -188,7 +186,7 @@ En mobile le widget est un peu différent : si vous cliquez sur l’image de
 la caméra vous obtenez celle-ci en plus grande avec les commandes
 possibles.
 
-The panels
+Les panels
 ==========
 
 The camera plugin also provides a panel that allows you to
@@ -201,7 +199,7 @@ Camera.
 
 It is of course also available in mobile by Plugin → Camera:
 
-Saving and sending capture
+Enregistrement et envoi de capture
 ==================================
 
 Cette commande un peu spécifique permet suite à la prise de capture de
@@ -214,7 +212,7 @@ capture (dénommée "Enregistrement") dans un scénario. Dans la partie titre vo
 Par défaut il suffit de mettre le nombre de captures voulues dans le champ "nombre captures ou options", mais vous pouvez aller plus
 loin avec des options (voir détail ci-dessous "options avancées des captures"). Dans la partie message, vous n'avez plus qu'à renseigner la commande du plugin (actuellement slack, mail ou transfert) qui fait l’envoi des captures. Vous pouvez en mettre plusieurs séparés par des &&.
 
-Options avancées des captures 
+Options avancées des captures
 ---------------------------
 
 -   nbSnap: number of captures, if not specified then the catches are
@@ -244,7 +242,7 @@ Options avancées des captures
 > movie=1 sendFirstSnap=1 detectMove=1 ==> envoi la première capture, puis envoi d'une capture à chaque détection de mouvement et enregistre une vidéo jusqu'à la commande "Arrêter Enregistrement" à insérer dans le scénario. Le film sera stocké sur votre Jeedom.
 
 
-Envoi de la détection de mouvement à Jeedom 
+Envoi de la détection de mouvement à Jeedom
 ===========================================
 
 If you have a camera that has motion detection and that

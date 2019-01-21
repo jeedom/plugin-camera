@@ -51,10 +51,12 @@ Ici vous avez les informations principales de votre caméra :
     ou https)
 
 -   **Nom d’utilisateur** : nom d’utilisateur pour se connecter à la
-    caméra (si nécessaire)
+    caméra (si nécessaire). Attention le plugin ne support pas les caractères
+    spéciaux (il faut donc se limiter aux chiffres, lettres minuscule/majuscule)
 
 -   **Mot de passe** : mot de passe pour se connecter à la caméra
-    (si nécessaire)
+    (si nécessaire).Attention le plugin ne support pas les caractères
+    spéciaux (il faut donc se limiter aux chiffres, lettres minuscule/majuscule)
 
 -   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
     fonction des caméras. Attention à ne pas mettre une url de flux sous

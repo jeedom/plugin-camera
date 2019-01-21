@@ -1,7 +1,7 @@
 Plugin zu erstellen und verwalten Wireless-Kameras (Anzeige und
 Registrierung)
 
-Plugin-Konfiguration
+Configuration du plugin
 =======================
 
 Nach der Installation des Plugin, müssen Sie nur um es zu aktivieren, ist es jedoch
@@ -26,10 +26,10 @@ Einige erweiterte Konfigurationseinstellungen:
     caméras (voir plus bas). N'oubliez pas d'activer le panel dans la configuration du plugin pour y avoir accès plus tard.
 
 
-Gerätekonfiguration
+Configuration des équipements
 =============================
 
-Ausrüstung
+Equipement
 ----------
 
 Hier haben Sie die grundlegenden Informationen der Kamera:
@@ -56,8 +56,6 @@ Hier haben Sie die grundlegenden Informationen der Kamera:
 -   ** ** Passwort: Passwort an die Kamera anschließen
     (Falls erforderlich)
 
--   **Mode de capture** : mode de capture de l'image, soit par l'url de snapshot (à priviliègier) ou par flux vidéo (attention ce mode est plus lent et consomme plus de ressource du à la convertion)
-
 -   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
     basierte Kameras. Achten Sie darauf, eine Stream-URL zu setzen unter
     Jeedom Strafe Pflanze. Sie können Tags hinzufügen \ #benutzername \ #
@@ -70,7 +68,7 @@ Hier haben Sie die grundlegenden Informationen der Kamera:
 -   ** ** Modell: wählt das Kameramodell. Hüten Sie sich vor, wenn
     ändern Sie die Konfigurationseinstellungen überschreiben
 
-Metaphorik
+Images
 ------
 
 Cette partie vous permet de configurer la qualité de l’image. En effet
@@ -96,7 +94,7 @@ sont déclinés en : mobile/desktop et miniature/normal.
 > touchera pas à l’image en mode normal. Cela n’est pas valable en mode
 > miniature où il y a une taille maximum de l’image de 360px.
 
-Erfassung
+Capture
 -------
 
 -   Durée maximum d’un enregistrement : durée maximum des
@@ -115,7 +113,7 @@ Erfassung
 -   Löschen Sie alle Fänge der Kamera: löscht alle
     Rasten und zeichnet die Kamera
 
-Versorgung
+Alimentation
 ------------
 
 -   Commande ON : Commande permettant de mettre en marche l’alimentation
@@ -124,7 +122,7 @@ Versorgung
 -   Commande OFF : Commande permettant de couper l’alimentation de la
     Kamera
 
-Befehle
+Commandes
 ---------
 
 -   Bestell-ID (Verwendung mit Info-Typ-Befehlen durch
@@ -156,7 +154,7 @@ Befehle
 
 -   Löschen (- Zeichen): Löschen-Befehl
 
-das Widget
+Le widget
 =========
 
 Wir finden auf sie das Bild der Kamera, definierte Befehle
@@ -188,7 +186,7 @@ En mobile le widget est un peu différent : si vous cliquez sur l’image de
 la caméra vous obtenez celle-ci en plus grande avec les commandes
 possibles.
 
-Platten
+Les panels
 ==========
 
 Die Kamera-Plugin stellt auch ein Panel, das Ihnen erlaubt,
@@ -201,7 +199,7 @@ Kamera.
 
 Es ist natürlich auch in mobiler Plugin → Kamera:
 
-Speichern und Senden von Capture
+Enregistrement et envoi de capture
 ==================================
 
 Cette commande un peu spécifique permet suite à la prise de capture de
@@ -214,7 +212,7 @@ capture (dénommée "Enregistrement") dans un scénario. Dans la partie titre vo
 Par défaut il suffit de mettre le nombre de captures voulues dans le champ "nombre captures ou options", mais vous pouvez aller plus
 loin avec des options (voir détail ci-dessous "options avancées des captures"). Dans la partie message, vous n'avez plus qu'à renseigner la commande du plugin (actuellement slack, mail ou transfert) qui fait l’envoi des captures. Vous pouvez en mettre plusieurs séparés par des &&.
 
-Options avancées des captures 
+Options avancées des captures
 ---------------------------
 
 -   nbSnap: Anzahl der Erfassung, wenn nicht anders angegeben, dann ist der Haken
@@ -244,7 +242,7 @@ Options avancées des captures
 > movie=1 sendFirstSnap=1 detectMove=1 ==> envoi la première capture, puis envoi d'une capture à chaque détection de mouvement et enregistre une vidéo jusqu'à la commande "Arrêter Enregistrement" à insérer dans le scénario. Le film sera stocké sur votre Jeedom.
 
 
-Envoi de la détection de mouvement à Jeedom 
+Envoi de la détection de mouvement à Jeedom
 ===========================================
 
 Wenn Sie eine Kamera, die Bewegungserkennung hat und
