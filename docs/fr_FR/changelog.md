@@ -1,3 +1,7 @@
+# 21/01/2018
+
+- Mise à jour de la doc
+
 # 17/01/2018
 
 - Mise à jour de la doc
