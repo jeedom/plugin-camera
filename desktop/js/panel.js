@@ -21,7 +21,7 @@ $( "textarea").click(function() { $(this).focus(); });
 autosizeCamWidget(NB_COLUMN,NB_LINE);
 
 function autosizeCamWidget(nbCamByLine,nbCamByColumn){
-  var totalWidth = $('#div_displayObject').width() + 20;
+  var totalWidth = $('#div_displayObject').width();
   var camWidth = (totalWidth / nbCamByLine) - (2 * nbCamByLine) - 2;
   $('#div_displayObject .eqLogic-widget').width(camWidth);
   $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-width',camWidth);
@@ -29,11 +29,11 @@ function autosizeCamWidget(nbCamByLine,nbCamByColumn){
   var totalHeight = $(window).outerHeight() - $('header').outerHeight() - $('#div_alert').outerHeight()-5;
   var camHeight = (totalHeight / nbCamByColumn) - (2 * nbCamByColumn);
   $('#div_displayObject .eqLogic-widget').height(camHeight);
-  $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-height',camHeight);
   $('#div_displayObject').each(function(){
     var container = $(this).packery({
       itemSelector: ".eqLogic-widget",
       gutter : 2,
     });
   });
+  $('#div_displayObject .eqLogic-widget').trigger('resize')
 }
