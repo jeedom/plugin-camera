@@ -1,6 +1,7 @@
 # 21/01/2019
 
 - Mise à jour de la doc
+- Correction d'un bug sur le panel
 
 # 17/01/2019
 
