@@ -1,9 +1,14 @@
-# 17/01/2018
+# 21/01/2019
+
+- Mise à jour de la doc
+- Correction d'un bug sur le panel
+
+# 17/01/2019
 
 - Mise à jour de la doc
 - Correction d'un soucis sur la configuration de Wanscam q3(s)
 
-# 15/01/2018
+# 15/01/2019
 
 - Ajout de la camera Wanscam q3(s)
 - Selection du mode automatiquement en fonction de l'url de capture et du flux vidéo (RTSP)
