@@ -1,7 +1,7 @@
 Plugin for creating and managing wifi cameras (display and
 recording)
 
-Configuration du plugin
+Plugin configuration
 =======================
 
 After installing the plugin, you just have to activate it, however
