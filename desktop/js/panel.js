@@ -22,18 +22,18 @@ autosizeCamWidget(NB_COLUMN,NB_LINE);
 
 function autosizeCamWidget(nbCamByLine,nbCamByColumn){
   var totalWidth = $('#div_displayObject').width();
-  var camWidth = (totalWidth / nbCamByLine) - (2 * nbCamByLine) - 2;
+  var camWidth = (totalWidth / nbCamByLine) - (2 * nbCamByLine) - 2 - widget_width_step;
   $('#div_displayObject .eqLogic-widget').width(camWidth);
-  $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-width',camWidth);
-  
-  var totalHeight = $(window).outerHeight() - $('header').outerHeight() - $('#div_alert').outerHeight()-5;
+  var totalHeight = $(window).outerHeight() - $('header').outerHeight() - $('#div_alert').outerHeight()-8;
   var camHeight = (totalHeight / nbCamByColumn) - (2 * nbCamByColumn);
   $('#div_displayObject .eqLogic-widget').height(camHeight);
+  positionEqLogic();
+  $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-width',$('#div_displayObject .eqLogic-widget').width());
   $('#div_displayObject').each(function(){
     var container = $(this).packery({
       itemSelector: ".eqLogic-widget",
-      gutter : 2,
+      gutter : 0,
     });
   });
-  $('#div_displayObject .eqLogic-widget').trigger('resize')
+  $('#div_displayObject .eqLogic-widget').trigger('resize');
 }
