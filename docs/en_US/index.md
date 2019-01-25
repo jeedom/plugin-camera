@@ -1,7 +1,7 @@
 Plugin for creating and managing wifi cameras (display and
 recording)
 
-Configuration du plugin
+Plugin configuration
 =======================
 
 After installing the plugin, you just have to activate it, however
@@ -51,10 +51,12 @@ Here you have the main information of your camera:
     or https)
 
 -   **Username**: username to login to the
-    camera (if necessary)
+    caméra (si nécessaire). Attention le plugin ne support pas les caractères
+    spéciaux (il faut donc se limiter aux chiffres, lettres minuscule/majuscule)
 
 -   **Password**: password to connect to the camera
-    (if necessary)
+    (si nécessaire).Attention le plugin ne support pas les caractères
+    spéciaux (il faut donc se limiter aux chiffres, lettres minuscule/majuscule)
 
 -   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
     function of the cameras. Be careful not to put a feed url under

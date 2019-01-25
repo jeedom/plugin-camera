@@ -51,10 +51,12 @@ Hier haben Sie die grundlegenden Informationen der Kamera:
     oder https)
 
 -   ** ** Benutzername: Benutzername auf die verbinden
-    Kamera (falls erforderlich)
+    caméra (si nécessaire). Attention le plugin ne support pas les caractères
+    spéciaux (il faut donc se limiter aux chiffres, lettres minuscule/majuscule)
 
 -   ** ** Passwort: Passwort an die Kamera anschließen
-    (Falls erforderlich)
+    (si nécessaire).Attention le plugin ne support pas les caractères
+    spéciaux (il faut donc se limiter aux chiffres, lettres minuscule/majuscule)
 
 -   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
     basierte Kameras. Achten Sie darauf, eine Stream-URL zu setzen unter

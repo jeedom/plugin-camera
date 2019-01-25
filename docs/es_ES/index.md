@@ -51,10 +51,12 @@ Aquí tienes la información básica de la cámara:
     o https)
 
 -   ** ** Nombre de usuario: nombre de usuario para conectarse a la
-    La cámara (si es necesario)
+    caméra (si nécessaire). Attention le plugin ne support pas les caractères
+    spéciaux (il faut donc se limiter aux chiffres, lettres minuscule/majuscule)
 
 -   ** ** Contraseña: contraseña para conectarse a la cámara
-    (si es necesario)
+    (si nécessaire).Attention le plugin ne support pas les caractères
+    spéciaux (il faut donc se limiter aux chiffres, lettres minuscule/majuscule)
 
 -   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
     cámaras basadas. Tenga cuidado de no poner un url flujo bajo
