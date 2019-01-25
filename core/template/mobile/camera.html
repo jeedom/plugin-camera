@@ -1,136 +1,136 @@
-<div class="eqLogic eqLogic-widget" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="padding-top : 3px;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;#style#" data-first="0">
+<div class="eqLogic eqLogic-widget" data-eqType="#eqType#" data-category="#category#" data-tags="#data-tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="padding-top : 3px;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;#style#" data-first="0">
   <style>
-  #popupCameraZoom#id# .info .cmd {
-    display: inline-block;
-    position: relative;
-    vertical-align: top;
-    margin: 7px;
-  }
-</style>
-<center style="#hideEqLogicName#">#name_display# <span style="font-size: 0.85em;">#object_name#</span></center>
-<center>
-  <a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none">
-    <img data-eqLogic_id="#id#" class="directDisplay" style="width:90%;display:block;margin-bottom : 5px;" src="plugins/camera/core/img/no-image-blanc.png"/>
-  </a>
-</center>
-<div data-role="popup" id="popupCameraZoom#id#" class="popup_cam">
- <div data-role="header">
-  <h1 class='nd-title'>#name_display#</h1>
-  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-</div>
-<div data-role="content">
+    #popupCameraZoom#id# .info .cmd {
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      margin: 7px;
+    }
+  </style>
+  <center style="#hideEqLogicName#">#name_display# <span style="font-size: 0.85em;">#object_name#</span></center>
   <center>
-    <div class="display" style="margin-left : auto;margin-right : auto;width:auto;"><img data-eqLogic_id="#id#" style="display:block;" src="plugins/camera/core/img/no-image-noir.png"/></div>
+    <a href="#popupCameraZoom#id#" data-rel="popup" data-position-to="window" data-transition="none">
+      <img data-eqLogic_id="#id#" class="directDisplay" style="width:90%;display:block;margin-bottom : 5px;" src="plugins/camera/core/img/no-image-blanc.png"/>
+    </a>
   </center>
-  <center class="info">
-    #info#
-  </center>
-  <center>
-    #action#
-  </center>
-</div>
-</div>
-
-<script>
- $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide() ;
- $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (9/16) + 40);
- $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 15);
- $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
- $('.eqLogic[data-eqLogic_id=#id#]').off('resize').on('resize',function(){
-  $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 15);
-  $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
-});
-
- $(window).on("orientationchange", function (event) {
-  if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
-    return;
-  } 
-  if($(window).width() > $(window).height()){
-   $("#popupCameraZoom#id# .display img").css('max-width',$(window).width()*0.9);
-   $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.70);
- }else{
-   $("#popupCameraZoom#id# .display img").css('max-width',$(window).width() * 0.9);
-   $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.9);
- }
- reposition_popup_#id# = 0;
- $("#popupCameraZoom#id#").popup( "reposition", {positionTo : 'origin'});
-});
-
- $("#popupCameraZoom#id#").off('popupafteropen').on('popupafteropen', function( event, ui ) {
-   if($(window).width() > $(window).height()){
-     $("#popupCameraZoom#id# .display img").css('max-width',$(window).width() * 0.9);
-     $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.70);
-   }else{
-     $("#popupCameraZoom#id# .display img").css('max-width',$(window).width() * 0.9);
-     $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.9);
-   }
-   reposition_popup_#id# = 0;
-   $("#popupCameraZoom#id#").popup( "reposition", {positionTo : 'origin'});
-   if (typeof timeoutCamera#id# !== "undefined") {
-    clearTimeout(timeoutCamera#id#);
-  }
-  refreshImgCam#id#();
-} );
-
- maxWidth_#id#_thumbnail = 0;
- maxWidth_#id# = 0;
- reposition_popup_#id# = 0;
-
- function refreshImgCam#id#(){
-  if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
-    return;
-  } 
-  if(!$("#popupCameraZoom#id#-popup").hasClass("ui-popup-active") && $('.ui-popup-active').length > 0){
-   timeoutCamera#id# =  setTimeout(refreshImgCam#id#,#refreshDelaySlow#);    
-   return;
- }
- var thumbnail = !$("#popupCameraZoom#id#-popup").hasClass("ui-popup-active");
- var start = Date.now();
- var url = "#url#";
- url += (url.indexOf('?') > 0) ? '&t='+(new Date()).getTime() : '?t='+(new Date()).getTime();
-
- if(maxWidth_#id#_thumbnail < $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').width()){
-  maxWidth_#id#_thumbnail = $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').width();
-}
-if(maxWidth_#id# < (deviceInfo.width-50)){
-  maxWidth_#id# = (deviceInfo.width-50);
-}
-url += (thumbnail)?  '&thumbnail=1&width='+ maxWidth_#id#:'&width='+maxWidth_#id#;
-url += '&mobile=1';
-
-var img = new Image();
-img.src = url;
-
-img.onload = function() {
-  if(thumbnail){
-   $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src',img.src);
- }else{
-   $("#popupCameraZoom#id# .display img").attr('src',img.src);
- }
- if(reposition_popup_#id# < 10){
-  reposition_popup_#id#++;
-  $("#popupCameraZoom#id#").popup( "reposition", {positionTo : 'origin'});
-}
-if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-  $('.cmd[data-cmd_id=#cmd_off_id#]').show();
-  $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
-}
-var delay = (thumbnail) ? #refreshDelaySlow# - (Date.now() - start) :  #refreshDelayFast# - (Date.now() - start);
-timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
-}
-img.onerror = function() {
- $("#popupCameraZoom#id# .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
- $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src','plugins/camera/core/img/no-image-blanc.png');
- if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-  $('.cmd[data-cmd_id=#cmd_off_id#]').hide();
-  $('.cmd[data-cmd_id=#cmd_on_id#]').show();
-}
-timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
-}
-};
-if (typeof timeoutCamera#id# !== "undefined") {
-  clearTimeout(timeoutCamera#id#);
-}
-setTimeout(refreshImgCam#id#,50);
-</script>
+  <div data-role="popup" id="popupCameraZoom#id#" class="popup_cam">
+    <div data-role="header">
+      <h1 class='nd-title'>#name_display#</h1>
+      <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    </div>
+    <div data-role="content">
+      <center>
+        <div class="display" style="margin-left : auto;margin-right : auto;width:auto;"><img data-eqLogic_id="#id#" style="display:block;" src="plugins/camera/core/img/no-image-noir.png"/></div>
+      </center>
+      <center class="info">
+        #info#
+      </center>
+      <center>
+        #action#
+      </center>
+    </div>
+  </div>
+  
+  <script>
+    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide() ;
+    $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (9/16) + 40);
+    $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 15);
+    $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
+    $('.eqLogic[data-eqLogic_id=#id#]').off('resize').on('resize',function(){
+      $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 15);
+      $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
+    });
+    
+    $(window).on("orientationchange", function (event) {
+      if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
+        return;
+      }
+      if($(window).width() > $(window).height()){
+        $("#popupCameraZoom#id# .display img").css('max-width',$(window).width()*0.9);
+        $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.70);
+      }else{
+        $("#popupCameraZoom#id# .display img").css('max-width',$(window).width() * 0.9);
+        $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.9);
+      }
+      reposition_popup_#id# = 0;
+      $("#popupCameraZoom#id#").popup( "reposition", {positionTo : 'origin'});
+    });
+    
+    $("#popupCameraZoom#id#").off('popupafteropen').on('popupafteropen', function( event, ui ) {
+      if($(window).width() > $(window).height()){
+        $("#popupCameraZoom#id# .display img").css('max-width',$(window).width() * 0.9);
+        $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.70);
+      }else{
+        $("#popupCameraZoom#id# .display img").css('max-width',$(window).width() * 0.9);
+        $("#popupCameraZoom#id# .display img").css('max-height',$(window).height()*0.9);
+      }
+      reposition_popup_#id# = 0;
+      $("#popupCameraZoom#id#").popup( "reposition", {positionTo : 'origin'});
+      if (typeof timeoutCamera#id# !== "undefined") {
+        clearTimeout(timeoutCamera#id#);
+      }
+      refreshImgCam#id#();
+    } );
+    
+    maxWidth_#id#_thumbnail = 0;
+    maxWidth_#id# = 0;
+    reposition_popup_#id# = 0;
+    
+    function refreshImgCam#id#(){
+      if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
+        return;
+      }
+      if(!$("#popupCameraZoom#id#-popup").hasClass("ui-popup-active") && $('.ui-popup-active').length > 0){
+        timeoutCamera#id# =  setTimeout(refreshImgCam#id#,#refreshDelaySlow#);
+        return;
+      }
+      var thumbnail = !$("#popupCameraZoom#id#-popup").hasClass("ui-popup-active");
+      var start = Date.now();
+      var url = "#url#";
+      url += (url.indexOf('?') > 0) ? '&t='+(new Date()).getTime() : '?t='+(new Date()).getTime();
+      
+      if(maxWidth_#id#_thumbnail < $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').width()){
+        maxWidth_#id#_thumbnail = $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').width();
+      }
+      if(maxWidth_#id# < (deviceInfo.width-50)){
+        maxWidth_#id# = (deviceInfo.width-50);
+      }
+      url += (thumbnail)?  '&thumbnail=1&width='+ maxWidth_#id#:'&width='+maxWidth_#id#;
+      url += '&mobile=1';
+      
+      var img = new Image();
+      img.src = url;
+      
+      img.onload = function() {
+        if(thumbnail){
+          $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src',img.src);
+        }else{
+          $("#popupCameraZoom#id# .display img").attr('src',img.src);
+        }
+        if(reposition_popup_#id# < 10){
+          reposition_popup_#id#++;
+          $("#popupCameraZoom#id#").popup( "reposition", {positionTo : 'origin'});
+        }
+        if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+          $('.cmd[data-cmd_id=#cmd_off_id#]').show();
+          $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
+        }
+        var delay = (thumbnail) ? #refreshDelaySlow# - (Date.now() - start) :  #refreshDelayFast# - (Date.now() - start);
+        timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
+      }
+      img.onerror = function() {
+        $("#popupCameraZoom#id# .display img").attr('src','plugins/camera/core/img/no-image-noir.png');
+        $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').attr('src','plugins/camera/core/img/no-image-blanc.png');
+        if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+          $('.cmd[data-cmd_id=#cmd_off_id#]').hide();
+          $('.cmd[data-cmd_id=#cmd_on_id#]').show();
+        }
+        timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
+      }
+    };
+    if (typeof timeoutCamera#id# !== "undefined") {
+      clearTimeout(timeoutCamera#id#);
+    }
+    setTimeout(refreshImgCam#id#,50);
+  </script>
 </div>
