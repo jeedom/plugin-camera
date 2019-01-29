@@ -325,6 +325,15 @@ public function preSave() {
 	} else {
 		$this->setConfiguration('hasPullFunction', 0);
 	}
+	if($this->getIsEnable() == 0){
+		try {
+			if (is_object($this->getCmd(null, 'recordState')) && $this->getCmd(null, 'recordState')->execCmd() == 1) {
+				$this->stopRecord();
+			}
+		} catch (Exception $e) {
+			
+		}
+	}
 }
 
 public function preUpdate() {
@@ -333,7 +342,6 @@ public function preUpdate() {
 		throw new Exception(__('L\'adresse IP de la camera ne peut être vide', __FILE__));
 	}
 }
-
 public function postSave() {
 	if ($this->getConfiguration('applyDevice') != $this->getConfiguration('device')) {
 		$this->applyModuleConfiguration();
@@ -865,20 +873,6 @@ public function getImage() {
 }
 
 /*     * **********************Getteur Setteur*************************** */
-
-public function setIsEnable($_isEnable) {
-	if ($this->isEnable != $_isEnable) {
-		try {
-			if (is_object($this->getCmd(null, 'recordState')) && $this->getCmd(null, 'recordState')->execCmd() == 1) {
-				$this->stopRecord();
-			}
-		} catch (Exception $e) {
-			
-		}
-	}
-	return parent::setIsEnable($_isEnable);
-}
-
 }
 
 class cameraCmd extends cmd {
@@ -949,12 +943,6 @@ class cameraCmd extends cmd {
 			return true;
 		}
 		return false;
-	}
-	
-	public function preSave() {
-		if ($this->getConfiguration('request') == '' && $this->getType() == 'action') {
-			throw new Exception(__('Le champs requête ne peut etre vide', __FILE__));
-		}
 	}
 	
 	public function execute($_options = null) {
