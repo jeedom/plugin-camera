@@ -34,10 +34,10 @@
   <script>
     $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide() ;
     $('.eqLogic[data-eqLogic_id=#id#]').height(deviceInfo.bSize  * (9/16) + 40);
-    $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 15);
+    $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height());
     $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
     $('.eqLogic[data-eqLogic_id=#id#]').off('resize').on('resize',function(){
-      $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height() - 15);
+      $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-height',$('.eqLogic[data-eqLogic_id=#id#]').height());
       $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
     });
     
