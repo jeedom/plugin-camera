@@ -15,7 +15,9 @@
 */
 
 function initCameraPanel(_object_id) {
-  setBackgroundImage('plugins/camera/core/img/panel.jpg');
+  if(typeof setBackgroundImage == 'function'){
+    setBackgroundImage('plugins/camera/core/img/panel.jpg');
+  }
   jeedom.object.all({
     onlyHasEqLogic : 'camera',
     error: function (error) {
