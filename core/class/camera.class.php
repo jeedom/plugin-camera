@@ -736,7 +736,7 @@ public function getSnapshot($_takesnapshot = false) {
 			'#port#' => urlencode($this->getConfiguration('port')),
 		);
 		//	$datetime = 'drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf: text="' . date('Y-m-d H:i:s') . '": fontcolor=black@0.8: x=50: y=60';
-		shell_exec('avconv -i ' . str_replace(array_keys($replace), $replace, $this->getConfiguration('cameraStreamAccessUrl')) . ' -frames:v 1 -y -r 1 -vsync 1 -qscale 1 -f image2 ' . jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg 2>&1 >> /dev/null');
+		shell_exec('avconv -i "' . str_replace(array_keys($replace), $replace, $this->getConfiguration('cameraStreamAccessUrl')) . '" -frames:v 1 -y -r 1 -vsync 1 -qscale 1 -f image2 ' . jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg 2>&1 >> /dev/null');
 		$data = file_get_contents(jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg');
 		unlink(jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg');
 	} else {
