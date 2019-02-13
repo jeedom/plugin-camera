@@ -1,3 +1,5 @@
+- Correction d'un soucis si il y a des & dans l'url de stream rtsp
+
 # 21/01/2019
 
 - Aktualisierung des Dokuments
