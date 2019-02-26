@@ -494,7 +494,6 @@ class camera extends eqLogic {
 								'#id#' => $cmd->getId(),
 								'#stopCmd#' => ($cmd->getConfiguration('stopCmdUrl') != '') ? 1 : 0,
 								'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
-								'#cmd-background-color#' => $replace['#cmd-background-color#'],
 							);
 							$action .= template_replace($replaceCmd, getTemplate('core', jeedom::versionAlias($version), 'camera_action', 'camera')) . ' ';
 						} else {
