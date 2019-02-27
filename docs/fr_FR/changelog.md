@@ -1,3 +1,7 @@
+# 27/02/2019
+
+- Correction d'un bug sur le panel mobile
+
 # 21/01/2019
 
 - Mise à jour de la doc
