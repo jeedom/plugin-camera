@@ -121,11 +121,11 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								<div class="form-group">
 									<label class="col-sm-3 control-label">{{Nom d'utilisateur}}</label>
 									<div class="col-sm-3">
-										<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
+										<input type="text" class="eqLogicAttr form-control" autocomplete="new-password" data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
 									</div>
 									<label class="col-sm-2 control-label">{{Mot de passe}}</label>
 									<div class="col-sm-2">
-										<input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
+										<input type="password" class="eqLogicAttr form-control" autocomplete="new-password" data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
 									</div>
 								</div>
 								<div class="form-group">
