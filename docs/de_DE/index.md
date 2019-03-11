@@ -51,11 +51,11 @@ Hier haben Sie die grundlegenden Informationen der Kamera:
     oder https)
 
 -   ** ** Benutzername: Benutzername auf die verbinden
-    caméra (si nécessaire). Attention le plugin ne support pas les caractères
+    caméra (si nécessaire). Attention le plugin ne supporte pas les caractères
     spéciaux (il faut donc se limiter aux chiffres, lettres minuscule/majuscule)
 
 -   ** ** Passwort: Passwort an die Kamera anschließen
-    (si nécessaire).Attention le plugin ne support pas les caractères
+    (si nécessaire).Attention le plugin ne supporte pas les caractères
     spéciaux (il faut donc se limiter aux chiffres, lettres minuscule/majuscule)
 
 -   **URL de snapshot** : URL de "snapshot" de la caméra. Change en
@@ -221,14 +221,14 @@ Options avancées des captures
     faites jusqu’à une demande d’arrêt d’enregistrement ou d’arrêt de la
     Kamera
 
--   Verzögerung: Zeit zwischen 2 -Abscheidung, wenn nicht der Frist angegeben, dann ist
-    1 s
+-   delay : délai entre 2 captures, si non précisé alors le délai est de
+    1s
 
 -   warten: Wartezeit vor dem Fang beginnen, wenn nicht
     précié dann wird keine Sendung gemacht
 
--   sendPacket : nombre de capture déclenchant l’envoi de paquet de captures, si non
-    précisé alors les captures seront envoyées qu’à la fin
+-   sendPacket : nombre de captures déclenchant l’envoi de paquet de captures, si non
+    précisé alors les captures ne seront envoyées qu’à la fin
 
 -   detectMove=1 : envoi les captures que s'il y a un changement supérieur au
     seuil de détection (voir configuration de la caméra)
@@ -269,4 +269,4 @@ FAQ
 
 >**Quelles sont les conditions pour que ma caméra soit compatible Jeedom (si elle n'est pas dans la liste de compatibilité) ?**
 >
-> La seule condition c'est que la camera possède une url qui renvoi une image (et bien une image pas un flux video)
+> La seule condition c'est que la caméra possède une url qui renvoi une image (et bien une image pas un flux video)
