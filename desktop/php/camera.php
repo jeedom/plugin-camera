@@ -10,19 +10,19 @@ $eqLogics = eqLogic::byType($plugin->getId());
 	<div class="col-xs-12 eqLogicThumbnailDisplay" style="padding-left: 25px;">
 		<legend><i class="fa fa-cog"></i>  {{Gestion}}</legend>
 		<div class="eqLogicThumbnailContainer">
-			<div class="cursor eqLogicAction" data-action="add" >
+			<div class="cursor eqLogicAction logoPrimary" data-action="add" >
 				<center>
 					<i class="fas fa-plus-circle"></i>
 				</center>
 				<span><center>{{Ajouter}}</center></span>
 			</div>
-			<div class="cursor eqLogicAction" data-action="gotoPluginConf">
+			<div class="cursor eqLogicAction logoSecondary" data-action="gotoPluginConf">
 				<center>
 					<i class="fas fa-wrench"></i>
 				</center>
 				<span><center>{{Configuration}}</center></span>
 			</div>
-			<div class="cursor" id="bt_healthCamera">
+			<div class="cursor logoSecondary" id="bt_healthCamera">
 				<center>
 					<i class="fas fa-medkit"></i>
 				</center>
@@ -38,9 +38,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="' . $opacity . '" >';
 				echo "<center>";
 				if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg')) {
-					echo '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg" height="105" width="95" />';
+					echo '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg"/>';
 				} else {
-					echo '<img src="' . $plugin->getPathImgIcon() . '" height="105" width="95" />';
+					echo '<img src="' . $plugin->getPathImgIcon() . '" />';
 				}
 				echo "</center>";
 				echo '<span class="name"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
