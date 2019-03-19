@@ -752,7 +752,7 @@ class camera extends eqLogic {
 			if (curl_error($ch)) {
 				log::add('camera','debug',__('Erreur sur ',__FILE__).$this->getHumanName().' : '.curl_error($ch));
 			}
-			curl_close($ch);  
+			curl_close($ch);
 		}
 		cache::set('camera' . $this->getId() . 'cache', $data);
 		cache::set('camera' . $this->getId() . 'inprogress', array('state' => 0, 'datetime' => ''));
