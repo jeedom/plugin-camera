@@ -401,7 +401,7 @@ class camera extends eqLogic {
 		$takeSnapshot->setEqLogic_id($this->getId());
 		$takeSnapshot->setSubType('other');
 		$takeSnapshot->setOrder(999);
-		$takeSnapshot->setDisplay('icon', '<i class="fa fa-picture-o"></i>');
+		$takeSnapshot->setDisplay('icon', '<i class="far fa-image"></i>');
 		$takeSnapshot->setDisplay('generic_type', 'CAMERA_TAKE');
 		$takeSnapshot->save();
 		
