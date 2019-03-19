@@ -12,19 +12,19 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		<div class="eqLogicThumbnailContainer">
 			<div class="cursor eqLogicAction" data-action="add" >
 				<center>
-					<i class="fa fa-plus-circle"></i>
+					<i class="fas fa-plus-circle"></i>
 				</center>
 				<span><center>{{Ajouter}}</center></span>
 			</div>
 			<div class="cursor eqLogicAction" data-action="gotoPluginConf">
 				<center>
-					<i class="fa fa-wrench"></i>
+					<i class="fas fa-wrench"></i>
 				</center>
 				<span><center>{{Configuration}}</center></span>
 			</div>
 			<div class="cursor" id="bt_healthCamera">
 				<center>
-					<i class="fa fa-medkit"></i>
+					<i class="fas fa-medkit"></i>
 				</center>
 				<span><center>{{Santé}}</center></span>
 			</div>
