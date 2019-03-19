@@ -10,23 +10,23 @@ $eqLogics = eqLogic::byType($plugin->getId());
 	<div class="col-xs-12 eqLogicThumbnailDisplay" style="padding-left: 25px;">
 		<legend><i class="fa fa-cog"></i>  {{Gestion}}</legend>
 		<div class="eqLogicThumbnailContainer">
-			<div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 140px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
+			<div class="cursor eqLogicAction" data-action="add" >
 				<center>
-					<i class="fa fa-plus-circle" style="font-size : 6em;color:#94ca02;"></i>
+					<i class="fa fa-plus-circle"></i>
 				</center>
-				<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>{{Ajouter}}</center></span>
+				<span><center>{{Ajouter}}</center></span>
 			</div>
-			<div class="cursor eqLogicAction" data-action="gotoPluginConf" style="background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;">
+			<div class="cursor eqLogicAction" data-action="gotoPluginConf">
 				<center>
-					<i class="fa fa-wrench" style="font-size : 6em;color:#767676;"></i>
+					<i class="fa fa-wrench"></i>
 				</center>
-				<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676"><center>{{Configuration}}</center></span>
+				<span><center>{{Configuration}}</center></span>
 			</div>
-			<div class="cursor" id="bt_healthCamera" style="background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
+			<div class="cursor" id="bt_healthCamera">
 				<center>
-					<i class="fa fa-medkit" style="font-size : 6em;color:#767676;"></i>
+					<i class="fa fa-medkit"></i>
 				</center>
-				<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676"><center>{{Santé}}</center></span>
+				<span><center>{{Santé}}</center></span>
 			</div>
 		</div>
 		<legend><i class="fa fa-video-camera"></i> {{Mes caméras}}</legend>
@@ -35,7 +35,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<?php
 			foreach ($eqLogics as $eqLogic) {
 				$opacity = ($eqLogic->getIsEnable()) ? '' : jeedom::getConfiguration('eqLogic:style:noactive');
-				echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;' . $opacity . '" >';
+				echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="' . $opacity . '" >';
 				echo "<center>";
 				if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg')) {
 					echo '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg" height="105" width="95" />';
@@ -43,7 +43,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 					echo '<img src="' . $plugin->getPathImgIcon() . '" height="105" width="95" />';
 				}
 				echo "</center>";
-				echo '<span class="name" style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
+				echo '<span class="name"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
 				echo '</div>';
 			}
 			?>
