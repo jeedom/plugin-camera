@@ -15,7 +15,7 @@
 				"request": "\/cgi-bin\/hi3510\/ytleft.cgi?usr=#username#&pwd=#password#"
 			},
 			"display": {
-				"icon": "<i class=\"fa fa-arrow-left\"><\/i>"
+				"icon": "<i class=\"fas fa-arrow-left\"><\/i>"
 			},
 			"isVisible": "1"
 		}, {
@@ -28,7 +28,7 @@
 				"request": "\/cgi-bin\/hi3510\/ytright.cgi?usr=#username#&pwd=#password#"
 			},
 			"display": {
-				"icon": "<i class=\"fa fa-arrow-right\"><\/i>"
+				"icon": "<i class=\"fas fa-arrow-right\"><\/i>"
 			},
 			"isVisible": "1"
 		}, {
@@ -41,7 +41,7 @@
 				"request": "\/cgi-bin\/hi3510\/ytup.cgi?usr=#username#&pwd=#password#"
 			},
 			"display": {
-				"icon": "<i class=\"fa fa-arrow-up\"><\/i>"
+				"icon": "<i class=\"fas fa-arrow-up\"><\/i>"
 			},
 			"isVisible": "1"
 		}, {
@@ -54,7 +54,7 @@
 				"request": "\/cgi-bin\/hi3510\/ytdown.cgi?usr=#username#&pwd=#password#"
 			},
 			"display": {
-				"icon": "<i class=\"fa fa-arrow-down\"><\/i>"
+				"icon": "<i class=\"fas fa-arrow-down\"><\/i>"
 			},
 			"isVisible": "1"
 		}, {

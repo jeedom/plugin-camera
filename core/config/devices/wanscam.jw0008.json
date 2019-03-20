@@ -17,7 +17,7 @@
                     "request": "\/decoder_control.cgi?command=0&onestep=1&user=#username#&pwd=#password#"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>",
+                    "icon": "<i class=\"fas fa-arrow-up\"><\/i>",
                     "generic_type": "CAMERA_UP"
                 },
                 "isVisible": "1"
@@ -33,7 +33,7 @@
                     "request": "\/decoder_control.cgi?command=2&onestep=1&user=#username#&pwd=#password#"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>",
+                    "icon": "<i class=\"fas fa-arrow-down\"><\/i>",
                     "generic_type": "CAMERA_DOWN"
                 },
                 "isVisible": "1"
@@ -49,7 +49,7 @@
                     "request": "\/decoder_control.cgi?command=4&onestep=1&user=#username#&pwd=#password#"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>",
+                    "icon": "<i class=\"fas fa-arrow-left\"><\/i>",
                     "generic_type": "CAMERA_LEFT"
                 },
                 "isVisible": "1"
@@ -65,7 +65,7 @@
                     "request": "\/decoder_control.cgi?command=6&onestep=1&user=#username#&pwd=#password#"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>",
+                    "icon": "<i class=\"fas fa-arrow-right\"><\/i>",
                     "generic_type": "CAMERA_RIGHT"
                 },
                 "isVisible": "1"

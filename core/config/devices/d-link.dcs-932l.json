@@ -15,7 +15,7 @@
                     "request": "pantiltcontrol.cgi?PanSingleMoveDegree=5&TiltSingleMoveDegree=5&PanTiltSingleMove=3"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-left\"><\/i>",
+                    "icon": "<i class=\"fas fa-arrow-left\"><\/i>",
                     "generic_type": "CAMERA_LEFT"
                 }
             },
@@ -28,7 +28,7 @@
                     "request": "pantiltcontrol.cgi?PanSingleMoveDegree=5&TiltSingleMoveDegree=5&PanTiltSingleMove=1"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-up\"><\/i>",
+                    "icon": "<i class=\"fas fa-arrow-up\"><\/i>",
                     "generic_type": "CAMERA_UP"
                 }
             },
@@ -41,7 +41,7 @@
                     "request": "pantiltcontrol.cgi?PanSingleMoveDegree=5&TiltSingleMoveDegree=5&PanTiltSingleMove=7"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-down\"><\/i>",
+                    "icon": "<i class=\"fas fa-arrow-down\"><\/i>",
                     "generic_type": "CAMERA_DOWN"
                 }
             },
@@ -54,7 +54,7 @@
                     "request": "pantiltcontrol.cgi?PanSingleMoveDegree=5&TiltSingleMoveDegree=5&PanTiltSingleMove=5"
                 },
                 "display": {
-                    "icon": "<i class=\"fa fa-arrow-right\"><\/i>",
+                    "icon": "<i class=\"fas fa-arrow-right\"><\/i>",
                     "generic_type": "CAMERA_RIGHT"
                 }
             },
