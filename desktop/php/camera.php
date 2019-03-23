@@ -11,22 +11,19 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		<legend><i class="fas fa-cog"></i>  {{Gestion}}</legend>
 		<div class="eqLogicThumbnailContainer">
 			<div class="cursor eqLogicAction logoPrimary" data-action="add" >
-				<center>
-					<i class="fas fa-plus-circle"></i>
-				</center>
-				<span><center>{{Ajouter}}</center></span>
+				<i class="fas fa-plus-circle"></i>
+				<br/>
+				<span>{{Ajouter}}</span>
 			</div>
 			<div class="cursor eqLogicAction logoSecondary" data-action="gotoPluginConf">
-				<center>
-					<i class="fas fa-wrench"></i>
-				</center>
-				<span><center>{{Configuration}}</center></span>
+				<i class="fas fa-wrench"></i>
+				<br/>
+				<span>{{Configuration}}</span>
 			</div>
 			<div class="cursor logoSecondary" id="bt_healthCamera">
-				<center>
-					<i class="fas fa-medkit"></i>
-				</center>
-				<span><center>{{Santé}}</center></span>
+				<i class="fas fa-medkit"></i>
+				<br/>
+				<span>{{Santé}}</span>
 			</div>
 		</div>
 		<legend><i class="fa fa-video-camera"></i> {{Mes caméras}}</legend>
@@ -36,14 +33,13 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			foreach ($eqLogics as $eqLogic) {
 				$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
 				echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '" >';
-				echo "<center>";
 				if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg')) {
 					echo '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg"/>';
 				} else {
 					echo '<img src="' . $plugin->getPathImgIcon() . '" />';
 				}
-				echo "</center>";
-				echo '<span class="name"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
+				echo "<br/>";
+				echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
 				echo '</div>';
 			}
 			?>
