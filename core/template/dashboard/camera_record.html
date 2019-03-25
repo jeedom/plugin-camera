@@ -1,19 +1,19 @@
 <span class="cmd cmd-widget noRefresh" data-type="action" data-subtype="other" data-cmd_id="#recordState_id#">
-    <span class="cmd cmd-widget" data-cmd_id="#stopRecord_id#" style="display:none;"></span>
-    <span class="cmd cmd-widget" data-cmd_id="#record_id#" style="display:none;"></span>
-    <a class="btn btn-sm btn-default action" style="background-color:#cmd-background-color# !important;border-color : transparent !important;"></a>
-    <script>
-        $('.cmd[data-cmd_id=#recordState_id#] .action').off().on('click', function () {
-            if ('#recordState#' == '1'){
-                jeedom.cmd.execute({id: '#stopRecord_id#', notify: false});
-            } else{
-                jeedom.cmd.execute({id: '#record_id#', notify: false});
-            }
-        });
-        if ('#recordState#' == 1) {
-            $('.cmd[data-cmd_id=#recordState_id#] .action').empty().html('<i class="fa fa-stop"></i>');
-        } else {
-            $('.cmd[data-cmd_id=#recordState_id#] .action').empty().html('<i class="fa fa-circle"></i>');
-        }
-    </script>
+  <span class="cmd cmd-widget" data-cmd_id="#stopRecord_id#" style="display:none;"></span>
+  <span class="cmd cmd-widget" data-cmd_id="#record_id#" style="display:none;"></span>
+  <a class="btn btn-sm btn-default action"></a>
+  <script>
+    $('.cmd[data-cmd_id=#recordState_id#] .action').off().on('click', function () {
+      if ('#recordState#' == '1'){
+        jeedom.cmd.execute({id: '#stopRecord_id#', notify: false});
+      } else{
+        jeedom.cmd.execute({id: '#record_id#', notify: false});
+      }
+    });
+    if ('#recordState#' == 1) {
+      $('.cmd[data-cmd_id=#recordState_id#] .action').empty().html('<i class="fa fa-stop"></i>');
+    } else {
+      $('.cmd[data-cmd_id=#recordState_id#] .action').empty().html('<i class="fa fa-circle"></i>');
+    }
+  </script>
 </span>

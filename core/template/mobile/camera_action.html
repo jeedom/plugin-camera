@@ -1,17 +1,17 @@
 <span class="cmd" data-type="action" data-subtype="other" data-cmd_id="#id#">
-    <a class="action ui-btn ui-mini ui-btn-inline ui-btn-raised" style="background-color:#cmdColor# !important;">#name#</a>
-    <script>
-        $('.cmd[data-cmd_id=#id#] .action').off();
-        $('.cmd[data-cmd_id=#id#] .action').on('mousedown touchstart', function () {
-            jeedom.cmd.execute({id: '#id#', notify: false});
-        });
-        if ('#stopCmd#' == '1') {
-            $('.cmd[data-cmd_id=#id#] .action').on('mouseup touchend', function () {
-                jeedom.cmd.execute({id: '#id#', notify: false,value : {stopCmd : 1}});
-            });
-            $('.cmd[data-cmd_id=#id#] .action').on('tap', function () {
-                jeedom.cmd.execute({id: '#id#', notify: false,value : {stopCmd : 1}});
-            });
-        }
-    </script>
+  <a class="action ui-btn ui-mini ui-btn-inline ui-btn-raised">#name#</a>
+  <script>
+    $('.cmd[data-cmd_id=#id#] .action').off();
+    $('.cmd[data-cmd_id=#id#] .action').on('mousedown touchstart', function () {
+      jeedom.cmd.execute({id: '#id#', notify: false});
+    });
+    if ('#stopCmd#' == '1') {
+      $('.cmd[data-cmd_id=#id#] .action').on('mouseup touchend', function () {
+        jeedom.cmd.execute({id: '#id#', notify: false,value : {stopCmd : 1}});
+      });
+      $('.cmd[data-cmd_id=#id#] .action').on('tap', function () {
+        jeedom.cmd.execute({id: '#id#', notify: false,value : {stopCmd : 1}});
+      });
+    }
+  </script>
 </span>
