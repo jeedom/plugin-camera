@@ -71,6 +71,7 @@ function displayCamera(_object_id) {
       }
       setTileSize('.eqLogic');
       $('#div_displayEquipementCamera').packery({gutter : 0});
+      $('#div_displayEquipementCamera').packery({gutter : 0});
       $.hideLoading();
     }
   });
