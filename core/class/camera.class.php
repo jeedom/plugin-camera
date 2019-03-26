@@ -476,14 +476,13 @@ class camera extends eqLogic {
 			return $replace;
 		}
 		$version = jeedom::versionAlias($_version);
-		$version2 = jeedom::versionAlias($_version, false);
 		$action = '';
 		$info = '';
 		if (!$_fluxOnly) {
 			foreach ($this->getCmd() as $cmd) {
 				if ($cmd->getIsVisible() == 1) {
 					if ($cmd->getLogicalId() != 'urlFlux' && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState' && $cmd->getConfiguration('stopCmd') != 1) {
-						if ($cmd->getDisplay('hideOn' . $version2) == 1) {
+						if ($cmd->getDisplay('hideOn' . $version) == 1) {
 							continue;
 						}
 						if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
@@ -495,7 +494,7 @@ class camera extends eqLogic {
 								'#stopCmd#' => ($cmd->getConfiguration('stopCmdUrl') != '') ? 1 : 0,
 								'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
 							);
-							$action .= template_replace($replaceCmd, getTemplate('core', jeedom::versionAlias($version), 'camera_action', 'camera')) . ' ';
+							$action .= template_replace($replaceCmd, getTemplate('core',$_version, 'camera_action', 'camera')) . ' ';
 						} else {
 							if ($cmd->getType() == 'info') {
 								$info .= $cmd->toHtml($_version, $replace['#cmd-background-color#']);

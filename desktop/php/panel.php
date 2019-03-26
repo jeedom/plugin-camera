@@ -23,23 +23,22 @@ $camera_widgets = array();
 if (init('object_id') == '') {
 	foreach ($allObject as $object) {
 		foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
-			$camera_widgets[] = array('widget' => $camera->toHtml('dview'), 'position' => $camera->getConfiguration('panel::position', 99));
+			$camera_widgets[] = array('widget' => $camera->toHtml('dashboard'), 'position' => $camera->getConfiguration('panel::position', 99));
 		}
 	}
 } else {
 	foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
-		$camera_widgets[] = array('widget' => $camera->toHtml('dview'), 'position' => $camera->getConfiguration('panel::position', 99));
+		$camera_widgets[] = array('widget' => $camera->toHtml('dashboard'), 'position' => $camera->getConfiguration('panel::position', 99));
 	}
 	foreach ($child_object as $child) {
 		$cameras = $child->getEqLogic(true, false, 'camera');
 		if (count($cameras) > 0) {
 			foreach ($cameras as $camera) {
-				$camera_widgets[] = array('widget' => $camera->toHtml('dview'), 'position' => $camera->getConfiguration('panel::position', 99));
+				$camera_widgets[] = array('widget' => $camera->toHtml('dashboard'), 'position' => $camera->getConfiguration('panel::position', 99));
 			}
 		}
 	}
 }
-
 function cmpCameraWidgetPosition($a, $b) {
 	if ($a['position'] == $b['position']) {
 		return 0;
