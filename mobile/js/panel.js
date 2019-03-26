@@ -43,6 +43,7 @@ function initCameraPanel(_object_id) {
   $(window).on("orientationchange", function (event) {
     setTileSize('.eqLogic');
     $('#div_displayEquipementCamera').packery({gutter : 0});
+    $('#div_displayEquipementCamera').packery({gutter : 0});
   });
 }
 
@@ -54,7 +55,7 @@ function displayCamera(_object_id) {
     data: {
       action: 'getCamera',
       object_id: _object_id,
-      version: 'mview'
+      version: 'mobile'
     },
     dataType: 'json',
     error: function (request, status, error) {
