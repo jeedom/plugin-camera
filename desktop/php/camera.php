@@ -18,12 +18,12 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<div class="cursor eqLogicAction logoSecondary" data-action="gotoPluginConf">
 				<i class="fas fa-wrench"></i>
 				<br/>
-				<span>{{Configuration}}</span>
+				<span class="text-cursor">{{Configuration}}</span>
 			</div>
 			<div class="cursor logoSecondary" id="bt_healthCamera">
 				<i class="fas fa-medkit"></i>
 				<br/>
-				<span>{{Santé}}</span>
+				<span class="text-cursor">{{Santé}}</span>
 			</div>
 		</div>
 		<legend><i class="fa fa-video-camera"></i> {{Mes caméras}}</legend>
