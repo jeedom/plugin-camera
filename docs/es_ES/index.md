@@ -1,7 +1,7 @@
 Plugin para crear y gestionar cámaras inalámbricas (pantalla y
 registro)
 
-Configuration du plugin
+Configuración de plugin
 =======================
 
 Después de instalar el plugin, sólo hay que activarlo, sin embargo,
@@ -256,7 +256,7 @@ la cámara:
 Se debe entender antes de crear un tipo de información de comandos
 su cámara
 
-FAQ
+Preguntas frecuentes
 ===
 
 >**Où sont les enregistrements ?**

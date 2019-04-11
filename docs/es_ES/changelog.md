@@ -5,7 +5,7 @@
 - Actualización de la documentación
 - Correction d'un bug sur le panel
 
-# 17/01/2019
+# 01/17/2019
 
 - Actualización de la documentación
 - Correction d'un soucis sur la configuration de Wanscam q3(s)
