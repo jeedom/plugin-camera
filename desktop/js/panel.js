@@ -24,7 +24,7 @@ function autosizeCamWidget(nbCamByLine,nbCamByColumn){
   var totalWidth = $('#div_displayObject').width();
   var camWidth = (totalWidth / nbCamByLine) - (2 * nbCamByLine) - 2 - jeedom.theme['widget::step::width'];
   $('#div_displayObject .eqLogic-widget').width(camWidth);
-  var totalHeight = $(window).outerHeight() - $('header').outerHeight() - $('#div_alert').outerHeight()-8;
+  var totalHeight = $(window).outerHeight() - $('header').outerHeight() - $('#div_alert').outerHeight()-25;
   var camHeight = (totalHeight / nbCamByColumn) - (2 * nbCamByColumn);
   $('#div_displayObject .eqLogic-widget').height(camHeight);
   positionEqLogic();
