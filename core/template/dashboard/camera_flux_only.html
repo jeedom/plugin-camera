@@ -77,7 +77,7 @@
           $('.camera[data-camera_id=#id#] .directDisplay img').attr('src',img.src);
           $('.camera[data-camera_id=#id#] .directDisplay img').attr('data-imgready',1);
         }else{
-          $(".camera[data-camera_id=#id#] .display img").attr('src',img.src);
+          $(".md_cameraZoom[data-camera_id=#id#] .display img").attr('src',img.src);
         }
         var delay = (thumbnail) ? #refreshDelaySlow# - (Date.now() - start) :  #refreshDelayFast# - (Date.now() - start);
         timeoutCamera#id# =  setTimeout(refreshImgCam#id#,delay);
