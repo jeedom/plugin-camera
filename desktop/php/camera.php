@@ -55,7 +55,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<li role="presentation"><a class="eqLogicAction cursor" aria-controls="home" role="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
 			<li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Equipement}}</a></li>
 			<li role="presentation"><a href="#displaytab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Image}}</a></li>
-			<li role="presentation"><a href="#capturetab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-video-camera"></i> {{Capture}}</a></li>
+			<li role="presentation"><a href="#capturetab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-video"></i> {{Capture}}</a></li>
 			<li role="presentation"><a href="#alimtab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-power-off"></i> {{Alimentation}}</a></li>
 			<li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-list-alt"></i> {{Commandes}}</a></li>
 		</ul>
@@ -272,28 +272,26 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		</br>
 		<form class="form-horizontal">
 			<div class="form-group">
-				<div class="form-group">
-					<label class="col-sm-1 control-label">{{Commande ON}}</label>
-					<div class="col-sm-4">
-						<div class="input-group">
-							<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOn"/>
-							<span class="input-group-btn">
-								<a class="btn btn-default listCmdActionOther"><i class="fas fa-list-alt"></i></a>
-							</span>
-						</div>
-					</div>
-					<label class="col-sm-1 control-label">{{OFF}}</label>
-					<div class="col-sm-4">
-						<div class="input-group">
-							<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="commandOff"/>
-							<span class="input-group-btn">
-								<a class="btn btn-default listCmdActionOther"><i class="fas fa-list-alt"></i></a>
-							</span>
-						</div>
+				<label class="col-sm-1 control-label">{{Commande ON}}</label>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<input type="text" class="eqLogicAttr form-control roundedLeft" data-l1key="configuration" data-l2key="commandOn"/>
+						<span class="input-group-btn">
+							<a class="btn btn-default listCmdActionOther roundedRight"><i class="fas fa-list-alt"></i></a>
+						</span>
 					</div>
 				</div>
-			</form>
-		</div>
+				<label class="col-sm-1 control-label">{{OFF}}</label>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<input type="text" class="eqLogicAttr form-control roundedLeft" data-l1key="configuration" data-l2key="commandOff"/>
+						<span class="input-group-btn">
+							<a class="btn btn-default listCmdActionOther roundedRight"><i class="fas fa-list-alt"></i></a>
+						</span>
+					</div>
+				</div>
+			</div>
+		</form>
 	</div>
 	
 	
