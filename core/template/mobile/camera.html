@@ -41,7 +41,7 @@
       $('.eqLogic[data-eqLogic_id=#id#] img.directDisplay').css('max-width',$('.eqLogic[data-eqLogic_id=#id#]').width());
     });
     
-    $(window).on("orientationchange", function (event) {
+    $(window).on("resize", function (event) {
       if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
         return;
       }
