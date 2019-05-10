@@ -40,7 +40,7 @@ function initCameraPanel(_object_id) {
   });
   displayCamera(_object_id);
   
-  $(window).on("orientationchange", function (event) {
+  $(window).on("resize", function (event) {
     setTileSize('.eqLogic');
     $('#div_displayEquipementCamera').packery({gutter : 0});
     $('#div_displayEquipementCamera').packery({gutter : 0});
