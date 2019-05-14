@@ -180,7 +180,20 @@ class camera extends eqLogic {
 				
 			}
 		}
-		
+	}
+	
+	public static function cronDayly() {
+		foreach (camera::byType('camera') as $camera) {
+			try {
+				$camera->setConfiguration('localApiKey', config::genKey());
+				$camera->save();
+			} catch (Exception $e) {
+				
+			}
+		}
+		if(class_exists('mobile') && method_exists('mobile','makeTemplateJson')){
+			mobile::makeTemplateJson();
+		}
 	}
 	
 	public static function devicesParameters($_device = '') {
