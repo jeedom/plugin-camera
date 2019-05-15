@@ -1,11 +1,12 @@
 - Correction d'un soucis si il y a des & dans l'url de stream rtsp
+- Amélioration de la securité sur le flux video
 
 # 21/01/2019
 
 - Actualización de la documentación
 - Correction d'un bug sur le panel
 
-# 01/17/2019
+# 17/01/2019
 
 - Actualización de la documentación
 - Correction d'un soucis sur la configuration de Wanscam q3(s)

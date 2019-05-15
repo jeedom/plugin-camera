@@ -1,4 +1,5 @@
 - Correction d'un soucis si il y a des & dans l'url de stream rtsp
+- Amélioration de la securité sur le flux video
 
 # 21/01/2019
 
