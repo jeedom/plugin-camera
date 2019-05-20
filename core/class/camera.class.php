@@ -86,7 +86,7 @@ class camera extends eqLogic {
 		$return['log'] = 'camera_update';
 		$return['state'] = 'ok';
 		$return['progress_file'] = jeedom::getTmpFolder('camera') . '/dependance';
-		if (exec('which avconv | wc -l') == 0) {
+		if (exec('which avconv | wc -l') == 0 && exec('which ffmpeg | wc -l') == 0) {
 			$return['state'] = 'nok';
 		}
 		return $return;
