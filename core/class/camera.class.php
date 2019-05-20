@@ -187,6 +187,7 @@ class camera extends eqLogic {
 			try {
 				$camera->setConfiguration('localApiKey', config::genKey());
 				$camera->save();
+				$camera->refreshWidget();
 			} catch (Exception $e) {
 				
 			}
