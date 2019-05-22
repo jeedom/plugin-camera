@@ -40,7 +40,7 @@ foreach ($discover_cameras as $cam) {
 	echo '</td>';
 	echo '<td>';
 	if ($cam['exist'] === false) {
-		echo '<input type="password" class="camDiscoverAttr" data-l1key="password" />';
+		echo '<input type="password" autocomplete="new-password" class="camDiscoverAttr" data-l1key="password" />';
 	} else {
 		echo 'NA';
 	}
