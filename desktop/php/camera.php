@@ -23,7 +23,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<div class="cursor logoSecondary" id="bt_healthCamera">
 				<i class="fas fa-medkit"></i>
 				<br/>
-				<span class="text-cursor">{{Santé}}</span>
+				<span>{{Santé}}</span>
 			</div>
 		</div>
 		<legend><i class="fa fa-video-camera"></i> {{Mes caméras}}</legend>
