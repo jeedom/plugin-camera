@@ -510,9 +510,9 @@ class camera extends eqLogic {
 						$action .= template_replace($replaceCmd, getTemplate('core',$_version, 'camera_action', 'camera')) . ' ';
 					} else {
 						if ($cmd->getType() == 'info') {
-							$info .= $cmd->toHtml($_version, $replace['#cmd-background-color#']);
+							$info .= $cmd->toHtml($_version);
 						} else {
-							$action .= $cmd->toHtml($_version, $replace['#cmd-background-color#']);
+							$action .= $cmd->toHtml($_version);
 						}
 					}
 					
