@@ -44,11 +44,16 @@ $eqLogics = eqLogic::byType($plugin->getId());
 	 <?php
 foreach ($eqLogics as $eqLogic) {
 	$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
-	if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg')) {
-		$img = '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg" height="65" width="55" style="' . $opacity . '"/>';
-	} else {
+	if ($eqLogic->getConfiguration('device') != ""){
+		if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg')) {
+			$img = '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg" height="65" width="55" style="' . $opacity . '"/>';
+		} else {
+			$img = '<img class="lazy" src="' . $plugin->getPathImgIcon() . '" height="65" width="55" style="' . $opacity . '"/>';
+		}
+	}else {
 		$img = '<img class="lazy" src="' . $plugin->getPathImgIcon() . '" height="65" width="55" style="' . $opacity . '"/>';
 	}
+	
 	echo '<tr><td>' . $img . '</td><td><a href="' . $eqLogic->getLinkToConfiguration() . '" style="text-decoration: none;">' . $eqLogic->getHumanName(true) . '</a></td>';
 	echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getId() . '</span></td>';
 	$status = '<span class="label label-success" style="font-size : 1em; cursor : default;">{{OK}}</span>';
