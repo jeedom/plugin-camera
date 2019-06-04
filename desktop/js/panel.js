@@ -21,8 +21,12 @@ $( "textarea").click(function() { $(this).focus(); });
 autosizeCamWidget(NB_COLUMN,NB_LINE);
 
 function autosizeCamWidget(nbCamByLine,nbCamByColumn){
+  var margin = 4;
+  if(jeedom.theme && jeedom.theme['widget::margin']){
+    margin = jeedom.theme['widget::margin'];
+  }
   var totalWidth = $('#div_displayObject').width();
-  var camWidth = (totalWidth / nbCamByLine) - jeedom.theme['widget::margin'] * 2 ;
+  var camWidth = (totalWidth / nbCamByLine) - margin * 2 ;
   $('#div_displayObject .eqLogic-widget').width(camWidth);
   var totalHeight = $(window).outerHeight() - $('header').outerHeight() - $('#div_alert').outerHeight()-25;
   var camHeight = (totalHeight / nbCamByColumn) - (2 * nbCamByColumn);
