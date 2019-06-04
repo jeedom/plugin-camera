@@ -31,7 +31,7 @@ function autosizeCamWidget(nbCamByLine,nbCamByColumn){
   var totalHeight = $(window).outerHeight() - $('header').outerHeight() - $('#div_alert').outerHeight()-25;
   var camHeight = (totalHeight / nbCamByColumn) - (2 * nbCamByColumn);
   $('#div_displayObject .eqLogic-widget').height(camHeight);
-  $('#div_displayObject .eqLogic-widget:not(.jeedomAlreadyPosition),.scenario-widget:not(.jeedomAlreadyPosition)').css('margin',jeedom.theme['widget::margin']+'px');
+  $('#div_displayObject .eqLogic-widget:not(.jeedomAlreadyPosition),.scenario-widget:not(.jeedomAlreadyPosition)').css('margin',margin+'px');
   $('#div_displayObject .eqLogic-widget,.scenario-widget').addClass('jeedomAlreadyPosition');
   $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-width',$('#div_displayObject .eqLogic-widget').width());
   $('#div_displayObject').each(function(){
