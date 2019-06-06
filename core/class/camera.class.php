@@ -495,12 +495,6 @@ class camera extends eqLogic {
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getIsVisible() == 1) {
 				if ($cmd->getLogicalId() != 'urlFlux' && $cmd->getLogicalId() != 'stopRecordCmd' && $cmd->getLogicalId() != 'recordCmd' && $cmd->getLogicalId() != 'recordState' && $cmd->getConfiguration('stopCmd') != 1) {
-					if ($cmd->getDisplay('hideOn' . $version) == 1) {
-						continue;
-					}
-					if ($cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
-						$action .= '<br/>';
-					}
 					if ($cmd->getType() == 'action' && $cmd->getSubType() == 'other') {
 						$replaceCmd = array(
 							'#id#' => $cmd->getId(),
