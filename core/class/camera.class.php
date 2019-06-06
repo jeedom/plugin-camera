@@ -507,7 +507,7 @@ class camera extends eqLogic {
 							'#stopCmd#' => ($cmd->getConfiguration('stopCmdUrl') != '') ? 1 : 0,
 							'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
 						);
-						$action .= template_replace($replaceCmd, getTemplate('core',$_version, 'camera_action', 'camera')) . ' ';
+						$action .= template_replace($replaceCmd, getTemplate('core',$version, 'camera_action', 'camera')) . ' ';
 					} else {
 						if ($cmd->getType() == 'info') {
 							$info .= $cmd->toHtml($_version);
