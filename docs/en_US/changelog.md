@@ -1,3 +1,5 @@
+- Amélioration du support du rtsp
+
 # 06/06/2019
 
 - Correction d'un soucis si il y a des & dans l'url de stream rtsp
