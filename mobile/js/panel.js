@@ -15,6 +15,7 @@
 */
 
 function initCameraPanel(_object_id) {
+  jeedom.eqLogic.bt_displayObjectName = true;
   if(typeof setBackgroundImage == 'function'){
     setBackgroundImage('plugins/camera/core/img/panel.jpg');
   }
@@ -71,6 +72,7 @@ function displayCamera(_object_id) {
         $('#div_displayEquipementCamera').append(data.result.eqLogics[i]).trigger('create');
       }
       setTileSize('.eqLogic');
+      $('.object_name').show();
       $('#div_displayEquipementCamera').packery({gutter : 0});
       $('#div_displayEquipementCamera').packery({gutter : 0});
       $.hideLoading();
