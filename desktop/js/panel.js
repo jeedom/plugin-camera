@@ -14,10 +14,10 @@
 * You should have received a copy of the GNU General Public License
 * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 */
-
 $('.div_displayEquipement').disableSelection();
 $( "input").click(function() { $(this).focus(); });
 $( "textarea").click(function() { $(this).focus(); });
+jeedom.eqLogic.changeDisplayObjectName(true);
 autosizeCamWidget(NB_COLUMN,NB_LINE);
 
 function autosizeCamWidget(nbCamByLine,nbCamByColumn){

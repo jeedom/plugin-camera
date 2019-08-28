@@ -52,7 +52,7 @@ $askWidth = init('width', 0);
 if ($askWidth == 0 && init('thumbnail') == 1) {
 	$askWidth = 360;
 }
-$source = imagecreatefromstring($data);
+$source = @imagecreatefromstring($data);
 if ($source === false) {
 	echo $data;
 	exit();
