@@ -1,4 +1,7 @@
+# 28/08/2019
+
 - Amélioration du support du rtsp
+- Corrección de errores
 
 # 06/06/2019
 
