@@ -1,3 +1,5 @@
+ - Correction d'un bug ou la tache cronHourly du plugin camera n'arrivait pas a finir
+
 # 28/08/2019
 
 - Amélioration du support du rtsp
