@@ -117,6 +117,9 @@ $(".cameraThumbnailContainer").slideToggle(1);
 $(".cameraThumbnailContainer").eq(0).slideToggle(1);
 $('.toggleList').on('click', function() {
 	$(this).closest('.div_dayContainer').find(".cameraThumbnailContainer").slideToggle("slow");
+	$("img.lazy").lazyload({
+		container: $("#md_modal")
+	});
 });
 
 $("img.lazy").lazyload({
