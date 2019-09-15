@@ -1,4 +1,7 @@
+# 14/09/2019
+
  - Correction d'un bug ou la tache cronHourly du plugin camera n'arrivait pas a finir
+ - Correction d'un bug sur la prévisualisation de l'historique des captures
 
 # 28/08/2019
 
