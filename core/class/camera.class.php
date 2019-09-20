@@ -733,7 +733,7 @@ class camera extends eqLogic {
 				'#ip#' => urlencode($this->getConfiguration('ip')),
 				'#port#' => urlencode($this->getConfiguration('port')),
 			);
-			$rtsp_tcp = (strpos($this->getConfiguration('cameraStreamAccessUrl'),'rtsp://')) ? '-rtsp_transport tcp ' : '';
+			$rtsp_tcp = (strpos($this->getConfiguration('cameraStreamAccessUrl'),'rtsp://') !== false) ? '-rtsp_transport tcp ' : '';
 			//	$datetime = 'drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf: text="' . date('Y-m-d H:i:s') . '": fontcolor=black@0.8: x=50: y=60';
 			shell_exec('avconv '.$rtsp_tcp.' -i "' . trim(str_replace(array_keys($replace), $replace, $this->getConfiguration('cameraStreamAccessUrl'))) . '" -frames:v 1 -y -r 1 -vsync 1 -qscale 1 -f image2 ' . jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg 2>&1 >> /dev/null');
 			$data = file_get_contents(jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg');
