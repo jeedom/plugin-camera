@@ -152,6 +152,7 @@ class camera extends eqLogic {
 			mkdir($record_dir, 0777, true);
 		}
 		$max_size = config::byKey('maxSizeRecordDir', 'camera') * 1024 * 1024;
+		$i=0;
 		while (getDirectorySize($record_dir) > $max_size) {
 			$older = array('file' => null, 'datetime' => null);
 			foreach (ls($record_dir, '*') as $dir) {
@@ -165,7 +166,15 @@ class camera extends eqLogic {
 			if ($older['file'] == null) {
 				throw new Exception(__('Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ', __FILE__) . getDirectorySize($record_dir));
 			}
-			unlink($older['file']);
+			if(is_dir($older['file'])){
+				rrmdir($older['file']);
+			}else{
+				unlink($older['file']);
+			}
+			$i++;
+			if($i > 100){
+				break;
+			}
 		}
 		foreach (camera::byType('camera') as $camera) {
 			try {
