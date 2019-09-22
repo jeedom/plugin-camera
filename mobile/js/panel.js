@@ -71,7 +71,7 @@ function displayCamera(_object_id) {
         $('#div_displayEquipementCamera').append(data.result.eqLogics[i]).trigger('create');
       }
       setTileSize('.eqLogic');
-      jeedom.eqLogic.changeDisplayObjectName(true);
+      $('.eqLogic-widget').addClass('displayObjectName');
       $('#div_displayEquipementCamera').packery({gutter : 0});
       $('#div_displayEquipementCamera').packery({gutter : 0});
       $.hideLoading();
