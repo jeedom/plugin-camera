@@ -1,3 +1,8 @@
+# 23/09/2019
+
+- Fehlerbehebungen
+- Ajout d'un champs pour mettre des options flux video (rtsp)
+
 # 20/09/2019
 
 - Fehlerbehebungen
