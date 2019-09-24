@@ -141,6 +141,12 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									</div>
 								</div>
 								<div class="form-group">
+									<label class="col-sm-3 control-label">{{Option flux video}}</label>
+									<div class="col-sm-7">
+										<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="rtsp_option" />
+									</div>
+								</div>
+								<div class="form-group">
 									<label class="col-sm-3 control-label">{{Position sur le panel}}</label>
 									<div class="col-sm-7">
 										<input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="panel::position" />

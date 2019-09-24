@@ -17,7 +17,7 @@
 $('.div_displayEquipement').disableSelection();
 $( "input").click(function() { $(this).focus(); });
 $( "textarea").click(function() { $(this).focus(); });
-jeedom.eqLogic.changeDisplayObjectName(true);
+$('.eqLogic-widget').addClass('displayObjectName');
 autosizeCamWidget(NB_COLUMN,NB_LINE);
 
 function autosizeCamWidget(nbCamByLine,nbCamByColumn){

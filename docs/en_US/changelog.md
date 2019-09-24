@@ -1,3 +1,12 @@
+# 23/09/2019
+
+- Correction de bugs
+- Ajout d'un champs pour mettre des options flux video (rtsp)
+
+# 20/09/2019
+
+- Correction de bugs
+
 # 14/09/2019
 
  - Correction d'un bug ou la tache cronHourly du plugin camera n'arrivait pas a finir
