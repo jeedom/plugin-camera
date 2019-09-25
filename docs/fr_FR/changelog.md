@@ -1,3 +1,7 @@
+# 25/09/2019
+
+- Correction de bug sur le rtsp en debian 10
+
 # 23/09/2019
 
 - Correction de bugs
