@@ -25,7 +25,7 @@ if (!isConnect('admin')) {
 <form class="form-horizontal">
 	<fieldset>
 		<div class="form-group">
-			<label class="col-lg-3 control-label">{{moteur RTSP}}</label>
+			<label class="col-lg-3 control-label">{{Moteur RTSP}}</label>
 			<div class="col-lg-4">
 				<select class="configKey form-control" data-l1key="rtsp::engine" >
 					<option value="avconv">avconv</option>
