@@ -1,5 +1,9 @@
 # 25/09/2019
 
+- Correction d'un bug sur la prise de video sous debian 10
+
+# 25/09/2019
+
 - Correction de bug sur le rtsp en debian 10
 
 # 23/09/2019
