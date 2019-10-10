@@ -1,4 +1,4 @@
-# 25/09/2019
+# 10/10/2019
 
 - Correction d'un bug sur la prise de video sous debian 10
 
