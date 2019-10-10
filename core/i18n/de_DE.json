@@ -1,6 +1,6 @@
 {
     "plugins/camera/desktop/php/panel.php": {
-        "Liste objets": "Objekt Liste",
+        "Liste objets": "Liste der Objekte",
         "Rechercher": "Suchen nach"
     },
     "plugins/camera/plugin_info/configuration.php": {
