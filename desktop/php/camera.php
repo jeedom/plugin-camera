@@ -26,7 +26,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<span>{{Santé}}</span>
 			</div>
 		</div>
-		<legend><i class="fa fa-video-camera"></i> {{Mes caméras}}</legend>
+		<legend><i class="fas fa-video"></i> {{Mes caméras}}</legend>
 		<input class="form-control" placeholder="{{Rechercher}}" id="in_searchEqlogic" />
 		<div class="eqLogicThumbnailContainer">
 			<?php
