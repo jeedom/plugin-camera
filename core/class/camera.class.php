@@ -151,28 +151,37 @@ class camera extends eqLogic {
 		if (!file_exists($record_dir)) {
 			mkdir($record_dir, 0777, true);
 		}
+		foreach (ls($record_dir, '*') as $dir) {
+			$camera  = self::byId(str_replace('/','',$dir));
+			if(!is_object($camera)){
+				shell_exec('rm -rf '.$record_dir . '/' . $dir);
+				continue;
+			}
+		}
 		$max_size = config::byKey('maxSizeRecordDir', 'camera') * 1024 * 1024;
 		$i=0;
-		while (getDirectorySize($record_dir) > $max_size) {
-			$older = array('file' => null, 'datetime' => null);
-			foreach (ls($record_dir, '*') as $dir) {
-				foreach (ls($record_dir . '/' . $dir, '*') as $file) {
-					if ($older['datetime'] == null || $older['datetime'] > filemtime($record_dir . '/' . $dir . '/' . $file)) {
-						$older['file'] = $record_dir . '/' . $dir . '/' . $file;
-						$older['datetime'] = filemtime($record_dir . '/' . $dir . '/' . $file);
-					}
-				}
+		$files = array();
+		foreach (ls($record_dir, '*') as $dir) {
+			foreach (ls($record_dir . '/' . $dir, '*') as $file) {
+				$files[filemtime($record_dir . '/' . $dir . $file).'.'.str_replace('/','',$dir)] = array(
+					'file' => $record_dir . '/' . $dir . $file,
+					'datetime' => filemtime($record_dir . '/' . $dir .  $file),
+					'filesize' => filesize($record_dir . '/' . $dir .  $file)
+				);
 			}
-			if ($older['file'] == null) {
-				throw new Exception(__('Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ', __FILE__) . getDirectorySize($record_dir));
+		}
+		ksort($files);
+		$files = array_values($files);
+		$dir_size = getDirectorySize($record_dir);
+		$i=0;
+		while ($dir_size > $max_size) {
+			if (count($files) == 0) {
+				throw new Exception(__('Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ', __FILE__) . $dir_size);
 			}
-			if(is_dir($older['file'])){
-				rrmdir($older['file']);
-			}else{
-				unlink($older['file']);
-			}
+			shell_exec('rm -rf '.$files[$i]['file']);
+			$dir_size -= $files[$i]['filesize'];
 			$i++;
-			if($i > 100){
+			if($i > 10000){
 				break;
 			}
 		}
