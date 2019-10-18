@@ -1,3 +1,7 @@
+# 17/10/2019
+
+- Optimisation de la fonction de nettoyage des dossiers de capture des cameras
+
 # 10/10/2019
 
 - Correction d'un bug sur la prise de video sous debian 10
