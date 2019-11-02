@@ -20,6 +20,11 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<br/>
 				<span class="text-cursor">{{Configuration}}</span>
 			</div>
+			<div class="cursor logoSecondary" id="bt_discoverCam">
+				<i class="fas fa-search"></i>
+				<br/>
+				<span>{{Découverte}}</span>
+			</div>
 			<div class="cursor logoSecondary" id="bt_healthCamera">
 				<i class="fas fa-medkit"></i>
 				<br/>
