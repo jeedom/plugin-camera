@@ -27,8 +27,9 @@ if ($camera->getEqType_name() != 'camera') {
 if ($camera->getConfiguration('localApiKey') != init('apikey')) {
 	die();
 }
+ob_clean();
 header('Content-Type: image/jpeg');
-if ($camera->getConfiguration('doNotCompressImage', 0) == 1 || !function_exists('imagecreatefromstring')) {
+if ($camera->getConfiguration('doNotCompressImage', 0) == 1 || !function_exists('imagecreatefromstring') || true) {
 	echo $camera->getSnapshot();
 	exit();
 }
