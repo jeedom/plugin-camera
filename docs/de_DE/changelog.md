@@ -1,3 +1,5 @@
+- Retour de la fonction de decouverte ONVIF (merci @Aidom)
+
 # 17/10/2019
 
 - Optimisation de la fonction de nettoyage des dossiers de capture des cameras
@@ -12,12 +14,12 @@
 
 # 23/09/2019
 
-- Fehlerbehebungen
+- Correction de bugs
 - Ajout d'un champs pour mettre des options flux video (rtsp)
 
 # 20/09/2019
 
-- Fehlerbehebungen
+- Correction de bugs
 
 # 14/09/2019
 
@@ -27,7 +29,7 @@
 # 28/08/2019
 
 - Amélioration du support du rtsp
-- Fehlerbehebungen
+- Correction de bugs
 
 # 06/06/2019
 
@@ -37,19 +39,19 @@
 
 # 21/01/2019
 
-- Aktualisierung des Dokuments
+- Mise à jour de la doc
 - Correction d'un bug sur le panel
 
 # 17/01/2019
 
-- Aktualisierung des Dokuments
+- Mise à jour de la doc
 - Correction d'un soucis sur la configuration de Wanscam q3(s)
 
 # 15/01/2019
 
 - Ajout de la camera Wanscam q3(s)
 - Selection du mode automatiquement en fonction de l'url de capture et du flux vidéo (RTSP)
-- Fehlerbehebungen
+- Correction de bugs
 - Ajout du remplacement de #username# et #password# dans les commandes
 - Correction d'un soucis sur les dépendance
 
@@ -65,14 +67,14 @@
 
 # 10/03/2018
 
-- Aktualisierung des Dokuments
-- Code-Optimierung
+- Mise à jour de la doc
+- Optimisation du code
 
 # 05/03/2018
 
-- Fehlerbehebungen
+- Correction de bugs
 
 # 12/02/2018
 
-- Fehlerbehebungen
+- Correction de bugs
 - Ajout d'une option pour désactiver toute compression d'image coté Jeedom
