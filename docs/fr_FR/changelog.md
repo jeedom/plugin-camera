@@ -1,3 +1,5 @@
+- Retour de la fonction de decouverte ONVIF (merci @Aidom)
+
 # 17/10/2019
 
 - Optimisation de la fonction de nettoyage des dossiers de capture des cameras

@@ -1057,5 +1057,3 @@ class cameraCmd extends cmd {
 	
 	/*     * **********************Getteur Setteur*************************** */
 }
-
-?>

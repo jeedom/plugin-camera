@@ -1018,6 +1018,5 @@ class Ponvif {
 														return $response['Envelope']['Body']['PullMessagesResponse'];
 													}
 													
-												} // end class
-												?>
+												} 
 												
