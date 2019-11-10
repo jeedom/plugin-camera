@@ -1031,22 +1031,28 @@ class cameraCmd extends cmd {
 			$eqLogic->recordCam($_options['title'], $_options['message']);
 			return true;
 		}
-		$url = $eqLogic->getUrl($request);
-		if (strpos($request, 'curl ') !== false) {
-			log::add('camera', 'debug', 'Executing ' . $url);
-			shell_exec($request);
-		} else {
-			$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
-			$http->setNoReportError(true);
-			$http->setCURLOPT_HTTPAUTH(CURLAUTH_ANY);
-			$headers = array(
-				'User-Agent: Jeedom',
-			);
-			$http->setHeader($headers);
-			$http->exec(2);
+		if(strpos($request,'#') === 0){
+			$cmd = cmd::byId(str_replace('#','',$request));
+			if(is_object($cmd)){
+				$cmd->execCmd();
+			}
+		}else{
+			$url = $eqLogic->getUrl($request);
+			if (strpos($request, 'curl ') !== false) {
+				log::add('camera', 'debug', 'Executing ' . $url);
+				shell_exec($request);
+			} else {
+				$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
+				$http->setNoReportError(true);
+				$http->setCURLOPT_HTTPAUTH(CURLAUTH_ANY);
+				$headers = array(
+					'User-Agent: Jeedom',
+				);
+				$http->setHeader($headers);
+				$http->exec(2);
+			}
 		}
 		return true;
-		
 	}
 	
 	/*     * **********************Getteur Setteur*************************** */
