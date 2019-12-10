@@ -52,7 +52,7 @@ $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').on('change', func
   }
 });
 
-$(".listCmdActionOther").on('click', function () {
+$('#div_pageContainer').off('click','.listCmdActionOther').on('click','.listCmdActionOther', function () {
   var el = $(this);
   jeedom.cmd.getSelectModal({cmd: {type: 'action',subType : 'other'}}, function (result) {
     el.closest('.input-group').find('input').value(result.human);
@@ -89,8 +89,19 @@ function addCmdToTable(_cmd) {
   tr += '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
   tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
   tr += '</td>';
-  tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" style="margin-bottom : 5px;" placeholder="{{URL de la commande}}"/>';
+  tr += '<td>';
+  tr += '<div class="input-group" style="margin-bottom : 5px;" >';
+  tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="request" placeholder="{{URL de la commande}}"/>';
+  tr += '<span class="input-group-btn">';
+  tr += '<a class="btn btn-sm btn-default listCmdActionOther roundedRight"><i class="fas fa-list-alt"></i></a>';
+  tr += '</span>';
+  tr += '</div>';
+  tr += '<div class="input-group">';
   tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="stopCmdUrl" placeholder="{{URL de la commande de stop de mouvement (caméra motirisée)}}" />';
+  tr += '<span class="input-group-btn">';
+  tr += '<a class="btn btn-sm btn-default listCmdActionOther roundedRight"><i class="fas fa-list-alt"></i></a>';
+  tr += '</span>';
+  tr += '</div>';
   tr += '<input class="cmdAttr form-control input-sm" data-l1key="logicalId" />';
   tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateValue" placeholder="{{Valeur retour d\'état}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;" />';
   tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateTime" placeholder="{{Durée avant retour d\'état (min)}}" style="width : 30%; display : inline-block;margin-top : 5px;margin-right : 5px;" />';
@@ -114,13 +125,13 @@ function addCmdToTable(_cmd) {
 $('#table_cmd tbody').on('change','.cmd .cmdAttr[data-l1key=type]',function(){
   var cmd = $(this).closest('.cmd');
   if($(this).value() == 'info'){
-    cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').hide();
-    cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').hide();
+    cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').closest('.input-group').hide();
+    cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').closest('.input-group').hide();
     cmd.find('.actionMode').hide();
   }else{
     cmd.find('.cmdAttr[data-l1key=logicalId]').hide();
-    cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').show();
-    cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').show();
+    cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=request]').closest('.input-group').show();
+    cmd.find('.cmdAttr[data-l1key=configuration][data-l2key=stopCmdUrl]').closest('.input-group').show();
     cmd.find('.actionMode').show();
   }
 });

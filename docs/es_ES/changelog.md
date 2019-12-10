@@ -1,3 +1,6 @@
+- Retour de la fonction de decouverte ONVIF (merci @Aidom)
+- Possibilité d'utiliser des commandes (type script) pour le controle des cameras
+
 # 17/10/2019
 
 - Optimisation de la fonction de nettoyage des dossiers de capture des cameras
