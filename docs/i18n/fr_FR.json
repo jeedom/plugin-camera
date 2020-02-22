@@ -1,5 +1,5 @@
 {
-    "\/var\/jenkins_home\/workspace\/Market\/beta\/docs\/\/fr_FR\/changelog.md": {
+    "changelog.md": {
         "- Retour de la fonction de decouverte ONVIF (merci @Aidom)": "- Retour de la fonction de decouverte ONVIF (merci @Aidom)",
         "- Possibilité d'utiliser des commandes (type script) pour le controle des cameras": "- Possibilité d'utiliser des commandes (type script) pour le controle des cameras",
         "# 17\/10\/2019": "# 17\/10\/2019",
@@ -43,7 +43,7 @@
         "# 12\/02\/2018": "# 12\/02\/2018",
         "- Ajout d'une option pour désactiver toute compression d'image coté Jeedom": "- Ajout d'une option pour désactiver toute compression d'image coté Jeedom"
     },
-    "\/var\/jenkins_home\/workspace\/Market\/beta\/docs\/\/fr_FR\/index.md": {
+    "index.md": {
         "Plugin permettant de créer et gérer des caméras wifi (affichage et": "Plugin permettant de créer et gérer des caméras wifi (affichage et",
         "enregistrement)": "enregistrement)",
         "Configuration du plugin": "Configuration du plugin",
