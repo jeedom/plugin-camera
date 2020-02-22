@@ -1,4 +1,4 @@
-- Rückkehr der ONVIF-Erkennungsfunktion (danke @Aidom)
+- Rückgabe der ONVIF-Erkennungsfunktion (danke @Aidom)
 - Möglichkeit zur Verwendung von Befehlen (Skripttyp) zur Kamerasteuerung
 
 # 2019.10.17
@@ -7,16 +7,16 @@
 
 # 2019.10.10
 
-- Korrektur eines Fehlers bei Videoaufnahmen unter Debian 10
+- Korrektur eines Fehlers beim Aufnehmen von Videos unter Debian 10
 
 # 2019.09.25
 
-- Fehlerbehebung auf dem RTSP in Debian 10
+- Fehlerbehebung auf RTSP in Debian 10
 
 # 2019.09.23
 
 - Fehlerbehebungen
-- Hinzufügen eines Feldes zum Einfügen von Videostream-Optionen (rtsp)
+- Hinzufügen eines Feldes zum Einfügen von Optionen Videostream (rtsp)
 
 # 2019.09.20
 
@@ -36,31 +36,31 @@
 
 - Ein Problem wurde behoben, wenn &amp; in der Stream-RTSP-URL vorhanden sind
 - Verbesserte Sicherheit im Videostream
-- Ein Problem wurde behoben, wenn die URL des Videostreams Leerzeichen enthält
+- Es wurde ein Problem behoben, bei dem in der Video-Stream-URL Leerzeichen vorhanden waren
 
 # 2019.01.21
 
-- Aktualisierung des Dokuments
-- Ein Fehler im Panel wurde behoben
+- Aktualisieren des Dokuments
+- Korrektur eines Fehlers auf dem Panel
 
 # 2019.01.17
 
-- Aktualisierung des Dokuments
+- Aktualisieren des Dokuments
 - Behebung eines Problems mit der Konfiguration von Wanscam q3 (s)
 
 # 2019.01.15
 
-- Hinzufügen der Wanscam q3 (s) Kamera
-- Modusauswahl automatisch basierend auf Aufnahme-URL und Videostream (RTSP)
+- Wanscam q3 (s) Kamera hinzugefügt
+- Modusauswahl automatisch basierend auf Capture-URL und Videostream (RTSP)
 - Fehlerbehebungen
-- Ersetzen von # Benutzername # und # Passwort # in Bestellungen hinzugefügt
+- Ersetzen von # Benutzername # und # Passwort # in Befehlen hinzugefügt
 - Korrektur eines Abhängigkeitsproblems
 
 # 2018.01.06
 
-- Neugestaltung des Panels, wir wählen nun die Anzahl der Kameras pro Zeile in der Plugin-Konfiguration, deren Größe wird automatisch berechnet
-- Verbesserung des Widgets auf Mobilgeräten
-- Unterstützung für RTSP / MJPEG-Videostreams ... Bitte beachten Sie, dass eine Konvertierung durchgeführt wird. Dies ist nur zu verwenden, wenn Sie keine andere Wahl haben. Sie sollten Snapshots auswählen (schneller und weniger laden). auf Jeedom)
+- Bei der Neugestaltung des Panels wählen wir nun die Anzahl der Kameras pro Zeile in der Plugin-Konfiguration aus, deren Größe automatisch berechnet wird
+- Verbesserung des mobilen Widgets
+- Unterstützung für RTSP / MJPEG-Videostreams ... Bitte beachten Sie, dass eine Konvertierung durchgeführt wird. Diese wird nur verwendet, wenn Sie keine andere Wahl haben. Sie sollten Snapshots privilegieren (schneller und weniger belastbar) Jeedom)
 
 # 2018.03.04
 
@@ -68,7 +68,7 @@
 
 # 2018.03.10
 
-- Aktualisierung des Dokuments
+- Aktualisieren des Dokuments
 - Codeoptimierung
 
 # 2018.03.05

@@ -7,7 +7,7 @@ Plugin Konfiguration
 Après installation du plugin, il vous suffit de l’activer, cependant il
 Es gibt einige erweiterte Konfigurationseinstellungen:
 
-- ** Pfad aufzeichnen **: Gibt den Pfad an, auf dem Jeedom muss
+-   **Aufzeichnungspfad **: Gibt den Pfad an, auf dem Jeedom muss
     stocker les images qu’il capture de vos Kameras (il est déconseillé
     d’y toucher). Si votre chemin n’est pas dans le chemin
     d’installation de Jeedom alors vous ne pourrez visualiser les
@@ -18,7 +18,7 @@ Es gibt einige erweiterte Konfigurationseinstellungen:
     enregistrées (il est déconseillé d’y toucher). Wenn dieses Kontingent ist
     Jeedom erreicht löscht die ältesten Erfassungs.
 
-- ** Das Kamera-Plugin muss auf Interaktionen reagieren **: keywords /
+-   **Das Kamera-Plugin muss auf Interaktionen reagieren **: keywords /
     Sätze, auf die das Plugin über Jeedom-Interaktionen reagiert.
 
 -   **Panel** : Vous permet d’afficher le panel (Menu
@@ -39,35 +39,35 @@ Hier haben Sie die wichtigsten Informationen Ihrer Kamera:
 -   **Objet parent** : indique l’objet parent auquel appartient
     l’équipement
 
-- ** Aktivieren **: Aktiviert Ihre Ausrüstung
+-   **Aktivieren **: Aktiviert Ihre Ausrüstung
 
-- ** Sichtbar **: macht es auf dem Armaturenbrett sichtbar
+-   **Sichtbar **: macht es im Dashboard sichtbar
 
 -   **IP** : l’adresse IP local de votre Kamera
 
-- ** Port **: Der Port, an den die Kamera angeschlossen werden soll
+-   **Port **: Der Port, an den die Kamera angeschlossen werden soll
 
-- ** Protokoll **: Das Kommunikationsprotokoll Ihrer Kamera (http
+-   **Protokoll **: Das Kommunikationsprotokoll Ihrer Kamera (http
     oder https)
 
 -   **Nom d’utilisateur** : nom d’utilisateur pour se connecter à la
     Kamera (falls erforderlich). Bitte beachten Sie, dass das Plugin keine Zeichen unterstützt
     Spezial (beschränken Sie sich also auf Zahlen, Klein- / Großbuchstaben)
 
-- ** Passwort **: Passwort für die Verbindung zur Kamera
+-   **Passwort **: Passwort zum Herstellen einer Verbindung zur Kamera
     (falls erforderlich).Bitte beachten Sie, dass das Plugin keine Zeichen unterstützt
     Spezial (beschränken Sie sich also auf Zahlen, Klein- / Großbuchstaben)
 
-- ** Snapshot-URL **: Kamera-Snapshot-URL. Wechseln Sie zu
+-   **Snapshot-URL **: Kamera-Snapshot-URL. Wechseln Sie zu
     Kameras funktionieren. Achten Sie darauf, keine Flow-URL darunter zu setzen
     es lohnt sich, Jeedom zu pflanzen. Sie können die Tags \ #Benutzername \ hinzufügen#
     und \ #password \ #, das automatisch durch den Namen ersetzt wird
     d’utilisateur et le mot de passe lors de l’utilisation de cette
     bestellen
 
-- ** Stream-URL **: Video-Stream-URL der Kamera vom Typ RTSP: // # Benutzername #: #Kennwort # @ # IP-Nr.: 554 / videoMain (Beispiel für Foscam-Kameras)
+-   **Stream-URL **: Video-Stream-URL der Kamera vom Typ RTSP: // # Benutzername #: #Kennwort # @ # IP-Nr.: 554 / videoMain (Beispiel für Foscam-Kameras)
 
-- ** Modell **: Hier können Sie das Kameramodell auswählen. Seien Sie vorsichtig, wenn
+-   **Modell **: Hier können Sie das Kameramodell auswählen. Seien Sie vorsichtig, wenn
     Sie ändern, dass Ihre Konfigurationseinstellungen überschrieben werden
 
 Metaphorik
@@ -86,7 +86,7 @@ sind verfügbar in: Mobile / Desktop und Miniatur / Normal.
 -   Compression (%) : plus il est faible moins on compresse l’image, à
     100 % aucune compression n’est faite
 
-- Größe (% - 0: automatisch): Je höher%, desto mehr sind Sie
+-   Größe (% - 0: automatisch): Je höher%, desto mehr sind Sie
     proche de la taille d’origine de l’image. 100% keine
     redimensionnement de l’image n’a lieu
 
@@ -102,17 +102,17 @@ Erfassung
 -   Durée maximum d’un enregistrement : durée maximum des
     Aufnahmen
 
-- Mach immer ein Video: Jeedom zwingt sich, sich immer zu verwandeln
+-   Mach immer ein Video: Jeedom zwingt sich, sich immer zu verwandeln
     Aufnahmen en vidéo avant l’enregistrement
 
 -   Nombre d’images par seconde de la vidéo : nombre d’images par
     zweite Videos
 
-- Bewegungserkennungsschwelle (0-100): Bewegungserkennungsschwelle
+-   Bewegungserkennungsschwelle (0-100): Bewegungserkennungsschwelle
     Bewegung (es ist ratsam, 2 zu setzen). Je größer der Wert
     Je mehr die Empfindlichkeit steigt.
 
-- Alle Aufnahmen von der Kamera löschen: Alle löschen
+-   Alle Kameraaufnahmen löschen: Löscht alle
     captures et Aufnahmen von der Kamera
 
 Versorgung
@@ -132,7 +132,7 @@ Befehle
     par l’api, voir plus bas)
 
 -   Nom de la bestellen avec la possibilité de mettre une icône à la
-    place (pour la supprimer il faut double-cliquer sur l’icône
+    place (pour lösche es il faut double-cliquer sur l’icône
     in Frage)
 
 -   Type et sous-type de la bestellen
@@ -180,9 +180,9 @@ date, vous pouvez pour chacune d’elle :
 
 -   la voir en plus en grand en cliquant sur l’image
 
-- Laden Sie es herunter
+-   Laden Sie es herunter
 
-- lösche es
+-   lösche es
 
 En mobile le widget est un peu différent : si vous cliquez sur l’image de
 la Kamera vous obtenez celle-ci en plus grande avec les bestellens
@@ -217,11 +217,11 @@ weiter mit Optionen (siehe Detail unten &quot;Erweiterte Optionen für Aufnahmen
 Erweiterte Aufnahmeoptionen
 ---------------------------
 
-- nbSnap: Anzahl der Erfassungen, falls nicht angegeben, sind die Erfassungen
+-   nbSnap: Anzahl der Erfassungen, falls nicht angegeben, sind die Erfassungen
     faites jusqu’à une demande d’arrêt d’enregistrement ou d’arrêt de la
     Kamera
 
-- Verzögerung: Verzögerung zwischen 2 Aufnahmen, wenn nicht angegeben, ist die Verzögerung
+-   Verzögerung: Verzögerung zwischen 2 Aufnahmen, wenn nicht angegeben, ist die Verzögerung
     1s
 
 -   wait : délai d’attente avant de commencer les captures, si non
@@ -230,7 +230,7 @@ Erweiterte Aufnahmeoptionen
 -   sendPacket : nombre de captures déclenchant l’envoi de paquet de captures, si non
     précisé alors les captures ne seront envoyées qu’à la fin
 
-- DetectMove = 1: Captures nur senden, wenn eine Änderung größer als ist
+-   detectMove = 1: Captures nur senden, wenn eine Änderung größer als ist
     seuil de détection (voir configuration von der Kamera)
 
 -   movie=1 : une fois l’enregistrement terminé, les images sont

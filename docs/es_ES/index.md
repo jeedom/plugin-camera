@@ -7,7 +7,7 @@ Configuración del complemento
 Après installation du plugin, il vous suffit de l’activer, cependant il
 Hay algunas opciones de configuración avanzadas:
 
-- ** Ruta de grabación **: indica la ruta donde debe estar Jeedom
+-   **Registro de ruta **: indica la ruta donde Jeedom debe
     stocker les images qu’il capture de vos cámaras (il est déconseillé
     d’y toucher). Si votre chemin n’est pas dans le chemin
     d’installation de Jeedom alors vous ne pourrez visualiser les
@@ -18,7 +18,7 @@ Hay algunas opciones de configuración avanzadas:
     enregistrées (il est déconseillé d’y toucher). Si esta cuota es
     alcanzado Jeedom borrará las capturas más antiguas.
 
-- ** El complemento de la cámara debe reaccionar a las interacciones **: palabras clave /
+-   **El complemento de la cámara debe reaccionar a las interacciones **: palabras clave /
     frases a las que reaccionará el complemento a través de las interacciones de Jeedom.
 
 -   **Panel** : Vous permet d’afficher le panel (Menu
@@ -39,35 +39,35 @@ Aquí tienes la información principal de tu cámara:
 -   **Objet parent** : indique l’objet parent auquel appartient
     l’équipement
 
-- ** Activar **: activa su equipo
+-   **Activar **: activa su equipo
 
-- ** Visible **: lo hace visible en el tablero
+-   **Visible **: lo hace visible en el tablero
 
 -   **IP** : l’adresse IP local de votre cámara
 
-- ** Puerto **: el puerto para el que se conecta la cámara
+-   **Puerto **: el puerto para el que se conecta la cámara
 
-- ** Protocolo **: el protocolo de comunicación de su cámara (http
+-   **Protocolo **: el protocolo de comunicación de su cámara (http
     o https)
 
 -   **Nom d’utilisateur** : nom d’utilisateur pour se connecter à la
     cámara (si es necesario). Tenga en cuenta que el complemento no admite caracteres
     especial (así que limítese a números, letras minúsculas / mayúsculas)
 
-- ** Contraseña **: contraseña para conectarse a la cámara
+-   **Contraseña **: contraseña para conectarse a la cámara
     (si es necesario).Tenga en cuenta que el complemento no admite caracteres
     especial (así que limítese a números, letras minúsculas / mayúsculas)
 
-- ** URL de instantánea **: URL de instantánea de cámara. Cambiar a
+-   **URL de instantánea **: URL de instantánea de cámara. Cambiar a
     Funcion de camaras. Tenga cuidado de no poner una url de flujo debajo
     Vale la pena plantar Jeedom. Puede agregar las etiquetas \ #username \#
     y \ # contraseña \ #, que se reemplazará automáticamente por el nombre
     d’utilisateur et le mot de passe lors de l’utilisation de cette
     orden
 
-- ** URL de transmisión **: URL de transmisión de video de la cámara de tipo rtsp: // # nombre de usuario #: # contraseña # @ # ip #: 554 / videoMain (ejemplo para cámaras Foscam)
+-   **URL de transmisión **: URL de transmisión de video de la cámara tipo rtsp: // # nombre de usuario #: # contraseña # @ # ip #: 554 / videoMain (ejemplo para cámaras Foscam)
 
-- ** Modelo **: le permite elegir el modelo de cámara. Ten cuidado si
+-   **Modelo **: le permite elegir el modelo de cámara. Ten cuidado si
     cambia eso sobrescribirá sus ajustes de configuración
 
 imágenes
@@ -86,7 +86,7 @@ están disponibles en: móvil / escritorio y miniatura / normal.
 -   Compression (%) : plus il est faible moins on compresse l’image, à
     100 % aucune compression n’est faite
 
-- Tamaño (% - 0: automático): cuanto mayor sea el%, más será
+-   Tamaño (% - 0: automático): cuanto mayor sea el%, más eres
     proche de la taille d’origine de l’image. 100% ninguno
     redimensionnement de l’image n’a lieu
 
@@ -102,17 +102,17 @@ captura
 -   Durée maximum d’un enregistrement : durée maximum des
     grabaciones
 
-- Siempre haz un video: Jeedom obliga a transformar siempre
+-   Siempre haz un video: Jeedom obliga a transformar siempre
     grabaciones en vidéo avant l’enregistrement
 
 -   Nombre d’images par seconde de la vidéo : nombre d’images par
     segundos videos
 
-- Umbral de detección de movimiento (0-100): umbral de detección de movimiento
+-   Umbral de detección de movimiento (0-100): umbral de detección de movimiento
     movimiento (es recomendable poner 2). Cuanto mayor es el valor
     cuanto más aumenta la sensibilidad.
 
-- Eliminar todas las capturas de la cámara: eliminar todas
+-   Eliminar todas las capturas de cámara: elimina todas
     captures et grabaciones de la camara
 
 suministro
@@ -132,7 +132,7 @@ comandos
     par l’api, voir plus bas)
 
 -   Nom de la orden avec la possibilité de mettre une icône à la
-    place (pour la supprimer il faut double-cliquer sur l’icône
+    place (pour bórralo il faut double-cliquer sur l’icône
     en cuestión)
 
 -   Type et sous-type de la orden
@@ -180,9 +180,9 @@ date, vous pouvez pour chacune d’elle :
 
 -   la voir en plus en grand en cliquant sur l’image
 
-- descárgalo
+-   descárgalo
 
-- bórralo
+-   bórralo
 
 En mobile le widget est un peu différent : si vous cliquez sur l’image de
 la cámara vous obtenez celle-ci en plus grande avec les ordens
@@ -217,11 +217,11 @@ más con las opciones (ver detalles a continuación &quot;opciones avanzadas de 
 Opciones de captura avanzadas
 ---------------------------
 
-- nbSnap: número de capturas, si no se especifica, las capturas son
+-   nbSnap: número de capturas, si no se especifica, las capturas son
     faites jusqu’à une demande d’arrêt d’enregistrement ou d’arrêt de la
     cámara
 
-- retraso: retraso entre 2 capturas, si no se especifica, el retraso es
+-   retraso: retraso entre 2 capturas, si no se especifica, el retraso es
     1s
 
 -   wait : délai d’attente avant de commencer les captures, si non
@@ -230,7 +230,7 @@ Opciones de captura avanzadas
 -   sendPacket : nombre de captures déclenchant l’envoi de paquet de captures, si non
     précisé alors les captures ne seront envoyées qu’à la fin
 
-- detectMove = 1: envía capturas solo si hay un cambio mayor que
+-   detectMove = 1: envía capturas solo si hay un cambio mayor que
     seuil de détection (voir configuration de la camara)
 
 -   movie=1 : une fois l’enregistrement terminé, les images sont

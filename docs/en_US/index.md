@@ -7,7 +7,7 @@ Plugin configuration
 Après installation du plugin, il vous suffit de l’activer, cependant il
 there are some advanced configuration settings:
 
-- ** Record path **: indicates the path where Jeedom must
+-   **Record path **: indicates the path where Jeedom must
     stocker les images qu’il capture de vos cameras (il est déconseillé
     d’y toucher). Si votre chemin n’est pas dans le chemin
     d’installation de Jeedom alors vous ne pourrez visualiser les
@@ -18,7 +18,7 @@ there are some advanced configuration settings:
     enregistrées (il est déconseillé d’y toucher). If this quota is
     reached Jeedom will delete the oldest captures.
 
-- ** The camera plugin must react to interactions **: keywords /
+-   **The camera plugin must react to interactions **: keywords /
     sentences to which the plugin will react via Jeedom interactions.
 
 -   **Panel** : Vous permet d’afficher le panel (Menu
@@ -39,35 +39,35 @@ Here you have the main information of your camera:
 -   **Objet parent** : indique l’objet parent auquel appartient
     l’équipement
 
-- ** Activate **: makes your equipment active
+-   **Activate **: makes your equipment active
 
-- ** Visible **: makes it visible on the dashboard
+-   **Visible **: makes it visible on the dashboard
 
 -   **IP** : l’adresse IP local de votre camera
 
-- ** Port **: the port for which to attach the camera
+-   **Port **: the port for which to attach the camera
 
-- ** Protocol **: the communication protocol of your camera (http
+-   **Protocol **: the communication protocol of your camera (http
     or https)
 
 -   **Nom d’utilisateur** : nom d’utilisateur pour se connecter à la
     camera (if necessary). Please note the plugin does not support characters
     special (so limit yourself to numbers, lowercase / uppercase letters)
 
-- ** Password **: password to connect to the camera
+-   **Password **: password to connect to the camera
     (if necessary).Please note the plugin does not support characters
     special (so limit yourself to numbers, lowercase / uppercase letters)
 
-- ** Snapshot URL **: Camera snapshot URL. Changed into
+-   **Snapshot URL **: Camera snapshot URL. Changed into
     cameras function. Be careful not to put a flow url under
     worth planting Jeedom. You can add the tags \ #username \#
     and \ #password \ #, which will be automatically replaced by the name
     d’utilisateur et le mot de passe lors de l’utilisation de cette
     ordered
 
-- ** Stream URL **: video stream url of the rtsp type camera: // # username #: #password # @ # ip #: 554 / videoMain (example for Foscam cameras)
+-   **Stream URL **: video stream url of the rtsp type camera: // # username #: #password # @ # ip #: 554 / videoMain (example for Foscam cameras)
 
-- ** Model **: allows you to choose the camera model. Be careful if
+-   **Model **: allows you to choose the camera model. Be careful if
     you change that will overwrite your configuration settings
 
 imagery
@@ -86,7 +86,7 @@ are available in: mobile / desktop and miniature / normal.
 -   Compression (%) : plus il est faible moins on compresse l’image, à
     100 % aucune compression n’est faite
 
-- Size (% - 0: automatic): the higher the% the more you are
+-   Size (% - 0: automatic): the higher the% the more you are
     proche de la taille d’origine de l’image. 100% none
     redimensionnement de l’image n’a lieu
 
@@ -102,17 +102,17 @@ Capture
 -   Durée maximum d’un enregistrement : durée maximum des
     recordings
 
-- Always make a video: Jeedom forces to always transform
+-   Always make a video: Jeedom forces to always transform
     recordings en vidéo avant l’enregistrement
 
 -   Nombre d’images par seconde de la vidéo : nombre d’images par
     second videos
 
-- Motion detection threshold (0-100): motion detection threshold
+-   Motion detection threshold (0-100): motion detection threshold
     movement (it is advisable to put 2). The greater the value
     the more the sensitivity increases.
 
-- Delete all captures from the camera: delete all
+-   Delete all camera captures: deletes all
     captures et recordings from the camera
 
 Food
@@ -132,7 +132,7 @@ Orders
     par l’api, voir plus bas)
 
 -   Nom de la ordered avec la possibilité de mettre une icône à la
-    place (pour la supprimer il faut double-cliquer sur l’icône
+    place (pour delete it il faut double-cliquer sur l’icône
     in question)
 
 -   Type et sous-type de la ordered
@@ -180,9 +180,9 @@ date, vous pouvez pour chacune d’elle :
 
 -   la voir en plus en grand en cliquant sur l’image
 
-- download it
+-   download it
 
-- delete it
+-   delete it
 
 En mobile le widget est un peu différent : si vous cliquez sur l’image de
 la camera vous obtenez celle-ci en plus grande avec les ordereds
@@ -217,11 +217,11 @@ further with options (see detail below &quot;advanced options of captures&quot;)
 Advanced capture options
 ---------------------------
 
-- nbSnap: number of captures, if not specified then the captures are
+-   nbSnap: number of captures, if not specified then the captures are
     faites jusqu’à une demande d’arrêt d’enregistrement ou d’arrêt de la
     camera
 
-- delay: delay between 2 captures, if not specified then the delay is
+-   delay: delay between 2 captures, if not specified then the delay is
     1s
 
 -   wait : délai d’attente avant de commencer les captures, si non
@@ -230,7 +230,7 @@ Advanced capture options
 -   sendPacket : nombre de captures déclenchant l’envoi de paquet de captures, si non
     précisé alors les captures ne seront envoyées qu’à la fin
 
-- detectMove = 1: send captures only if there is a change greater than
+-   detectMove = 1: send captures only if there is a change greater than
     seuil de détection (voir configuration from the camera)
 
 -   movie=1 : une fois l’enregistrement terminé, les images sont

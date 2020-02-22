@@ -7,16 +7,16 @@
 
 # 10/10/2019
 
-- Correction of a bug on video taking under debian 10
+- Correction of a bug on the taking of video under debian 10
 
 # 09/25/2019
 
-- Bug fix on the rtsp in debian 10
+- Bug fix on rtsp in debian 10
 
 # 09/23/2019
 
 - Bugfix
-- Addition of a field to put video stream options (rtsp)
+- Addition of a field to put options video stream (rtsp)
 
 # 09/20/2019
 
@@ -34,33 +34,33 @@
 
 # 06/06/2019
 
-- Fixed a problem if there are &amp; in the stream rtsp url
+- Correction of a problem if there are &amp; in the url of stream rtsp
 - Improved security on the video stream
 - Fixed a problem if there are spaces in the video stream url
 
 # 01/21/2019
 
-- Update of the doc
-- Fixed a bug on the panel
+- Updating the doc
+- Correction of a bug on the panel
 
 # 01/17/2019
 
-- Update of the doc
+- Updating the doc
 - Correction of a problem with the configuration of Wanscam q3 (s)
 
 # 01/15/2019
 
-- Addition of the Wanscam q3 (s) camera
+- Wanscam q3 (s) camera added
 - Mode selection automatically based on capture url and video stream (RTSP)
 - Bugfix
-- Added replacement of # username # and # password # in orders
+- Added replacement of # username # and # password # in commands
 - Correction of a dependency problem
 
 # 01/06/2018
 
 - Redesign of the panel, we now choose the number of cameras per line in the plugin configuration, their size is calculated automatically
-- Improvement of the widget on mobile
-- Support for RTSP / MJPEG video streams ... Please note that there is a conversion done. This is only to be used if you have no choice, you should choose snapshots (faster and less load). on Jeedom)
+- Mobile widget improvement
+- Support for RTSP / MJPEG video streams ... Please note that there is a conversion done. This is only to be used if you have no choice, you should privilege snapshots (faster and less load on Jeedom)
 
 # 03/04/2018
 
@@ -68,7 +68,7 @@
 
 # 03/10/2018
 
-- Update of the doc
+- Updating the doc
 - Code optimization
 
 # 03/05/2018
@@ -78,4 +78,4 @@
 # 02/12/2018
 
 - Bugfix
-- Add an option to deactivate any image compression on the Jeedom side
+- Addition of an option to deactivate any image compression on the Jeedom side
