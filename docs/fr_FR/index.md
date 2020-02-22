@@ -148,7 +148,7 @@ Par défaut il suffit de mettre le nombre de captures voulues dans le champ "nom
 Options avancées des captures
 ---------------------------
 
--   nbSnap : nombre de capture, si non précisé alors les captures sont faites jusqu'à une demande d'arrêt d'enregistrement ou d'arrêt de la caméra
+-   `nbSnap` : nombre de capture, si non précisé alors les captures sont faites jusqu'à une demande d'arrêt d'enregistrement ou d'arrêt de la caméra
 
 -   `delay` : délai entre 2 captures, si non précisé alors le délai est de 1s
 
