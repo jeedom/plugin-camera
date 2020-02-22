@@ -1,22 +1,22 @@
-- Retour de la fonction de decouverte ONVIF (merci @Aidom)
-- Possibilité d'utiliser des commandes (type script) pour le controle des cameras
+- Regreso de la función de descubrimiento ONVIF (gracias @Aidom)
+- Posibilidad de usar comandos (tipo de script) para el control de la cámara
 
 # 17/10/2019
 
-- Optimisation de la fonction de nettoyage des dossiers de capture des cameras
+- Optimización de la función de limpieza de los archivos de captura de la cámara.
 
 # 10/10/2019
 
-- Correction d'un bug sur la prise de video sous debian 10
+- Corrección de un error en la toma de video en Debian 10
 
 # 25/09/2019
 
-- Correction de bug sur le rtsp en debian 10
+- Corrección de errores en el rtsp en debian 10
 
 # 23/09/2019
 
 - Corrección de errores
-- Ajout d'un champs pour mettre des options flux video (rtsp)
+- Adición de un campo para poner opciones de transmisión de video (rtsp)
 
 # 20/09/2019
 
@@ -24,43 +24,43 @@
 
 # 14/09/2019
 
- - Correction d'un bug ou la tache cronHourly du plugin camera n'arrivait pas a finir
- - Correction d'un bug sur la prévisualisation de l'historique des captures
+ - Se corrigió un error por el cual la tarea cronHourly del complemento de la cámara no podía finalizar
+ - Corrección de un error en la vista previa del historial de captura
 
 # 28/08/2019
 
-- Amélioration du support du rtsp
+- Soporte mejorado de rtsp
 - Corrección de errores
 
 # 06/06/2019
 
-- Correction d'un soucis si il y a des & dans l'url de stream rtsp
-- Amélioration de la securité sur le flux video
-- Correction d'un soucis si il y a des espaces dans l'url de flux video
+- Se corrigió un problema si hay &amp; en la url rtsp de flujo
+- Seguridad mejorada en la transmisión de video
+- Se solucionó un problema si había espacios en la url de transmisión de video
 
 # 21/01/2019
 
-- Actualización de la documentación
-- Correction d'un bug sur le panel
+- Actualización del documento
+- Se corrigió un error en el panel
 
 # 17/01/2019
 
-- Actualización de la documentación
-- Correction d'un soucis sur la configuration de Wanscam q3(s)
+- Actualización del documento
+- Corrección de un problema con la configuración de Wanscam q3 (s)
 
 # 15/01/2019
 
-- Ajout de la camera Wanscam q3(s)
-- Selection du mode automatiquement en fonction de l'url de capture et du flux vidéo (RTSP)
+- Adición de la cámara Wanscam q3 (s)
+- Selección de modo automáticamente basada en url de captura y transmisión de video (RTSP)
 - Corrección de errores
-- Ajout du remplacement de #username# et #password# dans les commandes
-- Correction d'un soucis sur les dépendance
+- Se agregó reemplazo de # nombre de usuario # y # contraseña # en pedidos
+- Corrección de un problema de dependencia.
 
 # 01/06/2018
 
-- Rediseño del panel, ahora elegimos la cantidad de cámaras por línea en la configuración del plugin, su dimensión se calcula automáticamente
-- Mejora del Widget móvil
-- Support des flux video RTSP/MJPEG... Attention vu qu'il y a une conversion de faite ce n'est à utiliser que si vous n'avez pas le choix, il faut priviliegé les snapshot (plus rapide et moins de charge sur Jeedom)
+- Rediseño del panel, ahora elegimos el número de cámaras por línea en la configuración del complemento, su tamaño se calcula automáticamente
+- Mejora del widget en el móvil
+- Soporte para transmisiones de video RTSP / MJPEG ... Tenga en cuenta que se ha realizado una conversión. Esto solo se utilizará si no tiene otra opción, debe elegir instantáneas (más rápido y con menos carga). en Jeedom)
 
 # 03/04/2018
 
@@ -68,8 +68,8 @@
 
 # 10/03/2018
 
-- Actualización de la documentación
-- optimización de código
+- Actualización del documento
+- Optimización de código
 
 # 05/03/2018
 
@@ -78,4 +78,4 @@
 # 12/02/2018
 
 - Corrección de errores
-- Se agregó la opción para desactivar cualquier compresión de imagen lateral Jeedom
+- Adición de una opción para desactivar cualquier compresión de imagen en el lado de Jeedom
