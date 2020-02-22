@@ -7,7 +7,7 @@ Configuración del complemento
 Après installation du plugin, il vous suffit de l’activer, cependant il
 Hay algunas opciones de configuración avanzadas:
 
--   **Registro de ruta **: indica la ruta donde Jeedom debe
+-   **Chemin des grabaciones** : indique le chemin où Jeedom doit
     stocker les images qu’il capture de vos cámaras (il est déconseillé
     d’y toucher). Si votre chemin n’est pas dans le chemin
     d’installation de Jeedom alors vous ne pourrez visualiser les
@@ -18,11 +18,11 @@ Hay algunas opciones de configuración avanzadas:
     enregistrées (il est déconseillé d’y toucher). Si esta cuota es
     alcanzado Jeedom borrará las capturas más antiguas.
 
--   **El complemento de la cámara debe reaccionar a las interacciones **: palabras clave /
+-   **Le plugin cámara doit réagir aux interactions** : mots clés /
     frases a las que reaccionará el complemento a través de las interacciones de Jeedom.
 
 -   **Panel** : Vous permet d’afficher le panel (Menu
-    Accueil -&gt; Caméra) et d’avoir une vue sur l’ensemble de vos
+    Accueil -> Caméra) et d’avoir une vue sur l’ensemble de vos
     cámaras (ver abajo). No olvide activar el panel en la configuración del complemento para acceder más tarde.
 
 
@@ -39,35 +39,35 @@ Aquí tienes la información principal de tu cámara:
 -   **Objet parent** : indique l’objet parent auquel appartient
     l’équipement
 
--   **Activar **: activa su equipo
+-   **Activer** : permet de rendre votre équipement actif
 
--   **Visible **: lo hace visible en el tablero
+-   **Visible** : le rend visible sur le dashboard
 
 -   **IP** : l’adresse IP local de votre cámara
 
--   **Puerto **: el puerto para el que se conecta la cámara
+-   **Port** : le port pour sur lequel joindre la cámara
 
--   **Protocolo **: el protocolo de comunicación de su cámara (http
+-   **Protocole** : le protocole de communication de votre cámara (http
     o https)
 
 -   **Nom d’utilisateur** : nom d’utilisateur pour se connecter à la
     cámara (si es necesario). Tenga en cuenta que el complemento no admite caracteres
     especial (así que limítese a números, letras minúsculas / mayúsculas)
 
--   **Contraseña **: contraseña para conectarse a la cámara
+-   **Mot de passe** : mot de passe pour se connecter à la cámara
     (si es necesario).Tenga en cuenta que el complemento no admite caracteres
     especial (así que limítese a números, letras minúsculas / mayúsculas)
 
--   **URL de instantánea **: URL de instantánea de cámara. Cambiar a
+-   **URL de snapshot** : URL de "snapshot" de la camara. Cambiar a
     Funcion de camaras. Tenga cuidado de no poner una url de flujo debajo
-    Vale la pena plantar Jeedom. Puede agregar las etiquetas \ #username \#
+    Vale la pena plantar Jeedom. Vous pouvez ajouter les tags \#username\#
     y \ # contraseña \ #, que se reemplazará automáticamente por el nombre
     d’utilisateur et le mot de passe lors de l’utilisation de cette
     orden
 
--   **URL de transmisión **: URL de transmisión de video de la cámara tipo rtsp: // # nombre de usuario #: # contraseña # @ # ip #: 554 / videoMain (ejemplo para cámaras Foscam)
+-   **URL du flux** : url du flux video de la camara de type rtsp://#username#:#password#@#ip#:554/videoMain (exemple pour les cámaras Foscam)
 
--   **Modelo **: le permite elegir el modelo de cámara. Ten cuidado si
+-   **Modèle** : permet de choisir le modèle de la camara. Ten cuidado si
     cambia eso sobrescribirá sus ajustes de configuración
 
 imágenes
@@ -86,15 +86,15 @@ están disponibles en: móvil / escritorio y miniatura / normal.
 -   Compression (%) : plus il est faible moins on compresse l’image, à
     100 % aucune compression n’est faite
 
--   Tamaño (% - 0: automático): cuanto mayor sea el%, más eres
+-   Taille (% - 0 : automatique) : plus le % est élévé plus on est
     proche de la taille d’origine de l’image. 100% ninguno
     redimensionnement de l’image n’a lieu
 
-&gt; ** Nota**
-&gt;
-&gt; Si vous mettez une compression de 0% et une taille de 100%, Jeedom ne
-&gt; touchera pas à l’image en mode normal. Cela n’est pas valable en mode
-&gt; miniature où il y a une taille maximum de l’image de 360px.
+> **Note**
+>
+> Si vous mettez une compression de 0% et une taille de 100%, Jeedom ne
+> touchera pas à l’image en mode normal. Cela n’est pas valable en mode
+> miniature où il y a une taille maximum de l’image de 360px.
 
 captura
 -------
@@ -102,17 +102,17 @@ captura
 -   Durée maximum d’un enregistrement : durée maximum des
     grabaciones
 
--   Siempre haz un video: Jeedom obliga a transformar siempre
+-   Toujours faire une vidéo : force Jeedom à toujours transformer les
     grabaciones en vidéo avant l’enregistrement
 
 -   Nombre d’images par seconde de la vidéo : nombre d’images par
     segundos videos
 
--   Umbral de detección de movimiento (0-100): umbral de detección de movimiento
+-   Seuil de détection mouvement (0-100) : seuil de détection de
     movimiento (es recomendable poner 2). Cuanto mayor es el valor
     cuanto más aumenta la sensibilidad.
 
--   Eliminar todas las capturas de cámara: elimina todas
+-   Supprimer toutes les captures de la camara : supprime toutes les
     captures et grabaciones de la camara
 
 suministro
@@ -132,7 +132,7 @@ comandos
     par l’api, voir plus bas)
 
 -   Nom de la orden avec la possibilité de mettre une icône à la
-    place (pour bórralo il faut double-cliquer sur l’icône
+    place (pour la supprimer il faut double-cliquer sur l’icône
     en cuestión)
 
 -   Type et sous-type de la orden
@@ -164,10 +164,10 @@ dans la configuration, la orden pour prendre une capture, la orden
 pour lancer la prise de multiples captures images et la orden pour
 navegar por estas capturas.
 
-&gt; **Tip**
-&gt;
-&gt; Sur le dashboard et le panel il est possible de redimensionner le
-&gt; widget pour l’adapter à ses besoins
+> **Tip**
+>
+> Sur le dashboard et le panel il est possible de redimensionner le
+> widget pour l’adapter à ses besoins
 
 Un clic sur l’image permet d’afficher celle-ci dans une fenêtre et
 en un formato más grande
@@ -180,9 +180,9 @@ date, vous pouvez pour chacune d’elle :
 
 -   la voir en plus en grand en cliquant sur l’image
 
--   descárgalo
+-   la télécharger
 
--   bórralo
+-   la supprimer
 
 En mobile le widget est un peu différent : si vous cliquez sur l’image de
 la cámara vous obtenez celle-ci en plus grande avec les ordens
@@ -195,9 +195,9 @@ Le plugin cámara met aussi à disposition un panel qui vous permet de
 voir d’un seul coup toutes vos cámaras, il est accessible par Acceuil →
 Cámara.
 
-&gt; ** Nota**
-&gt;
-&gt; Pour l’avoir il faut l’activer sur la page de configuration du plugin
+> **Note**
+>
+> Pour l’avoir il faut l’activer sur la page de configuration du plugin
 
 Por supuesto, también está disponible en dispositivos móviles con Plugin → Cámara:
 
@@ -217,11 +217,11 @@ más con las opciones (ver detalles a continuación &quot;opciones avanzadas de 
 Opciones de captura avanzadas
 ---------------------------
 
--   nbSnap: número de capturas, si no se especifica, las capturas son
+-   nbSnap : nombre de capture, si non précisé alors les captures sont
     faites jusqu’à une demande d’arrêt d’enregistrement ou d’arrêt de la
     cámara
 
--   retraso: retraso entre 2 capturas, si no se especifica, el retraso es
+-   delay : délai entre 2 captures, si non précisé alors le délai est de
     1s
 
 -   wait : délai d’attente avant de commencer les captures, si non
@@ -230,7 +230,7 @@ Opciones de captura avanzadas
 -   sendPacket : nombre de captures déclenchant l’envoi de paquet de captures, si non
     précisé alors les captures ne seront envoyées qu’à la fin
 
--   detectMove = 1: envía capturas solo si hay un cambio mayor que
+-   detectMove=1 : envoi les captures que s'il y a un changement supérieur au
     seuil de détection (voir configuration de la camara)
 
 -   movie=1 : une fois l’enregistrement terminé, les images sont
@@ -238,10 +238,10 @@ Opciones de captura avanzadas
 
 -   sendFirstSnap=1 : envoi la première capture de l’enregistrement
 
-&gt; **Exemples**
-&gt;
-&gt; nbSnap=3 delay=5 ==&gt; envoi 3 captures faites à 5 secondes d'intervalle (envoi déclenché via le scénario)
-&gt; movie=1 sendFirstSnap=1 detectMove=1 ==&gt; envoi la première capture, puis envoi d'une capture à chaque détection de mouvement et enregistre une vidéo jusqu'à la orden "Arrêter Enregistrement" à insérer dans le scénario. La película se almacenará en su Jeedom.
+> **Exemples**
+>
+> nbSnap=3 delay=5 ==> envoi 3 captures faites à 5 secondes d'intervalle (envoi déclenché via le scénario)
+> movie=1 sendFirstSnap=1 detectMove=1 ==> envoi la première capture, puis envoi d'une capture à chaque détection de mouvement et enregistre une vidéo jusqu'à la orden "Arrêter Enregistrement" à insérer dans le scénario. La película se almacenará en su Jeedom.
 
 
 Enviar detección de movimiento a Jeedom
@@ -251,7 +251,7 @@ Si vous avez une cámara qui possède la détection de mouvement et que
 vous voulez transmettre celle-ci à Jeedom voilà l’url à mettre sur votre
 cámara :
 
-    http: //#IP_JEEDOM#/core/api/jeeApi.php?apikey apikey = # # &amp; type = &amp; id = cámara # ID # &amp; # valor = valor#
+    http: //#IP_JEEDOM#/core/api/jeeApi.php?apikey=#APIKEY#&type=camera&id=#ID#&value=#value#
 
 Il faut bien entendu avant avoir créé une orden de type info sur
 votre cámara
@@ -259,14 +259,14 @@ votre cámara
 Preguntas frecuentes
 ===
 
-&gt;**Où sont les grabaciones ?**
-&gt;
-&gt;Les grabaciones se trouvent par défaut dans plugins/camera/data/records/*ID\_CAM*, attention cela peut varier si vous avez demandé à Jeedom de les enregistrer ailleurs
+>**Où sont les grabaciones ?**
+>
+>Les grabaciones se trouvent par défaut dans plugins/camera/data/records/*ID\_CAM*, attention cela peut varier si vous avez demandé à Jeedom de les enregistrer ailleurs
 
-&gt;**Les dépendances n'arrivents pas à s'installer ?**
-&gt;
-&gt;En ssh ou dans administration -&gt; OS/DB -&gt; Système faire : dpkg --configure -a
+>**Les dépendances n'arrivents pas à s'installer ?**
+>
+>En ssh ou dans administration -> OS/DB -> Système faire : dpkg --configure -a
 
-&gt;**Quelles sont les conditions pour que ma cámara soit compatible Jeedom (si elle n'est pas dans la liste de compatibilité) ?**
-&gt;
-&gt; La seule condition c'est que la cámara possède une url qui renvoi une image (et bien une image pas un flux video)
+>**Quelles sont les conditions pour que ma cámara soit compatible Jeedom (si elle n'est pas dans la liste de compatibilité) ?**
+>
+> La seule condition c'est que la cámara possède une url qui renvoi une image (et bien une image pas un flux video)
