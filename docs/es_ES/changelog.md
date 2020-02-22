@@ -1,81 +1,81 @@
-- Retour de la fonction de decouverte ONVIF (merci @Aidom)
-- Possibilité d'utiliser des commandes (type script) pour le controle des cameras
+- Regreso de la función de descubrimiento ONVIF (gracias @Aidom)
+- Posibilidad de usar comandos (tipo de secuencia de comandos) para el control de la cámara
 
-# 17/10/2019
+# 10/17/2019
 
-- Optimisation de la fonction de nettoyage des dossiers de capture des cameras
+- Optimización de la función de limpieza de archivos de captura de cámara.
 
 # 10/10/2019
 
-- Correction d'un bug sur la prise de video sous debian 10
+- Corrección de un error en la toma de video en Debian 10
 
-# 25/09/2019
+# 09/25/2019
 
-- Correction de bug sur le rtsp en debian 10
+- Corrección de errores en rtsp en debian 10
 
-# 23/09/2019
+# 09/23/2019
 
-- Correction de bugs
-- Ajout d'un champs pour mettre des options flux video (rtsp)
+- Correcciones de errores
+- Adición de un campo para poner opciones de transmisión de video (rtsp)
 
-# 20/09/2019
+# 09/20/2019
 
-- Correction de bugs
+- Correcciones de errores
 
-# 14/09/2019
+# 09/14/2019
 
- - Correction d'un bug ou la tache cronHourly du plugin camera n'arrivait pas a finir
- - Correction d'un bug sur la prévisualisation de l'historique des captures
+ - Se corrigió un error por el cual la tarea cronHourly del complemento de la cámara no podía finalizar
+ - Corrección de un error en la vista previa del historial de captura
 
-# 28/08/2019
+# 08/28/2019
 
-- Amélioration du support du rtsp
-- Correction de bugs
+- Soporte mejorado de rtsp
+- Correcciones de errores
 
 # 06/06/2019
 
-- Correction d'un soucis si il y a des & dans l'url de stream rtsp
-- Amélioration de la securité sur le flux video
-- Correction d'un soucis si il y a des espaces dans l'url de flux video
+- Se corrigió un problema si hay &amp; en el flujo url rtsp
+- Seguridad mejorada en la transmisión de video
+- Se solucionó un problema si había espacios en la url de transmisión de video
 
-# 21/01/2019
+# 01/21/2019
 
-- Mise à jour de la doc
-- Correction d'un bug sur le panel
+- Actualizando el documento
+- Corrección de un error en el panel.
 
-# 17/01/2019
+# 01/17/2019
 
-- Mise à jour de la doc
-- Correction d'un soucis sur la configuration de Wanscam q3(s)
+- Actualizando el documento
+- Corrección de un problema con la configuración de Wanscam q3 (s)
 
-# 15/01/2019
+# 01/15/2019
 
-- Ajout de la camera Wanscam q3(s)
-- Selection du mode automatiquement en fonction de l'url de capture et du flux vidéo (RTSP)
-- Correction de bugs
-- Ajout du remplacement de #username# et #password# dans les commandes
-- Correction d'un soucis sur les dépendance
+- Cámara Wanscam q3 (s) agregada
+- Selección de modo automáticamente basada en url de captura y transmisión de video (RTSP)
+- Correcciones de errores
+- Reemplazo agregado de # nombre de usuario # y # contraseña # en los comandos
+- Corrección de un problema de dependencia.
 
 # 01/06/2018
 
-- Refonte du panel, on choisi maintenant le nombre de camera par ligne dans la configuration du plugin, leur dimension est calculé automatiquement
-- Amélioration du widget en mobile
-- Support des flux video RTSP/MJPEG... Attention vu qu'il y a une conversion de faite ce n'est à utiliser que si vous n'avez pas le choix, il faut priviliegé les snapshot (plus rapide et moins de charge sur Jeedom)
+- Rediseño del panel, ahora elegimos el número de cámaras por línea en la configuración del complemento, su tamaño se calcula automáticamente
+- Mejora de widgets móviles
+- Compatibilidad con transmisiones de video RTSP / MJPEG ... Tenga en cuenta que se ha realizado una conversión. Esto solo se debe usar si no tiene otra opción, debe privilegiar las instantáneas (más rápido y menos carga en Jeedom)
 
 # 03/04/2018
 
-- Mise à jour documentation
+- Actualización de la documentación
 
-# 10/03/2018
+# 03/10/2018
 
-- Mise à jour de la doc
-- Optimisation du code
+- Actualizando el documento
+- Optimización de código
 
-# 05/03/2018
+# 03/05/2018
 
-- Correction de bugs
+- Correcciones de errores
 
-# 12/02/2018
+# 02/12/2018
 
-- Correction de bugs
-- Ajout d'une option pour désactiver toute compression d'image coté Jeedom
+- Correcciones de errores
+- Adición de una opción para desactivar cualquier compresión de imagen en el lado de Jeedom
