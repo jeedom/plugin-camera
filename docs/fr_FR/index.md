@@ -150,17 +150,17 @@ Options avancées des captures
 
 -   nbSnap : nombre de capture, si non précisé alors les captures sont faites jusqu'à une demande d'arrêt d'enregistrement ou d'arrêt de la caméra
 
--   delay : délai entre 2 captures, si non précisé alors le délai est de 1s
+-   `delay` : délai entre 2 captures, si non précisé alors le délai est de 1s
 
--   wait : délai d'attente avant de commencer les captures, si non précié alors aucun envoi n'est fait
+-   `wait` : délai d'attente avant de commencer les captures, si non précié alors aucun envoi n'est fait
 
--   sendPacket : nombre de captures déclenchant l'envoi de paquet de captures, si non précisé alors les captures ne seront envoyées qu'à la fin
+-   `sendPacket` : nombre de captures déclenchant l'envoi de paquet de captures, si non précisé alors les captures ne seront envoyées qu'à la fin
 
--   detectMove=1 : envoi les captures que s'il y a un changement supérieur au seuil de détection (voir configuration de la caméra)
+-   `detectMove=1` : envoi les captures que s'il y a un changement supérieur au seuil de détection (voir configuration de la caméra)
 
--   movie=1 : une fois l'enregistrement terminé, les images sont converties en vidéo
+-   `movie=1` : une fois l'enregistrement terminé, les images sont converties en vidéo
 
--   sendFirstSnap=1 : envoi la première capture de l'enregistrement
+-   `sendFirstSnap=1` : envoi la première capture de l'enregistrement
 
 > **Exemples**
 >
