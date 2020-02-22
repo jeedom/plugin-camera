@@ -172,7 +172,7 @@ Enviar detección de movimiento a Jeedom
 
 Si tiene una cámara que tiene detección de movimiento y desea transmitirla a Jeedom, esta es la url para poner en su cámara :
 
-    http: //#IP_JEEDOM#/core/api/jeeApi.php?apikey apikey = # # &amp; type = &amp; id = cámara # ID # &amp; # valor = valor#
+    http://#IP_JEEDOM#/core/api/jeeApi.php?apikey apikey = # # &amp; type = &amp; id = cámara # ID # &amp; # valor = valor#
 
 Obviamente, antes de crear un comando de tipo de información en su cámara
 

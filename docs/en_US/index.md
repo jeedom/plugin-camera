@@ -172,7 +172,7 @@ Send motion detection to Jeedom
 
 If you have a camera that has motion detection and you want to transmit it to Jeedom this is the url to put on your camera :
 
-    http: //#IP_JEEDOM#/core/api/jeeApi.php?apikey APIKEY = # # &amp; type = camera &amp; id = # ID # &amp; # value = value#
+    http://#IP_JEEDOM#/core/api/jeeApi.php?apikey APIKEY = # # &amp; type = camera &amp; id = # ID # &amp; # value = value#
 
 Obviously, before creating an info type command on your camera
 

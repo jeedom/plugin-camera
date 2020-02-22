@@ -159,7 +159,6 @@
         "Le film sera stocké sur votre Jeedom.": "La película se almacenará en su Jeedom.",
         "Envoi de la détection de mouvement à Jeedom": "Enviar detección de movimiento a Jeedom",
         "Si vous avez une caméra qui possède la détection de mouvement et que vous voulez transmettre celle-ci à Jeedom voilà l'url à mettre sur votre caméra": "Si tiene una cámara que tiene detección de movimiento y desea transmitirla a Jeedom, esta es la url para poner en su cámara",
-        "http:\/\/#IP_JEEDOM#\/core\/api\/jeeApi.php?": "http: \/\/#IP_JEEDOM#\/core\/api\/jeeApi.php?",
         "apikey=#APIKEY#&type=camera&id=#ID#&value=#value": "apikey apikey = # # &amp; type = &amp; id = cámara # ID # &amp; # valor = valor",
         "Il faut bien entendu avant avoir créé une commande de type info sur votre caméra": "Obviamente, antes de crear un comando de tipo de información en su cámara",
         "FAQ": "Preguntas frecuentes",
