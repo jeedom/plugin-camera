@@ -1,7 +1,7 @@
 - Regreso de la función de descubrimiento ONVIF (gracias @Aidom)
 - Posibilidad de usar comandos (tipo de script) para el control de la cámara
 
-# 17/10/2019
+# 10/17/2019
 
 - Optimización de la función de limpieza de los archivos de captura de la cámara.
 
@@ -9,25 +9,25 @@
 
 - Corrección de un error en la toma de video en Debian 10
 
-# 25/09/2019
+# 09/25/2019
 
 - Corrección de errores en el rtsp en debian 10
 
-# 23/09/2019
+# 09/23/2019
 
 - Corrección de errores
 - Adición de un campo para poner opciones de transmisión de video (rtsp)
 
-# 20/09/2019
+# 09/20/2019
 
 - Corrección de errores
 
-# 14/09/2019
+# 09/14/2019
 
  - Se corrigió un error por el cual la tarea cronHourly del complemento de la cámara no podía finalizar
  - Corrección de un error en la vista previa del historial de captura
 
-# 28/08/2019
+# 08/28/2019
 
 - Soporte mejorado de rtsp
 - Corrección de errores
@@ -38,17 +38,17 @@
 - Seguridad mejorada en la transmisión de video
 - Se solucionó un problema si había espacios en la url de transmisión de video
 
-# 21/01/2019
+# 01/21/2019
 
 - Actualización del documento
 - Se corrigió un error en el panel
 
-# 17/01/2019
+# 01/17/2019
 
 - Actualización del documento
 - Corrección de un problema con la configuración de Wanscam q3 (s)
 
-# 15/01/2019
+# 01/15/2019
 
 - Adición de la cámara Wanscam q3 (s)
 - Selección de modo automáticamente basada en url de captura y transmisión de video (RTSP)
@@ -66,16 +66,16 @@
 
 - Actualización de documentación
 
-# 10/03/2018
+# 03/10/2018
 
 - Actualización del documento
 - Optimización de código
 
-# 05/03/2018
+# 03/05/2018
 
 - Corrección de errores
 
-# 12/02/2018
+# 02/12/2018
 
 - Corrección de errores
 - Adición de una opción para desactivar cualquier compresión de imagen en el lado de Jeedom

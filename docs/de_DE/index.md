@@ -60,7 +60,7 @@ Hier haben Sie die wichtigsten Informationen Ihrer Kamera:
 
 - ** Snapshot-URL **: Kamera-Snapshot-URL. Wechseln Sie zu
     Kameras funktionieren. Achten Sie darauf, keine Flow-URL darunter zu setzen
-    es lohnt sich, Jeedom zu pflanzen. Sie können die Tags \ #Benutzername \ # hinzufügen
+    es lohnt sich, Jeedom zu pflanzen. Sie können die Tags \ #Benutzername \ hinzufügen#
     und \ #password \ #, das automatisch durch den Namen ersetzt wird
     d’utilisateur et le mot de passe lors de l’utilisation de cette
     bestellen
@@ -90,7 +90,7 @@ sind verfügbar in: Mobile / Desktop und Miniatur / Normal.
     proche de la taille d’origine de l’image. 100% keine
     redimensionnement de l’image n’a lieu
 
-&gt; ** Hinweis **
+&gt; ** Hinweis**
 &gt;
 &gt; Si vous mettez une compression de 0% et une taille de 100%, Jeedom ne
 &gt; touchera pas à l’image en mode normal. Cela n’est pas valable en mode
@@ -195,7 +195,7 @@ Le plugin Kamera met aussi à disposition un panel qui vous permet de
 voir d’un seul coup toutes vos Kameras, il est accessible par Acceuil →
 Kamera.
 
-&gt; ** Hinweis **
+&gt; ** Hinweis**
 &gt;
 &gt; Pour l’avoir il faut l’activer sur la page de configuration du plugin
 
@@ -251,7 +251,7 @@ Si vous avez une Kamera qui possède la détection de mouvement et que
 vous voulez transmettre celle-ci à Jeedom voilà l’url à mettre sur votre
 Kamera :
 
-    http: //#IP_JEEDOM#/core/api/jeeApi.php?apikey APIKEY = # # &amp; type = Kamera &amp; id = # ID # &amp; value = # Wert #
+    http: //#IP_JEEDOM#/core/api/jeeApi.php?apikey APIKEY = # # &amp; type = Kamera &amp; id = # ID # &amp; # value = Wert#
 
 Il faut bien entendu avant avoir créé une bestellen de type info sur
 votre Kamera

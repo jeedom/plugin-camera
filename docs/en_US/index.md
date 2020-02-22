@@ -60,7 +60,7 @@ Here you have the main information of your camera:
 
 - ** Snapshot URL **: Camera snapshot URL. Changed into
     cameras function. Be careful not to put a flow url under
-    worth planting Jeedom. You can add the tags \ #username \ #
+    worth planting Jeedom. You can add the tags \ #username \#
     and \ #password \ #, which will be automatically replaced by the name
     d’utilisateur et le mot de passe lors de l’utilisation de cette
     ordered
@@ -90,7 +90,7 @@ are available in: mobile / desktop and miniature / normal.
     proche de la taille d’origine de l’image. 100% none
     redimensionnement de l’image n’a lieu
 
-&gt; ** Note **
+&gt; ** Note**
 &gt;
 &gt; Si vous mettez une compression de 0% et une taille de 100%, Jeedom ne
 &gt; touchera pas à l’image en mode normal. Cela n’est pas valable en mode
@@ -195,7 +195,7 @@ Le plugin camera met aussi à disposition un panel qui vous permet de
 voir d’un seul coup toutes vos cameras, il est accessible par Acceuil →
 Camera.
 
-&gt; ** Note **
+&gt; ** Note**
 &gt;
 &gt; Pour l’avoir il faut l’activer sur la page de configuration du plugin
 
@@ -251,7 +251,7 @@ Si vous avez une camera qui possède la détection de mouvement et que
 vous voulez transmettre celle-ci à Jeedom voilà l’url à mettre sur votre
 camera :
 
-    http: //#IP_JEEDOM#/core/api/jeeApi.php?apikey APIKEY = # # &amp; type = camera &amp; id = # ID # &amp; value = # value #
+    http: //#IP_JEEDOM#/core/api/jeeApi.php?apikey APIKEY = # # &amp; type = camera &amp; id = # ID # &amp; # value = value#
 
 Il faut bien entendu avant avoir créé une ordered de type info sur
 votre camera
