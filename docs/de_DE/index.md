@@ -42,20 +42,20 @@ Hier haben Sie die wichtigsten Informationen Ihrer Kamera :
 
 -   **Snapshot-URL** : Kamera-Snapshot-URL. Änderungen je nach Kamera. Achten Sie darauf, dass Sie keine Flow-URL unter die Strafe des Absturzes von Jeedom stellen. Sie können die Tags \ #Benutzername \ # und \ #Kennwort \ # hinzufügen, die bei Verwendung dieses Befehls automatisch durch den Benutzernamen und das Kennwort ersetzt werden
 
--   **Feed-URL** : URL des Videostreams des Kameratyps rtsp: // # Benutzername #: #Kennwort # @ # IP #: 554 / videoMain (Beispiel für Foscam-Kameras)
+-   **Feed-URL** : rtsp kamera video stream url:// username ##:#Kennwort # @ # ip#:554 / videoMain (Beispiel für Foscam-Kameras)
 
 -   **Modell** : Hier können Sie das Kameramodell auswählen. Seien Sie vorsichtig, wenn Sie dies ändern, werden Ihre Konfigurationseinstellungen überschrieben
 
 Metaphorik
 ------
 
-In diesem Teil können Sie die Bildqualität konfigurieren. In der Tat verringert Jeedom die Größe des Bildes oder der Komprimierung, bevor es an Ihren Browser gesendet wird. Dadurch können die Bilder flüssiger werden (weil sie heller sind). In diesem Teil können Sie auch die Anzahl der anzuzeigenden Bilder pro Sekunde konfigurieren. Alle Einstellungen sind verfügbar in: Mobil / Desktop und Miniatur / Normal.
+In diesem Teil können Sie die Bildqualität konfigurieren. In der Tat verringert Jeedom die Größe des Bildes oder der Komprimierung, bevor es an Ihren Browser gesendet wird. Dadurch können die Bilder flüssiger werden (weil sie heller sind). In diesem Teil können Sie auch die Anzahl der anzuzeigenden Bilder pro Sekunde konfigurieren. Alle Einstellungen sind in verfügbar : Handy / Desktop und Miniatur / Normal.
 
--   Aktualisieren: Verzögerung in Sekunden zwischen der Anzeige von 2 Bildern (hier können Sie Zahlen unter 1 eingeben)
+-   Erfrischung (en) : Verzögerung in Sekunden zwischen der Anzeige von 2 Bildern (hier können Sie Zahlen unter 1 eingeben)
 
--   Komprimierung (%): Je niedriger die Komprimierung, desto weniger wird das Bild komprimiert. Bei 100% wird keine Komprimierung durchgeführt
+-   Komprimierung (%) : Je niedriger es ist, desto weniger wird das Bild komprimiert. Bei 100% wird keine Komprimierung durchgeführt
 
--   Größe (% - 0: automatisch): Je höher%, desto näher sind wir der Originalgröße des Bildes. Bei 100% findet keine Größenänderung des Bildes statt
+-   Größe (% - 0 : automatische) : Je höher der Prozentsatz, desto näher sind wir der Originalgröße des Bildes. Bei 100% findet keine Größenänderung des Bildes statt
 
 > **Notiz**
 >
@@ -64,22 +64,22 @@ In diesem Teil können Sie die Bildqualität konfigurieren. In der Tat verringer
 Erfassung
 -------
 
--   Maximale Aufnahmedauer: Maximale Aufnahmedauer
+-   Maximale Dauer einer Aufnahme : maximale Aufnahmedauer
 
--   Immer ein Video machen: Jeedom zwingt sich, die Aufnahmen vor der Aufnahme immer in Video umzuwandeln
+-   Mach immer ein Video : zwingt Jeedom, vor der Aufnahme immer Videoaufnahmen zu konvertieren
 
--   Anzahl der Bilder pro Sekunde des Videos: Anzahl der Bilder pro Sekunde des Videos
+-   Anzahl der Bilder pro Sekunde des Videos : Anzahl der Bilder pro Sekunde von Videos
 
--   Bewegungserkennungsschwelle (0-100): Bewegungserkennungsschwelle (es wird empfohlen, 2 einzustellen). Je höher der Wert, desto höher ist die Empfindlichkeit.
+-   Bewegungserkennungsschwelle (0-100) : Bewegungserkennungsschwelle (es wird empfohlen, 2 einzustellen). Je höher der Wert, desto höher ist die Empfindlichkeit.
 
--   Alle Aufnahmen von der Kamera löschen: Alle Aufnahmen und Aufnahmen von der Kamera löschen
+-   Löschen Sie alle Kameraaufnahmen : Löschen Sie alle Aufnahmen und Aufzeichnungen von der Kamera
 
 Versorgung
 ------------
 
--   EIN-Befehl: Befehl zum Einschalten der Stromversorgung der Kamera
+-   EIN-Befehl : Steuerung der Kameraleistung
 
--   AUS-Befehl: Befehl zum Abschalten der Kamera
+-   AUS-Befehl : Steuerung zum Abschalten der Kamera
 
 Befehle
 ---------
@@ -92,15 +92,15 @@ Befehle
 
 -   Anforderung zum Senden an die Kamera, um eine Aktion auszuführen (Umschalten in den Nachtmodus, ptz usw.). Sie können die Tags \ #Benutzername \ # und \ #Kennwort \ # verwenden, die bei Verwendung dieses Befehls automatisch durch den Benutzernamen und das Kennwort ersetzt werden
 
--   Stoppbefehl: Bei PTZ-Kameras gibt es häufig einen Befehl, der die Bewegung stoppt. Hier muss er angegeben werden
+-   Befehl stoppen : Bei PTZ-Kameras gibt es häufig einen Befehl, der die Bewegung stoppt. Hier muss er angegeben werden
 
--   Anzeige: Mit dieser Option können Sie die Reihenfolge im Dashboard anzeigen oder nicht
+-   Anzeige : Ermöglicht die Anzeige der Reihenfolge oder nicht im Dashboard
 
--   Erweiterte Konfiguration (kleine gekerbte Räder): Ermöglicht die Anzeige der erweiterten Konfiguration des Befehls (Protokollierungsmethode, Widget usw.)
+-   Erweiterte Konfiguration (kleine gekerbte Räder) : Zeigt die erweiterte Konfiguration des Befehls an (Protokollierungsmethode, Widget usw.)
 
--   Test: Ermöglicht das Testen des Befehls
+-   Test : ermöglicht das Testen des Befehls
 
--   Löschen (sign -): Ermöglicht das Löschen des Befehls
+-   Löschen (Zeichen -) : ermöglicht das Löschen des Befehls
 
 Das Widget
 =========
@@ -123,7 +123,7 @@ Hier finden Sie alle Fänge nach Tag und dann nach Datum, die Sie für jeden von
 
 -   lösche es
 
-In Mobilgeräten ist das Widget etwas anders: Wenn Sie auf das Bild der Kamera klicken, wird es mit den möglichen Befehlen größer.
+In Mobile ist das Widget etwas anders : Wenn Sie auf das Kamerabild klicken, erhalten Sie ein größeres mit den möglichen Befehlen.
 
 Die Paneele
 ==========
@@ -148,19 +148,19 @@ Standardmäßig reicht es aus, die Anzahl der gewünschten Aufnahmen in das Feld
 Erweiterte Aufnahmeoptionen
 ---------------------------
 
--   `nbSnap` : nombre de capture, si non précisé alors les captures sont faites jusqu'à une demande d'arrêt d'enregistrement ou d'arrêt de la caméra
+-   `nbSnap` : Anzahl der Aufnahmen, falls nicht angegeben, werden die Aufnahmen gemacht, bis Sie aufgefordert werden, die Aufnahme zu beenden oder die Kamera anzuhalten
 
--   `delay` : délai entre 2 captures, si non précisé alors le délai est de 1s
+-   `delay` : Verzögerung zwischen 2 Aufnahmen, wenn nicht angegeben, beträgt die Verzögerung 1s
 
--   `wait` : délai d'attente avant de commencer les captures, si non précié alors aucun envoi n'est fait
+-   `wait` : Wartezeit vor Fangbeginn, falls nicht anders angegeben, erfolgt kein Versand
 
--   `sendPacket` : nombre de captures déclenchant l'envoi de paquet de captures, si non précisé alors les captures ne seront envoyées qu'à la fin
+-   `sendPacket` : Anzahl der Fänge, die das Senden eines Fangpakets auslösen. Wenn nicht angegeben, werden die Fänge erst am Ende gesendet
 
--   `detectMove=1` : envoi les captures que s'il y a un changement supérieur au seuil de détection (voir configuration de la caméra)
+-   `detectMove=1` : Aufnahmen nur senden, wenn sich die Erkennungsschwelle ändert (siehe Kamerakonfiguration)
 
--   `movie=1` : une fois l'enregistrement terminé, les images sont converties en vidéo
+-   `movie=1` : Nach Abschluss der Aufnahme werden die Bilder in Videos konvertiert
 
--   `sendFirstSnap=1` : envoi la première capture de l'enregistrement
+-   `sendFirstSnap=1` : Senden Sie die erste Aufnahme der Aufnahme
 
 > **Beispiele**
 >
@@ -185,7 +185,7 @@ FAQ
 
 >**Sucht kann sich nicht einleben?**
 >
->In ssh oder in der Administration -&gt; OS / DB -&gt; System do: dpkg --configure -a
+>In ssh oder in der Administration -&gt; OS / DB -&gt; System tun : dpkg --configure -a
 
 >**Unter welchen Bedingungen muss meine Kamera Jeedom-kompatibel sein (sofern sie nicht in der Kompatibilitätsliste enthalten ist)?**
 >

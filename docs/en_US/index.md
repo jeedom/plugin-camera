@@ -42,20 +42,20 @@ Here you have the main information of your camera :
 
 -   **Snapshot URL** : Camera snapshot URL. Changes depending on the cameras. Be careful not to put a flow url under penalty of crashing Jeedom. You can add the tags \ #username \ # and \ #password \ #, which will be automatically replaced by the username and password when using this command
 
--   **Feed URL** : url of the video stream of the camera type rtsp: // # username #: #password # @ # ip #: 554 / videoMain (example for Foscam cameras)
+-   **Feed URL** : rtsp camera video stream url:// username ##:#password # @ # ip#:554 / videoMain (example for Foscam cameras)
 
 -   **Model** : allows you to choose the camera model. Be careful if you change this will overwrite your configuration settings
 
 imagery
 ------
 
-This part allows you to configure the image quality. Indeed Jeedom decreases the size of the image or the compress before sending it to your browser. This allows the images to be more fluid (because they are lighter). It is also in this part that you can configure the number of images per second to display. All settings are available in: mobile / desktop and miniature / normal.
+This part allows you to configure the image quality. Indeed Jeedom decreases the size of the image or the compress before sending it to your browser. This allows the images to be more fluid (because they are lighter). It is also in this part that you can configure the number of images per second to display. All settings are available in : mobile / desktop and miniature / normal.
 
--   Refresh (s): delay in seconds between the display of 2 images (here you can put numbers less than 1)
+-   Refreshment (s) : delay in seconds between the display of 2 images (here you can put numbers less than 1)
 
--   Compression (%): the lower it is the less the image is compressed, at 100% no compression is done
+-   Compression (%) : the lower it is the less the image is compressed, at 100% no compression is done
 
--   Size (% - 0: automatic): the higher the%, the closer we are to the original size of the image. At 100% no resizing of the image takes place
+-   Size (% - 0 : automatic) : the higher the%, the closer we are to the original size of the image. At 100% no resizing of the image takes place
 
 > **Note**
 >
@@ -64,22 +64,22 @@ This part allows you to configure the image quality. Indeed Jeedom decreases the
 Capture
 -------
 
--   Maximum duration of a recording: maximum duration of recordings
+-   Maximum duration of a recording : maximum duration of recordings
 
--   Always make a video: Jeedom forces to always transform the recordings into video before recording
+-   Always make a video : forces Jeedom to always convert video recordings before recording
 
--   Number of frames per second of video: number of frames per second of videos
+-   Number of frames per second of the video : number of frames per second of videos
 
--   Motion detection threshold (0-100): motion detection threshold (it is advisable to set 2). The higher the value, the more the sensitivity increases.
+-   Motion detection threshold (0-100) : motion detection threshold (it is advisable to set 2). The higher the value, the more the sensitivity increases.
 
--   Delete all captures from camera: delete all captures and recordings from camera
+-   Delete all camera captures : delete all captures and recordings from the camera
 
 Food
 ------------
 
--   ON command: Command for switching on the power supply to the camera
+-   ON command : Camera power control
 
--   OFF command: Command to cut the power to the camera
+-   OFF command : Control to cut off the power to the camera
 
 Orders
 ---------
@@ -92,15 +92,15 @@ Orders
 
 -   Request to send to the camera to perform an action (switch to night mode, ptz, etc.). You can use the tags \ #username \ # and \ #password \ #, which will be automatically replaced by the username and password when using this command
 
--   Stop command: for PTZ cameras, there is often a command that stops the movement, this is where it must be specified
+-   Stop command : for PTZ cameras, there is often a command that stops the movement, this is where it must be specified
 
--   Display: allows you to display the order or not on the dashboard
+-   Pin up : allows to display the order or not on the dashboard
 
--   Advanced configuration (small notched wheels): allows you to display the advanced configuration of the command (logging method, widget, etc.)
+-   Advanced configuration (small notched wheels) : displays the advanced configuration of the command (logging method, widget, etc.)
 
--   Test: allows you to test the command
+-   Test : allows to test the command
 
--   Delete (sign -): allows you to delete the command
+-   Delete (sign -) : allows to delete the command
 
 The widget
 =========
@@ -123,7 +123,7 @@ You will find here all the catches organized by day then by date, you can for ea
 
 -   delete it
 
-In mobile the widget is a little different: if you click on the image of the camera you get this larger with the possible commands.
+In mobile the widget is a little different : if you click on the camera image you get a larger one with the possible commands.
 
 The panels
 ==========
@@ -148,19 +148,19 @@ By default, just put the number of captures you want in the &quot;number of capt
 Advanced capture options
 ---------------------------
 
--   `nbSnap` : nombre de capture, si non précisé alors les captures sont faites jusqu'à une demande d'arrêt d'enregistrement ou d'arrêt de la caméra
+-   `nbSnap` : number of captures, if not specified then the captures are made until a request to stop recording or stop the camera
 
--   `delay` : délai entre 2 captures, si non précisé alors le délai est de 1s
+-   `delay` : delay between 2 captures, if not specified then the delay is 1s
 
--   `wait` : délai d'attente avant de commencer les captures, si non précié alors aucun envoi n'est fait
+-   `wait` : waiting time before starting to catch, if not specified then no shipment is made
 
--   `sendPacket` : nombre de captures déclenchant l'envoi de paquet de captures, si non précisé alors les captures ne seront envoyées qu'à la fin
+-   `sendPacket` : number of catches triggering the sending of a catch packet, if not specified then the catches will only be sent at the end
 
--   `detectMove=1` : envoi les captures que s'il y a un changement supérieur au seuil de détection (voir configuration de la caméra)
+-   `detectMove=1` : send captures only if there is a change above the detection threshold (see camera configuration)
 
--   `movie=1` : une fois l'enregistrement terminé, les images sont converties en vidéo
+-   `movie=1` : after recording is finished, images are converted to video
 
--   `sendFirstSnap=1` : envoi la première capture de l'enregistrement
+-   `sendFirstSnap=1` : send the first capture of the recording
 
 > **Examples**
 >
@@ -185,7 +185,7 @@ FAQ
 
 >**Addictions can&#39;t settle in?**
 >
->In ssh or in administration -&gt; OS / DB -&gt; System do: dpkg --configure -a
+>In ssh or in administration -&gt; OS / DB -&gt; System do : dpkg --configure -a
 
 >**What are the conditions for my camera to be Jeedom compatible (if it is not in the compatibility list)?**
 >

@@ -42,20 +42,20 @@ Aquí tienes la información principal de tu cámara :
 
 -   **URL de instantánea** : URL de la instantánea de la cámara. Cambios según las cámaras. Tenga cuidado de no poner una url de flujo bajo pena de estrellar Jeedom. Puede agregar las etiquetas \ #username \ # y \ #password \ #, que serán reemplazadas automáticamente por el nombre de usuario y la contraseña cuando use este comando
 
--   **URL del feed** : url de la transmisión de video de la cámara tipo rtsp: // # username #: #password # @ # ip #: 554 / videoMain (ejemplo para cámaras Foscam)
+-   **URL del feed** : url de flujo de video de la cámara rtsp:// nombre de usuario ##:#contraseña # @ # ip#:554 / videoMain (ejemplo para cámaras Foscam)
 
 -   **modelo** : le permite elegir el modelo de cámara. Tenga cuidado si cambia esto, sobrescribirá su configuración
 
 imágenes
 ------
 
-Esta parte le permite configurar la calidad de la imagen. De hecho, Jeedom disminuye el tamaño de la imagen o la compresa antes de enviarla a su navegador. Esto permite que las imágenes sean más fluidas (porque son más claras). También es en esta parte que puede configurar el número de imágenes por segundo para mostrar. Todas las configuraciones están disponibles en: móvil / escritorio y miniatura / normal.
+Esta parte le permite configurar la calidad de la imagen. De hecho, Jeedom disminuye el tamaño de la imagen o la compresa antes de enviarla a su navegador. Esto permite que las imágenes sean más fluidas (porque son más claras). También es en esta parte que puede configurar el número de imágenes por segundo para mostrar. Todos los ajustes están disponibles en : móvil / escritorio y miniatura / normal.
 
--   Actualizar (s): retraso en segundos entre la visualización de 2 imágenes (aquí puede poner números menores que 1)
+-   Refresco (s) : retraso en segundos entre la visualización de 2 imágenes (aquí puede poner números menores que 1)
 
--   Compresión (%): cuanto menor es la compresión de la imagen, al 100% no se realiza compresión
+-   Compresión (%) : cuanto más bajo es, menos se comprime la imagen, al 100% no se realiza compresión
 
--   Tamaño (% - 0: automático): cuanto mayor sea el%, más cerca estamos del tamaño original de la imagen. Al 100%, no se cambia el tamaño de la imagen
+-   Tamaño (% - 0 : automático) : cuanto mayor sea el%, más cerca estamos del tamaño original de la imagen. Al 100%, no se cambia el tamaño de la imagen
 
 > **nota**
 >
@@ -64,22 +64,22 @@ Esta parte le permite configurar la calidad de la imagen. De hecho, Jeedom dismi
 captura
 -------
 
--   Duración máxima de una grabación: duración máxima de las grabaciones
+-   Duración máxima de una grabación. : duración máxima de grabaciones
 
--   Siempre haga un video: Jeedom obliga a transformar siempre las grabaciones en video antes de grabar
+-   Siempre haz un video : obliga a Jeedom a convertir siempre las grabaciones de video antes de grabar
 
--   Número de fotogramas por segundo de video: número de fotogramas por segundo de videos
+-   Número de fotogramas por segundo del video : cantidad de cuadros por segundo de videos
 
--   Umbral de detección de movimiento (0-100): umbral de detección de movimiento (es recomendable establecer 2). Cuanto mayor sea el valor, más aumenta la sensibilidad.
+-   Umbral de detección de movimiento (0-100) : umbral de detección de movimiento (es recomendable establecer 2). Cuanto mayor sea el valor, más aumenta la sensibilidad.
 
--   Eliminar todas las capturas de la cámara: elimine todas las capturas y grabaciones de la cámara
+-   Eliminar todas las capturas de cámara : eliminar todas las capturas y grabaciones de la cámara
 
 suministro
 ------------
 
--   Comando ON: Comando para encender la fuente de alimentación de la cámara
+-   Comando ON : Control de potencia de la cámara
 
--   Comando OFF: Comando para cortar la alimentación de la cámara.
+-   Comando OFF : Control para cortar la alimentación de la cámara.
 
 comandos
 ---------
@@ -92,15 +92,15 @@ comandos
 
 -   Solicitud para enviar a la cámara para realizar una acción (cambiar al modo nocturno, ptz, etc.). Puede usar las etiquetas \ #username \ # y \ #password \ #, que serán reemplazadas automáticamente por el nombre de usuario y la contraseña cuando use este comando
 
--   Comando de detención: para las cámaras PTZ, a menudo hay un comando que detiene el movimiento, aquí es donde debe especificarse
+-   Comando de parada : para cámaras PTZ, a menudo hay un comando que detiene el movimiento, aquí es donde debe especificarse
 
--   Mostrar: le permite mostrar el pedido o no en el tablero
+-   visualización : permite mostrar el pedido o no en el tablero
 
--   Configuración avanzada (ruedas con muescas pequeñas): le permite mostrar la configuración avanzada del comando (método de registro, widget, etc.)
+-   Configuración avanzada (ruedas con muescas pequeñas) : muestra la configuración avanzada del comando (método de registro, widget, etc.)
 
--   Prueba: le permite probar el comando
+-   prueba : permite probar el comando
 
--   Eliminar (signo -): le permite eliminar el comando
+-   Eliminar (firmar -) : permite eliminar el comando
 
 El widget
 =========
@@ -123,7 +123,7 @@ Encontrarás aquí todas las capturas organizadas por día y luego por fecha, pu
 
 -   bórralo
 
-En dispositivos móviles, el widget es un poco diferente: si hace clic en la imagen de la cámara, esto se agranda con los posibles comandos.
+En dispositivos móviles, el widget es un poco diferente : Si hace clic en la imagen de la cámara, obtendrá una más grande con los comandos posibles.
 
 Los paneles
 ==========
@@ -148,19 +148,19 @@ De forma predeterminada, simplemente coloque el número de capturas que desea en
 Opciones de captura avanzadas
 ---------------------------
 
--   `nbSnap` : nombre de capture, si non précisé alors les captures sont faites jusqu'à une demande d'arrêt d'enregistrement ou d'arrêt de la caméra
+-   `nbSnap` : número de capturas, si no se especifica, las capturas se realizan hasta una solicitud para detener la grabación o detener la cámara
 
--   `delay` : délai entre 2 captures, si non précisé alors le délai est de 1s
+-   `delay` : retraso entre 2 capturas, si no se especifica, el retraso es de 1 s
 
--   `wait` : délai d'attente avant de commencer les captures, si non précié alors aucun envoi n'est fait
+-   `wait` : tiempo de espera antes de comenzar a atrapar, si no se especifica, no se realiza ningún envío
 
--   `sendPacket` : nombre de captures déclenchant l'envoi de paquet de captures, si non précisé alors les captures ne seront envoyées qu'à la fin
+-   `sendPacket` : cantidad de capturas que desencadenan el envío de un paquete de captura, si no se especifica, las capturas solo se enviarán al final
 
--   `detectMove=1` : envoi les captures que s'il y a un changement supérieur au seuil de détection (voir configuration de la caméra)
+-   `detectMove=1` : enviar capturas solo si hay un cambio por encima del umbral de detección (ver configuración de la cámara)
 
--   `movie=1` : une fois l'enregistrement terminé, les images sont converties en vidéo
+-   `movie=1` : Una vez finalizada la grabación, las imágenes se convierten en video
 
--   `sendFirstSnap=1` : envoi la première capture de l'enregistrement
+-   `sendFirstSnap=1` : enviar la primera captura de la grabación
 
 > **Ejemplos**
 >
@@ -185,7 +185,7 @@ Preguntas frecuentes
 
 >**¿Las adicciones no pueden asentarse?**
 >
->En ssh o en administración -&gt; OS / DB -&gt; Sistema hacer: dpkg --configure -a
+>En ssh o en administración -&gt; OS / DB -&gt; Sistema hacer : dpkg --configure -a
 
 >**¿Cuáles son las condiciones para que mi cámara sea compatible con Jeedom (si no está en la lista de compatibilidad)?**
 >
