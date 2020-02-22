@@ -148,19 +148,19 @@ Standardmäßig reicht es aus, die Anzahl der gewünschten Aufnahmen in das Feld
 Erweiterte Aufnahmeoptionen
 ---------------------------
 
--   nbSnap: Anzahl der Aufnahmen, falls nicht angegeben, werden die Aufnahmen gemacht, bis Sie aufgefordert werden, die Aufnahme zu beenden oder die Kamera anzuhalten
+-   `nbSnap` : nombre de capture, si non précisé alors les captures sont faites jusqu'à une demande d'arrêt d'enregistrement ou d'arrêt de la caméra
 
--   Verzögerung: Verzögerung zwischen 2 Aufnahmen, wenn nicht angegeben, beträgt die Verzögerung 1s
+-   `delay` : délai entre 2 captures, si non précisé alors le délai est de 1s
 
--   Warten: Wartezeit vor dem Starten der Erfassung. Wenn nicht angegeben, erfolgt kein Versand
+-   `wait` : délai d'attente avant de commencer les captures, si non précié alors aucun envoi n'est fait
 
--   sendPacket: Anzahl der Erfassungs, die das Senden eines Erfassung-Pakets auslösen. Wenn nicht angegeben, werden die Erfassungs erst am Ende gesendet
+-   `sendPacket` : nombre de captures déclenchant l'envoi de paquet de captures, si non précisé alors les captures ne seront envoyées qu'à la fin
 
--   detectMove = 1: Sendet nur dann Erfassungs, wenn sich die Erkennungsschwelle ändert (siehe Kamerakonfiguration)
+-   `detectMove=1` : envoi les captures que s'il y a un changement supérieur au seuil de détection (voir configuration de la caméra)
 
--   movie = 1: Sobald die Aufnahme beendet ist, werden die Bilder in Video konvertiert
+-   `movie=1` : une fois l'enregistrement terminé, les images sont converties en vidéo
 
--   sendFirstSnap = 1: Sendet die erste Erfassung des Datensatzes
+-   `sendFirstSnap=1` : envoi la première capture de l'enregistrement
 
 > **Beispiele**
 >

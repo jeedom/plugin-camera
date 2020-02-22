@@ -148,19 +148,19 @@ By default, just put the number of captures you want in the &quot;number of capt
 Advanced capture options
 ---------------------------
 
--   nbSnap: number of captures, if not specified then the captures are made until a request to stop recording or stop the camera
+-   `nbSnap` : nombre de capture, si non précisé alors les captures sont faites jusqu'à une demande d'arrêt d'enregistrement ou d'arrêt de la caméra
 
--   delay: delay between 2 captures, if not specified then the delay is 1s
+-   `delay` : délai entre 2 captures, si non précisé alors le délai est de 1s
 
--   wait: waiting time before starting the captures, if not specified then no shipment is made
+-   `wait` : délai d'attente avant de commencer les captures, si non précié alors aucun envoi n'est fait
 
--   sendPacket: number of captures triggering the sending of packet of captures, if not specified then the captures will only be sent at the end
+-   `sendPacket` : nombre de captures déclenchant l'envoi de paquet de captures, si non précisé alors les captures ne seront envoyées qu'à la fin
 
--   detectMove = 1: sends captures only if there is a change above the detection threshold (see camera configuration)
+-   `detectMove=1` : envoi les captures que s'il y a un changement supérieur au seuil de détection (voir configuration de la caméra)
 
--   movie = 1: once the recording is finished, the images are converted to video
+-   `movie=1` : une fois l'enregistrement terminé, les images sont converties en vidéo
 
--   sendFirstSnap = 1: send the first capture of the record
+-   `sendFirstSnap=1` : envoi la première capture de l'enregistrement
 
 > **Examples**
 >
