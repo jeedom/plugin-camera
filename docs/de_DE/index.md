@@ -172,7 +172,7 @@ Senden Sie die Bewegungserkennung an Jeedom
 
 Wenn Sie eine Kamera mit Bewegungserkennung haben und diese an Jeedom senden möchten, ist dies die URL, die Sie auf Ihre Kamera setzen müssen :
 
-    http://#IP_JEEDOM#/core/api/jeeApi.php?apikey APIKEY = # # &amp; type = Kamera &amp; id = # ID # &amp; # value = Wert#
+    http://#IP_JEEDOM#/core/api/jeeApi.php?apikey=#APIKEY#&type=camera&id=#ID#&value=#value#
 
 Natürlich vor dem Erstellen eines Info-Befehls auf Ihrer Kamera
 

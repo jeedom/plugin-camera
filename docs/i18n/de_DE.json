@@ -159,7 +159,6 @@
         "Le film sera stocké sur votre Jeedom.": "Der Film wird auf Ihrem Jeedom gespeichert.",
         "Envoi de la détection de mouvement à Jeedom": "Senden Sie die Bewegungserkennung an Jeedom",
         "Si vous avez une caméra qui possède la détection de mouvement et que vous voulez transmettre celle-ci à Jeedom voilà l'url à mettre sur votre caméra": "Wenn Sie eine Kamera mit Bewegungserkennung haben und diese an Jeedom senden möchten, ist dies die URL, die Sie auf Ihre Kamera setzen müssen",
-        "apikey=#APIKEY#&type=camera&id=#ID#&value=#value": "apikey APIKEY = # # &amp; type = Kamera &amp; id = # ID # &amp; # value = Wert",
         "Il faut bien entendu avant avoir créé une commande de type info sur votre caméra": "Natürlich vor dem Erstellen eines Info-Befehls auf Ihrer Kamera",
         "FAQ": "FAQ",
         "Où sont les enregistrements ?": "Wo sind die Aufzeichnungen?",
