@@ -7,11 +7,11 @@ After installing the plugin, you just need to activate it, however there are som
 
 -   **Record path** : indicates the path where Jeedom should store the images it captures from your cameras (it is not recommended to touch it). If your path is not in the Jeedom installation path then you will not be able to view the captures in Jeedom.
 
--   **Maximum recording folder size (MB)** : indicates the maximum size authorized for the folder where the captures are saved (it is not recommended to touch them). If this quota is reached Jeedom will delete the oldest catches.
+-   **Maximum recording folder size (MB)** : indicates the maximum size authorized for the folder where the catches are saved (it is not recommended to touch it). If this quota is reached Jeedom will delete the oldest catches.
 
 -   **The camera plugin must react to interactions** : keywords / phrases to which the plugin will react via Jeedom interactions.
 
--   **panel** : Allows you to display the panel (Home Menu -&gt; Camera) and to have a view of all of your cameras (see below). Do not forget to activate the panel in the configuration of the plugin to access it later.
+-   **panel** : Allows you to display the panel (Home Menu -&gt; Camera) and have a view of all of your cameras (see below). Do not forget to activate the panel in the configuration of the plugin to access it later.
 
 
 Equipment configuration
@@ -36,26 +36,26 @@ Here you have the main information of your camera :
 
 -   **Protocol** : the communication protocol of your camera (http or https)
 
--   **username** : username to log in to the camera (if necessary). Please note that the plugin does not support special characters (you must therefore limit yourself to numbers, lowercase / uppercase letters)
+-   **username** : username to log in to the camera (if required). Please note that the plugin does not support special characters (you must therefore limit yourself to numbers, lowercase / uppercase letters)
 
 -   **Password** : password to connect to the camera (if necessary).Please note that the plugin does not support special characters (you must therefore limit yourself to numbers, lowercase / uppercase letters)
 
--   **Snapshot URL** : Camera snapshot URL. Changes depending on the cameras. Be careful not to put a flow url under penalty of crashing Jeedom. You can add the tags \ #username \ # and \ #password \ #, which will be automatically replaced by the username and password when using this command
+-   **Snapshot URL** : Camera snapshot URL. Change depending on the cameras. Be careful not to put a flow url under penalty of crashing Jeedom. You can add the tags \ #username \ # and \ #password \ #, which will be automatically replaced by the username and password when using this command
 
 -   **Feed URL** : rtsp camera video stream url:// username ##:#password # @ # ip#:554 / videoMain (example for Foscam cameras)
 
--   **Model** : allows you to choose the camera model. Be careful if you change this will overwrite your configuration settings
+-   **Model** : allows to choose the camera model. Be careful if you change this will overwrite your configuration settings
 
 imagery
 ------
 
-This part allows you to configure the image quality. Indeed Jeedom decreases the size of the image or the compress before sending it to your browser. This allows the images to be more fluid (because they are lighter). It is also in this part that you can configure the number of images per second to display. All settings are available in : mobile / desktop and miniature / normal.
+This part allows you to configure the image quality. Indeed Jeedom decreases the size of the image or the compress before sending it to your browser. This allows the images to be more fluid (because they are lighter). It is also in this part that you can configure the number of frames per second to display.. All settings are available in : mobile / desktop and miniature / normal.
 
 -   Refreshment (s) : delay in seconds between the display of 2 images (here you can put numbers less than 1)
 
 -   Compression (%) : the lower it is the less the image is compressed, at 100% no compression is done
 
--   Size (% - 0 : automatic) : the higher the%, the closer we are to the original size of the image. At 100% no resizing of the image takes place
+-   Size (% - 0 : automatic) : the higher the% the closer we are to the original size of the image. At 100% no resizing of the image takes place
 
 > **Note**
 >
@@ -70,7 +70,7 @@ Capture
 
 -   Number of frames per second of the video : number of frames per second of videos
 
--   Motion detection threshold (0-100) : motion detection threshold (it is advisable to set 2). The higher the value, the more the sensitivity increases.
+-   Motion detection threshold (0-100) : motion detection threshold (it is advisable to set 2). The higher the value, the higher the sensitivity.
 
 -   Delete all camera captures : delete all captures and recordings from the camera
 
@@ -111,7 +111,7 @@ We find on this one the image of the camera, the commands defined in the configu
 >
 > On the dashboard and the panel it is possible to resize the widget to adapt it to your needs
 
-Clicking on the image displays it in a window and in a larger format.
+Click on the image to display it in a window and in a larger format.
 
 A click on the last command to browse the screenshots will display this one.
 
@@ -123,7 +123,7 @@ You will find here all the catches organized by day then by date, you can for ea
 
 -   delete it
 
-In mobile the widget is a little different : if you click on the camera image you get a larger one with the possible commands.
+In mobile the widget is a little different : if you click on the image of the camera you get this one in bigger with the possible commands.
 
 The panels
 ==========
@@ -141,7 +141,7 @@ Save and send capture
 
 This somewhat specific command allows the capture to send it (compatible with the slack, mail and transfer plugin).
 
-The configuration is quite simple, you call the send send action (called &quot;Recording&quot;) in a scenario. In the title part you pass the options.
+The configuration is quite simple you call the action of sending of capture (called &quot;Recording&quot;) in a scenario. In the title part you pass the options.
 
 By default, just put the number of captures you want in the &quot;number of captures or options&quot; field, but you can go further with options (see details below &quot;advanced options of captures&quot;). In the message part, you just have to fill in the order of the plugin (currently slack, email or transfer) which sends the captures. You can put several separated by &amp;&amp;.
 
@@ -164,7 +164,7 @@ Advanced capture options
 
 > **Examples**
 >
-> nbSnap = 3 delay = 5 ==&gt; send 3 captures made at 5 second intervals (send triggered via the scenario) movie = 1 sendFirstSnap = 1 detectMove = 1 ==&gt; send the first capture, then send a capture to each motion detection and record a video until the &quot;Stop Recording&quot; command to insert in the scenario. The film will be stored on your Jeedom.
+> nbSnap = 3 delay = 5 ==&gt; send 3 captures made at 5 second intervals (send triggered via the scenario) movie = 1 sendFirstSnap = 1 detectMove = 1 ==&gt; send the first capture, then send a capture to each motion detection and record a video until the &quot;Stop Recording&quot; command to insert in the scenario. The movie will be stored on your Jeedom.
 
 
 Send motion detection to Jeedom
@@ -179,14 +179,14 @@ Obviously, before creating an info type command on your camera
 FAQ
 ===
 
->**Where are the records?**
+>**Where are the records ?**
 >
 >The recordings are found by default in plugins / camera / data / records / * ID \ _CAM *, please note that this may vary if you asked Jeedom to record them elsewhere
 
->**Addictions can&#39;t settle in?**
+>**Addictions fail to settle ?**
 >
 >In ssh or in administration -&gt; OS / DB -&gt; System do : dpkg --configure -a
 
->**What are the conditions for my camera to be Jeedom compatible (if it is not in the compatibility list)?**
+>**What are the conditions for my camera to be Jeedom compatible (if it is not in the compatibility list) ?**
 >
 > The only condition is that the camera has an url which sends back an image (well an image not a video stream)
