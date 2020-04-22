@@ -180,8 +180,6 @@
         "Le film sera stocké sur votre Jeedom": "Le film sera stocké sur votre Jeedom",
         "Envoi de la détection de mouvement à Jeedom": "Envoi de la détection de mouvement à Jeedom",
         "Si vous avez une caméra qui possède la détection de mouvement et que vous voulez transmettre celle-ci à Jeedom voilà l'url à mettre sur votre caméra": "Si vous avez une caméra qui possède la détection de mouvement et que vous voulez transmettre celle-ci à Jeedom voilà l'url à mettre sur votre caméra",
-        "http": "http",
-        "\/\/#IP_JEEDOM#\/core\/api\/jeeApi.php": "\/\/#IP_JEEDOM#\/core\/api\/jeeApi.php",
         "Il faut bien entendu avant avoir créé une commande de type info sur votre caméra": "Il faut bien entendu avant avoir créé une commande de type info sur votre caméra",
         "FAQ": "FAQ",
         "Où sont les enregistrements": "Où sont les enregistrements",

@@ -1,6 +1,6 @@
 Complemento para crear y administrar cámaras wifi (visualización y grabación)
 
-Configuración del complemento
+Configuración del plugin
 =======================
 
 Después de instalar el complemento, solo necesita activarlo, sin embargo, hay algunos parámetros de configuración avanzados :
@@ -11,13 +11,13 @@ Después de instalar el complemento, solo necesita activarlo, sin embargo, hay a
 
 -   **El complemento de la cámara debe reaccionar a las interacciones.** : palabras clave / frases a las que reaccionará el complemento a través de las interacciones de Jeedom.
 
--   **panel** : Le permite visualizar el panel (Menú de inicio -&gt; Cámara) y tener una vista de todas sus cámaras (ver más abajo). No olvide activar el panel en la configuración del complemento para acceder a él más tarde..
+-   **Panel** : Le permite visualizar el panel (Menú de inicio -&gt; Cámara) y tener una vista de todas sus cámaras (ver más abajo). No olvide activar el panel en la configuración del complemento para acceder a él más tarde..
 
 
 Configuración del equipo
 =============================
 
-equipo
+Dispositivos
 ----------
 
 Aquí tienes la información principal de tu cámara :
@@ -28,15 +28,15 @@ Aquí tienes la información principal de tu cámara :
 
 -   **Activar** : activa su equipo
 
--   **visible** : lo hace visible en el tablero
+-   **Visible** : lo hace visible en el tablero
 
 -   **IP** : la dirección IP local de su cámara
 
--   **puerto** : el puerto para el que se conecta la cámara
+-   **Puerto** : el puerto para el que se conecta la cámara
 
--   **protocolo** : El protocolo de comunicación de su cámara (http o https)
+-   **Protocolo** : El protocolo de comunicación de su cámara (http o https)
 
--   **nombre del usuario** : nombre de usuario para iniciar sesión en la cámara (si es necesario). Tenga en cuenta que el complemento no admite caracteres especiales (por lo tanto, debe limitarse a números, letras minúsculas / mayúsculas)
+-   **Nombre de usuario** : nombre de usuario para iniciar sesión en la cámara (si es necesario). Tenga en cuenta que el complemento no admite caracteres especiales (por lo tanto, debe limitarse a números, letras minúsculas / mayúsculas)
 
 -   **Contraseña** : contraseña para conectarse a la cámara (si es necesario).Tenga en cuenta que el complemento no admite caracteres especiales (por lo tanto, debe limitarse a números, letras minúsculas / mayúsculas)
 
@@ -44,9 +44,9 @@ Aquí tienes la información principal de tu cámara :
 
 -   **URL del feed** : url de flujo de video de la cámara rtsp:// nombre de usuario ##:#contraseña # @ # ip#:554 / videoMain (ejemplo para cámaras Foscam)
 
--   **modelo** : permite elegir el modelo de cámara. Tenga cuidado si cambia esto, sobrescribirá su configuración
+-   **Modelo** : permite elegir el modelo de cámara. Tenga cuidado si cambia esto, sobrescribirá su configuración
 
-imágenes
+Imágenes
 ------
 
 Esta parte le permite configurar la calidad de la imagen.. De hecho, Jeedom disminuye el tamaño de la imagen o la compresa antes de enviarla a su navegador. Esto permite que las imágenes sean más fluidas (porque son más claras). También es en esta parte que puede configurar el número de fotogramas por segundo para mostrar.. Todos los ajustes están disponibles en : móvil / escritorio y miniatura / normal.
@@ -57,11 +57,11 @@ Esta parte le permite configurar la calidad de la imagen.. De hecho, Jeedom dism
 
 -   Tamaño (% - 0 : automático) : cuanto mayor sea el%, más cerca estamos del tamaño original de la imagen. Al 100%, no se cambia el tamaño de la imagen
 
-> **nota**
+> **Nota**
 >
 > Si pones una compresión del 0% y un tamaño del 100%, Jeedom no tocará la imagen en modo normal. Esto no es válido en modo miniatura donde hay un tamaño máximo de imagen de 360px.
 
-captura
+Captura
 -------
 
 -   Duración máxima de una grabación. : duración máxima de grabaciones
@@ -74,31 +74,31 @@ captura
 
 -   Eliminar todas las capturas de cámara : eliminar todas las capturas y grabaciones de la cámara
 
-suministro
+Suministro
 ------------
 
 -   Comando ON : Control de potencia de la cámara
 
 -   Comando OFF : Control para cortar la alimentación de la cámara.
 
-comandos
+Comandos
 ---------
 
 -   ID de pedido (usar con comandos de tipo de información para, por ejemplo, llevar la información de movimiento de la cámara a Jeedom a través de la API, ver más abajo)
 
 -   Nombre del comando con la posibilidad de poner un icono en su lugar (para eliminarlo debe hacer doble clic en el icono en cuestión)
 
--   puntao de orden y subtipo
+-   Puntao de orden y subtipo
 
 -   Solicitud para enviar a la cámara para realizar una acción (cambiar al modo nocturno, ptz, etc.). Puede usar las etiquetas \ #username \ # y \ #password \ #, que serán reemplazadas automáticamente por el nombre de usuario y la contraseña cuando use este comando
 
 -   Comando de parada : para cámaras PTZ, a menudo hay un comando que detiene el movimiento, aquí es donde debe especificarse
 
--   visualización : permite mostrar el pedido o no en el tablero
+-   Mostrar : permite mostrar el pedido o no en el tablero
 
 -   Configuración avanzada (ruedas con muescas pequeñas) : muestra la configuración avanzada del comando (método de registro, widget, etc.)
 
--   prueba : permite probar el comando
+-   Probar : Se usa para probar el comando
 
 -   Eliminar (firmar -) : permite eliminar el comando
 
@@ -107,7 +107,7 @@ El widget
 
 Encontramos en esta la imagen de la cámara, los comandos definidos en la configuración, el comando para tomar una captura, el comando para comenzar a tomar múltiples capturas de imagen y el comando para explorar estas capturas.
 
-> **punta**
+> **Punta**
 >
 > En el tablero y el panel, es posible cambiar el tamaño del widget para adaptarlo a sus necesidades.
 
@@ -130,7 +130,7 @@ Los paneles
 
 El complemento de la cámara también proporciona un panel que le permite ver todas sus cámaras a la vez, es accesible desde Inicio → Cámara.
 
-> **nota**
+> **Nota**
 >
 > Para tenerlo, debes activarlo en la página de configuración del complemento
 
@@ -185,7 +185,7 @@ Preguntas frecuentes
 
 >**Las adicciones no logran asentarse ?**
 >
->En ssh o en administración -&gt; OS / DB -&gt; Sistema hacer : dpkg --configure -a
+>En ssh o en administración -&gt; OS / DB -&gt; Sistema hacer : 
 
 >**¿Cuáles son las condiciones para que mi cámara sea compatible con Jeedom (si no está en la lista de compatibilidad) ?**
 >

@@ -17,7 +17,7 @@ Nach der Installation des Plugins müssen Sie es nur aktivieren, es gibt jedoch 
 Gerätekonfiguration
 =============================
 
-Ausrüstung
+Gerät
 ----------
 
 Hier haben Sie die wichtigsten Informationen Ihrer Kamera :
@@ -26,15 +26,15 @@ Hier haben Sie die wichtigsten Informationen Ihrer Kamera :
 
 -   **Übergeordnetes Objekt** : Gibt das übergeordnete Objekt an, zu dem das Gerät gehört
 
--   **activate** : macht Ihre Ausrüstung aktiv
+-   **Aktivieren** : macht Ihre Ausrüstung aktiv
 
--   **sichtbar** : macht es auf dem Dashboard sichtbar
+-   **Sichtbar** : macht es auf dem Dashboard sichtbar
 
 -   **IP** : die lokale IP-Adresse Ihrer Kamera
 
 -   **Hafen** : der Anschluss, an den die Kamera angeschlossen werden soll
 
--   **Protokoll** : das Kommunikationsprotokoll Ihrer Kamera (http oder https)
+-   **Protokolle** : das Kommunikationsprotokoll Ihrer Kamera (http oder https)
 
 -   **Benutzername** : Benutzername, um sich bei der Kamera anzumelden (falls erforderlich). Bitte beachten Sie, dass das Plugin keine Sonderzeichen unterstützt (Sie müssen sich daher auf Zahlen, Klein- / Großbuchstaben beschränken).
 
@@ -46,7 +46,7 @@ Hier haben Sie die wichtigsten Informationen Ihrer Kamera :
 
 -   **Modell** : ermöglicht die Auswahl des Kameramodells. Seien Sie vorsichtig, wenn Sie dies ändern, werden Ihre Konfigurationseinstellungen überschrieben
 
-Metaphorik
+Bilder
 ------
 
 In diesem Teil können Sie die Bildqualität konfigurieren. In der Tat verringert Jeedom die Größe des Bildes oder der Komprimierung, bevor es an Ihren Browser gesendet wird. Dadurch können die Bilder flüssiger werden (weil sie heller sind).. In diesem Teil können Sie auch die Anzahl der anzuzeigenden Bilder pro Sekunde konfigurieren.. Alle Einstellungen sind in verfügbar : Handy / Desktop und Miniatur / Normal.
@@ -98,9 +98,9 @@ Befehle
 
 -   Erweiterte Konfiguration (kleine gekerbte Räder) : Zeigt die erweiterte Konfiguration des Befehls an (Protokollierungsmethode, Widget usw.)
 
--   Test : ermöglicht das Testen des Befehls
+-   Test : Wird zum Testen des Befehls verwendet
 
--   Löschen (Zeichen -) : ermöglicht das Löschen des Befehls
+-   Löschen (unterschreiben -) : ermöglicht das Löschen des Befehls
 
 Das Widget
 =========
@@ -176,7 +176,7 @@ Wenn Sie eine Kamera mit Bewegungserkennung haben und diese an Jeedom senden mö
 
 Natürlich vor dem Erstellen eines Info-Befehls auf Ihrer Kamera
 
-FAQ
+Faq
 ===
 
 >**Wo sind die Aufzeichnungen? ?**
@@ -185,7 +185,7 @@ FAQ
 
 >**Abhängigkeiten lassen sich nicht nieder ?**
 >
->In ssh oder in der Administration -&gt; OS / DB -&gt; System tun : dpkg --configure -a
+>In ssh oder in der Administration -&gt; OS / DB -&gt; System tun : 
 
 >**Unter welchen Bedingungen muss meine Kamera Jeedom-kompatibel sein (sofern sie nicht in der Kompatibilitätsliste enthalten ist)? ?**
 >

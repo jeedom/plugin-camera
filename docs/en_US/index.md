@@ -11,7 +11,7 @@ After installing the plugin, you just need to activate it, however there are som
 
 -   **The camera plugin must react to interactions** : keywords / phrases to which the plugin will react via Jeedom interactions.
 
--   **panel** : Allows you to display the panel (Home Menu -&gt; Camera) and have a view of all of your cameras (see below). Do not forget to activate the panel in the configuration of the plugin to access it later.
+-   **Panel** : Allows you to display the panel (Home Menu -&gt; Camera) and have a view of all of your cameras (see below). Do not forget to activate the panel in the configuration of the plugin to access it later.
 
 
 Equipment configuration
@@ -32,11 +32,11 @@ Here you have the main information of your camera :
 
 -   **IP** : the local IP address of your camera
 
--   **Harbor** : the port for which to attach the camera
+-   **Port** : the port for which to attach the camera
 
 -   **Protocol** : the communication protocol of your camera (http or https)
 
--   **username** : username to log in to the camera (if required). Please note that the plugin does not support special characters (you must therefore limit yourself to numbers, lowercase / uppercase letters)
+-   **Username** : username to log in to the camera (if required). Please note that the plugin does not support special characters (you must therefore limit yourself to numbers, lowercase / uppercase letters)
 
 -   **Password** : password to connect to the camera (if necessary).Please note that the plugin does not support special characters (you must therefore limit yourself to numbers, lowercase / uppercase letters)
 
@@ -46,22 +46,22 @@ Here you have the main information of your camera :
 
 -   **Model** : allows to choose the camera model. Be careful if you change this will overwrite your configuration settings
 
-imagery
+Pictures
 ------
 
 This part allows you to configure the image quality. Indeed Jeedom decreases the size of the image or the compress before sending it to your browser. This allows the images to be more fluid (because they are lighter). It is also in this part that you can configure the number of frames per second to display.. All settings are available in : mobile / desktop and miniature / normal.
 
 -   Refreshment (s) : delay in seconds between the display of 2 images (here you can put numbers less than 1)
 
--   Compression (%) : the lower it is the less the image is compressed, at 100% no compression is done
+-    : the lower it is the less the image is compressed, at 100% no compression is done
 
 -   Size (% - 0 : automatic) : the higher the% the closer we are to the original size of the image. At 100% no resizing of the image takes place
 
-> **Note**
+> **NOTE**
 >
 > If you put a compression of 0% and a size of 100%, Jeedom will not touch the image in normal mode. This is not valid in miniature mode where there is a maximum image size of 360px.
 
-Capture
+
 -------
 
 -   Maximum duration of a recording : maximum duration of recordings
@@ -81,7 +81,7 @@ Food
 
 -   OFF command : Control to cut off the power to the camera
 
-Orders
+Commands
 ---------
 
 -   Order ID (use with info type commands to, for example, bring the movement information from the camera to Jeedom via the API, see below)
@@ -94,11 +94,11 @@ Orders
 
 -   Stop command : for PTZ cameras, there is often a command that stops the movement, this is where it must be specified
 
--   Pin up : allows to display the order or not on the dashboard
+-   Show : allows to display the order or not on the dashboard
 
 -   Advanced configuration (small notched wheels) : displays the advanced configuration of the command (logging method, widget, etc.)
 
--   Test : allows to test the command
+-   Test : Used to test the command
 
 -   Delete (sign -) : allows to delete the command
 
@@ -130,7 +130,7 @@ The panels
 
 The camera plugin also provides a panel that allows you to see all your cameras at once, it is accessible by Home → Camera.
 
-> **Note**
+> **NOTE**
 >
 > To have it you have to activate it on the plugin configuration page
 
@@ -185,7 +185,7 @@ FAQ
 
 >**Addictions fail to settle ?**
 >
->In ssh or in administration -&gt; OS / DB -&gt; System do : dpkg --configure -a
+>In ssh or in administration -&gt; OS / DB -&gt; System do : 
 
 >**What are the conditions for my camera to be Jeedom compatible (if it is not in the compatibility list) ?**
 >
