@@ -111,7 +111,7 @@
         "Note": "NOTE",
         "Si vous mettez une compression de 0% et une taille de 100%, Jeedom ne touchera pas à l'image en mode normal": "If you put a compression of 0% and a size of 100%, Jeedom will not touch the image in normal mode",
         "Cela n'est pas valable en mode miniature où il y a une taille maximum de l'image de 360px": "This is not valid in miniature mode where there is a maximum image size of 360px",
-        "Capture": "",
+        "Capture": "Capture",
         "Durée maximum d'un enregistrement": "Maximum duration of a recording",
         "durée maximum des enregistrements": "maximum duration of recordings",
         "Toujours faire une vidéo": "Always make a video",

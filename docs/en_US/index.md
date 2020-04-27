@@ -61,7 +61,7 @@ This part allows you to configure the image quality. Indeed Jeedom decreases the
 >
 > If you put a compression of 0% and a size of 100%, Jeedom will not touch the image in normal mode. This is not valid in miniature mode where there is a maximum image size of 360px.
 
-
+Capture
 -------
 
 -   Maximum duration of a recording : maximum duration of recordings
