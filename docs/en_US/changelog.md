@@ -5,7 +5,7 @@
 
 - Optimization of the cleaning function of camera capture files
 
-# 
+# 10/10/2019
 
 - Correction of a bug on the taking of video under debian 10
 
@@ -32,7 +32,7 @@
 - Improved rtsp support
 - Bugfix
 
-# 
+# 06/06/2019
 
 - Correction of a problem if there are &amp; in the url of stream rtsp
 - Improved security on the video stream
@@ -56,13 +56,13 @@
 - Added replacement of # username # and # password # in commands
 - Correction of a dependency problem
 
-# 
+# 06/01/2018
 
 - Redesign of the panel, we now choose the number of cameras per line in the plugin configuration, their size is calculated automatically
 - Mobile widget improvement
 - Support for RTSP / MJPEG video streams ... Please note that there is a conversion done. This is only to be used if you have no choice, you should privilege snapshots (faster and less load on Jeedom)
 
-# 
+# 04/03/2018
 
 - Documentation update
 

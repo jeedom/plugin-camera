@@ -17,7 +17,7 @@ After installing the plugin, you just need to activate it, however there are som
 Equipment configuration
 =============================
 
-Equipment
+Equipement
 ----------
 
 Here you have the main information of your camera :
@@ -26,7 +26,7 @@ Here you have the main information of your camera :
 
 -   **Parent object** : indicates the parent object to which the equipment belongs
 
--   **Activate** : makes your equipment active
+-   **Activer** : makes your equipment active
 
 -   **Visible** : makes it visible on the dashboard
 
@@ -34,30 +34,30 @@ Here you have the main information of your camera :
 
 -   **Port** : the port for which to attach the camera
 
--   **Protocol** : the communication protocol of your camera (http or https)
+-   **Protocole** : the communication protocol of your camera (http or https)
 
 -   **Username** : username to log in to the camera (if required). Please note that the plugin does not support special characters (you must therefore limit yourself to numbers, lowercase / uppercase letters)
 
 -   **Password** : password to connect to the camera (if necessary).Please note that the plugin does not support special characters (you must therefore limit yourself to numbers, lowercase / uppercase letters)
 
--   **Snapshot URL** : Camera snapshot URL. Change depending on the cameras. Be careful not to put a flow url under penalty of crashing Jeedom. You can add the tags \ #username \ # and \ #password \ #, which will be automatically replaced by the username and password when using this command
+-   **Snapshot URL** : Camera snapshot URL. Change depending on the cameras. Be careful not to put a flow url under penalty of crashing Jeedom. You can add the tags \#username \# and \#password \#, which will be automatically replaced by the username and password when using this command
 
--   **Feed URL** : rtsp camera video stream url:// username ##:#password # @ # ip#:554 / videoMain (example for Foscam cameras)
+-   **Feed URL** : rtsp camera video stream url://#username#:#password # @ # ip#:554 / videoMain (example for Foscam cameras)
 
 -   **Model** : allows to choose the camera model. Be careful if you change this will overwrite your configuration settings
 
-Pictures
+Images
 ------
 
 This part allows you to configure the image quality. Indeed Jeedom decreases the size of the image or the compress before sending it to your browser. This allows the images to be more fluid (because they are lighter). It is also in this part that you can configure the number of frames per second to display.. All settings are available in : mobile / desktop and miniature / normal.
 
 -   Refreshment (s) : delay in seconds between the display of 2 images (here you can put numbers less than 1)
 
--    : the lower it is the less the image is compressed, at 100% no compression is done
+-   Compression (%) : the lower it is the less the image is compressed, at 100% no compression is done
 
 -   Size (% - 0 : automatic) : the higher the% the closer we are to the original size of the image. At 100% no resizing of the image takes place
 
-> **NOTE**
+> **Note**
 >
 > If you put a compression of 0% and a size of 100%, Jeedom will not touch the image in normal mode. This is not valid in miniature mode where there is a maximum image size of 360px.
 
@@ -74,14 +74,14 @@ Capture
 
 -   Delete all camera captures : delete all captures and recordings from the camera
 
-Food
+Alimentation
 ------------
 
 -   ON command : Camera power control
 
 -   OFF command : Control to cut off the power to the camera
 
-Commands
+Commandes
 ---------
 
 -   Order ID (use with info type commands to, for example, bring the movement information from the camera to Jeedom via the API, see below)
@@ -90,7 +90,7 @@ Commands
 
 -   Order type and subtype
 
--   Request to send to the camera to perform an action (switch to night mode, ptz, etc.). You can use the tags \ #username \ # and \ #password \ #, which will be automatically replaced by the username and password when using this command
+-   Request to send to the camera to perform an action (switch to night mode, ptz, etc.). You can use the tags \#username \# and \#password \#, which will be automatically replaced by the username and password when using this command
 
 -   Stop command : for PTZ cameras, there is often a command that stops the movement, this is where it must be specified
 
@@ -130,7 +130,7 @@ The panels
 
 The camera plugin also provides a panel that allows you to see all your cameras at once, it is accessible by Home → Camera.
 
-> **NOTE**
+> **Note**
 >
 > To have it you have to activate it on the plugin configuration page
 
@@ -156,13 +156,13 @@ Advanced capture options
 
 -   `sendPacket` : number of catches triggering the sending of a catch packet, if not specified then the catches will only be sent at the end
 
--   `detectMove=1` : send captures only if there is a change above the detection threshold (see camera configuration)
+-   `detectMove = 1` : send captures only if there is a change above the detection threshold (see camera configuration)
 
--   `movie=1` : after recording is finished, images are converted to video
+-   `movie = 1` : after recording is finished, images are converted to video
 
--   `sendFirstSnap=1` : send the first capture of the recording
+-   `sendFirstSnap = 1` : send the first capture of the recording
 
-> **Examples**
+> **Exemples**
 >
 > nbSnap = 3 delay = 5 ==&gt; send 3 captures made at 5 second intervals (send triggered via the scenario) movie = 1 sendFirstSnap = 1 detectMove = 1 ==&gt; send the first capture, then send a capture to each motion detection and record a video until the &quot;Stop Recording&quot; command to insert in the scenario. The movie will be stored on your Jeedom.
 
@@ -181,11 +181,11 @@ FAQ
 
 >**Where are the records ?**
 >
->The recordings are found by default in plugins / camera / data / records / * ID \ _CAM *, please note that this may vary if you asked Jeedom to record them elsewhere
+>The recordings are found by default in plugins / camera / data / records / * ID\_CAM *, please note that this may vary if you asked Jeedom to record them elsewhere
 
 >**Addictions fail to settle ?**
 >
->In ssh or in administration -&gt; OS / DB -&gt; System do : 
+>In ssh or in administration -&gt; OS / DB -&gt; System do : dpkg --configure -a
 
 >**What are the conditions for my camera to be Jeedom compatible (if it is not in the compatibility list) ?**
 >

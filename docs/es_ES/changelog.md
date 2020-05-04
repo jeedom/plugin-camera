@@ -5,7 +5,7 @@
 
 - Optimización de la función de limpieza de archivos de captura de cámara.
 
-# 
+# 10/10/2019
 
 - Corrección de un error en la toma de video en Debian 10
 
@@ -32,7 +32,7 @@
 - Soporte mejorado de rtsp
 - Correcciones de errores
 
-# 
+# 06/06/2019
 
 - Se corrigió un problema si hay &amp; en el flujo url rtsp
 - Seguridad mejorada en la transmisión de video
@@ -56,13 +56,13 @@
 - Reemplazo agregado de # nombre de usuario # y # contraseña # en los comandos
 - Corrección de un problema de dependencia.
 
-# 
+# 01/06/2018
 
 - Rediseño del panel, ahora elegimos el número de cámaras por línea en la configuración del complemento, su tamaño se calcula automáticamente
 - Mejora de widgets móviles
 - Compatibilidad con transmisiones de video RTSP / MJPEG ... Tenga en cuenta que se ha realizado una conversión. Esto solo se debe usar si no tiene otra opción, debe privilegiar las instantáneas (más rápido y menos carga en Jeedom)
 
-# 
+# 03/04/2018
 
 - Actualización de la documentación
 

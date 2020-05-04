@@ -17,7 +17,7 @@ Después de instalar el complemento, solo necesita activarlo, sin embargo, hay a
 Configuración del equipo
 =============================
 
-Dispositivos
+Equipement
 ----------
 
 Aquí tienes la información principal de tu cámara :
@@ -26,27 +26,27 @@ Aquí tienes la información principal de tu cámara :
 
 -   **Objeto padre** : indica el objeto padre al que pertenece el equipo
 
--   **Activar** : activa su equipo
+-   **Activer** : activa su equipo
 
 -   **Visible** : lo hace visible en el tablero
 
 -   **IP** : la dirección IP local de su cámara
 
--   **Puerto** : el puerto para el que se conecta la cámara
+-   **Port** : el puerto para el que se conecta la cámara
 
--   **Protocolo** : El protocolo de comunicación de su cámara (http o https)
+-   **Protocole** : El protocolo de comunicación de su cámara (http o https)
 
 -   **Nombre de usuario** : nombre de usuario para iniciar sesión en la cámara (si es necesario). Tenga en cuenta que el complemento no admite caracteres especiales (por lo tanto, debe limitarse a números, letras minúsculas / mayúsculas)
 
 -   **Contraseña** : contraseña para conectarse a la cámara (si es necesario).Tenga en cuenta que el complemento no admite caracteres especiales (por lo tanto, debe limitarse a números, letras minúsculas / mayúsculas)
 
--   **URL de instantánea** : URL de instantánea de cámara. Cambiar según las cámaras. Tenga cuidado de no poner una url de flujo bajo pena de estrellar Jeedom. Puede agregar las etiquetas \ #username \ # y \ #password \ #, que serán reemplazadas automáticamente por el nombre de usuario y la contraseña cuando use este comando
+-   **URL de instantánea** : URL de instantánea de cámara. Cambiar según las cámaras. Tenga cuidado de no poner una url de flujo bajo pena de estrellar Jeedom. Puede agregar las etiquetas \#username \# y \#password \#, que serán reemplazadas automáticamente por el nombre de usuario y la contraseña cuando use este comando
 
--   **URL del feed** : url de flujo de video de la cámara rtsp:// nombre de usuario ##:#contraseña # @ # ip#:554 / videoMain (ejemplo para cámaras Foscam)
+-   **URL del feed** : url de flujo de video de la cámara rtsp://#username#:#contraseña # @ # ip#:554 / videoMain (ejemplo para cámaras Foscam)
 
 -   **Modelo** : permite elegir el modelo de cámara. Tenga cuidado si cambia esto, sobrescribirá su configuración
 
-Imágenes
+Images
 ------
 
 Esta parte le permite configurar la calidad de la imagen.. De hecho, Jeedom disminuye el tamaño de la imagen o la compresa antes de enviarla a su navegador. Esto permite que las imágenes sean más fluidas (porque son más claras). También es en esta parte que puede configurar el número de fotogramas por segundo para mostrar.. Todos los ajustes están disponibles en : móvil / escritorio y miniatura / normal.
@@ -57,11 +57,11 @@ Esta parte le permite configurar la calidad de la imagen.. De hecho, Jeedom dism
 
 -   Tamaño (% - 0 : automático) : cuanto mayor sea el%, más cerca estamos del tamaño original de la imagen. Al 100%, no se cambia el tamaño de la imagen
 
-> **Nota**
+> **Note**
 >
 > Si pones una compresión del 0% y un tamaño del 100%, Jeedom no tocará la imagen en modo normal. Esto no es válido en modo miniatura donde hay un tamaño máximo de imagen de 360px.
 
-Captura
+Capture
 -------
 
 -   Duración máxima de una grabación. : duración máxima de grabaciones
@@ -74,23 +74,23 @@ Captura
 
 -   Eliminar todas las capturas de cámara : eliminar todas las capturas y grabaciones de la cámara
 
-Suministro
+Alimentation
 ------------
 
 -   Comando ON : Control de potencia de la cámara
 
 -   Comando OFF : Control para cortar la alimentación de la cámara.
 
-Comandos
+Commandes
 ---------
 
 -   ID de pedido (usar con comandos de tipo de información para, por ejemplo, llevar la información de movimiento de la cámara a Jeedom a través de la API, ver más abajo)
 
 -   Nombre del comando con la posibilidad de poner un icono en su lugar (para eliminarlo debe hacer doble clic en el icono en cuestión)
 
--   Puntao de orden y subtipo
+-   Tipo de orden y subtipo
 
--   Solicitud para enviar a la cámara para realizar una acción (cambiar al modo nocturno, ptz, etc.). Puede usar las etiquetas \ #username \ # y \ #password \ #, que serán reemplazadas automáticamente por el nombre de usuario y la contraseña cuando use este comando
+-   Solicitud para enviar a la cámara para realizar una acción (cambiar al modo nocturno, ptz, etc.). Puede usar las etiquetas \#username \# y \#password \#, que serán reemplazadas automáticamente por el nombre de usuario y la contraseña cuando use este comando
 
 -   Comando de parada : para cámaras PTZ, a menudo hay un comando que detiene el movimiento, aquí es donde debe especificarse
 
@@ -107,7 +107,7 @@ El widget
 
 Encontramos en esta la imagen de la cámara, los comandos definidos en la configuración, el comando para tomar una captura, el comando para comenzar a tomar múltiples capturas de imagen y el comando para explorar estas capturas.
 
-> **Punta**
+> **Tip**
 >
 > En el tablero y el panel, es posible cambiar el tamaño del widget para adaptarlo a sus necesidades.
 
@@ -130,7 +130,7 @@ Los paneles
 
 El complemento de la cámara también proporciona un panel que le permite ver todas sus cámaras a la vez, es accesible desde Inicio → Cámara.
 
-> **Nota**
+> **Note**
 >
 > Para tenerlo, debes activarlo en la página de configuración del complemento
 
@@ -150,19 +150,19 @@ Opciones de captura avanzadas
 
 -   `nbSnap` : número de capturas, si no se especifica, las capturas se realizan hasta una solicitud para detener la grabación o detener la cámara
 
--   `delay` : retraso entre 2 capturas, si no se especifica, el retraso es de 1 s
+-   `retraso` : retraso entre 2 capturas, si no se especifica, el retraso es de 1 s
 
--   `wait` : tiempo de espera antes de comenzar a atrapar, si no se especifica, no se realiza ningún envío
+-   `espera` : tiempo de espera antes de comenzar a atrapar, si no se especifica, no se realiza ningún envío
 
 -   `sendPacket` : cantidad de capturas que desencadenan el envío de un paquete de captura, si no se especifica, las capturas solo se enviarán al final
 
--   `detectMove=1` : enviar capturas solo si hay un cambio por encima del umbral de detección (ver configuración de la cámara)
+-   `detectMove = 1` : enviar capturas solo si hay un cambio por encima del umbral de detección (ver configuración de la cámara)
 
--   `movie=1` : Una vez finalizada la grabación, las imágenes se convierten en video
+-   `película = 1` : Una vez finalizada la grabación, las imágenes se convierten en video
 
--   `sendFirstSnap=1` : enviar la primera captura de la grabación
+-   `sendFirstSnap = 1` : enviar la primera captura de la grabación
 
-> **Ejemplos**
+> **Exemples**
 >
 > nbSnap = 3 delay = 5 ==&gt; envía 3 capturas realizadas a intervalos de 5 segundos (envío activado a través del escenario) película = 1 sendFirstSnap = 1 detectMove = 1 ==&gt; envía la primera captura, luego envía una captura a cada detección de movimiento y grabar un video hasta el comando &quot;Detener grabación&quot; para insertar en el escenario. La película se almacenará en tu Jeedom.
 
@@ -176,16 +176,16 @@ Si tiene una cámara que tiene detección de movimiento y desea transmitirla a J
 
 Obviamente, antes de crear un comando de tipo de información en su cámara
 
-Preguntas frecuentes
+FAQ
 ===
 
 >**Donde estan los registros ?**
 >
->Las grabaciones se encuentran por defecto en plugins / camera / data / records / * ID \ _CAM *, tenga en cuenta que esto puede variar si le pide a Jeedom que las grabe en otro lugar
+>Las grabaciones se encuentran por defecto en plugins / camera / data / records / * ID\_CAM *, tenga en cuenta que esto puede variar si le pide a Jeedom que las grabe en otro lugar
 
 >**Las adicciones no logran asentarse ?**
 >
->En ssh o en administración -&gt; OS / DB -&gt; Sistema hacer : 
+>En ssh o en administración -&gt; OS / DB -&gt; Sistema hacer : dpkg --configure -a
 
 >**¿Cuáles son las condiciones para que mi cámara sea compatible con Jeedom (si no está en la lista de compatibilidad) ?**
 >
