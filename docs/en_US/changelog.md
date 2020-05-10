@@ -1,3 +1,9 @@
+>**IMPORTANT**
+>
+>As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text.
+
+# 05/11/2020
+
 - Return of the ONVIF discovery function (thank you @Aidom)
 - Possibility to use commands (script type) for camera control
 
@@ -53,7 +59,7 @@
 - Wanscam q3 (s) camera added
 - Mode selection automatically based on capture url and video stream (RTSP)
 - Bugfix
-- Added replacement of # username # and # password # in commands
+- Added replacement for #username# and #password# in orders
 - Correction of a dependency problem
 
 # 06/01/2018

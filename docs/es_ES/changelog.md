@@ -1,3 +1,9 @@
+>**IMPORTANT**
+>
+>Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto.
+
+# 05/11/2020
+
 - Regreso de la función de descubrimiento ONVIF (gracias @Aidom)
 - Posibilidad de usar comandos (tipo de secuencia de comandos) para el control de la cámara
 
@@ -53,7 +59,7 @@
 - Cámara Wanscam q3 (s) agregada
 - Selección de modo automáticamente basada en url de captura y transmisión de video (RTSP)
 - Correcciones de errores
-- Reemplazo agregado de # nombre de usuario # y # contraseña # en los comandos
+- Reemplazo agregado para #username# y #password# en pedidos
 - Corrección de un problema de dependencia.
 
 # 01/06/2018

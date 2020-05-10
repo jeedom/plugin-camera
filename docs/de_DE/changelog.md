@@ -1,3 +1,9 @@
+>**IMPORTANT**
+>
+>Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt.
+
+# 05/11/2020
+
 - Rückgabe der ONVIF-Erkennungsfunktion (danke @Aidom)
 - Möglichkeit zur Verwendung von Befehlen (Skripttyp) zur Kamerasteuerung
 
@@ -53,7 +59,7 @@
 - Wanscam q3 (s) Kamera hinzugefügt
 - Modusauswahl automatisch basierend auf Capture-URL und Videostream (RTSP)
 - Fehlerbehebungen
-- Ersetzen von # Benutzername # und # Passwort # in Befehlen hinzugefügt
+- Ersatz für hinzugefügt #username# und #password# in Bestellungen
 - Korrektur eines Abhängigkeitsproblems
 
 # 2018.01.06
