@@ -57,7 +57,7 @@
         "et]": "and]"
     },
     "index.md": {
-        "Caméra": "Camera",
+        "Plugin Caméra": "Camera plugin",
         "Plugin permettant de créer et gérer des caméras wifi (affichage et enregistrement)": "Plugin to create and manage wifi cameras (display and recording)",
         "Configuration du plugin": "Plugin configuration",
         "Après installation du plugin, il vous suffit de l'activer, cependant il y a quelques paramètres de configuration avancée": "After installing the plugin, you just need to activate it, however there are some advanced configuration parameters",

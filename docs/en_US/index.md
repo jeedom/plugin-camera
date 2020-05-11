@@ -1,4 +1,4 @@
-# Camera
+# Camera plugin
 
 Plugin to create and manage wifi cameras (display and recording)
 

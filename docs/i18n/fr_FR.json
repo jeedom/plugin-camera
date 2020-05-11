@@ -49,7 +49,7 @@
         "Ajout d'une option pour désactiver toute compression d'image coté Jeedom": "Ajout d'une option pour désactiver toute compression d'image coté Jeedom"
     },
     "index.md": {
-        "Caméra": "Caméra",
+        "Plugin Caméra": "Plugin Caméra",
         "Plugin permettant de créer et gérer des caméras wifi (affichage et enregistrement)": "Plugin permettant de créer et gérer des caméras wifi (affichage et enregistrement)",
         "Configuration du plugin": "Configuration du plugin",
         "Après installation du plugin, il vous suffit de l'activer, cependant il y a quelques paramètres de configuration avancée": "Après installation du plugin, il vous suffit de l'activer, cependant il y a quelques paramètres de configuration avancée",
