@@ -6,15 +6,15 @@ Plugin zum Erstellen und Verwalten von WLAN-Kameras (Anzeige und Aufzeichnung)
 
 Nach der Installation des Plugins müssen Sie es nur aktivieren, es gibt jedoch einige erweiterte Konfigurationsparameter :
 
--   **Pfad aufzeichnen** : Gibt den Pfad an, in dem Jeedom die von Ihren Kameras aufgenommenen Bilder speichern soll (es wird nicht empfohlen, sie zu berühren).. Wenn sich Ihr Pfad nicht im Jeedom-Installationspfad befindet, können Sie die Erfassungen in Jeedom nicht anzeigen.
--   **Maximale Größe des Aufnahmeordners (MB)** : Gibt die maximale Größe an, die für den Ordner autorisiert ist, in dem die Fänge gespeichert sind (es wird nicht empfohlen, ihn zu berühren).. Wenn diese Quote erreicht ist, löscht Jeedom die ältesten Fänge.
+-   **Pfad aufzeichnen** : Gibt den Pfad an, in dem Jeedom die von Ihren Kameras aufgenommenen Bilder speichern soll (es wird nicht empfohlen, sie zu berühren). Wenn sich Ihr Pfad nicht im Jeedom-Installationspfad befindet, können Sie die Erfassungen in Jeedom nicht anzeigen.
+-   **Maximale Größe des Aufnahmeordners (MB)** : Gibt die maximale Größe an, die für den Ordner autorisiert ist, in dem die Fänge gespeichert sind (es wird nicht empfohlen, ihn zu berühren). Wenn diese Quote erreicht ist, löscht Jeedom die ältesten Fänge.
 -   **Das Kamera-Plugin muss auf Interaktionen reagieren** : Schlüsselwörter / Phrasen, auf die das Plugin über Jeedom-Interaktionen reagiert.
--   **Platte** : Ermöglicht die Anzeige des Bedienfelds (Startmenü -&gt; Kamera) und die Ansicht aller Ihrer Kameras (siehe unten).. Vergessen Sie nicht, das Panel in der Konfiguration des Plugins zu aktivieren, um später darauf zugreifen zu können.
+-   **Platte** : Ermöglicht die Anzeige des Bedienfelds (Startmenü -&gt; Kamera) und die Ansicht aller Ihrer Kameras (siehe unten). Vergessen Sie nicht, das Panel in der Konfiguration des Plugins zu aktivieren, um später darauf zugreifen zu können.
 
 
 # Gerätekonfiguration
 
-## Gerät
+## Equipement
 
 Hier haben Sie die wichtigsten Informationen Ihrer Kamera :
 
@@ -25,15 +25,15 @@ Hier haben Sie die wichtigsten Informationen Ihrer Kamera :
 -   **IP** : die lokale IP-Adresse Ihrer Kamera
 -   **Hafen** : der Anschluss, an den die Kamera angeschlossen werden soll
 -   **Protokolle** : das Kommunikationsprotokoll Ihrer Kamera (http oder https)
--   **Benutzername** : Benutzername, um sich bei der Kamera anzumelden (falls erforderlich). Bitte beachten Sie, dass das Plugin keine Sonderzeichen unterstützt (Sie müssen sich daher auf Zahlen, Klein- / Großbuchstaben beschränken).
--   **Passwort** : Passwort für die Verbindung zur Kamera (falls erforderlich).Bitte beachten Sie, dass das Plugin keine Sonderzeichen unterstützt (Sie müssen sich daher auf Zahlen, Klein- / Großbuchstaben beschränken).
+-   **Benutzername** : Benutzername, um sich bei der Kamera anzumelden (falls erforderlich). Bitte beachten Sie, dass das Plugin keine Sonderzeichen unterstützt (Sie müssen sich daher auf Zahlen, Klein- / Großbuchstaben beschränken)
+-   **Passwort** : Passwort für die Verbindung zur Kamera (falls erforderlich).Bitte beachten Sie, dass das Plugin keine Sonderzeichen unterstützt (Sie müssen sich daher auf Zahlen, Klein- / Großbuchstaben beschränken)
 -   **Snapshot-URL** : Kamera-Snapshot-URL. Ändern Sie je nach Kamera. Achten Sie darauf, dass Sie keine Flow-URL unter die Strafe des Absturzes von Jeedom stellen. Sie können die Tags \ hinzufügen#username\# und \#password\#, Diese werden bei Verwendung dieses Befehls automatisch durch den Benutzernamen und das Kennwort ersetzt
 -   **Feed-URL** : rtsp kamera video stream url:// //#username#:#password#@#ip#:554 / videoMain (Beispiel für Foscam-Kameras)
 -   **Modell** : ermöglicht die Auswahl des Kameramodells. Seien Sie vorsichtig, wenn Sie dies ändern, werden Ihre Konfigurationseinstellungen überschrieben
 
-## Bilder
+## Images
 
-In diesem Teil können Sie die Bildqualität konfigurieren. In der Tat verringert Jeedom die Größe des Bildes oder der Komprimierung, bevor es an Ihren Browser gesendet wird. Dadurch können die Bilder flüssiger werden (weil sie heller sind).. In diesem Teil können Sie auch die Anzahl der anzuzeigenden Bilder pro Sekunde konfigurieren.. Alle Einstellungen sind in verfügbar : Handy / Desktop und Miniatur / Normal.
+In diesem Teil können Sie die Bildqualität konfigurieren. In der Tat verringert Jeedom die Größe des Bildes oder der Komprimierung, bevor es an Ihren Browser gesendet wird. Dadurch können die Bilder flüssiger werden (weil sie heller sind). In diesem Teil können Sie auch die Anzahl der anzuzeigenden Bilder pro Sekunde konfigurieren. Alle Einstellungen sind in verfügbar : Handy / Desktop und Miniatur / Normal.
 
 -   Erfrischung (en) : Verzögerung in Sekunden zwischen der Anzeige von 2 Bildern (hier können Sie Zahlen unter 1 eingeben)
 -   Komprimierung (%) : Je niedriger es ist, desto weniger wird das Bild komprimiert. Bei 100% wird keine Komprimierung durchgeführt
@@ -43,7 +43,7 @@ In diesem Teil können Sie die Bildqualität konfigurieren. In der Tat verringer
 >
 > Wenn Sie eine Komprimierung von 0% und eine Größe von 100% festlegen, berührt Jeedom das Bild im normalen Modus nicht. Dies gilt nicht im Miniaturmodus mit einer maximalen Bildgröße von 360 Pixel.
 
-## Erfassung
+## Capture
 
 -   Maximale Dauer einer Aufnahme : maximale Aufnahmedauer
 -   Mach immer ein Video : zwingt Jeedom, vor der Aufnahme immer Videoaufnahmen zu konvertieren
@@ -51,15 +51,15 @@ In diesem Teil können Sie die Bildqualität konfigurieren. In der Tat verringer
 -   Bewegungserkennungsschwelle (0-100) : Bewegungserkennungsschwelle (es wird empfohlen, 2 einzustellen). Je höher der Wert, desto höher die Empfindlichkeit.
 -   Löschen Sie alle Kameraaufnahmen : Löschen Sie alle Aufnahmen und Aufzeichnungen von der Kamera
 
-## Versorgung
+## Alimentation
 
 -   EIN-Befehl : Steuerung der Kameraleistung
 -   AUS-Befehl : Steuerung zum Abschalten der Kamera
 
-## Befehle
+## Commandes
 
 -   Bestell-ID (Verwendung mit Befehlen vom Typ Info, um beispielsweise die Bewegungsinformationen von der Kamera über die API zu Jeedom zu bringen, siehe unten)
--   Name des Befehls mit der Möglichkeit, stattdessen ein Symbol einzufügen (um es zu löschen, müssen Sie auf das betreffende Symbol doppelklicken).
+-   Name des Befehls mit der Möglichkeit, stattdessen ein Symbol einzufügen (um es zu löschen, müssen Sie auf das betreffende Symbol doppelklicken)
 -   Auftragsart und Untertyp
 -   Anforderung zum Senden an die Kamera, um eine Aktion auszuführen (Umschalten in den Nachtmodus, ptz usw.). Sie können die Tags \ verwenden#username\# und \#password\#, Diese werden bei Verwendung dieses Befehls automatisch durch den Benutzernamen und das Kennwort ersetzt
 -   Befehl stoppen : Bei PTZ-Kameras gibt es häufig einen Befehl, der die Bewegung stoppt. Hier muss er angegeben werden
@@ -100,11 +100,11 @@ Es ist natürlich auch für Handys per Plugin → Kamera erhältlich :
 
 # Speichern und Capture senden
 
-Dieser etwas spezifische Befehl ermöglicht es dem Capture, ihn zu senden (kompatibel mit dem Slack-, Mail- und Transfer-Plugin)..
+Dieser etwas spezifische Befehl ermöglicht es dem Capture, ihn zu senden (kompatibel mit dem Slack-, Mail- und Transfer-Plugin).
 
 Die Konfiguration ist recht einfach. Sie rufen die Aktion des Sendens der Erfassung (&quot;Aufzeichnung&quot; genannt) in einem Szenario auf. Im Titelteil übergeben Sie die Optionen.
 
-Standardmäßig geben Sie einfach die gewünschte Anzahl von Aufnahmen in das Feld &quot;Anzahl der Aufnahmen oder Optionen&quot; ein. Sie können jedoch weitere Optionen auswählen (siehe Details unter &quot;Erweiterte Optionen für Aufnahmen&quot;).. Im Nachrichtenteil müssen Sie nur die Reihenfolge des Plugins (derzeit locker, E-Mail oder Übertragung) eingeben, das die Captures sendet. Sie können mehrere durch &amp;&amp; getrennte setzen.
+Standardmäßig geben Sie einfach die gewünschte Anzahl von Aufnahmen in das Feld &quot;Anzahl der Aufnahmen oder Optionen&quot; ein. Sie können jedoch weitere Optionen auswählen (siehe Details unter &quot;Erweiterte Optionen für Aufnahmen&quot;). Im Nachrichtenteil müssen Sie nur die Reihenfolge des Plugins (derzeit locker, E-Mail oder Übertragung) eingeben, das die Captures sendet. Sie können mehrere durch &amp;&amp; getrennte setzen.
 
 ## Erweiterte Aufnahmeoptionen
 
@@ -128,11 +128,11 @@ Wenn Sie eine Kamera mit Bewegungserkennung haben und diese an Jeedom senden mö
 
 Natürlich vor dem Erstellen eines Info-Befehls auf Ihrer Kamera
 
-# Faq
+# FAQ
 
 >**Wo sind die Aufzeichnungen? ?**
 >
->Die Datensätze werden standardmäßig in Plugins / camera / data / records / gefunden*ID \ _CAM*, Seien Sie vorsichtig, dies kann variieren, wenn Sie Jeedom gebeten haben, sie an anderer Stelle zu speichern
+>Die Datensätze werden standardmäßig in Plugins / camera / data / records / gefunden*ID\_CAM*, Seien Sie vorsichtig, dies kann variieren, wenn Sie Jeedom gebeten haben, sie an anderer Stelle zu speichern
 
 >**Abhängigkeiten lassen sich nicht nieder ?**
 >
@@ -140,4 +140,4 @@ Natürlich vor dem Erstellen eines Info-Befehls auf Ihrer Kamera
 
 >**Unter welchen Bedingungen muss meine Kamera Jeedom-kompatibel sein (sofern sie nicht in der Kompatibilitätsliste enthalten ist)? ?**
 >
-> Die einzige Bedingung ist, dass die Kamera eine URL hat, die ein Bild zurücksendet (also ein Bild, kein Videostream).
+> Die einzige Bedingung ist, dass die Kamera eine URL hat, die ein Bild zurücksendet (also ein Bild, kein Videostream)

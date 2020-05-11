@@ -14,7 +14,7 @@ Depois de instalar o plugin, você só precisa ativá-lo, no entanto, existem al
 
 # Configuração do equipamento
 
-## Equipamento
+## Equipement
 
 Aqui você tem as principais informações da sua câmera :
 
@@ -31,9 +31,9 @@ Aqui você tem as principais informações da sua câmera :
 -   **URL do feed** : URL da transmissão de vídeo da câmera rtsp://#username#:#password#@#ip#:554 / videoMain (exemplo para câmeras Foscam)
 -   **Modelo** : permite escolher o modelo da câmera. Tenha cuidado se alterar isso substituirá as definições de configuração
 
-## Imagens
+## Images
 
-Esta parte permite configurar a qualidade da imagem. Na verdade, o Jeedom diminui o tamanho da imagem ou a compactação antes de enviá-lo para o seu navegador. Isso permite que as imagens sejam mais fluidas (porque são mais claras). É também nesta parte que você pode configurar o número de quadros por segundo a serem exibidos.. Todas as configurações estão disponíveis em : móvel / desktop e miniatura / normal.
+Esta parte permite configurar a qualidade da imagem. Na verdade, o Jeedom diminui o tamanho da imagem ou a compactação antes de enviá-lo para o seu navegador. Isso permite que as imagens sejam mais fluidas (porque são mais claras). É também nesta parte que você pode configurar o número de quadros por segundo a serem exibidos. Todas as configurações estão disponíveis em : móvel / desktop e miniatura / normal.
 
 -   Refresco (s) : atraso em segundos entre a exibição de 2 imagens (aqui você pode colocar números menores que 1)
 -   Compressão (%) : quanto mais baixo, menos a imagem é compactada, a 100% nenhuma compressão é feita
@@ -43,7 +43,7 @@ Esta parte permite configurar a qualidade da imagem. Na verdade, o Jeedom diminu
 >
 > Se você colocar uma compressão de 0% e um tamanho de 100%, o Jeedom não tocará na imagem no modo normal. Isso não é válido no modo miniatura, onde há um tamanho máximo de imagem de 360px.
 
-## Captura
+## Capture
 
 -   Duração máxima de uma gravação : duração máxima das gravações
 -   Sempre faça um vídeo : força o Jeedom a sempre converter gravações de vídeo antes de gravar
@@ -51,12 +51,12 @@ Esta parte permite configurar a qualidade da imagem. Na verdade, o Jeedom diminu
 -   Limiar de detecção de movimento (0-100) : limiar de detecção de movimento (é recomendável definir 2). Quanto maior o valor, maior a sensibilidade.
 -   Excluir todas as capturas de câmera : exclua todas as capturas e gravações da câmera
 
-## Alimento
+## Alimentation
 
 -   Comando ON : Controle de energia da câmera
 -   Comando OFF : Controle para cortar a energia da câmera
 
-## Comandos
+## Commandes
 
 -   ID do pedido (use com comandos do tipo info para, por exemplo, levar as informações de movimento da câmera para o Jeedom por meio da API, veja abaixo)
 -   Nome do comando com a possibilidade de colocar um ícone (para excluí-lo, você deve clicar duas vezes no ícone em questão)
@@ -128,11 +128,11 @@ Se você possui uma câmera com detecção de movimento e deseja transmiti-la ao
 
 Obviamente, antes de criar um comando de tipo de informação na sua câmera
 
-# Faq
+# FAQ
 
 >**Onde estão os registros ?**
 >
->Os registros são encontrados por padrão em plugins / camera / data / records /*ID \ _CAM*, tenha cuidado, pois isso pode variar se você pedir à Jeedom para salvá-las em outro lugar
+>Os registros são encontrados por padrão em plugins / camera / data / records /*ID\_CAM*, tenha cuidado, pois isso pode variar se você pedir à Jeedom para salvá-las em outro lugar
 
 >**Vícios não conseguem resolver ?**
 >

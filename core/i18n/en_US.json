@@ -34,7 +34,7 @@
     "plugins\/camera\/desktop\/modal\/camera.history.php": {
         "L\\'id ne peut etre vide": "Id can\\'t be empty",
         "L\\'équipement est introuvable : ": "Equipment not found :",
-        "Cet équipement n\\'est pas de type camera : ": "This equipment is not of camera type : ",
+        "Cet équipement n\\'est pas de type camera : ": "This equipment is not of camera type :",
         "401 - Accès non autorisé": "401 - Unauthorized access",
         "Tout supprimer": "Delete all",
         "Tout télécharger": "Download All",
@@ -130,31 +130,31 @@
         "Afficher": "Show",
         "Tester": "Test",
         "Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?": "Are you sure you want to delete all the snapshots from the camera ?",
-        "Supression réussie": "Removed successfully "
+        "Supression réussie": "Removed successfully"
     },
     "plugins\/camera\/core\/php\/stopCam.php": {
         "[camera\/reccord] L\\'id ne peut etre vide": "[camera\/reccord] Id can\\'t be empty",
         "[camera\/reccord] L\\'équipement est introuvable : ": "[camera\/reccord] Equipment not found :",
-        "[camera\/reccord] Cet équipement n\\'est pas de type camera : ": "[camera\/reccord] This equipment is not of camera type : ",
+        "[camera\/reccord] Cet équipement n\\'est pas de type camera : ": "[camera\/reccord] This equipment is not of camera type :",
         "Impossible de trouver la commande OFF": "Unable to find OFF command"
     },
     "plugins\/camera\/core\/php\/sendSnapshot.php": {
         "[camera\/sendsnapshot] L\\'id ne peut etre vide": "[camera\/sendsnapshot] Id can\\'t be empty",
         "[camera\/sendsnapshot] L\\'équipement est introuvable : ": "[camera\/sendsnapshot] Equipment not found :",
-        "[camera\/sendsnapshot] Cet équipement n\\'est pas de type camera : ": "[camera\/sendsnapshot] This equipment is not of camera type : ",
-        "[camera\/sendsnapshot]No file found ": "[camera\/sendsnapshot]No file found "
+        "[camera\/sendsnapshot] Cet équipement n\\'est pas de type camera : ": "[camera\/sendsnapshot] This equipment is not of camera type :",
+        "[camera\/sendsnapshot]No file found ": "[camera\/sendsnapshot]No file found"
     },
     "plugins\/camera\/core\/php\/detectChange.php": {
         "[camera\/detectChange] L\\'id ne peut etre vide": "[camera\/detectChange] Id can\\'t be empty",
-        "[camera\/detectChange] L\\'équipement est introuvable : ": "[camera\/detectChange] Equipment not found : ",
-        "[camera\/detectChange] Cet équipement n\\'est pas de type camera : ": "[camera\/detectChange] This equipment is not camera type : ",
-        "Image difference : ": "Image difference : ",
+        "[camera\/detectChange] L\\'équipement est introuvable : ": "[camera\/detectChange] Equipment not found :",
+        "[camera\/detectChange] Cet équipement n\\'est pas de type camera : ": "[camera\/detectChange] This equipment is not camera type :",
+        "Image difference : ": "Image difference :",
         " sur ": "sure"
     },
     "plugins\/camera\/core\/php\/record.php": {
         "[camera\/reccord] L\\'id ne peut etre vide": "[camera\/reccord] Id can\\'t be empty",
         "[camera\/reccord] L\\'équipement est introuvable : ": "[camera\/reccord] Equipment not found :",
-        "[camera\/reccord] Cet équipement n\\'est pas de type camera : ": "[camera\/reccord] This equipment is not of camera type : "
+        "[camera\/reccord] Cet équipement n\\'est pas de type camera : ": "[camera\/reccord] This equipment is not of camera type :"
     },
     "plugins\/camera\/core\/ajax\/camera.ajax.php": {
         "401 - Accès non autorisé": "401 - Unauthorized access",
@@ -173,12 +173,12 @@
         "Capture": "Capture",
         "Enregistrer": "Save",
         "Nombre captures ou options": "Number of snapshots or options",
-        "Commande message d\\'envoi des captures": "Command message to send snapshots ",
+        "Commande message d\\'envoi des captures": "Command message to send snapshots",
         "On": "We",
         "Off": "Off",
         "Alerte sur la camera : ": "Alert on camera :",
         " à ": "at ",
-        "[camera\/sendSnap] Erreur lors de l\\'envoi des images : ": "[camera\/sendSnap] Error when sending snapshots  : ",
+        "[camera\/sendSnap] Erreur lors de l\\'envoi des images : ": "[camera\/sendSnap] Error when sending snapshots  :",
         "Erreur sur ": "Error on",
         "Impossible de creer le dossier : ": "Unable to create folder :",
         "Impossible d\\'écrire dans le dossier : ": "Unable to write in the folder :",

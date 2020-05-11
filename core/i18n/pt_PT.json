@@ -159,7 +159,7 @@
     "plugins\/camera\/core\/ajax\/camera.ajax.php": {
         "401 - Accès non autorisé": "401 - Acesso não autorizado",
         "Impossible de trouver la caméra : ' . init('id')": "Não foi possível encontrar a câmera: '. init ('id')",
-        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à :"
     },
     "plugins\/camera\/core\/class\/camera.class.php": {
         "Veuillez vérifier la configuration": "Por favor, verifique a configuração",
