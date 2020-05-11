@@ -1,4 +1,4 @@
-# Caméra
+# Plugin Caméra
 
 Plugin permettant de créer et gérer des caméras wifi (affichage et enregistrement)
 
