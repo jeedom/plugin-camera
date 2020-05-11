@@ -14,24 +14,24 @@ Después de instalar el complemento, solo necesita activarlo, sin embargo, hay a
 
 # Configuración del equipo
 
-## Equipement
+## Dispositivos
 
 Aquí tienes la información principal de tu cámara :
 
 -   **Nombre del equipo de la cámara** : nombre de su equipo de cámara
 -   **Objeto padre** : indica el objeto padre al que pertenece el equipo
--   **Activer** : activa su equipo
+-   **Activar** : activa su equipo
 -   **Visible** : lo hace visible en el tablero
 -   **IP** : la dirección IP local de su cámara
--   **Port** : el puerto para el que se conecta la cámara
--   **Protocole** : El protocolo de comunicación de su cámara (http o https)
+-   **Puerto** : el puerto para el que se conecta la cámara
+-   **Protocolo** : El protocolo de comunicación de su cámara (http o https)
 -   **Nombre de usuario** : nombre de usuario para iniciar sesión en la cámara (si es necesario). Tenga en cuenta que el complemento no admite caracteres especiales (por lo tanto, debe limitarse a números, letras minúsculas / mayúsculas)
 -   **Contraseña** : contraseña para conectarse a la cámara (si es necesario).Tenga en cuenta que el complemento no admite caracteres especiales (por lo tanto, debe limitarse a números, letras minúsculas / mayúsculas)
 -   **URL de instantánea** : URL de instantánea de cámara. Cambiar según las cámaras. Tenga cuidado de no poner una url de flujo bajo pena de estrellar Jeedom. Puedes agregar las etiquetas \#username\# y \#password\#, que será reemplazado automáticamente por el nombre de usuario y la contraseña al usar este comando
 -   **URL del feed** : url de flujo de video de la cámara rtsp://#username#:#password#@#ip#:554 / videoMain (ejemplo para cámaras Foscam)
 -   **Modelo** : permite elegir el modelo de cámara. Tenga cuidado si cambia esto, sobrescribirá su configuración
 
-## Images
+## Imágenes
 
 Esta parte le permite configurar la calidad de la imagen.. De hecho, Jeedom disminuye el tamaño de la imagen o la compresa antes de enviarla a su navegador. Esto permite que las imágenes sean más fluidas (porque son más claras). También es en esta parte que puede configurar el número de fotogramas por segundo para mostrar.. Todos los ajustes están disponibles en : móvil / escritorio y miniatura / normal.
 
@@ -39,11 +39,11 @@ Esta parte le permite configurar la calidad de la imagen.. De hecho, Jeedom dism
 -   Compresión (%) : cuanto más bajo es, menos se comprime la imagen, al 100% no se realiza compresión
 -   Tamaño (% - 0 : automático) : cuanto mayor sea el%, más cerca estamos del tamaño original de la imagen. Al 100%, no se cambia el tamaño de la imagen
 
-> **Note**
+> **Nota**
 >
 > Si pones una compresión del 0% y un tamaño del 100%, Jeedom no tocará la imagen en modo normal. Esto no es válido en modo miniatura donde hay un tamaño máximo de imagen de 360px.
 
-## Capture
+## Captura
 
 -   Duración máxima de una grabación. : duración máxima de grabaciones
 -   Siempre haz un video : obliga a Jeedom a convertir siempre las grabaciones de video antes de grabar
@@ -51,12 +51,12 @@ Esta parte le permite configurar la calidad de la imagen.. De hecho, Jeedom dism
 -   Umbral de detección de movimiento (0-100) : umbral de detección de movimiento (es recomendable establecer 2). Cuanto mayor sea el valor, mayor será la sensibilidad.
 -   Eliminar todas las capturas de cámara : eliminar todas las capturas y grabaciones de la cámara
 
-## Alimentation
+## Suministro
 
 -   Comando ON : Control de potencia de la cámara
 -   Comando OFF : Control para cortar la alimentación de la cámara.
 
-## Commandes
+## Comandos
 
 -   ID de pedido (usar con comandos de tipo de información para, por ejemplo, llevar la información de movimiento de la cámara a Jeedom a través de la API, ver más abajo)
 -   Nombre del comando con la posibilidad de poner un icono en su lugar (para eliminarlo debe hacer doble clic en el icono en cuestión)
@@ -72,7 +72,7 @@ Esta parte le permite configurar la calidad de la imagen.. De hecho, Jeedom dism
 
 Encontramos en esta la imagen de la cámara, los comandos definidos en la configuración, el comando para tomar una captura, el comando para comenzar a tomar múltiples capturas de imagen y el comando para explorar estas capturas.
 
-> **Tip**
+> **Punta**
 >
 > En el tablero y el panel, es posible cambiar el tamaño del widget para adaptarlo a sus necesidades.
 
@@ -92,7 +92,7 @@ En dispositivos móviles, el widget es un poco diferente : si haces clic en la i
 
 El complemento de la cámara también proporciona un panel que le permite ver todas sus cámaras a la vez, es accesible desde Inicio → Cámara.
 
-> **Note**
+> **Nota**
 >
 > Para tenerlo, debes activarlo en la página de configuración del complemento
 
@@ -116,7 +116,7 @@ De forma predeterminada, simplemente coloque el número de capturas que desea en
 -   ``movie=1`` : Una vez finalizada la grabación, las imágenes se convierten en video
 -   ``sendFirstSnap=1`` : enviar la primera captura de la grabación
 
-> **Exemples**
+> **Ejemplos**
 >
 > nbSnap = 3 delay = 5 ==&gt; envía 3 capturas realizadas a intervalos de 5 segundos (envío activado a través del escenario) película = 1 sendFirstSnap = 1 detectMove = 1 ==&gt; envía la primera captura, luego envía una captura a cada detección de movimiento y grabar un video hasta el comando &quot;Detener grabación&quot; para insertar en el escenario. La película se almacenará en tu Jeedom.
 
@@ -128,11 +128,11 @@ Si tiene una cámara que tiene detección de movimiento y desea transmitirla a J
 
 Obviamente, antes de crear un comando de tipo de información en su cámara
 
-# FAQ
+# Preguntas frecuentes
 
 >**Donde estan los registros ?**
 >
->Los registros se encuentran por defecto en plugins / camera / data / records /*ID\_CAM*, tenga cuidado, esto puede variar si le pide a Jeedom que los guarde en otro lugar
+>Los registros se encuentran por defecto en plugins / camera / data / records /*ID \ _CAM*, tenga cuidado, esto puede variar si le pide a Jeedom que los guarde en otro lugar
 
 >**Las adicciones no logran asentarse ?**
 >
