@@ -706,7 +706,7 @@ class camera extends eqLogic {
 	
 	public function convertMovie() {
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
-		$output_dir .= $this->getId();
+		$output_dir .= '/'.$this->getId();
 		$output_file = '';
 		$start = '';
 		if (file_exists($output_dir . '/movie_temp')) {
