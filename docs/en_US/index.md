@@ -1,4 +1,4 @@
-# Camera
+# Camera plugin
 
 Plugin to create and manage wifi cameras (display and recording)
 
@@ -20,11 +20,11 @@ Here you have the main information of your camera :
 
 -   **Camera equipment name** : name of your camera equipment
 -   **Parent object** : indicates the parent object to which the equipment belongs
--   **Activer** : makes your equipment active
+-   **Activate** : makes your equipment active
 -   **Visible** : makes it visible on the dashboard
 -   **IP** : the local IP address of your camera
 -   **Port** : the port for which to attach the camera
--   **Protocole** : the communication protocol of your camera (http or https)
+-   **Protocol** : the communication protocol of your camera (http or https)
 -   **Username** : username to log in to the camera (if required). Please note that the plugin does not support special characters (you must therefore limit yourself to numbers, lowercase / uppercase letters)
 -   **Password** : password to connect to the camera (if necessary).Please note that the plugin does not support special characters (you must therefore limit yourself to numbers, lowercase / uppercase letters)
 -   **Snapshot URL** : Camera snapshot URL. Change depending on the cameras. Be careful not to put a flow url under penalty of crashing Jeedom. You can add the tags \#username\# and \#password\#, which will be automatically replaced by the username and password when using this command
@@ -33,13 +33,13 @@ Here you have the main information of your camera :
 
 ## Images
 
-This part allows you to configure the image quality. Indeed Jeedom decreases the size of the image or the compress before sending it to your browser. This allows the images to be more fluid (because they are lighter). It is also in this part that you can configure the number of frames per second to display.. All settings are available in : mobile / desktop and miniature / normal.
+This part allows you to configure the image quality. Indeed Jeedom decreases the size of the image or the compress before sending it to your browser. This allows the images to be more fluid (because they are lighter). It is also in this part that you can configure the number of frames per second to display. All settings are available in : mobile / desktop and miniature / normal.
 
 -   Refreshment (s) : delay in seconds between the display of 2 images (here you can put numbers less than 1)
 -   Compression (%) : the lower it is the less the image is compressed, at 100% no compression is done
 -   Size (% - 0 : automatic) : the higher the% the closer we are to the original size of the image. At 100% no resizing of the image takes place
 
-> **Note**
+> **NOTE**
 >
 > If you put a compression of 0% and a size of 100%, Jeedom will not touch the image in normal mode. This is not valid in miniature mode where there is a maximum image size of 360px.
 
@@ -92,7 +92,7 @@ In mobile the widget is a little different : if you click on the image of the ca
 
 The camera plugin also provides a panel that allows you to see all your cameras at once, it is accessible by Home → Camera.
 
-> **Note**
+> **NOTE**
 >
 > To have it you have to activate it on the plugin configuration page
 
@@ -116,7 +116,7 @@ By default, just put the number of captures you want in the &quot;number of capt
 -   ``movie=1`` : after recording is finished, images are converted to video
 -   ``sendFirstSnap=1`` : send the first capture of the recording
 
-> **Exemples**
+> **Examples**
 >
 > nbSnap = 3 delay = 5 ==&gt; send 3 captures made at 5 second intervals (send triggered via the scenario) movie = 1 sendFirstSnap = 1 detectMove = 1 ==&gt; send the first capture, then send a capture to each motion detection and record a video until the &quot;Stop Recording&quot; command to insert in the scenario. The movie will be stored on your Jeedom.
 

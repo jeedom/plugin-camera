@@ -1,6 +1,8 @@
->**IMPORTANT**
+# Changelog Camera
+
+>**Importante**
 >
->Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto.
+>Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto
 
 # 05/11/2020
 
@@ -9,7 +11,7 @@
 
 # 10/17/2019
 
-- Optimización de la función de limpieza de archivos de captura de cámara.
+- Optimización de la función de limpieza de archivos de captura de cámara
 
 # 10/10/2019
 
@@ -47,7 +49,7 @@
 # 21/01/2019
 
 - Actualizando el documento
-- Corrección de un error en el panel.
+- Corrección de un error en el panel
 
 # 17/01/2019
 
@@ -60,7 +62,7 @@
 - Selección de modo automáticamente basada en url de captura y transmisión de video (RTSP)
 - Correcciones de errores
 - Reemplazo agregado para #username# y #password# en pedidos
-- Corrección de un problema de dependencia.
+- Corrección de un problema de dependencia
 
 # 01/06/2018
 

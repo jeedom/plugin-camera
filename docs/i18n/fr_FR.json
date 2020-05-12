@@ -1,5 +1,6 @@
 {
     "changelog.md": {
+        "Changelog Caméra": "Changelog Caméra",
         "IMPORTANT": "IMPORTANT",
         "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte",
         "11\/05\/2020": "11\/05\/2020",
@@ -49,7 +50,7 @@
         "Ajout d'une option pour désactiver toute compression d'image coté Jeedom": "Ajout d'une option pour désactiver toute compression d'image coté Jeedom"
     },
     "index.md": {
-        "Caméra": "Caméra",
+        "Plugin Caméra": "Plugin Caméra",
         "Plugin permettant de créer et gérer des caméras wifi (affichage et enregistrement)": "Plugin permettant de créer et gérer des caméras wifi (affichage et enregistrement)",
         "Configuration du plugin": "Configuration du plugin",
         "Après installation du plugin, il vous suffit de l'activer, cependant il y a quelques paramètres de configuration avancée": "Après installation du plugin, il vous suffit de l'activer, cependant il y a quelques paramètres de configuration avancée",
