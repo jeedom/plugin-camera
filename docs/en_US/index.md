@@ -14,7 +14,7 @@ After installing the plugin, you just need to activate it, however there are som
 
 # Equipment configuration
 
-## Equipement
+## Equipment
 
 Here you have the main information of your camera :
 
@@ -31,7 +31,7 @@ Here you have the main information of your camera :
 -   **Feed URL** : rtsp camera video stream url://#username#:#password#@#ip#:554 / videoMain (example for Foscam cameras)
 -   **Model** : allows to choose the camera model. Be careful if you change this will overwrite your configuration settings
 
-## Images
+## Pictures
 
 This part allows you to configure the image quality. Indeed Jeedom decreases the size of the image or the compress before sending it to your browser. This allows the images to be more fluid (because they are lighter). It is also in this part that you can configure the number of frames per second to display. All settings are available in : mobile / desktop and miniature / normal.
 
@@ -51,12 +51,12 @@ This part allows you to configure the image quality. Indeed Jeedom decreases the
 -   Motion detection threshold (0-100) : motion detection threshold (it is advisable to set 2). The higher the value, the higher the sensitivity.
 -   Delete all camera captures : delete all captures and recordings from the camera
 
-## Alimentation
+## Food
 
 -   ON command : Camera power control
 -   OFF command : Control to cut off the power to the camera
 
-## Commandes
+## Commands
 
 -   Order ID (use with info type commands to, for example, bring the movement information from the camera to Jeedom via the API, see below)
 -   Name of the command with the possibility of putting an icon instead (to delete it you must double-click on the icon in question)

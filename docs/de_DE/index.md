@@ -14,7 +14,7 @@ Nach der Installation des Plugins müssen Sie es nur aktivieren, es gibt jedoch 
 
 # Gerätekonfiguration
 
-## Equipement
+## Gerät
 
 Hier haben Sie die wichtigsten Informationen Ihrer Kamera :
 
@@ -31,7 +31,7 @@ Hier haben Sie die wichtigsten Informationen Ihrer Kamera :
 -   **Feed-URL** : rtsp kamera video stream url:// //#username#:#password#@#ip#:554 / videoMain (Beispiel für Foscam-Kameras)
 -   **Modell** : ermöglicht die Auswahl des Kameramodells. Seien Sie vorsichtig, wenn Sie dies ändern, werden Ihre Konfigurationseinstellungen überschrieben
 
-## Images
+## Bilder
 
 In diesem Teil können Sie die Bildqualität konfigurieren. In der Tat verringert Jeedom die Größe des Bildes oder der Komprimierung, bevor es an Ihren Browser gesendet wird. Dadurch können die Bilder flüssiger werden (weil sie heller sind). In diesem Teil können Sie auch die Anzahl der anzuzeigenden Bilder pro Sekunde konfigurieren. Alle Einstellungen sind in verfügbar : Handy / Desktop und Miniatur / Normal.
 
@@ -43,7 +43,7 @@ In diesem Teil können Sie die Bildqualität konfigurieren. In der Tat verringer
 >
 > Wenn Sie eine Komprimierung von 0% und eine Größe von 100% festlegen, berührt Jeedom das Bild im normalen Modus nicht. Dies gilt nicht im Miniaturmodus mit einer maximalen Bildgröße von 360 Pixel.
 
-## Capture
+## Erfassung
 
 -   Maximale Dauer einer Aufnahme : maximale Aufnahmedauer
 -   Mach immer ein Video : zwingt Jeedom, vor der Aufnahme immer Videoaufnahmen zu konvertieren
@@ -51,12 +51,12 @@ In diesem Teil können Sie die Bildqualität konfigurieren. In der Tat verringer
 -   Bewegungserkennungsschwelle (0-100) : Bewegungserkennungsschwelle (es wird empfohlen, 2 einzustellen). Je höher der Wert, desto höher die Empfindlichkeit.
 -   Löschen Sie alle Kameraaufnahmen : Löschen Sie alle Aufnahmen und Aufzeichnungen von der Kamera
 
-## Alimentation
+## Versorgung
 
 -   EIN-Befehl : Steuerung der Kameraleistung
 -   AUS-Befehl : Steuerung zum Abschalten der Kamera
 
-## Commandes
+## Befehle
 
 -   Bestell-ID (Verwendung mit Befehlen vom Typ Info, um beispielsweise die Bewegungsinformationen von der Kamera über die API zu Jeedom zu bringen, siehe unten)
 -   Name des Befehls mit der Möglichkeit, stattdessen ein Symbol einzufügen (um es zu löschen, müssen Sie auf das betreffende Symbol doppelklicken)
@@ -128,7 +128,7 @@ Wenn Sie eine Kamera mit Bewegungserkennung haben und diese an Jeedom senden mö
 
 Natürlich vor dem Erstellen eines Info-Befehls auf Ihrer Kamera
 
-# FAQ
+# Faq
 
 >**Wo sind die Aufzeichnungen? ?**
 >

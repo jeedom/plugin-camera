@@ -14,7 +14,7 @@ Después de instalar el complemento, solo necesita activarlo, sin embargo, hay a
 
 # Configuración del equipo
 
-## Equipement
+## Dispositivos
 
 Aquí tienes la información principal de tu cámara :
 
@@ -31,7 +31,7 @@ Aquí tienes la información principal de tu cámara :
 -   **URL del feed** : url de flujo de video de la cámara rtsp://#username#:#password#@#ip#:554 / videoMain (ejemplo para cámaras Foscam)
 -   **Modelo** : permite elegir el modelo de cámara. Tenga cuidado si cambia esto, sobrescribirá su configuración
 
-## Images
+## Imágenes
 
 Esta parte le permite configurar la calidad de la imagen. De hecho, Jeedom disminuye el tamaño de la imagen o la compresa antes de enviarla a su navegador. Esto permite que las imágenes sean más fluidas (porque son más claras). También es en esta parte que puede configurar el número de fotogramas por segundo para mostrar. Todos los ajustes están disponibles en : móvil / escritorio y miniatura / normal.
 
@@ -43,7 +43,7 @@ Esta parte le permite configurar la calidad de la imagen. De hecho, Jeedom dismi
 >
 > Si pones una compresión del 0% y un tamaño del 100%, Jeedom no tocará la imagen en modo normal. Esto no es válido en modo miniatura donde hay un tamaño máximo de imagen de 360px.
 
-## Capture
+## Captura
 
 -   Duración máxima de una grabación : duración máxima de grabaciones
 -   Siempre haz un video : obliga a Jeedom a convertir siempre las grabaciones de video antes de grabar
@@ -51,12 +51,12 @@ Esta parte le permite configurar la calidad de la imagen. De hecho, Jeedom dismi
 -   Umbral de detección de movimiento (0-100) : umbral de detección de movimiento (es recomendable establecer 2). Cuanto mayor sea el valor, mayor será la sensibilidad.
 -   Eliminar todas las capturas de cámara : eliminar todas las capturas y grabaciones de la cámara
 
-## Alimentation
+## Suministro
 
 -   Comando ON : Control de potencia de la cámara
 -   Comando OFF : Control para cortar la alimentación de la cámara
 
-## Commandes
+## Comandos
 
 -   ID de pedido (usar con comandos de tipo de información para, por ejemplo, llevar la información de movimiento de la cámara a Jeedom a través de la API, ver más abajo)
 -   Nombre del comando con la posibilidad de poner un icono en su lugar (para eliminarlo debe hacer doble clic en el icono en cuestión)
@@ -128,7 +128,7 @@ Si tiene una cámara que tiene detección de movimiento y desea transmitirla a J
 
 Obviamente, antes de crear un comando de tipo de información en su cámara
 
-# FAQ
+# Preguntas frecuentes
 
 >**Donde estan los registros ?**
 >
