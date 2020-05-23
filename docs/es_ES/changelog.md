@@ -54,11 +54,11 @@
 # 17/01/2019
 
 - Actualizando el documento
-- Corrección de un problema con la configuración de Wanscam q3 (s)
+- Se solucionó un problema con la configuración de Wanscam q3 (s)
 
 # 01/15/2019
 
-- Cámara Wanscam q3 (s) agregada
+- Adición de la cámara Wanscam q3 (s)
 - Selección de modo automáticamente basada en url de captura y transmisión de video (RTSP)
 - Correcciones de errores
 - Reemplazo agregado para #username# y #password# en pedidos

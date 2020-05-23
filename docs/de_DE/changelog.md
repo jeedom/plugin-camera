@@ -24,7 +24,7 @@
 # 2019.09.23
 
 - Fehlerbehebungen
-- Hinzufügen eines Feldes zum Einfügen von Optionen Videostream (rtsp)
+- Hinzufügen eines Feldes zum Einfügen von Videostream-Optionen (rtsp)
 
 # 2019.09.20
 
@@ -54,12 +54,12 @@
 # 17.01.2019
 
 - Aktualisieren des Dokuments
-- Behebung eines Problems mit der Konfiguration von Wanscam q3 (s)
+- Ein Problem mit der Konfiguration von Wanscam q3 (s) wurde behoben)
 
 # 2019.01.15
 
-- Wanscam q3 (s) Kamera hinzugefügt
-- Modusauswahl automatisch basierend auf Capture-URL und Videostream (RTSP)
+- Hinzufügung der Wanscam q3 Kamera (s))
+- Die Modusauswahl erfolgt automatisch basierend auf der Aufnahme-URL und dem Videostream (RTSP))
 - Fehlerbehebungen
 - Ersatz für hinzugefügt #username# und #password# in Bestellungen
 - Korrektur eines Abhängigkeitsproblems

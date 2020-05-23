@@ -24,7 +24,7 @@
 # 23/09/2019
 
 - Correções de bugs
-- Adição de um campo para colocar opções de fluxo de vídeo (rtsp)
+- Adição de um campo para colocar opções de transmissão de vídeo (rtsp)
 
 # 20/09/2019
 
@@ -54,11 +54,11 @@
 # 17/01/2019
 
 - Atualizando o documento
-- Correção de um problema na configuração do Wanscam q3 (s)
+- Corrigido um problema com a configuração do Wanscam q3 (s)
 
 # 15/01/2019
 
-- Câmera Wanscam q3 (s) adicionada
+- Adição da (s) câmera (s) Wanscam q3)
 - Seleção de modo automaticamente com base no URL de captura e no fluxo de vídeo (RTSP)
 - Correções de bugs
 - Substituição adicionada para #username# e #password# em pedidos
