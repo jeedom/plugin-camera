@@ -78,12 +78,8 @@ class camera extends eqLogic {
             if (!file_exists(dirname(__FILE__) . '/../../data/segments')) {
 			mkdir(dirname(__FILE__) . '/../../data/segments', 0777, true);
 		}
-            log::add('camera', 'debug', dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $eqLogic->getConfiguration('cameraStreamAccessUrl'))).' "' . $eqLogic->getId() . '" 2>&1 >> /dev/null');
-            shell_exec(dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $eqLogic->getConfiguration('cameraStreamAccessUrl'))).' "' . $eqLogic->getId() . '" 2>&1 >> /dev/null');
-			//shell_exec($engine.' '.$eqLogic->getConfiguration('rtsp_option','').' -i "' . trim(str_replace(array_keys($replace), $replace, $eqLogic->getConfiguration('cameraStreamAccessUrl'))) . '" -c copy -map 0 -f segment -segment_time 30 -segment_format mp4 "data/' . $eqLogic->getId() . '.mp4" 2>&1 >> /dev/null');
-			//$data = file_get_contents(jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg');
-			//unlink(jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg');
-		//}
+            log::add('camera', 'debug', 'nohup '.dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $eqLogic->getConfiguration('cameraStreamAccessUrl'))).' "' . $eqLogic->getId() . '" > /dev/null 2>&1 &');
+            exec('nohup ' .dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $eqLogic->getConfiguration('cameraStreamAccessUrl'))).' "' . $eqLogic->getId() . '" > /dev/null 2>&1 &');
           }else if ($eqLogic->getIsEnable() == 0 || $eqLogic->getConfiguration('hasPullFunction', 0) == 0) {
 				continue;
 			}
