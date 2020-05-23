@@ -145,7 +145,13 @@ $eqLogics = eqLogic::byType($plugin->getId());
 										<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cameraStreamAccessUrl" placeholder="{{URL du flux, RTSP}}"/>
 									</div>
 								</div>
-								<div class="form-group">
+                                <div class="form-group">
+									<label class="col-sm-3 control-label">{{stream du flux RTSP}}</label>
+									<div class="col-sm-7">
+                                <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="streamRTSP"/>
+								</div>
+								</div>
+                                <div class="form-group">
 									<label class="col-sm-3 control-label">{{Option flux video}}</label>
 									<div class="col-sm-7">
 										<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="rtsp_option" />
