@@ -19,36 +19,26 @@
       </center>
     </span>
   </center>
-  <div class="md_cameraZoom" data-eqLogic_uid="#uid#" data-eqLogic_id="#id#" title="#name_display#">
-    <center>
-      <div class="display">
-      <br/>
-      #action#
-      <span class="cmd cmd-widget" data-type="action" data-subtype="other">
-        <a class="camera_history btn btn-default btn-sm folder action" data-eqLogic_id="#id#"><i class="fa fa-folder-open"></i></a>
-      </span>
-    </center>
-  </div>
   <span class="statusCmd" style="position : absolute;left : 5px;bottom : 0px; width : 30px;z-index: 1030;"></span>
   <script>
-			var video = document.getElementById('video-player#id#');
+			var video#id# = document.getElementById('video-player#id#');
 			if(Hls.isSupported()) {
-				var hls = new Hls();
-				hls.on(Hls.Events.Error, function (event, data) {
+				var hls#id# = new Hls();
+				hls#id#.on(Hls.Events.Error, function (event, data) {
 					console.log("HLS error: ", event, data);
 				});
-				hls.attachMedia(video);
-				hls.on(Hls.Events.MEDIA_ATTACHED, function() {
-					hls.loadSource('#url#');
-					hls.on(Hls.Events.MANIFEST_PARSED,function() {
-						video.play();
+				hls#id#.attachMedia(video#id#);
+				hls#id#.on(Hls.Events.MEDIA_ATTACHED, function() {
+					hls#id#.loadSource('#url#');
+					hls#id#.on(Hls.Events.MANIFEST_PARSED,function() {
+						video#id#.play();
 					});
 				});
 			}
-			else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-				video.src = '#url#';
-				video.addEventListener('loadedmetadata',function() {
-					video.play();
+			else if (video#id#.canPlayType('application/vnd.apple.mpegurl')) {
+				video#id#.src = '#url#';
+				video#id#.addEventListener('loadedmetadata',function() {
+					video#id#.play();
 				});
 			}
 		</script>
