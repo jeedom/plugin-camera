@@ -17,8 +17,8 @@
 */
 
 /* * ***************************Includes********************************* */
-require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
-require_once dirname(__FILE__) . '/../../3rdparty/ponvif.php';
+require_once __DIR__ . '/../../../../core/php/core.inc.php';
+require_once __DIR__ . '/../../3rdparty/ponvif.php';
 
 class camera extends eqLogic {
 	/*     * *************************Attributs****************************** */
@@ -27,6 +27,22 @@ class camera extends eqLogic {
 	private static $_eqLogics = null;
 	
 	/*     * ***********************Methode static*************************** */
+	
+	public static function cron5(){
+		foreach (eqLogic::byType('camera') as $eqLogic) {
+			$processes = array_merge(system::ps('rtsp-to-hls.sh.*'.$eqLogic->getId()),system::ps('ffmpeg.*'.$eqLogic->getId()));
+			if(count($processes) == 0){
+				continue;
+			}
+			if($eqLogic->getCache('lastStreamCall') > strtotime('now') || (strtotime('now') - $eqLogic->getCache('lastStreamCall')) > 60){
+				shell_exec('rm '.__DIR__.'/../../data/'.$eqLogic->getId().'.m3u8');
+				shell_exec('rm '.__DIR__.'/../../data/segments/'.$eqLogic->getId().'-*.ts');
+				foreach ($processes as $process) {
+					system::kill($process['pid']);
+				}
+			}
+		}
+	}
 	
 	public static function deamon_info() {
 		$return = array();
@@ -66,21 +82,7 @@ class camera extends eqLogic {
 			self::$_eqLogics = self::byType('camera');
 		}
 		foreach (self::$_eqLogics as $eqLogic) {
-			if($eqLogic->getConfiguration('streamRTSP',0) == 1){
-				//if ($eqLogic->getConfiguration('urlStream') == '' && $eqLogic->getConfiguration('cameraStreamAccessUrl') != '') {
-				$replace = array(
-					'#username#' => urlencode($eqLogic->getConfiguration('username')),
-					'#password#' => urlencode($eqLogic->getConfiguration('password')),
-					'#ip#' => urlencode($eqLogic->getConfiguration('ip')),
-					'#port#' => urlencode($eqLogic->getConfiguration('port')),
-				);
-				$engine = config::byKey('rtsp::engine','camera','avconv');
-				if (!file_exists(dirname(__FILE__) . '/../../data/segments')) {
-					mkdir(dirname(__FILE__) . '/../../data/segments', 0777, true);
-				}
-				log::add('camera', 'debug', 'nohup '.dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $eqLogic->getConfiguration('cameraStreamAccessUrl'))).' "' . $eqLogic->getId() . '" > /dev/null 2>&1 &');
-				exec('nohup ' .dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $eqLogic->getConfiguration('cameraStreamAccessUrl'))).' "' . $eqLogic->getId() . '" >> /tmp/camera.log 2>&1 &');
-			}else if ($eqLogic->getIsEnable() == 0 || $eqLogic->getConfiguration('hasPullFunction', 0) == 0) {
+			if ($eqLogic->getIsEnable() == 0 || $eqLogic->getConfiguration('hasPullFunction', 0) == 0) {
 				continue;
 			}
 			try {

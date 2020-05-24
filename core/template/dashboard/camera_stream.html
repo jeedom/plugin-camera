@@ -5,7 +5,7 @@
   </center>
   <center>
     <span class="directDisplay zoom cursor">
-     <video id="video-player#id#" data-eqLogic_id="#id#" controls width="320" height="240" preload="none"></video>
+      <video id="video-player#id#" data-eqLogic_id="#id#" controls width="320" height="240" preload="none"></video>
     </span>
     <span style="position:absolute;bottom:4px;width:100%;left:0px;">
       <center>
@@ -21,25 +21,50 @@
   </center>
   <span class="statusCmd" style="position : absolute;left : 5px;bottom : 0px; width : 30px;z-index: 1030;"></span>
   <script>
-			var video#id# = document.getElementById('video-player#id#');
-			if(Hls.isSupported()) {
-				var hls#id# = new Hls();
-				hls#id#.on(Hls.Events.Error, function (event, data) {
-					console.log("HLS error: ", event, data);
-				});
-				hls#id#.attachMedia(video#id#);
-				hls#id#.on(Hls.Events.MEDIA_ATTACHED, function() {
-					hls#id#.loadSource('#url#');
-					hls#id#.on(Hls.Events.MANIFEST_PARSED,function() {
-						video#id#.play();
-					});
-				});
-			}
-			else if (video#id#.canPlayType('application/vnd.apple.mpegurl')) {
-				video#id#.src = '#url#';
-				video#id#.addEventListener('loadedmetadata',function() {
-					video#id#.play();
-				});
-			}
-		</script>
+    function refreshImgCam#id#(){
+      if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
+        return;
+      }
+      $.ajax({
+        type: "POST",
+        url: "plugins/camera/core/ajax/camera.ajax.php",
+        data: {
+          action: "stream",
+          id : "#id#"
+        },
+        global:false,
+        dataType: 'json',
+        error: function (request, status, error) {
+          handleAjaxError(request, status, error);
+        },
+        success: function (data) {
+          if (data.state != 'ok') {
+            $('#div_alert').showAlert({message: data.result, level: 'danger'});
+            return;
+          }
+          timeoutCamera#id# = setTimeout(refreshImgCam#id#, 10000);
+        }
+      });
+    }
+    refreshImgCam#id#();
+    var video#id# = document.getElementById('video-player#id#');
+    if(Hls.isSupported()) {
+      var hls#id# = new Hls();
+      hls#id#.on(Hls.Events.Error, function (event, data) {
+        console.log("HLS error: ", event, data);
+      });
+      hls#id#.attachMedia(video#id#);
+      hls#id#.on(Hls.Events.MEDIA_ATTACHED, function() {
+        hls#id#.loadSource('#url#');
+        hls#id#.on(Hls.Events.MANIFEST_PARSED,function() {
+          video#id#.play();
+        });
+      });
+    }else if (video#id#.canPlayType('application/vnd.apple.mpegurl')) {
+      video#id#.src = '#url#';
+      video#id#.addEventListener('loadedmetadata',function() {
+        video#id#.play();
+      });
+    }
+  </script>
 </div>
