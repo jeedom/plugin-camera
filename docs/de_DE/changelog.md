@@ -4,6 +4,9 @@
 >
 >Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt
 
+- Möglichkeit, die Kamera im Videostream zu sehen (und nicht mehr Bild für Bild)
+
+
 # 05/11/2020
 
 - Rückgabe der ONVIF-Erkennungsfunktion (danke @Aidom)

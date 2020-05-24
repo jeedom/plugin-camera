@@ -4,6 +4,9 @@
 >
 >As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text
 
+- Possibility to see the camera in video stream (and no longer image by image)
+
+
 # 05/11/2020
 
 - Return of the ONVIF discovery function (thanks @Aidom)

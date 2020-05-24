@@ -4,6 +4,9 @@
 >
 >Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto
 
+- Posibilidad de ver la cámara en transmisión de video (y ya no imagen por imagen)
+
+
 # 05/11/2020
 
 - Regreso de la función de descubrimiento ONVIF (gracias @Aidom)

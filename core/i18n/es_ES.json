@@ -94,7 +94,7 @@
         "URL de capture": "Capturar url",
         "URL du flux": "URL del feed",
         "URL du flux, RTSP": "URL de transmisión, RTSP",
-        "stream du flux RTSP": "flujo de flujo RTSP",
+        "Stream du flux RTSP": "Flujo de flujo RTSP",
         "Option flux video": "Opción de transmisión de video",
         "Position sur le panel": "Posición en el panel",
         "Modèle": "Modelo",
@@ -160,6 +160,7 @@
     "plugins\/camera\/core\/ajax\/camera.ajax.php": {
         "401 - Accès non autorisé": "401 - Acceso no autorizado",
         "Impossible de trouver la caméra : ' . init('id')": "No se puede encontrar la cámara: '. init ('id')",
+        "Impossible de trouver la camera : ": "Incapaz de encontrar la cámara:",
         "Aucune methode correspondante à : ": "Ningún método correspondiente a:"
     },
     "plugins\/camera\/core\/class\/camera.class.php": {

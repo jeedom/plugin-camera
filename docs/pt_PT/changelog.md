@@ -4,6 +4,9 @@
 >
 >Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto
 
+- Possibilidade de ver a câmera no fluxo de vídeo (e não mais imagem por imagem)
+
+
 # 05/11/2020
 
 - Retorno da função de descoberta ONVIF (obrigado @Aidom)
