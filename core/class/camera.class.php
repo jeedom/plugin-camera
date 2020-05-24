@@ -39,7 +39,7 @@ class camera extends eqLogic {
 					system::kill($process['pid']);
 				}
 				echo system::getCmdSudo().' rm '.__DIR__.'/../../data/'.$eqLogic->getConfiguration('localApiKey').'.m3u8';
-				sleep(1);
+				sleep(2);
 				shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/'.$eqLogic->getConfiguration('localApiKey').'.m3u8');
 				shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/segments/'.$eqLogic->getConfiguration('localApiKey').'-*.ts');
 			}

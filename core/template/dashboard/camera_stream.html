@@ -21,6 +21,7 @@
   </center>
   <span class="statusCmd" style="position : absolute;left : 5px;bottom : 0px; width : 30px;z-index: 1030;"></span>
   <script>
+    streamInit#id# = false;
     function refreshImgCam#id#(){
       if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
         return;
@@ -42,29 +43,32 @@
             $('#div_alert').showAlert({message: data.result, level: 'danger'});
             return;
           }
+          if(streamInit#id# == false){
+            streamInit#id# = true;
+            var video#id# = document.getElementById('video-player#id#');
+            if(Hls.isSupported()) {
+              var hls#id# = new Hls();
+              hls#id#.on(Hls.Events.Error, function (event, data) {
+                console.log("HLS error: ", event, data);
+              });
+              hls#id#.attachMedia(video#id#);
+              hls#id#.on(Hls.Events.MEDIA_ATTACHED, function() {
+                hls#id#.loadSource('#url#');
+                hls#id#.on(Hls.Events.MANIFEST_PARSED,function() {
+                  video#id#.play();
+                });
+              });
+            }else if (video#id#.canPlayType('application/vnd.apple.mpegurl')) {
+              video#id#.src = '#url#';
+              video#id#.addEventListener('loadedmetadata',function() {
+                video#id#.play();
+              });
+            }
+          }
           timeoutCamera#id# = setTimeout(refreshImgCam#id#, 10000);
         }
       });
     }
     refreshImgCam#id#();
-    var video#id# = document.getElementById('video-player#id#');
-    if(Hls.isSupported()) {
-      var hls#id# = new Hls();
-      hls#id#.on(Hls.Events.Error, function (event, data) {
-        console.log("HLS error: ", event, data);
-      });
-      hls#id#.attachMedia(video#id#);
-      hls#id#.on(Hls.Events.MEDIA_ATTACHED, function() {
-        hls#id#.loadSource('#url#');
-        hls#id#.on(Hls.Events.MANIFEST_PARSED,function() {
-          video#id#.play();
-        });
-      });
-    }else if (video#id#.canPlayType('application/vnd.apple.mpegurl')) {
-      video#id#.src = '#url#';
-      video#id#.addEventListener('loadedmetadata',function() {
-        video#id#.play();
-      });
-    }
   </script>
 </div>
