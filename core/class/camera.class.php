@@ -34,11 +34,10 @@ class camera extends eqLogic {
 			if(count($processes) == 0){
 				continue;
 			}
-			if($eqLogic->getCache('lastStreamCall') > strtotime('now') || (strtotime('now') - $eqLogic->getCache('lastStreamCall')) > 60){
+			if($eqLogic->getCache('lastStreamCall','') != '' && $eqLogic->getCache('lastStreamCall') > strtotime('now') || (strtotime('now') - $eqLogic->getCache('lastStreamCall')) > 60){
 				foreach ($processes as $process) {
 					system::kill($process['pid']);
 				}
-				echo system::getCmdSudo().' rm '.__DIR__.'/../../data/'.$eqLogic->getConfiguration('localApiKey').'.m3u8';
 				sleep(2);
 				shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/'.$eqLogic->getConfiguration('localApiKey').'.m3u8');
 				shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/segments/'.$eqLogic->getConfiguration('localApiKey').'-*.ts');
