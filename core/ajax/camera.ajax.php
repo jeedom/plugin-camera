@@ -100,7 +100,14 @@ try {
 			}
 			log::add('camera', 'debug', 'nohup '.dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $camera->getConfiguration('cameraStreamAccessUrl'))).' "' . $camera->getConfiguration('localApiKey') . '" > /dev/null 2>&1 &');
 			exec('nohup ' .dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $camera->getConfiguration('cameraStreamAccessUrl'))).' "' . $camera->getConfiguration('localApiKey') . '" > /dev/null 2>&1 &');
-			sleep(5);
+			$i=0;
+			while(!file_exists(__DIR__.'/../../data/'.$camera->getConfiguration('localApiKey').'.m3u8')){
+				sleep(1);
+				$i++;
+				if($i>30){
+					break;
+				}
+			}
 		}
 		$camera->setCache('lastStreamCall',strtotime('now'));
 		ajax::success();
