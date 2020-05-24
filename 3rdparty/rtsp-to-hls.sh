@@ -20,6 +20,6 @@ ffmpeg -i "$SOURCE" \
 -hls_init_time 1 \
 -hls_time $HLS_TIME \
 -hls_list_size $HLS_LIST_SIZE \
--hls_base_url ${BASEDIR}"/../data/segments/" \
+-hls_base_url "segments/" \
 -hls_segment_filename ${BASEDIR}"/../data/segments/$NAME-%d.ts" \
 ${BASEDIR}"/../data/$NAME.m3u8"
