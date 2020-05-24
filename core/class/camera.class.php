@@ -66,21 +66,21 @@ class camera extends eqLogic {
 			self::$_eqLogics = self::byType('camera');
 		}
 		foreach (self::$_eqLogics as $eqLogic) {
-          	if($eqLogic->getConfiguration('streamRTSP',0) == 1){
-          	//if ($eqLogic->getConfiguration('urlStream') == '' && $eqLogic->getConfiguration('cameraStreamAccessUrl') != '') {
-			$replace = array(
-				'#username#' => urlencode($eqLogic->getConfiguration('username')),
-				'#password#' => urlencode($eqLogic->getConfiguration('password')),
-				'#ip#' => urlencode($eqLogic->getConfiguration('ip')),
-				'#port#' => urlencode($eqLogic->getConfiguration('port')),
-			);
-			$engine = config::byKey('rtsp::engine','camera','avconv');
-            if (!file_exists(dirname(__FILE__) . '/../../data/segments')) {
-			mkdir(dirname(__FILE__) . '/../../data/segments', 0777, true);
-		}
-            log::add('camera', 'debug', 'nohup '.dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $eqLogic->getConfiguration('cameraStreamAccessUrl'))).' "' . $eqLogic->getId() . '" > /dev/null 2>&1 &');
-            exec('nohup ' .dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $eqLogic->getConfiguration('cameraStreamAccessUrl'))).' "' . $eqLogic->getId() . '" > /dev/null 2>&1 &');
-          }else if ($eqLogic->getIsEnable() == 0 || $eqLogic->getConfiguration('hasPullFunction', 0) == 0) {
+			if($eqLogic->getConfiguration('streamRTSP',0) == 1){
+				//if ($eqLogic->getConfiguration('urlStream') == '' && $eqLogic->getConfiguration('cameraStreamAccessUrl') != '') {
+				$replace = array(
+					'#username#' => urlencode($eqLogic->getConfiguration('username')),
+					'#password#' => urlencode($eqLogic->getConfiguration('password')),
+					'#ip#' => urlencode($eqLogic->getConfiguration('ip')),
+					'#port#' => urlencode($eqLogic->getConfiguration('port')),
+				);
+				$engine = config::byKey('rtsp::engine','camera','avconv');
+				if (!file_exists(dirname(__FILE__) . '/../../data/segments')) {
+					mkdir(dirname(__FILE__) . '/../../data/segments', 0777, true);
+				}
+				log::add('camera', 'debug', 'nohup '.dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $eqLogic->getConfiguration('cameraStreamAccessUrl'))).' "' . $eqLogic->getId() . '" > /dev/null 2>&1 &');
+				exec('nohup ' .dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls.sh ' . trim(str_replace(array_keys($replace), $replace, $eqLogic->getConfiguration('cameraStreamAccessUrl'))).' "' . $eqLogic->getId() . '" >> /tmp/camera.log 2>&1 &');
+			}else if ($eqLogic->getIsEnable() == 0 || $eqLogic->getConfiguration('hasPullFunction', 0) == 0) {
 				continue;
 			}
 			try {
@@ -92,7 +92,7 @@ class camera extends eqLogic {
 			} catch (Exception $e) {
 				
 			}
-          
+			
 		}
 	}
 	
@@ -571,11 +571,11 @@ class camera extends eqLogic {
 		
 		$replace['#action#'] = $action;
 		$replace['#info#'] = $info;
-      	if($this->getConfiguration('streamRTSP') == 1){
-        	$replace['#url#'] = 'plugins/camera/data/' . $this->getId() . '.m3u8';
-        }else{
-        	$replace['#url#'] = $this->getUrl($this->getConfiguration('urlStream'), true);
-        }
+		if($this->getConfiguration('streamRTSP') == 1){
+			$replace['#url#'] = 'plugins/camera/data/' . $this->getId() . '.m3u8';
+		}else{
+			$replace['#url#'] = $this->getUrl($this->getConfiguration('urlStream'), true);
+		}
 		$replace['#refreshDelaySlow#'] = $this->getConfiguration('thumbnail::refresh', 1) * 1000;
 		$replace['#refreshDelayFast#'] = $this->getConfiguration('normal::refresh', 5) * 1000;
 		if ($version == 'mobile') {
@@ -583,8 +583,8 @@ class camera extends eqLogic {
 			$replace['#refreshDelayFast#'] = $this->getConfiguration('normal::mobilerefresh', 5) * 1000;
 		}
 		if($this->getConfiguration('streamRTSP') == 1){
-          	return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_stream', 'camera')));
-        }else if (!$_fluxOnly) {
+			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_stream', 'camera')));
+		}else if (!$_fluxOnly) {
 			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera')));
 		}else {
 			return template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_flux_only', 'camera'));
