@@ -344,6 +344,16 @@ class camera extends eqLogic {
 				throw new Exception(__('La "Commande d\'alerte" ne peut être de type caméra', __FILE__));
 			}
 		}
+		if ($this->getConfiguration('localApiKey') != '') {
+			foreach (self::bYType('camera') as $camera) {
+				if($camera == $this->getId()){
+					continue;
+				}
+				if($camera->getConfiguration('localApiKey') == $this->getConfiguration('localApiKey')){
+					$this->setConfiguration('localApiKey','');
+				}
+			}
+		}
 		if ($this->getConfiguration('localApiKey') == '') {
 			$this->setConfiguration('localApiKey', config::genKey());
 		}
@@ -514,6 +524,13 @@ class camera extends eqLogic {
 			if (is_object($off)) {
 				$off->remove();
 			}
+		}
+		if($this->getConfiguration('streamRTSP') == 1){
+			shell_exec('(ps ax || ps w) | grep ffmpeg.*'.$this->getConfiguration('localApiKey').' | awk \'{print $2}\' |  xargs sudo kill -9');
+			shell_exec('(ps ax || ps w) | grep rtsp-to-hls.sh.*'.$this->getConfiguration('localApiKey').' | awk \'{print $2}\' |  xargs sudo kill -9');
+			sleep(2);
+			shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/'.$this->getConfiguration('localApiKey').'.m3u8');
+			shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/segments/'.$this->getConfiguration('localApiKey').'-*.ts');
 		}
 	}
 	
