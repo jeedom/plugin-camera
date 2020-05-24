@@ -30,13 +30,13 @@ class camera extends eqLogic {
 	
 	public static function cron5(){
 		foreach (eqLogic::byType('camera') as $eqLogic) {
-			$processes = array_merge(system::ps('rtsp-to-hls.sh.*'.$eqLogic->getId()),system::ps('ffmpeg.*'.$eqLogic->getId()));
+			$processes = array_merge(system::ps('rtsp-to-hls.sh.*'.$eqLogic->getConfiguration('localApiKey')),system::ps('ffmpeg.*'.$eqLogic->getConfiguration('localApiKey')));
 			if(count($processes) == 0){
 				continue;
 			}
 			if($eqLogic->getCache('lastStreamCall') > strtotime('now') || (strtotime('now') - $eqLogic->getCache('lastStreamCall')) > 60){
-				shell_exec('rm '.__DIR__.'/../../data/'.$eqLogic->getId().'.m3u8');
-				shell_exec('rm '.__DIR__.'/../../data/segments/'.$eqLogic->getId().'-*.ts');
+				shell_exec('rm '.__DIR__.'/../../data/'.$eqLogic->getConfiguration('localApiKey').'.m3u8');
+				shell_exec('rm '.__DIR__.'/../../data/segments/'.$eqLogic->getConfiguration('localApiKey').'-*.ts');
 				foreach ($processes as $process) {
 					system::kill($process['pid']);
 				}
@@ -574,7 +574,7 @@ class camera extends eqLogic {
 		$replace['#action#'] = $action;
 		$replace['#info#'] = $info;
 		if($this->getConfiguration('streamRTSP') == 1){
-			$replace['#url#'] = 'plugins/camera/data/' . $this->getId() . '.m3u8';
+			$replace['#url#'] = 'plugins/camera/data/' . $this->getConfiguration('localApiKey') . '.m3u8';
 		}else{
 			$replace['#url#'] = $this->getUrl($this->getConfiguration('urlStream'), true);
 		}
