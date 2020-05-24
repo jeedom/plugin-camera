@@ -375,6 +375,9 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('moveThreshold') == '') {
 			$this->setConfiguration('moveThreshold', 2);
 		}
+		if($this->getConfiguration('cameraStreamAccessUrl') == '' && $this->getConfiguration('streamRTSP') == 1){
+			$this->setConfiguration('streamRTSP',0);
+		}
 		if (file_exists(dirname(__FILE__) . '/../config/devices/' . $this->getConfiguration('device') . '.php')) {
 			$this->setConfiguration('hasPullFunction', 1);
 		} else {
