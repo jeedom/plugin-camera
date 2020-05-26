@@ -34,6 +34,7 @@ function camera_install() {
 	if(!com_shell::commandExists('avconv')){
 		config::save('rtsp::engine','ffmpeg','camera');
 	}
+	exec(system::getCmdSudo().' chmod +x '.__DIR__.'/../3rdparty/rtsp-to-hls.sh');
 }
 
 function camera_update() {
@@ -62,6 +63,7 @@ function camera_update() {
 	if(!com_shell::commandExists('avconv')){
 		config::save('rtsp::engine','ffmpeg','camera');
 	}
+	exec(system::getCmdSudo().' chmod +x '.__DIR__.'/../3rdparty/rtsp-to-hls.sh');
 }
 
 function camera_remove() {
