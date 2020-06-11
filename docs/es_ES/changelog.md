@@ -4,8 +4,11 @@
 >
 >Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto
 
-- Posibilidad de ver la cámara en transmisión de video (y ya no imagen por imagen)
+# 11/11/2020
 
+- Agregar configuración
+- Posibilidad de ver la cámara en transmisión de video (y ya no imagen por imagen)
+- Rediseño del sistema de preconfiguración de la cámara
 
 # 05/11/2020
 

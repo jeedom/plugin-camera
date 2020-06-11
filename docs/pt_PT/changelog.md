@@ -4,8 +4,11 @@
 >
 >Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto
 
-- Possibilidade de ver a câmera no fluxo de vídeo (e não mais imagem por imagem)
+# 11/11/2020
 
+- Adicionando configuração
+- Possibilidade de ver a câmera no fluxo de vídeo (e não mais imagem por imagem)
+- Redesign do sistema de pré-configuração da câmera
 
 # 05/11/2020
 

@@ -4,8 +4,11 @@
 >
 >Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt
 
-- Möglichkeit, die Kamera im Videostream zu sehen (und nicht mehr Bild für Bild)
+# 11/11/2020
 
+- Konfiguration hinzufügen
+- Möglichkeit, die Kamera im Videostream zu sehen (und nicht mehr Bild für Bild)
+- Neugestaltung des Kamera-Vorkonfigurationssystems
 
 # 05/11/2020
 
