@@ -41,7 +41,8 @@ $(".eqLogicAttr[data-l1key=configuration][data-l2key=device]").html($(".eqLogicA
 
 $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').on('change', function () {
   if($('.li_eqLogic.active').attr('data-eqlogic_id') != '' && $(this).value() != ''){
-    $('#img_device').attr("src", 'plugins/camera/core/config/devices/'+$(this).value()+'.jpg');
+    var img = $('.eqLogicAttr[data-l1key=configuration][data-l2key=device] option:selected').attr('data-img')
+    $('#img_device').attr("src", 'plugins/camera/core/config/devices/'+img);
   }else{
     $('#img_device').attr("src",'plugins/camera/plugin_info/camera_icon.png');
   }

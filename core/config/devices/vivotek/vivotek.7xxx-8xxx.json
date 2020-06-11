@@ -1,0 +1,8 @@
+{
+  "name" : "Vivotek 8xxx et 7xxx",
+  "configuration": {
+    "urlStream": "\/cgi-bin\/viewer\/video.jpg",
+    "protocole": "http"
+  },
+  "commands": []
+}

@@ -94,6 +94,7 @@
         "URL de capture": "URL de capture",
         "URL du flux": "URL du flux",
         "URL du flux, RTSP": "URL du flux, RTSP",
+        "Stream du flux RTSP": "Stream du flux RTSP",
         "Option flux video": "Option flux video",
         "Position sur le panel": "Position sur le panel",
         "Modèle": "Modèle",
@@ -159,6 +160,7 @@
     "plugins\/camera\/core\/ajax\/camera.ajax.php": {
         "401 - Accès non autorisé": "401 - Accès non autorisé",
         "Impossible de trouver la caméra : ' . init('id')": "Impossible de trouver la caméra : ' . init('id')",
+        "Impossible de trouver la camera : ": "Impossible de trouver la camera : ",
         "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
     },
     "plugins\/camera\/core\/class\/camera.class.php": {

@@ -1,0 +1,8 @@
+{
+  "name" : "Hikvision DS-7216HWI-SH/A (XXX = 101 pour le channel 1 / XXX = 202 pour le channe 2)",
+  "configuration": {
+    "urlStream": "\/PSIA\/Streaming/channels\/XXX\/picture",
+    "protocole": "http"
+  },
+  "commands": []
+}

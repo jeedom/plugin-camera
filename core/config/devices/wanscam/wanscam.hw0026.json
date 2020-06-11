@@ -1,0 +1,44 @@
+{
+	"name": "Wanscam HW0026",
+	"configuration": {
+		"urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
+		"protocole": "http",
+		"refreshDelaySlow": "5",
+		"refreshDelayFast": "1",
+		"maxReccordTime": "600",
+		"preferVideo": "0",
+		"videoFramerate": "",
+		"commandOn": "",
+		"commandOff": ""
+	},
+	"commands": [
+		{
+			"eqType": "camera",
+			"name": "IR Off",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/camera_control.cgi?loginuse=#username#&loginpas=#password#&param=14&value=0"
+			},
+			"display": {
+				"icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
+			},
+			"isVisible": "0"
+		},
+		{
+			"eqType": "camera",
+			"name": "IR Auto",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/camera_control.cgi?loginuse=#username#&loginpas=#password#&param=14&value=1"
+			},
+			"display": {
+				"icon": "<i class=\"icon jeedom2-idea13\"><\/i>"
+			},
+			"isVisible": "0"
+		}
+	]
+}

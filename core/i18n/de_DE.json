@@ -23,7 +23,7 @@
         "Vidéo": "Video",
         "Framerate": "Framerate",
         "Rafraichissement": "Erfrischend",
-        "Zoom": "Zoom",
+        "Zoom": "Zoomen",
         "Max Enregistrement": "Max Aufnahme",
         "Date création": "Erstellungsdatum",
         "OK": "OK",
@@ -94,6 +94,7 @@
         "URL de capture": "URL erfassen",
         "URL du flux": "Feed-URL",
         "URL du flux, RTSP": "Stream-URL, RTSP",
+        "Stream du flux RTSP": "Stream des RTSP-Streams",
         "Option flux video": "Video-Stream-Option",
         "Position sur le panel": "Position auf dem Panel",
         "Modèle": "Modell",
@@ -159,6 +160,7 @@
     "plugins\/camera\/core\/ajax\/camera.ajax.php": {
         "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff",
         "Impossible de trouver la caméra : ' . init('id')": "Kamera kann nicht gefunden werden: '. init ('id')",
+        "Impossible de trouver la camera : ": "Kamera kann nicht gefunden werden:",
         "Aucune methode correspondante à : ": "Keine Methode entsprechend:"
     },
     "plugins\/camera\/core\/class\/camera.class.php": {

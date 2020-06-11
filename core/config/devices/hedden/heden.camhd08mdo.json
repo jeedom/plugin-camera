@@ -1,0 +1,103 @@
+{
+  "name" : "Heden VisionCam HD CAMHD08MD0",
+  "configuration": {
+    "urlStream": "\/tmpfs\/snap.jpg?usr=#username#&pwd=#password#",
+    "protocole": "http"
+  },
+  "commands": [
+    {
+      "eqType": "camera",
+      "name": "Gauche",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      
+      "configuration": {
+        "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=left&usr=#username#&pwd=#password# "
+      },
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-left\"><\/i>",
+        "generic_type": "CAMERA_LEFT"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "name": "Droite",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      
+      "configuration": {
+        "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=right&usr=#username#&pwd=#password# "
+      },
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-right\"><\/i>",
+        "generic_type": "CAMERA_RIGHT"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "name": "Haut",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      
+      "configuration": {
+        "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=up&usr=#username#&pwd=#password#"
+      },
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-up\"><\/i>",
+        "generic_type": "CAMERA_UP"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "name": "Bas",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      
+      "configuration": {
+        "request": "\/cgi-bin\/hi3510\/ptzctrl.cgi?-step=1&-act=down&usr=#username#&pwd=#password# "
+      },
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-down\"><\/i>",
+        "generic_type": "CAMERA_DOWN"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "name": "IR Auto",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      
+      "configuration": {
+        "request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setinfrared&-infraredstat=auto&usr=#username#&pwd=#password#"
+      },
+      "display": {
+        "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "name": "IR Off",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      
+      "configuration": {
+        "request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setinfrared&-infraredstat=close&usr=#username#&pwd=#password#"
+      },
+      "display": {
+        "icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
+      },
+      "isVisible": "1"
+    }
+  ]
+}

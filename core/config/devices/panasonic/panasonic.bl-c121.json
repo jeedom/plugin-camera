@@ -1,0 +1,8 @@
+{
+  "name" : "Panasonic BL-C121",
+  "configuration": {
+    "urlStream": "\/SnapshotJPEG?Resolution=320x240",
+    "protocole": "http"
+  },
+  "commands": []
+}

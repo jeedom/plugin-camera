@@ -1,0 +1,8 @@
+{
+  "name" : "Bluestork",
+  "configuration": {
+    "urlStream": "\/snapshot.cgi?user=#username#&pwd=#password#",
+    "protocole": "http"
+  },
+  "commands": []
+}

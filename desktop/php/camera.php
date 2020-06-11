@@ -39,8 +39,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
 				echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '" >';
 				if ($eqLogic->getConfiguration('device') != ""){
-					if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg')) {
-						echo '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg"/>';
+					if (camera::getImgFilePath($eqLogic->getConfiguration('device')) !== false) {
+						echo '<img class="lazy" src="plugins/camera/core/config/devices/' . camera::getImgFilePath($eqLogic->getConfiguration('device')) . '"/>';
 					} else {
 						echo '<img src="' . $plugin->getPathImgIcon() . '" />';
 					}
@@ -146,6 +146,12 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									</div>
 								</div>
 								<div class="form-group">
+									<label class="col-sm-3 control-label">{{Stream du flux RTSP}}</label>
+									<div class="col-sm-7">
+										<input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="streamRTSP"/>
+									</div>
+								</div>
+								<div class="form-group">
 									<label class="col-sm-3 control-label">{{Option flux video}}</label>
 									<div class="col-sm-7">
 										<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="rtsp_option" />
@@ -170,7 +176,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 											<option value="">{{1 - Aucun}}</option>
 											<?php
 											foreach (camera::devicesParameters() as $id => $info) {
-												echo '<option value="' . $id . '">' . $info['name'] . '</option>';
+												echo '<option value="' . $id . '" data-img="'.camera::getImgFilePath($id).'">' . $info['name'] . '</option>';
 											}
 											?>
 										</select>

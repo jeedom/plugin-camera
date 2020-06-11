@@ -1,0 +1,6 @@
+{
+  "name" : "Netatmo Presence",
+  "remark" : "Necessite absolument le plugin Netatmo Security (payant)",
+  "buylink" : "https://www.domadoo.fr/fr/objets-communicants/3855-netatmo-camera-exterieure-de-securite-presence-3700730501866.html",
+  "commands": []
+}

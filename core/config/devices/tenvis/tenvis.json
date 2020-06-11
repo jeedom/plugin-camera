@@ -1,0 +1,8 @@
+{
+  "name" : "Tenvis",
+  "configuration": {
+    "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
+    "protocole": "http"
+  },
+  "commands": []
+}
