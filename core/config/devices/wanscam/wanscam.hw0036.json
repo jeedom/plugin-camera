@@ -1,5 +1,6 @@
 {
-  "name" : "Wanscam HW0036",
+  "name" : "HW0036",
+  "manufacturer" : "Wanscam",
   "configuration": {
     "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
     "port": 81,

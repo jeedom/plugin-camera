@@ -1,5 +1,6 @@
 {
-  "name" : "Openkarotz Camera",
+  "name" : "Openkarotz",
+  "manufacturer" : "Karotz",
   "configuration": {
     "urlStream": "\/cgi-bin/snapshot_view?silent=1",
     "protocole": "http"

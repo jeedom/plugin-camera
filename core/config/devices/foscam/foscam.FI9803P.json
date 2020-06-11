@@ -1,5 +1,6 @@
 {
-  "name" : "Foscam FI9803P",
+  "name" : "FI9803P",
+  "manufacturer" : "Foscam",
   "buylink" : "https://www.domadoo.fr/fr/cameras/4978-foscam-camera-ip-wifi-exterieur-motorisee-2mp-6954836003299.html",
   "configuration": {
     "port": "88",

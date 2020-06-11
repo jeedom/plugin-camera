@@ -1,5 +1,6 @@
 {
-  "name" : "D-Link DSC-5020L && DCS-935L",
+  "name" : "DSC-5020L && DCS-935L",
+  "manufacturer" : "D-Link",
   "configuration": {
     "urlStream": "\/image\/jpeg.cgi?user=#username#&pwd=#password#",
     "protocole": "http"

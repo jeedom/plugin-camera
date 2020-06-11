@@ -1,5 +1,6 @@
 {
-  "name" : "Heden CAMHED05IPWN (V5.5), VISIONCAM22",
+  "name" : "CAMHED05IPWN (V5.5), VISIONCAM22",
+  "manufacturer" : "Heden",
   "configuration": {
     "urlStream": "\/snapshot.cgi?user=#username#&pwd=#password#",
     "protocole": "http"

@@ -1,5 +1,6 @@
 {
-  "name" : "Dericam H502W",
+  "name" : "H502W",
+  "manufacturer" : "Dericam",
   "configuration": {
     "urlStream": "\/snapshot.cgi?user=#username#&password=#password#",
     "protocole": "http",

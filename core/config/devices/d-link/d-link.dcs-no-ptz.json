@@ -1,5 +1,6 @@
 {
-  "name" : "D-Link DCS",
+  "name" : "DCS",
+  "manufacturer" : "D-Link",
   "configuration": {
     "urlStream": "\/image.jpg",
     "protocole": "http"

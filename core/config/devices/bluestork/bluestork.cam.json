@@ -1,5 +1,6 @@
 {
-  "name" : "Bluestork",
+  "name" : "Caméra",
+  "manufacturer" : "Bluestork",
   "configuration": {
     "urlStream": "\/snapshot.cgi?user=#username#&pwd=#password#",
     "protocole": "http"

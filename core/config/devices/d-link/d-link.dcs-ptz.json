@@ -1,5 +1,6 @@
 {
-  "name" : "D-Link DCS PTZ",
+  "name" : "DCS PTZ",
+  "manufacturer" : "D-Link",
   "configuration": {
     "urlStream": "\/image.jpg",
     "protocole": "http"

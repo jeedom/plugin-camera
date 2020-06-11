@@ -1,5 +1,6 @@
 {
-  "name" : "Doorbird",
+  "name" : "Caméra",
+  "manufacturer" : "Doorbird",
   "configuration": {
     "urlStream": "\/bha-api\/image.cgi",
     "protocole": "http",

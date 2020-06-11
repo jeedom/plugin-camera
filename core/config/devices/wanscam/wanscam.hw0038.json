@@ -1,5 +1,6 @@
 {
-  "name": "Wanscam motorisée HW0038",
+  "name": "Motorisée HW0038",
+  "manufacturer" : "Wanscam",
   "configuration": {
     "urlStream": "/tmpfs/snap.jpg",
     "refreshDelaySlow": "5",

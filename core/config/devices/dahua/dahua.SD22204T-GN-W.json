@@ -1,5 +1,6 @@
 {
-	"name" : "Dahua SD22204T-GN-W",
+	"name" : "SD22204T-GN-W",
+	"manufacturer" : "Dahua",
 	"configuration": {
 		"urlStream": "",
 		"cameraStreamAccessUrl": "rtsp:\/\/#username#:#password#@#ip#:554\/cam\/realmonitor?channel=1&subtype=0",

@@ -1,5 +1,6 @@
 {
-  "name" : "Y-Cam",
+  "name" : "Caméra",
+  "manufacturer" : "Y-Cam",
   "configuration": {
     "urlStream": "\/snapshot.jpg",
     "protocole": "http"

@@ -1,5 +1,6 @@
 {
   "name" : "Karotz",
+  "manufacturer" : "Karotz",
   "configuration": {
     "port": "80",
     "urlStream": "\/cgi-bin\/snapshot_view?silent=1",

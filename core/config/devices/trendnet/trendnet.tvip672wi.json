@@ -1,5 +1,6 @@
 {
-  "name" : "TrendNet TV-IP672WI",
+  "name" : "TV-IP672WI",
+  "manufacturer" : "TrendNet",
   "configuration": {
     "urlStream": "\/image\/jpeg.cgi",
     "protocole": "http"

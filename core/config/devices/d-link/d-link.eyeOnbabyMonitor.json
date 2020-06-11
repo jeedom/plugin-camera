@@ -1,5 +1,6 @@
 {
-  "name" : "D-Link EyeOn baby Monitor",
+  "name" : "EyeOn baby Monitor",
+  "manufacturer" : "D-Link",
   "configuration": {
     "urlStream": "\/image\/jpeg.cgi",
     "protocole": "http"
