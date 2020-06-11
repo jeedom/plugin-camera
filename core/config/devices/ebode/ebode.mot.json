@@ -93,7 +93,7 @@
       "name": "stop",
       "type": "action",
       "subType": "other",
-      "isHistorized": "0"
+      "isHistorized": "0",
       "configuration": {
         "request": "\/cgi-bin\/CGIProxy.fcgi?usr%3D#username#%26pwd%3D#password#%26cmd%3DptzStopRun%261438440945996"
       },

@@ -1,5 +1,5 @@
 {
-  "name": "Motorisée HW0038",
+  "name": "HW0038",
   "manufacturer" : "Wanscam",
   "configuration": {
     "urlStream": "/tmpfs/snap.jpg",
@@ -9,8 +9,7 @@
     "preferVideo": "0",
     "videoFramerate": "",
     "commandOn": "",
-    "commandOff": "",
-    
+    "commandOff": ""
   },
   "commands": [
     {
