@@ -1,6 +1,7 @@
 {
 	"foscam.R2": {
-	"name" : "Foscam R2",
+		"name" : "Foscam R2",
+		"buylink" : "https://www.domadoo.fr/fr/cameras/4976-foscam-camera-ip-wifi-interieure-motorisee-2mp-6954836001486.html",
 		"configuration": {
 			"port": "88",
 			"urlStream": "\/cgi-bin\/CGIProxy.fcgi?cmd=snapPicture2&usr=#username#&pwd=#password#",
@@ -20,7 +21,7 @@
 				},
 				"display": {
 					"icon": "<i class=\"fas fa-arrow-down\"><\/i>",
-                    "generic_type": "CAMERA_DOWN"
+					"generic_type": "CAMERA_DOWN"
 				},
 				"isVisible": "1"
 			},
@@ -37,7 +38,7 @@
 				},
 				"display": {
 					"icon": "<i class=\"fas fa-arrow-up\"><\/i>",
-                    "generic_type": "CAMERA_UP"
+					"generic_type": "CAMERA_UP"
 				},
 				"isVisible": "1"
 			},
@@ -54,7 +55,7 @@
 				},
 				"display": {
 					"icon": "<i class=\"fas fa-arrow-left\"><\/i>",
-                    "generic_type": "CAMERA_LEFT"
+					"generic_type": "CAMERA_LEFT"
 				},
 				"isVisible": "1"
 			},
@@ -71,7 +72,7 @@
 				},
 				"display": {
 					"icon": "<i class=\"fas fa-arrow-right\"><\/i>",
-                    "generic_type": "CAMERA_RIGHT"
+					"generic_type": "CAMERA_RIGHT"
 				},
 				"isVisible": "1"
 			},
@@ -118,7 +119,7 @@
 				},
 				"display": {
 					"icon": "<i class=\"icon fa-plus\"><\/i>",
-                    "generic_type": "CAMERA_ZOOM"
+					"generic_type": "CAMERA_ZOOM"
 				},
 				"isVisible": "1"
 			},
@@ -135,7 +136,7 @@
 				},
 				"display": {
 					"icon": "<i class=\"icon fa-minus\"><\/i>",
-                    "generic_type": "CAMERA_DEZOOM"
+					"generic_type": "CAMERA_DEZOOM"
 				},
 				"isVisible": "1"
 			},

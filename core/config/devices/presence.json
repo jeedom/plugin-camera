@@ -1,6 +1,7 @@
 {
-    "presence": {
-	"name" : "Netatmo Presence",
-        "commands": []
-    }
+  "presence": {
+    "name" : "Netatmo Presence",
+    "buylink" : "https://www.domadoo.fr/fr/objets-communicants/3855-netatmo-camera-exterieure-de-securite-presence-3700730501866.html",
+    "commands": []
+  }
 }
