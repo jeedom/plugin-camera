@@ -61,6 +61,7 @@
         "Rechercher": "Pencarian"
     },
     "plugins\/camera\/desktop\/php\/camera.php": {
+        "Aucun": "Tak ada",
         "401 - Accès non autorisé": "401 - Akses tidak sah",
         "Gestion": "Manajemen",
         "Ajouter": "Tambahan",
@@ -80,7 +81,6 @@
         "Commandes": "Perintah",
         "Nom de l'équipement caméra": "",
         "Objet parent": "Objek induk",
-        "Aucun": "Tak ada",
         "Activer": "Mengaktifkan",
         "Visible": "Terlihat",
         "IP": "",
@@ -98,7 +98,6 @@
         "Option flux video": "",
         "Position sur le panel": "",
         "Modèle": "Model",
-        "1 - Aucun": "",
         "Ne pas compresser ou redimensionner l'image": "",
         "Miniature": "",
         "Dashboard": "",

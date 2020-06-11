@@ -61,6 +61,7 @@
         "Rechercher": "検索"
     },
     "plugins\/camera\/desktop\/php\/camera.php": {
+        "Aucun": "何でもありません",
         "401 - Accès non autorisé": "401-不正アクセス",
         "Gestion": "管理",
         "Ajouter": "加えます",
@@ -80,7 +81,6 @@
         "Commandes": "コマンド",
         "Nom de l'équipement caméra": "",
         "Objet parent": "親オブジェクト",
-        "Aucun": "何でもありません",
         "Activer": "アクティブ",
         "Visible": "目に見えます",
         "IP": "",
@@ -98,7 +98,6 @@
         "Option flux video": "",
         "Position sur le panel": "",
         "Modèle": "モデル",
-        "1 - Aucun": "",
         "Ne pas compresser ou redimensionner l'image": "",
         "Miniature": "",
         "Dashboard": "計器盤",

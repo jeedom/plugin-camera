@@ -61,6 +61,7 @@
         "Rechercher": "Pesquisa"
     },
     "plugins\/camera\/desktop\/php\/camera.php": {
+        "Aucun": "Nemhum",
         "401 - Accès non autorisé": "401 - Acesso não autorizado",
         "Gestion": "Gestão",
         "Ajouter": "Adicionar",
@@ -80,7 +81,6 @@
         "Commandes": "Comandos",
         "Nom de l'équipement caméra": "Nome do equipamento da câmera",
         "Objet parent": "Objeto pai",
-        "Aucun": "Nemhum",
         "Activer": "Ativar",
         "Visible": "Visivél",
         "IP": "IP",
@@ -98,7 +98,6 @@
         "Option flux video": "Opção de transmissão de vídeo",
         "Position sur le panel": "Posição no painel",
         "Modèle": "Modelo",
-        "1 - Aucun": "1 - Nenhuma",
         "Ne pas compresser ou redimensionner l'image": "Não comprima ou redimensione a imagem",
         "Miniature": "Miniatura",
         "Dashboard": "Painel de instrumentos",

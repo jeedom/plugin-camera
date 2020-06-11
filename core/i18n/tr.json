@@ -61,6 +61,7 @@
         "Rechercher": "Arayın"
     },
     "plugins\/camera\/desktop\/php\/camera.php": {
+        "Aucun": "Hiçbir",
         "401 - Accès non autorisé": "401 - Yetkisiz erişim",
         "Gestion": "Idare",
         "Ajouter": "Ekle",
@@ -80,7 +81,6 @@
         "Commandes": "Komutalar",
         "Nom de l'équipement caméra": "",
         "Objet parent": "Üst nesne",
-        "Aucun": "Hiçbir",
         "Activer": "Etkinleştir",
         "Visible": "Görülebilir",
         "IP": "",
@@ -98,7 +98,6 @@
         "Option flux video": "",
         "Position sur le panel": "",
         "Modèle": "Model",
-        "1 - Aucun": "",
         "Ne pas compresser ou redimensionner l'image": "",
         "Miniature": "",
         "Dashboard": "Gösterge paneli",
