@@ -1,0 +1,8 @@
+{
+  "name" : "Vera Vista cam SD",
+  "configuration": {
+    "urlStream": "\/snapshot.cgi?user=#username#&pwd=#password#",
+    "protocole": "http"
+  },
+  "commands": []
+}

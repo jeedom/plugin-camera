@@ -1,0 +1,8 @@
+{
+  "name" : "TrendNet TV-IP310PI",
+  "configuration": {
+    "urlStream": "\/Streaming\/Channels\/1\/picture",
+    "protocole": "http"
+  },
+  "commands": []
+}

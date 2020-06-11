@@ -1,0 +1,57 @@
+{
+	"name": "Wanscam HW0043",
+	"configuration": {
+		"urlStream": "\/web/tmpfs/snap.jpg",
+		"protocole": "http",
+		"refreshDelaySlow": "5",
+		"refreshDelayFast": "1",
+		"maxReccordTime": "600",
+		"preferVideo": "0",
+		"videoFramerate": "",
+		"commandOn": "",
+		"commandOff": ""
+	},
+	"commands": [{
+		"eqType": "camera",
+		"name": "IR On",
+		"type": "action",
+		"subType": "other",
+		"isHistorized": "0",
+		"configuration": {
+			"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setinfrared&-infraredstat=open&usr=#username#&pwd=#password#"
+		},
+		"display": {
+			"icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
+		},
+		"isVisible": "0"
+	},
+	{
+		"eqType": "camera",
+		"name": "IR Off",
+		"type": "action",
+		"subType": "other",
+		"isHistorized": "0",
+		"configuration": {
+			"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setinfrared&-infraredstat=close&usr=#username#&pwd=#password#"
+		},
+		"display": {
+			"icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
+		},
+		"isVisible": "0"
+	},
+	{
+		"eqType": "camera",
+		"name": "IR Auto",
+		"type": "action",
+		"subType": "other",
+		"isHistorized": "0",
+		"configuration": {
+			"request": "\/cgi-bin\/hi3510\/param.cgi?cmd=setinfrared&-infraredstat=auto&usr=#username#&pwd=#password#"
+		},
+		"display": {
+			"icon": "<i class=\"icon jeedom2-idea13\"><\/i>"
+		},
+		"isVisible": "0"
+	}
+]
+}

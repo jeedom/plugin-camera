@@ -1,0 +1,342 @@
+{
+  "name" : "D-Link DCS",
+  "configuration": {
+    "urlStream": "\/image.jpg",
+    "protocole": "http"
+  },
+  "commands": [
+    {
+      "name": "Gauche",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanSingleMoveDegree=5&TiltSingleMoveDegree=5&PanTiltSingleMove=3"
+      },
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-left\"><\/i>",
+        "generic_type": "CAMERA_LEFT"
+      }
+    },
+    {
+      "name": "Haut",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanSingleMoveDegree=5&TiltSingleMoveDegree=5&PanTiltSingleMove=1"
+      },
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-up\"><\/i>",
+        "generic_type": "CAMERA_UP"
+      }
+    },
+    {
+      "name": "Bas",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanSingleMoveDegree=5&TiltSingleMoveDegree=5&PanTiltSingleMove=7"
+      },
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-down\"><\/i>",
+        "generic_type": "CAMERA_DOWN"
+      }
+    },
+    {
+      "name": "Droite",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanSingleMoveDegree=5&TiltSingleMoveDegree=5&PanTiltSingleMove=5"
+      },
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-right\"><\/i>",
+        "generic_type": "CAMERA_RIGHT"
+      }
+    },
+    {
+      "name": "Home",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanSingleMoveDegree=5&TiltSingleMoveDegree=5&PanTiltSingleMove=4"
+      },
+      "display": {
+        "icon": "<i class=\"fa fa-home\"><\/i>",
+        "generic_type": "CAMERA_PRESET"
+      }
+    },
+    {
+      "name": "IR ON",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "setDaynightMode?ReplySuccessPage=night.htm&ReplyErrorPage=errrnight.htm&DayNightMode=3&ConfigDayNightMode=Save"
+      },
+      "display": {
+        "icon": "<i class=\"icon jeedom-lumiere-on\"><\/i>"
+      }
+    },
+    {
+      "name": "IR OFF",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "setDaynightMode?ReplySuccessPage=night.htm&ReplyErrorPage=errrnight.htm&DayNightMode=2&ConfigDayNightMode=Save"
+      },
+      "display": {
+        "icon": "<i class=\"icon jeedom-lumiere-off\"><\/i>"
+      }
+    },
+    {
+      "name": "auto",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "setDaynightMode?ReplySuccessPage=night.htm&ReplyErrorPage=errrnight.htm&DayNightMode=0&ConfigDayNightMode=Save"
+      }
+    },
+    {
+      "name": "Detection ON",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "setSystemMotion?ReplySuccessPage=motion.htm&ReplyErrorPage=motion.htm&MotionDetectionEnable=1&MotionDetectionScheduleDay=0&MotionDetectionScheduleMode=0&MotionDetectionSensivity=80&ConfigSystemMotion=Save"
+      }
+    },
+    {
+      "name": "Detection OFF",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "setSystemMotion?ReplySuccessPage=motion.htm&ReplyErrorPage=motion.htm&MotionDetectionEnable=0&MotionDetectionScheduleDay=0&ConfigSystemMotion=Save"
+      }
+    },
+    {
+      "name": "1",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=1"
+      }
+    },
+    {
+      "name": "2",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=2"
+      }
+    },
+    {
+      "name": "3",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=3"
+      }
+    },
+    {
+      "name": "4",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=4"
+      }
+    },
+    {
+      "name": "5",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=5"
+      }
+    },
+    {
+      "name": "6",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=6"
+      }
+    },
+    {
+      "name": "7",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=7"
+      }
+    },
+    {
+      "name": "8",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=8"
+      }
+    },
+    {
+      "name": "9",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=9"
+      }
+    },
+    {
+      "name": "10",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=10"
+      }
+    },
+    {
+      "name": "11",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=11"
+      }
+    },
+    {
+      "name": "12",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=12"
+      }
+    },
+    {
+      "name": "13",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=13"
+      }
+    },
+    {
+      "name": "14",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=14"
+      }
+    },
+    {
+      "name": "15",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=15"
+      }
+    },
+    {
+      "name": "16",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=16"
+      }
+    },
+    {
+      "name": "17",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=17"
+      }
+    },
+    {
+      "name": "18",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=18"
+      }
+    },
+    {
+      "name": "19",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=19"
+      }
+    },
+    {
+      "name": "20",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=20"
+      }
+    },
+    {
+      "name": "21",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=21"
+      }
+    },
+    {
+      "name": "22",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=22"
+      }
+    },
+    {
+      "name": "23",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=23"
+      }
+    },
+    {
+      "name": "24",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 0,
+      "configuration": {
+        "request": "pantiltcontrol.cgi?PanTiltPresetPositionMove=24"
+      }
+    }
+  ]
+  
+}

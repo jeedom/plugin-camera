@@ -1,0 +1,50 @@
+{
+  "name" : "Doorbird",
+  "configuration": {
+    "urlStream": "\/bha-api\/image.cgi",
+    "protocole": "http",
+    "port": "80"
+  },
+  "commands": [{
+    "eqType": "camera",
+    "name": "Relais 1",
+    "type": "action",
+    "subType": "other",
+    "isHistorized": "0",
+    "configuration": {
+      "request": "\/bha-api\/open-door.cgi"
+    },
+    "display": {
+      "icon": "<i class=\"icon jeedom-portail_coulissant_ouvert_d\"><\/i>"
+    },
+    "isVisible": "1"
+    }, {
+      "eqType": "camera",
+      "name": "Relais 2",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/bha-api\/open-door.cgi?r=2"
+      },
+      "display": {
+        "icon": "<i class=\"icon jeedom-portail_coulissant_demi_d\"><\/i>"
+      },
+      "isVisible": "1"
+      }, {
+        "eqType": "camera",
+        "name": "IR",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/bha-api\/light-on.cgi"
+        },
+        "display": {
+          "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
+        },
+        "isVisible": "1"
+      }
+    ]
+  }
+  

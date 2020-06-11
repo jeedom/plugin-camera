@@ -45,6 +45,19 @@ class camera extends eqLogic {
 		}
 	}
 	
+	public static function getImgFilePath($_device) {
+		$files = ls(dirname(__FILE__) . '/../config/devices', $_device . '_*.{jpg,png}', false, array('files', 'quiet'));
+		foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
+			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $_device . '{.jpg,png}', false, array('files', 'quiet')) as $file) {
+				$files[] = $folder . $file;
+			}
+		}
+		if (count($files) > 0) {
+			return $files[0];
+		}
+		return false;
+	}
+	
 	public static function deamon_info() {
 		$return = array();
 		$return['log'] = '';
@@ -87,15 +100,23 @@ class camera extends eqLogic {
 				continue;
 			}
 			try {
-				require_once dirname(__FILE__) . '/../config/devices/' . $eqLogic->getConfiguration('device') . '.php';
-				$function = str_replace('.', '_', $eqLogic->getConfiguration('device')) . '_update';
-				if (function_exists($function)) {
-					$function($eqLogic);
+				$php_file = null;
+				foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
+					foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $eqLogic->getConfiguration('device') . '.php', false, array('files', 'quiet')) as $file) {
+						$php_file = $folder . $file;
+						break;
+					}
 				}
-			} catch (Exception $e) {
-				
+				if($php_file != null){
+					require_once dirname(__FILE__) . '/../config/devices/' . $php_file;
+					$function = str_replace('.', '_', $eqLogic->getConfiguration('device')) . '_update';
+					if (function_exists($function)) {
+						$function($eqLogic);
+					}
+				} catch (Exception $e) {
+					
+				}
 			}
-			
 		}
 	}
 	
@@ -234,26 +255,22 @@ class camera extends eqLogic {
 	}
 	
 	public static function devicesParameters($_device = '') {
-		$path = dirname(__FILE__) . '/../config/devices';
-		if (isset($_device) && $_device != '') {
-			$files = ls($path, $_device . '.json', false, array('files', 'quiet'));
-			if (count($files) == 1) {
-				try {
-					$content = file_get_contents($path . '/' . $files[0]);
-					$deviceConfiguration = is_json($content, array());
-					return $deviceConfiguration[$_device];
-				} catch (Exception $e) {
-					return array();
-				}
-			}
-		}
-		$files = ls($path, '*.json', false, array('files', 'quiet'));
 		$return = array();
-		foreach ($files as $file) {
-			try {
-				$return = array_merge($return, is_json(file_get_contents($path . '/' . $file), array()));
-			} catch (Exception $e) {
-				
+		foreach (ls(dirname(__FILE__) . '/../config/devices', '*') as $dir) {
+			$path = dirname(__FILE__) . '/../config/devices/' . $dir;
+			if (!is_dir($path)) {
+				continue;
+			}
+			$files = ls($path, '*.json', false, array('files', 'quiet'));
+			foreach ($files as $file) {
+				try {
+					$content = file_get_contents($path . '/' . $file);
+					if (is_json($content)) {
+						$return[str_replace('.json','',$file)] = json_decode($content, true);
+					}
+				} catch (Exception $e) {
+					
+				}
 			}
 		}
 		if (isset($_device) && $_device != '') {
@@ -935,7 +952,7 @@ class camera extends eqLogic {
 	}
 	
 	public function getImage() {
-		return 'plugins/camera/core/config/devices/' . $this->getConfiguration('device') . '.jpg';
+		return 'plugins/camera/core/config/devices/' . self::getImgFilePath($this->getConfiguration('device')) . '.jpg';
 	}
 	
 	/*     * **********************Getteur Setteur*************************** */
