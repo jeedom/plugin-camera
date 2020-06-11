@@ -1,5 +1,6 @@
 {
-  "name" : "Heden VisionCam CAMHED04IPWN",
+  "name" : "VisionCam CAMHED04IPWN",
+  "manufacturer" : "Heden",
   "configuration": {
     "urlStream": "\/snapshot.cgi?user=#username#&pwd=#password#",
     "protocole": "http"

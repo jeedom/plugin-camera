@@ -113,9 +113,9 @@ class camera extends eqLogic {
 					if (function_exists($function)) {
 						$function($eqLogic);
 					}
-				} catch (Exception $e) {
-					
 				}
+			} catch (Exception $e) {
+				
 			}
 		}
 	}
@@ -264,9 +264,9 @@ class camera extends eqLogic {
 			$files = ls($path, '*.json', false, array('files', 'quiet'));
 			foreach ($files as $file) {
 				try {
-					$content = file_get_contents($path . '/' . $file);
-					if (is_json($content)) {
-						$return[str_replace('.json','',$file)] = json_decode($content, true);
+					$content = is_json(file_get_contents($path . '/' . $file),false);
+					if ($content != false) {
+						$return[str_replace('.json','',$file)] = $content;
 					}
 				} catch (Exception $e) {
 					

@@ -1,5 +1,6 @@
 {
-  "name" : "Foscam motorisée",
+  "name" : "Motorisée",
+  "manufacturer" : "Foscam",
   "remark" : "Prise en charge de la plupart des cameras Foscam motorisées",
   "buylink" : "https://www.domadoo.fr/fr/cameras/4978-foscam-camera-ip-wifi-exterieur-motorisee-2mp-6954836003299.html",
   "configuration": {

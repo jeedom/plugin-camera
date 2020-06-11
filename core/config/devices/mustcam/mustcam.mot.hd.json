@@ -1,5 +1,6 @@
 {
-  "name" : "Mustcam HD motorisée",
+  "name" : "HD motorisée",
+  "manufacturer" : "Mustcam",
   "configuration": {
     "port": "80",
     "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",

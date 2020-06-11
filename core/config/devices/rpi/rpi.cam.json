@@ -1,5 +1,6 @@
 {
-  "name" : "RPI Cam",
+  "name" : "Caméra",
+  "manufacturer" : "RPI",
   "configuration": {
     "urlStream": "\/cam_pic.php",
     "protocole": "http"

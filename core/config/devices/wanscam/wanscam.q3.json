@@ -1,5 +1,6 @@
 {
-  "name" : "Wanscam q3(s)",
+  "name" : "q3(s)",
+  "manufacturer" : "Wanscam",
   "configuration": {
     "urlStream": "\/mjpeg/snap.cgi",
     "protocole": "http"

@@ -1,5 +1,6 @@
 {
-  "name" : "Zavio F3115",
+  "name" : "F3115",
+  "manufacturer" : "Zavio",
   "configuration": {
     "urlStream": "\/cgi-bin\/view\/image?pro_0",
     "protocole": "http"

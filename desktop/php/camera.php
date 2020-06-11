@@ -173,10 +173,24 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<label class="col-sm-2 control-label">{{Modèle}}</label>
 									<div class="col-sm-5">
 										<select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="device">
-											<option value="">{{1 - Aucun}}</option>
+											<option value="">{{Aucun}}</option>
 											<?php
-											foreach (camera::devicesParameters() as $id => $info) {
-												echo '<option value="' . $id . '" data-img="'.camera::getImgFilePath($id).'">' . $info['name'] . '</option>';
+											$manufacturers = array();
+											foreach (camera::devicesParameters() as $id => &$info) {
+												if(!isset($info['manufacturer'])){
+													$info['manufacturer'] = __('Aucun',__FILE__);
+												}
+												if(!isset($manufacturers[$info['manufacturer']])){
+													$manufacturers[$info['manufacturer']] = array();
+												}
+												$manufacturers[$info['manufacturer']][$id] = $info;
+											}
+											foreach ($manufacturers as $manufacturer => $devices) {
+												echo '<optgroup label="'.$manufacturer.'">';
+												foreach ($devices as $id => $info) {
+													echo '<option value="' . $id . '" data-img="'.camera::getImgFilePath($id).'">' . $info['manufacturer'].' - '.$info['name'] . '</option>';
+												}
+												echo '</optgroup>';
 											}
 											?>
 										</select>

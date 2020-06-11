@@ -1,5 +1,6 @@
 {
-  "name" : "Ebode HD motorisée",
+  "name" : "HD motorisée",
+  "manufacturer" : "Ebode",
   "configuration": {
     "port": "88",
     "urlStream": "\/cgi-bin\/CGIProxy.fcgi?cmd=snapPicture2&usr=#username#&pwd=#password#",

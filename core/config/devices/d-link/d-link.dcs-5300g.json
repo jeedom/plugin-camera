@@ -1,5 +1,6 @@
 {
-  "name" : "D-Link DCS-5300G",
+  "name" : "DCS-5300G",
+  "manufacturer" : "D-Link",
   "configuration": {
     "port": "80",
     "urlStream": "\/cgi-bin\/video.jpg?size=1&usr=#username#&pwd=#password#",

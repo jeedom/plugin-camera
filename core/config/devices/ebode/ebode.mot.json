@@ -1,5 +1,6 @@
 {
-  "name" : "Ebode motorisée",
+  "name" : "Motorisée",
+  "manufacturer" : "Ebode",
   "configuration": {
     "port": "88",
     "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",

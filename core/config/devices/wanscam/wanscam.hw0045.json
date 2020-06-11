@@ -1,5 +1,6 @@
 {
-	"name": "Wanscam HW0045",
+	"name": "HW0045",
+	"manufacturer" : "Wanscam",
 	"configuration": {
 		"urlStream": "\/web\/tmpfs\/snap.jpg",
 		"protocole": "http"

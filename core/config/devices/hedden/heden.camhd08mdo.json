@@ -1,5 +1,6 @@
 {
-  "name" : "Heden VisionCam HD CAMHD08MD0",
+  "name" : "VisionCam HD CAMHD08MD0",
+  "manufacturer" : "Heden",
   "configuration": {
     "urlStream": "\/tmpfs\/snap.jpg?usr=#username#&pwd=#password#",
     "protocole": "http"

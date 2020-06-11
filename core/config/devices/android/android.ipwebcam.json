@@ -1,5 +1,6 @@
 {
-  "name" : "Android IP Webcam",
+  "name" : "IP Webcam",
+  "manufacturer" : "Android",
   "configuration": {
     "urlStream": "\/shot.jpg",
     "protocole": "http"

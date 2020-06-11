@@ -1,5 +1,6 @@
 {
-	"name" : "Foscam R2",
+	"name" : "R2",
+	"manufacturer" : "Foscam",
 	"buylink" : "https://www.domadoo.fr/fr/cameras/4976-foscam-camera-ip-wifi-interieure-motorisee-2mp-6954836001486.html",
 	"configuration": {
 		"port": "88",

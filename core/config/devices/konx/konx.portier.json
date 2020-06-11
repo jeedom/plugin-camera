@@ -1,5 +1,6 @@
 {
-  "name" : "Konx portier vidéo",
+  "name" : "Portier vidéo",
+  "manufacturer" : "Konx",
   "configuration": {
     "urlStream": "\/videostream.cgi?user=#username#&pwd=#password#",
     "protocole": "http",

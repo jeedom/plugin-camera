@@ -1,5 +1,6 @@
 {
-  "name" : "Netatmo Welcome",
+  "name" : "Welcome",
+  "manufacturer" : "Netatmo",
   "remark" : "Necessite absolument le plugin Netatmo Security (payant)",
   "buylink" : "https://www.domadoo.fr/fr/objets-communicants/3064-netatmo-camera-a-reconnaissance-faciale-welcome-3700730500623.html",
   "commands": []

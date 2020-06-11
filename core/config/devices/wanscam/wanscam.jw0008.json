@@ -1,5 +1,6 @@
 {
-  "name" : "Wanscam motorisée",
+  "name" : "Motorisée",
+  "manufacturer" : "Wanscam",
   "configuration": {
     "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
     "protocole": "http"

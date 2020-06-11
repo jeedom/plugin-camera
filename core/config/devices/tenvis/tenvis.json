@@ -1,5 +1,6 @@
 {
-  "name" : "Tenvis",
+  "name" : "Caméra",
+  "manufacturer" : "Tenvis",
   "configuration": {
     "urlStream": "\/snapshot.cgi?usr=#username#&pwd=#password#",
     "protocole": "http"

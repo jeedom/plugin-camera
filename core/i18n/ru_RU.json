@@ -61,6 +61,7 @@
         "Rechercher": "поиск"
     },
     "plugins\/camera\/desktop\/php\/camera.php": {
+        "Aucun": "Нет",
         "401 - Accès non autorisé": "401 - Несанкционированный доступ",
         "Gestion": "Управление",
         "Ajouter": "Добавить",
@@ -80,7 +81,6 @@
         "Commandes": "Команды",
         "Nom de l'équipement caméra": "",
         "Objet parent": "Родительский объект",
-        "Aucun": "Нет",
         "Activer": "активировать",
         "Visible": "Видимый",
         "IP": "",
@@ -98,7 +98,6 @@
         "Option flux video": "",
         "Position sur le panel": "",
         "Modèle": "Модель",
-        "1 - Aucun": "",
         "Ne pas compresser ou redimensionner l'image": "",
         "Miniature": "",
         "Dashboard": "Приборная панель",

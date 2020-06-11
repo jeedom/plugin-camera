@@ -1,5 +1,6 @@
 {
-  "name" : "Vera Vista cam 700/Secomm/Homelive",
+  "name" : "Vera 700/Secomm/Homelive",
+  "manufacturer" : "Vistacam",
   "configuration": {
     "urlStream": "\/img\/snapshot.cgi?user=#username#&pwd=#password#",
     "protocole": "http"

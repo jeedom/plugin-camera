@@ -1,5 +1,6 @@
 {
-  "name" : "Foscam HD",
+  "name" : "HD",
+  "manufacturer" : "Foscam",
   "remark" : "Prise en charge de la plupart des cameras Foscam HD",
   "buylink" : "https://www.domadoo.fr/fr/cameras/4975-foscam-camera-ip-wifi-interieure-2mp-6954836069547.html",
   "configuration": {

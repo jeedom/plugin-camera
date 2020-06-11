@@ -1,6 +1,7 @@
 {
   "remark" : "Découverte des caméras Onvif (attention ne marche pas toujours, aucune garantie possible)",
   "name" : "Onvif",
+  "manufacturer" : "Onvif",
   "configuration": {
   },
   "commands": []

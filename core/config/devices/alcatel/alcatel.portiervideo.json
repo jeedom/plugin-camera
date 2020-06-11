@@ -1,5 +1,6 @@
 {
-  "name" : "IP_Linkcom/Alcatel portier video",
+  "name" : "IP_Linkcom/portier video",
+  "manufacturer" : "Alcatel",
   "configuration": {
     "urlStream": "\/video.jpg",
     "protocole": "http"

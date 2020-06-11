@@ -61,6 +61,7 @@
         "Rechercher": "Search"
     },
     "plugins\/camera\/desktop\/php\/camera.php": {
+        "Aucun": "None",
         "401 - Accès non autorisé": "401 - Unauthorized access",
         "Gestion": "Management",
         "Ajouter": "Add",
@@ -80,7 +81,6 @@
         "Commandes": "Commands",
         "Nom de l'équipement caméra": "Camera equipment name",
         "Objet parent": "Parent object",
-        "Aucun": "None",
         "Activer": "Activate",
         "Visible": "Visible",
         "IP": "IP",
@@ -98,7 +98,6 @@
         "Option flux video": "Video stream option",
         "Position sur le panel": "Positon on the panel",
         "Modèle": "Model",
-        "1 - Aucun": "1- none",
         "Ne pas compresser ou redimensionner l'image": "Do not compress or resize the image",
         "Miniature": "Miniature",
         "Dashboard": "Dashboard",

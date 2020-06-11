@@ -1,5 +1,6 @@
 {
-  "name" : "Vivotek 8xxx et 7xxx",
+  "name" : "8xxx et 7xxx",
+  "manufacturer" : "Vivotek",
   "configuration": {
     "urlStream": "\/cgi-bin\/viewer\/video.jpg",
     "protocole": "http"
