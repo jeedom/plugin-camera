@@ -394,10 +394,12 @@ class camera extends eqLogic {
 		if($this->getConfiguration('cameraStreamAccessUrl') == '' && $this->getConfiguration('streamRTSP') == 1){
 			$this->setConfiguration('streamRTSP',0);
 		}
-		if (file_exists(dirname(__FILE__) . '/../config/devices/' . $this->getConfiguration('device') . '.php')) {
-			$this->setConfiguration('hasPullFunction', 1);
-		} else {
-			$this->setConfiguration('hasPullFunction', 0);
+		$this->setConfiguration('hasPullFunction', 0);
+		foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
+			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $this->getConfiguration('device') . '.php', false, array('files', 'quiet')) as $file) {
+				$this->setConfiguration('hasPullFunction', 1);
+				break;
+			}
 		}
 		if($this->getIsEnable() == 0){
 			try {
