@@ -20,65 +20,10 @@ try {
 	require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 	include_file('core', 'authentification', 'php');
 	
-	if (!isConnect('admin')) {
-		throw new Exception(__('401 - Accès non autorisé', __FILE__));
-	}
-	
 	ajax::init();
 	
-	if (init('action') == 'addDiscoverCam') {
-		camera::addDiscoverCam(json_decode(init('config'), true));
-		ajax::success();
-	}
-	
-	if (init('action') == 'removeRecord') {
-		$file = init('file');
-		$file = str_replace('..', '', $file);
-		$record_dir = calculPath(config::byKey('recordDir', 'camera'));
-		shell_exec('rm -rf ' . $record_dir . '/' . $file);
-		ajax::success();
-	}
-	
-	if (init('action') == 'removeAllSnapshot') {
-		$camera = camera::byId(init('id'));
-		if (!is_object($camera)) {
-			throw new Exception(__('Impossible de trouver la caméra : ' . init('id'), __FILE__));
-		}
-		$camera->removeAllSnapshot();
-		ajax::success();
-	}
-	
-	if (init('action') == 'getCamera') {
-		if (init('object_id') == '') {
-			$object = jeeObject::byId($_SESSION['user']->getOptions('defaultDashboardObject'));
-		} else {
-			$object = jeeObject::byId(init('object_id'));
-		}
-		if (!is_object($object)) {
-			$object = jeeObject::rootObject();
-		}
-		$return = array();
-		$return['eqLogics'] = array();
-		if (init('object_id') == '') {
-			foreach (jeeObject::all() as $object) {
-				foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
-					$return['eqLogics'][] = $camera->toHtml(init('version'));
-				}
-			}
-		} else {
-			foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
-				$return['eqLogics'][] = $camera->toHtml(init('version'));
-			}
-			foreach (jeeObject::buildTree($object) as $child) {
-				$cameras = $child->getEqLogic(true, false, 'camera');
-				if (count($cameras) > 0) {
-					foreach ($cameras as $camera) {
-						$return['eqLogics'][] = $camera->toHtml(init('version'));
-					}
-				}
-			}
-		}
-		ajax::success($return);
+	if (!isConnect()) {
+		throw new Exception(__('401 - Accès non autorisé', __FILE__));
 	}
 	
 	if (init('action') == 'stream') {
@@ -110,12 +55,75 @@ try {
 			}
 		}
 		$camera->setCache('lastStreamCall',strtotime('now'));
-		ajax::success();
+		shell_exec(system::getCmdSudo().' find '.__DIR__.'/../../data/segments/'.$camera->getConfiguration('localApiKey').'-*.ts -mmin +5 -type f -exec rm -f {} \; 2>&1 > /dev/null');
+			ajax::success();
+		}
+		
+		if (!isConnect('admin')) {
+			throw new Exception(__('401 - Accès non autorisé', __FILE__));
+		}
+		
+		
+		
+		if (init('action') == 'addDiscoverCam') {
+			camera::addDiscoverCam(json_decode(init('config'), true));
+			ajax::success();
+		}
+		
+		if (init('action') == 'removeRecord') {
+			$file = init('file');
+			$file = str_replace('..', '', $file);
+			$record_dir = calculPath(config::byKey('recordDir', 'camera'));
+			shell_exec('rm -rf ' . $record_dir . '/' . $file);
+			ajax::success();
+		}
+		
+		if (init('action') == 'removeAllSnapshot') {
+			$camera = camera::byId(init('id'));
+			if (!is_object($camera)) {
+				throw new Exception(__('Impossible de trouver la caméra : ' . init('id'), __FILE__));
+			}
+			$camera->removeAllSnapshot();
+			ajax::success();
+		}
+		
+		if (init('action') == 'getCamera') {
+			if (init('object_id') == '') {
+				$object = jeeObject::byId($_SESSION['user']->getOptions('defaultDashboardObject'));
+			} else {
+				$object = jeeObject::byId(init('object_id'));
+			}
+			if (!is_object($object)) {
+				$object = jeeObject::rootObject();
+			}
+			$return = array();
+			$return['eqLogics'] = array();
+			if (init('object_id') == '') {
+				foreach (jeeObject::all() as $object) {
+					foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
+						$return['eqLogics'][] = $camera->toHtml(init('version'));
+					}
+				}
+			} else {
+				foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
+					$return['eqLogics'][] = $camera->toHtml(init('version'));
+				}
+				foreach (jeeObject::buildTree($object) as $child) {
+					$cameras = $child->getEqLogic(true, false, 'camera');
+					if (count($cameras) > 0) {
+						foreach ($cameras as $camera) {
+							$return['eqLogics'][] = $camera->toHtml(init('version'));
+						}
+					}
+				}
+			}
+			ajax::success($return);
+		}
+		
+		throw new Exception(__('Aucune methode correspondante à : ', __FILE__) . init('action'));
+		/*     * *********Catch exeption*************** */
+	} catch (Exception $e) {
+		ajax::error(displayExeption($e), $e->getCode());
 	}
+	?>
 	
-	throw new Exception(__('Aucune methode correspondante à : ', __FILE__) . init('action'));
-	/*     * *********Catch exeption*************** */
-} catch (Exception $e) {
-	ajax::error(displayExeption($e), $e->getCode());
-}
-?>
