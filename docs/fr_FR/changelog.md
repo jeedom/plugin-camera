@@ -10,6 +10,7 @@
 - Correction d'un bug sur la recuperation des informations de mouvement des camera foscam HD
 - Correction d'un soucis si un utilisateur non admin voulait visionner le flux video
 - Correction de bug d'affichage sur les design en mode "flux only"
+- Correction de bugs
 
 # 11/0/2020
 
