@@ -55,7 +55,7 @@ try {
 			}
 		}
 		$camera->setCache('lastStreamCall',strtotime('now'));
-		shell_exec(system::getCmdSudo().' find '.__DIR__.'/../../data/segments/'.$camera->getConfiguration('localApiKey').'-*.ts -mmin +5 -type f -exec rm -f {} \;');
+		shell_exec(system::getCmdSudo().' find '.__DIR__.'/../../data/segments/'.$camera->getConfiguration('localApiKey').'-*.ts -mmin +5 -type f -exec rm -f {} \; 2&>1 > /dev/null');
 			ajax::success();
 		}
 		
