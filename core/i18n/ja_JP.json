@@ -158,8 +158,8 @@
     },
     "plugins\/camera\/core\/ajax\/camera.ajax.php": {
         "401 - Accès non autorisé": "401-不正アクセス",
-        "Impossible de trouver la caméra : ' . init('id')": "",
         "Impossible de trouver la camera : ": "",
+        "Impossible de trouver la caméra : ' . init('id')": "",
         "Aucune methode correspondante à : ": "以下に対応するメソッドはありません："
     },
     "plugins\/camera\/core\/class\/camera.class.php": {
