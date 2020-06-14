@@ -242,6 +242,11 @@ class camera extends eqLogic {
 	public static function cronDayly() {
 		foreach (camera::byType('camera') as $camera) {
 			try {
+				shell_exec('(ps ax || ps w) | grep ffmpeg.*'.$camera->getConfiguration('localApiKey').' | awk \'{print $2}\' |  xargs sudo kill -9');
+				shell_exec('(ps ax || ps w) | grep rtsp-to-hls.sh.*'.$camera->getConfiguration('localApiKey').' | awk \'{print $2}\' |  xargs sudo kill -9');
+				sleep(2);
+				shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/'.$camera->getConfiguration('localApiKey').'.m3u8');
+				shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/segments/'.$camera->getConfiguration('localApiKey').'-*.ts');
 				$camera->setConfiguration('localApiKey', config::genKey());
 				$camera->save();
 				$camera->refreshWidget();
@@ -361,8 +366,8 @@ class camera extends eqLogic {
 			}
 		}
 		if ($this->getConfiguration('localApiKey') != '') {
-			foreach (self::bYType('camera') as $camera) {
-				if($camera == $this->getId()){
+			foreach (self::byType('camera') as $camera) {
+				if($camera->getId() == $this->getId()){
 					continue;
 				}
 				if($camera->getConfiguration('localApiKey') == $this->getConfiguration('localApiKey')){
