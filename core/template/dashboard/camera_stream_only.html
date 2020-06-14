@@ -1,0 +1,57 @@
+<script src="plugins/camera/core/template/dashboard/hls-0.13.0.light.min.js"></script>
+<div class="camera" data-camera="#uid#" data-camera_id="#id#" style="width: 100%;height: 100%">
+  <span class="directDisplay" style="width: 100%;height: 100%">
+    <video id="video-player#id#" data-eqLogic_id="#id#" controls width="320" height="240" preload="none" autoplay="true" muted style="width: 100%;height: 100%"></video>
+  </span>
+  <script>
+    streamInit#id# = false;
+    function refreshImgCam#id#(){
+      if($('.camera[data-camera=#uid#]').html() == undefined){
+        return;
+      }
+      $.ajax({
+        type: "POST",
+        url: "plugins/camera/core/ajax/camera.ajax.php",
+        data: {
+          action: "stream",
+          id : "#id#"
+        },
+        global:false,
+        dataType: 'json',
+        error: function (request, status, error) {
+          handleAjaxError(request, status, error);
+        },
+        success: function (data) {
+          if (data.state != 'ok') {
+            $('#div_alert').showAlert({message: data.result, level: 'danger'});
+            return;
+          }
+          if(streamInit#id# == false){
+            streamInit#id# = true;
+            var video#id# = document.getElementById('video-player#id#');
+            if(Hls.isSupported()) {
+              var hls#id# = new Hls();
+              hls#id#.on(Hls.Events.Error, function (event, data) {
+                console.log("HLS error: ", event, data);
+              });
+              hls#id#.attachMedia(video#id#);
+              hls#id#.on(Hls.Events.MEDIA_ATTACHED, function() {
+                hls#id#.loadSource('#url#');
+                hls#id#.on(Hls.Events.MANIFEST_PARSED,function() {
+                  video#id#.play();
+                });
+              });
+            }else if (video#id#.canPlayType('application/vnd.apple.mpegurl')) {
+              video#id#.src = '#url#';
+              video#id#.addEventListener('loadedmetadata',function() {
+                video#id#.play();
+              });
+            }
+          }
+          timeoutCamera#id# = setTimeout(refreshImgCam#id#, 10000);
+        }
+      });
+    }
+    refreshImgCam#id#();
+  </script>
+</div>

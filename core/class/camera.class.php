@@ -625,6 +625,9 @@ class camera extends eqLogic {
 			$replace['#refreshDelayFast#'] = $this->getConfiguration('normal::mobilerefresh', 5) * 1000;
 		}
 		if($this->getConfiguration('streamRTSP') == 1){
+			if($_fluxOnly){
+				return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_stream_only', 'camera')));
+			}
 			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_stream', 'camera')));
 		}else if (!$_fluxOnly) {
 			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera')));

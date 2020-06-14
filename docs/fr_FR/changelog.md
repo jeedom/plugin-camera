@@ -9,6 +9,7 @@
 - Amélioration du systeme de nettoyage des fichiers de flux video (attention la fonction est toujours en beta il est possible que notre reglage soit un peu trop agressif)
 - Correction d'un bug sur la recuperation des informations de mouvement des camera foscam HD
 - Correction d'un soucis si un utilisateur non admin voulait visionner le flux video
+- Correction de bug d'affichage sur les design en mode "flux only"
 
 # 11/0/2020
 
