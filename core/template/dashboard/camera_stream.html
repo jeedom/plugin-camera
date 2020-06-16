@@ -21,6 +21,11 @@
   </center>
   <span class="statusCmd" style="position : absolute;left : 5px;bottom : 0px; width : 30px;z-index: 1030;"></span>
   <script>
+    $('.eqLogic[data-eqLogic_id=#id#] .cmd[data-cmd_id=#cmd_off_id#]').hide();
+    $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
+      $('#md_modal').dialog({title: "Historique #name#"});
+      $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
+    });
     streamInit#id# = false;
     function refreshImgCam#id#(){
       if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
@@ -44,6 +49,10 @@
             return;
           }
           if(streamInit#id# == false){
+            if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+              $('.cmd[data-cmd_id=#cmd_off_id#]').show();
+              $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
+            }
             streamInit#id# = true;
             var video#id# = document.getElementById('video-player#id#');
             if(Hls.isSupported()) {
