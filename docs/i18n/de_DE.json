@@ -2,6 +2,8 @@
     "changelog.md": {
         "Changelog Caméra": "Changelog Kamera",
         "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt",
+        "16\/06\/2020": "16.06.2020",
+        "Correction du soucis d'ouverture de l'historique en mode flux": "Behebung des Problems des Öffnens des Verlaufs im Flow-Modus",
         "14\/06\/2020": "14.06.2020",
         "Amélioration du systeme de nettoyage des fichiers de flux video (attention la fonction est toujours en beta il est possible que notre reglage soit un peu trop agressif": "Verbesserung des Systems zum Bereinigen von Videostream-Dateien (Beachten Sie, dass sich die Funktion noch in der Beta-Phase befindet. Möglicherweise ist unsere Einstellung etwas zu aggressiv",
         "Correction d'un bug sur la recuperation des informations de mouvement des camera foscam HD": "Korrektur eines Fehlers bei der Wiederherstellung von Bewegungsinformationen von Foscam HD-Kameras",
