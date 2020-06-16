@@ -21,6 +21,10 @@
   </center>
   <span class="statusCmd" style="position : absolute;left : 5px;bottom : 0px; width : 30px;z-index: 1030;"></span>
   <script>
+    $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
+      $('#md_modal').dialog({title: "Historique #name#"});
+      $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
+    });
     streamInit#id# = false;
     function refreshImgCam#id#(){
       if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
