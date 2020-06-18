@@ -96,17 +96,15 @@ class camera extends eqLogic {
 			self::$_eqLogics = self::byType('camera');
 		}
 		foreach (self::$_eqLogics as $eqLogic) {
-			if ($eqLogic->getIsEnable() == 0 || $eqLogic->getConfiguration('hasPullFunction', 0) == 0) {
+			$php_file = dirname(__FILE__) . '/../config/devices/'.$eqLogic->getConfiguration('hasPullFunction', 0);
+			if ($eqLogic->getIsEnable() == 0 || !file_exists($php_file)) {
 				continue;
 			}
 			try {
-				$php_file = $eqLogic->getConfiguration('hasPullFunction', 0);
-				if(file_exists($php_file)){
-					require_once dirname(__FILE__) . '/../config/devices/' . $php_file;
-					$function = str_replace('.', '_', $eqLogic->getConfiguration('device')) . '_update';
-					if (function_exists($function)) {
-						$function($eqLogic);
-					}
+				require_once $php_file;
+				$function = str_replace('.', '_', $eqLogic->getConfiguration('device')) . '_update';
+				if (function_exists($function)) {
+					$function($eqLogic);
 				}
 			} catch (Exception $e) {
 				
