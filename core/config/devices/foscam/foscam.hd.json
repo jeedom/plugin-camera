@@ -81,8 +81,8 @@
         "invertBinary" : "1"
       },
       "template" : {
-        "dashboard" : "alert",
-        "mobile" : "alert"
+        "dashboard" : "timeAlert",
+        "mobile" : "timeAlert"
       }
     },
     {
@@ -97,8 +97,8 @@
         "invertBinary" : "1"
       },
       "template" : {
-        "dashboard" : "alert",
-        "mobile" : "alert"
+        "dashboard" : "timePresence",
+        "mobile" : "timePresence"
       }
     }
   ]

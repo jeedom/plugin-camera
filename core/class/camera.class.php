@@ -100,14 +100,8 @@ class camera extends eqLogic {
 				continue;
 			}
 			try {
-				$php_file = null;
-				foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
-					foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $eqLogic->getConfiguration('device') . '.php', false, array('files', 'quiet')) as $file) {
-						$php_file = $folder . $file;
-						break;
-					}
-				}
-				if($php_file != null){
+				$php_file = $eqLogic->getConfiguration('hasPullFunction', 0);
+				if(file_exists($php_file)){
 					require_once dirname(__FILE__) . '/../config/devices/' . $php_file;
 					$function = str_replace('.', '_', $eqLogic->getConfiguration('device')) . '_update';
 					if (function_exists($function)) {
@@ -402,7 +396,7 @@ class camera extends eqLogic {
 		$this->setConfiguration('hasPullFunction', 0);
 		foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
 			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $this->getConfiguration('device') . '.php', false, array('files', 'quiet')) as $file) {
-				$this->setConfiguration('hasPullFunction', 1);
+				$this->setConfiguration('hasPullFunction', $folder . $file);
 				break;
 			}
 		}
