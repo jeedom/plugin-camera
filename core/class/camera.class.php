@@ -418,7 +418,6 @@ class camera extends eqLogic {
 	public function postSave() {
 		if ($this->getConfiguration('applyDevice') != $this->getConfiguration('device')) {
 			$this->applyModuleConfiguration();
-			self::deamon_start();
 		}
 		$urlFlux = $this->getCmd(null, 'urlFlux');
 		if (!is_object($urlFlux)) {
@@ -550,6 +549,7 @@ class camera extends eqLogic {
 			shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/'.$this->getConfiguration('localApiKey').'.m3u8');
 			shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/segments/'.$this->getConfiguration('localApiKey').'-*.ts');
 		}
+		self::deamon_start();
 	}
 	
 	public function toHtml($_version = 'dashboard', $_fluxOnly = false) {
