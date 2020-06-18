@@ -157,6 +157,7 @@ if (count($files) > 0) {
 	if ($isMovie == 1) {
 		$files = array($camera->convertMovie());
 	}
+	$camera->sendSnap($files, false, $part);
 }
 $recordState->event(0);
 $camera->refreshWidget();
