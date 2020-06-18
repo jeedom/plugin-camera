@@ -144,13 +144,6 @@
         "[camera\/sendsnapshot] Cet équipement n\\'est pas de type camera : ": "[camera\/sendsnapshot] Cet équipement n\\'est pas de type camera : ",
         "[camera\/sendsnapshot]No file found ": "[camera\/sendsnapshot]No file found "
     },
-    "plugins\/camera\/core\/php\/detectChange.php": {
-        "[camera\/detectChange] L\\'id ne peut etre vide": "[camera\/detectChange] L\\'id ne peut etre vide",
-        "[camera\/detectChange] L\\'équipement est introuvable : ": "[camera\/detectChange] L\\'équipement est introuvable : ",
-        "[camera\/detectChange] Cet équipement n\\'est pas de type camera : ": "[camera\/detectChange] Cet équipement n\\'est pas de type camera : ",
-        "Image difference : ": "Image difference : ",
-        " sur ": " sur "
-    },
     "plugins\/camera\/core\/php\/record.php": {
         "[camera\/reccord] L\\'id ne peut etre vide": "[camera\/reccord] L\\'id ne peut etre vide",
         "[camera\/reccord] L\\'équipement est introuvable : ": "[camera\/reccord] L\\'équipement est introuvable : ",

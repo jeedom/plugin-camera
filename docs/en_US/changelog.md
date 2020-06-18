@@ -4,6 +4,8 @@
 >
 >As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text
 
+- Suppression of movement detection
+
 # 06/16/2020
 
 - Correction of the problem of opening the history in flow mode

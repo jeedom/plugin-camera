@@ -4,6 +4,8 @@
 >
 >Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto
 
+- Supressão da detecção de movimento
+
 # 16/06/2020
 
 - Correção do problema de abrir o histórico no modo de fluxo

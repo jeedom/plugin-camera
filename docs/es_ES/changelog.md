@@ -4,6 +4,8 @@
 >
 >Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto
 
+- Supresión de detección de movimiento
+
 # 16/06/2020
 
 - Corrección del problema de abrir el historial en modo flujo
