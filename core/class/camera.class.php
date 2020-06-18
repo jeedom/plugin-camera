@@ -701,22 +701,6 @@ class camera extends eqLogic {
 		shell_exec($cmd);
 	}
 	
-	public function detectMove($_sendTo, $_forVideo = 0) {
-		if (count(system::ps('core/php/detectChange.php id=' . $this->getId())) > 0) {
-			return true;
-		}
-		$folder = calculPath(config::byKey('recordDir', 'camera'));
-		$folder .= '/' . $this->getId();
-		if ($_forVideo) {
-			$folder .= '/movie_temp';
-		}
-		$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/detectChange.php id=' . $this->getId();
-		$cmd .= ' "folder=' . $folder . '"';
-		$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
-		$cmd .= ' >> ' . log::getPathToLog('camera_detectChange') . ' 2>&1 &';
-		shell_exec($cmd);
-	}
-	
 	public function stopRecord() {
 		if (count(system::ps('core/php/record.php id=' . $this->getId())) > 0) {
 			system::kill('core/php/record.php id=' . $this->getId(), false);

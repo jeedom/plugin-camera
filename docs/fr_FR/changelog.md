@@ -4,6 +4,8 @@
 >
 >Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte
 
+- Supression de la detection de movements
+
 # 16/06/2020
 
 - Correction du soucis d'ouverture de l'historique en mode flux
