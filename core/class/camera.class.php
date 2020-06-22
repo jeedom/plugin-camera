@@ -1031,8 +1031,10 @@ class cameraCmd extends cmd {
 				break;
 				case 'color':
 				$request = str_replace('#color#', $_options['color'], $request);
+				break;
 				case 'select':
 				$request = str_replace('#select#', $_options['select'], $request);
+				break;
 			}
 			break;
 		}
