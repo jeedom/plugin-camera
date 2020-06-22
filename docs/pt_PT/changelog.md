@@ -5,6 +5,8 @@
 >Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto
 
 - Supressão da detecção de movimento
+- Adicionando panasonic wc np502 obrigado @Flobul
+- Adicionando câmera IOS, obrigado @Flobul
 
 # 16/06/2020
 

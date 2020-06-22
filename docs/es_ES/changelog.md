@@ -5,6 +5,8 @@
 >Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto
 
 - Supresión de detección de movimiento
+- Añadiendo panasonic wc np502 gracias @Flobul
+- Agregar cámara IOS gracias @Flobul
 
 # 16/06/2020
 

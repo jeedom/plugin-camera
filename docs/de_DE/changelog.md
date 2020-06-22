@@ -5,6 +5,8 @@
 >Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt
 
 - Unterdrückung der Bewegungserkennung
+- Hinzufügen von panasonic wc np502 danke @Flobul
+- Hinzufügen von IOS-Kamera danke @Flobul
 
 # 16.06.2020
 

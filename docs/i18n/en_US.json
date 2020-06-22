@@ -2,7 +2,9 @@
     "changelog.md": {
         "Changelog Caméra": "Changelog Camera",
         "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text",
-        "Supression de la detection de movements": "Suppression of movement detection",
+        "Supression de la detection de mouvements": "Suppression of motion detection",
+        "Ajout de panasonic wc np502 merci @Flobul": "Adding panasonic wc np502 thanks @Flobul",
+        "Ajout de camera IOS merci @Flobul": "Adding IOS camera thank you @Flobul",
         "16\/06\/2020": "06\/16\/2020",
         "Correction du soucis d'ouverture de l'historique en mode flux": "Correction of the problem of opening the history in flow mode",
         "14\/06\/2020": "06\/14\/2020",

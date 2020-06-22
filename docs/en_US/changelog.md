@@ -4,7 +4,9 @@
 >
 >As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text
 
-- Suppression of movement detection
+- Suppression of motion detection
+- Adding panasonic wc np502 thanks @Flobul
+- Adding IOS camera thank you @Flobul
 
 # 06/16/2020
 
