@@ -225,7 +225,7 @@
 				"request": "\/cgi-bin\/magicBox.cgi?action=reboot"
 			},
 			"display": {
-				"icon": "<i class=\"fas fa-refresh\"><\/i>"
+				"icon": "<i class=\"fas fa-sync\"><\/i>"
 			},
 			"isVisible": "1"
 		}
