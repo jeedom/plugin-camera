@@ -1,0 +1,27 @@
+{
+  "name" : "IP Camera",
+  "manufacturer" : "ios",
+  "configuration": {
+    "port": "8081",
+    "urlStream": "",
+    "protocole": "http",
+    "streamRTSP": "1",
+    "cameraStreamAccessUrl": "rtsp:\/\/#username#:#password#@#ip#:8554\/live"
+  },
+  "commands": [
+    {
+      "name": "Switch front/back",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/camswitch",
+        "stopCmdUrl": ""
+      },
+      "display": {
+        "icon": "<i class=\"icon techno-fleches\"><\/i>"
+      },
+      "isVisible": "1"
+    }
+  ]
+}

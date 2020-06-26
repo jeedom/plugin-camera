@@ -1,0 +1,25 @@
+{
+	"name" : "IPC-HDBW1431E-S",
+	"manufacturer" : "Dahua",
+	"configuration": {
+		"urlStream": "",
+		"cameraStreamAccessUrl": "rtsp:\/\/#username#:#password#@#ip#:554\/cam\/realmonitor?channel=1&subtype=0",
+		"protocole": "http"
+	},
+	"commands": [
+		{
+			"eqType": "camera",
+			"name": "Reboot",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/magicBox.cgi?action=reboot"
+			},
+			"display": {
+				"icon": "<i class=\"fas fa-sync\"><\/i>"
+			},
+			"isVisible": "1"
+		}
+	]
+}

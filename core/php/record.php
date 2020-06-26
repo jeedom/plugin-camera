@@ -1,20 +1,20 @@
 <?php
 
 /* This file is part of Jeedom.
- *
- * Jeedom is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Jeedom is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
- */
+*
+* Jeedom is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Jeedom is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
+*/
 declare (ticks = 1);
 
 global $SIG;
@@ -84,9 +84,6 @@ if (is_numeric(init('delay')) && init('delay') > 0) {
 if (is_numeric(init('sendPacket')) && init('sendPacket') > 0) {
 	$sendPacket = init('sendPacket');
 }
-if (init('detectMove') == 1) {
-	$camera->detectMove(init('sendTo'), $isMovie);
-}
 
 if ($nbSnap > 0 && $sendPacket > 0) {
 	$totalSend = ceil($nbSnap / $sendPacket);
@@ -124,7 +121,7 @@ while (true) {
 			$files[] = $camera->takeSnapshot();
 		}
 	} catch (Exception $e) {
-
+		
 	}
 	if ($SIG) {
 		break;
@@ -160,9 +157,7 @@ if (count($files) > 0) {
 	if ($isMovie == 1) {
 		$files = array($camera->convertMovie());
 	}
-	if (init('detectMove') != 1) {
-		$camera->sendSnap($files, false, $part);
-	}
+	$camera->sendSnap($files, false, $part);
 }
 $recordState->event(0);
 $camera->refreshWidget();

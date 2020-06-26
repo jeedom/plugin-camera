@@ -1,0 +1,96 @@
+{
+  "name" : "Panasonic WV-NP502",
+  "manufacturer" : "Panasonic",
+  "configuration": {
+    "port": "80",
+    "urlStream": "\/SnapshotJPEG?Resolution=640x480",
+    "protocole": "http",
+    "cameraStreamAccessUrl": "rtsp:\/\/#username#:#password#@#ip#\/MediaInput\/h264"
+  },
+  "commands": [
+    {
+      "name": "Focus AUTO",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/cgi-bin\/back_focus?auto=on",
+        "stopCmdUrl": ""
+      },
+      "display": {
+        "icon": "<i class=\"fas fa-glasses\"><\/i>"
+      },
+      "isVisible": "1"
+    },
+    {
+      "name": "Noir et Blanc ON",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/cgi-bin\/image_adjust?black_white=on",
+        "stopCmdUrl": ""
+      },
+      "display": {
+        "icon": "<i class=\"icon jeedomapp-visible2\"><\/i>"
+      },
+      "isVisible": "0"
+    },
+    {
+      "name": "Noir et Blanc OFF",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/cgi-bin\/image_adjust?black_white=off",
+        "stopCmdUrl": ""
+      },
+      "display": {
+        "icon": "<i class=\"icon jeedomapp-visible\"><\/i>"
+      },
+      "isVisible": "0"
+      },{
+        "name": "Luminosité RESET",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/cgi-bin\/camctrl?bright=1",
+          "stopCmdUrl": ""
+        },
+        "display": {
+          "icon": "<i class=\"fas fa-asterisk\"><\/i>"
+        },
+        "isVisible": "0"
+      },
+      {
+        "name": "Luminosité +",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/cgi-bin\/camctrl?bright=up",
+          "stopCmdUrl": ""
+        },
+        "display": {
+          "icon": "<i class=\"fas fa-plus\"><\/i>"
+        },
+        "isVisible": "0"
+      },
+      {
+        "name": "Luminosité -",
+        "type": "action",
+        "subType": "other",
+        "isHistorized": "0",
+        "configuration": {
+          "request": "\/cgi-bin\/camctrl?bright=down",
+          "stopCmdUrl": ""
+        },
+        "display": {
+          "icon": "<i class=\"fas fa-minus\"><\/i>"
+        },
+        "isVisible": "0"
+      }
+    ]
+  }
+  

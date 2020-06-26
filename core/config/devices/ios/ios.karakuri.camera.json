@@ -1,0 +1,244 @@
+{
+  "name" : "Karakuri Camera - Auto Shutter & WEB Monitoring",
+  "manufacturer" : "ios",
+  "configuration": {
+    "urlStream": "\/preview.jpg",
+    "protocole": "http"
+  },
+  "commands": [
+    {
+      "name": "Front",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&camera=1",
+        "stopCmdUrl": ""
+      },
+      "isVisible": "1"
+    },
+    {
+      "name": "Back",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&camera=0",
+        "stopCmdUrl": ""
+      },
+      "isVisible": "1"
+    },
+    {
+      "name": "Screen OFF",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&screen_off=1",
+        "stopCmdUrl": ""
+      },
+      "isVisible": "0"
+    },
+    {
+      "name": "Screen ON",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&screen_off=0",
+        "stopCmdUrl": ""
+      },
+      "isVisible": "0"
+    },
+    {
+      "name": "Shutter ON",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&shutter=1",
+        "stopCmdUrl": ""
+      },
+      "isVisible": "0"
+    },
+    {
+      "name": "Shutter OFF",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&shutter=0",
+        "stopCmdUrl": ""
+      },
+      "isVisible": "0"
+    },
+    {
+      "name": "FPS",
+      "type": "action",
+      "subType": "slider",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&fps=#slider#",
+        "stopCmdUrl": "",
+        "minValue": 1,
+        "maxValue": 30
+      },
+      "unite": "i/s",
+      "isVisible": "0"
+    },
+    {
+      "name": "Audio",
+      "type": "action",
+      "subType": "slider",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&audio=#slider#",
+        "stopCmdUrl": "",
+        "minValue": 0,
+        "maxValue": 100
+      },
+      "unite": "dB",
+      "isVisible": "0"
+    },
+    {
+      "name": "Preview Jpeg Quality",
+      "type": "action",
+      "subType": "slider",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&preview_quality=#slider#",
+        "stopCmdUrl": "",
+        "minValue": 0,
+        "maxValue": 100
+      },
+      "unite": "%",
+      "isVisible": "0"
+    },
+    {
+      "name": "Preview Update Interval",
+      "type": "action",
+      "subType": "slider",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&preview_interval=#slider#",
+        "stopCmdUrl": "",
+        "minValue": 100,
+        "maxValue": 3000
+      },
+      "unite": "ms",
+      "isVisible": "0"
+    },
+    {
+      "name": "Output Size",
+      "type": "action",
+      "subType": "select",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&size=#select#",
+        "stopCmdUrl": "",
+        "listValue": "0|192x144;1|480x360;2|640x480;3|Full",
+        "select": "0|192x144;1|480x360;2|640x480;3|Full"
+      },
+      "isVisible": "0"
+    },
+    {
+      "name": "Output Jpeg Quality",
+      "type": "action",
+      "subType": "slider",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&picture=#slider#",
+        "stopCmdUrl": "",
+        "minValue": 0,
+        "maxValue": 100
+      },
+      "isVisible": "0"
+    },
+    {
+      "name": "Output Movie Sec",
+      "type": "action",
+      "subType": "slider",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/?submit_save=1&picture=#slider#",
+        "stopCmdUrl": "",
+        "minValue": 1,
+        "maxValue": 120
+      },
+      "unite": "s",
+      "isVisible": "0"
+    },
+    {
+      "name": "Time",
+      "type": "info",
+      "subType": "string",
+      "isHistorized": "1",
+      "isVisible": "0",
+      "logicalId" : "Time"
+    },
+    {
+      "name": "Width",
+      "type": "info",
+      "subType": "string",
+      "isHistorized": "1",
+      "isVisible": "0",
+      "logicalId" : "Width"
+    },
+    {
+      "name": "Height",
+      "type": "info",
+      "subType": "string",
+      "isHistorized": "1",
+      "isVisible": "0",
+      "logicalId" : "Height"
+    },
+    {
+      "name": "Diff",
+      "type": "info",
+      "subType": "string",
+      "isHistorized": "1",
+      "isVisible": "0",
+      "logicalId" : "Diff"
+    },
+    {
+      "name": "Audio",
+      "type": "info",
+      "subType": "string",
+      "isHistorized": "1",
+      "isVisible": "0",
+      "logicalId" : "Audio"
+    },
+    {
+      "name": "Saving",
+      "type": "info",
+      "subType": "string",
+      "isHistorized": "1",
+      "isVisible": "0",
+      "logicalId" : "Saving"
+    },
+    {
+      "name": "Recording",
+      "type": "info",
+      "subType": "string",
+      "isHistorized": "1",
+      "isVisible": "0",
+      "logicalId" : "Recording"
+    },
+    {
+      "name": "Memory",
+      "type": "info",
+      "subType": "string",
+      "isHistorized": "1",
+      "isVisible": "0",
+      "logicalId" : "Memory"
+    },
+    {
+      "name": "Battery",
+      "type": "info",
+      "subType": "string",
+      "isHistorized": "1",
+      "isVisible": "0",
+      "logicalId" : "Battery"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "name" : "G4P/G4EP",
+  "manufacturer" : "Foscam",
+  "configuration": {
+    "port": "88",
+    "urlStream": "\/cgi-bin\/CGIProxy.fcgi?cmd=snapPicture2&usr=#username#&pwd=#password#",
+    "cameraStreamAccessUrl" : "rtsp:\/\/#username#:#password#@#ip#:88\/videoMain",
+    "protocole": "http"
+  },
+  "commands": [
+    {
+      "eqType": "camera",
+      "name": "IR On",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/cgi-bin\/CGIProxy.fcgi?usr=#username#&pwd=#password#&cmd=openInfraLed"
+      },
+      "display": {
+        "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "name": "IR Off",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "configuration": {
+        "request": "\/cgi-bin\/CGIProxy.fcgi?usr=#username#&pwd=#password#&cmd=closeInfraLed"
+      },
+      "display": {
+        "icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "name": "IO alarme",
+      "type": "info",
+      "subType": "binary",
+      "isHistorized": "0",
+      "isVisible": "0",
+      "logicalId" : "IOAlarm",
+      "display" : {
+        "invertBinary" : "1"
+      },
+      "template" : {
+        "dashboard" : "alert",
+        "mobile" : "alert"
+      }
+    },
+    {
+      "eqType": "camera",
+      "name": "Motion alarme",
+      "type": "info",
+      "subType": "binary",
+      "isHistorized": "1",
+      "isVisible": "1",
+      "logicalId" : "motionDetectAlarm",
+      "display" : {
+        "invertBinary" : "1"
+      },
+      "template" : {
+        "dashboard" : "timePresence",
+        "mobile" : "timePresence"
+      }
+    },
+    {
+      "eqType": "camera",
+      "name": "Sound alarme",
+      "type": "info",
+      "subType": "binary",
+      "isHistorized": "1",
+      "isVisible": "1",
+      "logicalId" : "soundAlarm",
+      "display" : {
+        "invertBinary" : "1"
+      },
+      "template" : {
+        "dashboard" : "timeAlert",
+        "mobile" : "timeAlert"
+      }
+    },
+    {
+      "eqType": "camera",
+      "name": "Humain detecté",
+      "type": "info",
+      "subType": "binary",
+      "isHistorized": "1",
+      "isVisible": "1",
+      "logicalId" : "humanDetectAlarmState",
+      "display" : {
+        "invertBinary" : "1"
+      },
+      "template" : {
+        "dashboard" : "timePresence",
+        "mobile" : "timePresence"
+      }
+    }
+  ]
+}

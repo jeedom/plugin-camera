@@ -144,13 +144,6 @@
         "[camera\/sendsnapshot] Cet équipement n\\'est pas de type camera : ": "[Kamera \/ Sendsnapshot] Dieses Gerät ist nicht vom Kameratyp:",
         "[camera\/sendsnapshot]No file found ": "[camera \/ sendnapshot] Keine Datei gefunden"
     },
-    "plugins\/camera\/core\/php\/detectChange.php": {
-        "[camera\/detectChange] L\\'id ne peut etre vide": "[camera \/ detectChange] Die ID darf nicht leer sein",
-        "[camera\/detectChange] L\\'équipement est introuvable : ": "[camera \/ detectChange] Das Gerät kann nicht gefunden werden:",
-        "[camera\/detectChange] Cet équipement n\\'est pas de type camera : ": "[camera \/ detectChange] Dieses Gerät ist nicht vom Kameratyp:",
-        "Image difference : ": "Bildunterschied:",
-        " sur ": "auf"
-    },
     "plugins\/camera\/core\/php\/record.php": {
         "[camera\/reccord] L\\'id ne peut etre vide": "[Kamera \/ Aufzeichnung] ID darf nicht leer sein",
         "[camera\/reccord] L\\'équipement est introuvable : ": "[Kamera \/ Aufzeichnung] Das Gerät kann nicht gefunden werden:",

@@ -1,0 +1,11 @@
+{
+  "name" : "Periscope HD",
+  "manufacturer" : "ios",
+  "configuration": {
+    "urlStream": "",
+    "protocole": "http",
+    "streamRTSP": "1",
+    "cameraStreamAccessUrl": "rtsp:\/\/#username#:#password#@#ip#:8554\/live.sdp"
+  },
+  "commands": []
+}

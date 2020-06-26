@@ -96,23 +96,15 @@ class camera extends eqLogic {
 			self::$_eqLogics = self::byType('camera');
 		}
 		foreach (self::$_eqLogics as $eqLogic) {
-			if ($eqLogic->getIsEnable() == 0 || $eqLogic->getConfiguration('hasPullFunction', 0) == 0) {
+			$php_file = dirname(__FILE__) . '/../config/devices/'.$eqLogic->getConfiguration('hasPullFunction', 0);
+			if ($eqLogic->getIsEnable() == 0 || !file_exists($php_file)) {
 				continue;
 			}
 			try {
-				$php_file = null;
-				foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
-					foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $eqLogic->getConfiguration('device') . '.php', false, array('files', 'quiet')) as $file) {
-						$php_file = $folder . $file;
-						break;
-					}
-				}
-				if($php_file != null){
-					require_once dirname(__FILE__) . '/../config/devices/' . $php_file;
-					$function = str_replace('.', '_', $eqLogic->getConfiguration('device')) . '_update';
-					if (function_exists($function)) {
-						$function($eqLogic);
-					}
+				require_once $php_file;
+				$function = str_replace('.', '_', $eqLogic->getConfiguration('device')) . '_update';
+				if (function_exists($function)) {
+					$function($eqLogic);
 				}
 			} catch (Exception $e) {
 				
@@ -402,7 +394,7 @@ class camera extends eqLogic {
 		$this->setConfiguration('hasPullFunction', 0);
 		foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
 			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $this->getConfiguration('device') . '.php', false, array('files', 'quiet')) as $file) {
-				$this->setConfiguration('hasPullFunction', 1);
+				$this->setConfiguration('hasPullFunction', $folder . $file);
 				break;
 			}
 		}
@@ -426,7 +418,6 @@ class camera extends eqLogic {
 	public function postSave() {
 		if ($this->getConfiguration('applyDevice') != $this->getConfiguration('device')) {
 			$this->applyModuleConfiguration();
-			self::deamon_start();
 		}
 		$urlFlux = $this->getCmd(null, 'urlFlux');
 		if (!is_object($urlFlux)) {
@@ -558,6 +549,7 @@ class camera extends eqLogic {
 			shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/'.$this->getConfiguration('localApiKey').'.m3u8');
 			shell_exec(system::getCmdSudo().' rm '.__DIR__.'/../../data/segments/'.$this->getConfiguration('localApiKey').'-*.ts');
 		}
+		self::deamon_start();
 	}
 	
 	public function toHtml($_version = 'dashboard', $_fluxOnly = false) {
@@ -698,22 +690,6 @@ class camera extends eqLogic {
 			$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
 		}
 		$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
-		shell_exec($cmd);
-	}
-	
-	public function detectMove($_sendTo, $_forVideo = 0) {
-		if (count(system::ps('core/php/detectChange.php id=' . $this->getId())) > 0) {
-			return true;
-		}
-		$folder = calculPath(config::byKey('recordDir', 'camera'));
-		$folder .= '/' . $this->getId();
-		if ($_forVideo) {
-			$folder .= '/movie_temp';
-		}
-		$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/detectChange.php id=' . $this->getId();
-		$cmd .= ' "folder=' . $folder . '"';
-		$cmd .= ' sendTo=' . escapeshellarg($_sendTo);
-		$cmd .= ' >> ' . log::getPathToLog('camera_detectChange') . ' 2>&1 &';
 		shell_exec($cmd);
 	}
 	
@@ -1055,6 +1031,10 @@ class cameraCmd extends cmd {
 				break;
 				case 'color':
 				$request = str_replace('#color#', $_options['color'], $request);
+				break;
+				case 'select':
+				$request = str_replace('#select#', $_options['select'], $request);
+				break;
 			}
 			break;
 		}
