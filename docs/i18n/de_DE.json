@@ -2,6 +2,9 @@
     "changelog.md": {
         "Changelog Caméra": "Changelog Kamera",
         "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt",
+        "26\/06\/2020": "26.06.2020",
+        "Ajout de caméra Dahua": "Hinzufügen einer Dahua-Kamera",
+        "Ajout de camera Foscam": "Hinzufügung einer Foscam-Kamera",
         "Supression de la detection de mouvements": "Unterdrückung der Bewegungserkennung",
         "Ajout de panasonic wc np502 merci @Flobul": "Hinzufügen von panasonic wc np502 danke @Flobul",
         "Ajout de camera IOS merci @Flobul": "Hinzufügen von IOS-Kamera danke @Flobul",

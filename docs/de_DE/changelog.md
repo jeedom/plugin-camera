@@ -4,6 +4,10 @@
 >
 >Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt
 
+# 26.06.2020
+
+- Hinzufügen einer Dahua-Kamera
+- Hinzufügung einer Foscam-Kamera
 - Unterdrückung der Bewegungserkennung
 - Hinzufügen von panasonic wc np502 danke @Flobul
 - Hinzufügen von IOS-Kamera danke @Flobul
