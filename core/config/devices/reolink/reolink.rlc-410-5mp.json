@@ -1,0 +1,10 @@
+{
+  "name" : "RLC-410-5MP",
+  "manufacturer" : "Reolink",
+  "configuration": {
+    "urlStream": "\/cgi-bin\/api.cgi?cmd=Snap&channel=0&rs=wuuPhkmUCeI9WG7C&user=#username#&password=#password#",
+    "cameraStreamAccessUrl" : "rtsp:\/\/#username#:#password#@#ip#:554\/h264Preview_01_main",
+    "protocole": "http"
+  },
+  "commands": []
+}
