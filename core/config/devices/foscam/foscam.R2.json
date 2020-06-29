@@ -108,6 +108,62 @@
 		},
 		{
 			"eqType": "camera",
+			"name": "Detection mouvement on",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=1&usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
+			},
+			"isVisible": "0"
+		},
+		{
+			"eqType": "camera",
+			"name": "Detection mouvement off",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=0&usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
+			},
+			"isVisible": "0"
+		},
+		{
+			"eqType": "camera",
+			"name": "Detection audio on",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setAudioAlarmConfig&isEnable=1&usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
+			},
+			"isVisible": "0"
+		},
+		{
+			"eqType": "camera",
+			"name": "Detection audio off",
+			"type": "action",
+			"subType": "other",
+			"isHistorized": "0",
+			"configuration": {
+				"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setAudioAlarmConfig&isEnable=0&usr=#username#&pwd=#password#"
+			},
+			"display": {
+				"icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
+			},
+			"isVisible": "0"
+		},
+		{
+			"eqType": "camera",
 			"name": "Zoom IN",
 			"type": "action",
 			"subType": "other",
