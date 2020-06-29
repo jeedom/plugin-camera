@@ -4,6 +4,8 @@
 >
 >As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text
 
+- Addition of the Reolink RLC-410-5MP camera thanks @Dorsad
+
 # 6/26/2020
 
 - Adding Dahua camera
