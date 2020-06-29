@@ -1,5 +1,5 @@
 {
-  "name" : "G4P/G4EP",
+  "name" : "FI9828W/FI9828P/FI9828P V2/FI9805E",
   "manufacturer" : "Foscam",
   "configuration": {
     "port": "88",
@@ -82,6 +82,22 @@
     },
     {
       "eqType": "camera",
+      "name": "IO alarme",
+      "type": "info",
+      "subType": "binary",
+      "isHistorized": "0",
+      "isVisible": "0",
+      "logicalId" : "IOAlarm",
+      "display" : {
+        "invertBinary" : "1"
+      },
+      "template" : {
+        "dashboard" : "alert",
+        "mobile" : "alert"
+      }
+    },
+    {
+      "eqType": "camera",
       "name": "Motion alarme",
       "type": "info",
       "subType": "binary",
@@ -110,22 +126,6 @@
       "template" : {
         "dashboard" : "timeAlert",
         "mobile" : "timeAlert"
-      }
-    },
-    {
-      "eqType": "camera",
-      "name": "Humain detecté",
-      "type": "info",
-      "subType": "binary",
-      "isHistorized": "1",
-      "isVisible": "1",
-      "logicalId" : "humanDetectAlarmState",
-      "display" : {
-        "invertBinary" : "1"
-      },
-      "template" : {
-        "dashboard" : "timePresence",
-        "mobile" : "timePresence"
       }
     }
   ]

@@ -43,12 +43,6 @@
       "type": "action",
       "subType": "other",
       "isHistorized": "0",
-      "configuration": {
-        "request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=1&usr=#username#&pwd=#password#"
-      },
-      "display": {
-        "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
-      },
       "isVisible": "0"
     },
     {
@@ -57,12 +51,6 @@
       "type": "action",
       "subType": "other",
       "isHistorized": "0",
-      "configuration": {
-        "request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=0&usr=#username#&pwd=#password#"
-      },
-      "display": {
-        "icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
-      },
       "isVisible": "0"
     },
     {
@@ -71,12 +59,6 @@
       "type": "action",
       "subType": "other",
       "isHistorized": "0",
-      "configuration": {
-        "request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setAudioAlarmConfig&isEnable=1&usr=#username#&pwd=#password#"
-      },
-      "display": {
-        "icon": "<i class=\"icon jeedom2-lightbulb58\"><\/i>"
-      },
       "isVisible": "0"
     },
     {
@@ -85,29 +67,7 @@
       "type": "action",
       "subType": "other",
       "isHistorized": "0",
-      "configuration": {
-        "request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setAudioAlarmConfig&isEnable=0&usr=#username#&pwd=#password#"
-      },
-      "display": {
-        "icon": "<i class=\"icon jeedom2-lightbulb25\"><\/i>"
-      },
       "isVisible": "0"
-    },
-    {
-      "eqType": "camera",
-      "name": "IO alarme",
-      "type": "info",
-      "subType": "binary",
-      "isHistorized": "0",
-      "isVisible": "0",
-      "logicalId" : "IOAlarm",
-      "display" : {
-        "invertBinary" : "1"
-      },
-      "template" : {
-        "dashboard" : "alert",
-        "mobile" : "alert"
-      }
     },
     {
       "eqType": "camera",
