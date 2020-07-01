@@ -1,8 +1,8 @@
 {
-  "name" : "TV-IP310PI",
+  "name" : "TV-IP325PI",
   "manufacturer" : "TrendNet",
   "configuration": {
-    "urlStream": "\/Streaming\/Channels\/1\/picture",
+    "cameraStreamAccessUrl" : "rtsp:\/\/#username#:#password#@#ip#:554\/",
     "protocole": "http"
   },
   "commands": []
