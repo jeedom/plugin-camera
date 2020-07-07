@@ -4,7 +4,7 @@
 	"configuration": {
 		"port": "88",
 		"urlStream": "\/cgi-bin\/CGIProxy.fcgi?cmd=snapPicture2&usr=#username#&pwd=#password#",
-		"cameraStreamAccessUrl" : "rtsp:\/\/#username#:#password#@#ip#:88\/videoMain",
+		"cameraStreamAccessUrl" : "rtsp:\/\/#username#:#password#@#ip#:554\/videoMain",
 		"protocole": "http"
 	},
 	"commands": [
