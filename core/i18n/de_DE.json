@@ -179,5 +179,8 @@
         "Le fichier est vide : ": "Die Datei ist leer:",
         "Impossible de trouver la commande ON": "Der EIN-Befehl konnte nicht gefunden werden",
         "Impossible de trouver la commande OFF": "Der AUS-Befehl konnte nicht gefunden werden"
+    },
+    "info.json": {
+        "Plugin pour afficher les caméras IP L'affichage vidéo de la caméra s'effectue par snapshot (capture) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP": "Plugin zur Anzeige von IP-Kameras Die Videoanzeige der Kamera erfolgt durch aufeinanderfolgende Momentaufnahmen (Capture) pro Sekunde. Das Plugin ist mit RTSP-Kameras kompatibel"
     }
 }
