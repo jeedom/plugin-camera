@@ -1,7 +1,7 @@
 {
-	"name" : "FI9928P",
+	"name" : "FI9926P",
 	"manufacturer" : "Foscam",
-	"buylink" : "https://www.domadoo.fr/fr/cameras/4978-foscam-camera-ip-wifi-exterieur-motorisee-2mp-6954836003299.html",
+	"buylink" : "",
 	"configuration": {
 		"port": "88",
 		"urlStream": "\/cgi-bin\/CGIProxy.fcgi?cmd=snapPicture2&usr=#username#&pwd=#password#",
@@ -114,7 +114,7 @@
 			"subType": "other",
 			"isHistorized": "0",
 			"configuration": {
-				"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setMotionDetectConfig1&isEnable=1&usr=#username#&pwd=#password#"
+				"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=1&usr=#username#&pwd=#password#"
 			},
 			"isVisible": "0"
 		},
@@ -125,7 +125,7 @@
 			"subType": "other",
 			"isHistorized": "0",
 			"configuration": {
-				"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setMotionDetectConfig1&isEnable=0&usr=#username#&pwd=#password#"
+				"request": "\/cgi-bin\/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=0&usr=#username#&pwd=#password#"
 			},
 			"isVisible": "0"
 		},
