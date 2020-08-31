@@ -2,6 +2,7 @@
     "changelog.md": {
         "Changelog Caméra": "Changelog Kamera",
         "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt",
+        "Ajout de la caméra Foscam FI9926P": "Hinzufügung der Foscam FI9926P Kamera",
         "07\/07\/2020": "07\/07\/2020",
         "Correction d'un soucis sur le port par default de l'url de flux pour les caméras Foscam merci @nebz": "Behebung eines Problems am Standardport der Stream-URL für Foscam-Kameras dank @nebz",
         "Ajout de la camera Reolink RLC-410-5MP merci @Dorsad": "Hinzufügen der Reolink RLC-410-5MP Kamera danke @Dorsad",
