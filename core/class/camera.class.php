@@ -353,12 +353,14 @@ class camera extends eqLogic {
 	public function decrypt(){
 		$this->setConfiguration('ip',utils::decrypt($this->getConfiguration('ip')));
 		$this->setConfiguration('password',utils::decrypt($this->getConfiguration('password')));
+		$this->setConfiguration('username',utils::decrypt($this->getConfiguration('username')));
 		$this->setConfiguration('localApiKey',utils::decrypt($this->getConfiguration('localApiKey')));
 	}
 	
 	public function encrypt(){
 		$this->setConfiguration('ip',utils::encrypt($this->getConfiguration('ip')));
 		$this->setConfiguration('password',utils::encrypt($this->getConfiguration('password')));
+		$this->setConfiguration('username',utils::encrypt($this->getConfiguration('username')));
 		$this->setConfiguration('localApiKey',utils::encrypt($this->getConfiguration('localApiKey')));
 	}
 	
