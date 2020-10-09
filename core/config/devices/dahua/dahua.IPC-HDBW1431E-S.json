@@ -3,7 +3,7 @@
 	"manufacturer" : "Dahua",
 	"configuration": {
 		"urlStream": "",
-		"cameraStreamAccessUrl": "rtsp:\/\/#username#:#password#@#ip#:554\/cam\/realmonitor?channel=1&subtype=0",
+		"cameraStreamAccessUrl": "rtsp:\/\/#username#:#password#@#ip#:554\/live",
 		"protocole": "http"
 	},
 	"commands": [
