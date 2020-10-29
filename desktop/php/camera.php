@@ -226,8 +226,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						<tbody>
 							<tr>
 								<td><label>{{Rafraichissement (s)}}</label></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::refresh" /></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobilerefresh" /></td>
+								<td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::refresh" /></td>
+								<td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::mobilerefresh" /></td>
 							</tr>
 							<tr>
 								<td><label>{{Qualité (%)}}</label></td>
