@@ -26,58 +26,51 @@
       $('#md_modal').dialog({title: "Historique #name#"});
       $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
     });
-    streamInit#id# = false;
-    function refreshImgCam#id#(){
-      if($('.eqLogic[data-eqLogic_uid=#uid#]').html() == undefined){
-        return;
-      }
-      $.ajax({
-        type: "POST",
-        url: "plugins/camera/core/ajax/camera.ajax.php",
-        data: {
-          action: "stream",
-          id : "#id#"
-        },
-        global:false,
-        dataType: 'json',
-        error: function (request, status, error) {
-          handleAjaxError(request, status, error);
-        },
-        success: function (data) {
-          if (data.state != 'ok') {
-            $('#div_alert').showAlert({message: data.result, level: 'danger'});
-            return;
+    $.ajax({
+      type: "POST",
+      url: "plugins/camera/core/ajax/camera.ajax.php",
+      data: {
+        action: "stream",
+        id : "#id#"
+      },
+      global:false,
+      dataType: 'json',
+      error: function (request, status, error) {
+        handleAjaxError(request, status, error);
+      },
+      success: function (data) {
+        if (data.state != 'ok') {
+          $('#div_alert').showAlert({message: data.result, level: 'danger'});
+          return;
+        }
+        try {
+          if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
+            $('.cmd[data-cmd_id=#cmd_off_id#]').show();
+            $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
           }
-          if(streamInit#id# == false){
-            if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-              $('.cmd[data-cmd_id=#cmd_off_id#]').show();
-              $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
-            }
-            streamInit#id# = true;
-            var video#id# = document.getElementById('video-player#id#');
-            if(Hls.isSupported()) {
-              var hls#id# = new Hls();
-              hls#id#.on(Hls.Events.Error, function (event, data) {
-                console.log("HLS error: ", event, data);
-              });
-              hls#id#.attachMedia(video#id#);
-              hls#id#.on(Hls.Events.MEDIA_ATTACHED, function() {
-                hls#id#.loadSource('#url#');
-                hls#id#.on(Hls.Events.MANIFEST_PARSED,function() {
-                  video#id#.play();
-                });
-              });
-            }else if (video#id#.canPlayType('application/vnd.apple.mpegurl')) {
-              video#id#.src = '#url#';
-              video#id#.addEventListener('loadedmetadata',function() {
+          var video#id# = document.getElementById('video-player#id#');
+          if(Hls.isSupported()) {
+            var hls#id# = new Hls();
+            hls#id#.on(Hls.Events.Error, function (event, data) {
+              console.log("HLS error: ", event, data);
+            });
+            hls#id#.attachMedia(video#id#);
+            hls#id#.on(Hls.Events.MEDIA_ATTACHED, function() {
+              hls#id#.loadSource('#url#');
+              hls#id#.on(Hls.Events.MANIFEST_PARSED,function() {
                 video#id#.play();
               });
-            }
+            });
+          }else if (video#id#.canPlayType('application/vnd.apple.mpegurl')) {
+            video#id#.src = '#url#';
+            video#id#.addEventListener('loadedmetadata',function() {
+              video#id#.play();
+            });
           }
-          timeoutCamera#id# = setTimeout(refreshImgCam#id#, 10000);
+        } catch (e) {
+          
         }
       });
-    }
-    refreshImgCam#id#();
-  </script>
-</div>
+    </script>
+  </div>
+  
