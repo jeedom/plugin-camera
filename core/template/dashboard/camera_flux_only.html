@@ -11,7 +11,7 @@
     </center>
   </div>
   <script>
-    var eqLogic_#id# = $('.eqLogic[data-eqLogic_id=#id#]');
+    var eqLogic_#id# = $('.camera[data-camera_id=#id#]');
     var thumbnail_#id# = false;
     var img_#id# = new Image()
     var start_#id# = 0;
@@ -21,7 +21,7 @@
         $(".md_cameraZoom[data-eqLogic_uid=#uid#]").eq(0).remove();
       }
     }
-    var md_eqLogic_#uid# = $(".md_cameraZoom[data-eqLogic_uid=#uid#]")
+    var md_eqLogic_#uid# = $(".md_cameraZoom[data-camera_uid=#uid#]")
     eqLogic_#id#.find('.directDisplay img').css('max-height',eqLogic_#id#.height() - 60).css('max-width',eqLogic_#id#.width());
     eqLogic_#id#.off('resize').on('resize',function(){
       eqLogic_#id#.find('.directDisplay img').css('max-height',eqLogic_#id#.height() - 60).css('max-width',eqLogic_#id#.width());
