@@ -179,5 +179,8 @@
         "Le fichier est vide : ": "",
         "Impossible de trouver la commande ON": "",
         "Impossible de trouver la commande OFF": ""
+    },
+    "info.json": {
+        "Plugin pour afficher les caméras IP L'affichage vidéo de la caméra s'effectue par snapshot (capture) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP": ""
     }
 }

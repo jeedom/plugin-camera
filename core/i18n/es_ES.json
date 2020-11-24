@@ -179,5 +179,8 @@
         "Le fichier est vide : ": "El archivo esta vacio:",
         "Impossible de trouver la commande ON": "No se puede encontrar el comando ON",
         "Impossible de trouver la commande OFF": "No se puede encontrar el comando OFF"
+    },
+    "info.json": {
+        "Plugin pour afficher les caméras IP L'affichage vidéo de la caméra s'effectue par snapshot (capture) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP": "Complemento para mostrar las cámaras IP La visualización de video de la cámara se realiza mediante una instantánea (captura) sucesiva cada segundo. El complemento es compatible con cámaras RTSP"
     }
 }

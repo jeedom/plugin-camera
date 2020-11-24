@@ -47,7 +47,7 @@ foreach ($discover_cameras as $cam) {
 	echo '</td>';
 	echo '<td>';
 	if ($cam['exist'] === false) {
-		echo '<a class="btn btn-success btn-sm bt_addDiscoverCam"><i class="fa fa-plus"> {{Ajouter}}</a>';
+		echo '<a class="btn btn-success btn-sm bt_addDiscoverCam"><i class="fas fa-plus"> {{Ajouter}}</a>';
 	}
 	echo '</td>';
 	echo '</tr>';

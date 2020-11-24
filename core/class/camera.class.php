@@ -350,6 +350,16 @@ class camera extends eqLogic {
 		$this->save();
 	}
 	
+	public function decrypt(){
+		$this->setConfiguration('password',utils::decrypt($this->getConfiguration('password')));
+		$this->setConfiguration('localApiKey',utils::decrypt($this->getConfiguration('localApiKey')));
+	}
+	
+	public function encrypt(){
+		$this->setConfiguration('password',utils::encrypt($this->getConfiguration('password')));
+		$this->setConfiguration('localApiKey',utils::encrypt($this->getConfiguration('localApiKey')));
+	}
+	
 	public function preSave() {
 		if ($this->getConfiguration('alertMessageCommand') != '') {
 			$cmd = cmd::byId(str_replace('#', '', $this->getConfiguration('alertMessageCommand')));

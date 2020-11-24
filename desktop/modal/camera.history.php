@@ -45,7 +45,7 @@ foreach ($files as $date => &$file) {
 	echo '<a class="btn btn-xs btn-danger bt_removeCameraFile" data-day="1" data-filename="' . $camera->getId() . '/' . $cameraName . '_' . $date . '*"><i class="fas fa-trash"></i> {{Supprimer}}</a> ';
 	echo '<a class="btn btn-xs btn-success" target="_blank"  href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $cameraName . '_' . $date . '*') . '" ><i class="fas fa-download"></i> {{Télécharger}}</a> ';
 	echo '<span class="cameraHistoryDate">'.$date.'</span>';
-	echo ' <a class="btn btn-xs btn-default toggleList"><i class="fa fa-chevron-down"></i></a> ';
+	echo ' <a class="btn btn-xs btn-default toggleList"><i class="fas fa-chevron-down"></i></a> ';
 	echo '</legend>';
 	echo '<div class="cameraThumbnailContainer">';
 	krsort($file);
@@ -56,7 +56,7 @@ foreach ($files as $date => &$file) {
 			$i++;
 		}
 		echo '<div class="cameraDisplayCard" style="padding:5px;height:170px;">';
-		echo '<center><i class="fa ' . $fontType . ' pull-right"></i>  ' . str_replace('-', ':', $time) . '</center>';
+		echo '<center><i class="fas ' . $fontType . ' pull-right"></i>  ' . str_replace('-', ':', $time) . '</center>';
 		if (strpos($filename, '.mp4')) {
 			echo '<video class="displayVideo" width="150" height="100" controls loop data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer"><source src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '">Your browser does not support the video tag.</video>';
 		} else {
