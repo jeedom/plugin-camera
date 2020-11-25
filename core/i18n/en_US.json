@@ -79,10 +79,15 @@
         "Capture": "Capture",
         "Alimentation": "Power supply",
         "Commandes": "Commands",
+        "Général": "Main",
+        "Nom de l'équipement": "Name of equipment",
         "Nom de l'équipement caméra": "Camera equipment name",
         "Objet parent": "Parent object",
+        "Catégorie": "Category",
+        "Options": "Options",
         "Activer": "Activate",
         "Visible": "Visible",
+        "Paramètres": "Settings",
         "IP": "IP",
         "HTTP": "HTTP",
         "HTTPS": "HTTPS",
@@ -97,6 +102,7 @@
         "Stream du flux RTSP": "Stream of RTSP stream",
         "Option flux video": "Video stream option",
         "Position sur le panel": "Positon on the panel",
+        "Informations": "Information",
         "Modèle": "Model",
         "Ne pas compresser ou redimensionner l'image": "Do not compress or resize the image",
         "Miniature": "Miniature",
@@ -106,18 +112,20 @@
         "Qualité (%)": "Quality (%)",
         "Taille (% - 0 : automatique)": "Size (% - 0 : automatic)",
         "Normal": "Normal",
+        "Vidéo": "Video",
         "Durée maximum d'un enregistrement (s)": "Maximum duration of a recording (s)",
         "Toujours faire une video": "Always make a video",
         "Nombre d'images par seconde de la vidéo": "Number of frames per second of the video",
         "Seuil de détection mouvement (0-100)": "Motion detection threshold (0-100)",
         "Supprimer toutes les captures de la caméra": "Delete all camera captures",
         "Commande ON": "ON command",
-        "OFF": "Off",
+        "Commande OFF": "OFF command",
         "Ajouter une commande": "Add a command",
+        "Id": "ID",
         "Nom": "Name",
         "Type": "Type",
         "Requête": "Request",
-        "Options": "Options"
+        "Action": "Action"
     },
     "plugins\/camera\/desktop\/js\/camera.js": {
         "Santé Caméras": "Cameras Health",
@@ -181,6 +189,6 @@
         "Impossible de trouver la commande OFF": "Unable to find the OFF command"
     },
     "info.json": {
-        "Plugin pour afficher les caméras IP L'affichage vidéo de la caméra s'effectue par snapshot (capture) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP": "Plugin to display IP cameras The video display of the camera is performed by successive snapshot (capture) every second. The plugin is compatible with RTSP cameras"
+        "Plugin permettant l'affichage des caméras IP. L'affichage vidéo de la caméra s'effectue par snapshots (captures) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP.": "Plugin allowing the display of IP cameras. The video display of the camera is carried out by successive snapshots (captures) every second. The plugin is compatible with RTSP cameras"
     }
 }

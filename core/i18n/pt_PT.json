@@ -79,10 +79,15 @@
         "Capture": "Captura",
         "Alimentation": "Alimento",
         "Commandes": "Comandos",
+        "Général": "Geral",
+        "Nom de l'équipement": "Nome de equipamentos",
         "Nom de l'équipement caméra": "Nome do equipamento da câmera",
         "Objet parent": "Objeto pai",
+        "Catégorie": "Categoria",
+        "Options": "Opções",
         "Activer": "Ativar",
         "Visible": "Visivél",
+        "Paramètres": "Configurações",
         "IP": "IP",
         "HTTP": "HTTP",
         "HTTPS": "HTTPS",
@@ -97,6 +102,7 @@
         "Stream du flux RTSP": "Fluxo de fluxo RTSP",
         "Option flux video": "Opção de transmissão de vídeo",
         "Position sur le panel": "Posição no painel",
+        "Informations": "Informação",
         "Modèle": "Modelo",
         "Ne pas compresser ou redimensionner l'image": "Não comprima ou redimensione a imagem",
         "Miniature": "Miniatura",
@@ -106,18 +112,20 @@
         "Qualité (%)": "Qualidade (%)",
         "Taille (% - 0 : automatique)": "Tamanho (% - 0: automático)",
         "Normal": "Normal",
+        "Vidéo": "Vídeo",
         "Durée maximum d'un enregistrement (s)": "Duração máxima de uma gravação",
         "Toujours faire une video": "Sempre faça um vídeo",
         "Nombre d'images par seconde de la vidéo": "Número de quadros por segundo do vídeo",
         "Seuil de détection mouvement (0-100)": "Limiar de detecção de movimento (0-100)",
         "Supprimer toutes les captures de la caméra": "Excluir todas as capturas de câmera",
         "Commande ON": "Comando ON",
-        "OFF": "Fora",
+        "Commande OFF": "Comando OFF",
         "Ajouter une commande": "Adicionar comando",
+        "Id": "ID",
         "Nom": "Nome",
         "Type": "Tipo",
         "Requête": "Pedido",
-        "Options": "Opções"
+        "Action": "Ação"
     },
     "plugins\/camera\/desktop\/js\/camera.js": {
         "Santé Caméras": "Câmeras de saúde",
@@ -181,6 +189,6 @@
         "Impossible de trouver la commande OFF": "Não foi possível encontrar o comando OFF"
     },
     "info.json": {
-        "Plugin pour afficher les caméras IP L'affichage vidéo de la caméra s'effectue par snapshot (capture) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP": "Plug-in para exibir câmeras IP A exibição de vídeo da câmera é realizada por instantâneo (captura) sucessivo a cada segundo. O plug-in é compatível com câmeras RTSP"
+        "Plugin permettant l'affichage des caméras IP. L'affichage vidéo de la caméra s'effectue par snapshots (captures) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP.": "Plugin que permite a exibição de câmeras IP. A exibição do vídeo da câmera é realizada por sucessivos instantâneos (capturas) a cada segundo. O plugin é compatível com câmeras RTSP"
     }
 }
