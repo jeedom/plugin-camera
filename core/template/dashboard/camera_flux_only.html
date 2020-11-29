@@ -22,9 +22,9 @@
       }
     }
     var md_eqLogic_#uid# = $(".md_cameraZoom[data-camera_uid=#uid#]")
-    eqLogic_#id#.find('.directDisplay img').css('max-height',eqLogic_#id#.height() - 60).css('max-width',eqLogic_#id#.width());
+    eqLogic_#id#.find('.directDisplay img').css('max-height',eqLogic_#id#.height()).css('max-width',eqLogic_#id#.width());
     eqLogic_#id#.off('resize').on('resize',function(){
-      eqLogic_#id#.find('.directDisplay img').css('max-height',eqLogic_#id#.height() - 60).css('max-width',eqLogic_#id#.width());
+      eqLogic_#id#.find('.directDisplay img').css('max-height',eqLogic_#id#.height()).css('max-width',eqLogic_#id#.width());
     });
     $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
       $('#md_modal').dialog({title: "Historique #name#"}).load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
