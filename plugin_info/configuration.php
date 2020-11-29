@@ -25,8 +25,8 @@ if (!isConnect('admin')) {
 <form class="form-horizontal">
 	<fieldset>
 		<div class="form-group">
-			<label class="col-lg-3 control-label">{{Moteur RTSP}}</label>
-			<div class="col-lg-4">
+			<label class="col-sm-3 control-label">{{Moteur RTSP}}</label>
+			<div class="col-xs-11 col-sm-7">
 				<select class="configKey form-control" data-l1key="rtsp::engine" >
 					<option value="avconv">avconv</option>
 					<option value="ffmpeg">ffmpeg</option>
@@ -34,37 +34,38 @@ if (!isConnect('admin')) {
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-lg-3 control-label">{{Chemin des enregistrements}}</label>
-			<div class="col-lg-4">
+			<label class="col-sm-3 control-label">{{Chemin des enregistrements}}</label>
+			<div class="col-xs-11 col-sm-7">
 				<input type="text" class="configKey form-control" data-l1key="recordDir" />
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-lg-3 control-label">{{Taille maximum du dossier d'enregistrement (Mo)}}</label>
-			<div class="col-lg-4">
+			<label class="col-sm-3 control-label">{{Taille maximum du dossier d'enregistrement (Mo)}}</label>
+			<div class="col-xs-11 col-sm-7">
 				<input type="text" class="configKey form-control" data-l1key="maxSizeRecordDir" />
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-lg-3 control-label">{{Le plugin caméra doit réagir aux interactions}}</label>
-			<div class="col-lg-4">
+			<label class="col-sm-3 control-label">{{Le plugin caméra doit réagir aux interactions}}</label>
+			<div class="col-xs-11 col-sm-7">
 				<textarea class="configKey form-control" data-l1key="interact::sentence"></textarea>
 			</div>
 		</div>
 	</fieldset>
 </form>
+<br/>
 <form class="form-horizontal">
 	<fieldset>
-		<legend>{{Panel}}</legend>
+		<legend><i class="fas fa-images"></i> {{Panel}}</legend>
 		<div class="form-group">
-			<label class="col-lg-3 control-label">{{Nombre de ligne}}</label>
-			<div class="col-lg-2">
+			<label class="col-sm-3 control-label">{{Nombre de ligne}}</label>
+			<div class="col-xs-11 col-sm-7">
 				<input type="number" class="configKey form-control" data-l1key="panel::nbLine" />
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-lg-3 control-label">{{Nombre de colonne}}</label>
-			<div class="col-lg-2">
+			<label class="col-sm-3 control-label">{{Nombre de colonne}}</label>
+			<div class="col-xs-11 col-sm-7">
 				<input type="number" class="configKey form-control" data-l1key="panel::nbColumn" />
 			</div>
 		</div>

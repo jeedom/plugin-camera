@@ -79,10 +79,15 @@
         "Capture": "",
         "Alimentation": "",
         "Commandes": "コマンド",
+        "Général": "コモン",
+        "Nom de l'équipement": "機器の名前",
         "Nom de l'équipement caméra": "",
         "Objet parent": "親オブジェクト",
+        "Catégorie": "カテゴリ",
+        "Options": "オプション",
         "Activer": "アクティブ",
         "Visible": "目に見えます",
+        "Paramètres": "設定",
         "IP": "",
         "HTTP": "",
         "HTTPS": "",
@@ -97,6 +102,7 @@
         "Stream du flux RTSP": "",
         "Option flux video": "",
         "Position sur le panel": "",
+        "Informations": "情報",
         "Modèle": "モデル",
         "Ne pas compresser ou redimensionner l'image": "",
         "Miniature": "",
@@ -106,18 +112,20 @@
         "Qualité (%)": "",
         "Taille (% - 0 : automatique)": "",
         "Normal": "ノーマル",
+        "Vidéo": "ビデオ",
         "Durée maximum d'un enregistrement (s)": "",
         "Toujours faire une video": "",
         "Nombre d'images par seconde de la vidéo": "",
         "Seuil de détection mouvement (0-100)": "",
         "Supprimer toutes les captures de la caméra": "",
         "Commande ON": "",
-        "OFF": "オフ",
+        "Commande OFF": "",
         "Ajouter une commande": "コマンドの追加",
+        "Id": "",
         "Nom": "表題",
         "Type": "タイプ",
         "Requête": "",
-        "Options": "オプション"
+        "Action": "アクション"
     },
     "plugins\/camera\/desktop\/js\/camera.js": {
         "Santé Caméras": "",
@@ -181,6 +189,6 @@
         "Impossible de trouver la commande OFF": ""
     },
     "info.json": {
-        "Plugin pour afficher les caméras IP L'affichage vidéo de la caméra s'effectue par snapshot (capture) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP": ""
+        "Plugin permettant l'affichage des caméras IP. L'affichage vidéo de la caméra s'effectue par snapshots (captures) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP.": ""
     }
 }

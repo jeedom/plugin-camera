@@ -79,10 +79,15 @@
         "Capture": "",
         "Alimentation": "",
         "Commandes": "Comandi",
+        "Général": "Principale",
+        "Nom de l'équipement": "Nome dispositivo",
         "Nom de l'équipement caméra": "",
         "Objet parent": "Oggetto padre",
+        "Catégorie": "Categoria",
+        "Options": "Opzioni",
         "Activer": "Attivare",
         "Visible": "Visibile",
+        "Paramètres": "Impostazioni",
         "IP": "",
         "HTTP": "",
         "HTTPS": "",
@@ -97,6 +102,7 @@
         "Stream du flux RTSP": "",
         "Option flux video": "",
         "Position sur le panel": "",
+        "Informations": "Informazioni",
         "Modèle": "Modello",
         "Ne pas compresser ou redimensionner l'image": "",
         "Miniature": "",
@@ -106,18 +112,20 @@
         "Qualité (%)": "",
         "Taille (% - 0 : automatique)": "",
         "Normal": "Normale",
+        "Vidéo": "",
         "Durée maximum d'un enregistrement (s)": "",
         "Toujours faire une video": "",
         "Nombre d'images par seconde de la vidéo": "",
         "Seuil de détection mouvement (0-100)": "",
         "Supprimer toutes les captures de la caméra": "",
         "Commande ON": "",
-        "OFF": "",
+        "Commande OFF": "",
         "Ajouter une commande": "Aggiungi un comando",
+        "Id": "",
         "Nom": "Nome",
         "Type": "Tipo",
         "Requête": "",
-        "Options": "Opzioni"
+        "Action": "Azione"
     },
     "plugins\/camera\/desktop\/js\/camera.js": {
         "Santé Caméras": "",
@@ -181,6 +189,6 @@
         "Impossible de trouver la commande OFF": ""
     },
     "info.json": {
-        "Plugin pour afficher les caméras IP L'affichage vidéo de la caméra s'effectue par snapshot (capture) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP": ""
+        "Plugin permettant l'affichage des caméras IP. L'affichage vidéo de la caméra s'effectue par snapshots (captures) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP.": ""
     }
 }
