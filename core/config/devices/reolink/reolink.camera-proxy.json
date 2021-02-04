@@ -1,0 +1,10 @@
+{
+  "name" : "Camera Proxy (pour argus si serveur proxy installé)",
+  "manufacturer" : "Reolink",
+  "configuration": {
+    "urlStream": "\/api\/v1\/cameras\/XXX",
+    "cameraStreamAccessUrl" : "",
+    "protocole": "http"
+  },
+  "commands": []
+}
