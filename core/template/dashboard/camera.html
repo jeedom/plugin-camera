@@ -102,7 +102,7 @@
       timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
     };
     function refreshImgCam#id#(){
-      if(!$('.eqLogic[data-eqLogic_uid=#uid#]') || !eqLogic_#id# || !eqLogic_#id#.find('.directDisplay')){
+      if(!$('.eqLogic[data-eqLogic_uid=#uid#]') || $('.eqLogic[data-eqLogic_uid=#uid#]').length == 0 || !eqLogic_#id# || !eqLogic_#id#.find('.directDisplay')){
         return;
       }
       if(!md_eqLogic_#uid#.is(':visible') && $(".md_cameraZoom").is(':visible')){
