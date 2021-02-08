@@ -2,6 +2,8 @@
     "changelog.md": {
         "Changelog Caméra": "Changelog Camera",
         "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text",
+        "04\/02\/2021": "02\/04\/2021",
+        "Correction d'un soucis qui n'arretait pas la recuperation des images meme si il n'y avait plus de caméra d'affiché": "Fixed an issue that did not stop retrieving images even if there was no longer a camera displayed",
         "29\/11\/2020": "11\/29\/2020",
         "Correction d'un soucis d'affichage d'image sur les designs": "Fixed an image display issue on designs",
         "24\/11\/2020": "24\/11\/2020",
