@@ -1,0 +1,10 @@
+{
+  "name" : "DS-2DE2A404IW-DE3",
+  "remark" : "",
+  "manufacturer" : "Hikvision",
+  "configuration": {
+    "urlStream": "\/Streaming\/channels\/1\/picture",
+    "protocole": "http"
+  },
+  "commands": []
+}
