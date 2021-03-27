@@ -60,7 +60,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			?>
 		</div>
 	</div>
-
+	
 	<div class="col-xs-12 eqLogic" style="display: none;">
 		<div class="input-group pull-right" style="display:inline-flex">
 			<span class="input-group-btn">
@@ -110,17 +110,17 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									</div>
 								</div>
 								<div class="form-group">
-	<label class="col-sm-3 control-label">{{Catégorie}}</label>
-	<div class="col-sm-9">
-		<?php
-		foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
-			echo '<label class="checkbox-inline">';
-			echo '<input type="checkbox" class="eqLogicAttr" data-l1key="category" data-l2key="' . $key . '" />' . $value['name'];
-			echo '</label>';
-		}
-		?>
-	</div>
-</div>
+									<label class="col-sm-3 control-label">{{Catégorie}}</label>
+									<div class="col-sm-9">
+										<?php
+										foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
+											echo '<label class="checkbox-inline">';
+											echo '<input type="checkbox" class="eqLogicAttr" data-l1key="category" data-l2key="' . $key . '" />' . $value['name'];
+											echo '</label>';
+										}
+										?>
+									</div>
+								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">{{Options}}</label>
 									<div class="col-xs-11 col-sm-7">
@@ -128,7 +128,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 										<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
 									</div>
 								</div>
-
+								
 								<br/>
 								<legend><i class="fas fa-cogs"></i> {{Paramètres}}</legend>
 								<div class="form-group">
@@ -158,7 +158,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 										<input type="text" class="eqLogicAttr form-control"  data-l1key="configuration" data-l2key="username" placeholder="{{Nom d'utilisateur}}"/>
 									</div>
 								</div>
-									<div class="form-group">
+								<div class="form-group">
 									<label class="col-sm-3 control-label">{{Mot de passe}}</label>
 									<div class="col-xs-11 col-sm-7">
 										<input type="password" autocomplete="new-password" class="eqLogicAttr form-control"  data-l1key="configuration" data-l2key="password" placeholder="{{Mot de passe}}"/>
@@ -198,11 +198,12 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							</fieldset>
 						</form>
 					</div>
-
+					
 					<div class="col-lg-5">
 						<form class="form-horizontal">
 							<fieldset>
 								<legend><i class="fas fa-info"></i> {{Informations}}</legend>
+								<div class="alert alert-info">{{Si votre caméra n'est pas dans la liste vous pouvez trouver}} <a href="https://www.ispyconnect.com/cameras">{{ici}}</a> {{les informations de configuration pour pas mal de camera}}</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">{{Modèle}}</label>
 									<div class="col-xs-11 col-sm-7">
@@ -230,7 +231,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 										</select>
 									</div>
 								</div>
-<br/>
+								<br/>
 								<div class="form-group">
 									<label class="col-sm-3"></label>
 									<div class="col-sm-7 text-center">
@@ -242,168 +243,168 @@ $eqLogics = eqLogic::byType($plugin->getId());
 					</div>
 				</div>
 			</div>
-
+			
 			<div role="tabpanel" class="tab-pane" id="displaytab">
 				<br/>
 				<form class="form-horizontal">
 					<fieldset>
-					<legend><i class="fas fa-users-cog"></i> {{Configuration}}</legend>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">{{Ne pas compresser ou redimensionner l'image}}</label>
-						<div class="col-xs-11 col-sm-7">
-							<input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="doNotCompressImage" />
+						<legend><i class="fas fa-users-cog"></i> {{Configuration}}</legend>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">{{Ne pas compresser ou redimensionner l'image}}</label>
+							<div class="col-xs-11 col-sm-7">
+								<input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="doNotCompressImage" />
+							</div>
 						</div>
-					</div>
-					<br/>
-					<legend><i class="fas fa-photo-video"></i> {{Miniature}}</legend>
-					<table id="table_image" class="table table-bordered table-condensed">
-						<thead>
-							<tr>
-								<th style="width : 70px;"></th>
-								<th style="width : 300px;">{{Dashboard}}</th>
-								<th style="width : 300px;">{{Mobile}}</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><label>{{Rafraichissement (s)}}</label></td>
-								<td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::refresh" /></td>
-								<td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::mobilerefresh" /></td>
-							</tr>
-							<tr>
-								<td><label>{{Qualité (%)}}</label></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::compress" /></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobilecompress" /></td>
-							</tr>
-							<tr>
-								<td><label>{{Taille (% - 0 : automatique)}}</label></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::resize" /></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobileresize" /></td>
-							</tr>
-						</tbody>
-					</table>
-					<legend>{{Normal}}</legend>
-					<table id="table_image" class="table table-bordered table-condensed">
-						<thead>
-							<tr>
-								<th style="width : 70px;"></th>
-								<th style="width : 300px;">{{Dashboard}}</th>
-								<th style="width : 300px;">{{Mobile}}</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><label>{{Rafraichissement (s)}}</label></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::refresh" /></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobilerefresh" /></td>
-							</tr>
-							<tr>
-								<td><label>{{Qualité (%)}}</label></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::compress" /></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobilecompress" /></td>
-							</tr>
-							<tr>
-								<td><label>{{Taille (% - 0 : automatique)}}</label></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::resize" /></td>
-								<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobileresize" /></td>
-							</tr>
-						</tbody>
-					</table>
-				</fieldset>
+						<br/>
+						<legend><i class="fas fa-photo-video"></i> {{Miniature}}</legend>
+						<table id="table_image" class="table table-bordered table-condensed">
+							<thead>
+								<tr>
+									<th style="width : 70px;"></th>
+									<th style="width : 300px;">{{Dashboard}}</th>
+									<th style="width : 300px;">{{Mobile}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><label>{{Rafraichissement (s)}}</label></td>
+									<td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::refresh" /></td>
+									<td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::mobilerefresh" /></td>
+								</tr>
+								<tr>
+									<td><label>{{Qualité (%)}}</label></td>
+									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::compress" /></td>
+									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobilecompress" /></td>
+								</tr>
+								<tr>
+									<td><label>{{Taille (% - 0 : automatique)}}</label></td>
+									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::resize" /></td>
+									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="thumbnail::mobileresize" /></td>
+								</tr>
+							</tbody>
+						</table>
+						<legend>{{Normal}}</legend>
+						<table id="table_image" class="table table-bordered table-condensed">
+							<thead>
+								<tr>
+									<th style="width : 70px;"></th>
+									<th style="width : 300px;">{{Dashboard}}</th>
+									<th style="width : 300px;">{{Mobile}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><label>{{Rafraichissement (s)}}</label></td>
+									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::refresh" /></td>
+									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobilerefresh" /></td>
+								</tr>
+								<tr>
+									<td><label>{{Qualité (%)}}</label></td>
+									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::compress" /></td>
+									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobilecompress" /></td>
+								</tr>
+								<tr>
+									<td><label>{{Taille (% - 0 : automatique)}}</label></td>
+									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::resize" /></td>
+									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobileresize" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</fieldset>
 				</form>
 			</div>
-
+			
 			<div role="tabpanel" class="tab-pane" id="capturetab">
 				<br/>
+				<form class="form-horizontal">
+					<fieldset>
+						<legend><i class="fas fa-film"></i> {{Vidéo}}</legend>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">{{Durée maximum d'un enregistrement (s)}}</label>
+							<div class="col-xs-11 col-sm-7">
+								<input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="maxReccordTime" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">{{Toujours faire une video}}</label>
+							<div class="col-xs-11 col-sm-7">
+								<input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="preferVideo" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">{{Nombre d'images par seconde de la vidéo}}</label>
+							<div class="col-xs-11 col-sm-7">
+								<input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="videoFramerate" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">{{Seuil de détection mouvement (0-100)}}</label>
+							<div class="col-xs-11 col-sm-7">
+								<input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="moveThreshold" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">{{Supprimer toutes les captures de la caméra}}</label>
+							<div class="col-xs-11 col-sm-7">
+								<a class="btn btn-danger" id="bt_removeAllCapture"><i class="fas fa-trash"></i> {{Supprimer}}</a>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			
+			<div role="tabpanel" class="tab-pane" id="alimtab">
+			</br>
 			<form class="form-horizontal">
 				<fieldset>
-				<legend><i class="fas fa-film"></i> {{Vidéo}}</legend>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">{{Durée maximum d'un enregistrement (s)}}</label>
-					<div class="col-xs-11 col-sm-7">
-						<input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="maxReccordTime" />
-					</div>
-				</div>
 					<div class="form-group">
-					<label class="col-sm-3 control-label">{{Toujours faire une video}}</label>
-					<div class="col-xs-11 col-sm-7">
-						<input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="preferVideo" />
+						<label class="col-sm-3 control-label">{{Commande ON}}</label>
+						<div class="col-xs-11 col-sm-7">
+							<div class="input-group">
+								<input type="text" class="eqLogicAttr form-control roundedLeft" data-l1key="configuration" data-l2key="commandOn"/>
+								<span class="input-group-btn">
+									<a class="btn btn-default listCmdActionOther roundedRight"><i class="fas fa-list-alt"></i></a>
+								</span>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">{{Nombre d'images par seconde de la vidéo}}</label>
-					<div class="col-xs-11 col-sm-7">
-						<input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="videoFramerate" />
-					</div>
-				</div>
 					<div class="form-group">
-					<label class="col-sm-3 control-label">{{Seuil de détection mouvement (0-100)}}</label>
-					<div class="col-xs-11 col-sm-7">
-						<input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="moveThreshold" />
+						<label class="col-sm-3 control-label">{{Commande OFF}}</label>
+						<div class="col-xs-11 col-sm-7">
+							<div class="input-group">
+								<input type="text" class="eqLogicAttr form-control roundedLeft" data-l1key="configuration" data-l2key="commandOff"/>
+								<span class="input-group-btn">
+									<a class="btn btn-default listCmdActionOther roundedRight"><i class="fas fa-list-alt"></i></a>
+								</span>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">{{Supprimer toutes les captures de la caméra}}</label>
-					<div class="col-xs-11 col-sm-7">
-						<a class="btn btn-danger" id="bt_removeAllCapture"><i class="fas fa-trash"></i> {{Supprimer}}</a>
-					</div>
-				</div>
-			</fieldset>
+				</fieldset>
 			</form>
 		</div>
-
-		<div role="tabpanel" class="tab-pane" id="alimtab">
-		</br>
-		<form class="form-horizontal">
-			<fieldset>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">{{Commande ON}}</label>
-				<div class="col-xs-11 col-sm-7">
-					<div class="input-group">
-						<input type="text" class="eqLogicAttr form-control roundedLeft" data-l1key="configuration" data-l2key="commandOn"/>
-						<span class="input-group-btn">
-							<a class="btn btn-default listCmdActionOther roundedRight"><i class="fas fa-list-alt"></i></a>
-						</span>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">{{Commande OFF}}</label>
-				<div class="col-xs-11 col-sm-7">
-					<div class="input-group">
-						<input type="text" class="eqLogicAttr form-control roundedLeft" data-l1key="configuration" data-l2key="commandOff"/>
-						<span class="input-group-btn">
-							<a class="btn btn-default listCmdActionOther roundedRight"><i class="fas fa-list-alt"></i></a>
-						</span>
-					</div>
-				</div>
-			</div>
-		</fieldset>
-		</form>
+		
+		
+		<div role="tabpanel" class="tab-pane" id="commandtab">
+			<a class="btn btn-default btn-sm pull-right cmdAction" data-action="add" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une commande}}</a>
+			<br/><br/>
+			<table id="table_cmd" class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th style="width : 70px;">{{Id}}</th>
+						<th style="width : 300px;">{{Nom}}</th>
+						<th style="width : 150px;">{{Type}}</th>
+						<th >{{Requête}}</th>
+						<th style="width : 150px;">{{Options}}</th>
+						<th style="width : 150px;">{{Action}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
+			
+		</div>
 	</div>
-
-
-	<div role="tabpanel" class="tab-pane" id="commandtab">
-		<a class="btn btn-default btn-sm pull-right cmdAction" data-action="add" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une commande}}</a>
-				<br/><br/>
-				<table id="table_cmd" class="table table-bordered table-condensed">
-			<thead>
-				<tr>
-					<th style="width : 70px;">{{Id}}</th>
-					<th style="width : 300px;">{{Nom}}</th>
-					<th style="width : 150px;">{{Type}}</th>
-					<th >{{Requête}}</th>
-					<th style="width : 150px;">{{Options}}</th>
-					<th style="width : 150px;">{{Action}}</th>
-				</tr>
-			</thead>
-			<tbody>
-
-			</tbody>
-		</table>
-
-	</div>
-</div>
 </div>
 </div>
 
