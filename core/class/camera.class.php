@@ -823,7 +823,7 @@ class camera extends eqLogic {
 			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 			curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 			if ($this->getConfiguration('username') != '') {
-				$userpwd = $this->getConfiguration('username') . ':' . $this->getConfiguration('password');
+				$userpwd = urlencode($this->getConfiguration('username')) . ':' . urlencode($this->getConfiguration('password'));
 				curl_setopt($ch, CURLOPT_USERPWD, $userpwd);
 				$headers = array(
 					'Content-Type:application/json',
