@@ -83,6 +83,9 @@
       "template" : {
         "dashboard" : "timePresence",
         "mobile" : "timePresence"
+      },
+      "configuration": {
+        "repeatEventManagement": "never"
       }
     },
     {
@@ -99,6 +102,9 @@
       "template" : {
         "dashboard" : "timeAlert",
         "mobile" : "timeAlert"
+      },
+      "configuration": {
+        "repeatEventManagement": "never"
       }
     },
     {
@@ -115,6 +121,9 @@
       "template" : {
         "dashboard" : "timePresence",
         "mobile" : "timePresence"
+      },
+      "configuration": {
+        "repeatEventManagement": "never"
       }
     }
   ]
