@@ -4,6 +4,9 @@
 >
 >Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte
 
+
+- Ajout de la camera Ubiquiti G4 bullet (attention il faut sur la camera activer les connexion anonyme)
+
 # 04/02/2021
 
 - Correction d'un soucis qui n'arretait pas la recuperation des images meme si il n'y avait plus de caméra d'affiché
