@@ -1100,9 +1100,16 @@ class cameraCmd extends cmd {
 		}else{
 			$url = $eqLogic->getUrl($request);
 			if (strpos($request, 'curl ') !== false) {
-				log::add('camera', 'debug', 'Executing ' . $url);
+				$replace = array(
+					'#username#' => $eqLogic->getConfiguration('username'),
+					'#password#' => $eqLogic->getConfiguration('password'),
+					'#ip#' => $eqLogic->getConfiguration('ip'),
+					'#port#' => $eqLogic->getConfiguration('port'),
+				);
+				$request = str_replace(array_keys($replace), $replace, $request);
+				log::add('camera', 'debug', 'Executing ' . $request);
 				shell_exec($request);
-			} else {
+			}  else {
 				$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
 				$http->setNoReportError(true);
 				$http->setCURLOPT_HTTPAUTH(CURLAUTH_ANY);
