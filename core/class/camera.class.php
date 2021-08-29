@@ -811,7 +811,12 @@ class camera extends eqLogic {
 		} else if (strpos($this->getConfiguration('urlStream'), '::') !== false) {
 			$class = explode('::', $this->getConfiguration('urlStream'))[0];
 			$function = explode('::', $this->getConfiguration('urlStream'))[1];
-			$data = $class::$function($this);
+			if (!method_exists($class, $function)) {
+				$data = '';
+				log::add('camera', 'debug', __('Impossible de trouver la function ', __FILE__) . $class . '::' . $function);
+			} else {
+				$data = $class::$function($this);
+			}
 		} else {
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
