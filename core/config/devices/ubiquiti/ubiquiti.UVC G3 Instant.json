@@ -1,0 +1,9 @@
+{
+  "name" : "Ubiquiti G3 Instant",
+  "manufacturer" : "Ubiquiti",
+  "configuration": {
+    "urlStream": "\/snap.jpeg",
+    "protocole": "http"
+  },
+  "commands": []
+}

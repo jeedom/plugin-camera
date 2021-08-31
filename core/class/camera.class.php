@@ -48,7 +48,7 @@ class camera extends eqLogic {
 	public static function getImgFilePath($_device) {
 		$files = ls(dirname(__FILE__) . '/../config/devices', $_device . '_*.{jpg,png}', false, array('files', 'quiet'));
 		foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
-			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $_device . '{.jpg,png}', false, array('files', 'quiet')) as $file) {
+			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $_device . '{.jpg,.png}', false, array('files', 'quiet')) as $file) {
 				$files[] = $folder . $file;
 			}
 		}
@@ -951,6 +951,9 @@ class camera extends eqLogic {
 	}
 
 	public function getImage() {
+		if (file_exists(__DIR__ . '/../config/devices/' . self::getImgFilePath($this->getConfiguration('device')) . '.png')) {
+			return 'plugins/camera/core/config/devices/' . self::getImgFilePath($this->getConfiguration('device')) . '.png';
+		}
 		return 'plugins/camera/core/config/devices/' . self::getImgFilePath($this->getConfiguration('device')) . '.jpg';
 	}
 
@@ -964,64 +967,8 @@ class cameraCmd extends cmd {
 
 	/*     * *********************Methode d'instance************************* */
 
-	public function imperihomeGenerate($ISSStructure) {
-		$eqLogic = $this->getEqLogic();
-		$object = $eqLogic->getObject();
-		$type = 'DevCamera';
-		$info_device = array(
-			'id' => $this->getId(),
-			'name' => $eqLogic->getName(),
-			'room' => (is_object($object)) ? $object->getId() : 99999,
-			'type' => $type,
-			'params' => array(),
-		);
-		$info_device['params'] = $ISSStructure[$info_device['type']]['params'];
-		$info_device['params'][0]['value'] = $eqLogic->getConfiguration('username');
-		$info_device['params'][1]['value'] = $eqLogic->getConfiguration('password');
-		$info_device['params'][2]['value'] = network::getNetworkAccess('internal') . '/' . $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'), true);
-		$info_device['params'][3]['value'] = '';
-		$info_device['params'][4]['value'] = network::getNetworkAccess('external') . '/' . $eqLogic->getUrl($eqLogic->getConfiguration('urlStream'), true);
-		$info_device['params'][5]['value'] = '';
-		return $info_device;
-	}
-
-	public function imperihomeAction($_action, $_value) {
-		return;
-	}
-
-	public function imperihomeCmd() {
-		if ($this->getLogicalId() == 'urlFlux') {
-			return true;
-		}
-		return false;
-	}
-
 	public function dontRemoveCmd() {
-		if ($this->getLogicalId() == 'recordCmd') {
-			return true;
-		}
-		if ($this->getLogicalId() == 'stopRecordCmd') {
-			return true;
-		}
-		if ($this->getLogicalId() == 'recordState') {
-			return true;
-		}
-		if ($this->getLogicalId() == 'browseRecord') {
-			return true;
-		}
-		if ($this->getLogicalId() == 'takeSnapshot') {
-			return true;
-		}
-		if ($this->getLogicalId() == 'sendSnapshot') {
-			return true;
-		}
-		if ($this->getLogicalId() == 'urlFlux') {
-			return true;
-		}
-		if ($this->getLogicalId() == 'on') {
-			return true;
-		}
-		if ($this->getLogicalId() == 'off') {
+		if (in_array($this->getLogicalId(), array('on', 'off', 'urlFlux', 'recordState', 'stopRecordCmd', 'takeSnapshot', 'sendSnapshot'))) {
 			return true;
 		}
 		return false;
