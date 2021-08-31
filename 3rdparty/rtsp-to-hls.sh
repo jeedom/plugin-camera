@@ -11,7 +11,7 @@ NAME=${2:-cctv}
 HLS_TIME=${HLS_TIME:-5}
 HLS_LIST_SIZE=${HLS_LIST_SIZE:-5}
 
-ffmpeg -i "$SOURCE" \
+ffmpeg -rtsp_transport tcp -i "$SOURCE" \
 -f hls \
 -vsync 0 -copyts -vcodec copy -acodec copy \
 -tune zerolatency \
