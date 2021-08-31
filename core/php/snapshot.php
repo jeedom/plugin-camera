@@ -29,8 +29,12 @@ if ($camera->getConfiguration('localApiKey') != init('apikey')) {
 }
 ob_clean();
 header('Content-Type: image/jpeg');
+$data = $camera->getSnapshot();
+if (!is_string($data)) {
+	die();
+}
 if ($camera->getConfiguration('doNotCompressImage', 0) == 1 || !function_exists('imagecreatefromstring')) {
-	echo $camera->getSnapshot();
+	echo $data;
 	exit();
 }
 if (init('mobile', 0) == 0) {
@@ -40,7 +44,6 @@ if (init('mobile', 0) == 0) {
 	$compress = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::mobilecompress', null) : $camera->getConfiguration('normal::mobilecompress', null);
 	$resize = (init('thumbnail') == 1) ? $camera->getConfiguration('thumbnail::mobileresize', null) : $camera->getConfiguration('normal::mobileresize', null);
 }
-$data = $camera->getSnapshot();
 if (init('width', 0) == 0 && ($compress == null || $compress >= 100) && ($resize == null || $resize >= 100)) {
 	echo $data;
 	exit();
