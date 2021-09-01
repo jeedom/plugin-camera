@@ -13,6 +13,9 @@ Après installation du plugin, il vous suffit de l'activer. Quelques paramètres
 -   **Le plugin caméra doit réagir aux interactions** : mots clés / phrases auxquel(le)s le plugin réagira via les interactions de Jeedom.
 -   **Panel** : permet d'afficher le panel (Menu Accueil → Caméra) et d'avoir une vue sur l'ensemble de vos caméras (voir plus bas). N'oubliez pas d'activer le panel dans la configuration du plugin pour y avoir accès plus tard.
 
+## Compatibilité
+
+Vous pouvez trouver [ici](https://compatibility.jeedom.com/index.php?v=d&p=home&plugin=camera) la liste des modules compatible avec le plugin
 
 # Configuration des équipements
 
