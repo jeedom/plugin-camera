@@ -11,10 +11,6 @@ sudo apt-get install -y ffmpeg
 echo 70 > ${PROGRESS_FILE}
 sudo apt-get install -y libav-tools
 echo 80 > ${PROGRESS_FILE}
-sudo apt-get install -y python-imaging
-echo 80 > ${PROGRESS_FILE}
-sudo apt-get install -y python-pil
-echo 80 > ${PROGRESS_FILE}
 sudo apt-get install -y php-gd
 echo 100 > ${PROGRESS_FILE}
 echo "Everything is successfully installed!"
