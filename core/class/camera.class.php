@@ -391,9 +391,6 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('maxReccordTime') == '') {
 			$this->setConfiguration('maxReccordTime', 600);
 		}
-		if ($this->getConfiguration('moveThreshold') == '') {
-			$this->setConfiguration('moveThreshold', 2);
-		}
 		if ($this->getConfiguration('cameraStreamAccessUrl') == '' && $this->getConfiguration('streamRTSP') == 1) {
 			$this->setConfiguration('streamRTSP', 0);
 		}

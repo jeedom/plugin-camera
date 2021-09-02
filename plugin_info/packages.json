@@ -1,9 +1,7 @@
 {
   "apt" : {
     "libav-tools" : {"alternative" : ["ffmpeg"]},
-    "ffmpeg" : {"alternative" : ["libav-tools"]},
-    "python-pil" : {},
-    "php-gd" : {}
+    "ffmpeg" : {"alternative" : ["libav-tools"]}
   },
   "post-install" : {
     "restart_apache" : true
