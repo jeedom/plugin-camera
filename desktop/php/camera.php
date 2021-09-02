@@ -166,15 +166,16 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">{{URL de snaphot}}</label>
-									<div class="col-xs-11 col-sm-7">
+									<div class="col-xs-11 col-sm-6">
 										<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="urlStream" placeholder="{{URL de capture}}" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">{{URL du flux}}</label>
-									<div class="col-xs-11 col-sm-7">
+									<div class="col-xs-11 col-sm-6">
 										<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cameraStreamAccessUrl" placeholder="{{URL du flux, RTSP}}" />
 									</div>
+
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">{{Stream du flux RTSP}}</label>
@@ -186,6 +187,15 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<label class="col-sm-3 control-label">{{Option flux video}}</label>
 									<div class="col-xs-11 col-sm-7">
 										<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="rtsp_option" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">{{Previsualiser}}</label>
+									<div class="col-xs-1 col-sm-1">
+										<a class="btn btn-default" id="bt_previewCam" style="width:100%;height:40px;"><i class="fas fa-eye" style="font-size:2.2em;"></i></a>
+									</div>
+									<div class="col-xs-6 col-sm-6">
+										<div class="alert alert-warning">{{N'oubliez pas de sauvegarder pour voir vos modifications avant la prévisualisation}}</div>
 									</div>
 								</div>
 								<div class="form-group">

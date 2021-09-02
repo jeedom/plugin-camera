@@ -24,6 +24,11 @@ $('#bt_discoverCam').on('click', function () {
   $('#md_modal').load('index.php?v=d&plugin=camera&modal=discover.cam').dialog('open');
 });
 
+$('#bt_previewCam').off('click').on('click',function(){
+  $('#md_modal').dialog({title: "{{Prévisualisation}}"});
+  $('#md_modal').load('index.php?v=d&plugin=camera&modal=camera.preview&id='+$('.eqLogicAttr[data-l1key=id]').value()).dialog('open');
+});
+
 $('.eqLogicAttr[data-l1key=configuration][data-l2key=doNotCompressImage]').on('change', function () {
   if($(this).value() == 1){
     $('.compressOpt').prop('disabled', true);
@@ -33,9 +38,6 @@ $('.eqLogicAttr[data-l1key=configuration][data-l2key=doNotCompressImage]').on('c
 });
 
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
-
-
-
 
 $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').on('change', function () {
   if($('.li_eqLogic.active').attr('data-eqlogic_id') != '' && $(this).value() != ''){
