@@ -2,7 +2,7 @@
 if (!isConnect()) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
-if (!substr_compare(init('src'), '.jpg', -strlen('.jpg'))) {
+if (substr_compare(init('src'), '.jpg', -strlen('.jpg')) !== 0) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
 if (strpos(init('src'), 'camera') === false) {
