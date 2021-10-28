@@ -34,7 +34,7 @@ krsort($files);
 <div id='div_cameraRecordAlert' style="display: none;"></div>
 <?php
 echo '<a class="btn btn-danger bt_removeCameraFile pull-right" data-all="1" data-filename="' . $camera->getId() . '/*"><i class="fas fa-trash"></i> {{Tout supprimer}}</a>';
-echo '<a class="btn btn-success  pull-right" target="_blank" href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/*') . '" ><i class="fas fa-download"></i> {{Tout télécharger}}</a>';
+//echo '<a class="btn btn-success  pull-right" target="_blank" href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/*') . '" ><i class="fas fa-download"></i> {{Tout télécharger}}</a>';
 ?>
 <?php
 $i = 0;
@@ -43,8 +43,8 @@ foreach ($files as $date => &$file) {
 	echo '<div class="div_dayContainer">';
 	echo '<legend>';
 	echo '<a class="btn btn-xs btn-danger bt_removeCameraFile" data-day="1" data-filename="' . $camera->getId() . '/' . $cameraName . '_' . $date . '*"><i class="fas fa-trash"></i> {{Supprimer}}</a> ';
-	echo '<a class="btn btn-xs btn-success" target="_blank"  href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $cameraName . '_' . $date . '*') . '" ><i class="fas fa-download"></i> {{Télécharger}}</a> ';
-	echo '<span class="cameraHistoryDate">'.$date.'</span>';
+	//echo '<a class="btn btn-xs btn-success" target="_blank"  href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $cameraName . '_' . $date . '*') . '" ><i class="fas fa-download"></i> {{Télécharger}}</a> ';
+	echo '<span class="cameraHistoryDate">' . $date . '</span>';
 	echo ' <a class="btn btn-xs btn-default toggleList"><i class="fas fa-chevron-down"></i></a> ';
 	echo '</legend>';
 	echo '<div class="cameraThumbnailContainer">';
@@ -71,58 +71,69 @@ foreach ($files as $date => &$file) {
 }
 ?>
 <script>
-$('.cameraThumbnailContainer').packery({gutter : 5});
-$('.displayImage').on('click', function() {
-	$('#md_modal2').dialog({title: "Image"});
-	$('#md_modal2').load('index.php?v=d&plugin=camera&modal=camera.displayImage&src='+ $(this).attr('src')).dialog('open');
-});
-$('.displayVideo').on('click', function() {
-	$('#md_modal2').dialog({title: "Vidéo"});
-	$('#md_modal2').load('index.php?v=d&plugin=camera&modal=camera.displayVideo&src='+ $(this).attr('data-src')).dialog('open');
-});
-$('.bt_removeCameraFile').on('click', function() {
-	var filename = $(this).attr('data-filename');
-	var card = $(this).closest('.cameraDisplayCard');
-	if($(this).attr('data-day') == 1){
-		card = $(this).closest('.div_dayContainer');
-	}
-	if($(this).attr('data-all') == 1){
-		card = $('.div_dayContainer');
-	}
-	$.ajax({
-		type: "POST",
-		url: "plugins/camera/core/ajax/camera.ajax.php",
-		data: {
-			action: "removeRecord",
-			file: filename,
-		},
-		dataType: 'json',
-		error: function(request, status, error) {
-			handleAjaxError(request, status, error,$('#div_cameraRecordAlert'));
-		},
-		success: function(data) {
-			if (data.state != 'ok') {
-				$('#div_cameraRecordAlert').showAlert({message: data.result, level: 'danger'});
-				return;
-			}
-			card.remove();
-			$(".cameraThumbnailContainer").slideToggle(1);
-			$('.cameraThumbnailContainer').packery({gutter : 5});
-			$(".cameraThumbnailContainer").slideToggle(1);
-		}
+	$('.cameraThumbnailContainer').packery({
+		gutter: 5
 	});
-});
+	$('.displayImage').on('click', function() {
+		$('#md_modal2').dialog({
+			title: "Image"
+		});
+		$('#md_modal2').load('index.php?v=d&plugin=camera&modal=camera.displayImage&src=' + $(this).attr('src')).dialog('open');
+	});
+	$('.displayVideo').on('click', function() {
+		$('#md_modal2').dialog({
+			title: "Vidéo"
+		});
+		$('#md_modal2').load('index.php?v=d&plugin=camera&modal=camera.displayVideo&src=' + $(this).attr('data-src')).dialog('open');
+	});
+	$('.bt_removeCameraFile').on('click', function() {
+		var filename = $(this).attr('data-filename');
+		var card = $(this).closest('.cameraDisplayCard');
+		if ($(this).attr('data-day') == 1) {
+			card = $(this).closest('.div_dayContainer');
+		}
+		if ($(this).attr('data-all') == 1) {
+			card = $('.div_dayContainer');
+		}
+		$.ajax({
+			type: "POST",
+			url: "plugins/camera/core/ajax/camera.ajax.php",
+			data: {
+				action: "removeRecord",
+				file: filename,
+			},
+			dataType: 'json',
+			error: function(request, status, error) {
+				handleAjaxError(request, status, error, $('#div_cameraRecordAlert'));
+			},
+			success: function(data) {
+				if (data.state != 'ok') {
+					$('#div_cameraRecordAlert').showAlert({
+						message: data.result,
+						level: 'danger'
+					});
+					return;
+				}
+				card.remove();
+				$(".cameraThumbnailContainer").slideToggle(1);
+				$('.cameraThumbnailContainer').packery({
+					gutter: 5
+				});
+				$(".cameraThumbnailContainer").slideToggle(1);
+			}
+		});
+	});
 
-$(".cameraThumbnailContainer").slideToggle(1);
-$(".cameraThumbnailContainer").eq(0).slideToggle(1);
-$('.toggleList').on('click', function() {
-	$(this).closest('.div_dayContainer').find(".cameraThumbnailContainer").slideToggle("slow");
+	$(".cameraThumbnailContainer").slideToggle(1);
+	$(".cameraThumbnailContainer").eq(0).slideToggle(1);
+	$('.toggleList').on('click', function() {
+		$(this).closest('.div_dayContainer').find(".cameraThumbnailContainer").slideToggle("slow");
+		$("img.lazy").lazyload({
+			container: $("#md_modal")
+		});
+	});
+
 	$("img.lazy").lazyload({
 		container: $("#md_modal")
 	});
-});
-
-$("img.lazy").lazyload({
-	container: $("#md_modal")
-});
 </script>
