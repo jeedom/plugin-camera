@@ -1,0 +1,9 @@
+{
+  "name" : "UVC G3 Dome",
+  "manufacturer" : "Ubiquiti",
+  "configuration": {
+    "urlStream": "\/snap.jpeg",
+    "protocole": "http"
+  },
+  "commands": []
+}
