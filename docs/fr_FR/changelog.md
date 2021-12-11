@@ -9,6 +9,7 @@
 # 11/12/2021
 
 - Support de nouvelles caméras
+- Ajout d'un bouton pour voir une prévisualisation de la camera sur la page de configuration
 
 # 31/08/2021
 
