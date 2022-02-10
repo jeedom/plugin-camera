@@ -1,13 +1,14 @@
 {
     "plugins\/camera\/plugin_info\/configuration.php": {
         "401 - Accès non autorisé": "401 - Accesso non autorizzato",
+        "Le plugin caméra doit réagir aux interactions": "Le plugin caméra doit réagir aux interactions",
         "Moteur RTSP": "Moteur RTSP",
         "Chemin des enregistrements": "Chemin des enregistrements",
-        "Taille maximum du dossier d'enregistrement (Mo)": "Taille maximum du dossier d'enregistrement (Mo)",
-        "Le plugin caméra doit réagir aux interactions": "Le plugin caméra doit réagir aux interactions",
+        "Taille maximale du dossier d'enregistrement": "Taille maximale du dossier d'enregistrement",
+        "Mo": "Mo",
         "Panel": "Pannello",
-        "Nombre de ligne": "Nombre de ligne",
-        "Nombre de colonne": "Nombre de colonne"
+        "Nombre de lignes": "Nombre de lignes",
+        "Nombre de colonnes": "Nombre de colonnes"
     },
     "plugins\/camera\/desktop\/modal\/camera.displayVideo.php": {
         "401 - Accès non autorisé": "401 - Accesso non autorizzato"
@@ -52,6 +53,11 @@
         "Ajouter": "Aggiungi",
         "Création réussie": "Création réussie"
     },
+    "plugins\/camera\/desktop\/modal\/camera.preview.php": {
+        "Equipement introuvable : ": "Equipement introuvable :",
+        "L\\'équipement n\\'est pas une camera": "L\\'équipement n\\'est pas une camera",
+        "401 - Accès non autorisé": "401 - Accès non autorisé"
+    },
     "plugins\/camera\/desktop\/modal\/camera.displayImage.php": {
         "401 - Accès non autorisé": "401 - Accesso non autorizzato"
     },
@@ -69,7 +75,10 @@
         "Découverte": "Découverte",
         "Santé": "Salute",
         "Mes caméras": "Mes caméras",
+        "Aucun équipement Template trouvé, cliquer sur \"Ajouter\" pour commencer": "Aucun équipement Template trouvé, cliquer sur \"Ajouter\" pour commencer",
         "Rechercher": "Ricercare",
+        "Equipement visible": "Equipement visible",
+        "Equipement non visible": "Equipement non visible",
         "Configuration avancée": "Configurazione avanzata",
         "Dupliquer": "Duplicato",
         "Sauvegarder": "Salva",
@@ -79,7 +88,7 @@
         "Capture": "Capture",
         "Alimentation": "Alimentation",
         "Commandes": "Comandi",
-        "Général": "Principale",
+        "Paramètres généraux": "Paramètres généraux",
         "Nom de l'équipement": "Nome dispositivo",
         "Nom de l'équipement caméra": "Nom de l'équipement caméra",
         "Objet parent": "Oggetto padre",
@@ -87,7 +96,7 @@
         "Options": "Opzioni",
         "Activer": "Attivare",
         "Visible": "Visibile",
-        "Paramètres": "Impostazioni",
+        "Paramètres spécifiques": "Paramètres spécifiques",
         "IP": "IP",
         "HTTP": "HTTP",
         "HTTPS": "HTTPS",
@@ -101,6 +110,8 @@
         "URL du flux, RTSP": "URL du flux, RTSP",
         "Stream du flux RTSP": "Stream du flux RTSP",
         "Option flux video": "Option flux video",
+        "Previsualiser": "Previsualiser",
+        "N'oubliez pas de sauvegarder pour voir vos modifications avant la prévisualisation": "N'oubliez pas de sauvegarder pour voir vos modifications avant la prévisualisation",
         "Position sur le panel": "Position sur le panel",
         "Informations": "Informazioni",
         "Si votre caméra n'est pas dans la liste vous pouvez trouver": "Si votre caméra n'est pas dans la liste vous pouvez trouver",
@@ -119,7 +130,6 @@
         "Durée maximum d'un enregistrement (s)": "Durée maximum d'un enregistrement (s)",
         "Toujours faire une video": "Toujours faire une video",
         "Nombre d'images par seconde de la vidéo": "Nombre d'images par seconde de la vidéo",
-        "Seuil de détection mouvement (0-100)": "Seuil de détection mouvement (0-100)",
         "Supprimer toutes les captures de la caméra": "Supprimer toutes les captures de la caméra",
         "Commande ON": "Commande ON",
         "Commande OFF": "Commande OFF",
@@ -133,6 +143,7 @@
     "plugins\/camera\/desktop\/js\/camera.js": {
         "Santé Caméras": "Santé Caméras",
         "Découverte Caméras": "Découverte Caméras",
+        "Prévisualisation": "Prévisualisation",
         "URL de la commande": "URL de la commande",
         "URL de la commande de stop de mouvement (caméra motirisée)": "URL de la commande de stop de mouvement (caméra motirisée)",
         "Valeur retour d\\'état": "Valore di feedback",
@@ -184,6 +195,7 @@
         "Alerte sur la camera : ": "Alerte sur la camera :",
         " à ": "a",
         "[camera\/sendSnap] Erreur lors de l\\'envoi des images : ": "[camera\/sendSnap] Erreur lors de l\\'envoi des images :",
+        "Impossible de trouver la function ": "Impossible de trouver la function",
         "Erreur sur ": "Errore acceso",
         "Impossible de creer le dossier : ": "Impossible de creer le dossier :",
         "Impossible d\\'écrire dans le dossier : ": "Impossible d\\'écrire dans le dossier :",
