@@ -1,13 +1,14 @@
 {
     "plugins\/camera\/plugin_info\/configuration.php": {
         "401 - Accès non autorisé": "401 - Unauthorized access",
+        "Le plugin caméra doit réagir aux interactions": "The camera plugin must react to interactions",
         "Moteur RTSP": "RTSP",
         "Chemin des enregistrements": "Record path",
-        "Taille maximum du dossier d'enregistrement (Mo)": "Maximum recording folder size (MB)",
-        "Le plugin caméra doit réagir aux interactions": "The camera plugin must react to interactions",
+        "Taille maximale du dossier d'enregistrement": "Maximum recording folder size",
+        "Mo": "Mo",
         "Panel": "Panel",
-        "Nombre de ligne": "Number of lines",
-        "Nombre de colonne": "Number of columns"
+        "Nombre de lignes": "Number of lines",
+        "Nombre de colonnes": "Number of columns"
     },
     "plugins\/camera\/desktop\/modal\/camera.displayVideo.php": {
         "401 - Accès non autorisé": "401 - Unauthorized access"
@@ -52,6 +53,11 @@
         "Ajouter": "Add",
         "Création réussie": "Successful creation"
     },
+    "plugins\/camera\/desktop\/modal\/camera.preview.php": {
+        "Equipement introuvable : ": "Equipment not found:",
+        "L\\'équipement n\\'est pas une camera": "The equipment is not a camera",
+        "401 - Accès non autorisé": "401 - Unauthorized Access"
+    },
     "plugins\/camera\/desktop\/modal\/camera.displayImage.php": {
         "401 - Accès non autorisé": "401 - Unauthorized access"
     },
@@ -69,7 +75,10 @@
         "Découverte": "Discovery",
         "Santé": "Health",
         "Mes caméras": "My cameras",
+        "Aucun équipement Template trouvé, cliquer sur \"Ajouter\" pour commencer": "No Template equipment found, click \"Add\" to start",
         "Rechercher": "Search",
+        "Equipement visible": "Visible equipment",
+        "Equipement non visible": "Equipment not visible",
         "Configuration avancée": "Advanced configuration",
         "Dupliquer": "Duplicate",
         "Sauvegarder": "Save",
@@ -79,7 +88,7 @@
         "Capture": "Capture",
         "Alimentation": "Power supply",
         "Commandes": "Commands",
-        "Général": "Main",
+        "Paramètres généraux": "General settings",
         "Nom de l'équipement": "Name of equipment",
         "Nom de l'équipement caméra": "Camera equipment name",
         "Objet parent": "Parent object",
@@ -87,7 +96,7 @@
         "Options": "Options",
         "Activer": "Activate",
         "Visible": "Visible",
-        "Paramètres": "Settings",
+        "Paramètres spécifiques": "Specific parameters",
         "IP": "IP",
         "HTTP": "HTTP",
         "HTTPS": "HTTPS",
@@ -101,6 +110,8 @@
         "URL du flux, RTSP": "URL of RTSP stream",
         "Stream du flux RTSP": "Stream of RTSP stream",
         "Option flux video": "Video stream option",
+        "Previsualiser": "Preview",
+        "N'oubliez pas de sauvegarder pour voir vos modifications avant la prévisualisation": "Don't forget to save to see your changes before previewing",
         "Position sur le panel": "Positon on the panel",
         "Informations": "Information",
         "Si votre caméra n'est pas dans la liste vous pouvez trouver": "If your camera is not in the list you can find",
@@ -119,7 +130,6 @@
         "Durée maximum d'un enregistrement (s)": "Maximum duration of a recording (s)",
         "Toujours faire une video": "Always make a video",
         "Nombre d'images par seconde de la vidéo": "Number of frames per second of the video",
-        "Seuil de détection mouvement (0-100)": "Motion detection threshold (0-100)",
         "Supprimer toutes les captures de la caméra": "Delete all camera captures",
         "Commande ON": "ON command",
         "Commande OFF": "OFF command",
@@ -133,6 +143,7 @@
     "plugins\/camera\/desktop\/js\/camera.js": {
         "Santé Caméras": "Cameras Health",
         "Découverte Caméras": "Scan Cameras",
+        "Prévisualisation": "Preview",
         "URL de la commande": "Command URL",
         "URL de la commande de stop de mouvement (caméra motirisée)": "Motion stop command URL (ptz camera)",
         "Valeur retour d\\'état": "Status return value",
@@ -184,6 +195,7 @@
         "Alerte sur la camera : ": "Alert on camera :",
         " à ": "at ",
         "[camera\/sendSnap] Erreur lors de l\\'envoi des images : ": "[camera\/sendSnap] Error when sending snapshots  :",
+        "Impossible de trouver la function ": "Cannot find the function",
         "Erreur sur ": "Error on",
         "Impossible de creer le dossier : ": "Unable to create folder :",
         "Impossible d\\'écrire dans le dossier : ": "Unable to write in the folder :",

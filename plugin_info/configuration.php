@@ -21,53 +21,55 @@ if (!isConnect('admin')) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
 ?>
-
-<form class="form-horizontal">
-	<fieldset>
+<div class="col-lg-7">
+	<form class="form-horizontal">
+		<fieldset>
 		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Moteur RTSP}}</label>
-			<div class="col-xs-11 col-sm-7">
-				<select class="configKey form-control" data-l1key="rtsp::engine" >
-					<option value="avconv">avconv</option>
-					<option value="ffmpeg">ffmpeg</option>
-				</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Chemin des enregistrements}}</label>
-			<div class="col-xs-11 col-sm-7">
-				<input type="text" class="configKey form-control" data-l1key="recordDir" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Taille maximum du dossier d'enregistrement (Mo)}}</label>
-			<div class="col-xs-11 col-sm-7">
-				<input type="text" class="configKey form-control" data-l1key="maxSizeRecordDir" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Le plugin caméra doit réagir aux interactions}}</label>
-			<div class="col-xs-11 col-sm-7">
+			<label class="col-sm-4 control-label">{{Le plugin caméra doit réagir aux interactions}}</label>
+			<div class="col-sm-6">
 				<textarea class="configKey form-control" data-l1key="interact::sentence"></textarea>
 			</div>
 		</div>
-	</fieldset>
-</form>
-<br/>
-<form class="form-horizontal">
-	<fieldset>
-		<legend><i class="fas fa-images"></i> {{Panel}}</legend>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Nombre de ligne}}</label>
-			<div class="col-xs-11 col-sm-7">
-				<input type="number" class="configKey form-control" data-l1key="panel::nbLine" />
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{{Moteur RTSP}}</label>
+				<div class="col-sm-6">
+					<select class="configKey form-control" data-l1key="rtsp::engine" >
+						<option value="avconv">avconv</option>
+						<option value="ffmpeg">ffmpeg</option>
+					</select>
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Nombre de colonne}}</label>
-			<div class="col-xs-11 col-sm-7">
-				<input type="number" class="configKey form-control" data-l1key="panel::nbColumn" />
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{{Chemin des enregistrements}}</label>
+				<div class="col-sm-6">
+					<input type="text" class="configKey form-control" data-l1key="recordDir">
+				</div>
 			</div>
-		</div>
-	</fieldset>
-</form>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{{Taille maximale du dossier d'enregistrement}} <sub>({{Mo}})</sub></label>
+				<div class="col-sm-6">
+					<input type="text" class="configKey form-control" data-l1key="maxSizeRecordDir">
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+<div class="col-lg-5">
+	<form class="form-horizontal">
+		<fieldset>
+			<legend><i class="fas fa-images"></i> {{Panel}}</legend>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{{Nombre de lignes}}</label>
+				<div class="col-sm-6">
+					<input type="number" class="configKey form-control" data-l1key="panel::nbLine">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{{Nombre de colonnes}}</label>
+				<div class="col-sm-6">
+					<input type="number" class="configKey form-control" data-l1key="panel::nbColumn">
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>

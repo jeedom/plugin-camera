@@ -1,13 +1,14 @@
 {
     "plugins\/camera\/plugin_info\/configuration.php": {
         "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff",
+        "Le plugin caméra doit réagir aux interactions": "Das Kamera-Plugin muss auf Interaktionen reagieren",
         "Moteur RTSP": "RTSP-Motor",
         "Chemin des enregistrements": "Pfad aufzeichnen",
-        "Taille maximum du dossier d'enregistrement (Mo)": "Maximale Größe des Aufnahmeordners (MB)",
-        "Le plugin caméra doit réagir aux interactions": "Das Kamera-Plugin muss auf Interaktionen reagieren",
+        "Taille maximale du dossier d'enregistrement": "Maximale Größe des Aufnahmeordners",
+        "Mo": "Mo",
         "Panel": "Platte",
-        "Nombre de ligne": "Anzahl der Zeilen",
-        "Nombre de colonne": "Spaltennummer"
+        "Nombre de lignes": "Anzahl der Zeilen",
+        "Nombre de colonnes": "Anzahl der Spalten"
     },
     "plugins\/camera\/desktop\/modal\/camera.displayVideo.php": {
         "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff"
@@ -52,6 +53,11 @@
         "Ajouter": "Hinzufügen",
         "Création réussie": "Erfolgreiche Erstellung"
     },
+    "plugins\/camera\/desktop\/modal\/camera.preview.php": {
+        "Equipement introuvable : ": "Ausrüstung nicht gefunden:",
+        "L\\'équipement n\\'est pas une camera": "Das Gerät ist keine Kamera",
+        "401 - Accès non autorisé": "401 - Unbefugter Zugriff"
+    },
     "plugins\/camera\/desktop\/modal\/camera.displayImage.php": {
         "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff"
     },
@@ -69,7 +75,10 @@
         "Découverte": "Entdeckung",
         "Santé": "Gesundheit",
         "Mes caméras": "Meine Kameras",
+        "Aucun équipement Template trouvé, cliquer sur \"Ajouter\" pour commencer": "Keine Vorlagenausrüstung gefunden, klicken Sie auf \"Hinzufügen\", um zu beginnen",
         "Rechercher": "Suchen nach",
+        "Equipement visible": "Sichtbare Ausrüstung",
+        "Equipement non visible": "Ausrüstung nicht sichtbar",
         "Configuration avancée": "Erweiterte Konfiguration",
         "Dupliquer": "Duplikat",
         "Sauvegarder": "Speichern",
@@ -79,7 +88,7 @@
         "Capture": "Erfassung",
         "Alimentation": "Versorgung",
         "Commandes": "Befehle",
-        "Général": "Allgemein",
+        "Paramètres généraux": "Allgemeine Einstellungen",
         "Nom de l'équipement": "Name der Ausrüstung",
         "Nom de l'équipement caméra": "Name der Kameraausrüstung",
         "Objet parent": "Übergeordnetes Objekt",
@@ -87,7 +96,7 @@
         "Options": "Optionen",
         "Activer": "Aktivieren",
         "Visible": "Sichtbar",
-        "Paramètres": "Einstellungen",
+        "Paramètres spécifiques": "Spezifische Parameter",
         "IP": "IP",
         "HTTP": "Http",
         "HTTPS": "HTTPS",
@@ -101,6 +110,8 @@
         "URL du flux, RTSP": "Stream-URL, RTSP",
         "Stream du flux RTSP": "Stream des RTSP-Streams",
         "Option flux video": "Video-Stream-Option",
+        "Previsualiser": "Vorschau",
+        "N'oubliez pas de sauvegarder pour voir vos modifications avant la prévisualisation": "Vergessen Sie nicht, vor der Vorschau zu speichern, um Ihre Änderungen anzuzeigen",
         "Position sur le panel": "Position auf dem Panel",
         "Informations": "Information",
         "Si votre caméra n'est pas dans la liste vous pouvez trouver": "Wenn Ihre Kamera nicht in der Liste enthalten ist, können Sie finden",
@@ -119,7 +130,6 @@
         "Durée maximum d'un enregistrement (s)": "Maximale Dauer einer Aufnahme (n)",
         "Toujours faire une video": "Mach immer ein Video",
         "Nombre d'images par seconde de la vidéo": "Anzahl der Bilder pro Sekunde des Videos",
-        "Seuil de détection mouvement (0-100)": "Bewegungserkennungsschwelle (0-100)",
         "Supprimer toutes les captures de la caméra": "Löschen Sie alle Kameraaufnahmen",
         "Commande ON": "EIN-Befehl",
         "Commande OFF": "AUS-Befehl",
@@ -133,6 +143,7 @@
     "plugins\/camera\/desktop\/js\/camera.js": {
         "Santé Caméras": "Gesundheitskameras",
         "Découverte Caméras": "Entdeckungskameras",
+        "Prévisualisation": "Vorschau",
         "URL de la commande": "Bestell-URL",
         "URL de la commande de stop de mouvement (caméra motirisée)": "Bewegungsstopp-Befehls-URL (Kamera mit Stromversorgung)",
         "Valeur retour d\\'état": "Statusrückgabewert",
@@ -184,6 +195,7 @@
         "Alerte sur la camera : ": "Kameraalarm:",
         " à ": "zu",
         "[camera\/sendSnap] Erreur lors de l\\'envoi des images : ": "[camera \/ sendSnap] Fehler beim Senden der Bilder:",
+        "Impossible de trouver la function ": "Kann die Funktion nicht finden",
         "Erreur sur ": "Fehler ein",
         "Impossible de creer le dossier : ": "Ordner kann nicht erstellt werden:",
         "Impossible d\\'écrire dans le dossier : ": "In Ordner kann nicht geschrieben werden:",
