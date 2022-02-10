@@ -35,6 +35,7 @@ function camera_install() {
 		config::save('rtsp::engine','ffmpeg','camera');
 	}
 	exec(system::getCmdSudo().' chmod +x '.__DIR__.'/../3rdparty/rtsp-to-hls.sh');
+	jeedom::getApiKey('camera');
 }
 
 function camera_update() {
@@ -64,6 +65,7 @@ function camera_update() {
 		config::save('rtsp::engine','ffmpeg','camera');
 	}
 	exec(system::getCmdSudo().' chmod +x '.__DIR__.'/../3rdparty/rtsp-to-hls.sh');
+	jeedom::getApiKey('camera');
 }
 
 function camera_remove() {
@@ -72,5 +74,3 @@ function camera_remove() {
 		$cron->remove();
 	}
 }
-
-?>
