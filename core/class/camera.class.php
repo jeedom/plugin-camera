@@ -794,13 +794,13 @@ class camera extends eqLogic {
 			}
 		}
 		cache::set('camera' . $this->getId() . 'inprogress', array('state' => 1, 'datetime' => strtotime('now')));
+		$replace = array(
+			'#username#' => urlencode($this->getConfiguration('username')),
+			'#password#' => urlencode($this->getConfiguration('password')),
+			'#ip#' => urlencode($this->getConfiguration('ip')),
+			'#port#' => urlencode($this->getConfiguration('port')),
+		);
 		if ($this->getConfiguration('urlStream') == '' && $this->getConfiguration('cameraStreamAccessUrl') != '') {
-			$replace = array(
-				'#username#' => urlencode($this->getConfiguration('username')),
-				'#password#' => urlencode($this->getConfiguration('password')),
-				'#ip#' => urlencode($this->getConfiguration('ip')),
-				'#port#' => urlencode($this->getConfiguration('port')),
-			);
 			$engine = config::byKey('rtsp::engine', 'camera', 'avconv');
 			shell_exec($engine . ' ' . $this->getConfiguration('rtsp_option', '') . ' -i "' . trim(str_replace(array_keys($replace), $replace, $this->getConfiguration('cameraStreamAccessUrl'))) . '" -frames:v 1 -y -r 1 -vsync 1 -qscale 1 -f image2 ' . jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg 2>&1 >> /dev/null');
 			$data = file_get_contents(jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg');
@@ -816,7 +816,7 @@ class camera extends eqLogic {
 			}
 		} else {
 			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, $this->getUrl($this->getConfiguration('urlStream')));
+			curl_setopt($ch, CURLOPT_URL, $this->getUrl(str_replace(array_keys($replace), $replace, $this->getConfiguration('urlStream'))));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);

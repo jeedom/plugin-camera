@@ -2,7 +2,7 @@
 if (!isConnect()) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
-sendVarToJs('jeedomBackgroundImg', 'plugins/camera/core/img/panel.jpg');
+sendVarToJs('jeedomUtils.backgroundIMG', 'plugins/camera/core/img/panel.jpg');
 if (init('object_id') == '') {
 	$object = jeeObject::byId($_SESSION['user']->getOptions('defaultDashboardObject'));
 } else {
@@ -57,18 +57,18 @@ usort($camera_widgets, "cmpCameraWidgetPosition");
 	?>
 	<div class="bs-sidebar">
 		<ul id="ul_object" class="nav nav-list bs-sidenav">
-			<li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%"/></li>
+			<li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%" /></li>
 			<?php
-			
+
 			foreach ($allObject as $object_li) {
 				if ($object_li->getIsVisible() != 1 || count($object_li->getEqLogic(true, false, 'camera', null, true)) == 0) {
 					continue;
 				}
 				$margin = 10 * $object_li->getConfiguration('parentNumber');
 				if ($object_li->getId() == init('object_id')) {
-					echo '<li class="cursor li_object active" ><a data-object_id="' . $object_li->getId() . '" href="index.php?v=d&p=panel&m=camera&object_id=' . $object_li->getId() . '" style="padding: 2px 0px;"><span style="position:relative;left:' . $margin . 'px;">' . $object_li->getHumanName(true,true) . '</span></a></li>';
+					echo '<li class="cursor li_object active" ><a data-object_id="' . $object_li->getId() . '" href="index.php?v=d&p=panel&m=camera&object_id=' . $object_li->getId() . '" style="padding: 2px 0px;"><span style="position:relative;left:' . $margin . 'px;">' . $object_li->getHumanName(true, true) . '</span></a></li>';
 				} else {
-					echo '<li class="cursor li_object" ><a data-object_id="' . $object_li->getId() . '" href="index.php?v=d&p=panel&m=camera&object_id=' . $object_li->getId() . '" style="padding: 2px 0px;"><span style="position:relative;left:' . $margin . 'px;">' . $object_li->getHumanName(true,true) . '</span></a></li>';
+					echo '<li class="cursor li_object" ><a data-object_id="' . $object_li->getId() . '" href="index.php?v=d&p=panel&m=camera&object_id=' . $object_li->getId() . '" style="padding: 2px 0px;"><span style="position:relative;left:' . $margin . 'px;">' . $object_li->getHumanName(true, true) . '</span></a></li>';
 				}
 			}
 			?>
@@ -91,4 +91,4 @@ echo '</div>';
 ?>
 </div>
 </div>
-<?php include_file('desktop', 'panel', 'js', 'camera');?>
+<?php include_file('desktop', 'panel', 'js', 'camera'); ?>
