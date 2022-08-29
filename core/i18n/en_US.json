@@ -5,7 +5,7 @@
         "Moteur RTSP": "RTSP",
         "Chemin des enregistrements": "Record path",
         "Taille maximale du dossier d'enregistrement": "Maximum recording folder size",
-        "Mo": "Mo",
+        "Mo": "MB",
         "Panel": "Panel",
         "Nombre de lignes": "Number of lines",
         "Nombre de colonnes": "Number of columns"
