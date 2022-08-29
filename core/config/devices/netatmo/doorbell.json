@@ -1,0 +1,7 @@
+{
+  "name" : "Doorbell",
+  "manufacturer" : "Netatmo",
+  "remark" : "Necessite absolument le plugin Netatmo Security (payant)",
+  "buylink" : "",
+  "commands": []
+}
