@@ -1,8 +1,18 @@
 <script src="plugins/camera/core/template/dashboard/hls-0.13.0.light.min.js"></script>
-<div class="eqLogic eqLogic-widget allowResize" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="min-width : 50px;min-height : 80px ;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#" >
-  <center class="widget-name">
-    <span style="font-size: 1.2em;#hideEqLogicName#"><a href="#eqLink#">#name_display# <span class="object_name">#object_name#</span></a></span>
-  </center>
+<div class="eqLogic eqLogic-widget allowResize text-center" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="min-width : 50px;min-height : 80px ;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#" >
+  <div class="widget-name">
+    <span style="color:#background-color#" title="#alert_name#">
+      <i class='#alert_icon#'></i>
+    </span>
+    <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#">
+      <i class="fas fa-sync"></i>
+    </span>
+    <span class="panelLink pull-left cursor">
+      <a href="#panelLink#"><i class="fas fa-external-link-alt"></i></a>
+    </span>
+    <span class="reportModeVisible">#name_display# <span class="object_name">#object_name#</span></span>
+    <a href="#eqLink#" class="reportModeHidden">#name_display# <span class="object_name">#object_name#</span></a>
+  </div>
   <center>
     <span class="directDisplay zoom cursor">
       <video id="video-player#id#" data-eqLogic_id="#id#" controls width="320" height="240" preload="none" autoplay="true" muted></video>
