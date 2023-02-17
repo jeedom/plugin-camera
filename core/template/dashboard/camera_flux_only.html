@@ -22,11 +22,15 @@
         $(".md_cameraZoom[data-eqLogic_uid=#uid#]").eq(0).remove();
       }
     }
-    var md_eqLogic_#uid# = $(".md_cameraZoom[data-camera_uid=#uid#]")
-    eqLogic_#id#.find('.directDisplay img').css('max-height',eqLogic_#id#.height()).css('max-width',eqLogic_#id#.width());
-    eqLogic_#id#.off('resize').on('resize',function(){
+    var md_eqLogic_#uid# = $(".md_cameraZoom[data-camera_uid=#uid#]:visible")
+    if (md_eqLogic_#uid#.length > 0) {
       eqLogic_#id#.find('.directDisplay img').css('max-height',eqLogic_#id#.height()).css('max-width',eqLogic_#id#.width());
-    });
+      eqLogic_#id#.off('resize').on('resize',function(){
+        eqLogic_#id#.find('.directDisplay img').css('max-height',eqLogic_#id#.height()).css('max-width',eqLogic_#id#.width());
+      });
+    }
+
+
     $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
       $('#md_modal').dialog({title: "Historique #name#"}).load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
     });
@@ -56,7 +60,7 @@
     maxWidth_#id#_thumbnail = 0;
     maxWidth_#id# = 0;
     
-    img_#id#.onload = function() {
+    img_#id#.onload = function(onload) {
       if(thumbnail_#id#){
         eqLogic_#id#.find('.directDisplay img').attr('src',img_#id#.src).attr('data-imgready',1);
       }else{

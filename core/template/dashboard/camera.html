@@ -48,14 +48,20 @@
         $(".md_cameraZoom[data-eqLogic_uid=#uid#]").eq(0).remove();
       }
     }
-    var md_eqLogic_#uid# = $(".md_cameraZoom[data-eqLogic_uid=#uid#]")
-    Object.assign(document.querySelector('.eqLogic[data-eqLogic_id=\'#id#\'] .directDisplay img').style,{maxHeight:(eqLogic_#id#.height() - 60),maxWidth:eqLogic_#id#.width()});
+
+    Object.assign(document.querySelector('.eqLogic[data-eqLogic_id="#id#"] .directDisplay img').style, {
+      maxHeight:(eqLogic_#id#.height() - 60) + 'px',
+      maxWidth:eqLogic_#id#.width() + 'px'
+    });
     eqLogic_#id#.off('resize').on('resize',function(){
-      Object.assign(document.querySelector('.eqLogic[data-eqLogic_id=\'#id#\'] .directDisplay img').style,{maxHeight:(eqLogic_#id#.height() - 60),maxWidth:eqLogic_#id#.width()});
+      Object.assign(document.querySelector('.eqLogic[data-eqLogic_id="#id#"] .directDisplay img').style, {
+        maxHeight:(eqLogic_#id#.height() - 60),
+        maxWidth:eqLogic_#id#.width()});
     });
     $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
       $('#md_modal').dialog({title: "Historique #name#"}).load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
     });
+    var md_eqLogic_#uid# = $(".md_cameraZoom[data-eqLogic_uid=#uid#]")
     md_eqLogic_#uid#.dialog({
       autoOpen: false,
       modal: true,
@@ -81,7 +87,7 @@
     });
     maxWidth_#id#_thumbnail = 0;
     maxWidth_#id# = 0;
-    
+
     img_#id#.onload = function() {
       if(thumbnail_#id#){
         eqLogic_#id#.find('.directDisplay img').attr('src',img_#id#.src).attr('data-imgready',1);
