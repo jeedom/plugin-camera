@@ -95,8 +95,8 @@
         md_eqLogic_#uid#.find('.display img').attr('src',img_#id#.src);
       }
       if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-        document.querySelector('.cmd[data-cmd_id=#cmd_off_id#]').hidden = false
-        document.querySelector('.cmd[data-cmd_id=#cmd_on_id#]').hidden = true
+        document.querySelector('.cmd[data-cmd_id="#cmd_off_id#"]').hidden = false
+        document.querySelector('.cmd[data-cmd_id="#cmd_on_id#"]').hidden = true
       }
       let delay = (thumbnail_#id#) ? #refreshDelaySlow# - (Date.now() - start_#id#) :  #refreshDelayFast# - (Date.now() - start_#id#);
       error_nb_#id# = 0
@@ -108,8 +108,8 @@
         md_eqLogic_#uid#.find('.display img').attr('src','plugins/camera/core/img/no-image-noir.png');
         eqLogic_#id#.find('.directDisplay img').attr('src','plugins/camera/core/img/no-image-blanc.png');
         if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-          document.querySelector('.cmd[data-cmd_id=\'#cmd_off_id#]\'').hidden = true
-          document.querySelector('.cmd[data-cmd_id=\'#cmd_on_id#]\'').hidden = false
+          document.querySelector('.cmd[data-cmd_id=""#cmd_off_id#"]').hidden = true
+          document.querySelector('.cmd[data-cmd_id="#cmd_on_id#"]').hidden = false
         }
       }
       timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
