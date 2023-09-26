@@ -4,5 +4,111 @@
   "manufacturer" : "Onvif",
   "configuration": {
   },
-  "commands": []
+  "commands": [
+    {
+      "eqType": "camera",
+      "logicalId": "ptzdown",
+      "name": "Bas",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-down\"><\/i>",
+        "generic_type": "CAMERA_DOWN"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "logicalId": "ptzup",
+      "name": "Haut",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-up\"><\/i>",
+        "generic_type": "CAMERA_UP"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "logicalId": "ptzleft",
+      "name": "Gauche",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-left\"><\/i>",
+        "generic_type": "CAMERA_LEFT"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "logicalId": "ptzright",
+      "name": "Droite",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "display": {
+        "icon": "<i class=\"fas fa-arrow-right\"><\/i>",
+        "generic_type": "CAMERA_RIGHT"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "logicalId": "ptzzoomin",
+      "name": "Zoom +",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "display": {
+        "icon": "<i class=\"fas fa-search-plus\"><\/i>",
+        "generic_type": "CAMERA_ZOOM"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "logicalId": "ptzzoomout",
+      "name": "Zoom -",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "display": {
+        "icon": "<i class=\"fas fa-search-minus\"><\/i>",
+        "generic_type": "CAMERA_DEZOOM"
+      },
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "logicalId": "ptzstop",
+      "name": "Stop",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "logicalId": "ptzmovestop",
+      "name": "Stop mouvement",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "isVisible": "1"
+    },
+    {
+      "eqType": "camera",
+      "logicalId": "ptzreboot",
+      "name": "Redémarrer",
+      "type": "action",
+      "subType": "other",
+      "isHistorized": "0",
+      "isVisible": "1"
+    }
+  ]
 }
