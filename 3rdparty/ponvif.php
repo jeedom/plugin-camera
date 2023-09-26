@@ -72,7 +72,7 @@ class Ponvif {
 	public function getPassword() {return $this->password;}
 	public function getDeviceUri() {return $this->deviceuri;}
 	public function setDeviceUri($deviceuri) {$this->deviceuri = $deviceuri;}
-	public function getIPAddress($ipAddress) {return $this->ipAddress;}
+	public function getIPAddress() {return $this->ipaddress;}
 	public function setIPAddress($ipAddress) {$this->ipaddress = $ipAddress;}
 	public function getSources() {return $this->sources;}
 	public function getMediaUri() {return $this->mediauri;}
@@ -115,7 +115,7 @@ class Ponvif {
 				$sock_write = NULL;
 				$sock_except = NULL;
 				
-				if (socket_select($sock_read, $sock_write, $sock_except, $this->discoverytimeout) > 0) {
+				while (socket_select($sock_read, $sock_write, $sock_except, $this->discoverytimeout) > 0) {
 					if (FALSE !== @socket_recvfrom($sock, $response, 9999, 0, $from, $this->discoverymcastport)) {
 						if ($response != NULL && $response != $post_string) {
 							$response = $this->_xml2array($response);
@@ -886,7 +886,72 @@ class Ponvif {
 															
 														}
 													}
-													
+
+												        public function core_SystemReboot()
+												        {
+												            $REQ = $this->_makeToken();
+												            $post_string =
+												                '<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><s:Header><wsse:Security s:mustUnderstand="1" xmlns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><UsernameToken><Username>%%USERNAME%%</Username><Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">%%PASSWORD%%</Password><Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">%%NONCE%%</Nonce><Created xmlns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">%%CREATED%%</Created></UsernameToken></wsse:Security></s:Header><s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><SystemReboot xmlns="http://www.onvif.org/ver10/device/wsdl"/></s:Body></s:Envelope>';
+												            $post_string = str_replace(
+												                ["%%USERNAME%%", "%%PASSWORD%%", "%%NONCE%%", "%%CREATED%%"],
+												                [
+												                    $REQ["USERNAME"],
+												                    $REQ["PASSDIGEST"],
+												                    $REQ["NONCE"],
+												                    $REQ["TIMESTAMP"],
+												                ],
+												                $post_string
+												            );
+												            if (
+												                $this->isFault(
+												                    $response = $this->_send_request($this->mediauri, $post_string)
+												                )
+												            ) {
+												                if ($this->intransingent) {
+												                    throw new Exception("DeleteOSD: Communication error");
+												                }
+												            }
+												        }
+												
+												        public function ptz_GotoHomePosition($profileToken, $pantilt, $zoom)
+												        {
+												            if ($this->ptzuri == "") {
+												                return [];
+												            }
+												
+												            $REQ = $this->_makeToken();
+												
+												            $post_string =
+												                '<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope"><s:Header><Security s:mustUnderstand="1" xmlns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><UsernameToken><Username>%%USERNAME%%</Username><Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">%%PASSWORD%%</Password><Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">%%NONCE%%</Nonce><Created xmlns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">%%CREATED%%</Created></UsernameToken></Security></s:Header><s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><GotoHomePosition><ProfileToken>%%PROFILETOKEN%%</ProfileToken><PanTilt>%%PANTILT%%</PanTilt><Zoom>%%ZOOM%%</Zoom></GotoHomePosition></s:Body></s:Envelope>';
+												
+												            $post_string = str_replace(
+												                [
+												                    "%%USERNAME%%",
+												                    "%%PASSWORD%%",
+												                    "%%NONCE%%",
+												                    "%%CREATED%%",
+												                    "%%PROFILETOKEN%%",
+												                    "%%PANTILT%%",
+												                    "%%ZOOM%%",
+												                ],
+												                [
+												                    $REQ["USERNAME"],
+												                    $REQ["PASSDIGEST"],
+												                    $REQ["NONCE"],
+												                    $REQ["TIMESTAMP"],
+												                    $profileToken,
+												                    $pantilt,
+												                    $zoom,
+												                ],
+												                $post_string
+												            );
+												            if ($this->isFault($this->_send_request($this->ptzuri, $post_string))) {
+												                if ($this->intransingent) {
+												                    throw new Exception("Stop: Communication error");
+												                }
+												            }
+												        }
+	
 													/*
 													Internal functions
 													*/
@@ -915,7 +980,9 @@ class Ponvif {
 															}
 															$version['media'] = $capabilities['Media']['XAddr'];
 															$version['device'] = $capabilities['Device']['XAddr'];
-															$version['event'] = $capabilities['Events']['XAddr'];
+        														if (isset($capabilities["Events"]["XAddr"])) {
+         														   $version['event'] = $capabilities["Events"]["XAddr"];
+        														}
 															if (isset($capabilities['PTZ']['XAddr'])) {
 																$version['ptz'] = $capabilities['PTZ']['XAddr'];
 															} else {
@@ -924,27 +991,30 @@ class Ponvif {
 															
 															return $version;
 														}
-														
-														protected function _getActiveSources($videoSources, $profiles) {
-															$sources = array();
-															
-															if (isset($videoSources['@attributes'])) {
-																// NVT is a camera
-																$sources[0]['sourcetoken'] = $videoSources['@attributes']['token'];
-																$this->_getProfileData($sources, 0, $profiles);
-															} else {
-																// NVT is an encoder
-																for ($i = 0; $i < count($videoSources); $i++) {
-																	if (strtolower($videoSources[$i]['@attributes']['SignalActive']) == 'true') {
-																		$sources[$i]['sourcetoken'] = $videoSources[$i]['@attributes']['token'];
-																		$this->_getProfileData($sources, $i, $profiles);
-																	}
-																} // for
-															}
-															
-															return $sources;
+
+														protected function _getActiveSources($videoSources, $profiles)
+														{
+														    // create an array of $videoSources if only one videoSource
+														    $videoSources = $videoSources === [] || array_keys($videoSources) === range(0, count($videoSources) - 1) ? $videoSources : [$videoSources];
+														    $sources = [];
+														    // camera may have many sources
+														    for ($i = 0; $i < count($videoSources); $i++) {
+														        // NVT is a camera
+														        if (isset($videoSources[$i]["@attributes"])) {
+														            $sources[$i]["sourcetoken"] =
+														                $videoSources[$i]["@attributes"]["token"];
+														            $this->_getProfileData($sources, $i, $profiles);
+														        } else {
+														            // NVT is an encoder
+														            if (strtolower($videoSources[$i]["@attributes"]["SignalActive"]) == "true") {
+														                $sources[$i]["sourcetoken"] = $videoSources[$i]["@attributes"]["token"];
+														                $this->_getProfileData($sources, $i, $profiles);
+														            }
+														        } 
+														    } // for
+														    return $sources;
 														}
-														
+	
 														protected function _getProfileData(&$sources, $i, $profiles) {
 															$inprofile = 0;
 															for ($y = 0; $y < count($profiles); $y++) {
@@ -1052,12 +1122,16 @@ class Ponvif {
 															curl_setopt($soap_do, CURLOPT_POSTFIELDS, $post_string);
 															curl_setopt($soap_do, CURLOPT_HTTPHEADER, array('Content-Type: text/xml; charset=utf-8', 'Content-Length: ' . strlen($post_string)));
 															//curl_setopt($soap_do, CURLOPT_USERPWD, $user . ":" . $password); // HTTP authentication
-															if (($result = curl_exec($soap_do)) === false) {
-																$err = curl_error($soap_do);
-																$this->lastresponse = array("Fault" => $err);
-															} else {
-																$this->lastresponse = $this->_xml2array($result);
-															}
+														        try {
+														            if (($result = curl_exec($soap_do)) === false) {
+														                $err = curl_error($soap_do);
+														                $this->lastresponse = [ "Fault" => $err ];
+														            } else {
+														                $this->lastresponse = $this->_xml2array($result);
+														            }
+														        } catch (Exception $e) {
+														            $this->lastresponse = [ "Fault" => $e->getMessage() ];
+														        }
 															return $this->lastresponse;
 														}
 														
