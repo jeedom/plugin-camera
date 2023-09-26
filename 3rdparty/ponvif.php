@@ -29,6 +29,11 @@
 *          - _xml2array
 *          - _sendrequest
 *	    - _passwordDigest
+* FIX by Flobul 18.08.2023
+*  Correction sourcetoken
+*  Catch error in request method
+*  Fix discovery method
+*
 **/
 
 class Ponvif {
