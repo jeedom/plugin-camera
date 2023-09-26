@@ -299,8 +299,9 @@ class camera extends eqLogic {
 		$result = $onvif->discover();
 		if (count($result) > 0) {
 			foreach ($result as $cam) {
+				$url = parse_url($cam['XAddrs']);
 				$return[] = array(
-					'ip' => $cam['IPAddr'],
+					'ip' => $url['host'] . ':' . $url['port'],
 					'type' => $cam['Types'],
 					'discover' => 'onvif',
 					'exist' => false,
@@ -310,7 +311,7 @@ class camera extends eqLogic {
 		$cameras = self::byType('camera');
 		foreach ($return as &$cam) {
 			foreach ($cameras as $camera) {
-				if ($cam['ip'] == $camera->getConfiguration('ip')) {
+				if ($cam['ip'] == $camera->getConfiguration('ip') . ':' . $camera->getConfiguration('onvif_port')) {
 					$cam['exist'] = true;
 					break;
 				}
@@ -320,11 +321,13 @@ class camera extends eqLogic {
 	}
 
 	public static function addDiscoverCam($_config) {
+		$host = explode(':', $_config['ip']);
 		$eqLogic = new self();
-		$eqLogic->setName($_config['ip']);
+		$eqLogic->setName($host[0]);
 		$eqLogic->setConfiguration('username', $_config['username']);
 		$eqLogic->setConfiguration('password', $_config['password']);
-		$eqLogic->setConfiguration('ip', $_config['ip']);
+		$eqLogic->setConfiguration('ip', $host[0]);
+		$eqLogic->setConfiguration('onvif_port', $host[1]);
 		$eqLogic->setEqType_name('camera');
 		$eqLogic->setIsVisible(1);
 		$eqLogic->setIsEnable(1);
@@ -343,7 +346,6 @@ class camera extends eqLogic {
 		$sources = $onvif->getSources();
 		$mediaUri = preg_replace('/(([0-9]{1,3}\.){3}[0-9]{1,3})/m', '#username#:#password#@#ip#', $onvif->media_GetStreamUri($sources[0][0]['profiletoken']));
 		$this->setConfiguration('cameraStreamAccessUrl', $mediaUri);
-		$this->save();
 	}
 
 	public function decrypt() {
@@ -669,7 +671,6 @@ class camera extends eqLogic {
 		}
 		if ($this->getConfiguration('device') == 'onvif') {
 			$this->configOnvif();
-			return;
 		}
 		$device = self::devicesParameters($this->getConfiguration('device'));
 		if (!is_array($device) || !isset($device['commands'])) {
@@ -1039,6 +1040,70 @@ class cameraCmd extends cmd {
 			$eqLogic->recordCam($_options['title'], $_options['message']);
 			return true;
 		}
+	        if ($eqLogic->getConfiguration('device') == 'onvif') {
+	            $profileToken = $eqLogic->getConfiguration('cameraStreamProfileToken');
+	            $speedX = $eqLogic->getConfiguration('speed_x', 1);
+	            $speedY = $eqLogic->getConfiguration('speed_y', 1);
+	            $speedZ = $eqLogic->getConfiguration('speed_z', 1);
+	            $sleep = $eqLogic->getConfiguration('delay_stop', 0) * 1000;
+	
+	            $onvif = new Ponvif();
+	            $onvif->setUsername($eqLogic->getConfiguration('username'));
+	            $onvif->setPassword($eqLogic->getConfiguration('password'));
+	            $onvif->setIPAddress($eqLogic->getConfiguration('ip') . ':' . $eqLogic->getConfiguration('onvif_port', 80));
+	            $onvif->initialize();
+	
+	            $action = false;
+	
+	            try {
+	                switch ($this->getLogicalId()) {
+	                    case 'ptzleft':
+	                        $onvif->ptz_ContinuousMove($profileToken, -$speedX, 0);
+	                        $action = true;
+	                        break;
+	                    case 'ptzright':
+	                        $onvif->ptz_ContinuousMove($profileToken, $speedX, 0);
+	                        $action = true;
+	                        break;
+	                    case 'ptzup':
+	                        $onvif->ptz_ContinuousMove($profileToken, 0, $speedY);
+	                        $action = true;
+	                        break;
+	                    case 'ptzdown':
+	                        $onvif->ptz_ContinuousMove($profileToken, 0, -$speedY);
+	                        $action = true;
+	                        break;
+	                    case 'ptzzoomin':
+	                    case 'ptzzoomout':
+	                        $onvif->ptz_ContinuousMoveZoom($profileToken, ($logicalId === 'ptzzoomout') ? -$speedZ : $speedZ);
+	                        $action = true;
+	                        break;
+	                    case 'ptzmovestop':
+	                        $onvif->ptz_ContinuousMove($profileToken, 0, 0);
+	                        break;
+	                    case 'ptzstop':
+	                        $onvif->ptz_Stop($profileToken, 'true', 'true');
+	                        break;
+	                    case 'ptzreboot':
+	                        $onvif->core_SystemReboot();
+	                        break;
+	                    case 'gotohome':
+	                        $onvif->ptz_GotoHomePosition($profileToken, 0, 0);
+	                        break;
+	                }
+	
+	                if ($action && strpos($request = $this->getConfiguration('stopCmdUrl'), '#') === 0) {
+	                    usleep($sleep);
+	                    $cmd = cmd::byId(str_replace('#', '', $request));
+	                    if (is_object($cmd)) {
+	                        $cmd->execCmd();
+	                    }
+	                    return true;
+	                }
+	            } catch (Exception $e) {
+	                log::add('camera', 'debug', 'onvif error reason for ' . $this->getLogicalId() . ' : ' . json_encode($onvif->getLastResponse()));
+	            }
+	        }
 		if (strpos($request, '#') === 0) {
 			$cmd = cmd::byId(str_replace('#', '', $request));
 			if (is_object($cmd)) {
