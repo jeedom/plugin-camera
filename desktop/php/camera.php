@@ -158,6 +158,30 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="onvif_port" />
 								</div>
 							</div>
+							<div class="form-group onvifgOnly">
+								<label class="col-sm-4 control-label">{{Jeton de profil}}</label>
+								<div class="col-sm-6">
+									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cameraStreamProfileToken" />
+								</div>
+							</div>
+							<div class="form-group onvifgOnly">
+								<label class="col-sm-4 control-label">{{Vitesses X, Y et Z}}</label>
+								<div class="col-sm-2" title="{{X (de 0 à 1)">
+									<input type="number" min="0" max="1" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="speed_x" />
+								</div>
+								<div class="col-sm-2" title="{{Y (de 0 à 1)}}">
+									<input type="number" min="0" max="1" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="speed_y" />
+								</div>
+								<div class="col-sm-2" title="{{Z (de 0 à 1)}}">
+									<input type="number" min="0" max="1" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="speed_z" />
+								</div>
+							</div>
+							<div class="form-group onvifgOnly">
+								<label class="col-sm-4 control-label">{{Délai avant commande stop (en ms)}}</label>
+								<div class="col-sm-3" title="{{Délai (de 0 à 5000)}}">
+									<input type="number" min="0" max="5000" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="delay_stop" />
+								</div>
+							</div>
 							<div class="form-group">
 								<label class="col-sm-4 control-label">{{Nom d'utilisateur}}</label>
 								<div class="col-sm-6">
