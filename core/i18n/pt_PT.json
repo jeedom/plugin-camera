@@ -1,4 +1,7 @@
 {
+    "plugins\/camera\/mobile\/js\/panel.js": {
+        "Tous": "Todos"
+    },
     "plugins\/camera\/plugin_info\/configuration.php": {
         "401 - Accès non autorisé": "401 - Acesso não autorizado",
         "Le plugin caméra doit réagir aux interactions": "O plug-in da câmera deve reagir às interações",
