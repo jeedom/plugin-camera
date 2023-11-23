@@ -91,7 +91,7 @@ class camera extends eqLogic {
 		$cron->halt();
 	}
 
-	public function pull() {
+	public static function pull() {
 		if (self::$_eqLogics == null) {
 			self::$_eqLogics = self::byType('camera');
 		}
