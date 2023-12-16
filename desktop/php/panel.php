@@ -49,13 +49,13 @@ usort($camera_widgets, "cmpCameraWidgetPosition");
 ?>
 <div class="row row-overflow">
 	<?php
-	if ($_SESSION['user']->getOptions('displayObjetByDefault') == 1 && init('report') != 1) {
-		echo '<div class="col-lg-2 col-md-3 col-sm-4" id="div_displayObjectList">';
+	if (config::byKey('panel::displayObjet', 'camera', false) == true && init('report') != 1) {
+		echo '<div class="col-lg-2 col-md-3 col-sm-4" id="div_displayObjectList" style="margin-top: 10px;">';
 	} else {
 		echo '<div class="col-lg-2 col-md-3 col-sm-4" style="display:none;" id="div_displayObjectList">';
 	}
 	?>
-	<div class="bs-sidebar">
+	<div class="bs-sidebar" style="background: rgba(var(--eq-bg-color), var(--opacity)) !important;">
 		<ul id="ul_object" class="nav nav-list bs-sidenav">
 			<li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%" /></li>
 			<?php
@@ -76,7 +76,7 @@ usort($camera_widgets, "cmpCameraWidgetPosition");
 	</div>
 </div>
 <?php
-if ($_SESSION['user']->getOptions('displayObjetByDefault') == 1 && init('report') != 1) {
+if (config::byKey('panel::displayObjet', 'camera', false) == true && init('report') != 1) {
 	echo '<div class="col-lg-10 col-md-9 col-sm-8" id="div_displayObject">';
 } else {
 	echo '<div class="col-lg-12 col-md-12 col-sm-12" id="div_displayObject">';
