@@ -70,6 +70,12 @@ if (!isConnect('admin')) {
 					<input type="number" class="configKey form-control" data-l1key="panel::nbColumn">
 				</div>
 			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{{Afficher le panneau des objets}}</label>
+				<div class="col-sm-6">
+					<input type="checkbox" class="configKey form-control" data-l1key="panel::displayObjet" />
+				</div>
+			</div>
 		</fieldset>
 	</form>
 </div>
