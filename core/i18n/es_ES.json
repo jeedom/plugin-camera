@@ -11,7 +11,8 @@
         "Mo": "Mes",
         "Panel": "Panel",
         "Nombre de lignes": "Número de líneas",
-        "Nombre de colonnes": "Número de columnas"
+        "Nombre de colonnes": "Número de columnas",
+        "Afficher le panneau des objets": "Panel Mostrar objetos"
     },
     "plugins\/camera\/desktop\/modal\/camera.displayVideo.php": {
         "401 - Accès non autorisé": "401 - Acceso no autorizado"

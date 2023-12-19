@@ -11,7 +11,8 @@
         "Mo": "MB",
         "Panel": "Platte",
         "Nombre de lignes": "Anzahl der Zeilen",
-        "Nombre de colonnes": "Anzahl der Spalten"
+        "Nombre de colonnes": "Anzahl der Spalten",
+        "Afficher le panneau des objets": "Objektfenster anzeigen"
     },
     "plugins\/camera\/desktop\/modal\/camera.displayVideo.php": {
         "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff"
