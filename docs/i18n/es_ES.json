@@ -166,6 +166,7 @@
         "vitesse de mouvement ptz (entre 0 à 1": "Velocidad de movimiento ptz (entre 0 y 1)",
         "Délai avant commande stop (en ms": "Retardo antes del comando de parada (en ms",
         "délai avant commande de stop ptz": "tiempo antes de la orden de parada de Ptz",
+        "Il faut renseigner la commande de Stop sur chaque commande de mouvement PTZ dans le champ prévu à cet effet": "Debe ingresar el comando Detener en cada comando de movimiento PTZ en el campo provisto para este propósito",
         "Vous pouvez retrouver": "Puedes encontrar",
         "des configuration pour pas mal de camera et donc pouvoir integrer votre camera vous meme à Jeedom si elle n'est pas dans la liste": "configuración para una gran cantidad de cámara y, por lo tanto, poder integrar su cámara usted mismo en Jeedom si no está en la lista",
         "Cette partie vous permet de configurer la qualité de l'image": "Esta parte le permite configurar la calidad de la imagen",

@@ -166,6 +166,7 @@
         "vitesse de mouvement ptz (entre 0 à 1": "vitesse de mouvement ptz (entre 0 à 1",
         "Délai avant commande stop (en ms": "Délai avant commande stop (en ms",
         "délai avant commande de stop ptz": "délai avant commande de stop ptz",
+        "Il faut renseigner la commande de Stop sur chaque commande de mouvement PTZ dans le champ prévu à cet effet": "Il faut renseigner la commande de Stop sur chaque commande de mouvement PTZ dans le champ prévu à cet effet",
         "NOTE": "NOTE",
         "Vous pouvez retrouver": "Vous pouvez retrouver",
         "des configuration pour pas mal de camera et donc pouvoir integrer votre camera vous meme à Jeedom si elle n'est pas dans la liste": "des configuration pour pas mal de camera et donc pouvoir integrer votre camera vous meme à Jeedom si elle n'est pas dans la liste",
