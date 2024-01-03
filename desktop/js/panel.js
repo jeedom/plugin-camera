@@ -33,7 +33,7 @@ function autosizeCamWidget(nbCamByLine,nbCamByColumn){
   $('#div_displayObject .eqLogic-widget').height(camHeight);
   $('#div_displayObject .eqLogic-widget:not(.jeedomAlreadyPosition),.scenario-widget:not(.jeedomAlreadyPosition)').css('margin',margin+'px');
   $('#div_displayObject .eqLogic-widget,.scenario-widget').addClass('jeedomAlreadyPosition');
-  $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-width',$('#div_displayObject .eqLogic-widget').width());
+  $('#div_displayObject .eqLogic-widget .directDisplay img').css('max-width',$('#div_displayObject .eqLogic-widget').width()).css('max-height',(camHeight - 60) + 'px');
   $('#div_displayObject').each(function(){
     var container = $(this).packery({
       itemSelector: ".eqLogic-widget",

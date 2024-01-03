@@ -1,4 +1,7 @@
 {
+    "plugins\/camera\/mobile\/js\/panel.js": {
+        "Tous": "Todo"
+    },
     "plugins\/camera\/plugin_info\/configuration.php": {
         "401 - Accès non autorisé": "401 - Acceso no autorizado",
         "Le plugin caméra doit réagir aux interactions": "El complemento de la cámara debe reaccionar a las interacciones",
@@ -8,7 +11,8 @@
         "Mo": "Mes",
         "Panel": "Panel",
         "Nombre de lignes": "Número de líneas",
-        "Nombre de colonnes": "Número de columnas"
+        "Nombre de colonnes": "Número de columnas",
+        "Afficher le panneau des objets": "Panel Mostrar objetos"
     },
     "plugins\/camera\/desktop\/modal\/camera.displayVideo.php": {
         "401 - Accès non autorisé": "401 - Acceso no autorizado"
@@ -102,9 +106,15 @@
         "HTTPS": "HTTPS",
         "Port": "Puerto",
         "Port ONVIF": "Puerto ONVIF",
+        "Jeton de profil": "Ficha de perfil",
+        "Vitesses X, Y et Z": "Velocidades X, Y y Z",
+        "Y (de 0 à 1)": "Sí (0 a 1)",
+        "Z (de 0 à 1)": "Z (de 0 a 1)",
+        "Délai avant commande stop (en ms)": "Retardo antes del comando de parada (en ms)",
+        "Délai (de 0 à 5000)": "Retraso (de 0 a 5000)",
         "Nom d'utilisateur": "Nombre de usuario",
         "Mot de passe": "Contraseña",
-        "URL de snaphot": "URL de instantánea",
+        "URL de snapshot": "URL de instantánea",
         "URL de capture": "Capturar url",
         "URL du flux": "URL del feed",
         "URL du flux, RTSP": "URL de transmisión, RTSP",
@@ -189,7 +199,7 @@
         "Capture": "Captura",
         "Enregistrer": "Registro",
         "Nombre captures ou options": "Número de capturas u opciones",
-        "Commande message d\\'envoi des captures": "Mensaje de comando para enviar capturas",
+        "Commande message d'envoi des captures": "Mensaje de comando para enviar capturas",
         "On": "Uno",
         "Off": "Apagado",
         "Alerte sur la camera : ": "Alerta de la cámara:",

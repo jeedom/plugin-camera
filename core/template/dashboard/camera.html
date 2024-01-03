@@ -1,7 +1,14 @@
-<div class="eqLogic eqLogic-widget allowResize" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="min-width : 50px;min-height : 80px ;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#" >
-  <center class="widget-name">
-    <span style="font-size: 1.2em;#hideEqLogicName#"><a href="#eqLink#">#name_display# <span class="object_name">#object_name#</span></a></span>
-  </center>
+<div class="eqLogic eqLogic-widget allowResize text-center" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="min-width : 50px;min-height : 80px ;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#" >
+  <div class="widget-name">
+    <span style="color:#background-color#" title="#alert_name#">
+      <i class='#alert_icon#'></i>
+    </span>
+    <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#">
+      <i class="fas fa-sync"></i>
+    </span>
+    <span class="reportModeVisible">#name_display# <span class="object_name">#object_name#</span></span>
+    <a href="#eqLink#" class="reportModeHidden">#name_display# <span class="object_name">#object_name#</span></a>
+  </div>
   <center>
     <span class="directDisplay zoom cursor">
       <img src="plugins/camera/core/img/no-image-blanc.png" style="display:block;" data-eqLogic_id="#id#"/>
@@ -41,14 +48,27 @@
         $(".md_cameraZoom[data-eqLogic_uid=#uid#]").eq(0).remove();
       }
     }
-    var md_eqLogic_#uid# = $(".md_cameraZoom[data-eqLogic_uid=#uid#]")
-    eqLogic_#id#.find('.directDisplay img').css('max-height',eqLogic_#id#.height() - 60).css('max-width',eqLogic_#id#.width());
+
+    Object.assign(document.querySelector('.eqLogic[data-eqLogic_id="#id#"] .directDisplay img').style, {
+      maxHeight:(eqLogic_#id#.height() - 60) + 'px',
+      maxWidth:eqLogic_#id#.width() + 'px'
+    });
+    setTimeout(function(){
+      Object.assign(document.querySelector('.eqLogic[data-eqLogic_id="#id#"] .directDisplay img').style, {
+        maxHeight:(eqLogic_#id#.height() - 60) + 'px',
+        maxWidth:eqLogic_#id#.width() + 'px'
+      });
+    }, 1000);
+    
     eqLogic_#id#.off('resize').on('resize',function(){
-      eqLogic_#id#.find('.directDisplay img').css('max-height',eqLogic_#id#.height() - 60).css('max-width',eqLogic_#id#.width());
+      Object.assign(document.querySelector('.eqLogic[data-eqLogic_id="#id#"] .directDisplay img').style, {
+        maxHeight:(eqLogic_#id#.height() - 60),
+        maxWidth:eqLogic_#id#.width()});
     });
     $('.camera_history[data-eqLogic_id=#id#]').off().on('click', function () {
       $('#md_modal').dialog({title: "Historique #name#"}).load('index.php?v=d&plugin=camera&modal=camera.history&id=#id#').dialog('open');
     });
+    var md_eqLogic_#uid# = $(".md_cameraZoom[data-eqLogic_uid=#uid#]")
     md_eqLogic_#uid#.dialog({
       autoOpen: false,
       modal: true,
@@ -74,7 +94,7 @@
     });
     maxWidth_#id#_thumbnail = 0;
     maxWidth_#id# = 0;
-    
+
     img_#id#.onload = function() {
       if(thumbnail_#id#){
         eqLogic_#id#.find('.directDisplay img').attr('src',img_#id#.src).attr('data-imgready',1);
@@ -82,8 +102,8 @@
         md_eqLogic_#uid#.find('.display img').attr('src',img_#id#.src);
       }
       if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-        $('.cmd[data-cmd_id=#cmd_off_id#]').show();
-        $('.cmd[data-cmd_id=#cmd_on_id#]').hide();
+        document.querySelector('.cmd[data-cmd_id="#cmd_off_id#"]').hidden = false
+        document.querySelector('.cmd[data-cmd_id="#cmd_on_id#"]').hidden = true
       }
       let delay = (thumbnail_#id#) ? #refreshDelaySlow# - (Date.now() - start_#id#) :  #refreshDelayFast# - (Date.now() - start_#id#);
       error_nb_#id# = 0
@@ -95,14 +115,14 @@
         md_eqLogic_#uid#.find('.display img').attr('src','plugins/camera/core/img/no-image-noir.png');
         eqLogic_#id#.find('.directDisplay img').attr('src','plugins/camera/core/img/no-image-blanc.png');
         if('#cmd_off_id#' != '""' && '#cmd_on_id#' != '""'){
-          $('.cmd[data-cmd_id=#cmd_off_id#]').hide();
-          $('.cmd[data-cmd_id=#cmd_on_id#]').show();
+          document.querySelector('.cmd[data-cmd_id="#cmd_off_id#"]').hidden = true
+          document.querySelector('.cmd[data-cmd_id="#cmd_on_id#"]').hidden = false
         }
       }
       timeoutCamera#id# = setTimeout(refreshImgCam#id#, #refreshDelaySlow# * 2);
     };
     function refreshImgCam#id#(){
-      if(!$('.eqLogic[data-eqLogic_uid=#uid#]') || $('.eqLogic[data-eqLogic_uid=#uid#]').length == 0 || !eqLogic_#id# || !eqLogic_#id#.find('.directDisplay')){
+      if(!document.querySelector('.eqLogic[data-eqLogic_uid=#uid#]') || !eqLogic_#id# || !eqLogic_#id#.find('.directDisplay')){
         return;
       }
       if(!md_eqLogic_#uid#.is(':visible') && $(".md_cameraZoom").is(':visible')){

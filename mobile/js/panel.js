@@ -15,8 +15,8 @@
 */
 
 function initCameraPanel(_object_id) {
-  if(typeof setBackgroundImage == 'function'){
-    setBackgroundImage('plugins/camera/core/img/panel.jpg');
+  if(typeof jeedomUtils.setBackgroundImage == 'function'){
+    jeedomUtils.setBackgroundImage('plugins/camera/core/img/panel.jpg');
   }
   jeedom.object.all({
     onlyHasEqLogic : 'camera',
@@ -25,6 +25,7 @@ function initCameraPanel(_object_id) {
     },
     success: function (objects) {
       var li = ' <ul data-role="listview">';
+      li += '<li></span><a href="#" class="link" data-page="panel" data-plugin="camera" data-title="Caméra" data-option=""><span><i class="fas fa-globe"></i></span>{{Tous}}</a></li>'
       for (var i in objects) {
         if (objects[i].isVisible == 1) {
           var icon = '';
@@ -35,13 +36,13 @@ function initCameraPanel(_object_id) {
         }
       }
       li += '</ul>';
-      panel(li);
+      jeedomUtils.loadPanel(li);
     }
   });
   displayCamera(_object_id);
   
   $(window).on("resize", function (event) {
-    setTileSize('.eqLogic');
+    jeedomUtils.setTileSize('.eqLogic');
     $('#div_displayEquipementCamera').packery({gutter : 0});
     $('#div_displayEquipementCamera').packery({gutter : 0});
   });
@@ -63,14 +64,17 @@ function displayCamera(_object_id) {
     },
     success: function (data) {
       if (data.state != 'ok') {
-        $('#div_alert').showAlert({message: data.result, level: 'danger'});
+        jeedomUtils.showAlert({
+          message: data.result,
+          level: 'danger'
+        })
         return;
       }
       $('#div_displayEquipementCamera').empty();
       for (var i in data.result.eqLogics) {
         $('#div_displayEquipementCamera').append(data.result.eqLogics[i]).trigger('create');
       }
-      setTileSize('.eqLogic');
+      jeedomUtils.setTileSize('.eqLogic');
       $('.eqLogic-widget').addClass('displayObjectName');
       $('#div_displayEquipementCamera').packery({gutter : 0});
       $('#div_displayEquipementCamera').packery({gutter : 0});

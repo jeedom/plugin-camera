@@ -1,14 +1,18 @@
 {
+    "plugins\/camera\/mobile\/js\/panel.js": {
+        "Tous": "All"
+    },
     "plugins\/camera\/plugin_info\/configuration.php": {
         "401 - Accès non autorisé": "401 - Unauthorized access",
         "Le plugin caméra doit réagir aux interactions": "The camera plugin must react to interactions",
         "Moteur RTSP": "RTSP",
         "Chemin des enregistrements": "Record path",
         "Taille maximale du dossier d'enregistrement": "Maximum recording folder size",
-        "Mo": "Mo",
+        "Mo": "MB",
         "Panel": "Panel",
         "Nombre de lignes": "Number of lines",
-        "Nombre de colonnes": "Number of columns"
+        "Nombre de colonnes": "Number of columns",
+        "Afficher le panneau des objets": "Show Objects Panel"
     },
     "plugins\/camera\/desktop\/modal\/camera.displayVideo.php": {
         "401 - Accès non autorisé": "401 - Unauthorized access"
@@ -102,9 +106,15 @@
         "HTTPS": "HTTPS",
         "Port": "Port",
         "Port ONVIF": "ONVIF port",
+        "Jeton de profil": "Profile token",
+        "Vitesses X, Y et Z": "X, Y and Z speeds",
+        "Y (de 0 à 1)": "Y (0 to 1)",
+        "Z (de 0 à 1)": "Z (from 0 to 1)",
+        "Délai avant commande stop (en ms)": "Delay before stop command (in ms)",
+        "Délai (de 0 à 5000)": "Delay (from 0 to 5000)",
         "Nom d'utilisateur": "Username",
         "Mot de passe": "Password",
-        "URL de snaphot": "Snapshot URL",
+        "URL de snapshot": "Snapshot URL",
         "URL de capture": "Capture URL",
         "URL du flux": "Feed URL",
         "URL du flux, RTSP": "URL of RTSP stream",
@@ -189,7 +199,7 @@
         "Capture": "Capture",
         "Enregistrer": "Save",
         "Nombre captures ou options": "Number of snapshots or options",
-        "Commande message d\\'envoi des captures": "Command message to send snapshots",
+        "Commande message d'envoi des captures": "Command message to send captures",
         "On": "We",
         "Off": "Off",
         "Alerte sur la camera : ": "Alert on camera :",

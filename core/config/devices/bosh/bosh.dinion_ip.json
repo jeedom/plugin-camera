@@ -1,0 +1,26 @@
+{
+    "name": "DINION IP",
+    "manufacturer": "Bosch",
+    "configuration": {
+      "port": "80",
+      "urlStream": "/snap.jpg?JpegCam=1&VCAOverlay=1",
+      "cameraStreamAccessUrl": "rtsp://#username#:#password#@#ip#:554/h264",
+      "protocole": "http"
+    },
+    "commands": [{
+      "eqType": "camera",
+      "name": "Motion alarme",
+      "type": "info",
+      "subType": "binary",
+      "isHistorized": "1",
+      "isVisible": "1",
+      "logicalId": "motionDetectAlarm",
+      "display": {
+        "invertBinary": "1"
+      },
+      "template": {
+        "dashboard": "timePresence",
+        "mobile": "timePresence"
+      }
+    }]
+  }
