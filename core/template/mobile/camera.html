@@ -39,7 +39,11 @@
     var popup_#id# = $("#popupCameraZoom#id#");
     var error_nb_#id# = 0;
     eqLogic_#id#.find('.cmd[data-cmd_id=#cmd_off_id#]').hide() ;
-    eqLogic_#id#.height(jeedomUtils.userDevice.bSize  * (9/16) + 40);
+    if(jeedomUtils?.userDevice?.bSize){
+        eqLogic_#id#.height(jeedomUtils.userDevice.bSize  * (9/16) + 40);
+    }else{
+        eqLogic_#id#.height(deviceInfo.bSize  * (9/16) + 40);
+    }
     eqLogic_#id#.find('img.directDisplay').css('max-height',eqLogic_#id#.height()).css('max-width',eqLogic_#id#.width());
     eqLogic_#id#.off('resize').on('resize',function(){
       eqLogic_#id#.find('img.directDisplay').css('max-height',eqLogic_#id#.height()).css('max-width',eqLogic_#id#.width());
@@ -120,8 +124,9 @@
       if(maxWidth_#id#_thumbnail < eqLogic_#id#.find('img.directDisplay').width()){
         maxWidth_#id#_thumbnail = eqLogic_#id#.find('img.directDisplay').width();
       }
-      if(maxWidth_#id# < (jeedomUtils.userDevice.width-50)){
-        maxWidth_#id# = (jeedomUtils.userDevice.width-50);
+      let deviceWith = (jeedomUtils?.userDevice?.width) ? jeedomUtils.userDevice.width : deviceInfo.width;
+      if(maxWidth_#id# < (deviceWith-50)){
+        maxWidth_#id# = (deviceWith-50);
       }
       url += (thumbnail_#id#)?  '&thumbnail=1&width='+ maxWidth_#id#:'&width='+maxWidth_#id#+'&mobile=1';
       img_#id#.src = url;
