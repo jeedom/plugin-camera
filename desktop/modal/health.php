@@ -44,8 +44,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		<?php
 		foreach ($eqLogics as $eqLogic) {
 			$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
-			if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg')) {
-				$img = '<img class="lazy" src="plugins/camera/core/config/devices/' . $eqLogic->getConfiguration('device') . '.jpg" height="65" width="55" style="' . $opacity . '"/>';
+			if ($eqLogic->getConfiguration('device') != "" && camera::getImgFilePath($eqLogic->getConfiguration('device')) !== false) {
+				$img = '<img class="lazy" src="plugins/camera/core/config/devices/' . camera::getImgFilePath($eqLogic->getConfiguration('device')) . '" height="65" width="55" style="' . $opacity . '"/>';
 			} else {
 				$img = '<img class="lazy" src="' . $plugin->getPathImgIcon() . '" height="65" width="55" style="' . $opacity . '"/>';
 			}
@@ -75,9 +75,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			} else {
 				echo '<td><span class="label label-danger" style="font-size : 1em; cursor : default;">' . $framerate . '/s</span></td>';
 			}
-			
-			echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('refreshDelaySlow',1) . '/s</span></td>';
-			echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('refreshDelayFast',1) . '/s</span></td>';
+
+			echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('refreshDelaySlow', 1) . '/s</span></td>';
+			echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('refreshDelayFast', 1) . '/s</span></td>';
 			echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('maxReccordTime') . 's</span></td>';
 			echo '<td><span class="label label-info" style="font-size : 1em; cursor : default;">' . $eqLogic->getConfiguration('createtime') . '</span></td></tr>';
 		}
