@@ -338,15 +338,19 @@ class camera extends eqLogic {
 	/*     * *********************Methode d'instance************************* */
 
 	public function configOnvif() {
-		$onvif = new Ponvif();
-		$onvif->setUsername($this->getConfiguration('username'));
-		$onvif->setPassword($this->getConfiguration('password'));
-		$onvif->setIPAddress($this->getConfiguration('ip') . ':' . $this->getConfiguration('onvif_port', 80));
-		$onvif->initialize();
-		$sources = $onvif->getSources();
-		$mediaUri = preg_replace('/(([0-9]{1,3}\.){3}[0-9]{1,3})/m', '#username#:#password#@#ip#', $onvif->media_GetStreamUri($sources[0][0]['profiletoken']));
-		$this->setConfiguration('cameraStreamProfileToken', $sources[0][0]['profiletoken']); //save profiletoken for sending onvif ptz cmd
-		$this->setConfiguration('cameraStreamAccessUrl', $mediaUri);
+		try{
+			$onvif = new Ponvif();
+			$onvif->setUsername($this->getConfiguration('username'));
+			$onvif->setPassword($this->getConfiguration('password'));
+			$onvif->setIPAddress($this->getConfiguration('ip') . ':' . $this->getConfiguration('onvif_port', 80));
+			$onvif->initialize();
+			$sources = $onvif->getSources();
+			$mediaUri = preg_replace('/(([0-9]{1,3}\.){3}[0-9]{1,3})/m', '#username#:#password#@#ip#', $onvif->media_GetStreamUri($sources[0][0]['profiletoken']));
+			$this->setConfiguration('cameraStreamProfileToken', $sources[0][0]['profiletoken']); //save profiletoken for sending onvif ptz cmd
+			$this->setConfiguration('cameraStreamAccessUrl', $mediaUri);
+		} catch (Exception $e) {
+			log::add('camera','error','[ONVIF] '.$e->getMessage());
+		}
 	}
 
 	public function decrypt() {
