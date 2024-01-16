@@ -1,7 +1,7 @@
 <script src="plugins/camera/core/template/dashboard/hls-0.13.0.light.min.js"></script>
-<div class="camera" data-camera="#uid#" data-camera_id="#id#" style="min-width : 50px;min-height : 80px ;width: #width#;height: #height#">
+<div class="camera" data-camera="#uid#" data-camera_id="#id#" style="width: 100%;height: 100%">
   <span class="directDisplay" style="width: 100%;height: 100%">
-    <video id="video-player#id#" data-eqLogic_id="#id#" controls width="100%" height="100%" preload="none" autoplay="true" muted></video>
+    <video id="video-player#id#" data-eqLogic_id="#id#" controls width="320" height="240" preload="none" autoplay="true" muted style="width: 100%;height: 100%"></video>
   </span>
   <script>
     $.ajax({
