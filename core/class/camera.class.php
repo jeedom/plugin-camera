@@ -616,7 +616,7 @@ class camera extends eqLogic {
 		if (is_object($off)) {
 			$replace['#cmd_off_id#'] = $off->getId();
 		} else {
-			$replace['#cmd_on_id#'] = '""';
+			$replace['#cmd_off_id#'] = '""';
 		}
 		$action .= template_replace($replace_action, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
 
