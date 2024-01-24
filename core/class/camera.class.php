@@ -608,11 +608,14 @@ class camera extends eqLogic {
 		);
 		$on = $this->getCmd(null, 'on');
 		$off = $this->getCmd(null, 'off');
-		if (is_object($on) && is_object($off)) {
+		if (is_object($on)) {
 			$replace['#cmd_on_id#'] = $on->getId();
-			$replace['#cmd_off_id#'] = $off->getId();
 		} else {
 			$replace['#cmd_on_id#'] = '""';
+		}
+		if (is_object($off)) {
+			$replace['#cmd_off_id#'] = $off->getId();
+		} else {
 			$replace['#cmd_off_id#'] = '""';
 		}
 		$action .= template_replace($replace_action, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
