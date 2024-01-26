@@ -608,12 +608,12 @@ class camera extends eqLogic {
 		);
 		$on = $this->getCmd(null, 'on');
 		$off = $this->getCmd(null, 'off');
-		if (is_object($on)) {
+		if (is_object($on) && $on->getIsVisible() == 1) {
 			$replace['#cmd_on_id#'] = $on->getId();
 		} else {
 			$replace['#cmd_on_id#'] = '""';
 		}
-		if (is_object($off)) {
+		if (is_object($off) && $off->getIsVisible() == 1) {
 			$replace['#cmd_off_id#'] = $off->getId();
 		} else {
 			$replace['#cmd_off_id#'] = '""';
