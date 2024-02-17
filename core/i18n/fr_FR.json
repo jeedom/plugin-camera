@@ -37,7 +37,7 @@
         "NON": "NON"
     },
     "plugins\/camera\/desktop\/modal\/camera.history.php": {
-        "L\\'id ne peut etre vide": "L\\'id ne peut etre vide",
+        "L\\'id ne peut etre vide": "L\\'id ne peut être vide",
         "L\\'équipement est introuvable : ": "L\\'équipement est introuvable : ",
         "Cet équipement n\\'est pas de type camera : ": "Cet équipement n\\'est pas de type camera : ",
         "401 - Accès non autorisé": "401 - Accès non autorisé",
@@ -59,7 +59,7 @@
     },
     "plugins\/camera\/desktop\/modal\/camera.preview.php": {
         "Equipement introuvable : ": "Equipement introuvable : ",
-        "L\\'équipement n\\'est pas une camera": "L\\'équipement n\\'est pas une camera",
+        "L\\'équipement n\\'est pas une camera": "L\\'équipement n\\'est pas une caméra",
         "401 - Accès non autorisé": "401 - Accès non autorisé"
     },
     "plugins\/camera\/desktop\/modal\/camera.displayImage.php": {
@@ -67,7 +67,7 @@
     },
     "plugins\/camera\/desktop\/php\/panel.php": {
         "401 - Accès non autorisé": "401 - Accès non autorisé",
-        "Aucun objet racine trouvé. Pour en créer un, allez dans Générale -> Objet.<br\/> Si vous ne savez pas quoi faire ou que c\\'est la premiere fois que vous utilisez Jeedom n\\'hésitez pas a consulter cette <a href=\"http:\/\/jeedom.fr\/premier_pas.php\" target=\"_blank\">page<\/a>": "Aucun objet racine trouvé. Pour en créer un, allez dans Générale -> Objet.<br\/> Si vous ne savez pas quoi faire ou que c\\'est la premiere fois que vous utilisez Jeedom n\\'hésitez pas a consulter cette <a href=\"http:\/\/jeedom.fr\/premier_pas.php\" target=\"_blank\">page<\/a>",
+        "Aucun objet racine trouvé. Pour en créer un, allez dans Générale -> Objet.<br\/> Si vous ne savez pas quoi faire ou que c\\'est la premiere fois que vous utilisez Jeedom n\\'hésitez pas a consulter cette <a href=\"http:\/\/jeedom.fr\/premier_pas.php\" target=\"_blank\">page<\/a>": "Aucun objet racine trouvé. Pour en créer un, allez dans Générale -> Objet.<br\/> Si vous ne savez pas quoi faire ou que c\\'est la première fois que vous utilisez Jeedom n\\'hésitez pas à consulter cette <a href=\"http:\/\/jeedom.fr\/premier_pas.php\" target=\"_blank\">page<\/a>",
         "Rechercher": "Rechercher"
     },
     "plugins\/camera\/desktop\/php\/camera.php": {
@@ -126,7 +126,7 @@
         "Informations": "Informations",
         "Si votre caméra n'est pas dans la liste vous pouvez trouver": "Si votre caméra n'est pas dans la liste vous pouvez trouver",
         "ici": "ici",
-        "les informations de configuration pour pas mal de camera": "les informations de configuration pour pas mal de camera",
+        "les informations de configuration pour pas mal de camera": "les informations de configuration pour pas mal de caméras",
         "Modèle": "Modèle",
         "Ne pas compresser ou redimensionner l'image": "Ne pas compresser ou redimensionner l'image",
         "Miniature": "Miniature",
@@ -138,7 +138,7 @@
         "Normal": "Normal",
         "Vidéo": "Vidéo",
         "Durée maximum d'un enregistrement (s)": "Durée maximum d'un enregistrement (s)",
-        "Toujours faire une video": "Toujours faire une video",
+        "Toujours faire une video": "Toujours faire une vidéo",
         "Nombre d'images par seconde de la vidéo": "Nombre d'images par seconde de la vidéo",
         "Supprimer toutes les captures de la caméra": "Supprimer toutes les captures de la caméra",
         "Commande ON": "Commande ON",
@@ -155,7 +155,7 @@
         "Découverte Caméras": "Découverte Caméras",
         "Prévisualisation": "Prévisualisation",
         "URL de la commande": "URL de la commande",
-        "URL de la commande de stop de mouvement (caméra motirisée)": "URL de la commande de stop de mouvement (caméra motirisée)",
+        "URL de la commande de stop de mouvement (caméra motirisée)": "URL de la commande de stop de mouvement (caméra motorisée)",
         "Valeur retour d\\'état": "Valeur retour d\\'état",
         "Durée avant retour d\\'état (min)": "Durée avant retour d\\'état (min)",
         "Inverser": "Inverser",
@@ -165,35 +165,35 @@
         "Supression réussie": "Supression réussie"
     },
     "plugins\/camera\/core\/php\/stopCam.php": {
-        "[camera\/reccord] L\\'id ne peut etre vide": "[camera\/reccord] L\\'id ne peut etre vide",
-        "[camera\/reccord] L\\'équipement est introuvable : ": "[camera\/reccord] L\\'équipement est introuvable : ",
-        "[camera\/reccord] Cet équipement n\\'est pas de type camera : ": "[camera\/reccord] Cet équipement n\\'est pas de type camera : ",
+        "[camera\/reccord] L\\'id ne peut etre vide": "[camera\/record] L\\'id ne peut être vide",
+        "[camera\/reccord] L\\'équipement est introuvable : ": "[camera\/record] L\\'équipement est introuvable : ",
+        "[camera\/reccord] Cet équipement n\\'est pas de type camera : ": "[camera\/record] Cet équipement n\\'est pas de type caméra : ",
         "Impossible de trouver la commande OFF": "Impossible de trouver la commande OFF"
     },
     "plugins\/camera\/core\/php\/sendSnapshot.php": {
-        "[camera\/sendsnapshot] L\\'id ne peut etre vide": "[camera\/sendsnapshot] L\\'id ne peut etre vide",
+        "[camera\/sendsnapshot] L\\'id ne peut etre vide": "[camera\/sendsnapshot] L\\'id ne peut être vide",
         "[camera\/sendsnapshot] L\\'équipement est introuvable : ": "[camera\/sendsnapshot] L\\'équipement est introuvable : ",
-        "[camera\/sendsnapshot] Cet équipement n\\'est pas de type camera : ": "[camera\/sendsnapshot] Cet équipement n\\'est pas de type camera : ",
+        "[camera\/sendsnapshot] Cet équipement n\\'est pas de type camera : ": "[camera\/sendsnapshot] Cet équipement n\\'est pas de type caméra : ",
         "[camera\/sendsnapshot]No file found ": "[camera\/sendsnapshot]No file found "
     },
     "plugins\/camera\/core\/php\/record.php": {
-        "[camera\/reccord] L\\'id ne peut etre vide": "[camera\/reccord] L\\'id ne peut etre vide",
-        "[camera\/reccord] L\\'équipement est introuvable : ": "[camera\/reccord] L\\'équipement est introuvable : ",
-        "[camera\/reccord] Cet équipement n\\'est pas de type camera : ": "[camera\/reccord] Cet équipement n\\'est pas de type camera : "
+        "[camera\/reccord] L\\'id ne peut etre vide": "[camera\/record] L\\'id ne peut être vide",
+        "[camera\/reccord] L\\'équipement est introuvable : ": "[camera\/record] L\\'équipement est introuvable : ",
+        "[camera\/reccord] Cet équipement n\\'est pas de type camera : ": "[camera\/record] Cet équipement n\\'est pas de type caméra : "
     },
     "plugins\/camera\/core\/ajax\/camera.ajax.php": {
         "401 - Accès non autorisé": "401 - Accès non autorisé",
-        "Impossible de trouver la camera : ": "Impossible de trouver la camera : ",
+        "Impossible de trouver la camera : ": "Impossible de trouver la caméra : ",
         "Impossible de trouver la caméra : ' . init('id')": "Impossible de trouver la caméra : ' . init('id')",
-        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+        "Aucune methode correspondante à : ": "Aucune méthode correspondante à : "
     },
     "plugins\/camera\/core\/class\/camera.class.php": {
         "Veuillez vérifier la configuration": "Veuillez vérifier la configuration",
-        "Tache cron introuvable": "Tache cron introuvable",
+        "Tache cron introuvable": "Tâche cron introuvable",
         "Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ": "Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ",
         "La \"Commande d\\'alerte\" ne peut être de type caméra": "La \"Commande d\\'alerte\" ne peut être de type caméra",
-        "L\\'adresse IP de la camera ne peut être vide": "L\\'adresse IP de la camera ne peut être vide",
-        "Flux video": "Flux video",
+        "L\\'adresse IP de la camera ne peut être vide": "L\\'adresse IP de la caméra ne peut être vide",
+        "Flux video": "Flux vidéo",
         "Status enregistrement": "Status enregistrement",
         "Arrêter enregistrement": "Arrêter enregistrement",
         "Capture": "Capture",
@@ -202,18 +202,18 @@
         "Commande message d'envoi des captures": "Commande message d'envoi des captures",
         "On": "On",
         "Off": "Off",
-        "Alerte sur la camera : ": "Alerte sur la camera : ",
+        "Alerte sur la camera : ": "Alerte sur la caméra : ",
         " à ": " à ",
         "[camera\/sendSnap] Erreur lors de l\\'envoi des images : ": "[camera\/sendSnap] Erreur lors de l\\'envoi des images : ",
-        "Impossible de trouver la function ": "Impossible de trouver la function ",
+        "Impossible de trouver la function ": "Impossible de trouver la fonction ",
         "Erreur sur ": "Erreur sur ",
-        "Impossible de creer le dossier : ": "Impossible de creer le dossier : ",
+        "Impossible de creer le dossier : ": "Impossible de créer le dossier : ",
         "Impossible d\\'écrire dans le dossier : ": "Impossible d\\'écrire dans le dossier : ",
         "Le fichier est vide : ": "Le fichier est vide : ",
         "Impossible de trouver la commande ON": "Impossible de trouver la commande ON",
         "Impossible de trouver la commande OFF": "Impossible de trouver la commande OFF"
     },
     "info.json": {
-        "Plugin permettant l'affichage des caméras IP. L'affichage vidéo de la caméra s'effectue par snapshots (captures) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP.": "Plugin permettant l'affichage des caméras IP. L'affichage vidéo de la caméra s'effectue par snapshots (captures) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP."
+        "Plugin permettant l'affichage des caméras IP. L'affichage vidéo de la caméra s'effectue par snapshots (captures) successives toutes les secondes. Le plugin est compatible avec les cameras RTSP.": "Plugin permettant l'affichage des caméras IP. L'affichage vidéo de la caméra s'effectue par snapshots (captures) successives toutes les secondes. Le plugin est compatible avec les caméras RTSP."
     }
 }
