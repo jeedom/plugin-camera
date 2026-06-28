@@ -1,0 +1,9 @@
+{
+  "name": "Ubiquiti G5 Turret Ultra",
+  "manufacturer": "Ubiquiti",
+  "configuration": {
+    "urlStream": "\/snap.jpeg",
+    "protocole": "http"
+  },
+  "commands": []
+}

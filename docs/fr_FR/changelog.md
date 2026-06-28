@@ -6,6 +6,7 @@
 
 - Correction d'un bug sur l'accès aux enregistrements videos
 - Amélioration de la gestion des retours a la ligne dans le widget [LIEN](https://github.com/jeedom/plugin-camera/pull/85)
+- Ajout de la caméra Ubiquiti G5 Turret Ultra
 
 # 24/01/2024
 
@@ -42,12 +43,12 @@
 # 11/12/2021
 
 - Support de nouvelles caméras
-- Ajout d'un bouton pour voir une prévisualisation de la camera sur la page de configuration
+- Ajout d'un bouton pour voir une prévisualisation de la caméra sur la page de configuration
 
 # 31/08/2021
 
 - Modification pour autoriser la recuperation depuis une fonction d'un autre plugin (sera utilisé pour un futur plugin Unifi Protect)
-- Ajout de la camera Ubiquiti G4 bullet (attention il faut sur la camera activer les connexion anonyme)
+- Ajout de la caméra Ubiquiti G4 bullet (attention il faut sur la caméra activer les connexion anonyme)
 
 # 04/02/2021
 
@@ -56,7 +57,6 @@
 # 29/11/2020
 
 - Correction d'un soucis d'affichage d'image sur les designs
-
 
 # 24/11/2020
 
@@ -70,16 +70,16 @@
 # 07/07/2020
 
 - Correction d'un soucis sur le port par default de l'url de flux pour les caméras Foscam merci @nebz
-- Ajout de la camera Reolink RLC-410-5MP merci @Dorsad
+- Ajout de la caméra Reolink RLC-410-5MP merci @Dorsad
 - Ajout de RocketCam (Freebox) merci @JAG
 
 # 26/06/2020
 
 - Ajout de caméra Dahua
-- Ajout de camera Foscam
+- Ajout de caméra Foscam
 - Supression de la detection de mouvements
 - Ajout de panasonic wc np502 merci @Flobul
-- Ajout de camera IOS merci @Flobul
+- Ajout de caméra IOS merci @Flobul
 
 # 16/06/2020
 
@@ -88,7 +88,7 @@
 # 14/06/2020
 
 - Amélioration du systeme de nettoyage des fichiers de flux video (attention la fonction est toujours en beta il est possible que notre reglage soit un peu trop agressif)
-- Correction d'un bug sur la recuperation des informations de mouvement des camera foscam HD
+- Correction d'un bug sur la recuperation des informations de mouvement des caméras foscam HD
 - Correction d'un soucis si un utilisateur non admin voulait visionner le flux video
 - Correction de bug d'affichage sur les design en mode "flux only"
 - Correction de bugs
@@ -96,17 +96,17 @@
 # 11/0/2020
 
 - Ajout de configuration
-- Possibilité de voir la camera en flux video (et non plus image par image) - Beta
-- Refonte du systeme de pre-configuration des cameras
+- Possibilité de voir la caméra en flux video (et non plus image par image) - Beta
+- Refonte du systeme de pre-configuration des caméras
 
 # 11/05/2020
 
 - Retour de la fonction de decouverte ONVIF (merci @Aidom)
-- Possibilité d'utiliser des commandes (type script) pour le controle des cameras
+- Possibilité d'utiliser des commandes (type script) pour le controle des caméras
 
 # 17/10/2019
 
-- Optimisation de la fonction de nettoyage des dossiers de capture des cameras
+- Optimisation de la fonction de nettoyage des dossiers de capture des caméras
 
 # 10/10/2019
 
@@ -127,8 +127,8 @@
 
 # 14/09/2019
 
- - Correction d'un bug ou la tache cronHourly du plugin camera n'arrivait pas a finir
- - Correction d'un bug sur la prévisualisation de l'historique des captures
+- Correction d'un bug ou la tache cronHourly du plugin caméra n'arrivait pas à finir
+- Correction d'un bug sur la prévisualisation de l'historique des captures
 
 # 28/08/2019
 
@@ -153,7 +153,7 @@
 
 # 15/01/2019
 
-- Ajout de la camera Wanscam q3(s)
+- Ajout de la caméra Wanscam q3(s)
 - Selection du mode automatiquement en fonction de l'url de capture et du flux vidéo (RTSP)
 - Correction de bugs
 - Ajout du remplacement de #username# et #password# dans les commandes
@@ -161,7 +161,7 @@
 
 # 01/06/2018
 
-- Refonte du panel, on choisi maintenant le nombre de camera par ligne dans la configuration du plugin, leur dimension est calculé automatiquement
+- Refonte du panel, on choisi maintenant le nombre de caméra par ligne dans la configuration du plugin, leur dimension est calculé automatiquement
 - Amélioration du widget en mobile
 - Support des flux video RTSP/MJPEG... Attention vu qu'il y a une conversion de faite ce n'est à utiliser que si vous n'avez pas le choix, il faut priviliegé les snapshot (plus rapide et moins de charge sur Jeedom)
 
