@@ -1020,19 +1020,20 @@ class cameraCmd extends cmd {
 				break;
 		}
 		$eqLogic = $this->getEqLogic();
-		if ($this->getLogicalId() == 'recordCmd') {
+		$logicalId = $this->getLogicalId();
+		if ($logicalId === 'recordCmd') {
 			$eqLogic->recordCam($_options['slider']);
 			return true;
 		}
-		if ($this->getLogicalId() == 'stopRecordCmd') {
+		if ($logicalId === 'stopRecordCmd') {
 			$eqLogic->stopRecord();
 			return true;
 		}
-		if ($this->getLogicalId() == 'takeSnapshot') {
+		if ($logicalId === 'takeSnapshot') {
 			$eqLogic->takeSnapshot();
 			return true;
 		}
-		if ($this->getLogicalId() == 'on') {
+		if ($logicalId === 'on') {
 			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('commandOn')));
 			if (is_object(!$cmd)) {
 				throw new Exception(__('Impossible de trouver la commande ON', __FILE__));
@@ -1040,7 +1041,7 @@ class cameraCmd extends cmd {
 			$cmd->execCmd();
 			return true;
 		}
-		if ($this->getLogicalId() == 'off') {
+		if ($logicalId === 'off') {
 			if ($eqLogic->getCmd(null, 'recordState')->execCmd() == 1) {
 				$eqLogic->stopCam();
 				return true;
@@ -1053,7 +1054,7 @@ class cameraCmd extends cmd {
 			$cmd->execCmd();
 			return true;
 		}
-		if ($this->getLogicalId() == 'sendSnapshot') {
+		if ($logicalId === 'sendSnapshot') {
 			if (!isset($_options['title'])) {
 				$_options['title'] = '';
 			}
@@ -1079,7 +1080,7 @@ class cameraCmd extends cmd {
 			$action = false;
 
 			try {
-				switch ($this->getLogicalId()) {
+				switch ($logicalId) {
 					case 'ptzleft':
 						$onvif->ptz_ContinuousMove($profileToken, -$speedX, 0);
 						$action = true;
@@ -1124,7 +1125,7 @@ class cameraCmd extends cmd {
 					return true;
 				}
 			} catch (Exception $e) {
-				log::add('camera', 'debug', 'onvif error reason for ' . $this->getLogicalId() . ' : ' . json_encode($onvif->getLastResponse()));
+				log::add('camera', 'debug', 'onvif error reason for ' . $logicalId . ' : ' . json_encode($onvif->getLastResponse()));
 			}
 		}
 		if (strpos($request, '#') === 0) {
