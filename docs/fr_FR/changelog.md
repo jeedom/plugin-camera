@@ -4,9 +4,15 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-- Correction d'un bug sur l'accès aux enregistrements videos
-- Amélioration de la gestion des retours a la ligne dans le widget [LIEN](https://github.com/jeedom/plugin-camera/pull/85)
+# 23/07/2026
+
+- Ajout d'une option pour convertir les fluxs H265 en H264
+- Correction d'un bug sur l'accès aux enregistrements vidéo
+- Amélioration de la gestion des retours a la ligne dans le widget
+- Ajout de la camera Reolink TrackMix
 - Ajout de la caméra Ubiquiti G5 Turret Ultra
+- Correction de la tâche de nettoyage quotidienne *(arrêt des flux HLS obsolètes et rotation de la clé d'accès locale)*
+- Version minimale du core Jeedom requise : 4.3.1
 
 # 24/01/2024
 
