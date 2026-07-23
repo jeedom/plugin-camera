@@ -229,7 +229,7 @@ class camera extends eqLogic {
 		}
 	}
 
-	public static function cronDayly() {
+	public static function cronDaily() {
 		foreach (camera::byType('camera') as $camera) {
 			try {
 				shell_exec('(ps ax || ps w) | grep ffmpeg.*' . $camera->getConfiguration('localApiKey') . ' | awk \'{print $2}\' |  xargs sudo kill -9');
