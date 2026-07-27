@@ -2,8 +2,9 @@
   "name" : "RocketCam",
   "manufacturer" : "Freebox",
   "configuration": {
+    "username" : "freeboxcam",
     "urlStream": "\/img\/snapshot.cgi?size=4&quality=1",
-    "cameraStreamAccessUrl" : "rtsp:\/\/#username#:#password#@#ip#\/img\/live",
+    "cameraStreamAccessUrl" : "http:\/\/#username#:#password#@#ip#\/img\/stream.m3u8",
     "protocole": "http"
   },
   "commands": []

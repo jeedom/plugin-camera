@@ -68,6 +68,10 @@
                 video#id#.play();
               });
             });
+            hls#id#.on(Hls.Events.ERROR, function (event, data) {
+
+              console.log('error', event, data)
+            });
           }else if (video#id#.canPlayType('application/vnd.apple.mpegurl')) {
             video#id#.src = '#url#';
             video#id#.addEventListener('loadedmetadata',function() {

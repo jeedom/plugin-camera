@@ -78,7 +78,7 @@ class camera extends eqLogic {
 		}
 		$cron = cron::byClassAndFunction('camera', 'pull');
 		if (!is_object($cron)) {
-			throw new Exception(__('Tache cron introuvable', __FILE__));
+			throw new Exception(__('Tâche cron introuvable', __FILE__));
 		}
 		$cron->run();
 	}
@@ -86,7 +86,7 @@ class camera extends eqLogic {
 	public static function deamon_stop() {
 		$cron = cron::byClassAndFunction('camera', 'pull');
 		if (!is_object($cron)) {
-			throw new Exception(__('Tache cron introuvable', __FILE__));
+			throw new Exception(__('Tâche cron introuvable', __FILE__));
 		}
 		$cron->halt();
 	}
@@ -206,7 +206,7 @@ class camera extends eqLogic {
 		$i = 0;
 		while ($dir_size > $max_size) {
 			if (count($files) == 0) {
-				throw new Exception(__('Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ', __FILE__) . $dir_size);
+				throw new Exception(__('Aucun fichier à supprimer alors que le répertoire pèse', __FILE__) . ' ' . $dir_size);
 			}
 			shell_exec('rm -rf ' . $files[$i]['file']);
 			$dir_size -= $files[$i]['filesize'];
@@ -229,7 +229,7 @@ class camera extends eqLogic {
 		}
 	}
 
-	public static function cronDayly() {
+	public static function cronDaily() {
 		foreach (camera::byType('camera') as $camera) {
 			try {
 				shell_exec('(ps ax || ps w) | grep ffmpeg.*' . $camera->getConfiguration('localApiKey') . ' | awk \'{print $2}\' |  xargs sudo kill -9');
@@ -338,7 +338,7 @@ class camera extends eqLogic {
 	/*     * *********************Methode d'instance************************* */
 
 	public function configOnvif() {
-		try{
+		try {
 			$onvif = new Ponvif();
 			$onvif->setUsername($this->getConfiguration('username'));
 			$onvif->setPassword($this->getConfiguration('password'));
@@ -349,7 +349,7 @@ class camera extends eqLogic {
 			$this->setConfiguration('cameraStreamProfileToken', $sources[0][0]['profiletoken']); //save profiletoken for sending onvif ptz cmd
 			$this->setConfiguration('cameraStreamAccessUrl', $mediaUri);
 		} catch (Exception $e) {
-			log::add('camera','error','[ONVIF] '.$e->getMessage());
+			log::add('camera', 'error', '[ONVIF] ' . $e->getMessage());
 		}
 	}
 
@@ -367,7 +367,7 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('alertMessageCommand') != '') {
 			$cmd = cmd::byId(str_replace('#', '', $this->getConfiguration('alertMessageCommand')));
 			if (is_object($cmd) && $cmd->getEqType_name() == 'camera') {
-				throw new Exception(__('La "Commande d\'alerte" ne peut être de type caméra', __FILE__));
+				throw new Exception(__('La "Commande d\'alerte" ne doit pas être de type caméra', __FILE__));
 			}
 		}
 		if ($this->getConfiguration('localApiKey') != '') {
@@ -421,7 +421,7 @@ class camera extends eqLogic {
 	public function preUpdate() {
 		$this->setCategory('security', 1);
 		if ($this->getConfiguration('ip') == '') {
-			throw new Exception(__('L\'adresse IP de la camera ne peut être vide', __FILE__));
+			throw new Exception(__("L'adresse IP de la caméra doit être renseignée", __FILE__));
 		}
 	}
 	public function postSave() {
@@ -432,7 +432,7 @@ class camera extends eqLogic {
 		if (!is_object($urlFlux)) {
 			$urlFlux = new cameraCmd();
 		}
-		$urlFlux->setName(__('Flux video', __FILE__));
+		$urlFlux->setName(__('Flux vidéo', __FILE__));
 		$urlFlux->setConfiguration('request', '-');
 		$urlFlux->setType('info');
 		$urlFlux->setLogicalId('urlFlux');
@@ -451,7 +451,7 @@ class camera extends eqLogic {
 		if (!is_object($recordState)) {
 			$recordState = new cameraCmd();
 		}
-		$recordState->setName(__('Status enregistrement', __FILE__));
+		$recordState->setName(__('Statut enregistrement', __FILE__));
 		$recordState->setConfiguration('recordState', 1);
 		$recordState->setConfiguration('request', '-');
 		$recordState->setType('info');
@@ -516,7 +516,7 @@ class camera extends eqLogic {
 			if (!is_object($on)) {
 				$on = new cameraCmd();
 			}
-			$on->setName(__('On', __FILE__));
+			$on->setName(__('Allumer', __FILE__));
 			$on->setOrder(-1);
 			$on->setType('action');
 			$on->setLogicalId('on');
@@ -531,7 +531,7 @@ class camera extends eqLogic {
 			if (!is_object($off)) {
 				$off = new cameraCmd();
 			}
-			$off->setName(__('Off', __FILE__));
+			$off->setName(__('Eteindre', __FILE__));
 			$off->setOrder(-1);
 			$off->setType('action');
 			$off->setLogicalId('off');
@@ -583,16 +583,21 @@ class camera extends eqLogic {
 							'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
 						);
 						$action .= template_replace($replaceCmd, getTemplate('core', $version, 'camera_action', 'camera')) . ' ';
+						if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
+							$action .= '<div class="break"></div>';
+						}
 					} else {
 						if ($cmd->getType() == 'info') {
 							$info .= $cmd->toHtml($_version);
+							if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
+								$info .= '<div class="break"></div>';
+							}
 						} else {
 							$action .= $cmd->toHtml($_version);
+							if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
+								$action .= '<div class="break"></div>';
+							}
 						}
-					}
-
-					if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
-						$action .= '<br/>';
 					}
 				}
 			}
@@ -608,12 +613,12 @@ class camera extends eqLogic {
 		);
 		$on = $this->getCmd(null, 'on');
 		$off = $this->getCmd(null, 'off');
-		if (is_object($on)) {
+		if (is_object($on) && $on->getIsVisible() == 1) {
 			$replace['#cmd_on_id#'] = $on->getId();
 		} else {
 			$replace['#cmd_on_id#'] = '""';
 		}
-		if (is_object($off)) {
+		if (is_object($off) && $off->getIsVisible() == 1) {
 			$replace['#cmd_off_id#'] = $off->getId();
 		} else {
 			$replace['#cmd_off_id#'] = '""';
@@ -741,12 +746,12 @@ class camera extends eqLogic {
 		if (null !== init('title') && init('title') != '') {
 			$options['title'] = init('title');
 		} else {
-			$options['title'] = __('Alerte sur la camera : ', __FILE__) . $this->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s') . $_part;
+			$options['title'] = __('Alerte sur la caméra', __FILE__) . $this->getName() . ' ' . __('à', __FILE__) . ' ' . date('Y-m-d H:i:s') . $_part;
 		}
 		if (null !== init('message') && init('message') != '') {
 			$options['message'] = init('message') . $_part;
 		} else {
-			$options['message'] = __('Alerte sur la camera : ', __FILE__) . $this->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s') . $_part;
+			$options['message'] = __('Alerte sur la caméra', __FILE__) . $this->getName() . ' ' . __('à', __FILE__) . ' ' . date('Y-m-d H:i:s') . $_part;
 		}
 		$cmds = explode('&&', init('sendTo'));
 		foreach ($cmds as $id) {
@@ -757,7 +762,7 @@ class camera extends eqLogic {
 			try {
 				$cmd->execCmd($options);
 			} catch (Exception $e) {
-				log::add('camera', 'error', __('[camera/sendSnap] Erreur lors de l\'envoi des images : ', __FILE__) . $cmd->getHumanName() . ' => ' . log::exception($e));
+				log::add('camera', 'error', '[camera/sendSnap] ' . __("Erreur lors de l'envoi des images", __FILE__) . ' : ' . $cmd->getHumanName() . ' => ' . log::exception($e));
 			}
 		}
 	}
@@ -819,7 +824,7 @@ class camera extends eqLogic {
 			$function = explode('::', $this->getConfiguration('urlStream'))[1];
 			if (!method_exists($class, $function)) {
 				$data = '';
-				log::add('camera', 'debug', __('Impossible de trouver la function ', __FILE__) . $class . '::' . $function);
+				log::add('camera', 'debug', __('Impossible de trouver la fonction', __FILE__) . ' ' . $class . '::' . $function);
 			} else {
 				$data = $class::$function($this);
 			}
@@ -855,30 +860,30 @@ class camera extends eqLogic {
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
-				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+				throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
 			}
 		}
 		if (!is_writable($output_dir)) {
-			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+			throw new Exception(__("Impossible d'écrire dans le dossier", __FILE__) . ' ' . $output_dir);
 		}
 		$output_dir .= '/' . $this->getId();
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
-				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+				throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
 			}
 		}
 		if (!is_writable($output_dir)) {
-			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+			throw new Exception(__("Impossible d'écrire dans le dossier", __FILE__) . ' ' . $output_dir);
 		}
 		$snapshot = $this->getSnapshot(true);
 		if (empty($snapshot)) {
-			throw new Exception(__('Le fichier est vide : ', __FILE__) . $output_dir);
+			throw new Exception(__('Le fichier est vide', __FILE__) . ' : ' . $output_dir);
 		}
 		if ($_forVideo == 1) {
 			$output_dir .= '/movie_temp';
 			if (!file_exists($output_dir)) {
 				if (!mkdir($output_dir, 0777, true)) {
-					throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+					throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
 				}
 			}
 			if ($_number == 2) {
@@ -897,20 +902,20 @@ class camera extends eqLogic {
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
-				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+				throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
 			}
 		}
 		if (!is_writable($output_dir)) {
-			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+			throw new Exception(__("Impossible d'écrire dans le dossier", __FILE__) . ' ' . $output_dir);
 		}
 		$output_dir .= '/' . $this->getId();
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
-				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+				throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
 			}
 		}
 		if (!is_writable($output_dir)) {
-			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+			throw new Exception(__("Impossible d'écrire dans le dossier", __FILE__) . ' ' . $output_dir);
 		}
 		shell_exec(system::getCmdSudo() . 'rm -rf ' . $output_dir);
 	}
@@ -957,12 +962,22 @@ class camera extends eqLogic {
 	}
 
 	public function getImage() {
+		if (method_exists($this, 'getCustomImage')) {
+			$customImage = $this->getCustomImage();
+			if ($customImage !== null) {
+				return $customImage;
+			}
+		}
 		if (file_exists(__DIR__ . '/../config/devices/' . self::getImgFilePath($this->getConfiguration('device')) . '.png')) {
 			return 'plugins/camera/core/config/devices/' . self::getImgFilePath($this->getConfiguration('device')) . '.png';
 		}
 		return 'plugins/camera/core/config/devices/' . self::getImgFilePath($this->getConfiguration('device')) . '.jpg';
 	}
 
+	public static function backupExclude() {
+		// retourne le répertoire des datas à ne pas enregistrer dans le backup Jeedom
+		return ['data'];
+	}
 	/*     * **********************Getteur Setteur*************************** */
 }
 
@@ -1005,27 +1020,28 @@ class cameraCmd extends cmd {
 				break;
 		}
 		$eqLogic = $this->getEqLogic();
-		if ($this->getLogicalId() == 'recordCmd') {
+		$logicalId = $this->getLogicalId();
+		if ($logicalId === 'recordCmd') {
 			$eqLogic->recordCam($_options['slider']);
 			return true;
 		}
-		if ($this->getLogicalId() == 'stopRecordCmd') {
+		if ($logicalId === 'stopRecordCmd') {
 			$eqLogic->stopRecord();
 			return true;
 		}
-		if ($this->getLogicalId() == 'takeSnapshot') {
+		if ($logicalId === 'takeSnapshot') {
 			$eqLogic->takeSnapshot();
 			return true;
 		}
-		if ($this->getLogicalId() == 'on') {
+		if ($logicalId === 'on') {
 			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('commandOn')));
 			if (is_object(!$cmd)) {
-				throw new Exception(__('Impossible de trouver la commande ON', __FILE__));
+				throw new Exception(__('Impossible de trouver la commande "Allumer"', __FILE__));
 			}
 			$cmd->execCmd();
 			return true;
 		}
-		if ($this->getLogicalId() == 'off') {
+		if ($logicalId === 'off') {
 			if ($eqLogic->getCmd(null, 'recordState')->execCmd() == 1) {
 				$eqLogic->stopCam();
 				return true;
@@ -1033,12 +1049,12 @@ class cameraCmd extends cmd {
 			$eqLogic->stopRecord();
 			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('commandOff')));
 			if (is_object(!$cmd)) {
-				throw new Exception(__('Impossible de trouver la commande OFF', __FILE__));
+				throw new Exception(__('Impossible de trouver la commande "Eteindre"', __FILE__));
 			}
 			$cmd->execCmd();
 			return true;
 		}
-		if ($this->getLogicalId() == 'sendSnapshot') {
+		if ($logicalId === 'sendSnapshot') {
 			if (!isset($_options['title'])) {
 				$_options['title'] = '';
 			}
@@ -1048,70 +1064,70 @@ class cameraCmd extends cmd {
 			$eqLogic->recordCam($_options['title'], $_options['message']);
 			return true;
 		}
-	        if ($eqLogic->getConfiguration('device') == 'onvif') {
-	            $profileToken = $eqLogic->getConfiguration('cameraStreamProfileToken');
-	            $speedX = $eqLogic->getConfiguration('speed_x', 1);
-	            $speedY = $eqLogic->getConfiguration('speed_y', 1);
-	            $speedZ = $eqLogic->getConfiguration('speed_z', 1);
-	            $sleep = $eqLogic->getConfiguration('delay_stop', 0) * 1000;
-	
-	            $onvif = new Ponvif();
-	            $onvif->setUsername($eqLogic->getConfiguration('username'));
-	            $onvif->setPassword($eqLogic->getConfiguration('password'));
-	            $onvif->setIPAddress($eqLogic->getConfiguration('ip') . ':' . $eqLogic->getConfiguration('onvif_port', 80));
-	            $onvif->initialize();
-	
-	            $action = false;
-	
-	            try {
-	                switch ($this->getLogicalId()) {
-	                    case 'ptzleft':
-	                        $onvif->ptz_ContinuousMove($profileToken, -$speedX, 0);
-	                        $action = true;
-	                        break;
-	                    case 'ptzright':
-	                        $onvif->ptz_ContinuousMove($profileToken, $speedX, 0);
-	                        $action = true;
-	                        break;
-	                    case 'ptzup':
-	                        $onvif->ptz_ContinuousMove($profileToken, 0, $speedY);
-	                        $action = true;
-	                        break;
-	                    case 'ptzdown':
-	                        $onvif->ptz_ContinuousMove($profileToken, 0, -$speedY);
-	                        $action = true;
-	                        break;
-	                    case 'ptzzoomin':
-	                    case 'ptzzoomout':
-	                        $onvif->ptz_ContinuousMoveZoom($profileToken, ($logicalId === 'ptzzoomout') ? -$speedZ : $speedZ);
-	                        $action = true;
-	                        break;
-	                    case 'ptzmovestop':
-	                        $onvif->ptz_ContinuousMove($profileToken, 0, 0);
-	                        break;
-	                    case 'ptzstop':
-	                        $onvif->ptz_Stop($profileToken, 'true', 'true');
-	                        break;
-	                    case 'ptzreboot':
-	                        $onvif->core_SystemReboot();
-	                        break;
-	                    case 'gotohome':
-	                        $onvif->ptz_GotoHomePosition($profileToken, 0, 0);
-	                        break;
-	                }
-	
-	                if ($action && strpos($request = $this->getConfiguration('stopCmdUrl'), '#') === 0) {
-	                    usleep($sleep);
-	                    $cmd = cmd::byId(str_replace('#', '', $request));
-	                    if (is_object($cmd)) {
-	                        $cmd->execCmd();
-	                    }
-	                    return true;
-	                }
-	            } catch (Exception $e) {
-	                log::add('camera', 'debug', 'onvif error reason for ' . $this->getLogicalId() . ' : ' . json_encode($onvif->getLastResponse()));
-	            }
-	        }
+		if ($eqLogic->getConfiguration('device') == 'onvif') {
+			$profileToken = $eqLogic->getConfiguration('cameraStreamProfileToken');
+			$speedX = $eqLogic->getConfiguration('speed_x', 1);
+			$speedY = $eqLogic->getConfiguration('speed_y', 1);
+			$speedZ = $eqLogic->getConfiguration('speed_z', 1);
+			$sleep = $eqLogic->getConfiguration('delay_stop', 0) * 1000;
+
+			$onvif = new Ponvif();
+			$onvif->setUsername($eqLogic->getConfiguration('username'));
+			$onvif->setPassword($eqLogic->getConfiguration('password'));
+			$onvif->setIPAddress($eqLogic->getConfiguration('ip') . ':' . $eqLogic->getConfiguration('onvif_port', 80));
+			$onvif->initialize();
+
+			$action = false;
+
+			try {
+				switch ($logicalId) {
+					case 'ptzleft':
+						$onvif->ptz_ContinuousMove($profileToken, -$speedX, 0);
+						$action = true;
+						break;
+					case 'ptzright':
+						$onvif->ptz_ContinuousMove($profileToken, $speedX, 0);
+						$action = true;
+						break;
+					case 'ptzup':
+						$onvif->ptz_ContinuousMove($profileToken, 0, $speedY);
+						$action = true;
+						break;
+					case 'ptzdown':
+						$onvif->ptz_ContinuousMove($profileToken, 0, -$speedY);
+						$action = true;
+						break;
+					case 'ptzzoomin':
+					case 'ptzzoomout':
+						$onvif->ptz_ContinuousMoveZoom($profileToken, ($logicalId === 'ptzzoomout') ? -$speedZ : $speedZ);
+						$action = true;
+						break;
+					case 'ptzmovestop':
+						$onvif->ptz_ContinuousMove($profileToken, 0, 0);
+						break;
+					case 'ptzstop':
+						$onvif->ptz_Stop($profileToken, 'true', 'true');
+						break;
+					case 'ptzreboot':
+						$onvif->core_SystemReboot();
+						break;
+					case 'gotohome':
+						$onvif->ptz_GotoHomePosition($profileToken, 0, 0);
+						break;
+				}
+
+				if ($action && strpos($request = $this->getConfiguration('stopCmdUrl'), '#') === 0) {
+					usleep($sleep);
+					$cmd = cmd::byId(str_replace('#', '', $request));
+					if (is_object($cmd)) {
+						$cmd->execCmd();
+					}
+					return true;
+				}
+			} catch (Exception $e) {
+				log::add('camera', 'debug', 'onvif error reason for ' . $logicalId . ' : ' . json_encode($onvif->getLastResponse()));
+			}
+		}
 		if (strpos($request, '#') === 0) {
 			$cmd = cmd::byId(str_replace('#', '', $request));
 			if (is_object($cmd)) {

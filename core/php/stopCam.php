@@ -33,16 +33,16 @@ if (isset($argv)) {
 	}
 }
 if (init('id') == '') {
-	log::add('camera', 'error', __('[camera/reccord] L\'id ne peut etre vide', __FILE__));
+	log::add('camera', 'error', '[camera/record] ' . __("L'identifiant de l'équipement doit être renseigné", __FILE__));
 	die();
 }
 $camera = camera::byId(init('id'));
 if (!is_object($camera)) {
-	log::add('camera', 'error', __('[camera/reccord] L\'équipement est introuvable : ', __FILE__) . init('id'));
+	log::add('camera', 'error', '[camera/record] ' . __('Equipement introuvable', __FILE__) . ' : ' . init('id'));
 	die();
 }
 if ($camera->getEqType_name() != 'camera') {
-	log::add('camera', 'error', __('[camera/reccord] Cet équipement n\'est pas de type camera : ', __FILE__) . $camera->getEqType_name());
+	log::add('camera', 'error', '[camera/record] ' . __("L'équipement n'est pas de type caméra", __FILE__) . ' : ' . $camera->getEqType_name());
 	die();
 }
 
@@ -55,7 +55,7 @@ while (true) {
 		if (is_object($stop)) {
 			$cmd = cmd::byId(str_replace('#', '', $camera->getConfiguration('commandOff')));
 			if (is_object(!$cmd)) {
-				throw new Exception(__('Impossible de trouver la commande OFF', __FILE__));
+				throw new Exception(__('Impossible de trouver la commande "Eteindre"', __FILE__));
 			}
 			$cmd->execCmd();
 		}
@@ -68,11 +68,10 @@ while (true) {
 		if (is_object($stop)) {
 			$cmd = cmd::byId(str_replace('#', '', $camera->getConfiguration('commandOff')));
 			if (is_object(!$cmd)) {
-				throw new Exception(__('Impossible de trouver la commande OFF', __FILE__));
+				throw new Exception(__('Impossible de trouver la commande "Eteindre"', __FILE__));
 			}
 			$cmd->execCmd();
 		}
 		die();
 	}
 }
-die();

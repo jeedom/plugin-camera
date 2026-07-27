@@ -54,10 +54,12 @@
       maxWidth:eqLogic_#id#.width() + 'px'
     });
     setTimeout(function(){
-      Object.assign(document.querySelector('.eqLogic[data-eqLogic_id="#id#"] .directDisplay img').style, {
-        maxHeight:(eqLogic_#id#.height() - 60) + 'px',
-        maxWidth:eqLogic_#id#.width() + 'px'
-      });
+      if (document.querySelector('.eqLogic[data-eqLogic_id="#id#"] .directDisplay img')) {
+        Object.assign(document.querySelector('.eqLogic[data-eqLogic_id="#id#"] .directDisplay img').style, {
+          maxHeight:(eqLogic_#id#.height() - 60) + 'px',
+          maxWidth:eqLogic_#id#.width() + 'px'
+        });
+      }
     }, 1000);
     
     eqLogic_#id#.off('resize').on('resize',function(){

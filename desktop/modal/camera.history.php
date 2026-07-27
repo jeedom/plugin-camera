@@ -3,14 +3,14 @@ if (!isConnect()) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
 if (init('id') == '') {
-	throw new Exception(__('L\'id ne peut etre vide', __FILE__));
+	throw new Exception(__("L'identifiant de l'équipement doit être renseigné", __FILE__));
 }
 $camera = camera::byId(init('id'));
 if (!is_object($camera)) {
-	throw new Exception(__('L\'équipement est introuvable : ', __FILE__) . init('id'));
+	throw new Exception(__('Equipement introuvable', __FILE__) . ' : ' . init('id'));
 }
 if ($camera->getEqType_name() != 'camera') {
-	throw new Exception(__('Cet équipement n\'est pas de type camera : ', __FILE__) . $camera->getEqType_name());
+	throw new Exception(__("L'équipement n'est pas de type caméra", __FILE__) . ' : ' . $camera->getEqType_name());
 }
 $dir = calculPath(config::byKey('recordDir', 'camera')) . '/' . $camera->getId();
 $files = array();
@@ -50,20 +50,25 @@ foreach ($files as $date => &$file) {
 	echo '<div class="cameraThumbnailContainer">';
 	krsort($file);
 	foreach ($file as $time => $filename) {
-		$fontType = 'fas-camera';
+		$fontType = 'fa-camera';
 		if (strpos($filename, '.mp4')) {
-			$fontType = 'fas-video-camera';
+			$fontType = 'fa-video';
 			$i++;
 		}
-		echo '<div class="cameraDisplayCard" style="padding:5px;height:170px;">';
-		echo '<center><i class="fas ' . $fontType . ' pull-right"></i>  ' . str_replace('-', ':', $time) . '</center>';
+		echo '<div class="cameraDisplayCard" style="padding:5px;height:170px !important;">';
+		echo '<center><i class="fas ' . $fontType . ' pull-right" style="padding-top:3px;"></i>  ' . str_replace('-', ':', $time) . '</center>';
 		if (strpos($filename, '.mp4')) {
-			echo '<video class="displayVideo" width="150" height="100" controls loop data-src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer"><source src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '">Your browser does not support the video tag.</video>';
+			echo '<video class="displayVideo" width="150" height="100" controls loop data-src="' . urlencode($dir . '/' . $filename) . '" style="cursor:pointer"><source src="core/php/downloadFile.php?plugin=camera&pathfile=' . urlencode($dir . '/' . $filename) . '">Your browser does not support the video tag.</video>';
 		} else {
-			echo '<center><img class="img-responsive cursor displayImage" src="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" width="150" style="max-height:80px;"/></center>';
+			echo '<center><img class="img-responsive cursor displayImage" data-src="' . urlencode($dir . '/' . $filename) . '" src="core/php/downloadFile.php?plugin=camera&pathfile=' . urlencode($dir . '/' . $filename) . '" width="150" style="max-height:80px;"/></center>';
 		}
-		echo '<center style="margin-top:5px;"><a target="_blank" href="core/php/downloadFile.php?pathfile=' . urlencode($dir . '/' . $filename) . '" class="btn btn-success btn-xs" style="color : white"><i class="fas fa-download"></i></a>';
-		echo ' <a class="btn btn-danger bt_removeCameraFile btn-xs" style="color : white" data-filename="' . $camera->getId() . '/' . $filename . '"><i class="fas fa-trash"></i></a></center>';
+		echo '<center style="margin-top:5px;">';
+		echo '<a target="_blank" href="core/php/downloadFile.php?plugin=camera&pathfile=' . urlencode($dir . '/' . $filename) . '" class="btn btn-success btn-xs" style="color : white"><i class="fas fa-download"></i></a>';
+		echo ' <a class="btn btn-danger bt_removeCameraFile btn-xs" style="color : white" data-filename="' . $camera->getId() . '/' . $filename . '"><i class="fas fa-trash"></i></a>';
+		if (strpos($filename, '.mp4')) {
+			echo ' <a class="btn btn-info displayVideo btn-xs" style="color : white" data-src="' . urlencode($dir . '/' . $filename) . '"><i class="icon far fa-window-maximize"></i></a>';
+		}
+		echo '</center>';
 		echo '</div>';
 	}
 	echo '</div>';
@@ -78,7 +83,7 @@ foreach ($files as $date => &$file) {
 		$('#md_modal2').dialog({
 			title: "Image"
 		});
-		$('#md_modal2').load('index.php?v=d&plugin=camera&modal=camera.displayImage&src=' + $(this).attr('src')).dialog('open');
+		$('#md_modal2').load('index.php?v=d&plugin=camera&modal=camera.displayImage&src=' + $(this).attr('data-src')).dialog('open');
 	});
 	$('.displayVideo').on('click', function() {
 		$('#md_modal2').dialog({

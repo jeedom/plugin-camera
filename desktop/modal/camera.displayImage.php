@@ -8,4 +8,4 @@ if (substr_compare(init('src'), '.jpg', -strlen('.jpg')) !== 0) {
 if (strpos(init('src'), 'camera') === false) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
-echo '<center><img class="img-responsive" src="' . init('src') . '" /></center>';
+echo '<center><img class="img-responsive" src="core/php/downloadFile.php?plugin=camera&pathfile=' . init('src') . '" /></center>';

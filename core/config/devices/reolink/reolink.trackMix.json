@@ -1,0 +1,108 @@
+{
+  "name" : "Reolink TrackMix",
+  "manufacturer" : "Reolink",
+  "buylink" : "https://reolink.com/fr/product/reolink-trackmix-poe/",
+  "configuration": {
+    "port": "",
+    "urlStream": "\/cgi-bin\/api.cgi?cmd=Snap&channel=0&user=#username#&password=#password#",
+    "cameraStreamAccessUrl" : "rtsp:\/\/#username#:#password#@#ip#\/h264Preview_01_sub",
+    "protocole": "https"
+  },
+  "commands": [
+    {
+      "eqType": "camera",
+      "name": "Motion alarme",
+      "type": "info",
+      "subType": "binary",
+      "isHistorized": "1",
+      "isVisible": "1",
+      "logicalId" : "motionDetectAlarm",
+      "display" : {
+        "invertBinary" : "1"
+      },
+      "template" : {
+        "dashboard" : "timePresence",
+        "mobile" : "timePresence"
+      },
+      "configuration": {
+        "repeatEventManagement": "never"
+      }
+    },
+    {
+      "eqType": "camera",
+      "name": "Motion Pet alarme",
+      "type": "info",
+      "subType": "binary",
+      "isHistorized": "0",
+      "isVisible": "1",
+      "logicalId" : "motionDogcatAlarm",
+      "display" : {
+        "invertBinary" : "1"
+      },
+      "template" : {
+        "dashboard" : "timePresence",
+        "mobile" : "timePresence"
+      },
+      "configuration": {
+        "repeatEventManagement": "never"
+      }
+    },
+    {
+      "eqType": "camera",
+      "name": "Motion People alarme",
+      "type": "info",
+      "subType": "binary",
+      "isHistorized": "0",
+      "isVisible": "1",
+      "logicalId" : "motionPeopleAlarm",
+      "display" : {
+        "invertBinary" : "1"
+      },
+      "template" : {
+        "dashboard" : "timePresence",
+        "mobile" : "timePresence"
+      },
+      "configuration": {
+        "repeatEventManagement": "never"
+      }
+    },
+    {
+      "eqType": "camera",
+      "name": "Motion Vehicle alarme",
+      "type": "info",
+      "subType": "binary",
+      "isHistorized": "0",
+      "isVisible": "1",
+      "logicalId" : "motionVehicleAlarm",
+      "display" : {
+        "invertBinary" : "1"
+      },
+      "template" : {
+        "dashboard" : "timePresence",
+        "mobile" : "timePresence"
+      },
+      "configuration": {
+        "repeatEventManagement": "never"
+      }
+    },
+    {
+      "eqType": "camera",
+      "name": "Motion Face alarme",
+      "type": "info",
+      "subType": "binary",
+      "isHistorized": "0",
+      "isVisible": "1",
+      "logicalId" : "motionFaceAlarm",
+      "display" : {
+        "invertBinary" : "1"
+      },
+      "template" : {
+        "dashboard" : "timePresence",
+        "mobile" : "timePresence"
+      },
+      "configuration": {
+        "repeatEventManagement": "never"
+      }
+    }
+  ]
+}
