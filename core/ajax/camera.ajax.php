@@ -19,47 +19,47 @@
 try {
 	require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 	include_file('core', 'authentification', 'php');
-	
+
 	ajax::init();
-	
+
 	if (!isConnect()) {
 		throw new Exception(__('401 - Accès non autorisé', __FILE__));
 	}
-	
+
 	if (init('action') == 'stream') {
 		$camera = camera::byId(init('id'));
-		if(!is_object($camera)){
-			throw new \Exception(__('Impossible de trouver la camera : ',__FILE__).init('id'));
+		if (!is_object($camera)) {
+			throw new \Exception(__('Impossible de trouver la camera : ', __FILE__) . init('id'));
 		}
 		$rtspScript = dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls-' . ($camera->getConfiguration('encodeX264RTSP', 0) == 1 ? 'x264' : 'copy') . '.sh ';
-		if(count(system::ps('rtsp-to-hls-*.sh.*'.$camera->getConfiguration('localApiKey'))) == 0){
-			shell_exec('(ps ax || ps w) | grep ffmpeg.*'.$camera->getConfiguration('localApiKey').' | awk \'{print $2}\' |  xargs sudo kill -9');
+		if (count(system::ps('rtsp-to-hls-*.sh.*' . $camera->getConfiguration('localApiKey'))) == 0) {
+			shell_exec('(ps ax || ps w) | grep ffmpeg.*' . $camera->getConfiguration('localApiKey') . ' | awk \'{print $2}\' |  xargs sudo kill -9');
 			$replace = array(
 				'#username#' => urlencode($camera->getConfiguration('username')),
 				'#password#' => urlencode($camera->getConfiguration('password')),
 				'#ip#' => urlencode($camera->getConfiguration('ip')),
 				'#port#' => urlencode($camera->getConfiguration('port')),
 			);
-			$engine = config::byKey('rtsp::engine','camera','avconv');
+			$engine = config::byKey('rtsp::engine', 'camera', 'avconv');
 			if (!file_exists(dirname(__FILE__) . '/../../data/segments')) {
 				mkdir(dirname(__FILE__) . '/../../data/segments', 0777, true);
 			}
-			log::add('camera', 'debug', 'nohup ' . $rtspScript . trim(str_replace(array_keys($replace), $replace, $camera->getConfiguration('cameraStreamAccessUrl'))).' "' . $camera->getConfiguration('localApiKey') . '" > /dev/null 2>&1 &');
-			exec('nohup ' . $rtspScript . trim(str_replace(array_keys($replace), $replace, $camera->getConfiguration('cameraStreamAccessUrl'))).' "' . $camera->getConfiguration('localApiKey') . '" > /dev/null 2>&1 &');
-			$i=0;
-			while(!file_exists(__DIR__.'/../../data/'.$camera->getConfiguration('localApiKey').'.m3u8')){
+			log::add('camera', 'debug', 'nohup ' . $rtspScript . trim(str_replace(array_keys($replace), $replace, $camera->getConfiguration('cameraStreamAccessUrl'))) . ' "' . $camera->getConfiguration('localApiKey') . '" > /dev/null 2>&1 &');
+			exec('nohup ' . $rtspScript . trim(str_replace(array_keys($replace), $replace, $camera->getConfiguration('cameraStreamAccessUrl'))) . ' "' . $camera->getConfiguration('localApiKey') . '" > /dev/null 2>&1 &');
+			$i = 0;
+			while (!file_exists(__DIR__ . '/../../data/' . $camera->getConfiguration('localApiKey') . '.m3u8')) {
 				sleep(1);
 				$i++;
-				if($i>30){
+				if ($i > 30) {
 					break;
 				}
 			}
 		}
-		$camera->setCache('lastStreamCall',strtotime('now'));
-		shell_exec(system::getCmdSudo().' find '.__DIR__.'/../../data/segments/'.$camera->getConfiguration('localApiKey').'-*.ts -mmin +5 -type f -exec rm -f {} \; 2>&1 > /dev/null');
+		$camera->setCache('lastStreamCall', strtotime('now'));
+		shell_exec(system::getCmdSudo() . ' find ' . __DIR__ . '/../../data/segments/' . $camera->getConfiguration('localApiKey') . '-*.ts -mmin +5 -type f -exec rm -f {} \; 2>&1 > /dev/null');
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'getCamera') {
 		if (init('object_id') == '') {
 			$object = jeeObject::byId($_SESSION['user']->getOptions('defaultDashboardObject'));
@@ -92,16 +92,16 @@ try {
 		}
 		ajax::success($return);
 	}
-	
+
 	if (!isConnect('admin')) {
 		throw new Exception(__('401 - Accès non autorisé', __FILE__));
 	}
-	
+
 	if (init('action') == 'addDiscoverCam') {
 		camera::addDiscoverCam(json_decode(init('config'), true));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'removeRecord') {
 		$file = init('file');
 		$file = str_replace('..', '', $file);
@@ -109,7 +109,7 @@ try {
 		shell_exec('rm -rf ' . $record_dir . '/' . $file);
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'removeAllSnapshot') {
 		$camera = camera::byId(init('id'));
 		if (!is_object($camera)) {
@@ -118,7 +118,7 @@ try {
 		$camera->removeAllSnapshot();
 		ajax::success();
 	}
-	
+
 	throw new Exception(__('Aucune methode correspondante à : ', __FILE__) . init('action'));
 	/*     * *********Catch exeption*************** */
 } catch (Exception $e) {
