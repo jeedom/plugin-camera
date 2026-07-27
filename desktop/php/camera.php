@@ -213,7 +213,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								</div>
 							</div>
 							<div class="form-group">
-                                <label class="col-sm-4 control-label">{{Convertir en x264 le flux RTSP}}</label>
+								<label class="col-sm-4 control-label">{{Convertir en x264 le flux RTSP}}</label>
 								<div class="col-sm-6">
 									<input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="encodeX264RTSP" />
 								</div>
@@ -230,7 +230,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<a class="btn btn-default" id="bt_previewCam" style="width:100%;height:40px;"><i class="fas fa-eye" style="font-size:2.2em;"></i></a>
 								</div>
 								<div class="col-xs-6 col-sm-6">
-									<div class="alert alert-warning">{{N'oubliez pas de sauvegarder pour voir vos modifications avant la prévisualisation}}</div>
+									<div class="alert alert-warning">{{N'oubliez pas de sauvegarder pour prévisualiser les modifications}}</div>
 								</div>
 							</div>
 							<div class="form-group">
@@ -248,7 +248,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							<!-- <form class="form-horizontal">
 					<fieldset> -->
 							<legend><i class="fas fa-info"></i> {{Informations}}</legend>
-							<div class="alert alert-info">{{Si votre caméra n'est pas dans la liste vous pouvez trouver}} <a href="https://www.ispyconnect.com/cameras">{{ici}}</a> {{les informations de configuration pour pas mal de camera}}</div>
+							<div class="alert alert-info">{{Si votre caméra n'est pas dans la liste référez-vous}} <a href="https://www.ispyconnect.com/cameras">{{à cette page}}</a> {{pour trouver les informations de configuration de nombreuses caméras}}</div>
 							<div class="form-group">
 								<label class="col-sm-4 control-label">{{Modèle}}</label>
 								<div class="col-sm-6">
@@ -312,7 +312,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							</thead>
 							<tbody>
 								<tr>
-									<td><label>{{Rafraichissement (s)}}</label></td>
+									<td><label>{{Rafraîchissement (s)}}</label></td>
 									<td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::refresh" /></td>
 									<td><input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="thumbnail::mobilerefresh" /></td>
 								</tr>
@@ -339,7 +339,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							</thead>
 							<tbody>
 								<tr>
-									<td><label>{{Rafraichissement (s)}}</label></td>
+									<td><label>{{Rafraîchissement (s)}}</label></td>
 									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::refresh" /></td>
 									<td><input type="text" class="eqLogicAttr form-control compressOpt" data-l1key="configuration" data-l2key="normal::mobilerefresh" /></td>
 								</tr>
@@ -397,7 +397,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<form class="form-horizontal">
 					<fieldset>
 						<div class="form-group">
-							<label class="col-sm-4 control-label">{{Commande ON}}</label>
+							<label class="col-sm-4 control-label">{{Commande "Allumer"}}</label>
 							<div class="col-sm-6">
 								<div class="input-group">
 									<input type="text" class="eqLogicAttr form-control roundedLeft" data-l1key="configuration" data-l2key="commandOn" />
@@ -408,7 +408,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-4 control-label">{{Commande OFF}}</label>
+							<label class="col-sm-4 control-label">{{Commande "Eteindre"}}</label>
 							<div class="col-sm-6">
 								<div class="input-group">
 									<input type="text" class="eqLogicAttr form-control roundedLeft" data-l1key="configuration" data-l2key="commandOff" />

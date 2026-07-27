@@ -29,7 +29,7 @@ try {
 	if (init('action') == 'stream') {
 		$camera = camera::byId(init('id'));
 		if (!is_object($camera)) {
-			throw new \Exception(__('Impossible de trouver la camera : ', __FILE__) . init('id'));
+			throw new \Exception(__('Equipement introuvable', __FILE__) . ' : ' . init('id'));
 		}
 		$rtspScript = dirname(__FILE__) . '/../../3rdparty/rtsp-to-hls-' . ($camera->getConfiguration('encodeX264RTSP', 0) == 1 ? 'x264' : 'copy') . '.sh ';
 		if (count(system::ps('rtsp-to-hls-*.sh.*' . $camera->getConfiguration('localApiKey'))) == 0) {
@@ -113,7 +113,7 @@ try {
 	if (init('action') == 'removeAllSnapshot') {
 		$camera = camera::byId(init('id'));
 		if (!is_object($camera)) {
-			throw new Exception(__('Impossible de trouver la caméra : ' . init('id'), __FILE__));
+			throw new Exception(__('Equipement introuvable', __FILE__) . ' : ' . init('id'));
 		}
 		$camera->removeAllSnapshot();
 		ajax::success();

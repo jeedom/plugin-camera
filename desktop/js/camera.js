@@ -98,7 +98,7 @@ function addCmdToTable(_cmd) {
   tr += '</span>'
   tr += '</div>'
   tr += '<div class="input-group">'
-  tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="stopCmdUrl" placeholder="{{URL de la commande de stop de mouvement (caméra motirisée)}}" />'
+  tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="stopCmdUrl" placeholder="{{URL de la commande de mouvement stop (caméra motorisée)}}" />'
   tr += '<span class="input-group-btn">'
   tr += '<a class="btn btn-sm btn-default listCmdActionOther roundedRight"><i class="fas fa-list-alt"></i></a>'
   tr += '</span>'
@@ -157,7 +157,7 @@ $('#bt_removeAllCapture').on('click', function() {
             $('#div_alert').showAlert({ message: data.result, level: 'danger' })
             return
           }
-          $('#div_alert').showAlert({ message: '{{Supression réussie}}', level: 'success' })
+          $('#div_alert').showAlert({ message: '{{Suppression réussie}}', level: 'success' })
         }
       })
     }

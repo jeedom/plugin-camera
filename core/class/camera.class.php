@@ -78,7 +78,7 @@ class camera extends eqLogic {
 		}
 		$cron = cron::byClassAndFunction('camera', 'pull');
 		if (!is_object($cron)) {
-			throw new Exception(__('Tache cron introuvable', __FILE__));
+			throw new Exception(__('Tâche cron introuvable', __FILE__));
 		}
 		$cron->run();
 	}
@@ -86,7 +86,7 @@ class camera extends eqLogic {
 	public static function deamon_stop() {
 		$cron = cron::byClassAndFunction('camera', 'pull');
 		if (!is_object($cron)) {
-			throw new Exception(__('Tache cron introuvable', __FILE__));
+			throw new Exception(__('Tâche cron introuvable', __FILE__));
 		}
 		$cron->halt();
 	}
@@ -206,7 +206,7 @@ class camera extends eqLogic {
 		$i = 0;
 		while ($dir_size > $max_size) {
 			if (count($files) == 0) {
-				throw new Exception(__('Erreur aucun fichier trouvé à supprimer alors que le répertoire fait : ', __FILE__) . $dir_size);
+				throw new Exception(__('Aucun fichier à supprimer alors que le répertoire pèse', __FILE__) . ' ' . $dir_size);
 			}
 			shell_exec('rm -rf ' . $files[$i]['file']);
 			$dir_size -= $files[$i]['filesize'];
@@ -367,7 +367,7 @@ class camera extends eqLogic {
 		if ($this->getConfiguration('alertMessageCommand') != '') {
 			$cmd = cmd::byId(str_replace('#', '', $this->getConfiguration('alertMessageCommand')));
 			if (is_object($cmd) && $cmd->getEqType_name() == 'camera') {
-				throw new Exception(__('La "Commande d\'alerte" ne peut être de type caméra', __FILE__));
+				throw new Exception(__('La "Commande d\'alerte" ne doit pas être de type caméra', __FILE__));
 			}
 		}
 		if ($this->getConfiguration('localApiKey') != '') {
@@ -421,7 +421,7 @@ class camera extends eqLogic {
 	public function preUpdate() {
 		$this->setCategory('security', 1);
 		if ($this->getConfiguration('ip') == '') {
-			throw new Exception(__('L\'adresse IP de la camera ne peut être vide', __FILE__));
+			throw new Exception(__("L'adresse IP de la caméra doit être renseignée", __FILE__));
 		}
 	}
 	public function postSave() {
@@ -432,7 +432,7 @@ class camera extends eqLogic {
 		if (!is_object($urlFlux)) {
 			$urlFlux = new cameraCmd();
 		}
-		$urlFlux->setName(__('Flux video', __FILE__));
+		$urlFlux->setName(__('Flux vidéo', __FILE__));
 		$urlFlux->setConfiguration('request', '-');
 		$urlFlux->setType('info');
 		$urlFlux->setLogicalId('urlFlux');
@@ -451,7 +451,7 @@ class camera extends eqLogic {
 		if (!is_object($recordState)) {
 			$recordState = new cameraCmd();
 		}
-		$recordState->setName(__('Status enregistrement', __FILE__));
+		$recordState->setName(__('Statut enregistrement', __FILE__));
 		$recordState->setConfiguration('recordState', 1);
 		$recordState->setConfiguration('request', '-');
 		$recordState->setType('info');
@@ -516,7 +516,7 @@ class camera extends eqLogic {
 			if (!is_object($on)) {
 				$on = new cameraCmd();
 			}
-			$on->setName(__('On', __FILE__));
+			$on->setName(__('Allumer', __FILE__));
 			$on->setOrder(-1);
 			$on->setType('action');
 			$on->setLogicalId('on');
@@ -531,7 +531,7 @@ class camera extends eqLogic {
 			if (!is_object($off)) {
 				$off = new cameraCmd();
 			}
-			$off->setName(__('Off', __FILE__));
+			$off->setName(__('Eteindre', __FILE__));
 			$off->setOrder(-1);
 			$off->setType('action');
 			$off->setLogicalId('off');
@@ -746,12 +746,12 @@ class camera extends eqLogic {
 		if (null !== init('title') && init('title') != '') {
 			$options['title'] = init('title');
 		} else {
-			$options['title'] = __('Alerte sur la camera : ', __FILE__) . $this->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s') . $_part;
+			$options['title'] = __('Alerte sur la caméra', __FILE__) . $this->getName() . ' ' . __('à', __FILE__) . ' ' . date('Y-m-d H:i:s') . $_part;
 		}
 		if (null !== init('message') && init('message') != '') {
 			$options['message'] = init('message') . $_part;
 		} else {
-			$options['message'] = __('Alerte sur la camera : ', __FILE__) . $this->getName() . __(' à ', __FILE__) . date('Y-m-d H:i:s') . $_part;
+			$options['message'] = __('Alerte sur la caméra', __FILE__) . $this->getName() . ' ' . __('à', __FILE__) . ' ' . date('Y-m-d H:i:s') . $_part;
 		}
 		$cmds = explode('&&', init('sendTo'));
 		foreach ($cmds as $id) {
@@ -762,7 +762,7 @@ class camera extends eqLogic {
 			try {
 				$cmd->execCmd($options);
 			} catch (Exception $e) {
-				log::add('camera', 'error', __('[camera/sendSnap] Erreur lors de l\'envoi des images : ', __FILE__) . $cmd->getHumanName() . ' => ' . log::exception($e));
+				log::add('camera', 'error', '[camera/sendSnap] ' . __("Erreur lors de l'envoi des images", __FILE__) . ' : ' . $cmd->getHumanName() . ' => ' . log::exception($e));
 			}
 		}
 	}
@@ -824,7 +824,7 @@ class camera extends eqLogic {
 			$function = explode('::', $this->getConfiguration('urlStream'))[1];
 			if (!method_exists($class, $function)) {
 				$data = '';
-				log::add('camera', 'debug', __('Impossible de trouver la function ', __FILE__) . $class . '::' . $function);
+				log::add('camera', 'debug', __('Impossible de trouver la fonction', __FILE__) . ' ' . $class . '::' . $function);
 			} else {
 				$data = $class::$function($this);
 			}
@@ -860,30 +860,30 @@ class camera extends eqLogic {
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
-				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+				throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
 			}
 		}
 		if (!is_writable($output_dir)) {
-			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+			throw new Exception(__("Impossible d'écrire dans le dossier", __FILE__) . ' ' . $output_dir);
 		}
 		$output_dir .= '/' . $this->getId();
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
-				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+				throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
 			}
 		}
 		if (!is_writable($output_dir)) {
-			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+			throw new Exception(__("Impossible d'écrire dans le dossier", __FILE__) . ' ' . $output_dir);
 		}
 		$snapshot = $this->getSnapshot(true);
 		if (empty($snapshot)) {
-			throw new Exception(__('Le fichier est vide : ', __FILE__) . $output_dir);
+			throw new Exception(__('Le fichier est vide', __FILE__) . ' : ' . $output_dir);
 		}
 		if ($_forVideo == 1) {
 			$output_dir .= '/movie_temp';
 			if (!file_exists($output_dir)) {
 				if (!mkdir($output_dir, 0777, true)) {
-					throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+					throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
 				}
 			}
 			if ($_number == 2) {
@@ -902,20 +902,20 @@ class camera extends eqLogic {
 		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
-				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+				throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
 			}
 		}
 		if (!is_writable($output_dir)) {
-			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+			throw new Exception(__("Impossible d'écrire dans le dossier", __FILE__) . ' ' . $output_dir);
 		}
 		$output_dir .= '/' . $this->getId();
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
-				throw new Exception(__('Impossible de creer le dossier : ', __FILE__) . $output_dir);
+				throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
 			}
 		}
 		if (!is_writable($output_dir)) {
-			throw new Exception(__('Impossible d\'écrire dans le dossier : ', __FILE__) . $output_dir);
+			throw new Exception(__("Impossible d'écrire dans le dossier", __FILE__) . ' ' . $output_dir);
 		}
 		shell_exec(system::getCmdSudo() . 'rm -rf ' . $output_dir);
 	}
@@ -1036,7 +1036,7 @@ class cameraCmd extends cmd {
 		if ($logicalId === 'on') {
 			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('commandOn')));
 			if (is_object(!$cmd)) {
-				throw new Exception(__('Impossible de trouver la commande ON', __FILE__));
+				throw new Exception(__('Impossible de trouver la commande "Allumer"', __FILE__));
 			}
 			$cmd->execCmd();
 			return true;
@@ -1049,7 +1049,7 @@ class cameraCmd extends cmd {
 			$eqLogic->stopRecord();
 			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('commandOff')));
 			if (is_object(!$cmd)) {
-				throw new Exception(__('Impossible de trouver la commande OFF', __FILE__));
+				throw new Exception(__('Impossible de trouver la commande "Eteindre"', __FILE__));
 			}
 			$cmd->execCmd();
 			return true;

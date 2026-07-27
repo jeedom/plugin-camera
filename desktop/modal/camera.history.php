@@ -3,14 +3,14 @@ if (!isConnect()) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
 if (init('id') == '') {
-	throw new Exception(__('L\'id ne peut etre vide', __FILE__));
+	throw new Exception(__("L'identifiant de l'équipement doit être renseigné", __FILE__));
 }
 $camera = camera::byId(init('id'));
 if (!is_object($camera)) {
-	throw new Exception(__('L\'équipement est introuvable : ', __FILE__) . init('id'));
+	throw new Exception(__('Equipement introuvable', __FILE__) . ' : ' . init('id'));
 }
 if ($camera->getEqType_name() != 'camera') {
-	throw new Exception(__('Cet équipement n\'est pas de type camera : ', __FILE__) . $camera->getEqType_name());
+	throw new Exception(__("L'équipement n'est pas de type caméra", __FILE__) . ' : ' . $camera->getEqType_name());
 }
 $dir = calculPath(config::byKey('recordDir', 'camera')) . '/' . $camera->getId();
 $files = array();

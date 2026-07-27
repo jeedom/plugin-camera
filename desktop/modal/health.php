@@ -34,7 +34,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<th>{{Modèle}}</th>
 			<th>{{Vidéo}}</th>
 			<th>{{Framerate}}</th>
-			<th>{{Rafraichissement}}</th>
+			<th>{{Rafraîchissement}}</th>
 			<th>{{Zoom}}</th>
 			<th>{{Max Enregistrement}}</th>
 			<th>{{Date création}}</th>

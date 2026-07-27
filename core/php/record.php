@@ -15,7 +15,8 @@
 * You should have received a copy of the GNU General Public License
 * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 */
-declare (ticks = 1);
+
+declare(ticks=1);
 
 global $SIG;
 $SIG = false;
@@ -46,16 +47,16 @@ if (isset($argv)) {
 	}
 }
 if (init('id') == '') {
-	log::add('camera', 'error', __('[camera/reccord] L\'id ne peut etre vide', __FILE__));
+	log::add('camera', 'error', '[camera/record] ' . __("L'identifiant de l'équipement doit être renseigné", __FILE__));
 	die();
 }
 $camera = camera::byId(init('id'));
 if (!is_object($camera)) {
-	log::add('camera', 'error', __('[camera/reccord] L\'équipement est introuvable : ', __FILE__) . init('id'));
+	log::add('camera', 'error', '[camera/record] ' . __('Equipement introuvable', __FILE__) . ' : ' . init('id'));
 	die();
 }
 if ($camera->getEqType_name() != 'camera') {
-	log::add('camera', 'error', __('[camera/reccord] Cet équipement n\'est pas de type camera : ', __FILE__) . $camera->getEqType_name());
+	log::add('camera', 'error', '[camera/record] ' . __("L'équipement n'est pas de type caméra", __FILE__) . ' : ' . $camera->getEqType_name());
 	die();
 }
 set_time_limit($camera->getConfiguration('maxReccordTime', 600));
@@ -121,7 +122,6 @@ while (true) {
 			$files[] = $camera->takeSnapshot();
 		}
 	} catch (Exception $e) {
-		
 	}
 	if ($SIG) {
 		break;

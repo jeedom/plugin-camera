@@ -34,23 +34,22 @@ if (isset($argv)) {
 }
 
 if (init('id') == '') {
-	log::add('camera', 'error', __('[camera/sendsnapshot] L\'id ne peut etre vide', __FILE__));
+	log::add('camera', 'error', '[camera/sendsnapshot] ' . __("L'identifiant de l'équipement doit être renseigné", __FILE__));
 	die();
 }
 $camera = camera::byId(init('id'));
 if (!is_object($camera)) {
-	log::add('camera', 'error', __('[camera/sendsnapshot] L\'équipement est introuvable : ', __FILE__) . init('id'));
+	log::add('camera', 'error', '[camera/sendsnapshot] ' . __('Equipement introuvable', __FILE__) . ' : ' . init('id'));
 	die();
 }
 if ($camera->getEqType_name() != 'camera') {
-	log::add('camera', 'error', __('[camera/sendsnapshot] Cet équipement n\'est pas de type camera : ', __FILE__) . $camera->getEqType_name());
+	log::add('camera', 'error', '[camera/sendsnapshot] ' . __("L'équipement n'est pas de type caméra", __FILE__) . ' : ' . $camera->getEqType_name());
 	die();
 }
 $files = $camera->getCache('fileToSend');
 $camera->setCache('fileToSend', '');
 if (!is_array($files) || count($files) == 0) {
-	log::add('camera', 'error', __('[camera/sendsnapshot]No file found ', __FILE__) . print_r($files, true));
+	log::add('camera', 'error', '[camera/sendsnapshot] ' . __('Aucun fichier trouvé', __FILE__) . ' : ' . print_r($files, true));
 	die();
 }
 $camera->sendSnap($files, false, init('part'));
-?>
