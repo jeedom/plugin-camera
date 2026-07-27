@@ -9,4 +9,4 @@ if (!is_object($eqLogic)) {
 if ($eqLogic->getEqType_name() != 'camera') {
     throw new Exception(__('L\'équipement n\'est pas une camera', __FILE__));
 }
-echo $eqLogic->toHtml('dashboard', true);
+echo $eqLogic->toHtml('dashboard');
