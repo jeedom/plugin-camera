@@ -75,4 +75,3 @@ while (true) {
 		die();
 	}
 }
-die();
