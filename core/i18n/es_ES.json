@@ -39,7 +39,7 @@
         "Aucun fichier trouvé": "No se ha encontrado ningún archivo",
         "Equipement introuvable": "No se ha encontrado el equipo",
         "L'identifiant de l'équipement doit être renseigné": "Es necesario introducir el identificador del equipo",
-        "L'équipement n'est pas de type caméra": "El equipo no es una cámara"
+        "L'équipement n'est pas de type caméra": "El dispositivo no es una cámara"
     },
     "plugins\/camera\/core\/php\/stopCam.php": {
         "Equipement introuvable": "No se ha encontrado el equipo",
