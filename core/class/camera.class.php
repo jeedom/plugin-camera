@@ -24,7 +24,6 @@ class camera extends eqLogic {
 	/*     * *************************Attributs****************************** */
 
 	public static $_widgetPossibility = array('custom' => true, 'custom::layout' => false);
-	private static $_eqLogics = null;
 
 	/*     * ***********************Methode static*************************** */
 
@@ -92,10 +91,11 @@ class camera extends eqLogic {
 	}
 
 	public static function pull() {
-		if (self::$_eqLogics == null) {
-			self::$_eqLogics = self::byType(__CLASS__, true);
+		static $eqLogics = null;
+		if ($eqLogics === null) {
+			$eqLogics = self::byType(__CLASS__, true);
 		}
-		foreach (self::$_eqLogics as $eqLogic) {
+		foreach ($eqLogics as $eqLogic) {
 			$php_file = dirname(__FILE__) . '/../config/devices/' . $eqLogic->getConfiguration('hasPullFunction', 0);
 			if ($eqLogic->getIsEnable() == 0 || !file_exists($php_file)) {
 				continue;
