@@ -36,6 +36,7 @@ if (init('id') == '') {
 	log::add('camera', 'error', '[camera/record] ' . __("L'identifiant de l'équipement doit être renseigné", __FILE__));
 	die();
 }
+/** @var camera $camera */
 $camera = camera::byId(init('id'));
 if (!is_object($camera)) {
 	log::add('camera', 'error', '[camera/record] ' . __('Equipement introuvable', __FILE__) . ' : ' . init('id'));

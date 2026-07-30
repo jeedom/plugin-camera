@@ -17,6 +17,7 @@
 */
 
 require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
+/** @var camera $camera */
 $camera = camera::byId(init('id'));
 if (!is_object($camera)) {
 	die();

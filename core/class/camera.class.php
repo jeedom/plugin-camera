@@ -215,6 +215,7 @@ class camera extends eqLogic {
 				break;
 			}
 		}
+		/** @var camera $camera */
 		foreach (camera::byType('camera') as $camera) {
 			try {
 				$processes = system::ps('core/php/record.php id=' . $camera->getId());
@@ -1019,6 +1020,7 @@ class cameraCmd extends cmd {
 				}
 				break;
 		}
+		/** @var camera */
 		$eqLogic = $this->getEqLogic();
 		$logicalId = $this->getLogicalId();
 		if ($logicalId === 'recordCmd') {
@@ -1035,7 +1037,7 @@ class cameraCmd extends cmd {
 		}
 		if ($logicalId === 'on') {
 			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('commandOn')));
-			if (is_object(!$cmd)) {
+			if (!is_object($cmd)) {
 				throw new Exception(__('Impossible de trouver la commande "Allumer"', __FILE__));
 			}
 			$cmd->execCmd();
@@ -1048,7 +1050,7 @@ class cameraCmd extends cmd {
 			}
 			$eqLogic->stopRecord();
 			$cmd = cmd::byId(str_replace('#', '', $eqLogic->getConfiguration('commandOff')));
-			if (is_object(!$cmd)) {
+			if (!is_object($cmd)) {
 				throw new Exception(__('Impossible de trouver la commande "Eteindre"', __FILE__));
 			}
 			$cmd->execCmd();

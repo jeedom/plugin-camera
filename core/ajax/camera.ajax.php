@@ -111,6 +111,7 @@ try {
 	}
 
 	if (init('action') == 'removeAllSnapshot') {
+		/** @var camera $camera */
 		$camera = camera::byId(init('id'));
 		if (!is_object($camera)) {
 			throw new Exception(__('Equipement introuvable', __FILE__) . ' : ' . init('id'));
