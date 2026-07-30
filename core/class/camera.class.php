@@ -677,18 +677,18 @@ class camera extends eqLogic {
 		return $url . $complement;
 	}
 
-	public function applyModuleConfiguration() {
+	private function applyModuleConfiguration() {
 		$this->setConfiguration('applyDevice', $this->getConfiguration('device'));
+		$this->save(true);
 		if ($this->getConfiguration('device') == '') {
-			$this->save();
-			return true;
+			return;
 		}
 		if ($this->getConfiguration('device') == 'onvif') {
 			$this->configOnvif();
 		}
 		$device = self::devicesParameters($this->getConfiguration('device'));
 		if (!is_array($device) || !isset($device['commands'])) {
-			return true;
+			return;
 		}
 		$this->import($device);
 	}
