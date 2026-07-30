@@ -29,7 +29,7 @@ class camera extends eqLogic {
 	/*     * ***********************Methode static*************************** */
 
 	public static function cron5() {
-		foreach (eqLogic::byType('camera') as $eqLogic) {
+		foreach (eqLogic::byType(__CLASS__) as $eqLogic) {
 			$processes = array_merge(system::ps('rtsp-to-hls.sh.*' . $eqLogic->getConfiguration('localApiKey')), system::ps('ffmpeg.*' . $eqLogic->getConfiguration('localApiKey')));
 			if (count($processes) == 0) {
 				continue;
@@ -62,7 +62,7 @@ class camera extends eqLogic {
 		$return = array();
 		$return['log'] = '';
 		$return['state'] = 'nok';
-		$cron = cron::byClassAndFunction('camera', 'pull');
+		$cron = cron::byClassAndFunction(__CLASS__, 'pull');
 		if (is_object($cron) && $cron->running()) {
 			$return['state'] = 'ok';
 		}
@@ -76,7 +76,7 @@ class camera extends eqLogic {
 		if ($deamon_info['launchable'] != 'ok') {
 			throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
 		}
-		$cron = cron::byClassAndFunction('camera', 'pull');
+		$cron = cron::byClassAndFunction(__CLASS__, 'pull');
 		if (!is_object($cron)) {
 			throw new Exception(__('Tâche cron introuvable', __FILE__));
 		}
@@ -84,7 +84,7 @@ class camera extends eqLogic {
 	}
 
 	public static function deamon_stop() {
-		$cron = cron::byClassAndFunction('camera', 'pull');
+		$cron = cron::byClassAndFunction(__CLASS__, 'pull');
 		if (!is_object($cron)) {
 			throw new Exception(__('Tâche cron introuvable', __FILE__));
 		}
@@ -93,7 +93,7 @@ class camera extends eqLogic {
 
 	public static function pull() {
 		if (self::$_eqLogics == null) {
-			self::$_eqLogics = self::byType('camera');
+			self::$_eqLogics = self::byType(__CLASS__, true);
 		}
 		foreach (self::$_eqLogics as $eqLogic) {
 			$php_file = dirname(__FILE__) . '/../config/devices/' . $eqLogic->getConfiguration('hasPullFunction', 0);
@@ -115,7 +115,7 @@ class camera extends eqLogic {
 		$return = array();
 		$return['log'] = 'camera_update';
 		$return['state'] = 'ok';
-		$return['progress_file'] = jeedom::getTmpFolder('camera') . '/dependance';
+		$return['progress_file'] = jeedom::getTmpFolder(__CLASS__) . '/dependance';
 		if (exec('which avconv | wc -l') == 0 && exec('which ffmpeg | wc -l') == 0) {
 			$return['state'] = 'nok';
 		}
@@ -124,7 +124,7 @@ class camera extends eqLogic {
 
 	public static function dependancy_install() {
 		log::remove(__CLASS__ . '_update');
-		return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh ' . jeedom::getTmpFolder('camera') . '/dependance', 'log' => log::getPathToLog(__CLASS__ . '_update'));
+		return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependance', 'log' => log::getPathToLog(__CLASS__ . '_update'));
 	}
 
 	public static function event() {
@@ -138,7 +138,7 @@ class camera extends eqLogic {
 	public static function interact($_query, $_parameters = array()) {
 		$ok = false;
 		$files = array();
-		$matchs = explode("\n", str_replace('\n', "\n", config::byKey('interact::sentence', 'camera')));
+		$matchs = explode("\n", str_replace('\n', "\n", config::byKey('interact::sentence', __CLASS__)));
 		if (count($matchs) == 0) {
 			return null;
 		}
@@ -153,19 +153,19 @@ class camera extends eqLogic {
 		}
 		$data = interactQuery::findInQuery('object', $_query);
 		if (is_object($data['object'])) {
-			foreach ($data['object']->getEqLogic(true, false, 'camera') as $camera) {
+			foreach ($data['object']->getEqLogic(true, false, __CLASS__) as $camera) {
 				try {
 					$files[] = $camera->takeSnapshot();
 				} catch (Exception $e) {
-					log::add('camera', 'warning', $e->getMessage());
+					log::add(__CLASS__, 'warning', $e->getMessage());
 				}
 			}
 			foreach ($data['object']->getChilds() as $object) {
-				foreach ($object->getEqLogic(true, false, 'camera') as $camera) {
+				foreach ($object->getEqLogic(true, false, __CLASS__) as $camera) {
 					try {
 						$files[] = $camera->takeSnapshot();
 					} catch (Exception $e) {
-						log::add('camera', 'warning', $e->getMessage());
+						log::add(__CLASS__, 'warning', $e->getMessage());
 					}
 				}
 			}
@@ -177,7 +177,7 @@ class camera extends eqLogic {
 	}
 
 	public static function cronHourly() {
-		$record_dir = calculPath(config::byKey('recordDir', 'camera'));
+		$record_dir = calculPath(config::byKey('recordDir', __CLASS__));
 		if (!file_exists($record_dir)) {
 			mkdir($record_dir, 0777, true);
 		}
@@ -188,7 +188,7 @@ class camera extends eqLogic {
 				continue;
 			}
 		}
-		$max_size = config::byKey('maxSizeRecordDir', 'camera') * 1024 * 1024;
+		$max_size = config::byKey('maxSizeRecordDir', __CLASS__) * 1024 * 1024;
 		$i = 0;
 		$files = array();
 		foreach (ls($record_dir, '*') as $dir) {
@@ -216,7 +216,7 @@ class camera extends eqLogic {
 			}
 		}
 		/** @var camera $camera */
-		foreach (camera::byType('camera') as $camera) {
+		foreach (camera::byType(__CLASS__) as $camera) {
 			try {
 				$processes = system::ps('core/php/record.php id=' . $camera->getId());
 				foreach ($processes as $process) {
@@ -278,7 +278,7 @@ class camera extends eqLogic {
 
 	public static function deadCmd() {
 		$return = array();
-		foreach (eqLogic::byType('camera') as $camera) {
+		foreach (eqLogic::byType(__CLASS__) as $camera) {
 			if ($camera->getConfiguration('commandOn') != '' && strpos($camera->getConfiguration('commandOn'), '#') !== false) {
 				if (!cmd::byId(str_replace('#', '', $camera->getConfiguration('commandOn')))) {
 					$return[] = array('detail' => 'Camera ' . $camera->getHumanName(), 'help' => 'Commande On', 'who' => $camera->getConfiguration('commandOn'));
@@ -309,7 +309,7 @@ class camera extends eqLogic {
 				);
 			}
 		}
-		$cameras = self::byType('camera');
+		$cameras = self::byType(__CLASS__);
 		foreach ($return as &$cam) {
 			foreach ($cameras as $camera) {
 				if ($cam['ip'] == $camera->getConfiguration('ip') . ':' . $camera->getConfiguration('onvif_port')) {
@@ -329,7 +329,7 @@ class camera extends eqLogic {
 		$eqLogic->setConfiguration('password', $_config['password']);
 		$eqLogic->setConfiguration('ip', $host[0]);
 		$eqLogic->setConfiguration('onvif_port', $host[1]);
-		$eqLogic->setEqType_name('camera');
+		$eqLogic->setEqType_name(__CLASS__);
 		$eqLogic->setIsVisible(1);
 		$eqLogic->setIsEnable(1);
 		$eqLogic->setConfiguration('device', 'onvif');
@@ -350,7 +350,7 @@ class camera extends eqLogic {
 			$this->setConfiguration('cameraStreamProfileToken', $sources[0][0]['profiletoken']); //save profiletoken for sending onvif ptz cmd
 			$this->setConfiguration('cameraStreamAccessUrl', $mediaUri);
 		} catch (Exception $e) {
-			log::add('camera', 'error', '[ONVIF] ' . $e->getMessage());
+			log::add(__CLASS__, 'error', '[ONVIF] ' . $e->getMessage());
 		}
 	}
 
@@ -367,7 +367,7 @@ class camera extends eqLogic {
 	public function preSave() {
 		if ($this->getConfiguration('alertMessageCommand') != '') {
 			$cmd = cmd::byId(str_replace('#', '', $this->getConfiguration('alertMessageCommand')));
-			if (is_object($cmd) && $cmd->getEqType_name() == 'camera') {
+			if (is_object($cmd) && $cmd->getEqType_name() == __CLASS__) {
 				throw new Exception(__('La "Commande d\'alerte" ne doit pas être de type caméra', __FILE__));
 			}
 		}
@@ -573,7 +573,7 @@ class camera extends eqLogic {
 							'#stopCmd#' => ($cmd->getConfiguration('stopCmdUrl') != '') ? 1 : 0,
 							'#name#' => ($cmd->getDisplay('icon') != '') ? $cmd->getDisplay('icon') : $cmd->getName(),
 						);
-						$action .= template_replace($replaceCmd, getTemplate('core', $version, 'camera_action', 'camera')) . ' ';
+						$action .= template_replace($replaceCmd, getTemplate('core', $version, 'camera_action', __CLASS__)) . ' ';
 						if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
 							$action .= '<div class="break"></div>';
 						}
@@ -614,7 +614,7 @@ class camera extends eqLogic {
 		} else {
 			$replace['#cmd_off_id#'] = '""';
 		}
-		$action .= template_replace($replace_action, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', 'camera'));
+		$action .= template_replace($replace_action, getTemplate('core', jeedom::versionAlias($_version), 'camera_record', __CLASS__));
 
 		$replace['#action#'] = $action;
 		$replace['#info#'] = $info;
@@ -631,13 +631,13 @@ class camera extends eqLogic {
 		}
 		if ($this->getConfiguration('streamRTSP') == 1) {
 			if ($_fluxOnly) {
-				return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_stream_only', 'camera')));
+				return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_stream_only', __CLASS__)));
 			}
-			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_stream', 'camera')));
+			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_stream', __CLASS__)));
 		} else if (!$_fluxOnly) {
-			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', 'camera')));
+			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera', __CLASS__)));
 		} else {
-			return template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_flux_only', 'camera'));
+			return template_replace($replace, getTemplate('core', jeedom::versionAlias($version), 'camera_flux_only', __CLASS__));
 		}
 	}
 
@@ -728,7 +728,7 @@ class camera extends eqLogic {
 			$cmd .= ' message="' . init('message') . '"';
 			$cmd .= ' part="' . $_part . '"';
 			$cmd .= ' >> ' . log::getPathToLog('camera_record') . ' 2>&1 &';
-			log::add('camera', 'debug', $cmd);
+			log::add(__CLASS__, 'debug', $cmd);
 			shell_exec($cmd);
 			return;
 		}
@@ -753,13 +753,13 @@ class camera extends eqLogic {
 			try {
 				$cmd->execCmd($options);
 			} catch (Exception $e) {
-				log::add('camera', 'error', '[camera/sendSnap] ' . __("Erreur lors de l'envoi des images", __FILE__) . ' : ' . $cmd->getHumanName() . ' => ' . log::exception($e));
+				log::add(__CLASS__, 'error', '[camera/sendSnap] ' . __("Erreur lors de l'envoi des images", __FILE__) . ' : ' . $cmd->getHumanName() . ' => ' . log::exception($e));
 			}
 		}
 	}
 
 	public function convertMovie() {
-		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
+		$output_dir = calculPath(config::byKey('recordDir', __CLASS__));
 		$output_dir .= '/' . $this->getId();
 		$output_file = '';
 		$start = '';
@@ -771,7 +771,7 @@ class camera extends eqLogic {
 				$start = '-start_number ' . $first_number . ' ';
 			}
 			$framerate = $this->getConfiguration('videoFramerate', 1);
-			$engine = config::byKey('rtsp::engine', 'camera', 'avconv');
+			$engine = config::byKey('rtsp::engine', __CLASS__, 'avconv');
 			shell_exec($engine . ' -framerate ' . $framerate . ' ' . $start . ' -f image2 -i ' . $output_dir . '/movie_temp/%06d.' . str_replace(' ', '-', $this->getName()) . '.jpg -pix_fmt yuv420p ' . $output_file);
 			shell_exec(system::getCmdSudo() . 'rm -rf ' . $output_dir . '/movie_temp');
 			return $output_file;
@@ -790,15 +790,15 @@ class camera extends eqLogic {
 	}
 
 	public function getSnapshot($_takesnapshot = false) {
-		$inprogress = cache::bykey('camera' . $this->getId() . 'inprogress');
+		$inprogress = cache::bykey(__CLASS__ . $this->getId() . 'inprogress');
 		$info = $inprogress->getValue(array('state' => 0, 'datetime' => strtotime('now')));
 		if ($info['state'] == 1 && (strtotime('now') - 2) <= $info['datetime']) {
-			$cahe = cache::bykey('camera' . $this->getId() . 'cache');
+			$cahe = cache::bykey(__CLASS__ . $this->getId() . 'cache');
 			if ($cahe->getValue() != '') {
 				return $cahe->getValue();
 			}
 		}
-		cache::set('camera' . $this->getId() . 'inprogress', array('state' => 1, 'datetime' => strtotime('now')));
+		cache::set(__CLASS__ . $this->getId() . 'inprogress', array('state' => 1, 'datetime' => strtotime('now')));
 		$replace = array(
 			'#username#' => urlencode($this->getConfiguration('username')),
 			'#password#' => urlencode($this->getConfiguration('password')),
@@ -806,16 +806,16 @@ class camera extends eqLogic {
 			'#port#' => urlencode($this->getConfiguration('port')),
 		);
 		if ($this->getConfiguration('urlStream') == '' && $this->getConfiguration('cameraStreamAccessUrl') != '') {
-			$engine = config::byKey('rtsp::engine', 'camera', 'avconv');
-			shell_exec($engine . ' ' . $this->getConfiguration('rtsp_option', '') . ' -i "' . trim(str_replace(array_keys($replace), $replace, $this->getConfiguration('cameraStreamAccessUrl'))) . '" -frames:v 1 -y -r 1 -vsync 1 -qscale 1 -f image2 ' . jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg 2>&1 >> /dev/null');
-			$data = file_get_contents(jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg');
-			unlink(jeedom::getTmpFolder('camera') . '/' . $this->getId() . '.jpeg');
+			$engine = config::byKey('rtsp::engine', __CLASS__, 'avconv');
+			shell_exec($engine . ' ' . $this->getConfiguration('rtsp_option', '') . ' -i "' . trim(str_replace(array_keys($replace), $replace, $this->getConfiguration('cameraStreamAccessUrl'))) . '" -frames:v 1 -y -r 1 -vsync 1 -qscale 1 -f image2 ' . jeedom::getTmpFolder(__CLASS__) . '/' . $this->getId() . '.jpeg 2>&1 >> /dev/null');
+			$data = file_get_contents(jeedom::getTmpFolder(__CLASS__) . '/' . $this->getId() . '.jpeg');
+			unlink(jeedom::getTmpFolder(__CLASS__) . '/' . $this->getId() . '.jpeg');
 		} else if (strpos($this->getConfiguration('urlStream'), '::') !== false) {
 			$class = explode('::', $this->getConfiguration('urlStream'))[0];
 			$function = explode('::', $this->getConfiguration('urlStream'))[1];
 			if (!method_exists($class, $function)) {
 				$data = '';
-				log::add('camera', 'debug', __('Impossible de trouver la fonction', __FILE__) . ' ' . $class . '::' . $function);
+				log::add(__CLASS__, 'debug', __('Impossible de trouver la fonction', __FILE__) . ' ' . $class . '::' . $function);
 			} else {
 				$data = $class::$function($this);
 			}
@@ -838,17 +838,17 @@ class camera extends eqLogic {
 			}
 			$data = curl_exec($ch);
 			if (curl_error($ch)) {
-				log::add('camera', 'debug', __('Erreur sur ', __FILE__) . $this->getHumanName() . ' : ' . curl_error($ch));
+				log::add(__CLASS__, 'debug', __('Erreur sur ', __FILE__) . $this->getHumanName() . ' : ' . curl_error($ch));
 			}
 			curl_close($ch);
 		}
-		cache::set('camera' . $this->getId() . 'cache', $data);
-		cache::set('camera' . $this->getId() . 'inprogress', array('state' => 0, 'datetime' => ''));
+		cache::set(__CLASS__ . $this->getId() . 'cache', $data);
+		cache::set(__CLASS__ . $this->getId() . 'inprogress', array('state' => 0, 'datetime' => ''));
 		return $data;
 	}
 
 	public function takeSnapshot($_forVideo = 0, $_number = 0) {
-		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
+		$output_dir = calculPath(config::byKey('recordDir', __CLASS__));
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
 				throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
@@ -890,7 +890,7 @@ class camera extends eqLogic {
 	}
 
 	public function removeAllSnapshot() {
-		$output_dir = calculPath(config::byKey('recordDir', 'camera'));
+		$output_dir = calculPath(config::byKey('recordDir', __CLASS__));
 		if (!file_exists($output_dir)) {
 			if (!mkdir($output_dir, 0777, true)) {
 				throw new Exception(__('Impossible de créer le dossier', __FILE__) . ' ' . $output_dir);
@@ -1117,7 +1117,7 @@ class cameraCmd extends cmd {
 					return true;
 				}
 			} catch (Exception $e) {
-				log::add('camera', 'debug', 'onvif error reason for ' . $logicalId . ' : ' . json_encode($onvif->getLastResponse()));
+				log::add(__CLASS__, 'debug', 'onvif error reason for ' . $logicalId . ' : ' . json_encode($onvif->getLastResponse()));
 			}
 		}
 		if (strpos($request, '#') === 0) {
@@ -1135,7 +1135,7 @@ class cameraCmd extends cmd {
 					'#port#' => $eqLogic->getConfiguration('port'),
 				);
 				$request = str_replace(array_keys($replace), $replace, $request);
-				log::add('camera', 'debug', 'Executing ' . $request);
+				log::add(__CLASS__, 'debug', 'Executing ' . $request);
 				shell_exec($request);
 			} else {
 				$http = new com_http($url, $eqLogic->getConfiguration('username'), $eqLogic->getConfiguration('password'));
