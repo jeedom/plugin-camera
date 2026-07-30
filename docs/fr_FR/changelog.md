@@ -6,7 +6,7 @@
 
 # 31/07/2026
 
-- Corrections et améliorations
+- Corrections et améliorations mineures
 - Version Jeedom 4.4 requise
 
 # 23/07/2026
