@@ -4,6 +4,11 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 31/07/2026
+
+- Corrections et améliorations
+- Version Jeedom 4.4 requise
+
 # 23/07/2026
 
 - Ajout d'une option pour convertir les fluxs H265 en H264
