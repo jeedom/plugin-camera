@@ -24,16 +24,16 @@ if (!isConnect('admin')) {
 <div class="col-lg-7">
 	<form class="form-horizontal">
 		<fieldset>
-		<div class="form-group">
-			<label class="col-sm-4 control-label">{{Le plugin caméra doit réagir aux interactions}}</label>
-			<div class="col-sm-6">
-				<textarea class="configKey form-control" data-l1key="interact::sentence"></textarea>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{{Le plugin caméra doit réagir aux interactions}}</label>
+				<div class="col-sm-6">
+					<textarea class="configKey form-control" data-l1key="interact::sentence"></textarea>
+				</div>
 			</div>
-		</div>
 			<div class="form-group">
 				<label class="col-sm-4 control-label">{{Moteur RTSP}}</label>
 				<div class="col-sm-6">
-					<select class="configKey form-control" data-l1key="rtsp::engine" >
+					<select class="configKey form-control" data-l1key="rtsp::engine">
 						<option value="avconv">avconv</option>
 						<option value="ffmpeg">ffmpeg</option>
 					</select>

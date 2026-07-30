@@ -31,11 +31,11 @@ function camera_install() {
 		$cron->setTimeout(1440);
 		$cron->save();
 	}
-	if(!com_shell::commandExists('avconv')){
-		config::save('rtsp::engine','ffmpeg','camera');
+	if (!com_shell::commandExists('avconv')) {
+		config::save('rtsp::engine', 'ffmpeg', 'camera');
 	}
-	exec(system::getCmdSudo().' chmod +x '.__DIR__.'/../3rdparty/rtsp-to-hls-x264.sh');
-	exec(system::getCmdSudo().' chmod +x '.__DIR__.'/../3rdparty/rtsp-to-hls-copy.sh');
+	exec(system::getCmdSudo() . ' chmod +x ' . __DIR__ . '/../3rdparty/rtsp-to-hls-x264.sh');
+	exec(system::getCmdSudo() . ' chmod +x ' . __DIR__ . '/../3rdparty/rtsp-to-hls-copy.sh');
 	jeedom::getApiKey('camera');
 }
 
@@ -58,16 +58,16 @@ function camera_update() {
 			if ($file == 'movie_temp/' || strpos($file, '.mkv')) {
 				continue;
 			}
-			rename($dir.'/'.$file, $dir.'/'.str_replace(':','-', $file));
+			rename($dir . '/' . $file, $dir . '/' . str_replace(':', '-', $file));
 		}
 		$camera->save();
 	}
-	if(!com_shell::commandExists('avconv')){
-		config::save('rtsp::engine','ffmpeg','camera');
+	if (!com_shell::commandExists('avconv')) {
+		config::save('rtsp::engine', 'ffmpeg', 'camera');
 	}
-	exec(system::getCmdSudo().' chmod +x '.__DIR__.'/../3rdparty/rtsp-to-hls-x264.sh');
-	exec(system::getCmdSudo().' chmod +x '.__DIR__.'/../3rdparty/rtsp-to-hls-copy.sh');
-    jeedom::getApiKey('camera');
+	exec(system::getCmdSudo() . ' chmod +x ' . __DIR__ . '/../3rdparty/rtsp-to-hls-x264.sh');
+	exec(system::getCmdSudo() . ' chmod +x ' . __DIR__ . '/../3rdparty/rtsp-to-hls-copy.sh');
+	jeedom::getApiKey('camera');
 }
 
 function camera_remove() {
