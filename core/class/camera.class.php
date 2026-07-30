@@ -371,16 +371,6 @@ class camera extends eqLogic {
 				throw new Exception(__('La "Commande d\'alerte" ne doit pas être de type caméra', __FILE__));
 			}
 		}
-		if ($this->getConfiguration('localApiKey') != '') {
-			foreach (self::byType('camera') as $camera) {
-				if ($camera->getId() == $this->getId()) {
-					continue;
-				}
-				if ($camera->getConfiguration('localApiKey') == $this->getConfiguration('localApiKey')) {
-					$this->setConfiguration('localApiKey', '');
-				}
-			}
-		}
 		if ($this->getConfiguration('localApiKey') == '') {
 			$this->setConfiguration('localApiKey', config::genKey());
 		}
