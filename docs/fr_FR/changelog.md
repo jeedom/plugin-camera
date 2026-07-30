@@ -7,7 +7,7 @@
 # 31/07/2026
 
 - Corrections et améliorations mineures
-- Version Jeedom 4.4 requise
+- Version minimale du core Jeedom requise : 4.4
 
 # 23/07/2026
 
