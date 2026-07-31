@@ -38,8 +38,8 @@ class camera extends eqLogic {
 					system::kill($process['pid']);
 				}
 				sleep(2);
-				shell_exec(system::getCmdSudo() . ' rm ' . __DIR__ . '/../../data/' . $eqLogic->getConfiguration('localApiKey') . '.m3u8');
-				shell_exec(system::getCmdSudo() . ' rm ' . __DIR__ . '/../../data/segments/' . $eqLogic->getConfiguration('localApiKey') . '-*.ts');
+				shell_exec(system::getCmdSudo() . ' rm -f ' . __DIR__ . '/../../data/' . $eqLogic->getConfiguration('localApiKey') . '.m3u8');
+				shell_exec(system::getCmdSudo() . ' rm -f ' . __DIR__ . '/../../data/segments/' . $eqLogic->getConfiguration('localApiKey') . '-*.ts');
 			}
 		}
 	}
@@ -233,11 +233,13 @@ class camera extends eqLogic {
 	public static function cronDaily() {
 		foreach (camera::byType(__CLASS__, true) as $camera) {
 			try {
-				shell_exec('(ps ax || ps w) | grep ffmpeg.*' . $camera->getConfiguration('localApiKey') . ' | awk \'{print $2}\' |  xargs sudo kill -9');
-				shell_exec('(ps ax || ps w) | grep rtsp-to-hls.sh.*' . $camera->getConfiguration('localApiKey') . ' | awk \'{print $2}\' |  xargs sudo kill -9');
+				$processes = array_merge(system::ps('ffmpeg.*' . $camera->getConfiguration('localApiKey')), system::ps('rtsp-to-hls.sh.*' . $camera->getConfiguration('localApiKey')));
+				foreach ($processes as $process) {
+					system::kill($process['pid']);
+				}
 				sleep(2);
-				shell_exec(system::getCmdSudo() . ' rm ' . __DIR__ . '/../../data/' . $camera->getConfiguration('localApiKey') . '.m3u8');
-				shell_exec(system::getCmdSudo() . ' rm ' . __DIR__ . '/../../data/segments/' . $camera->getConfiguration('localApiKey') . '-*.ts');
+				shell_exec(system::getCmdSudo() . ' rm -f ' . __DIR__ . '/../../data/' . $camera->getConfiguration('localApiKey') . '.m3u8');
+				shell_exec(system::getCmdSudo() . ' rm -f ' . __DIR__ . '/../../data/segments/' . $camera->getConfiguration('localApiKey') . '-*.ts');
 				$camera->setConfiguration('localApiKey', config::genKey());
 				$camera->save();
 				$camera->refreshWidget();
@@ -543,11 +545,13 @@ class camera extends eqLogic {
 			}
 		}
 		if ($this->getConfiguration('streamRTSP') == 1) {
-			shell_exec('(ps ax || ps w) | grep ffmpeg.*' . $this->getConfiguration('localApiKey') . ' | awk \'{print $2}\' |  xargs sudo kill -9');
-			shell_exec('(ps ax || ps w) | grep rtsp-to-hls.sh.*' . $this->getConfiguration('localApiKey') . ' | awk \'{print $2}\' |  xargs sudo kill -9');
+			$processes = array_merge(system::ps('ffmpeg.*' . $this->getConfiguration('localApiKey')), system::ps('rtsp-to-hls.sh.*' . $this->getConfiguration('localApiKey')));
+			foreach ($processes as $process) {
+				system::kill($process['pid']);
+			}
 			sleep(2);
-			shell_exec(system::getCmdSudo() . ' rm ' . __DIR__ . '/../../data/' . $this->getConfiguration('localApiKey') . '.m3u8');
-			shell_exec(system::getCmdSudo() . ' rm ' . __DIR__ . '/../../data/segments/' . $this->getConfiguration('localApiKey') . '-*.ts');
+			shell_exec(system::getCmdSudo() . ' rm -f ' . __DIR__ . '/../../data/' . $this->getConfiguration('localApiKey') . '.m3u8');
+			shell_exec(system::getCmdSudo() . ' rm -f ' . __DIR__ . '/../../data/segments/' . $this->getConfiguration('localApiKey') . '-*.ts');
 		}
 		self::deamon_start();
 	}
