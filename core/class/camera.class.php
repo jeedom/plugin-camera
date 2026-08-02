@@ -411,6 +411,11 @@ class camera extends eqLogic {
 		}
 	}
 
+	public function preInsert() {
+		// we need to keep this even if already done in postSave to make sure that duplicated eqLogic have a new key
+		$this->setConfiguration('localApiKey', config::genKey());
+	}
+
 	public function preUpdate() {
 		$this->setCategory('security', 1);
 		if ($this->getConfiguration('ip') == '') {

@@ -4,7 +4,7 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-# 01/08/2026
+# 03/08/2026
 
 - Corrections et améliorations mineures
 - Version minimale du core Jeedom requise : 4.4
