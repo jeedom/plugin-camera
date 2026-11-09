@@ -395,7 +395,6 @@ class camera extends eqLogic {
 						$profiles = $onvif->media_GetProfiles();
 						$token = $profiles[0]['@attributes']['token'];
 						$return['cameraStreamProfileToken'] = $token;
-						$etape++;
 						log::add(__CLASS__,'debug','[getConfigOnvif]  OK  Etape ' . $etape . ' - media_GetProfiles');
 					} catch(Exception $e) {
 						log::add(__CLASS__,'debug','[getConfigOnvif]  KO  Etape ' . $etape . ' - media_GetProfiles : ' . $e);
@@ -409,7 +408,6 @@ class camera extends eqLogic {
 					try {
                   		$ptzUri = $onvif->getPTZUri();
                   		$return['ptzuri'] = $ptzUri;
-                  		$etape++;
                   		log::add(__CLASS__,'debug','[getConfigOnvif]  OK  Etape ' . $etape . ' - getPTZUri');
 					} catch(Exception $e) {
 						log::add(__CLASS__,'debug','[getConfigOnvif]  KO  Etape ' . $etape . ' - getPTZUri : ' . $e);
@@ -474,6 +472,11 @@ class camera extends eqLogic {
 						$nbCreatepreset = 0;
 						foreach ($presets as $preset) {
 							if ($nbpreset > $nbpresetMax) break;
+							// Fixes double encoding (Mojibake) caused by the XML server (UTF-8 header but ISO-8859-1 content).
+							// The regex detects broken characters (e.g., "Ã©") and the conversion restores the original accent (e.g., "é").
+							if (is_string($preset['Name']) && preg_match('/[\xC2-\xC3][\x80-\xBF]/', $preset['Name'])) {
+								$preset['Name'] = mb_convert_encoding($preset['Name'], 'ISO-8859-1', 'UTF-8');
+							}
 							$logicalId = 'preset::' . preg_replace("/\s+/", '', $preset['Token']);
 							if (!is_object($this->getCmd(null, $logicalId))) {
 								log::add(__CLASS__,'debug','[createCmdPresetOnvif]  [NOTICE]  Création du preset avec logicalId ' . $logicalId);
@@ -1229,9 +1232,10 @@ class cameraCmd extends cmd {
 			$onvif->setPassword($eqLogic->getConfiguration('password'));
 
 			$ptzuri = trim($eqLogic->getConfiguration('ptzuri', ''));
-			$fastMethode = ($ptzuri != '');
+			$forceInitialize = array('gotohome', 'ptzreboot');
+			$byPtzUri = ($ptzuri != '' && !in_array($logicalId, $forceInitialize));
 
-			if ($fastMethode) { 
+			if ($byPtzUri) {
 				// fast method (no initialize)
 				$onvif->setIPAddress($eqLogic->getConfiguration('ip'));
 				$onvif->setPTZUri($ptzuri);
@@ -1287,7 +1291,7 @@ class cameraCmd extends cmd {
 						$cmd->execCmd();
 					}
 					return true;
-				} else if ($action && $fastMethode) {
+				} else if ($action && $byPtzUri) {
 					usleep($sleep);
 					$onvif->ptz_Stop($profileToken, 'true', 'true');
 					return true;
