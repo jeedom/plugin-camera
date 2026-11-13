@@ -1261,7 +1261,7 @@ class cameraCmd extends cmd {
 			try {	
 				$onvif->initialize();
 			} catch(Exception $e) {
-				throw new Exception(__("Échec de la connexion ONVIF.", __FILE__) . ' ' . __("Redémarrez la caméra et relancez l'analyse.", __FILE__));
+				throw new Exception(__("Échec de la connexion ONVIF.", __FILE__) . ' ' . __("Si le problème persiste, redémarrez la caméra.", __FILE__));
 			}
 
 			$action = false;
