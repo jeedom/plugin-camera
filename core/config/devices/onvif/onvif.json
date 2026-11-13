@@ -103,15 +103,6 @@
     },
     {
       "eqType": "camera",
-      "logicalId": "gotohome",
-      "name": "Go to home",
-      "type": "action",
-      "subType": "other",
-      "isHistorized": "0",
-      "isVisible": "1"
-    },
-    {
-      "eqType": "camera",
       "logicalId": "ptzreboot",
       "name": "Redémarrer",
       "type": "action",

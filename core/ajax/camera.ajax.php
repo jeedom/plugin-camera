@@ -98,8 +98,7 @@ try {
 	}
 
 	if (init('action') == 'addDiscoverCam') {
-		camera::addDiscoverCam(json_decode(init('config'), true));
-		ajax::success();
+		ajax::success(camera::addDiscoverCam(json_decode(init('config'), true)));
 	}
   
 	if (init('action') == 'getConfigOnvif') {

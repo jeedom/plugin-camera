@@ -151,26 +151,14 @@ document.querySelector('.createCmdPresetOnvif').addEventListener('click', functi
             });
             return;
           }
-          if (isset(data.result.createPreset) && data.result.createPreset > 0)
-          {
-            
+          if (isset(data.result.createPreset) && data.result.createPreset > 0) {
+            window.location.href='index.php?v=d&m=camera&p=camera&id=' + eqLogicId + '&saveSuccessFull=1#commandtab'
+          } else {
             jeedomUtils.showAlert({
-              title: "Camera",
-              message: " {{preset importé}} : " + data.result.createPreset + '<br>{{Actualisation de la page}}...',
+              title: "Preset",
+              message: "{{Aucun preset importé}}",
               level: 'info'
             });
-            
-            setTimeout(function () {
-              var vars = getUrlVars()
-              var url = 'index.php?'
-              for (var i in vars) {
-                if (i != 'saveSuccessFull' && i != 'removeSuccessFull') { //i != 'id' &&
-                  url += i + '=' + vars[i].replace('#', '') + '&'
-                }
-              }
-              url += 'saveSuccessFull=1#commandtab'
-              jeedomUtils.loadPage(url)
-            }, 2000);
           }
         }
       });

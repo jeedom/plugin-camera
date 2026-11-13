@@ -199,7 +199,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								<div class="col-xs-1 col-sm-1">
 									<a class="btn btn-default" id="bt_previewCam" style="width:100%;height:40px;"><i class="fas fa-eye" style="font-size:2.2em;"></i></a>
 								</div>
-								<div class="col-xs-6 col-sm-6">
+								<div class="col-xs-5 col-sm-5">
 									<div class="alert alert-warning">{{N'oubliez pas de sauvegarder pour prévisualiser les modifications}}</div>
 								</div>
 							</div>
@@ -240,13 +240,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<input type="number" min="0" max="5000" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="delay_stop"  placeholder="0"/>
 								</div>
 							</div>
-							<!-- PR -->
-							<div class="form-group onvifgOnly">
-								<label class="col-sm-4 control-label">PTZ URI</label></label>
-								<div class="col-sm-6">
-									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ptzuri" />
-								</div>
-							</div>
 							<div class="form-group onvifgOnly">
 								<label class="col-sm-4 control-label">{{Analyse}} <sup><i class="fas fa-question-circle tooltips" title="{{Appuyer sur le bouton anlayse afin de compléter les champs manquant}}"></i></sup></label>
 								<div class="col-sm-6">
@@ -259,7 +252,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<a class="btn btn-sm btn-warning eqLogicAction createCmdPresetOnvif roundedLeft"><i class="fas fa-download" data-title="Preset"></i> Importer</a>
 								</div>
 							</div>
-							<!-- PR fin -->
 						</div>
 						<div class="col-lg-6">
 							<legend><i class="fas fa-info"></i> {{Informations}}</legend>
