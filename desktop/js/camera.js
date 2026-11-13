@@ -1,4 +1,5 @@
 
+
 /* This file is part of Jeedom.
 *
 * Jeedom is free software: you can redistribute it and/or modify
@@ -58,6 +59,111 @@ $('#div_pageContainer').off('click', '.listCmdActionOther').on('click', '.listCm
   jeedom.cmd.getSelectModal({ cmd: { type: 'action', subType: 'other' } }, function(result) {
     el.closest('.input-group').find('input').value(result.human)
   })
+})
+
+////  Analyse Onvif  \\\\
+document.querySelector('.analyseOnvif').addEventListener('click', function(event) {
+  if (is_object(eqLogic = document.querySelector('.eqLogicAttr[data-l1key=id]'))) {
+    let eqLogicId = eqLogic.jeeValue()
+    if (eqLogicId != '' && eqLogicId != null) {
+      domUtils.ajax({
+        type: 'POST',
+        url: 'plugins/camera/core/ajax/camera.ajax.php',
+        data: {
+          action: 'getConfigOnvif',
+          id: eqLogicId
+        },
+        dataType: 'json',
+        error: function(request, status, error) {
+          handleAjaxError(request, status, error)
+        },
+        success: function (data) {
+          if (data.state != 'ok') {
+            jeedomUtils.showAlert({
+              title: "Camera",
+              message: data.result,
+              level: 'danger'
+            });
+            return
+          }
+          if (!data.result) {
+            jeedomUtils.showAlert({
+              title: "Camera",
+              message: "{{Camera Onvif introuvable}}",
+              level: 'danger'
+            });
+            return;
+          }
+
+          let selector
+          for (let l1key in data.result) {
+            for (let l2key in data.result[l1key]) {
+              selector = '.eqLogicAttr[data-l1key="' + l1key.replaceAll('"', '') + '"][data-l2key="' + l2key.replaceAll('"', '') + '"]'
+              document.querySelectorAll(selector).forEach(_selector => {
+                if (_selector.jeeValue() == '') {
+                  _selector.style.setProperty('background', 'rgba(248, 216, 0, 0.25)', 'important');
+                  _selector.jeeValue(data.result[l1key][l2key])
+                }
+              })
+            }
+          }
+          jeedomUtils.showAlert({
+            title: "Camera",
+            message: "{{Veuillez enregistrer les modifications}}",
+            level: 'info'
+          });
+        }
+      });
+    }
+  }
+})
+
+////  Create command preset onvif  \\\\
+document.querySelector('.createCmdPresetOnvif').addEventListener('click', function(event) {
+  if (is_object(eqLogic = document.querySelector('.eqLogicAttr[data-l1key=id]'))) {
+    let eqLogicId = eqLogic.jeeValue()
+    if (eqLogicId != '' && eqLogicId != null) {
+      domUtils.ajax({
+        type: 'POST',
+        url: 'plugins/camera/core/ajax/camera.ajax.php',
+        data: {
+          action: 'createCmdPresetOnvif',
+          id: eqLogicId
+        },
+        dataType: 'json',
+        error: function(request, status, error) {
+          handleAjaxError(request, status, error)
+        },
+        success: function (data) {
+          if (data.state != 'ok') {
+            jeedomUtils.showAlert({
+              title: "Camera",
+              message: data.result,
+              level: 'danger'
+            });
+            return
+          }
+          if (!data.result) {
+            jeedomUtils.showAlert({
+              title: "Camera",
+              message: "{{Camera Onvif introuvable}}",
+              level: 'danger'
+            });
+            return;
+          }
+          if (isset(data.result.createPreset) && data.result.createPreset > 0) {
+            window.location.href='index.php?v=d&m=camera&p=camera&id=' + eqLogicId + '&saveSuccessFull=1#commandtab'
+          } else {
+            jeedomUtils.showAlert({
+              title: "Preset",
+              message: "{{Aucun preset importé}}",
+              level: 'info'
+            });
+          }
+        }
+      });
+    }
+  }
 })
 
 function addCmdToTable(_cmd) {
@@ -136,7 +242,6 @@ $('#table_cmd tbody').on('change', '.cmd .cmdAttr[data-l1key=type]', function() 
     cmd.find('.actionMode').show()
   }
 })
-
 
 $('#bt_removeAllCapture').on('click', function() {
   bootbox.confirm('{{Etes-vous sur de vouloir supprimer toutes les captures de la caméra ?}}', function(result) {

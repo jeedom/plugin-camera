@@ -151,36 +151,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									</div>
 								</div>
 							</div>
-							<div class="form-group onvifgOnly">
-								<label class="col-sm-4 control-label">{{Port ONVIF}}</label>
-								<div class="col-sm-6">
-									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="onvif_port" />
-								</div>
-							</div>
-							<div class="form-group onvifgOnly">
-								<label class="col-sm-4 control-label">{{Jeton de profil}}</label>
-								<div class="col-sm-6">
-									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cameraStreamProfileToken" />
-								</div>
-							</div>
-							<div class="form-group onvifgOnly">
-								<label class="col-sm-4 control-label">{{Vitesses X, Y et Z}}</label>
-								<div class="col-sm-2" title="{{X (de 0 à 1)">
-									<input type="number" min="0" max="1" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="speed_x" />
-								</div>
-								<div class="col-sm-2" title="{{Y (de 0 à 1)}}">
-									<input type="number" min="0" max="1" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="speed_y" />
-								</div>
-								<div class="col-sm-2" title="{{Z (de 0 à 1)}}">
-									<input type="number" min="0" max="1" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="speed_z" />
-								</div>
-							</div>
-							<div class="form-group onvifgOnly">
-								<label class="col-sm-4 control-label">{{Délai avant commande stop (en ms)}}</label>
-								<div class="col-sm-3" title="{{Délai (de 0 à 5000)}}">
-									<input type="number" min="0" max="5000" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="delay_stop" />
-								</div>
-							</div>
 							<div class="form-group">
 								<label class="col-sm-4 control-label">{{Nom d'utilisateur}}</label>
 								<div class="col-sm-6">
@@ -229,7 +199,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								<div class="col-xs-1 col-sm-1">
 									<a class="btn btn-default" id="bt_previewCam" style="width:100%;height:40px;"><i class="fas fa-eye" style="font-size:2.2em;"></i></a>
 								</div>
-								<div class="col-xs-6 col-sm-6">
+								<div class="col-xs-5 col-sm-5">
 									<div class="alert alert-warning">{{N'oubliez pas de sauvegarder pour prévisualiser les modifications}}</div>
 								</div>
 							</div>
@@ -239,14 +209,51 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="panel::position" />
 								</div>
 							</div>
-							<!-- <br />
-						</fieldset>
-					</form> -->
+							<legend class='onvifgOnly'><i class="fas fa-cogs"></i> {{Paramètres Onvif}}</legend>
+							<div class="form-group onvifgOnly">
+								<label class="col-sm-4 control-label">{{Port ONVIF}}</label>
+								<div class="col-sm-6">
+									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="onvif_port" />
+								</div>
+							</div>
+							<div class="form-group onvifgOnly">
+								<label class="col-sm-4 control-label">{{Jeton de profil}}</label>
+								<div class="col-sm-6">
+									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cameraStreamProfileToken" />
+								</div>
+							</div>
+							<div class="form-group onvifgOnly">
+								<label class="col-sm-4 control-label">{{Vitesses X, Y et Z}} <sup><i class="fas fa-question-circle tooltips" title="{{Vitesse de déplacement}} (pan, tilt, zoom) {{comprise entre 0 et 1s}}"></i></sup></label>
+								<div class="col-sm-2" title="Pan">
+									<input type="number" min="0" max="1" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="speed_x" placeholder="1"/>
+								</div>
+								<div class="col-sm-2" title="Tilt">
+									<input type="number" min="0" max="1" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="speed_y" placeholder="1"/>
+								</div>
+								<div class="col-sm-2" title="Zoom">
+									<input type="number" min="0" max="1" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="speed_z" placeholder="1"/>
+								</div>
+							</div>
+							<div class="form-group onvifgOnly">
+								<label class="col-sm-4 control-label">{{Délai avant commande stop (en ms)}} <sup><i class="fas fa-question-circle tooltips" title="{{Délai entre 0 et 5000}}"></i></sup></label></label>
+								<div class="col-sm-3">
+									<input type="number" min="0" max="5000" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="delay_stop"  placeholder="0"/>
+								</div>
+							</div>
+							<div class="form-group onvifgOnly">
+								<label class="col-sm-4 control-label">{{Analyse}} <sup><i class="fas fa-question-circle tooltips" title="{{Appuyer sur le bouton anlayse afin de compléter les champs manquant}}"></i></sup></label>
+								<div class="col-sm-6">
+									<a class="btn btn-sm btn-warning eqLogicAction analyseOnvif roundedLeft"><i class="fas fa-spinner" data-title="Découverte"></i> Analyse</a>
+								</div>
+							</div>
+							<div class="form-group onvifgOnly">
+								<label class="col-sm-4 control-label">{{Preset}} <sup><i class="fas fa-question-circle tooltips" title="{{Appuyer sur le bouton pour créer les commandes de preset}}"></i></sup></label>
+								<div class="col-sm-6">
+									<a class="btn btn-sm btn-warning eqLogicAction createCmdPresetOnvif roundedLeft"><i class="fas fa-download" data-title="Preset"></i> Importer</a>
+								</div>
+							</div>
 						</div>
-
 						<div class="col-lg-6">
-							<!-- <form class="form-horizontal">
-					<fieldset> -->
 							<legend><i class="fas fa-info"></i> {{Informations}}</legend>
 							<div class="alert alert-info">{{Si votre caméra n'est pas dans la liste référez-vous}} <a href="https://www.ispyconnect.com/cameras">{{à cette page}}</a> {{pour trouver les informations de configuration de nombreuses caméras}}</div>
 							<div class="form-group">

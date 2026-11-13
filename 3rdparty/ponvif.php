@@ -14,7 +14,7 @@
 * getDeviceUri() - fixed "deviceuri"
 * setDeviceUri() - fixed "deviceuri"
 * setMediaUri() - added MediaUri setter
-
+*
 * Improved by Cycne 10.06.2017   ( Reference: https://www.onvif.org/ver10/media/wsdl/media.wsdl )
 *    getCodecEncoders()
 *    media_GetVideoEncoderConfigurations()
@@ -22,18 +22,25 @@
 *    media_SetVideoEncoderConfiguration()
 *    media_GetOSDs()
 *    media_DeleteOSD()
-* *
+
 * FIX by Aidom 30.11.2019
 *  Correction ONVIF pour JeeDom
 *          - makeToken()
 *          - _xml2array
 *          - _sendrequest
-*	    - _passwordDigest
+*          - _passwordDigest
+
+* Improved by Freddye83 24.03.2021
+* Add function setPTZUri to speed action on ptz (no need initialize())
+
 * FIX by Flobul 18.08.2023
 *  Correction sourcetoken
 *  Catch error in request method
 *  Fix discovery method
-*
+
+* Fix by Phpvarious 20.09.2026
+* ptz_GetPresets (PTZPosition on null)
+
 **/
 
 class Ponvif {
@@ -84,6 +91,7 @@ class Ponvif {
 	public function setMediaUri($mediauri) {$this->mediauri = $mediauri;}
 	public function getCodecEncoders($codec) {return $this->_getCodecEncoders($codec);}
 	public function getPTZUri() {return $this->ptzuri;}
+	public function setPTZUri($ptzuri) {$this->ptzuri = $ptzuri; }
 	public function getBaseUrl() {return $this->baseuri;}
 	public function getSupportedVersion() {return $this->onvifversion;}
 	public function getCapabilities() {return $this->capabilities;}
@@ -583,7 +591,7 @@ class Ponvif {
 									foreach ($getpresetsresponse as $preset) {
 										$presets[] = array('Token' => $preset['@attributes']['token'],
 										'Name' => $preset['Name'],
-										'PTZPosition' => $preset['PTZPosition']);
+										'PTZPosition' => isset($preset['PTZPosition']) ? $preset['PTZPosition'] : ""); // by Phpvarious - replace 'PTZPosition' => $preset['PTZPosition']);
 									}
 									return $presets;
 								}
@@ -1189,4 +1197,3 @@ class Ponvif {
 														}
 														
 													}
-													
