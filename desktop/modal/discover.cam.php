@@ -6,7 +6,7 @@ if (!isConnect('admin')) {
 
 <div id='div_cameraDicovery' style="display: none;"></div>
 
-<table class="table table-bordered table-condensed">
+<table class="table table-bordered table-condensed" id="div_cameraDiscover">
 	<thead>
 		<tr>
 			<th>{{Protocole}}</th>
@@ -54,8 +54,10 @@ foreach (camera::discoverCam() as $cam) {
 </table>
 
 <script>
-  document.querySelector('.bt_addDiscoverCam').addEventListener('click', function(event) {
-    if (_tr = event.target.closest('tr')) {
+document.getElementById('div_cameraDiscover').addEventListener('click', function(event) {
+  let _target = null
+  if (_target = event.target.closest('.bt_addDiscoverCam')) {
+    if (_tr = _target.closest('tr')) {
       domUtils.ajax({
         type: 'POST',
         url: 'plugins/camera/core/ajax/camera.ajax.php',
@@ -80,5 +82,6 @@ foreach (camera::discoverCam() as $cam) {
         }
       });
     }
-  })
+  }
+})
 </script>
