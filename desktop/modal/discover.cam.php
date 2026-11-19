@@ -38,6 +38,8 @@ foreach (camera::discoverCam() as $cam) {
 	echo '<td>';
 	echo $cam['type'];
 	echo '</td>';
+	echo '<td><input class="camDiscoverAttr" data-l1key="username" /></td>';
+	echo '<td><input type="password" autocomplete="new-password" class="camDiscoverAttr" data-l1key="password" /></td>';
 	if ($cam['exist'] === false) {
 		echo '<td><a class="btn btn-success btn-sm bt_addDiscoverCam"><i class="fas fa-plus"></i> {{Ajouter}}</a></td>';
 	} else {
