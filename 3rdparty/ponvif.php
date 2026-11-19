@@ -14,7 +14,7 @@
 * getDeviceUri() - fixed "deviceuri"
 * setDeviceUri() - fixed "deviceuri"
 * setMediaUri() - added MediaUri setter
-
+*
 * Improved by Cycne 10.06.2017   ( Reference: https://www.onvif.org/ver10/media/wsdl/media.wsdl )
 *    getCodecEncoders()
 *    media_GetVideoEncoderConfigurations()
@@ -22,18 +22,25 @@
 *    media_SetVideoEncoderConfiguration()
 *    media_GetOSDs()
 *    media_DeleteOSD()
-* *
+
 * FIX by Aidom 30.11.2019
 *  Correction ONVIF pour JeeDom
 *          - makeToken()
 *          - _xml2array
 *          - _sendrequest
-*	    - _passwordDigest
+*          - _passwordDigest
+
+* Improved by Freddye83 24.03.2021
+* Add function setPTZUri to speed action on ptz (no need initialize())
+
 * FIX by Flobul 18.08.2023
 *  Correction sourcetoken
 *  Catch error in request method
 *  Fix discovery method
-*
+
+* Fix by Phpvarious 20.09.2026
+* ptz_GetPresets (PTZPosition on null)
+
 **/
 
 class Ponvif {
@@ -84,9 +91,11 @@ class Ponvif {
 	public function setMediaUri($mediauri) {$this->mediauri = $mediauri;}
 	public function getCodecEncoders($codec) {return $this->_getCodecEncoders($codec);}
 	public function getPTZUri() {return $this->ptzuri;}
+	public function setPTZUri($ptzuri) {$this->ptzuri = $ptzuri; }
 	public function getBaseUrl() {return $this->baseuri;}
 	public function getSupportedVersion() {return $this->onvifversion;}
 	public function getCapabilities() {return $this->capabilities;}
+	public function getProfiles() {return $this->profiles;}
 	public function setBreakOnError($intransingent) {$this->intransingent = $intransingent;}
 	public function getLastResponse() {return $this->lastresponse;}
 	public function setDiscoveryTimeout($discoverytimeout) {$this->discoverytimeout = $discoverytimeout;}
@@ -583,7 +592,7 @@ class Ponvif {
 									foreach ($getpresetsresponse as $preset) {
 										$presets[] = array('Token' => $preset['@attributes']['token'],
 										'Name' => $preset['Name'],
-										'PTZPosition' => $preset['PTZPosition']);
+										'PTZPosition' => isset($preset['PTZPosition']) ? $preset['PTZPosition'] : ""); // by Phpvarious - replace 'PTZPosition' => $preset['PTZPosition']);
 									}
 									return $presets;
 								}
@@ -918,7 +927,7 @@ class Ponvif {
 												            }
 												        }
 												
-												        public function ptz_GotoHomePosition($profileToken, $pantilt, $zoom)
+												        public function ptz_GotoHomePosition($profileToken, $speed_pantilt_x, $speed_pantilt_y, $speed_zoom_x)
 												        {
 												            if ($this->ptzuri == "") {
 												                return [];
@@ -927,7 +936,7 @@ class Ponvif {
 												            $REQ = $this->_makeToken();
 												
 												            $post_string =
-												                '<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope"><s:Header><Security s:mustUnderstand="1" xmlns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><UsernameToken><Username>%%USERNAME%%</Username><Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">%%PASSWORD%%</Password><Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">%%NONCE%%</Nonce><Created xmlns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">%%CREATED%%</Created></UsernameToken></Security></s:Header><s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><GotoHomePosition><ProfileToken>%%PROFILETOKEN%%</ProfileToken><PanTilt>%%PANTILT%%</PanTilt><Zoom>%%ZOOM%%</Zoom></GotoHomePosition></s:Body></s:Envelope>';
+												                '<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope"><s:Header><Security s:mustUnderstand="1" xmlns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><UsernameToken><Username>%%USERNAME%%</Username><Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">%%PASSWORD%%</Password><Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">%%NONCE%%</Nonce><Created xmlns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">%%CREATED%%</Created></UsernameToken></Security></s:Header><s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><GotoHomePosition><ProfileToken>%%PROFILETOKEN%%</ProfileToken><Speed><PanTilt x="%%SPEEDPANTILTX%%" y="%%SPEEDPANTILTY%%" xmlns="http://www.onvif.org/ver10/schema"/><Zoom x="%%SPEEDZOOMX%%" xmlns="http://www.onvif.org/ver10/schema"/></Speed></GotoHomePosition></s:Body></s:Envelope>';
 												
 												            $post_string = str_replace(
 												                [
@@ -936,8 +945,9 @@ class Ponvif {
 												                    "%%NONCE%%",
 												                    "%%CREATED%%",
 												                    "%%PROFILETOKEN%%",
-												                    "%%PANTILT%%",
-												                    "%%ZOOM%%",
+												                    "%%SPEEDPANTILTX%%",
+												                    "%%SPEEDPANTILTY%%",
+												                    "%%SPEEDZOOMX%%"
 												                ],
 												                [
 												                    $REQ["USERNAME"],
@@ -945,8 +955,9 @@ class Ponvif {
 												                    $REQ["NONCE"],
 												                    $REQ["TIMESTAMP"],
 												                    $profileToken,
-												                    $pantilt,
-												                    $zoom,
+												                    $speed_pantilt_x,
+												                    $speed_pantilt_y,
+												                    $speed_zoom_x
 												                ],
 												                $post_string
 												            );
@@ -1189,4 +1200,3 @@ class Ponvif {
 														}
 														
 													}
-													
