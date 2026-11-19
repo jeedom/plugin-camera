@@ -39,13 +39,9 @@ foreach (camera::discoverCam() as $cam) {
 	echo $cam['type'];
 	echo '</td>';
 	if ($cam['exist'] === false) {
-		echo '<td><input class="camDiscoverAttr" data-l1key="username" /></td>';
-		echo '<td><input type="password" autocomplete="new-password" class="camDiscoverAttr" data-l1key="password" /></td>';
 		echo '<td><a class="btn btn-success btn-sm bt_addDiscoverCam"><i class="fas fa-plus"></i> {{Ajouter}}</a></td>';
 	} else {
-		echo '<td colspan="3">';
-		echo '<span class="label label-warning" style="width: 100%;">{{Caméra déja importée}}</span>';
-		echo '</td>';
+		echo '<td><a class="btn btn-warning btn-sm bt_addDiscoverCam" title="{{Caméra éxistante}}"><i class="fas fa-plus"></i> {{Ajouter}}</a></td>';
 	}
 	echo '</tr>';
 }

@@ -20,9 +20,16 @@ $('#bt_healthCamera').on('click', function() {
   $('#md_modal').load('index.php?v=d&plugin=camera&modal=health').dialog('open')
 })
 
-$('#bt_discoverCam').on('click', function() {
-  $('#md_modal').dialog({ title: "{{Découverte Caméras}}" })
-  $('#md_modal').load('index.php?v=d&plugin=camera&modal=discover.cam').dialog('open')
+document.getElementById('div_pageContainer')?.addEventListener('click', function(event) {
+  let _target = null
+  if (_target = event.target.closest('#bt_discoverCam')) {
+    jeeDialog.dialog({
+      id: 'jee_modal',
+      title: "{{Découverte Caméras}}",
+      contentUrl: 'index.php?v=d&plugin=camera&modal=discover.cam',
+    })
+    return
+  }
 })
 
 $('#bt_previewCam').off('click').on('click', function() {
