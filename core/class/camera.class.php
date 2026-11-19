@@ -1205,7 +1205,7 @@ class cameraCmd extends cmd {
 			$eqLogic->recordCam($_options['title'], $_options['message']);
 			return true;
 		}
-		if ($eqLogic->getConfiguration('device') == 'onvif') {
+		if ($eqLogic->getConfiguration('device') == 'onvif' && $request == '') {
 			$profileToken = $eqLogic->getConfiguration('cameraStreamProfileToken');
 			$speedX = $eqLogic->getConfiguration('speed_x', 1);
 			$speedY = $eqLogic->getConfiguration('speed_y', 1);
